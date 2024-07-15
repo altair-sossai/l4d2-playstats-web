@@ -1,0 +1,124 @@
+﻿@using L4D2PlayStats.Campaign
+@model List<L4D2PlayStats.Sdk.Matches.Results.MatchResult>
+@inject ICampaignThumb CampaignThumb
+
+@section Styles {
+    <style>
+        p {
+            text-align: center;
+        }
+
+        .campaign-img {
+            width: 175px;
+        }
+
+        .icon {
+            width: 16px;
+            margin: -2px 5px;
+        }
+
+        .header .draw,
+        .header .winner,
+        .header .loser,
+        .header .diff {
+            font-weight: bold;
+            text-align: center;
+            border-radius: 5px;
+            color: white;
+            padding: 5px;
+        }
+
+        .header .draw,
+        .header .diff {
+            background-color: #5f5f5f;
+        }
+
+        .header .winner {
+            background-color: #1db75e;
+        }
+
+        .header .loser {
+            background-color: #a12b1e;
+        }
+
+        .versus-img {
+            width: 45px;
+        }
+
+            .players .background {
+                background-repeat: no-repeat;
+                background-size: cover;
+                background-position: center top;
+                height: 130px;
+                vertical-align: top;
+                text-align: left;
+                border-radius: 2px;
+                border: 1px solid silver;
+            }
+
+                .players .background h3 {
+                    padding: 0 5px;
+                    font-weight: bold;
+                    text-align: left;
+                    background-image: linear-gradient(to right, black, rgba(0, 0, 0, 0.6));
+                }
+
+        .star {
+            padding: 0;
+            margin: 0;
+            float: right;
+        }
+    </style>
+}
+
+@foreach (var match in Model)
+{
+    <table style="border-spacing: 10px 0;">
+        <tr>
+            <td class="slim">
+                <h3>@match.Campaign</h3>
+                <img src="@CampaignThumb[match.Campaign]" alt="@match.Campaign" class="campaign-img"/>
+
+                <p>
+                    <img src="~/imgs/icons/calendar.png" alt="Calendar" class="icon"/>
+                    @match.MatchStart.ToString("dd/MM/yy") @match.MatchStart.ToString("HH:mm")
+                </p>
+
+                @if (match.MatchElapsed.HasValue)
+                {
+                    <p>
+                        <img src="~/imgs/icons/clock.png" alt="Clock" class="icon"/>
+                        @match.MatchElapsed.Value.ToString(@"hh\:mm")
+                    </p>
+                }
+            </td>
+            <td style="vertical-align: top">
+                <table style="border-spacing: 5px 0;">
+                    <tr class="header">
+                        <td colspan="2" class="@(match.Draw ? "draw" : match.TeamAWon ? "winner" : "loser")" style="width: 45%">
+                            @(match.Draw ? "Draw" : match.TeamAWon ? "Winner" : "Loser") | @match.ScoreA.ToString("N0")
+                        </td>
+                        <td class="diff">
+                            @match.Diff.ToString("N0")
+                        </td>
+                        <td colspan="2" class="@(match.Draw ? "draw" : match.TeamBWon ? "winner" : "loser")" style="width: 45%">
+                            @(match.Draw ? "Draw" : match.TeamBWon ? "Winner" : "Loser") | @match.ScoreB.ToString("N0")
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            @await Html.PartialAsync("_Players", match.TeamA)
+                        </td>
+                        <td class="text-center">
+                            <img src="~/imgs/icons/vs.png" alt="Versus" class="versus-img"/>
+                        </td>
+                        <td colspan="2">
+                            @await Html.PartialAsync("_Players", match.TeamB)
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+    <hr style="margin: 25px 0"/>
+}

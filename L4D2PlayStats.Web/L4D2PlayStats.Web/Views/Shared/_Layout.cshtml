@@ -1,0 +1,24 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>L4D2 Statistics</title>
+    <link rel="stylesheet" href="~/css/global.css"/>
+    @await RenderSectionAsync("Styles", false)
+</head>
+<body>
+
+<div class="breadcrumb">
+    @Html.ActionLink("Ranking", "Index", "Ranking", null, new { @class = ViewBag.Ranking })
+    <span>|</span>
+    @Html.ActionLink("Last matches", "Index", "LastMatches", null, new { @class = ViewBag.LastMatches })
+</div>
+<hr/>
+
+<div class="container">
+    @RenderBody()
+</div>
+
+</body>
+</html>

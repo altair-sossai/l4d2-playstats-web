@@ -1,0 +1,134 @@
+﻿@using L4D2PlayStats.Infrastructure.Extensions
+@using L4D2PlayStats.UserAvatar
+@model List<L4D2PlayStats.Sdk.Ranking.Results.PlayerResult>
+@inject IUserAvatar UserAvatar
+
+@section Styles {
+    <style>
+        .top-5 {
+            border-spacing: 10px 0;
+        }
+
+            .top-5 td {
+                width: 20%;
+            }
+
+            .top-5 .background {
+                background-repeat: no-repeat;
+                background-size: cover;
+                background-position: center top;
+                height: 175px;
+                vertical-align: top;
+                text-align: left;
+                border-radius: 10px;
+            }
+
+                .top-5 .background h3 {
+                    padding: 0 10px;
+                    font-weight: bold;
+                    text-align: left;
+                    background-image: linear-gradient(to right, black, rgba(0, 0, 0, 0.6));
+                }
+
+            .top-5 .stats {
+                text-align: center;
+                margin-top: 5px;
+            }
+
+                .top-5 .stats span {
+                    padding: 0;
+                    margin: 0;
+                    color: #f1c40f;
+                    font-size: 10px;
+                }
+
+                .top-5 .stats p {
+                    color: #f39c12;
+                    font-size: 16px;
+                    font-weight: bold;
+                    background-color: #2d2d2d;
+                    margin: 0 30px;
+                    padding: 5px;
+                    border-radius: 7px;
+                }
+
+        .all-players th,
+        .all-players td {
+            border: 1px solid #444;
+            font-size: 12px;
+            text-align: center;
+        }
+
+        .all-players th {
+            color: #f39c12;
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 3px;
+        }
+
+        .all-players td {
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 3px 0;
+        }
+    </style>
+}
+
+@{
+    var top5 = Model.Take(5).ToList();
+}
+
+<h3>Top 5 players</h3>
+<table class="top-5">
+    <tr>
+    @foreach (var player in top5)
+    {
+        <td class="background" style="background-image: url('@UserAvatar[player.CommunityId]');">
+            <h3>#@player.Position - @player.Name?.Truncate(30)</h3>
+        </td>
+    }
+    <tr/>
+    <tr>
+    @foreach (var player in top5)
+    {
+        <td>
+            <div class="stats">
+                <p>
+                    <span>Wins:</span> @player.Wins
+                </p>
+            </div>
+
+            <div class="stats">
+                <p>
+                    <span>MVP's:</span> @player.Mvps
+                </p>
+            </div>
+
+            <div class="stats">
+                <p>
+                    <span>Win rate:</span> @player.WinRate.ToString("P0")
+                </p>
+            </div>
+        </td>
+    }
+    <tr/>
+</table>
+
+<h3 style="margin-top: 20px">All players</h3>
+<table class="all-players">
+    <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Wins</th>
+        <th>MVP's</th>
+        <th>Win rate</th>
+    </tr>
+    @foreach (var player in Model)
+    {
+        <tr class="hover">
+            <td>@player.Position</td>
+            <td>@player.Name?.Truncate(30)</td>
+            <td>@player.Wins</td>
+            <td>@player.Mvps</td>
+            <td>@player.WinRate.ToString("P0")</td>
+        </tr>
+    }
+</table>
