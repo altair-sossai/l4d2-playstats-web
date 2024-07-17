@@ -9,6 +9,7 @@ public class MatchResult
     public string? Campaign { get; set; }
     public List<TeamResult>? Teams { get; set; }
 
+    public TeamResult? Winner => Teams?.MaxBy(t => t.Score);
     public TeamResult? TeamA => Teams?.FirstOrDefault();
     public TeamResult? TeamB => Teams?.LastOrDefault();
 

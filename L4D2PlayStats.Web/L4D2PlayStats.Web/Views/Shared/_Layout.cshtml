@@ -1,24 +1,54 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>L4D2 Statistics</title>
+    <link rel="stylesheet" href="~/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="~/css/global.css"/>
     @await RenderSectionAsync("Styles", false)
 </head>
 <body>
 
-<div class="breadcrumb">
-    @Html.ActionLink("Ranking", "Index", "Ranking", null, new { @class = ViewBag.Ranking })
-    <span>|</span>
-    @Html.ActionLink("Last matches", "Index", "LastMatches", null, new { @class = ViewBag.LastMatches })
-</div>
-<hr/>
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-navbar-collapse" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Cobra 4 Gaming</a>
+        </div>
 
-<div class="container">
+        <div class="collapse navbar-collapse" id="bs-navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li class="@ViewBag.Ranking">
+                    @Html.ActionLink("Ranking", "Index", "Ranking")
+                </li>
+                <li class="ViewBag.LastMatches">
+                    @Html.ActionLink("Last matches", "Index", "LastMatches")
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container-fluid">
     @RenderBody()
 </div>
+
+<script src="http://code.jquery.com/jquery-1.12.4.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
+<script src="http://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+@await RenderSectionAsync("Scripts", false)
+
+<script>
+    $(function () {
+        $('[data-toggle="tooltip"]').tooltip()
+    })
+</script>
 
 </body>
 </html>

@@ -5,130 +5,101 @@
 
 @section Styles {
     <style>
-        .top-5 {
-            border-spacing: 10px 0;
+        .col-xs-3, .col-xs-4 {
+            padding-right: 5px;
+            padding-left: 5px;
         }
 
-            .top-5 td {
-                width: 20%;
-            }
-
-            .top-5 .background {
-                background-repeat: no-repeat;
-                background-size: cover;
-                background-position: center top;
-                height: 175px;
-                vertical-align: top;
-                text-align: left;
-                border-radius: 10px;
-            }
-
-                .top-5 .background h3 {
-                    padding: 0 10px;
-                    font-weight: bold;
-                    text-align: left;
-                    background-image: linear-gradient(to right, black, rgba(0, 0, 0, 0.6));
-                }
-
-            .top-5 .stats {
-                text-align: center;
-                margin-top: 5px;
-            }
-
-                .top-5 .stats span {
-                    padding: 0;
-                    margin: 0;
-                    color: #f1c40f;
-                    font-size: 10px;
-                }
-
-                .top-5 .stats p {
-                    color: #f39c12;
-                    font-size: 16px;
-                    font-weight: bold;
-                    background-color: #2d2d2d;
-                    margin: 0 30px;
-                    padding: 5px;
-                    border-radius: 7px;
-                }
-
-        .all-players th,
-        .all-players td {
-            border: 1px solid #444;
-            font-size: 12px;
-            text-align: center;
-        }
-
-        .all-players th {
-            color: #f39c12;
-            background-color: rgba(0, 0, 0, 0.8);
-            padding: 3px;
-        }
-
-        .all-players td {
-            background-color: rgba(0, 0, 0, 0.5);
-            padding: 3px 0;
+        table {
+            margin-bottom: 0 !important;
         }
     </style>
 }
 
-@{
-    var top5 = Model.Take(5).ToList();
-}
-
-<h3>Top 5 players</h3>
-<table class="top-5">
-    <tr>
-    @foreach (var player in top5)
+<h4 class="text-center">Top players</h4>
+<div class="row">
+    @foreach (var player in Model.Take(3))
     {
-        <td class="background" style="background-image: url('@UserAvatar[player.CommunityId]');">
-            <h3>#@player.Position - @player.Name?.Truncate(30)</h3>
-        </td>
+        <div class="col-xs-4">
+            <div class="thumbnail">
+                <h5 class="text-center">
+                    TOP #@player.Position
+                </h5>
+                <img src="@UserAvatar[player.CommunityId]" alt="@player.Name" class="img-responsive img-thumbnail"/>
+                <div class="caption">
+                    <h5 class="text-center">@player.Name</h5>
+                    <table class="table table-striped table-hover table-condensed">
+                        <tr>
+                            <th>Wins:</th>
+                            <td class="text-right">@player.Wins</td>
+                        </tr>
+                        <tr>
+                            <th>MVP's:</th>
+                            <td class="text-right">@player.Mvps</td>
+                        </tr>
+                        <tr>
+                            <th>Win rate:</th>
+                            <td class="text-right">@player.WinRate.ToString("P")</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
     }
-    <tr/>
-    <tr>
-    @foreach (var player in top5)
+</div>
+
+<div class="row">
+    @foreach (var player in Model.Skip(3).Take(4))
     {
-        <td>
-            <div class="stats">
-                <p>
-                    <span>Wins:</span> @player.Wins
+        <div class="col-xs-3">
+            <div class="thumbnail">
+                <p class="text-center">
+                    #@player.Position - @player.Name
                 </p>
+                <img src="@UserAvatar[player.CommunityId]" alt="@player.Name" class="img-responsive img-thumbnail"/>
+                <div class="caption">
+                    <table class="table table-striped table-hover table-condensed">
+                        <tr>
+                            <th>Wins:</th>
+                            <td class="text-right">@player.Wins</td>
+                        </tr>
+                        <tr>
+                            <th>MVP's:</th>
+                            <td class="text-right">@player.Mvps</td>
+                        </tr>
+                    </table>
+                </div>
             </div>
-
-            <div class="stats">
-                <p>
-                    <span>MVP's:</span> @player.Mvps
-                </p>
-            </div>
-
-            <div class="stats">
-                <p>
-                    <span>Win rate:</span> @player.WinRate.ToString("P0")
-                </p>
-            </div>
-        </td>
+        </div>
     }
-    <tr/>
-</table>
+</div>
 
-<h3 style="margin-top: 20px">All players</h3>
-<table class="all-players">
+<hr/>
+
+<h5 class="text-center">Top 50 players</h5>
+<table class="table table-striped table-hover table-bordered table-condensed">
+    <thead>
     <tr>
-        <th>#</th>
-        <th>Name</th>
-        <th>Wins</th>
-        <th>MVP's</th>
-        <th>Win rate</th>
+        <th class="text-center">#</th>
+        <th colspan="2">Player</th>
+        <th class="text-center">Wins</th>
+        <th class="text-center">MVP's</th>
+        <th class="text-center">Win rate</th>
     </tr>
-    @foreach (var player in Model)
+    </thead>
+    <tbody>
+    @foreach (var player in Model.Take(50))
     {
         <tr class="hover">
-            <td>@player.Position</td>
+            <td class="text-center">#@player.Position</td>
+            <td class="text-center">
+                <img src="@UserAvatar[player.CommunityId]" alt="@player.Name" style="width: 32px"/>
+            </td>
             <td>@player.Name?.Truncate(30)</td>
-            <td>@player.Wins</td>
-            <td>@player.Mvps</td>
-            <td>@player.WinRate.ToString("P0")</td>
+            <td class="text-center">@player.Wins</td>
+            <td class="text-center">@player.Mvps</td>
+            <td class="text-center">@player.WinRate.ToString("P0")</td>
         </tr>
     }
+    </tbody>
 </table>
