@@ -39,7 +39,7 @@
                         </tr>
                         <tr>
                             <th>Win rate:</th>
-                            <td class="text-right">@player.WinRate.ToString("P")</td>
+                            <td class="text-right">@player.WinRate.ToString("P0")</td>
                         </tr>
                     </table>
                 </div>
@@ -84,6 +84,7 @@
         <th colspan="2">Player</th>
         <th class="text-center">Wins</th>
         <th class="text-center">MVP's</th>
+        <th class="text-center">Games</th>
         <th class="text-center">Win rate</th>
     </tr>
     </thead>
@@ -92,12 +93,13 @@
     {
         <tr class="hover">
             <td class="text-center">#@player.Position</td>
-            <td class="text-center">
+            <td class="text-center" style="width: 1px">
                 <img src="@UserAvatar[player.CommunityId]" alt="@player.Name" style="width: 32px"/>
             </td>
             <td>@player.Name?.Truncate(30)</td>
             <td class="text-center">@player.Wins</td>
             <td class="text-center">@player.Mvps</td>
+            <td class="text-center">@player.Games</td>
             <td class="text-center">@player.WinRate.ToString("P0")</td>
         </tr>
     }

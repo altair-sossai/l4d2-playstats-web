@@ -1,4 +1,5 @@
 ﻿using System.Text.Json;
+using L4D2PlayStats.Sdk.Converters;
 using L4D2PlayStats.Sdk.Matches;
 using L4D2PlayStats.Sdk.Ranking;
 using Microsoft.Extensions.Configuration;
@@ -21,6 +22,11 @@ public class PlayStatsContext(IConfiguration configuration)
     };
 
     private readonly string _baseUrl = configuration.GetValue<string>("PlayStatsApiUrl")!;
+
+    static PlayStatsContext()
+    {
+        Options.Converters.Add(new DateTimeConverter());
+    }
 
     public IRankingService RankingService => CreateService<IRankingService>();
     public IMatchesService MatchesService => CreateService<IMatchesService>();
