@@ -1,3 +1,11 @@
 .navbar {
     margin-bottom: 0;
 }
+
+.vertical-align-middle {
+    vertical-align: middle !important;
+}
+
+.bold {
+    font-weight: bold;
+}

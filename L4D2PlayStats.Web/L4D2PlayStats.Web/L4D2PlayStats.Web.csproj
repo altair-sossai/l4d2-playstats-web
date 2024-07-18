@@ -1,25 +1,25 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
 
-  <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
-    <Nullable>enable</Nullable>
-    <ImplicitUsings>enable</ImplicitUsings>
-  </PropertyGroup>
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+    </PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="8.0.7" />
-    <PackageReference Include="WebMarkupMin.AspNetCore8" Version="2.16.1" />
-  </ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="8.0.7" />
+        <PackageReference Include="WebMarkupMin.AspNetCore8" Version="2.16.1" />
+    </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\L4D2PlayStats.Sdk\L4D2PlayStats.Sdk.csproj" />
-    <ProjectReference Include="..\L4D2PlayStats\L4D2PlayStats.csproj" />
-  </ItemGroup>
+    <ItemGroup>
+        <ProjectReference Include="..\L4D2PlayStats.Sdk\L4D2PlayStats.Sdk.csproj" />
+        <ProjectReference Include="..\L4D2PlayStats\L4D2PlayStats.csproj" />
+    </ItemGroup>
 
-  <ItemGroup>
-    <Content Update="appsettings.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-  </ItemGroup>
+    <ItemGroup>
+        <Content Update="appsettings.json">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </Content>
+    </ItemGroup>
 
 </Project>

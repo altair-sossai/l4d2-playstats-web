@@ -8,9 +8,11 @@ public class PlayerResult
     public string? ProfileUrl { get; set; }
     public int Position { get; set; }
     public string? Name { get; set; }
+    public decimal Experience { get; set; }
     public int Games { get; set; }
     public int Wins { get; set; }
+    public int Loss { get; set; }
     public decimal WinRate { get; set; }
     public int Mvps { get; set; }
-    public int Loss { get; set; }
+    public int MvpsCommon { get; set; }
 }
