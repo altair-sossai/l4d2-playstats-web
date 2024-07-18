@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="8.0.7" />
+    <PackageReference Include="WebMarkupMin.AspNetCore8" Version="2.16.1" />
   </ItemGroup>
 
   <ItemGroup>
