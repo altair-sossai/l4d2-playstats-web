@@ -15,5 +15,6 @@ var app = builder.Build();
 app.UseStaticFiles();
 app.UseRouting();
 app.UseAuthorization();
+app.MapControllers();
 app.MapControllerRoute("default", "{controller=Ranking}/{action=Index}/{id?}");
 app.Run();
