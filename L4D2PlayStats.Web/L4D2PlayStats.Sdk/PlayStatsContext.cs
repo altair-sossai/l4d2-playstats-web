@@ -2,6 +2,7 @@
 using L4D2PlayStats.Sdk.Converters;
 using L4D2PlayStats.Sdk.Matches;
 using L4D2PlayStats.Sdk.Ranking;
+using L4D2PlayStats.Sdk.Statistics;
 using Microsoft.Extensions.Configuration;
 using Refit;
 
@@ -30,6 +31,7 @@ public class PlayStatsContext(IConfiguration configuration)
 
     public IRankingService RankingService => CreateService<IRankingService>();
     public IMatchesService MatchesService => CreateService<IMatchesService>();
+    public IStatisticsService StatisticsService => CreateService<IStatisticsService>();
 
     private T CreateService<T>()
     {

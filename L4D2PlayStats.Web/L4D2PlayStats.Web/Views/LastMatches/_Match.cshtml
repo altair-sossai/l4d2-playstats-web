@@ -1,0 +1,98 @@
+﻿@using L4D2PlayStats.Campaign
+@using L4D2PlayStats.Infrastructure.Extensions
+@using L4D2PlayStats.Sdk.Matches.Results
+@using L4D2PlayStats.UserAvatar
+@model L4D2PlayStats.Sdk.Matches.Results.MatchResult
+@inject ICampaignThumb CampaignThumb
+@inject IUserAvatar UserAvatar
+
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <div class="row">
+            <div class="col-xs-8">
+                <h4>@Model.Campaign</h4>
+                <p>
+                    Team @Model.Winner?.Code won by @Model.Diff.ToString("N0") points
+                </p>
+            </div>
+            <div class="col-xs-4 text-right">
+                <p data-toggle="tooltip" data-placement="top" title="Date and time when the game occurred">
+                    <img src="~/imgs/icons/calendar.png" alt="Calendar" class="icon"/>
+                    @Model.MatchStart.ToString("dd/MM/yy") at @Model.MatchStart.ToString("HH:mm")
+                </p>
+
+                @if (Model.MatchElapsed.HasValue)
+                {
+                    <p data-toggle="tooltip" data-placement="top" title="Duration of the game in hours">
+                        <img src="~/imgs/icons/clock.png" alt="Clock" class="icon"/>
+                        @Model.MatchElapsed.Value.ToString(@"hh\:mm\:ss")
+                    </p>
+                }
+            </div>
+        </div>
+    </div>
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-xs-2">
+                <img src="@CampaignThumb[Model.Campaign]" alt="@Model.Campaign" class="img-responsive img-thumbnail"/>
+                @if (Model.ShowDetailsButton)
+                {
+                    <a href="@Url.Action("Details", "LastMatches", new { start = Model.Start, end = Model.End })" class="btn btn-primary btn-sm btn-block" style="margin-top: 10px">
+                        Details
+                    </a>
+                }
+            </div>
+            <div class="col-xs-10">
+                <div class="row teams">
+                    @foreach (var team in Model.Teams ?? new List<MatchResult.TeamResult>())
+                    {
+                        <div class="col-xs-6">
+                            <div class="panel panel-@(team.Code == Model.Winner?.Code ? "success" : "danger")" style="margin-bottom: 0;">
+                                <div class="panel-heading bold" style="padding: 3px 15px">
+                                    <div class="row">
+                                        <div class="col-xs-6">
+                                            Team @team.Code
+                                        </div>
+                                        <div class="col-xs-6 text-right">
+                                            @team.Score.ToString("N0")
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="panel-body" style="padding: 0">
+                                    <table class="table table-striped table-hover table-bordered table-condensed">
+                                        <tbody>
+                                        @foreach (var player in team.Players?
+                                                      .OrderByDescending(p => p.TotalMvp)
+                                                      .ThenByDescending(p => p.MvpSiDamage)
+                                                      .ThenByDescending(p => p.MvpCommon)
+                                                      .ToList() ?? new List<MatchResult.PlayerResult>())
+                                        {
+                                            <tr>
+                                                <td style="width: 1px">
+                                                    <img src="@UserAvatar[player.CommunityId]" alt="@player.Name" style="width: 32px"/>
+                                                </td>
+                                                <td>
+                                                    @player.Name?.Truncate(30)
+                                                    @for (var i = 0; i < player.MvpSiDamage; i++)
+                                                    {
+                                                        <img src="~/imgs/icons/star.png" alt="Star" class="icon" data-toggle="tooltip" data-placement="top" title="MVP SI"/>
+                                                    }
+
+                                                    @for (var i = 0; i < player.MvpCommon; i++)
+                                                    {
+                                                        <img src="~/imgs/icons/star-blue.png" alt="Star" class="icon" data-toggle="tooltip" data-placement="top" title="MVP CI"/>
+                                                    }
+                                                </td>
+                                            </tr>
+                                        }
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

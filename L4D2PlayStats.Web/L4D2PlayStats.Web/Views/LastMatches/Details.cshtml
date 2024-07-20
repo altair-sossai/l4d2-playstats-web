@@ -1,0 +1,371 @@
+﻿@using L4D2PlayStats.Sdk.Matches.Results
+@model L4D2PlayStats.Web.Models.MatchDetailsModel
+
+@section Styles {
+    <style>
+        .maps .label {
+            margin: 0 3px;
+        }
+    </style>
+}
+
+@if (Model.Match == null || Model.Statistics == null || Model.Statistics.Count == 0)
+{
+    <div class="row">
+        <div class="col-xs-12">
+            <h4 class="text-center">
+                No match found
+            </h4>
+        </div>
+    </div>
+    return;
+}
+
+<h4 class="text-center">Match details</h4>
+
+<div class="match">
+    @await Html.PartialAsync("_Match", Model.Match)
+</div>
+
+<div class="maps">
+    <div class="panel panel-default">
+        <div class="panel-heading">Maps</div>
+        <div class="panel-body">
+            Current campaign map results
+        </div>
+        <table class="table table-striped table-hover table-condensed">
+            <thead>
+            <th class="text-center">#</th>
+            <th class="text-center">Start</th>
+            <th class="text-center">End</th>
+            <th class="text-center">Elapsed</th>
+            <th class="text-center">Map</th>
+            <th class="text-center">Scoreboard</th>
+            </thead>
+            <tbody>
+            @for (var i = 0; i < Model.Statistics.Count; i++)
+            {
+                var result = Model.Statistics[i];
+                var statistic = result.Statistic;
+                var gameRound = statistic?.GameRound;
+                var scoring = statistic?.Scoring;
+                var labelTeamA = scoring?.Draw == true ? "default" : scoring?.TeamAWon == true ? "success" : "danger";
+                var labelTeamB = scoring?.Draw == true ? "default" : scoring?.TeamBWon == true ? "success" : "danger";
+
+                <tr>
+                    <td class="text-center">#@(i + 1)</td>
+                    <td class="text-center">@statistic?.MapStart?.ToString("dd/MM/yy") @statistic?.MapStart?.ToString("HH:mm")</td>
+                    <td class="text-center">@statistic?.MapEnd?.ToString("dd/MM/yy") @statistic?.MapEnd?.ToString("HH:mm")</td>
+                    <td class="text-center">@statistic?.MapElapsed?.ToString(@"hh\:mm\:ss")</td>
+                    <td class="text-center">@gameRound?.MapName</td>
+                    <td class="text-center">
+                        <span class="label label-@labelTeamA" data-toggle="tooltip" data-placement="top" title="Team A score">
+                            @scoring?.TeamA?.Score
+                        </span>
+                        <span class="label label-default" data-toggle="tooltip" data-placement="top" title="Score difference">
+                            @scoring?.ScoreDiff
+                        </span>
+                        <span class="label label-@labelTeamB" data-toggle="tooltip" data-placement="top" title="Team B score">
+                            @scoring?.TeamB?.Score
+                        </span>
+                    </td>
+                </tr>
+            }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+@foreach (var team in Model.Match?.Teams ?? new List<MatchResult.TeamResult>())
+{
+    <div class="panel panel-default">
+        <div class="panel-heading">Team @team.Code - Survivor</div>
+        <div class="panel-body">
+            Statistics of team @team.Code playing as survivors
+        </div>
+        <table class="table table-striped table-hover table-condensed">
+            <thead>
+            <th class="text-center"></th>
+            @foreach (var player in team.Players ?? new List<MatchResult.PlayerResult>())
+            {
+                <th class="text-center" colspan="2">@player.Name</th>
+            }
+            <th class="text-center">Total</th>
+            </thead>
+            <tbody>
+            <tr>
+                <td>MVP (SI)</td>
+                @foreach (var player in team.Players ?? new List<MatchResult.PlayerResult>())
+                {
+                    <td class="text-right">
+                        @player.MvpSiDamage.ToString("N0")
+                    </td>
+                    <td class="text-left">
+                        @player.MvpSiDamagePercentage.ToString("P0")
+                    </td>
+                }
+                <td class="text-center">@team.MvpSiDamage.ToString("N0")</td>
+            </tr>
+
+            <tr>
+                <td>MVP (Common)</td>
+                @foreach (var player in team.Players ?? new List<MatchResult.PlayerResult>())
+                {
+                    <td class="text-right">
+                        @player.MvpCommon.ToString("N0")
+                    </td>
+                    <td class="text-left">
+                        @player.MvpCommonPercentage.ToString("P0")
+                    </td>
+                }
+                <td class="text-center">@team.MvpCommon.ToString("N0")</td>
+            </tr>
+
+            <tr>
+                <td>LVP (FF)</td>
+                @foreach (var player in team.Players ?? new List<MatchResult.PlayerResult>())
+                {
+                    <td class="text-right">
+                        @player.LvpFfGiven.ToString("N0")
+                    </td>
+                    <td class="text-left">
+                        @player.LvpFfGivenPercentage.ToString("P0")
+                    </td>
+                }
+                <td class="text-center">@team.LvpFfGiven.ToString("N0")</td>
+            </tr>
+
+            <tr>
+                <td>Deaths</td>
+                @foreach (var player in team.Players ?? new List<MatchResult.PlayerResult>())
+                {
+                    <td class="text-right">
+                        @player.Died.ToString("N0")
+                    </td>
+                    <td class="text-left">
+                        @player.DiedPercentage.ToString("P0")
+                    </td>
+                }
+                <td class="text-center">@team.Died.ToString("N0")</td>
+            </tr>
+
+            <tr>
+                <td>Times incapacitated</td>
+                @foreach (var player in team.Players ?? new List<MatchResult.PlayerResult>())
+                {
+                    <td class="text-right">
+                        @player.Incaps.ToString("N0")
+                    </td>
+                    <td class="text-left">
+                        @player.IncapsPercentage.ToString("P0")
+                    </td>
+                }
+                <td class="text-center">@team.Incaps.ToString("N0")</td>
+            </tr>
+
+            <tr>
+                <td>Damage taken</td>
+                @foreach (var player in team.Players ?? new List<MatchResult.PlayerResult>())
+                {
+                    <td class="text-right">
+                        @player.DmgTaken.ToString("N0")
+                    </td>
+                    <td class="text-left">
+                        @player.DmgTakenPercentage.ToString("P0")
+                    </td>
+                }
+                <td class="text-center">@team.DmgTaken.ToString("N0")</td>
+            </tr>
+
+            <tr>
+                <td>Commons killed</td>
+                @foreach (var player in team.Players ?? new List<MatchResult.PlayerResult>())
+                {
+                    <td class="text-right">
+                        @player.Common.ToString("N0")
+                    </td>
+                    <td class="text-left">
+                        @player.CommonPercentage.ToString("P0")
+                    </td>
+                }
+                <td class="text-center">@team.Common.ToString("N0")</td>
+            </tr>
+
+            <tr>
+                <td>Special infected killed</td>
+                @foreach (var player in team.Players ?? new List<MatchResult.PlayerResult>())
+                {
+                    <td class="text-right">
+                        @player.SiKilled.ToString("N0")
+                    </td>
+                    <td class="text-left">
+                        @player.SiKilledPercentage.ToString("P0")
+                    </td>
+                }
+                <td class="text-center">@team.SiKilled.ToString("N0")</td>
+            </tr>
+
+            <tr>
+                <td>Special infected - Damage dealt</td>
+                @foreach (var player in team.Players ?? new List<MatchResult.PlayerResult>())
+                {
+                    <td class="text-right">
+                        @player.SiDamage.ToString("N0")
+                    </td>
+                    <td class="text-left">
+                        @player.SiDamagePercentage.ToString("P0")
+                    </td>
+                }
+                <td class="text-center">@team.SiDamage.ToString("N0")</td>
+            </tr>
+
+            <tr>
+                <td>Tank - Damage dealt</td>
+                @foreach (var player in team.Players ?? new List<MatchResult.PlayerResult>())
+                {
+                    <td class="text-right">
+                        @player.TankDamage.ToString("N0")
+                    </td>
+                    <td class="text-left">
+                        @player.TankDamagePercentage.ToString("P0")
+                    </td>
+                }
+                <td class="text-center">@team.TankDamage.ToString("N0")</td>
+            </tr>
+
+            <tr>
+                <td>Tank - Rocks taken</td>
+                @foreach (var player in team.Players ?? new List<MatchResult.PlayerResult>())
+                {
+                    <td class="text-right">
+                        @player.RockEats.ToString("N0")
+                    </td>
+                    <td class="text-left">
+                        @player.RockEatsPercentage.ToString("P0")
+                    </td>
+                }
+                <td class="text-center">@team.RockEats.ToString("N0")</td>
+            </tr>
+
+            <tr>
+                <td>Skeets</td>
+                @foreach (var player in team.Players ?? new List<MatchResult.PlayerResult>())
+                {
+                    <td class="text-right">
+                        @player.Skeets.ToString("N0")
+                    </td>
+                    <td class="text-left">
+                        @player.SkeetsPercentage.ToString("P0")
+                    </td>
+                }
+                <td class="text-center">@team.Skeets.ToString("N0")</td>
+            </tr>
+
+            <tr>
+                <td>Levels</td>
+                @foreach (var player in team.Players ?? new List<MatchResult.PlayerResult>())
+                {
+                    <td class="text-right">
+                        @player.Levels.ToString("N0")
+                    </td>
+                    <td class="text-left">
+                        @player.LevelsPercentage.ToString("P0")
+                    </td>
+                }
+                <td class="text-center">@team.Levels.ToString("N0")</td>
+            </tr>
+
+            <tr>
+                <td>Fire-friend Given (FFG)</td>
+                @foreach (var player in team.Players ?? new List<MatchResult.PlayerResult>())
+                {
+                    <td class="text-right">
+                        @player.FfGiven.ToString("N0")
+                    </td>
+                    <td class="text-left">
+                        @player.FfGivenPercentage.ToString("P0")
+                    </td>
+                }
+                <td class="text-center">@team.FfGiven.ToString("N0")</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+}
+
+@foreach (var team in Model.Match?.Teams ?? new List<MatchResult.TeamResult>())
+{
+    <div class="panel panel-default">
+        <div class="panel-heading">Team @team.Code - Infected</div>
+        <div class="panel-body">
+            Statistics of team @team.Code playing as infected
+        </div>
+        <table class="table table-striped table-hover table-condensed">
+            <thead>
+            <th class="text-center"></th>
+            @foreach (var player in team.Players ?? new List<MatchResult.PlayerResult>())
+            {
+                <th class="text-center" colspan="2">@player.Name</th>
+            }
+            <th class="text-center">Total</th>
+            </thead>
+            <tbody>
+            <tr>
+                <td>Total damage</td>
+                @foreach (var player in team.Players ?? new List<MatchResult.PlayerResult>())
+                {
+                    <td class="text-right">
+                        @player.DmgTotal.ToString("N0")
+                    </td>
+                    <td class="text-left">
+                        @player.DmgTotalPercentage.ToString("P0")
+                    </td>
+                }
+                <td class="text-center">@team.DmgTotal.ToString("N0")</td>
+            </tr>
+
+            <tr>
+                <td>Tank - Damage dealt</td>
+                @foreach (var player in team.Players ?? new List<MatchResult.PlayerResult>())
+                {
+                    <td class="text-right">
+                        @player.DmgTank.ToString("N0")
+                    </td>
+                    <td class="text-left">
+                        @player.DmgTankPercentage.ToString("P0")
+                    </td>
+                }
+                <td class="text-center">@team.DmgTank.ToString("N0")</td>
+            </tr>
+
+            <tr>
+                <td>Damage - Spitter</td>
+                @foreach (var player in team.Players ?? new List<MatchResult.PlayerResult>())
+                {
+                    <td class="text-right">
+                        @player.DmgSpit.ToString("N0")
+                    </td>
+                    <td class="text-left">
+                        @player.DmgSpitPercentage.ToString("P0")
+                    </td>
+                }
+                <td class="text-center">@team.DmgSpit.ToString("N0")</td>
+            </tr>
+
+            <tr>
+                <td>Hunter - Pounce damage</td>
+                @foreach (var player in team.Players ?? new List<MatchResult.PlayerResult>())
+                {
+                    <td class="text-right">
+                        @player.HunterDpDmg.ToString("N0")
+                    </td>
+                    <td class="text-left">
+                        @player.HunterDpDmgPercentage.ToString("P0")
+                    </td>
+                }
+                <td class="text-center">@team.HunterDpDmg.ToString("N0")</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+}

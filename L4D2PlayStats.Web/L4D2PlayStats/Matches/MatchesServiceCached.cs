@@ -5,7 +5,10 @@ using Microsoft.Extensions.Configuration;
 
 namespace L4D2PlayStats.Matches;
 
-public class MatchesServiceCached(IConfiguration configuration, IMatchesService matchesService, IMemoryCache memoryCache) : IMatchesServiceCached
+public class MatchesServiceCached(
+    IConfiguration configuration,
+    IMatchesService matchesService,
+    IMemoryCache memoryCache) : IMatchesServiceCached
 {
     private string ServerId => configuration.GetValue<string>("ServerId")!;
 

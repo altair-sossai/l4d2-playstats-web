@@ -8,6 +8,10 @@ public class MatchResult
     public TimeSpan? MatchElapsed { get; set; }
     public string? Campaign { get; set; }
     public List<TeamResult>? Teams { get; set; }
+    public List<string>? Statistics { get; set; }
+
+    public string? Start => Statistics?.FirstOrDefault();
+    public string? End => Statistics?.LastOrDefault();
 
     public TeamResult? Winner => Teams?.MaxBy(t => t.Score);
     public TeamResult? TeamA => Teams?.FirstOrDefault();
@@ -20,6 +24,7 @@ public class MatchResult
     public bool Draw => ScoreA == ScoreB;
     public bool TeamAWon => ScoreA > ScoreB;
     public bool TeamBWon => ScoreB > ScoreA;
+    public bool ShowDetailsButton { get; set; } = true;
 
     public class TeamResult
     {

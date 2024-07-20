@@ -1,17 +1,27 @@
 using L4D2PlayStats.Matches;
+using L4D2PlayStats.Sdk.Matches;
+using L4D2PlayStats.Sdk.Statistics;
 using L4D2PlayStats.UserAvatar;
+using L4D2PlayStats.Web.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace L4D2PlayStats.Web.Controllers;
 
 [Route("last-matches")]
-public class LastMatchesController(IMatchesServiceCached matchesService, IUserAvatar userAvatar) : Controller
+public class LastMatchesController(
+    IConfiguration configuration,
+    IMatchesService matchesService,
+    IStatisticsService statisticsService,
+    IMatchesServiceCached matchesServiceCached,
+    IUserAvatar userAvatar) : Controller
 {
+    private string ServerId => configuration.GetValue<string>("ServerId")!;
+
     public async Task<IActionResult> Index()
     {
         ViewBag.LastMatches = "active";
 
-        var matches = await matchesService.GetAsync();
+        var matches = await matchesServiceCached.GetAsync();
 
         var communityIds = matches
             .SelectMany(m => m.Teams ?? [])
@@ -21,5 +31,20 @@ public class LastMatchesController(IMatchesServiceCached matchesService, IUserAv
         await userAvatar.LoadAsync(communityIds);
 
         return View(matches);
+    }
+
+    [Route("details/{start}/{end}")]
+    public async Task<IActionResult> Details(string start, string end)
+    {
+        var matches = await matchesService.BetweenAsync(ServerId, start, end);
+        var statistics = await statisticsService.BetweenAsync(ServerId, start, end);
+
+        var model = new MatchDetailsModel
+        {
+            Match = matches.FirstOrDefault(),
+            Statistics = statistics
+        };
+
+        return View(model);
     }
 }

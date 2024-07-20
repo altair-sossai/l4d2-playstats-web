@@ -16,5 +16,6 @@ public static class AppInjection
 
         serviceCollection.AddScoped(r => r.GetRequiredService<IPlayStatsContext>().RankingService);
         serviceCollection.AddScoped(r => r.GetRequiredService<IPlayStatsContext>().MatchesService);
+        serviceCollection.AddScoped(r => r.GetRequiredService<IPlayStatsContext>().StatisticsService);
     }
 }
