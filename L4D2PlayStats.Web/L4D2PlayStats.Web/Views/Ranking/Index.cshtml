@@ -16,6 +16,11 @@
             height: 10px;
         }
 
+        .progress-bar-danger {
+            background-color: #f57b7b;
+            border: 1px dotted #1c1e22;
+        }
+
         table {
             margin-bottom: 0 !important;
         }
@@ -30,8 +35,8 @@
 <div class="row">
     @foreach (var player in Model.Take(3))
     {
-        var progressBar = new PatentProgressBarModel(player);
-        var patent = progressBar.Patent;
+        var patentInfo = new PatentInfoModel(player);
+        var patent = patentInfo.Patent;
 
         <div class="col-xs-4">
             <div class="thumbnail">
@@ -47,9 +52,14 @@
                     <table class="table table-striped table-hover table-condensed">
                         <tr>
                             <td colspan="4">
-                                <div class="progress" data-toggle="tooltip" data-placement="top" data-html="true" title="@progressBar.Tooltip">
-                                    <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="@progressBar.CurrentXp" aria-valuemin="0" aria-valuemax="@progressBar.NextXp" style="width: @progressBar.Width%;">
+                                <div class="progress" data-toggle="tooltip" data-placement="top" data-html="true" title="@patentInfo.Tooltip">
+                                    <div class="progress-bar progress-bar-@patentInfo.ProgressBarType" role="progressbar" style="width: @patentInfo.ProgressBarWidth%;">
                                     </div>
+                                    @if (patentInfo.ShowPreviousExperienceProgressBar)
+                                    {
+                                        <div class="progress-bar progress-bar-@patentInfo.PreviousExperienceProgressBarType" role="progressbar" style="width: @patentInfo.PreviousExperienceProgressBarWidth%;">
+                                        </div>
+                                    }
                                 </div>
                             </td>
                         </tr>
@@ -69,8 +79,8 @@
 <div class="row">
     @foreach (var player in Model.Skip(3).Take(4))
     {
-        var progressBar = new PatentProgressBarModel(player);
-        var patent = progressBar.Patent;
+        var patentInfo = new PatentInfoModel(player);
+        var patent = patentInfo.Patent;
 
         <div class="col-xs-3">
             <div class="thumbnail">
@@ -79,15 +89,20 @@
                 </p>
                 <img src="@UserAvatar[player.CommunityId]" alt="@player.Name" class="img-responsive img-thumbnail"/>
                 <p class="text-center">
-                    <img src="@patent.Image" alt="@patent.FullName" data-toggle="tooltip" data-placement="top" title="@patent.FullName" style="width: 45px" />
+                    <img src="@patent.Image" alt="@patent.FullName" data-toggle="tooltip" data-placement="top" title="@patent.FullName" style="width: 45px"/>
                     @player.Name
                 </p>
                 <div class="caption">
                     <table class="table table-striped table-hover table-condensed">
                         <td colspan="4">
-                            <div class="progress" data-toggle="tooltip" data-placement="top" data-html="true" title="@progressBar.Tooltip">
-                                <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="@progressBar.CurrentXp" aria-valuemin="0" aria-valuemax="@progressBar.NextXp" style="width: @progressBar.Width%;">
+                            <div class="progress" data-toggle="tooltip" data-placement="top" data-html="true" title="@patentInfo.Tooltip">
+                                <div class="progress-bar progress-bar-@patentInfo.ProgressBarType" role="progressbar" style="width: @patentInfo.ProgressBarWidth%;">
                                 </div>
+                                @if (patentInfo.ShowPreviousExperienceProgressBar)
+                                {
+                                    <div class="progress-bar progress-bar-@patentInfo.PreviousExperienceProgressBarType" role="progressbar" style="width: @patentInfo.PreviousExperienceProgressBarWidth%;">
+                                    </div>
+                                }
                             </div>
                         </td>
                         <tr>
@@ -122,8 +137,8 @@
     <tbody>
     @foreach (var player in Model.Take(50))
     {
-        var progressBar = new PatentProgressBarModel(player);
-        var patent = progressBar.Patent;
+        var patentInfo = new PatentInfoModel(player);
+        var patent = patentInfo.Patent;
 
         <tr class="hover">
             <td class="text-center vertical-align-middle">#@player.Position</td>
@@ -135,9 +150,14 @@
             </td>
             <td class="vertical-align-middle">@player.Name?.Truncate(30)</td>
             <td class="text-center vertical-align-middle">
-                <div class="progress" data-toggle="tooltip" data-placement="top" data-html="true" title="@progressBar.Tooltip">
-                    <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="@progressBar.CurrentXp" aria-valuemin="0" aria-valuemax="@progressBar.NextXp" style="width: @progressBar.Width%;">
+                <div class="progress" data-toggle="tooltip" data-placement="top" data-html="true" title="@patentInfo.Tooltip">
+                    <div class="progress-bar progress-bar-@patentInfo.ProgressBarType" role="progressbar" style="width: @patentInfo.ProgressBarWidth%;">
                     </div>
+                    @if (patentInfo.ShowPreviousExperienceProgressBar)
+                    {
+                        <div class="progress-bar progress-bar-@patentInfo.PreviousExperienceProgressBarType" role="progressbar" style="width: @patentInfo.PreviousExperienceProgressBarWidth%;">
+                        </div>
+                    }
                 </div>
             </td>
             <td class="text-center vertical-align-middle">@patent.Level</td>
