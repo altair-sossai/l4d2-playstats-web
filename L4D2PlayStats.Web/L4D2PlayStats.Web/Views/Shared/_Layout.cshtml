@@ -6,7 +6,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>L4D2 Statistics</title>
     <link rel="stylesheet" href="~/css/bootstrap.min.css"/>
-    <link rel="stylesheet" href="~/css/global.css"/>
+
+    <style>
+        .navbar {
+            margin-bottom: 0;
+        }
+
+        .vertical-align-middle {
+            vertical-align: middle !important;
+        }
+
+        .bold {
+            font-weight: bold;
+        }
+
+        .match .panel h4,
+        .match .panel p {
+            margin: 0;
+        }
+
+        .match .icon {
+            width: 16px;
+        }
+
+        .match .teams .col-xs-6 {
+            padding-right: 5px;
+            padding-left: 5px;
+        }
+
+        .match table {
+            margin-bottom: 0 !important;
+        }
+    </style>
+
     @await RenderSectionAsync("Styles", false)
 </head>
 <body>
