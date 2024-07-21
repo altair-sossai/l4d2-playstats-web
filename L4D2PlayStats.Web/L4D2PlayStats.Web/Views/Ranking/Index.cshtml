@@ -6,11 +6,6 @@
 
 @section Styles {
     <style>
-        .col-xs-3, .col-xs-4 {
-            padding-right: 5px;
-            padding-left: 5px;
-        }
-
         .progress {
             margin: 0;
             height: 10px;
@@ -30,95 +25,6 @@
         }
     </style>
 }
-
-<h4 class="text-center">Top players</h4>
-<div class="row">
-    @foreach (var player in Model.Take(3))
-    {
-        var patentInfo = new PatentInfoModel(player);
-        var patent = patentInfo.Patent;
-
-        <div class="col-xs-4">
-            <div class="thumbnail">
-                <h5 class="text-center bold">
-                    TOP #@player.Position
-                </h5>
-                <img src="@UserAvatar[player.CommunityId]" alt="@player.Name" class="img-responsive img-thumbnail"/>
-                <div class="caption">
-                    <h5 class="text-center">
-                        <img src="@patent.Image" alt="@patent.FullName" data-toggle="tooltip" data-placement="top" title="@patent.FullName" style="width: 45px"/>
-                        @player.Name
-                    </h5>
-                    <table class="table table-striped table-hover table-condensed">
-                        <tr>
-                            <td colspan="4">
-                                <div class="progress" data-toggle="tooltip" data-placement="top" data-html="true" title="@patentInfo.Tooltip">
-                                    <div class="progress-bar progress-bar-@patentInfo.ProgressBarType" role="progressbar" style="width: @patentInfo.ProgressBarWidth%;">
-                                    </div>
-                                    @if (patentInfo.ShowPreviousExperienceProgressBar)
-                                    {
-                                        <div class="progress-bar progress-bar-@patentInfo.PreviousExperienceProgressBarType" role="progressbar" style="width: @patentInfo.PreviousExperienceProgressBarWidth%;">
-                                        </div>
-                                    }
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>Level:</th>
-                            <td class="text-right">@patent.Level</td>
-                            <th>MVP's:</th>
-                            <td class="text-right">@player.Mvps</td>
-                        </tr>
-                    </table>
-                </div>
-            </div>
-        </div>
-    }
-</div>
-
-<div class="row">
-    @foreach (var player in Model.Skip(3).Take(4))
-    {
-        var patentInfo = new PatentInfoModel(player);
-        var patent = patentInfo.Patent;
-
-        <div class="col-xs-3">
-            <div class="thumbnail">
-                <p class="text-center">
-                    TOP #@player.Position
-                </p>
-                <img src="@UserAvatar[player.CommunityId]" alt="@player.Name" class="img-responsive img-thumbnail"/>
-                <p class="text-center">
-                    <img src="@patent.Image" alt="@patent.FullName" data-toggle="tooltip" data-placement="top" title="@patent.FullName" style="width: 45px"/>
-                    @player.Name
-                </p>
-                <div class="caption">
-                    <table class="table table-striped table-hover table-condensed">
-                        <td colspan="4">
-                            <div class="progress" data-toggle="tooltip" data-placement="top" data-html="true" title="@patentInfo.Tooltip">
-                                <div class="progress-bar progress-bar-@patentInfo.ProgressBarType" role="progressbar" style="width: @patentInfo.ProgressBarWidth%;">
-                                </div>
-                                @if (patentInfo.ShowPreviousExperienceProgressBar)
-                                {
-                                    <div class="progress-bar progress-bar-@patentInfo.PreviousExperienceProgressBarType" role="progressbar" style="width: @patentInfo.PreviousExperienceProgressBarWidth%;">
-                                    </div>
-                                }
-                            </div>
-                        </td>
-                        <tr>
-                            <th>Level:</th>
-                            <td class="text-right">@patent.Level</td>
-                            <th>MVP's:</th>
-                            <td class="text-right">@player.Mvps</td>
-                        </tr>
-                    </table>
-                </div>
-            </div>
-        </div>
-    }
-</div>
-
-<hr/>
 
 <h5 class="text-center">Top 50 players</h5>
 <table class="table table-striped table-hover table-bordered table-condensed">
