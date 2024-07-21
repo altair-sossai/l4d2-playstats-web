@@ -128,8 +128,8 @@
         <th class="text-center">Patent</th>
         <th colspan="2">Player</th>
         <th class="text-center" style="min-width: 90px">XP</th>
-        <th class="text-center">Level</th>
         <th class="text-center">Wins</th>
+        <th class="text-center">Loss</th>
         <th class="text-center">MVP's</th>
         <th class="text-center">Win rate</th>
     </tr>
@@ -160,10 +160,26 @@
                     }
                 </div>
             </td>
-            <td class="text-center vertical-align-middle">@patent.Level</td>
-            <td class="text-center vertical-align-middle">@player.Wins</td>
-            <td class="text-center vertical-align-middle">@player.Mvps</td>
-            <td class="text-center vertical-align-middle">@player.WinRate.ToString("P0")</td>
+            <td class="text-center vertical-align-middle">
+                <p data-toggle="tooltip" data-placement="top" title="Wins">
+                    @player.Wins
+                </p>
+            </td>
+            <td class="text-center vertical-align-middle">
+                <p data-toggle="tooltip" data-placement="top" title="Loss">
+                    @player.Loss
+                </p>
+            </td>
+            <td class="text-center vertical-align-middle">
+                <p data-toggle="tooltip" data-placement="top" title="MVP's">
+                    @player.Mvps
+                </p>
+            </td>
+            <td class="text-center vertical-align-middle">
+                <p data-toggle="tooltip" data-placement="top" title="Win rate">
+                    @player.WinRate.ToString("P0")
+                </p>
+            </td>
         </tr>
     }
     </tbody>
