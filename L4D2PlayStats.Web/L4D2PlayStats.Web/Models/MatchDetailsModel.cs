@@ -3,21 +3,17 @@ using L4D2PlayStats.Sdk.Statistics.Results;
 
 namespace L4D2PlayStats.Web.Models;
 
-public class MatchDetailsModel
+public class MatchDetailsModel(MatchResult match, List<StatisticsResult> statistics)
 {
-    private readonly MatchResult? _match;
-
-    public MatchResult? Match
+    public MatchResult Match
     {
-        get => _match;
+        get => match;
         init
         {
-            _match = value;
-
-            if (value != null)
-                value.ShowDetailsButton = false;
+            match = value;
+            match.ShowDetailsButton = false;
         }
     }
 
-    public List<StatisticsResult>? Statistics { get; set; }
+    public List<StatisticsResult> Statistics { get; set; } = statistics;
 }

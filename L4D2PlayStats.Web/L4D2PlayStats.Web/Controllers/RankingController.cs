@@ -1,10 +1,12 @@
+using L4D2PlayStats.Patents.Services;
 using L4D2PlayStats.Ranking;
 using L4D2PlayStats.UserAvatar;
+using L4D2PlayStats.Web.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace L4D2PlayStats.Web.Controllers;
 
-public class RankingController(IRankingServiceCached rankingService, IUserAvatar userAvatar) : Controller
+public class RankingController(IRankingServiceCached rankingService, IUserAvatar userAvatar, IPatentService patentService) : Controller
 {
     public async Task<IActionResult> Index()
     {
@@ -14,6 +16,14 @@ public class RankingController(IRankingServiceCached rankingService, IUserAvatar
         var communityIds = players.Select(p => p.CommunityId);
         await userAvatar.LoadAsync(communityIds);
 
-        return View(players);
+        var models = players.Select(player =>
+        {
+            var patentProgress = patentService.GetPatentProgress(player);
+            var model = new RankingModel(player, patentProgress);
+
+            return model;
+        }).ToList();
+
+        return View(models);
     }
 }

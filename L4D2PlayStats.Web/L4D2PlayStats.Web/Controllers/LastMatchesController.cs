@@ -37,13 +37,10 @@ public class LastMatchesController(
     public async Task<IActionResult> Details(string start, string end)
     {
         var matches = await matchesService.BetweenAsync(ServerId, start, end);
+        var match = matches.First();
         var statistics = await statisticsService.BetweenAsync(ServerId, start, end);
 
-        var model = new MatchDetailsModel
-        {
-            Match = matches.FirstOrDefault(),
-            Statistics = statistics
-        };
+        var model = new MatchDetailsModel(match, statistics);
 
         return View(model);
     }

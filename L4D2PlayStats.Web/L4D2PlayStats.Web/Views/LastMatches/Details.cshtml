@@ -9,7 +9,7 @@
     </style>
 }
 
-@if (Model.Match == null || Model.Statistics == null || Model.Statistics.Count == 0)
+@if (Model.Statistics.Count == 0)
 {
     <div class="row">
         <div class="col-xs-12">
@@ -76,7 +76,7 @@
     </div>
 </div>
 
-@foreach (var team in Model.Match?.Teams ?? new List<MatchResult.TeamResult>())
+@foreach (var team in Model.Match.Teams ?? new List<MatchResult.TeamResult>())
 {
     <div class="panel panel-default">
         <div class="panel-heading">Team @team.Code - Survivor</div>
@@ -293,7 +293,7 @@
     </div>
 }
 
-@foreach (var team in Model.Match?.Teams ?? new List<MatchResult.TeamResult>())
+@foreach (var team in Model.Match.Teams ?? new List<MatchResult.TeamResult>())
 {
     <div class="panel panel-default">
         <div class="panel-heading">Team @team.Code - Infected</div>

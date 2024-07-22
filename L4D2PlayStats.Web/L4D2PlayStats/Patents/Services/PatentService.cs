@@ -1,11 +1,10 @@
-﻿namespace L4D2PlayStats.Patent;
+﻿using L4D2PlayStats.Sdk.Ranking.Results;
 
-public static class PatentSystem
+namespace L4D2PlayStats.Patents.Services;
+
+public class PatentService : IPatentService
 {
-    private const int ExperienceByPatent = 100;
-    private const double PatentExperienceMultiplier = 1.298;
-
-    public static readonly List<Patent> Patents =
+    private static readonly List<Patent> Patents =
     [
         new Patent(1, "Survivor Recruit"),
         new Patent(2, "Rookie Rescuer"),
@@ -24,7 +23,12 @@ public static class PatentSystem
         new Patent(15, "Ultimate Survivor")
     ];
 
-    public static Patent GetPatent(decimal experience)
+    public IReadOnlyCollection<Patent> GetAllPatents()
+    {
+        return Patents;
+    }
+
+    public Patent GetPatent(decimal experience)
     {
         for (var i = Patents.Count - 1; i >= 0; i--)
             if (experience >= Patents[i].Experience)
@@ -33,19 +37,15 @@ public static class PatentSystem
         return Patents[0];
     }
 
-    public static Patent? GetNextPatent(decimal experience)
+    public Patent? GetNextPatent(decimal experience)
     {
         var current = GetPatent(experience);
 
         return Patents.FirstOrDefault(p => p.Level > current.Level);
     }
 
-    public class Patent(int level, string name)
+    public PatentProgress GetPatentProgress(PlayerResult player)
     {
-        public int Level { get; } = level;
-        public string Name { get; } = name;
-        public string FullName => $"Level {Level:00} - {Name}";
-        public int Experience => Level == 1 ? 0 : (int)(Math.Floor(ExperienceByPatent * Math.Pow(PatentExperienceMultiplier, Level) / 50.0) * 50.0);
-        public string Image => $"/imgs/patents/{Level}.png";
+        return new PatentProgress(this, player);
     }
 }

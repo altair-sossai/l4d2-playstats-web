@@ -1,7 +1,6 @@
 ﻿@using L4D2PlayStats.Infrastructure.Extensions
 @using L4D2PlayStats.UserAvatar
-@using L4D2PlayStats.Web.Models
-@model List<L4D2PlayStats.Sdk.Ranking.Results.PlayerResult>
+@model List<L4D2PlayStats.Web.Models.RankingModel>
 @inject IUserAvatar UserAvatar
 
 @section Styles {
@@ -41,10 +40,11 @@
     </tr>
     </thead>
     <tbody>
-    @foreach (var player in Model.Take(50))
+    @foreach (var ranking in Model.Take(50))
     {
-        var patentInfo = new PatentInfoModel(player);
-        var patent = patentInfo.Patent;
+        var player = ranking.Player;
+        var patentProgress = ranking.PatentProgress;
+        var patent = patentProgress.Patent;
 
         <tr class="hover">
             <td class="text-center vertical-align-middle">#@player.Position</td>
@@ -54,16 +54,27 @@
             <td class="text-center" style="width: 1px">
                 <img src="@UserAvatar[player.CommunityId]" alt="@player.Name" style="width: 32px"/>
             </td>
-            <td class="vertical-align-middle">@player.Name?.Truncate(30)</td>
+            <td class="vertical-align-middle">
+                @player.Name?.Truncate(30)
+                @if (patentProgress.LevelUp)
+                {
+                    <span class="label label-success" style="float: right" data-toggle="tooltip" data-placement="top" data-html="true" title="@patentProgress.Tooltip">
+                        Level Up!
+                    </span>
+                }
+                @if (patentProgress.LevelDown)
+                {
+                    <span class="label label-danger" style="float: right" data-toggle="tooltip" data-placement="top" data-html="true" title="@patentProgress.Tooltip">
+                        Level Down!
+                    </span>
+                }
+            </td>
             <td class="text-center vertical-align-middle">
-                <div class="progress" data-toggle="tooltip" data-placement="top" data-html="true" title="@patentInfo.Tooltip">
-                    <div class="progress-bar progress-bar-@patentInfo.ProgressBarType" role="progressbar" style="width: @patentInfo.ProgressBarWidth%;">
+                <div class="progress" data-toggle="tooltip" data-placement="top" data-html="true" title="@patentProgress.Tooltip">
+                    <div class="progress-bar progress-bar-@patentProgress.ProgressBarType" role="progressbar" style="width: @patentProgress.ProgressBarWidth%;">
                     </div>
-                    @if (patentInfo.ShowPreviousExperienceProgressBar)
-                    {
-                        <div class="progress-bar progress-bar-@patentInfo.PreviousExperienceProgressBarType" role="progressbar" style="width: @patentInfo.PreviousExperienceProgressBarWidth%;">
-                        </div>
-                    }
+                    <div class="progress-bar progress-bar-@patentProgress.PreviousExperienceProgressBarType" role="progressbar" style="width: @patentProgress.PreviousExperienceProgressBarWidth%;">
+                    </div>
                 </div>
             </td>
             <td class="text-center vertical-align-middle">
