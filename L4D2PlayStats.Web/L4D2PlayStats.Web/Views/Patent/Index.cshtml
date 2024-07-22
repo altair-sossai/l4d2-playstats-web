@@ -1,4 +1,6 @@
 ﻿@using L4D2PlayStats.Patent
+@model L4D2PlayStats.Sdk.Ranking.Results.ExperienceConfigResult;
+
 <h4 class="text-center">Patent system</h4>
 
 <div class="panel panel-default">
@@ -7,7 +9,7 @@
     </div>
     <div class="panel-body">
         <p>The patent system in our service takes into account the amount of XP that the player has earned during the games of the last 45 days.</p>
-        <p>Each victory awards the player 80 XP points, while losses cause the player to lose 40 XP points. An MVP SI title grants the player an additional 10 XP points, and an MVP CI title grants an additional 8 XP points.</p>
+        <p>Each victory awards the player @Model.Win XP points, while losses cause the player to lose @Math.Abs(Model.Loss) XP points. An MVP SI title grants the player an additional @Model.Mvps XP points, and an MVP CI title grants an additional @Model.MvpsCommon XP points.</p>
     </div>
 </div>
 
@@ -44,10 +46,10 @@
     </div>
     <div class="panel-body">
         <ul>
-            <li>Victory: +80 XP points</li>
-            <li>Defeat: -40 XP points</li>
-            <li>MVP SI: +10 XP points</li>
-            <li>MVP CI: +8 XP points</li>
+            <li>Victory: +@Model.Win XP points</li>
+            <li>Defeat: @Model.Loss XP points</li>
+            <li>MVP SI: +@Model.Mvps XP points</li>
+            <li>MVP CI: +@Model.MvpsCommon XP points</li>
         </ul>
     </div>
 </div>

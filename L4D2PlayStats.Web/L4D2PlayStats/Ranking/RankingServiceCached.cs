@@ -18,4 +18,14 @@ public class RankingServiceCached(IConfiguration configuration, IMemoryCache mem
             return await rankingService.GetAsync(ServerId);
         }))!;
     }
+
+    public async Task<ExperienceConfigResult> ExperienceConfigAsync()
+    {
+        return (await memoryCache.GetOrCreateAsync("ExperienceConfig", async entry =>
+        {
+            entry.AbsoluteExpirationRelativeToNow = TimeSpan.FromDays(1);
+
+            return await rankingService.ExperienceConfigAsync();
+        }))!;
+    }
 }

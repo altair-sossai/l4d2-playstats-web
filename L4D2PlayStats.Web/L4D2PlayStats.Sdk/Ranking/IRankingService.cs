@@ -7,4 +7,7 @@ public interface IRankingService
 {
     [Get("/api/ranking/{serverId}")]
     Task<List<PlayerResult>> GetAsync(string serverId);
+
+    [Get("/api/ranking-config")]
+    Task<ExperienceConfigResult> ExperienceConfigAsync();
 }

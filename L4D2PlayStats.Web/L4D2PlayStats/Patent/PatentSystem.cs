@@ -46,7 +46,7 @@ public static class PatentSystem
         public int Level { get; } = level;
         public string Name { get; } = name;
         public string FullName => $"Level {Level:00} - {Name}";
-        public int Experience => Level == 1 ? 0 : (int)(Math.Floor(ExperienceByPatent * Math.Pow(1.3, Level) / 50.0) * 50.0);
+        public int Experience => Level == 1 ? 0 : (int)(Math.Floor(ExperienceByPatent * Math.Pow(1.298, Level) / 50.0) * 50.0);
         public string Image => $"/imgs/patents/{Level}.png";
     }
 }

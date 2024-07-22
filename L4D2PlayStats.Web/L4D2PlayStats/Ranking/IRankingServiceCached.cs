@@ -5,4 +5,5 @@ namespace L4D2PlayStats.Ranking;
 public interface IRankingServiceCached
 {
     Task<List<PlayerResult>> GetAsync();
+    Task<ExperienceConfigResult> ExperienceConfigAsync();
 }
