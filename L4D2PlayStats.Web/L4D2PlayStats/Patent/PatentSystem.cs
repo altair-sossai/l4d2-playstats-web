@@ -2,7 +2,8 @@
 
 public static class PatentSystem
 {
-    public const int ExperienceByPatent = 100;
+    private const int ExperienceByPatent = 100;
+    private const double PatentExperienceMultiplier = 1.298;
 
     public static readonly List<Patent> Patents =
     [
@@ -22,8 +23,6 @@ public static class PatentSystem
         new Patent(14, "Contagion Master"),
         new Patent(15, "Ultimate Survivor")
     ];
-
-    public static int NumberOfPatents => Patents.Count;
 
     public static Patent GetPatent(decimal experience)
     {
@@ -46,7 +45,7 @@ public static class PatentSystem
         public int Level { get; } = level;
         public string Name { get; } = name;
         public string FullName => $"Level {Level:00} - {Name}";
-        public int Experience => Level == 1 ? 0 : (int)(Math.Floor(ExperienceByPatent * Math.Pow(1.298, Level) / 50.0) * 50.0);
+        public int Experience => Level == 1 ? 0 : (int)(Math.Floor(ExperienceByPatent * Math.Pow(PatentExperienceMultiplier, Level) / 50.0) * 50.0);
         public string Image => $"/imgs/patents/{Level}.png";
     }
 }

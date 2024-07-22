@@ -10,10 +10,11 @@ public class PlayerResult
     public string? Name { get; set; }
     public decimal Experience { get; set; }
     public decimal? PreviousExperience { get; set; }
+    public decimal? ExperienceDifference { get; set; }
     public int Games { get; set; }
     public int Wins { get; set; }
     public int Loss { get; set; }
-    public decimal WinRate { get; set; }
     public int Mvps { get; set; }
     public int MvpsCommon { get; set; }
+    public decimal WinRate { get; set; }
 }
