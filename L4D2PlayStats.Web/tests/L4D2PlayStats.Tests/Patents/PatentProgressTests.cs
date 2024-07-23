@@ -26,7 +26,7 @@ public class PatentProgressTests
 
         progress.MaxLevel.Should().BeFalse();
         progress.LevelUp.Should().BeFalse();
-        progress.LevelDown.Should().BeFalse();
+        progress.LevelDrop.Should().BeFalse();
 
         progress.Progress.Should().Be(0);
         progress.ProgressDifference.Should().Be(0);
@@ -48,7 +48,7 @@ public class PatentProgressTests
 
         progress.MaxLevel.Should().BeFalse();
         progress.LevelUp.Should().BeFalse();
-        progress.LevelDown.Should().BeFalse();
+        progress.LevelDrop.Should().BeFalse();
 
         progress.Progress.Should().BeApproximately(0, 0.001m);
         progress.ProgressDifference.Should().Be(0);
@@ -70,7 +70,7 @@ public class PatentProgressTests
 
         progress.MaxLevel.Should().BeFalse();
         progress.LevelUp.Should().BeFalse();
-        progress.LevelDown.Should().BeFalse();
+        progress.LevelDrop.Should().BeFalse();
 
         progress.Progress.Should().BeApproximately(0.833m, 0.001m);
         progress.ProgressDifference.Should().Be(0);
@@ -93,7 +93,7 @@ public class PatentProgressTests
 
         progress.MaxLevel.Should().BeFalse();
         progress.LevelUp.Should().BeFalse();
-        progress.LevelDown.Should().BeFalse();
+        progress.LevelDrop.Should().BeFalse();
 
         progress.Progress.Should().BeApproximately(0.833m, 0.001m);
         progress.ProgressDifference.Should().Be(0);
@@ -116,7 +116,7 @@ public class PatentProgressTests
 
         progress.MaxLevel.Should().BeFalse();
         progress.LevelUp.Should().BeFalse();
-        progress.LevelDown.Should().BeTrue();
+        progress.LevelDrop.Should().BeTrue();
 
         progress.Progress.Should().BeApproximately(0.833m, 0.001m);
         progress.ProgressDifference.Should().Be(0);

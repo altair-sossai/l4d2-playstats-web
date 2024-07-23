@@ -24,7 +24,7 @@ public class PatentProgress
 
     public bool MaxLevel => NextPatent == null;
     public bool LevelUp => PreviousExperiencePatent != null && Patent.Level > PreviousExperiencePatent.Level;
-    public bool LevelDown => PreviousExperiencePatent != null && Patent.Level < PreviousExperiencePatent.Level;
+    public bool LevelDrop => PreviousExperiencePatent != null && Patent.Level < PreviousExperiencePatent.Level;
 
     public decimal Progress
     {
@@ -44,7 +44,7 @@ public class PatentProgress
     {
         get
         {
-            if (MaxLevel || LevelUp || LevelDown || _player.ExperienceDifference == null)
+            if (MaxLevel || LevelUp || LevelDrop || _player.ExperienceDifference == null)
                 return 0;
 
             var current = Math.Abs(_player.ExperienceDifference.Value);

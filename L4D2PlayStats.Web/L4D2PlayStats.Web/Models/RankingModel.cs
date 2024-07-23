@@ -15,14 +15,14 @@ public class RankingModel(PlayerResult player, PatentProgress patentProgress)
 
         public bool MaxLevel => patentProgress.MaxLevel;
         public bool LevelUp => patentProgress.LevelUp;
-        public bool LevelDown => patentProgress.LevelDown;
+        public bool LevelDrop => patentProgress.LevelDrop;
 
         public decimal Progress => patentProgress.Progress;
         public decimal ProgressDifference => patentProgress.ProgressDifference;
 
         public decimal? ExperienceDifference => player.ExperienceDifference;
 
-        public string ProgressBarType => LevelUp ? "success" : LevelDown ? "danger" : "info";
+        public string ProgressBarType => LevelUp ? "success" : LevelDrop ? "danger" : "info";
 
         public decimal ProgressBarWidth
         {
@@ -47,8 +47,8 @@ public class RankingModel(PlayerResult player, PatentProgress patentProgress)
             if (LevelUp)
                 yield return "Level Up!";
 
-            if (LevelDown)
-                yield return "Level Down!";
+            if (LevelDrop)
+                yield return "Level Drop!";
 
             if (MaxLevel)
             {
