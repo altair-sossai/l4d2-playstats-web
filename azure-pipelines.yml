@@ -1,0 +1,62 @@
+trigger:
+- master
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+stages:
+- stage: BuildAndTest
+  jobs:
+  - job: Build
+    steps:
+    - task: UseDotNet@2
+      inputs:
+        packageType: 'sdk'
+        version: '8.x.x'
+        installationPath: $(Agent.ToolsDirectory)/dotnet
+
+    - script: |
+        dotnet restore L4D2PlayStats.Web/L4D2PlayStats.Web/L4D2PlayStats.Web.csproj
+      displayName: 'Restore NuGet Packages'
+
+    - script: |
+        dotnet build L4D2PlayStats.Web/L4D2PlayStats.Web/L4D2PlayStats.Web.csproj --configuration Release
+      displayName: 'Build Project'
+
+    - script: |
+        dotnet test L4D2PlayStats.Web/L4D2PlayStats.Web/L4D2PlayStats.Web.csproj --configuration Release
+      displayName: 'Run Unit Tests'
+
+- stage: PublishAndDeploy
+  dependsOn: BuildAndTest
+  jobs:
+  - job: Publish
+    steps:
+    - script: |
+        dotnet publish L4D2PlayStats.Web/L4D2PlayStats.Web/L4D2PlayStats.Web.csproj -c Release -o $(Build.ArtifactStagingDirectory)/publish -p:PublishSingleFile=true
+      displayName: 'Publish Project'
+
+    - script: |
+        tar -czf publish.tar.gz -C $(Build.ArtifactStagingDirectory)/publish .
+      displayName: 'Compress Published Files'
+
+    - task: CopyFilesOverSSH@0
+      inputs:
+        sshEndpoint: 'L4D2'
+        sourceFolder: '$(System.DefaultWorkingDirectory)'
+        contents: 'publish.tar.gz'
+        targetFolder: '/home/devops'
+        cleanTargetFolder: false
+        overwrite: true
+        readyTimeout: '20000'
+
+    - task: SSH@0
+      inputs:
+        sshEndpoint: 'L4D2'
+        readyTimeout: '20000'
+        commands: |
+          if screen -list | grep -q "l4d2-playstats-web"; then screen -S l4d2-playstats-web -X quit; fi
+          tar -xzf /home/devops/publish.tar.gz -C /home/l4d2-playstats-web
+          chmod +x /home/l4d2-playstats-web/L4D2PlayStats.Web
+          screen -d -m -S "l4d2-playstats-web" sh -c 'cd /home/l4d2-playstats-web && ./L4D2PlayStats.Web'
+          rm /home/devops/publish.tar.gz
