@@ -54,4 +54,5 @@ stages:
       inputs:
         sshEndpoint: 'L4D2'
         readyTimeout: '20000'
+        runOptions: 'script'
         scriptPath: 'scripts/deploy.sh'
