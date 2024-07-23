@@ -7,11 +7,10 @@ public class MatchDetailsModel(MatchResult match, List<StatisticsResult> statist
 {
     public MatchResult Match
     {
-        get => match;
-        init
+        get
         {
-            match = value;
             match.ShowDetailsButton = false;
+            return match;
         }
     }
 

@@ -7,7 +7,7 @@
 @inject IUserAvatar UserAvatar
 
 <div class="panel panel-primary">
-    <div class="panel-heading">
+    <div class="panel-heading" style="padding: 6px 10px;">
         <div class="row">
             <div class="col-xs-8">
                 <h4>@Model.Campaign</h4>
@@ -37,7 +37,7 @@
                 <img src="@CampaignThumb[Model.Campaign]" alt="@Model.Campaign" class="img-responsive img-thumbnail"/>
                 @if (Model.ShowDetailsButton)
                 {
-                    <a href="@Url.Action("Details", "LastMatches", new { start = Model.Start, end = Model.End })" class="btn btn-primary btn-sm btn-block" style="margin-top: 10px">
+                    <a href="@Url.Action("Details", "LastMatches", new { start = Model.Start, end = Model.End })" class="btn btn-danger btn-sm btn-block" style="margin-top: 10px;">
                         Details
                     </a>
                 }
@@ -68,10 +68,10 @@
                                                       .ToList() ?? new List<MatchResult.PlayerResult>())
                                         {
                                             <tr>
-                                                <td style="width: 1px">
+                                                <td style="width: 1px; padding: 2px">
                                                     <img src="@UserAvatar[player.CommunityId]" alt="@player.Name" style="width: 32px"/>
                                                 </td>
-                                                <td>
+                                                <td class="vertical-align-middle">
                                                     @player.Name?.Truncate(30)
                                                     @for (var i = 0; i < player.MvpSiDamage; i++)
                                                     {
