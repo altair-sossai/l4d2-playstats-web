@@ -23,7 +23,19 @@ public class RankingModel(PlayerResult player, PatentProgress patentProgress)
         public decimal? ExperienceDifference => player.ExperienceDifference;
 
         public string ProgressBarType => LevelUp ? "success" : LevelDown ? "danger" : "info";
-        public decimal ProgressBarWidth => Math.Round(Progress * 100, 2);
+
+        public decimal ProgressBarWidth
+        {
+            get
+            {
+                var progress = Progress;
+
+                if (ProgressDifference != 0 && player.ExperienceDifference is > 0)
+                    progress -= ProgressDifference;
+
+                return Math.Round(progress * 100, 2);
+            }
+        }
 
         public string PreviousExperienceProgressBarType => ExperienceDifference == null ? "info" : ExperienceDifference.Value > 0 ? "success" : "danger";
         public decimal PreviousExperienceProgressBarWidth => Math.Round(ProgressDifference * 100, 2);
