@@ -54,11 +54,4 @@ stages:
       inputs:
         sshEndpoint: 'L4D2'
         readyTimeout: '20000'
-        commands: |
-          if screen -list | grep -q "l4d2-playstats-web"; then
-            screen -S l4d2-playstats-web -X quit
-          fi
-          tar -xzf /home/devops/publish.tar.gz -C /home/l4d2-playstats-web
-          chmod +x /home/l4d2-playstats-web/L4D2PlayStats.Web
-          screen -d -m -S "l4d2-playstats-web" sh -c 'cd /home/l4d2-playstats-web && ./L4D2PlayStats.Web'
-          rm /home/devops/publish.tar.gz
+        scriptPath: 'scripts/deploy.sh'

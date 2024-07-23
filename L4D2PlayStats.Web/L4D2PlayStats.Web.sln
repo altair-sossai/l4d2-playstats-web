@@ -11,7 +11,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "L4D2PlayStats", "L4D2PlaySt
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{5001E5B4-5FA2-4D9A-A79B-99056EBAB779}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "L4D2PlayStats.Tests", "tests\L4D2PlayStats.Tests\L4D2PlayStats.Tests.csproj", "{C206F3E2-DA8C-4B5B-A12C-B90EE5B996C1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "L4D2PlayStats.Tests", "tests\L4D2PlayStats.Tests\L4D2PlayStats.Tests.csproj", "{C206F3E2-DA8C-4B5B-A12C-B90EE5B996C1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".devops", ".devops", "{AC1C3BA8-9808-4E27-A60D-F2255F9C05E7}"
+	ProjectSection(SolutionItems) = preProject
+		..\azure-pipelines.yml = ..\azure-pipelines.yml
+		..\scripts\deploy.sh = ..\scripts\deploy.sh
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
