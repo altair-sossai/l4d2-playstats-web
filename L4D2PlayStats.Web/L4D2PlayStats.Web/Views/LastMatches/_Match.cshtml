@@ -34,7 +34,7 @@
     <div class="panel-body">
         <div class="row">
             <div class="col-xs-2 left-side text-center">
-                <img src="@CampaignThumb[Model.Campaign]" alt="@Model.Campaign" class="img-responsive img-thumbnail img-campaign" />
+                <img src="@CampaignThumb[Model.Campaign]" alt="@Model.Campaign" class="img-responsive img-thumbnail img-campaign"/>
                 @if (Model.ShowDetailsButton)
                 {
                     <a href="@Url.Action("Details", "LastMatches", new { start = Model.Start, end = Model.End })" class="btn btn-danger btn-sm btn-block" style="margin-top: 10px;">
