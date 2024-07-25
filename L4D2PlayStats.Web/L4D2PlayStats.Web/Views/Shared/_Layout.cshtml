@@ -37,6 +37,21 @@
         .match table {
             margin-bottom: 0 !important;
         }
+
+        .match .img-campaign{
+            max-height: 175px;
+        }
+
+        @@media screen and (max-width: 700px) {
+            .match .left-side {
+                width: 100% !important;
+                margin-bottom: 10px;
+            }
+
+            .match .right-side {
+                width: 100% !important;
+            }
+        }
     </style>
 
     @await RenderSectionAsync("Styles", false)
@@ -80,10 +95,10 @@
 @await RenderSectionAsync("Scripts", false)
 
 <script>
-    $(function () {
-        $('[data-toggle="tooltip"]').tooltip()
-    })
-</script>
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+        })
+    </script>
 
 </body>
 </html>
