@@ -22,5 +22,5 @@ public class Patent(int level, string name)
         }
     }
 
-    public string Image => $"/imgs/patents/{Level}.png";
+    public string Image => $"/imgs/patents/{Level:00}.png";
 }
