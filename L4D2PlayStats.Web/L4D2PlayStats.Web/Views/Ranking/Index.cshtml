@@ -53,7 +53,9 @@
                 <img src="@patent.Image" alt="@patent.FullName" data-toggle="tooltip" data-placement="top" title="@patent.FullName" style="width: 32px"/>
             </td>
             <td class="text-center vertical-align-middle" style="width: 1px; margin: 0; padding: 0">
-                <img src="@UserAvatar[player.CommunityId]" alt="@player.Name" style="width: 40px"/>
+                <a href="@Url.Action("Index", "Player", new { communityId = player.CommunityId })" title="@player.Name">
+                    <img src="@UserAvatar[player.CommunityId]" alt="@player.Name" style="width: 40px"/>
+                </a>
             </td>
             <td class="vertical-align-middle">
                 @Html.ActionLink(player.Name?.Truncate(30) ?? "-", "Index", "Player", new { communityId = player.CommunityId })

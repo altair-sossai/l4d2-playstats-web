@@ -69,7 +69,9 @@
                                         {
                                             <tr>
                                                 <td style="width: 1px; padding: 2px">
-                                                    <img src="@UserAvatar[player.CommunityId]" alt="@player.Name" style="width: 32px"/>
+                                                    <a href="@Url.Action("Index", "Player", new { communityId = player.CommunityId })" title="@player.Name">
+                                                        <img src="@UserAvatar[player.CommunityId]" alt="@player.Name" style="width: 32px"/>
+                                                    </a>
                                                 </td>
                                                 <td class="vertical-align-middle">
                                                     @Html.ActionLink(player.Name?.Truncate(30) ?? "-", "Index", "Player", new { communityId = player.CommunityId })
