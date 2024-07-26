@@ -1,0 +1,154 @@
+﻿@using L4D2PlayStats.UserAvatar
+@model L4D2PlayStats.Web.Models.RankingModel
+@inject IUserAvatar UserAvatar
+
+@{
+    var player = Model.Player;
+    var patentProgress = Model.PatentProgress;
+    var patent = patentProgress.Patent;
+}
+
+@section Styles {
+    <style>
+        .progress {
+            margin: 0;
+        }
+    </style>
+}
+
+<h4 class="text-center">Player details</h4>
+
+<div class="row">
+    <div class="col-xs-2">
+        <img src="@UserAvatar[player.CommunityId]" alt="@player.Name" class="img-responsive img-thumbnail"/>
+    </div>
+    <div class="col-xs-10">
+        <table class="table table-hover table-condensed">
+            <tbody>
+            <tr>
+                <th>Ranking:</th>
+                <td>#@player.Position</td>
+
+                <th>Steam ID:</th>
+                <td>@player.SteamId</td>
+            </tr>
+            <tr>
+                <th>Name:</th>
+                <td>@player.Name</td>
+
+                <th>Profile URL:</th>
+                <td>@player.ProfileUrl</td>
+            </tr>
+            <tr>
+                <th class=" vertical-align-middle">Patent:</th>
+                <td class="vertical-align-middle">
+                    <img src="@patent.Image" alt="@patent.FullName" data-toggle="tooltip" data-placement="top" title="@patent.FullName" style="width: 32px"/>
+                </td>
+
+                <th class="vertical-align-middle">XP:</th>
+                <td class="text-center vertical-align-middle">
+                    <div class="progress" data-toggle="tooltip" data-placement="top" data-html="true" title="@patentProgress.Tooltip">
+                        <div class="progress-bar progress-bar-@patentProgress.ProgressBarType" role="progressbar" style="width: @patentProgress.ProgressBarWidth%;">
+                        </div>
+                        <div class="progress-bar progress-bar-@patentProgress.PreviousExperienceProgressBarType" role="progressbar" style="width: @patentProgress.PreviousExperienceProgressBarWidth%;">
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th>Games:</th>
+                <td>@player.Games.ToString("N0")</td>
+                <th>Wins:</th>
+                <td>@player.Wins.ToString("N0")</td>
+            </tr>
+            <tr>
+                <th>Win rate:</th>
+                <td>@player.WinRate.ToString("P0")</td>
+                <th>Loss:</th>
+                <td>@player.Loss.ToString("N0")</td>
+            </tr>
+            </tbody>
+        </table>
+        <hr/>
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Statistics as survivor
+            </div>
+            <table class="table table-hover table-condensed">
+                <tbody>
+                <tr>
+                    <th>MVP SI:</th>
+                    <td>@player.MvpSiDamage.ToString("N0")</td>
+                    <th>MVP CI:</th>
+                    <td>@player.MvpCommon.ToString("N0")</td>
+                    <th>LVP:</th>
+                    <td>@player.LvpFfGiven.ToString("N0")</td>
+                </tr>
+
+                <tr>
+                    <th>SI killed:</th>
+                    <td>@player.SiKilled.ToString("N0")</td>
+                    <th>Commons:</th>
+                    <td>@player.Common.ToString("N0")</td>
+                    <th>SI Damage:</th>
+                    <td>@player.SiDamage.ToString("N0")</td>
+                </tr>
+
+                <tr>
+                    <th>Deaths:</th>
+                    <td>@player.Died.ToString("N0")</td>
+                    <th>Times incap.:</th>
+                    <td>@player.Incaps.ToString("N0")</td>
+                    <th>Damage taken:</th>
+                    <td>@player.DmgTaken.ToString("N0")</td>
+                </tr>
+
+                <tr>
+                    <th>Tank damage:</th>
+                    <td>@player.TankDamage.ToString("N0")</td>
+                    <th>Skeets:</th>
+                    <td>@player.Skeets.ToString("N0")</td>
+                    <th>Levels:</th>
+                    <td>@player.Levels.ToString("N0")</td>
+                </tr>
+
+                <tr>
+                    <th>Rocks eats:</th>
+                    <td>@player.RockEats.ToString("N0")</td>
+                    <th>FF Given:</th>
+                    <td>@player.FfGiven.ToString("N0")</td>
+                    <th></th>
+                    <td></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Statistics as infected
+            </div>
+            <table class="table table-hover table-condensed">
+                <tbody>
+                <tr>
+                    <th>Total damage:</th>
+                    <td>@player.DmgTotal</td>
+
+                    <th>Tank - Damage dealt:</th>
+                    <td>@player.DmgTank.ToString("N0")</td>
+                </tr>
+
+                <tr>
+                    <th>Damage - Spitter:</th>
+                    <td>@player.DmgSpit.ToString("N0")</td>
+
+                    <th>Hunter - Pounce damage:</th>
+                    <td>@player.HunterDpDmg.ToString("N0")</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</div>

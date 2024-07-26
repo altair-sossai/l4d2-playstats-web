@@ -11,6 +11,11 @@ public class UserAvatar(ISteamUserService steamUserService, IMemoryCache memoryC
     public string this[long communityId] => this[communityId.ToString()];
     public string this[string? communityId] => memoryCache.Get<string>(communityId ?? string.Empty) ?? "/imgs/avatar-empty.png";
 
+    public Task LoadAsync(params long[] communityIds)
+    {
+        return LoadAsync(communityIds.AsEnumerable());
+    }
+
     public async Task LoadAsync(IEnumerable<long> communityIds)
     {
         await LoadAsync(communityIds.Select(communityId => communityId.ToString()));

@@ -72,7 +72,7 @@
                                                     <img src="@UserAvatar[player.CommunityId]" alt="@player.Name" style="width: 32px"/>
                                                 </td>
                                                 <td class="vertical-align-middle">
-                                                    @player.Name?.Truncate(30)
+                                                    @Html.ActionLink(player.Name?.Truncate(30) ?? "-", "Index", "Player", new { communityId = player.CommunityId })
                                                     @for (var i = 0; i < player.MvpSiDamage; i++)
                                                     {
                                                         <img src="~/imgs/icons/star.png" alt="Star" class="icon" data-toggle="tooltip" data-placement="top" title="MVP SI"/>

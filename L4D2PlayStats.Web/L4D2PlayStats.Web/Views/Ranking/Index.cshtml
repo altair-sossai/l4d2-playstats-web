@@ -56,7 +56,7 @@
                 <img src="@UserAvatar[player.CommunityId]" alt="@player.Name" style="width: 40px"/>
             </td>
             <td class="vertical-align-middle">
-                @player.Name?.Truncate(30)
+                @Html.ActionLink(player.Name?.Truncate(30) ?? "-", "Index", "Player", new { communityId = player.CommunityId })
                 @if (patentProgress.LevelUp)
                 {
                     <span class="label label-success" style="float: right" data-toggle="tooltip" data-placement="top" data-html="true" title="@patentProgress.Tooltip">
@@ -90,12 +90,12 @@
             </td>
             <td class="text-center vertical-align-middle">
                 <p data-toggle="tooltip" data-placement="top" title="MVP SI">
-                    @player.Mvps
+                    @player.MvpSiDamage
                 </p>
             </td>
             <td class="text-center vertical-align-middle">
                 <p data-toggle="tooltip" data-placement="top" title="MVP CI">
-                    @player.MvpsCommon
+                    @player.MvpCommon
                 </p>
             </td>
             <td class="text-center vertical-align-middle">
