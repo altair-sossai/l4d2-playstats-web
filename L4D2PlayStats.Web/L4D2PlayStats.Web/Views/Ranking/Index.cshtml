@@ -32,12 +32,12 @@
         <th class="text-center">#</th>
         <th class="text-center">Patent</th>
         <th colspan="2">Player</th>
-        <th class="text-center" style="min-width: 90px">XP</th>
-        <th class="text-center">Wins</th>
-        <th class="text-center">Loss</th>
-        <th class="text-center">MVP SI</th>
-        <th class="text-center">MVP CI</th>
-        <th class="text-center">Win rate</th>
+        <th class="text-center hide-mobile" style="min-width: 90px">XP</th>
+        <th class="text-center hide-mobile">Wins</th>
+        <th class="text-center hide-mobile">Loss</th>
+        <th class="text-center hide-mobile">MVP SI</th>
+        <th class="text-center hide-mobile">MVP CI</th>
+        <th class="text-center hide-mobile">Win rate</th>
     </tr>
     </thead>
     <tbody>
@@ -49,10 +49,10 @@
 
         <tr class="hover">
             <td class="text-center vertical-align-middle">#@player.Position</td>
-            <td class="text-center vertical-align-middle" style="width: 1px">
+            <td class="text-center vertical-align-middle slim">
                 <img src="@patent.Image" alt="@patent.FullName" data-toggle="tooltip" data-placement="top" title="@patent.FullName" style="width: 32px"/>
             </td>
-            <td class="text-center vertical-align-middle" style="width: 1px; margin: 0; padding: 0">
+            <td class="text-center vertical-align-middle slim" style="margin: 0; padding: 0">
                 <a href="@Url.Action("Index", "Player", new { communityId = player.CommunityId })" title="@player.Name">
                     <img src="@UserAvatar[player.CommunityId]" alt="@player.Name" style="width: 40px"/>
                 </a>
@@ -72,7 +72,7 @@
                     </span>
                 }
             </td>
-            <td class="text-center vertical-align-middle">
+            <td class="text-center vertical-align-middle hide-mobile">
                 <div class="progress" data-toggle="tooltip" data-placement="top" data-html="true" title="@patentProgress.Tooltip">
                     <div class="progress-bar progress-bar-@patentProgress.ProgressBarType" role="progressbar" style="width: @patentProgress.ProgressBarWidth%;">
                     </div>
@@ -80,27 +80,27 @@
                     </div>
                 </div>
             </td>
-            <td class="text-center vertical-align-middle">
+            <td class="text-center vertical-align-middle hide-mobile">
                 <p data-toggle="tooltip" data-placement="top" title="Wins">
                     @player.Wins
                 </p>
             </td>
-            <td class="text-center vertical-align-middle">
+            <td class="text-center vertical-align-middle hide-mobile">
                 <p data-toggle="tooltip" data-placement="top" title="Loss">
                     @player.Loss
                 </p>
             </td>
-            <td class="text-center vertical-align-middle">
+            <td class="text-center vertical-align-middle hide-mobile">
                 <p data-toggle="tooltip" data-placement="top" title="MVP SI">
                     @player.MvpSiDamage
                 </p>
             </td>
-            <td class="text-center vertical-align-middle">
+            <td class="text-center vertical-align-middle hide-mobile">
                 <p data-toggle="tooltip" data-placement="top" title="MVP CI">
                     @player.MvpCommon
                 </p>
             </td>
-            <td class="text-center vertical-align-middle">
+            <td class="text-center vertical-align-middle hide-mobile">
                 <p data-toggle="tooltip" data-placement="top" title="Win rate">
                     @player.WinRate.ToString("P0")
                 </p>

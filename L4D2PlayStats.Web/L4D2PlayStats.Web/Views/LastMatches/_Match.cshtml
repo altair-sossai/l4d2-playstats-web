@@ -68,7 +68,7 @@
                                                       .ToList() ?? new List<MatchResult.PlayerResult>())
                                         {
                                             <tr>
-                                                <td style="width: 1px; padding: 2px">
+                                                <td style="padding: 2px" class="slim">
                                                     <a href="@Url.Action("Index", "Player", new { communityId = player.CommunityId })" title="@player.Name">
                                                         <img src="@UserAvatar[player.CommunityId]" alt="@player.Name" style="width: 32px"/>
                                                     </a>
