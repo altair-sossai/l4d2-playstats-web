@@ -1,11 +1,18 @@
-﻿@using L4D2PlayStats.UserAvatar
-@model L4D2PlayStats.Web.Models.RankingModel
+﻿@using L4D2PlayStats.Infrastructure.Extensions
+@using L4D2PlayStats.UserAvatar
+@model L4D2PlayStats.Web.Models.PlayerDetailsModel
 @inject IUserAvatar UserAvatar
 
 @{
-    var player = Model.Player;
-    var patentProgress = Model.PatentProgress;
-    var patent = patentProgress.Patent;
+    var firstPlayerRanking = Model.FirstPlayerRanking;
+    var firstPlayer = firstPlayerRanking.Player;
+    var firstPlayerPatentProgress = firstPlayerRanking.PatentProgress;
+    var firstPlayerPatent = firstPlayerPatentProgress.Patent;
+
+    var secondPlayerRanking = Model.SecondPlayerRanking;
+    var secondPlayer = secondPlayerRanking?.Player;
+    var secondPlayerPatentProgress = secondPlayerRanking?.PatentProgress;
+    var secondPlayerPatent = secondPlayerPatentProgress?.Patent;
 }
 
 @section Styles {
@@ -13,142 +20,390 @@
         .progress {
             margin: 0;
         }
+
+        .dropdown-menu {
+            height: 175px;
+            overflow-y: auto;
+        }
+
+        .second {
+            color: #FFBC00 !important;
+        }
+
+        .separator {
+            color: #979797;
+        }
     </style>
 }
 
 <h4 class="text-center">Player details</h4>
 
 <div class="row">
-    <div class="col-xs-2">
-        <img src="@UserAvatar[player.CommunityId]" alt="@player.Name" class="img-responsive img-thumbnail"/>
+<div class="col-xs-2">
+    <div class="dropdown">
+        <button class="btn btn-default btn-sm btn-block dropdown-toggle" type="button" data-toggle="dropdown">
+            @firstPlayer.Name?.Truncate(10)
+            <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            @foreach (var player in Model.Players.Where(player => player.CommunityId != firstPlayer.CommunityId && player.CommunityId != secondPlayer?.CommunityId))
+            {
+                <li>
+                    <a href="@Url.Action("Index", "Player", new { communityId = player.CommunityId, compareWith = secondPlayer?.CommunityId })">#@player.Position - @player.Name</a>
+                </li>
+            }
+        </ul>
     </div>
-    <div class="col-xs-10">
-        <table class="table table-hover table-condensed">
-            <tbody>
-            <tr>
-                <th>Ranking:</th>
-                <td>#@player.Position</td>
 
-                <th>Steam ID:</th>
-                <td>@player.SteamId</td>
-            </tr>
-            <tr>
-                <th>Name:</th>
-                <td>@player.Name</td>
+    <img src="@UserAvatar[firstPlayer.CommunityId]" alt="@firstPlayer.Name" class="img-responsive img-thumbnail"/>
 
-                <th>Profile URL:</th>
-                <td>@player.ProfileUrl</td>
-            </tr>
-            <tr>
-                <th class=" vertical-align-middle">Patent:</th>
-                <td class="vertical-align-middle">
-                    <img src="@patent.Image" alt="@patent.FullName" data-toggle="tooltip" data-placement="top" title="@patent.FullName" style="width: 32px"/>
-                </td>
+    <hr/>
 
-                <th class="vertical-align-middle">XP:</th>
-                <td class="text-center vertical-align-middle">
-                    <div class="progress" data-toggle="tooltip" data-placement="top" data-html="true" title="@patentProgress.Tooltip">
-                        <div class="progress-bar progress-bar-@patentProgress.ProgressBarType" role="progressbar" style="width: @patentProgress.ProgressBarWidth%;">
-                        </div>
-                        <div class="progress-bar progress-bar-@patentProgress.PreviousExperienceProgressBarType" role="progressbar" style="width: @patentProgress.PreviousExperienceProgressBarWidth%;">
-                        </div>
+    <div class="dropdown">
+        <button class="btn btn-default btn-sm btn-block dropdown-toggle second" type="button" data-toggle="dropdown">
+            @(secondPlayer?.Name?.Truncate(10) ?? "Compare...")
+            <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            @foreach (var player in Model.Players.Where(player => player.CommunityId != firstPlayer.CommunityId && player.CommunityId != secondPlayer?.CommunityId))
+            {
+                <li>
+                    <a href="@Url.Action("Index", "Player", new { communityId = firstPlayer.CommunityId, compareWith = player.CommunityId })" class="second">
+                        #@player.Position - @player.Name
+                    </a>
+                </li>
+            }
+        </ul>
+    </div>
+    @if (secondPlayer != null)
+    {
+        <img src="@UserAvatar[secondPlayer.CommunityId]" alt="@secondPlayer.Name" class="img-responsive img-thumbnail"/>
+    }
+</div>
+<div class="col-xs-10">
+<table class="table table-hover table-condensed">
+    <tbody>
+    <tr>
+        <th>Ranking:</th>
+        <td>
+            #@firstPlayer.Position
+            @if (secondPlayer != null)
+            {
+                <span class="separator"> | </span>
+                <span class="second">#@secondPlayer.Position</span>
+            }
+        </td>
+
+        <th>Steam ID:</th>
+        <td>
+            @firstPlayer.SteamId
+            @if (secondPlayer != null)
+            {
+                <span class="separator"> | </span>
+                <span class="second">@secondPlayer.SteamId</span>
+            }
+        </td>
+    </tr>
+    <tr>
+        <th>Name:</th>
+        <td>
+            @firstPlayer.Name
+            @if (secondPlayer != null)
+            {
+                <br/>
+                <span class="second">@secondPlayer.Name</span>
+            }
+        </td>
+
+        <th>Profile URL:</th>
+        <td>
+            @firstPlayer.ProfileUrl
+            @if (secondPlayer != null)
+            {
+                <br/>
+                <span class="second">@secondPlayer.ProfileUrl</span>
+            }
+        </td>
+    </tr>
+    <tr>
+        <th class=" vertical-align-middle">Patent:</th>
+        <td class="vertical-align-middle">
+            <img src="@firstPlayerPatent.Image" alt="@firstPlayerPatent.FullName" data-toggle="tooltip" data-placement="top" title="@firstPlayer.Name - @firstPlayerPatent.FullName" style="width: 32px"/>
+            @if (secondPlayer != null && secondPlayerPatent != null)
+            {
+                <span class="separator"> | </span>
+                <img src="@secondPlayerPatent.Image" alt="@secondPlayerPatent.FullName" data-toggle="tooltip" data-placement="top" title="@secondPlayer.Name - @secondPlayerPatent.FullName" style="width: 32px"/>
+            }
+        </td>
+
+        <th class="vertical-align-middle">XP:</th>
+        <td class="text-center vertical-align-middle">
+            <div class="progress" data-toggle="tooltip" data-placement="top" data-html="true" title="@firstPlayer.Name - @firstPlayerPatentProgress.Tooltip">
+                <div class="progress-bar progress-bar-@firstPlayerPatentProgress.ProgressBarType" role="progressbar" style="width: @firstPlayerPatentProgress.ProgressBarWidth%;">
+                </div>
+                <div class="progress-bar progress-bar-@firstPlayerPatentProgress.PreviousExperienceProgressBarType" role="progressbar" style="width: @firstPlayerPatentProgress.PreviousExperienceProgressBarWidth%;">
+                </div>
+            </div>
+            @if (secondPlayer != null && secondPlayerPatentProgress != null)
+            {
+                <p></p>
+                <div class="progress" data-toggle="tooltip" data-placement="top" data-html="true" title="@secondPlayer.Name - @secondPlayerPatentProgress.Tooltip">
+                    <div class="progress-bar progress-bar-@secondPlayerPatentProgress.ProgressBarType" role="progressbar" style="width: @secondPlayerPatentProgress.ProgressBarWidth%;">
                     </div>
-                </td>
-            </tr>
-            <tr>
-                <th>Games:</th>
-                <td>@player.Games.ToString("N0")</td>
-                <th>Wins:</th>
-                <td>@player.Wins.ToString("N0")</td>
-            </tr>
-            <tr>
-                <th>Win rate:</th>
-                <td>@player.WinRate.ToString("P0")</td>
-                <th>Loss:</th>
-                <td>@player.Loss.ToString("N0")</td>
-            </tr>
-            </tbody>
-        </table>
-        <hr/>
+                    <div class="progress-bar progress-bar-@secondPlayerPatentProgress.PreviousExperienceProgressBarType" role="progressbar" style="width: @secondPlayerPatentProgress.PreviousExperienceProgressBarWidth%;">
+                    </div>
+                </div>
+            }
+        </td>
+    </tr>
+    <tr>
+        <th>Games:</th>
+        <td>
+            @firstPlayer.Games.ToString("N0")
+            @if (secondPlayer != null)
+            {
+                <span class="separator"> | </span>
+                <span class="second">@secondPlayer.Games.ToString("N0")</span>
+            }
+        </td>
+        <th>Wins:</th>
+        <td>
+            @firstPlayer.Wins.ToString("N0")
+            @if (secondPlayer != null)
+            {
+                <span class="separator"> | </span>
+                <span class="second">@secondPlayer.Wins.ToString("N0")</span>
+            }
+        </td>
+    </tr>
+    <tr>
+        <th>Win rate:</th>
+        <td>
+            @firstPlayer.WinRate.ToString("P0")
+            @if (secondPlayer != null)
+            {
+                <span class="separator"> | </span>
+                <span class="second">@secondPlayer.WinRate.ToString("P0")</span>
+            }
+        </td>
+        <th>Loss:</th>
+        <td>
+            @firstPlayer.Loss.ToString("N0")
+            @if (secondPlayer != null)
+            {
+                <span class="separator"> | </span>
+                <span class="second">@secondPlayer.Loss.ToString("N0")</span>
+            }
+        </td>
+    </tr>
+    </tbody>
+</table>
+<hr/>
 
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                Statistics as survivor
-            </div>
-            <table class="table table-hover table-condensed">
-                <tbody>
-                <tr>
-                    <th>MVP SI:</th>
-                    <td>@player.MvpSiDamage.ToString("N0")</td>
-                    <th>MVP CI:</th>
-                    <td>@player.MvpCommon.ToString("N0")</td>
-                    <th>LVP:</th>
-                    <td>@player.LvpFfGiven.ToString("N0")</td>
-                </tr>
-
-                <tr>
-                    <th>SI killed:</th>
-                    <td>@player.SiKilled.ToString("N0")</td>
-                    <th>Commons:</th>
-                    <td>@player.Common.ToString("N0")</td>
-                    <th>SI Damage:</th>
-                    <td>@player.SiDamage.ToString("N0")</td>
-                </tr>
-
-                <tr>
-                    <th>Deaths:</th>
-                    <td>@player.Died.ToString("N0")</td>
-                    <th>Times incap.:</th>
-                    <td>@player.Incaps.ToString("N0")</td>
-                    <th>Damage taken:</th>
-                    <td>@player.DmgTaken.ToString("N0")</td>
-                </tr>
-
-                <tr>
-                    <th>Tank damage:</th>
-                    <td>@player.TankDamage.ToString("N0")</td>
-                    <th>Skeets:</th>
-                    <td>@player.Skeets.ToString("N0")</td>
-                    <th>Levels:</th>
-                    <td>@player.Levels.ToString("N0")</td>
-                </tr>
-
-                <tr>
-                    <th>Rocks eats:</th>
-                    <td>@player.RockEats.ToString("N0")</td>
-                    <th>FF Given:</th>
-                    <td>@player.FfGiven.ToString("N0")</td>
-                    <th></th>
-                    <td></td>
-                </tr>
-                </tbody>
-            </table>
-        </div>
-
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                Statistics as infected
-            </div>
-            <table class="table table-hover table-condensed">
-                <tbody>
-                <tr>
-                    <th>Total damage:</th>
-                    <td>@player.DmgTotal</td>
-
-                    <th>Tank - Damage dealt:</th>
-                    <td>@player.DmgTank.ToString("N0")</td>
-                </tr>
-
-                <tr>
-                    <th>Damage - Spitter:</th>
-                    <td>@player.DmgSpit.ToString("N0")</td>
-
-                    <th>Hunter - Pounce damage:</th>
-                    <td>@player.HunterDpDmg.ToString("N0")</td>
-                </tr>
-                </tbody>
-            </table>
-        </div>
-
+<div class="panel panel-default">
+    <div class="panel-heading">
+        Statistics as survivor
     </div>
+    <table class="table table-hover table-condensed">
+        <tbody>
+        <tr>
+            <th>MVP SI:</th>
+            <td>
+                @firstPlayer.MvpSiDamage.ToString("N0")
+                @if (secondPlayer != null)
+                {
+                    <span class="separator"> | </span>
+                    <span class="second">@secondPlayer.MvpSiDamage.ToString("N0")</span>
+                }
+            </td>
+            <th>MVP CI:</th>
+            <td>
+                @firstPlayer.MvpCommon.ToString("N0")
+                @if (secondPlayer != null)
+                {
+                    <span class="separator"> | </span>
+                    <span class="second">@secondPlayer.MvpCommon.ToString("N0")</span>
+                }
+            </td>
+            <th>LVP:</th>
+            <td>
+                @firstPlayer.LvpFfGiven.ToString("N0")
+                @if (secondPlayer != null)
+                {
+                    <span class="separator"> | </span>
+                    <span class="second">@secondPlayer.LvpFfGiven.ToString("N0")</span>
+                }
+            </td>
+        </tr>
+
+        <tr>
+            <th>SI killed:</th>
+            <td>
+                @firstPlayer.SiKilled.ToString("N0")
+                @if (secondPlayer != null)
+                {
+                    <span class="separator"> | </span>
+                    <span class="second">@secondPlayer.SiKilled.ToString("N0")</span>
+                }
+            </td>
+            <th>Commons:</th>
+            <td>
+                @firstPlayer.Common.ToString("N0")
+                @if (secondPlayer != null)
+                {
+                    <span class="separator"> | </span>
+                    <span class="second">@secondPlayer.Common.ToString("N0")</span>
+                }
+            </td>
+            <th>SI Damage:</th>
+            <td>
+                @firstPlayer.SiDamage.ToString("N0")
+                @if (secondPlayer != null)
+                {
+                    <span class="separator"> | </span>
+                    <span class="second">@secondPlayer.SiDamage.ToString("N0")</span>
+                }
+            </td>
+        </tr>
+
+        <tr>
+            <th>Deaths:</th>
+            <td>
+                @firstPlayer.Died.ToString("N0")
+                @if (secondPlayer != null)
+                {
+                    <span class="separator"> | </span>
+                    <span class="second">@secondPlayer.Died.ToString("N0")</span>
+                }
+            </td>
+            <th>Times incap.:</th>
+            <td>
+                @firstPlayer.Incaps.ToString("N0")
+                @if (secondPlayer != null)
+                {
+                    <span class="separator"> | </span>
+                    <span class="second">@secondPlayer.Incaps.ToString("N0")</span>
+                }
+            </td>
+            <th>Damage taken:</th>
+            <td>
+                @firstPlayer.DmgTaken.ToString("N0")
+                @if (secondPlayer != null)
+                {
+                    <span class="separator"> | </span>
+                    <span class="second">@secondPlayer.DmgTaken.ToString("N0")</span>
+                }
+            </td>
+        </tr>
+
+        <tr>
+            <th>Tank damage:</th>
+            <td>
+                @firstPlayer.TankDamage.ToString("N0")
+                @if (secondPlayer != null)
+                {
+                    <span class="separator"> | </span>
+                    <span class="second">@secondPlayer.TankDamage.ToString("N0")</span>
+                }
+            </td>
+            <th>Skeets:</th>
+            <td>
+                @firstPlayer.Skeets.ToString("N0")
+                @if (secondPlayer != null)
+                {
+                    <span class="separator"> | </span>
+                    <span class="second">@secondPlayer.Skeets.ToString("N0")</span>
+                }
+            </td>
+            <th>Levels:</th>
+            <td>
+                @firstPlayer.Levels.ToString("N0")
+                @if (secondPlayer != null)
+                {
+                    <span class="separator"> | </span>
+                    <span class="second">@secondPlayer.Levels.ToString("N0")</span>
+                }
+            </td>
+        </tr>
+
+        <tr>
+            <th>Rocks eats:</th>
+            <td>
+                @firstPlayer.RockEats.ToString("N0")
+                @if (secondPlayer != null)
+                {
+                    <span class="separator"> | </span>
+                    <span class="second">@secondPlayer.RockEats.ToString("N0")</span>
+                }
+            </td>
+            <th>FF Given:</th>
+            <td>
+                @firstPlayer.FfGiven.ToString("N0")
+                @if (secondPlayer != null)
+                {
+                    <span class="separator"> | </span>
+                    <span class="second">@secondPlayer.FfGiven.ToString("N0")</span>
+                }
+            </td>
+            <th></th>
+            <td></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        Statistics as infected
+    </div>
+    <table class="table table-hover table-condensed">
+        <tbody>
+        <tr>
+            <th>Total damage:</th>
+            <td>
+                @firstPlayer.DmgTotal
+                @if (secondPlayer != null)
+                {
+                    <span class="separator"> | </span>
+                    <span class="second">@secondPlayer.DmgTotal</span>
+                }
+            </td>
+
+            <th>Tank - Damage dealt:</th>
+            <td>
+                @firstPlayer.DmgTank.ToString("N0")
+                @if (secondPlayer != null)
+                {
+                    <span class="separator"> | </span>
+                    <span class="second">@secondPlayer.DmgTank.ToString("N0")</span>
+                }
+            </td>
+        </tr>
+
+        <tr>
+            <th>Damage - Spitter:</th>
+            <td>
+                @firstPlayer.DmgSpit.ToString("N0")
+                @if (secondPlayer != null)
+                {
+                    <span class="separator"> | </span>
+                    <span class="second">@secondPlayer.DmgSpit.ToString("N0")</span>
+                }
+            </td>
+
+            <th>Hunter - Pounce damage:</th>
+            <td>
+                @firstPlayer.HunterDpDmg.ToString("N0")
+                @if (secondPlayer != null)
+                {
+                    <span class="separator"> | </span>
+                    <span class="second">@secondPlayer.HunterDpDmg.ToString("N0")</span>
+                }
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+</div>
 </div>

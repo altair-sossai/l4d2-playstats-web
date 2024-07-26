@@ -8,19 +8,28 @@ namespace L4D2PlayStats.Web.Controllers;
 
 public class PlayerController(IRankingServiceCached rankingService, IUserAvatar userAvatar, IPatentService patentService) : Controller
 {
-    [Route("player/{communityId}")]
-    public async Task<IActionResult> Index(long communityId)
+    [Route("player/{communityId}/{compareWith:long?}")]
+    public async Task<IActionResult> Index(long communityId, long? compareWith = null)
     {
         var players = await rankingService.GetAsync();
-        var player = players.FirstOrDefault(p => p.CommunityId == communityId);
+        var firstPlayer = players.FirstOrDefault(p => p.CommunityId == communityId);
+        var secondPlayer = compareWith == null ? null : players.FirstOrDefault(p => p.CommunityId == compareWith);
 
-        if (player == null)
+        if (firstPlayer == null)
             return NotFound();
 
-        await userAvatar.LoadAsync(player.CommunityId);
+        await userAvatar.LoadAsync(firstPlayer.CommunityId);
 
-        var patentProgress = patentService.GetPatentProgress(player);
-        var model = new RankingModel(player, patentProgress);
+        if (secondPlayer != null)
+            await userAvatar.LoadAsync(secondPlayer.CommunityId);
+
+        var firstPlayerPatentProgress = patentService.GetPatentProgress(firstPlayer);
+        var secondPlayerPatentProgress = secondPlayer == null ? null : patentService.GetPatentProgress(secondPlayer);
+
+        var firstPlayerRanking = new RankingModel(firstPlayer, firstPlayerPatentProgress);
+        var secondPlayerRanking = secondPlayer == null || secondPlayerPatentProgress == null ? null : new RankingModel(secondPlayer, secondPlayerPatentProgress);
+
+        var model = new PlayerDetailsModel(firstPlayerRanking, secondPlayerRanking, players);
 
         return View(model);
     }
