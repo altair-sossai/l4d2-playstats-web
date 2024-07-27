@@ -134,23 +134,14 @@
     @RenderBody()
 </div>
 
-<script src="http://code.jquery.com/jquery-1.12.4.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
-<script src="http://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+<script src="~/js/jquery.min.js"></script>
+<script src="~/js/bootstrap.min.js"></script>
 @await RenderSectionAsync("Scripts", false)
 
 <script>
         $(function () {
             $('[data-toggle="tooltip"]').tooltip()
         })
-    </script>
-
-<script async src="http://www.googletagmanager.com/gtag/js?id=G-4QMNBJLQST"></script>
-<script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
-
-        gtag('config', 'G-4QMNBJLQST');
     </script>
 
 </body>
