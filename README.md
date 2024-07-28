@@ -54,3 +54,9 @@ Player Comparison
 </p>
 
 ![Player Comparison](https://github.com/altair-sossai/l4d2-playstats-web/blob/main/screenshot/screenshot_03.jpg)
+
+<p align="center">
+Player rank displayed in-game
+</p>
+
+![Player Comparison](https://github.com/altair-sossai/l4d2-playstats-web/blob/main/screenshot/screenshot_04.jpg)
