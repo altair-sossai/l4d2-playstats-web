@@ -5,21 +5,27 @@
 {
     <div class="panel panel-default">
         <div class="panel-heading text-center">
-            @server.ServerInfo.Name
+            @if (server.ServerInfo != null)
+            {
+                @server.ServerInfo.Name
+            }
         </div>
 
         <table class="table table-condensed table-responsive">
             <tbody>
-            <tr>
-                <th class="slim text-right">Server IP:</th>
-                <td>@server.ServerIp</td>
+            @if (server.ServerInfo != null)
+            {
+                <tr>
+                    <th class="slim text-right">Server IP:</th>
+                    <td>@server.ServerIp</td>
 
-                <th class="slim">Players:</th>
-                <td>@server.ServerInfo.Players / @server.ServerInfo.MaxPlayers</td>
+                    <th class="slim">Players:</th>
+                    <td>@server.ServerInfo.Players / @server.ServerInfo.MaxPlayers</td>
 
-                <th class="slim">Map:</th>
-                <td>@server.ServerInfo.Map</td>
-            </tr>
+                    <th class="slim">Map:</th>
+                    <td>@server.ServerInfo.Map</td>
+                </tr>
+            }
             <tr>
                 <th class="slim">Connected players:</th>
                 <td colspan="5" style="margin: 0; padding: 0; padding-left: 10px;">
@@ -32,13 +38,16 @@
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach (var player in server.Players.OrderByDescending(p => p.Duration))
+                        @if (server.Players != null)
                         {
-                            <tr>
-                                <td>@player.Name</td>
-                                <td class="text-center">@player.Score</td>
-                                <td class="text-center">@player.DurationTimeSpan.ToString(@"hh\:mm\:ss")</td>
-                            </tr>
+                            @foreach (var player in server.Players.OrderByDescending(p => p.Duration))
+                            {
+                                <tr>
+                                    <td>@player.Name</td>
+                                    <td class="text-center">@player.Score</td>
+                                    <td class="text-center">@player.DurationTimeSpan.ToString(@"hh\:mm\:ss")</td>
+                                </tr>
+                            }
                         }
                         </tbody>
                     </table>
