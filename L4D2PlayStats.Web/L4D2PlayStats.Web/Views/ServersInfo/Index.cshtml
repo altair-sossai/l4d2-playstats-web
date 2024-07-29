@@ -17,18 +17,18 @@
             {
                 <tr>
                     <th class="slim text-right">Server IP:</th>
-                    <td style="padding-left: 10px;">@server.ServerIp</td>
+                    <td style="padding-left: 10px;" data-label="Server IP:">@server.ServerIp</td>
 
                     <th class="slim">Players:</th>
-                    <td>@server.ServersInfo.Players / @server.ServersInfo.MaxPlayers</td>
+                    <td data-label="Players:">@server.ServersInfo.Players / @server.ServersInfo.MaxPlayers</td>
 
                     <th class="slim">Map:</th>
-                    <td>@server.ServersInfo.Map</td>
+                    <td data-label="Map:">@server.ServersInfo.Map</td>
                 </tr>
             }
             <tr>
                 <th class="slim">Connected players:</th>
-                <td colspan="5" style="margin: 0; padding: 0; padding-left: 10px;">
+                <td colspan="5" data-label="Connected players:" style="margin: 0; padding: 0; padding-left: 10px;">
                     <table class="table table-condensed table-responsive table-striped table-hover" style="margin: 0; padding: 0">
                         <thead>
                         <tr>
@@ -43,9 +43,9 @@
                             @foreach (var player in server.Players.OrderByDescending(p => p.Duration))
                             {
                                 <tr>
-                                    <td>@player.Name</td>
-                                    <td class="text-center">@player.Score</td>
-                                    <td class="text-center">@player.DurationTimeSpan.ToString(@"hh\:mm\:ss")</td>
+                                    <td data-label="Player name:">@player.Name</td>
+                                    <td data-label="Score:" class="text-center">@player.Score</td>
+                                    <td data-label="Time:" class="text-center">@player.DurationTimeSpan.ToString(@"hh\:mm\:ss")</td>
                                 </tr>
                             }
                         }
