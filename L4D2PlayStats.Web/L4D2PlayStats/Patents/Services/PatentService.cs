@@ -6,21 +6,21 @@ public class PatentService : IPatentService
 {
     private static readonly List<Patent> Patents =
     [
-        new Patent(1, "Survivor Recruit"),
-        new Patent(2, "Rookie Rescuer"),
-        new Patent(3, "Infected Hunter"),
-        new Patent(4, "Safehouse Defender"),
-        new Patent(5, "Urban Scout"),
-        new Patent(6, "Quarantine Breaker"),
-        new Patent(7, "Outbreak Specialist"),
-        new Patent(8, "Zombie Exterminator"),
-        new Patent(9, "Apocalypse Tracker"),
-        new Patent(10, "Pandemic Protector"),
-        new Patent(11, "Virus Vanquisher"),
-        new Patent(12, "Survival Strategist"),
-        new Patent(13, "Infection Commander"),
-        new Patent(14, "Contagion Master"),
-        new Patent(15, "Ultimate Survivor")
+        new Patent(1, "Bronze #1"),
+        new Patent(2, "Bronze #2"),
+        new Patent(3, "Bronze #3"),
+        new Patent(4, "Bronze #4"),
+        new Patent(5, "Bronze #5"),
+        new Patent(6, "Silver #1"),
+        new Patent(7, "Silver #2"),
+        new Patent(8, "Silver #3"),
+        new Patent(9, "Silver #4"),
+        new Patent(10, "Silver #5"),
+        new Patent(11, "Gold #1"),
+        new Patent(12, "Gold #2"),
+        new Patent(13, "Gold #3"),
+        new Patent(14, "Gold #4"),
+        new Patent(15, "Global")
     ];
 
     public IReadOnlyCollection<Patent> GetAllPatents()
