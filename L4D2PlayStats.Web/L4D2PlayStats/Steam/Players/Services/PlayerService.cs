@@ -2,7 +2,7 @@
 using System.Net.Sockets;
 using System.Text;
 
-namespace L4D2PlayStats.A2S.Players.Services;
+namespace L4D2PlayStats.Steam.Players.Services;
 
 public class PlayerService : IPlayerService
 {

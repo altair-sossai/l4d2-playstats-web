@@ -1,6 +1,6 @@
 ﻿using L4D2PlayStats.Infrastructure.Extensions;
 
-namespace L4D2PlayStats.A2S.Players;
+namespace L4D2PlayStats.Steam.Players;
 
 public class Player(ref BinaryReader binReader)
 {

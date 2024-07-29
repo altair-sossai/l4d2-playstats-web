@@ -1,4 +1,5 @@
 ﻿using System.Text.Json;
+using L4D2PlayStats.Steam.ServerInfo.Services;
 using L4D2PlayStats.Steam.SteamUser.Services;
 using Refit;
 
@@ -20,6 +21,7 @@ public class SteamContext : ISteamContext
     };
 
     public ISteamUserService SteamUserService => CreateService<ISteamUserService>();
+    public IServerInfoService ServerInfoService => CreateService<IServerInfoService>();
 
     private static T CreateService<T>()
     {

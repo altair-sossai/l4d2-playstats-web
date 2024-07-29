@@ -1,29 +1,29 @@
-﻿@model List<L4D2PlayStats.Web.Models.ServerModel>
+﻿@model List<L4D2PlayStats.Web.Models.ServerInfoModel>
 <h4 class="text-center">Servers info</h4>
 
 @foreach (var server in Model)
 {
     <div class="panel panel-default">
         <div class="panel-heading text-center">
-            @if (server.ServerInfo != null)
+            @if (server.ServersInfo != null)
             {
-                @server.ServerInfo.Name
+                @server.ServersInfo.Name
             }
         </div>
 
         <table class="table table-condensed table-responsive">
             <tbody>
-            @if (server.ServerInfo != null)
+            @if (server.ServersInfo != null)
             {
                 <tr>
                     <th class="slim text-right">Server IP:</th>
-                    <td>@server.ServerIp</td>
+                    <td style="padding-left: 10px;">@server.ServerIp</td>
 
                     <th class="slim">Players:</th>
-                    <td>@server.ServerInfo.Players / @server.ServerInfo.MaxPlayers</td>
+                    <td>@server.ServersInfo.Players / @server.ServersInfo.MaxPlayers</td>
 
                     <th class="slim">Map:</th>
-                    <td>@server.ServerInfo.Map</td>
+                    <td>@server.ServersInfo.Map</td>
                 </tr>
             }
             <tr>
