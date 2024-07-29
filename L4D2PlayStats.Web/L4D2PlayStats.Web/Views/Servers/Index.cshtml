@@ -1,0 +1,50 @@
+﻿@model List<L4D2PlayStats.Web.Models.ServerModel>
+<h4 class="text-center">Servers info</h4>
+
+@foreach (var server in Model)
+{
+    <div class="panel panel-default">
+        <div class="panel-heading text-center">
+            @server.ServerInfo.Name
+        </div>
+
+        <table class="table table-condensed table-responsive">
+            <tbody>
+            <tr>
+                <th class="slim text-right">Server IP:</th>
+                <td>@server.ServerIp</td>
+
+                <th class="slim">Players:</th>
+                <td>@server.ServerInfo.Players / @server.ServerInfo.MaxPlayers</td>
+
+                <th class="slim">Map:</th>
+                <td>@server.ServerInfo.Map</td>
+            </tr>
+            <tr>
+                <th class="slim">Connected players:</th>
+                <td colspan="5" style="margin: 0; padding: 0; padding-left: 10px;">
+                    <table class="table table-condensed table-responsive table-striped table-hover" style="margin: 0; padding: 0">
+                        <thead>
+                        <tr>
+                            <th>Player name</th>
+                            <th class="text-center slim">Score</th>
+                            <th class="text-center slim">Time</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        @foreach (var player in server.Players.OrderByDescending(p => p.Duration))
+                        {
+                            <tr>
+                                <td>@player.Name</td>
+                                <td class="text-center">@player.Score</td>
+                                <td class="text-center">@player.DurationTimeSpan.ToString(@"hh\:mm\:ss")</td>
+                            </tr>
+                        }
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+}
