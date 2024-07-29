@@ -11,7 +11,6 @@
         a, a:visited, a:hover, a:active {
             color: inherit;
         }
-
         .navbar {
             margin-bottom: 0;
         }
@@ -125,6 +124,12 @@
                 <li class="@ViewBag.Patent">
                     @Html.ActionLink("Patent system", "Index", "Patent")
                 </li>
+                @if (Context.Request.IsHttps)
+                {
+                    <li>
+                        <a href="https://sourcebans.l4d2.com.br/">SourceBans++</a>
+                    </li>
+                }
             </ul>
         </div>
     </div>
