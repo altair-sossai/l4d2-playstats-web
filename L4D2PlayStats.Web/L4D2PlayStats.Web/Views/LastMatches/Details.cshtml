@@ -36,7 +36,7 @@
             <th class="text-center">End</th>
             <th class="text-center">Elapsed</th>
             <th class="text-center">Map</th>
-            <th class="text-center">Scoreboard</th>
+            <th class="text-center slim" colspan="3">Scoreboard</th>
             </thead>
             <tbody>
             @for (var i = 0; i < Model.Statistics.Count; i++)
@@ -54,15 +54,19 @@
                     <td class="text-center" data-label="End">@statistic?.MapEnd?.ToString("dd/MM/yy") @statistic?.MapEnd?.ToString("HH:mm")</td>
                     <td class="text-center" data-label="Elapsed">@statistic?.MapElapsed?.ToString(@"hh\:mm\:ss")</td>
                     <td class="text-center" data-label="Map">@gameRound?.MapName</td>
-                    <td class="text-center" data-label="Scoreboard">
+                    <td class="text-center slim" data-label="Team A score">
                         <span class="label label-@labelTeamA" data-toggle="tooltip" data-placement="top" title="Team A score">
-                            @scoring?.TeamA?.Score
+                            @scoring?.TeamA?.Score.ToString("N0")
                         </span>
+                    </td>
+                    <td class="text-center slim" data-label="Score difference">
                         <span class="label label-default" data-toggle="tooltip" data-placement="top" title="Score difference">
-                            @scoring?.ScoreDiff
+                            @scoring?.ScoreDiff?.ToString("N0")
                         </span>
+                    </td>
+                    <td class="text-center slim" data-label="Team B score">
                         <span class="label label-@labelTeamB" data-toggle="tooltip" data-placement="top" title="Team B score">
-                            @scoring?.TeamB?.Score
+                            @scoring?.TeamB?.Score.ToString("N0")
                         </span>
                     </td>
                 </tr>

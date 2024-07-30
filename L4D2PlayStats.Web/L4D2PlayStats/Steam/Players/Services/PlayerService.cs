@@ -37,7 +37,14 @@ public class PlayerService : IPlayerService
         var count = binaryReader.ReadByte();
 
         for (var i = 0; i < count; i++)
-            yield return new Player(ref binaryReader);
+        {
+            var player = new Player(ref binaryReader);
+
+            if (string.IsNullOrEmpty(player.Name))
+                continue;
+
+            yield return player;
+        }
 
         udpClient.Close();
     }

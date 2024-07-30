@@ -17,6 +17,12 @@
 
 @section Styles {
     <style>
+        th {
+            width: 1%;
+            white-space: nowrap;
+            padding-right: 24px !important;
+        }
+
         .progress {
             margin: 0;
         }
@@ -34,7 +40,7 @@
             color: #979797;
         }
 
-         @@media screen and (max-width: 700px) {
+        @@media screen and (max-width: 700px) {
             .left-side {
                 width: 100% !important;
                 margin-bottom: 10px;
@@ -43,7 +49,7 @@
             .right-side {
                 width: 100% !important;
             }
-         }
+        }
     </style>
 }
 
@@ -103,11 +109,11 @@
         <tr>
             <th>Ranking:</th>
             <td data-label="Ranking:">
-                #@firstPlayer.Position
+                #@firstPlayer.Position.ToString("N0")
                 @if (secondPlayer != null)
                 {
                     <span class="separator"> | </span>
-                    <span class="second">#@secondPlayer.Position</span>
+                    <span class="second">#@secondPlayer.Position.ToString("N0")</span>
                 }
             </td>
 
@@ -380,11 +386,11 @@
         <tr>
             <th>Total damage:</th>
             <td data-label="Total damage:">
-                @firstPlayer.DmgTotal
+                @firstPlayer.DmgTotal.ToString("N0")
                 @if (secondPlayer != null)
                 {
                     <span class="separator"> | </span>
-                    <span class="second">@secondPlayer.DmgTotal</span>
+                    <span class="second">@secondPlayer.DmgTotal.ToString("N0")</span>
                 }
             </td>
 

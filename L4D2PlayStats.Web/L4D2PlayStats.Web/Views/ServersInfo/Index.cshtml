@@ -20,39 +20,46 @@
                     <td style="padding-left: 10px;" data-label="Server IP:">@server.ServerIp</td>
 
                     <th class="slim">Players:</th>
-                    <td data-label="Players:">@server.ServersInfo.Players / @server.ServersInfo.MaxPlayers</td>
+                    <td data-label="Players:">@server.ServersInfo.Players?.ToString("N0") / @server.ServersInfo.MaxPlayers?.ToString("N0")</td>
 
                     <th class="slim">Map:</th>
                     <td data-label="Map:">@server.ServersInfo.Map</td>
                 </tr>
             }
-            <tr>
-                <th class="slim">Connected players:</th>
-                <td colspan="5" data-label="Connected players:" style="margin: 0; padding: 0; padding-left: 10px;">
-                    <table class="table table-condensed table-responsive table-striped table-hover" style="margin: 0; padding: 0">
-                        <thead>
-                        <tr>
-                            <th>Player name</th>
-                            <th class="text-center slim">Score</th>
-                            <th class="text-center slim">Time</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        @if (server.Players != null)
-                        {
-                            @foreach (var player in server.Players.OrderByDescending(p => p.Duration))
+            @if (server.Players != null && server.Players.Any())
+            {
+                <tr>
+                    <th class="slim">Connected players:</th>
+                    <td colspan="5" data-label="Connected players:" style="margin: 0; padding: 0; padding-left: 10px;">
+                        <table class="table table-condensed table-responsive table-striped table-hover" style="margin: 0; padding: 0">
+                            <thead>
+                            <tr>
+                                <th>Player name</th>
+                                <th class="text-center slim hide-mobile">Time</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            @if (server.Players != null)
                             {
-                                <tr>
-                                    <td data-label="Player name:">@player.Name</td>
-                                    <td data-label="Score:" class="text-center">@player.Score</td>
-                                    <td data-label="Time:" class="text-center">@player.DurationTimeSpan.ToString(@"hh\:mm\:ss")</td>
-                                </tr>
+                                @foreach (var player in server.Players.OrderByDescending(p => p.Duration))
+                                {
+                                    <tr>
+                                        <td data-label="Player name:">@player.Name</td>
+                                        <td data-label="Time:" class="text-center hide-mobile">@player.DurationTimeSpan.ToString(@"hh\:mm\:ss")</td>
+                                    </tr>
+                                }
                             }
-                        }
-                        </tbody>
-                    </table>
-                </td>
-            </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
+            }
+            else
+            {
+                <tr>
+                    <td colspan="6" class="text-center">No players connected</td>
+                </tr>
+            }
             </tbody>
         </table>
     </div>

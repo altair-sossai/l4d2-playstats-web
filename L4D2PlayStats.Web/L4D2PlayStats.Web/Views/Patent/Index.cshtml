@@ -7,8 +7,11 @@
         <h3 class="panel-title">Understanding the patent system</h3>
     </div>
     <div class="panel-body">
-        <p>The patent system in our service takes into account the amount of XP that the player has earned during the games of the last @Model.Config.DaysRange days.</p>
-        <p>Each victory awards the player @Model.Config.Win XP points, while losses cause the player to lose @Math.Abs(Model.Config.Loss) XP points. An MVP SI title grants the player an additional @Model.Config.Mvps XP points, and an MVP CI title grants an additional @Model.Config.MvpsCommon XP points.</p>
+        <p>The patent system in our service takes into account the amount of XP that the player has earned during the games of the last <b>@Model.Config.DaysRange.ToString("N0")</b> days.</p>
+        <p>
+            Each victory awards the player <b>@Model.Config.Win.ToString("N0")</b> XP points, while losses cause the player to lose <b>@Math.Abs(Model.Config.Loss).ToString("N0")</b> XP points.
+            An MVP SI title grants the player an additional <b>@Model.Config.Mvps.ToString("N0")</b> XP points, and an MVP CI title grants an additional <b>@Model.Config.MvpsCommon.ToString("N0")</b> XP points.
+        </p>
     </div>
 </div>
 
@@ -45,10 +48,10 @@
     </div>
     <div class="panel-body">
         <ul>
-            <li>Victory: +@Model.Config.Win XP points</li>
-            <li>Defeat: @Model.Config.Loss XP points</li>
-            <li>MVP SI: +@Model.Config.Mvps XP points</li>
-            <li>MVP CI: +@Model.Config.MvpsCommon XP points</li>
+            <li>Victory: +@Model.Config.Win.ToString("N0") XP points</li>
+            <li>Defeat: @Model.Config.Loss.ToString("N0") XP points</li>
+            <li>MVP SI: +@Model.Config.Mvps.ToString("N0") XP points</li>
+            <li>MVP CI: +@Model.Config.MvpsCommon.ToString("N0") XP points</li>
         </ul>
     </div>
 </div>

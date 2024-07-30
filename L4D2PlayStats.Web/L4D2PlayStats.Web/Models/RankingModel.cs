@@ -64,7 +64,7 @@ public class RankingModel(PlayerResult player, PatentProgress patentProgress)
 
             if (NextPatent != null)
             {
-                yield return $"Next Level: {NextPatent.Level}";
+                yield return $"Next Level: {NextPatent.Level:N0}";
                 yield return $"XP: {player.Experience:N0} / {NextPatent.Experience:N0}";
                 yield return $"Progress: {Progress:P0}";
             }

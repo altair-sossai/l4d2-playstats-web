@@ -33,7 +33,7 @@
         <th class="text-center">Patent</th>
         <th colspan="2">Player</th>
         <th class="text-center hide-mobile" style="min-width: 90px">XP</th>
-        <th class="text-center hide-mobile">Wins</th>
+        <th class="text-center">Wins</th>
         <th class="text-center hide-mobile">Loss</th>
         <th class="text-center hide-mobile">MVP SI</th>
         <th class="text-center hide-mobile">MVP CI</th>
@@ -48,7 +48,7 @@
         var patent = patentProgress.Patent;
 
         <tr class="hover">
-            <td class="text-center vertical-align-middle">#@player.Position</td>
+            <td class="text-center vertical-align-middle">#@player.Position.ToString("N0")</td>
             <td class="text-center vertical-align-middle slim">
                 <img src="@patent.Image" alt="@patent.FullName" data-toggle="tooltip" data-placement="top" title="@patent.FullName" style="width: 32px"/>
             </td>
@@ -80,24 +80,24 @@
                     </div>
                 </div>
             </td>
-            <td class="text-center vertical-align-middle hide-mobile">
+            <td class="text-center vertical-align-middle">
                 <p data-toggle="tooltip" data-placement="top" title="Wins">
-                    @player.Wins
+                    @player.Wins.ToString("N0")
                 </p>
             </td>
             <td class="text-center vertical-align-middle hide-mobile">
                 <p data-toggle="tooltip" data-placement="top" title="Loss">
-                    @player.Loss
+                    @player.Loss.ToString("N0")
                 </p>
             </td>
             <td class="text-center vertical-align-middle hide-mobile">
                 <p data-toggle="tooltip" data-placement="top" title="MVP SI">
-                    @player.MvpSiDamage
+                    @player.MvpSiDamage.ToString("N0")
                 </p>
             </td>
             <td class="text-center vertical-align-middle hide-mobile">
                 <p data-toggle="tooltip" data-placement="top" title="MVP CI">
-                    @player.MvpCommon
+                    @player.MvpCommon.ToString("N0")
                 </p>
             </td>
             <td class="text-center vertical-align-middle hide-mobile">
