@@ -128,7 +128,7 @@
                 <li class="@ViewBag.Patent">
                     @Html.ActionLink("Patent system", "Index", "Patent")
                 </li>
-                <li class="show-in-https">
+                <li class="hide show-in-https">
                     <a href="https://sourcebans.l4d2.com.br/">SourceBans++</a>
                 </li>
             </ul>
@@ -148,8 +148,8 @@
         $(function () {
             $('[data-toggle="tooltip"]').tooltip();
 
-            if (location.protocol !== "https:")
-                $(".show-in-https").hide();
+            if (location.protocol === "https:")
+                $(".show-in-https").removeClass("hide");
         })
     </script>
 
