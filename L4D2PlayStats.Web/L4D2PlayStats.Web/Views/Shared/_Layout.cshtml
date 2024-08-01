@@ -128,12 +128,9 @@
                 <li class="@ViewBag.Patent">
                     @Html.ActionLink("Patent system", "Index", "Patent")
                 </li>
-                @if (Context.Request.IsHttps)
-                {
-                    <li>
-                        <a href="https://sourcebans.l4d2.com.br/">SourceBans++</a>
-                    </li>
-                }
+                <li class="show-in-https">
+                    <a href="https://sourcebans.l4d2.com.br/">SourceBans++</a>
+                </li>
             </ul>
         </div>
     </div>
@@ -149,20 +146,20 @@
 
 <script>
         $(function () {
-            $('[data-toggle="tooltip"]').tooltip()
+            $('[data-toggle="tooltip"]').tooltip();
+
+            if (location.protocol !== "https:")
+                $(".show-in-https").hide();
         })
     </script>
 
-@if (Context.Request.IsHttps)
-{
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-4QMNBJLQST"></script>
-    <script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4QMNBJLQST"></script>
+<script>
         window.dataLayer = window.dataLayer || [];
         function gtag() { dataLayer.push(arguments); }
         gtag('js', new Date());
 
         gtag('config', 'G-4QMNBJLQST');
     </script>
-}
 </body>
 </html>
