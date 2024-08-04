@@ -11,6 +11,7 @@
         <p>
             Each victory awards the player <b>@Model.Config.Win.ToString("N0")</b> XP points, while losses cause the player to lose <b>@Math.Abs(Model.Config.Loss).ToString("N0")</b> XP points.
             An MVP SI title grants the player an additional <b>@Model.Config.Mvps.ToString("N0")</b> XP points, and an MVP CI title grants an additional <b>@Model.Config.MvpsCommon.ToString("N0")</b> XP points.
+            Rage quit result in a loss of <b>@Model.Config.RageQuit.ToString("N0")</b> XP points.
         </p>
     </div>
 </div>
@@ -52,6 +53,7 @@
             <li>Defeat: @Model.Config.Loss.ToString("N0") XP points</li>
             <li>MVP SI: +@Model.Config.Mvps.ToString("N0") XP points</li>
             <li>MVP CI: +@Model.Config.MvpsCommon.ToString("N0") XP points</li>
+            <li>Rage quit: @Model.Config.RageQuit.ToString("N0") XP points</li>
         </ul>
     </div>
 </div>

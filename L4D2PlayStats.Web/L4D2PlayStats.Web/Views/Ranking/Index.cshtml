@@ -38,6 +38,7 @@
         <th class="text-center hide-mobile">MVP SI</th>
         <th class="text-center hide-mobile">MVP CI</th>
         <th class="text-center hide-mobile">Win rate</th>
+        <th class="text-center hide-mobile">Rage quit</th>
     </tr>
     </thead>
     <tbody>
@@ -103,6 +104,11 @@
             <td class="text-center vertical-align-middle hide-mobile">
                 <p data-toggle="tooltip" data-placement="top" title="Win rate">
                     @player.WinRate.ToString("P0")
+                </p>
+            </td>
+            <td class="text-center vertical-align-middle hide-mobile">
+                <p data-toggle="tooltip" data-placement="top" title="Rage quit">
+                    @player.RageQuit.ToString("N0")
                 </p>
             </td>
         </tr>

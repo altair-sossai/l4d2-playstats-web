@@ -118,7 +118,7 @@
             </td>
 
             <th>Steam ID:</th>
-            <td data-label="Steam ID:">
+            <td data-label="Steam ID:" colspan="3">
                 @firstPlayer.SteamId
                 @if (secondPlayer != null)
                 {
@@ -139,7 +139,7 @@
             </td>
 
             <th>Profile URL:</th>
-            <td data-label="Profile URL:">
+            <td data-label="Profile URL:" colspan="3">
                 @firstPlayer.ProfileUrl
                 @if (secondPlayer != null)
                 {
@@ -160,7 +160,7 @@
             </td>
 
             <th class="vertical-align-middle">XP:</th>
-            <td class="text-center vertical-align-middle" data-label="XP:">
+            <td class="text-center vertical-align-middle" data-label="XP:" colspan="3">
                 <div class="progress" data-toggle="tooltip" data-placement="top" data-html="true" title="@firstPlayer.Name - @firstPlayerPatentProgress.Tooltip">
                     <div class="progress-bar progress-bar-@firstPlayerPatentProgress.ProgressBarType" role="progressbar" style="width: @firstPlayerPatentProgress.ProgressBarWidth%;">
                     </div>
@@ -198,6 +198,15 @@
                     <span class="second">@secondPlayer.Wins.ToString("N0")</span>
                 }
             </td>
+            <th>Rage quit:</th>
+            <td data-label="Rage quit:">
+                @firstPlayer.RageQuit.ToString("N0")
+                @if (secondPlayer != null)
+                {
+                    <span class="separator"> | </span>
+                    <span class="second">@secondPlayer.RageQuit.ToString("N0")</span>
+                }
+            </td>
         </tr>
         <tr>
             <th>Win rate:</th>
@@ -210,7 +219,7 @@
                 }
             </td>
             <th>Loss:</th>
-            <td data-label="Loss:">
+            <td data-label="Loss:" colspan="3">
                 @firstPlayer.Loss.ToString("N0")
                 @if (secondPlayer != null)
                 {

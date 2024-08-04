@@ -5,6 +5,7 @@ public class ExperienceConfigResult
     public int DaysRange { get; set; }
     public int Win { get; set; }
     public int Loss { get; set; }
+    public int RageQuit { get; set; }
     public int Mvps { get; set; }
     public int MvpsCommon { get; set; }
 }
