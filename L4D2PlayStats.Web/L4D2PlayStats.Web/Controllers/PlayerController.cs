@@ -16,7 +16,7 @@ public class PlayerController(IRankingServiceCached rankingService, IUserAvatar 
         var secondPlayer = compareWith == null ? null : players.FirstOrDefault(p => p.CommunityId == compareWith);
 
         if (firstPlayer == null)
-            return NotFound();
+            return View("PlayerNotFound");
 
         await userAvatar.LoadAsync(firstPlayer.CommunityId);
 
