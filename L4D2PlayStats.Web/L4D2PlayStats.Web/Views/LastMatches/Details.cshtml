@@ -1,5 +1,8 @@
 ﻿@using L4D2PlayStats.Sdk.Matches.Results
+@using L4D2PlayStats.Web
+@using Microsoft.Extensions.Localization
 @model L4D2PlayStats.Web.Models.MatchDetailsModel
+@inject IStringLocalizer<SharedResource> SharedLocalizer
 
 @section Styles {
     <style>
@@ -14,29 +17,29 @@
     <div class="row">
         <div class="col-xs-12">
             <h4 class="text-center">
-                No match found
+                @SharedLocalizer["NoMatchFound"]
             </h4>
         </div>
     </div>
     return;
 }
 
-<h4 class="text-center">Match details</h4>
+<h4 class="text-center">@SharedLocalizer["MatchDetails"]</h4>
 
 <div class="maps">
     <div class="panel panel-default">
-        <div class="panel-heading">Maps</div>
+        <div class="panel-heading">@SharedLocalizer["Maps"]</div>
         <div class="panel-body">
-            Current campaign map results
+            @SharedLocalizer["MatchStatsTitle"]
         </div>
         <table class="table table-striped table-hover table-condensed table-responsive">
             <thead>
             <th class="text-center">#</th>
-            <th class="text-center">Start</th>
-            <th class="text-center">End</th>
-            <th class="text-center">Elapsed</th>
-            <th class="text-center">Map</th>
-            <th class="text-center slim" colspan="3">Scoreboard</th>
+            <th class="text-center">@SharedLocalizer["Start"]</th>
+            <th class="text-center">@SharedLocalizer["End"]</th>
+            <th class="text-center">@SharedLocalizer["Elapsed"]</th>
+            <th class="text-center">@SharedLocalizer["Map"]</th>
+            <th class="text-center slim" colspan="3">@SharedLocalizer["Scoreboard"]</th>
             </thead>
             <tbody>
             @for (var i = 0; i < Model.Statistics.Count; i++)
@@ -50,22 +53,22 @@
 
                 <tr>
                     <td class="text-center" data-label="#">#@(i + 1)</td>
-                    <td class="text-center" data-label="Start">@statistic?.MapStart?.ToString("dd/MM/yy") @statistic?.MapStart?.ToString("HH:mm")</td>
-                    <td class="text-center" data-label="End">@statistic?.MapEnd?.ToString("dd/MM/yy") @statistic?.MapEnd?.ToString("HH:mm")</td>
-                    <td class="text-center" data-label="Elapsed">@statistic?.MapElapsed?.ToString(@"hh\:mm\:ss")</td>
-                    <td class="text-center" data-label="Map">@gameRound?.MapName</td>
-                    <td class="text-center slim" data-label="Team A score">
-                        <span class="label label-@labelTeamA" data-toggle="tooltip" data-placement="top" title="Team A score">
+                    <td class="text-center" data-label="@SharedLocalizer["Start"]">@statistic?.MapStart?.ToString("d") @statistic?.MapStart?.ToString("HH:mm")</td>
+                    <td class="text-center" data-label="@SharedLocalizer["End"]">@statistic?.MapEnd?.ToString("d") @statistic?.MapEnd?.ToString("HH:mm")</td>
+                    <td class="text-center" data-label="@SharedLocalizer["Elapsed"]">@statistic?.MapElapsed?.ToString(@"hh\:mm\:ss")</td>
+                    <td class="text-center" data-label="@SharedLocalizer["Map"]">@gameRound?.MapName</td>
+                    <td class="text-center slim" data-label="@SharedLocalizer["TeamAScore"]">
+                        <span class="label label-@labelTeamA" data-toggle="tooltip" data-placement="top" title="@SharedLocalizer["TeamAScore"]">
                             @scoring?.TeamA?.Score.ToString("N0")
                         </span>
                     </td>
-                    <td class="text-center slim" data-label="Score difference">
-                        <span class="label label-default" data-toggle="tooltip" data-placement="top" title="Score difference">
+                    <td class="text-center slim" data-label="@SharedLocalizer["ScoreDifference"]">
+                        <span class="label label-default" data-toggle="tooltip" data-placement="top" title="@SharedLocalizer["ScoreDifference"]">
                             @scoring?.ScoreDiff?.ToString("N0")
                         </span>
                     </td>
-                    <td class="text-center slim" data-label="Team B score">
-                        <span class="label label-@labelTeamB" data-toggle="tooltip" data-placement="top" title="Team B score">
+                    <td class="text-center slim" data-label="@SharedLocalizer["TeamBScore"]">
+                        <span class="label label-@labelTeamB" data-toggle="tooltip" data-placement="top" title="@SharedLocalizer["TeamBScore"]">
                             @scoring?.TeamB?.Score.ToString("N0")
                         </span>
                     </td>
@@ -83,9 +86,9 @@
 @foreach (var team in Model.Match.Teams ?? new List<MatchResult.TeamResult>())
 {
     <div class="panel panel-default">
-        <div class="panel-heading">Team @team.Code - Survivor</div>
+        <div class="panel-heading">@SharedLocalizer["Team"] @team.Code - @SharedLocalizer["Survivor"]</div>
         <div class="panel-body">
-            Statistics of team @team.Code playing as survivors
+            @string.Format(SharedLocalizer["TeamStatisticsAsSurvivor"], team.Code)
         </div>
         <table class="table table-striped table-hover table-condensed table-responsive">
             <thead>
@@ -94,11 +97,11 @@
             {
                 <th class="text-center" colspan="2">@player.Name</th>
             }
-            <th class="text-center">Total</th>
+            <th class="text-center">@SharedLocalizer["Total"]</th>
             </thead>
             <tbody>
             <tr>
-                <td>MVP (SI)</td>
+                <td>@SharedLocalizer["MvpSI"]</td>
                 @foreach (var player in team.Players ?? new List<MatchResult.PlayerResult>())
                 {
                     <td class="text-right" data-label="@player.Name">
@@ -108,11 +111,11 @@
                         @player.MvpSiDamagePercentage.ToString("P0")
                     </td>
                 }
-                <td class="text-center" data-label="Total">@team.MvpSiDamage.ToString("N0")</td>
+                <td class="text-center" data-label="@SharedLocalizer["Total"]">@team.MvpSiDamage.ToString("N0")</td>
             </tr>
 
             <tr>
-                <td>MVP (Common)</td>
+                <td>@SharedLocalizer["MvpCommon"]</td>
                 @foreach (var player in team.Players ?? new List<MatchResult.PlayerResult>())
                 {
                     <td class="text-right" data-label="@player.Name">
@@ -122,11 +125,11 @@
                         @player.MvpCommonPercentage.ToString("P0")
                     </td>
                 }
-                <td class="text-center" data-label="Total">@team.MvpCommon.ToString("N0")</td>
+                <td class="text-center" data-label="@SharedLocalizer["Total"]">@team.MvpCommon.ToString("N0")</td>
             </tr>
 
             <tr>
-                <td>LVP (FF)</td>
+                <td>@SharedLocalizer["LvpFf"]</td>
                 @foreach (var player in team.Players ?? new List<MatchResult.PlayerResult>())
                 {
                     <td class="text-right" data-label="@player.Name">
@@ -136,11 +139,11 @@
                         @player.LvpFfGivenPercentage.ToString("P0")
                     </td>
                 }
-                <td class="text-center" data-label="Total">@team.LvpFfGiven.ToString("N0")</td>
+                <td class="text-center" data-label="@SharedLocalizer["Total"]">@team.LvpFfGiven.ToString("N0")</td>
             </tr>
 
             <tr>
-                <td>Deaths</td>
+                <td>@SharedLocalizer["Deaths"]</td>
                 @foreach (var player in team.Players ?? new List<MatchResult.PlayerResult>())
                 {
                     <td class="text-right" data-label="@player.Name">
@@ -150,11 +153,11 @@
                         @player.DiedPercentage.ToString("P0")
                     </td>
                 }
-                <td class="text-center" data-label="Total">@team.Died.ToString("N0")</td>
+                <td class="text-center" data-label="@SharedLocalizer["Total"]">@team.Died.ToString("N0")</td>
             </tr>
 
             <tr>
-                <td>Times incapacitated</td>
+                <td>@SharedLocalizer["TimesIncapacitated"]</td>
                 @foreach (var player in team.Players ?? new List<MatchResult.PlayerResult>())
                 {
                     <td class="text-right" data-label="@player.Name">
@@ -164,11 +167,11 @@
                         @player.IncapsPercentage.ToString("P0")
                     </td>
                 }
-                <td class="text-center" data-label="Total">@team.Incaps.ToString("N0")</td>
+                <td class="text-center" data-label="@SharedLocalizer["Total"]">@team.Incaps.ToString("N0")</td>
             </tr>
 
             <tr>
-                <td>Damage taken</td>
+                <td>@SharedLocalizer["DamageTaken"]</td>
                 @foreach (var player in team.Players ?? new List<MatchResult.PlayerResult>())
                 {
                     <td class="text-right" data-label="@player.Name">
@@ -178,11 +181,11 @@
                         @player.DmgTakenPercentage.ToString("P0")
                     </td>
                 }
-                <td class="text-center" data-label="Total">@team.DmgTaken.ToString("N0")</td>
+                <td class="text-center" data-label="@SharedLocalizer["Total"]">@team.DmgTaken.ToString("N0")</td>
             </tr>
 
             <tr>
-                <td>Commons killed</td>
+                <td>@SharedLocalizer["CommonsKilled"]</td>
                 @foreach (var player in team.Players ?? new List<MatchResult.PlayerResult>())
                 {
                     <td class="text-right" data-label="@player.Name">
@@ -192,11 +195,11 @@
                         @player.CommonPercentage.ToString("P0")
                     </td>
                 }
-                <td class="text-center" data-label="Total">@team.Common.ToString("N0")</td>
+                <td class="text-center" data-label="@SharedLocalizer["Total"]">@team.Common.ToString("N0")</td>
             </tr>
 
             <tr>
-                <td>Special infected killed</td>
+                <td>@SharedLocalizer["SiKilled"]</td>
                 @foreach (var player in team.Players ?? new List<MatchResult.PlayerResult>())
                 {
                     <td class="text-right" data-label="@player.Name">
@@ -206,11 +209,11 @@
                         @player.SiKilledPercentage.ToString("P0")
                     </td>
                 }
-                <td class="text-center" data-label="Total">@team.SiKilled.ToString("N0")</td>
+                <td class="text-center" data-label="@SharedLocalizer["Total"]">@team.SiKilled.ToString("N0")</td>
             </tr>
 
             <tr>
-                <td>Special infected - Damage dealt</td>
+                <td>@SharedLocalizer["SiDamageDealt"]</td>
                 @foreach (var player in team.Players ?? new List<MatchResult.PlayerResult>())
                 {
                     <td class="text-right" data-label="@player.Name">
@@ -220,11 +223,11 @@
                         @player.SiDamagePercentage.ToString("P0")
                     </td>
                 }
-                <td class="text-center" data-label="Total">@team.SiDamage.ToString("N0")</td>
+                <td class="text-center" data-label="@SharedLocalizer["Total"]">@team.SiDamage.ToString("N0")</td>
             </tr>
 
             <tr>
-                <td>Tank - Damage dealt</td>
+                <td>@SharedLocalizer["TankDamageDealt"]</td>
                 @foreach (var player in team.Players ?? new List<MatchResult.PlayerResult>())
                 {
                     <td class="text-right" data-label="@player.Name">
@@ -234,11 +237,11 @@
                         @player.TankDamagePercentage.ToString("P0")
                     </td>
                 }
-                <td class="text-center" data-label="Total">@team.TankDamage.ToString("N0")</td>
+                <td class="text-center" data-label="@SharedLocalizer["Total"]">@team.TankDamage.ToString("N0")</td>
             </tr>
 
             <tr>
-                <td>Tank - Rocks taken</td>
+                <td>@SharedLocalizer["TankRocksTaken"]</td>
                 @foreach (var player in team.Players ?? new List<MatchResult.PlayerResult>())
                 {
                     <td class="text-right" data-label="@player.Name">
@@ -248,11 +251,11 @@
                         @player.RockEatsPercentage.ToString("P0")
                     </td>
                 }
-                <td class="text-center" data-label="Total">@team.RockEats.ToString("N0")</td>
+                <td class="text-center" data-label="@SharedLocalizer["Total"]">@team.RockEats.ToString("N0")</td>
             </tr>
 
             <tr>
-                <td>Skeets</td>
+                <td>@SharedLocalizer["Skeets"]</td>
                 @foreach (var player in team.Players ?? new List<MatchResult.PlayerResult>())
                 {
                     <td class="text-right" data-label="@player.Name">
@@ -262,11 +265,11 @@
                         @player.SkeetsPercentage.ToString("P0")
                     </td>
                 }
-                <td class="text-center" data-label="Total">@team.Skeets.ToString("N0")</td>
+                <td class="text-center" data-label="@SharedLocalizer["Total"]">@team.Skeets.ToString("N0")</td>
             </tr>
 
             <tr>
-                <td>Levels</td>
+                <td>@SharedLocalizer["Levels"]</td>
                 @foreach (var player in team.Players ?? new List<MatchResult.PlayerResult>())
                 {
                     <td class="text-right" data-label="@player.Name">
@@ -276,11 +279,11 @@
                         @player.LevelsPercentage.ToString("P0")
                     </td>
                 }
-                <td class="text-center" data-label="Total">@team.Levels.ToString("N0")</td>
+                <td class="text-center" data-label="@SharedLocalizer["Total"]">@team.Levels.ToString("N0")</td>
             </tr>
 
             <tr>
-                <td>Fire-friend Given (FFG)</td>
+                <td>@SharedLocalizer["FireFriendGiven"]</td>
                 @foreach (var player in team.Players ?? new List<MatchResult.PlayerResult>())
                 {
                     <td class="text-right" data-label="@player.Name">
@@ -290,7 +293,7 @@
                         @player.FfGivenPercentage.ToString("P0")
                     </td>
                 }
-                <td class="text-center" data-label="Total">@team.FfGiven.ToString("N0")</td>
+                <td class="text-center" data-label="@SharedLocalizer["Total"]">@team.FfGiven.ToString("N0")</td>
             </tr>
             </tbody>
         </table>
@@ -300,9 +303,9 @@
 @foreach (var team in Model.Match.Teams ?? new List<MatchResult.TeamResult>())
 {
     <div class="panel panel-default">
-        <div class="panel-heading">Team @team.Code - Infected</div>
+        <div class="panel-heading">@SharedLocalizer["Team"] @team.Code - @SharedLocalizer["Infected"]</div>
         <div class="panel-body">
-            Statistics of team @team.Code playing as infected
+            @string.Format(SharedLocalizer["TeamStatisticsAsInfected"], team.Code)
         </div>
         <table class="table table-striped table-hover table-condensed table-responsive">
             <thead>
@@ -311,11 +314,11 @@
             {
                 <th class="text-center" colspan="2">@player.Name</th>
             }
-            <th class="text-center">Total</th>
+            <th class="text-center">@SharedLocalizer["Total"]</th>
             </thead>
             <tbody>
             <tr>
-                <td>Total damage</td>
+                <td>@SharedLocalizer["TotalDamage"]</td>
                 @foreach (var player in team.Players ?? new List<MatchResult.PlayerResult>())
                 {
                     <td class="text-right" data-label="@player.Name">
@@ -325,11 +328,11 @@
                         @player.DmgTotalPercentage.ToString("P0")
                     </td>
                 }
-                <td class="text-center" data-label="Total">@team.DmgTotal.ToString("N0")</td>
+                <td class="text-center" data-label="@SharedLocalizer["Total"]">@team.DmgTotal.ToString("N0")</td>
             </tr>
 
             <tr>
-                <td>Tank - Damage dealt</td>
+                <td>@SharedLocalizer["TankDamageDealt"]</td>
                 @foreach (var player in team.Players ?? new List<MatchResult.PlayerResult>())
                 {
                     <td class="text-right" data-label="@player.Name">
@@ -339,11 +342,11 @@
                         @player.DmgTankPercentage.ToString("P0")
                     </td>
                 }
-                <td class="text-center" data-label="Total">@team.DmgTank.ToString("N0")</td>
+                <td class="text-center" data-label="@SharedLocalizer["Total"]">@team.DmgTank.ToString("N0")</td>
             </tr>
 
             <tr>
-                <td>Damage - Spitter</td>
+                <td>@SharedLocalizer["DamageSpitter"]</td>
                 @foreach (var player in team.Players ?? new List<MatchResult.PlayerResult>())
                 {
                     <td class="text-right" data-label="@player.Name">
@@ -353,11 +356,11 @@
                         @player.DmgSpitPercentage.ToString("P0")
                     </td>
                 }
-                <td class="text-center" data-label="Total">@team.DmgSpit.ToString("N0")</td>
+                <td class="text-center" data-label="@SharedLocalizer["Total"]">@team.DmgSpit.ToString("N0")</td>
             </tr>
 
             <tr>
-                <td>Hunter - Pounce damage</td>
+                <td>@SharedLocalizer["HunterPounceDamage"]</td>
                 @foreach (var player in team.Players ?? new List<MatchResult.PlayerResult>())
                 {
                     <td class="text-right" data-label="@player.Name">
@@ -367,7 +370,7 @@
                         @player.HunterDpDmgPercentage.ToString("P0")
                     </td>
                 }
-                <td class="text-center" data-label="Total">@team.HunterDpDmg.ToString("N0")</td>
+                <td class="text-center" data-label="@SharedLocalizer["Total"]">@team.HunterDpDmg.ToString("N0")</td>
             </tr>
             </tbody>
         </table>

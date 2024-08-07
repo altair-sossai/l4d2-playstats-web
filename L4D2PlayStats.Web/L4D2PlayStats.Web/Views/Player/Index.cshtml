@@ -1,7 +1,10 @@
 ﻿@using L4D2PlayStats.Infrastructure.Extensions
 @using L4D2PlayStats.UserAvatar
+@using L4D2PlayStats.Web
+@using Microsoft.Extensions.Localization
 @model L4D2PlayStats.Web.Models.PlayerDetailsModel
 @inject IUserAvatar UserAvatar
+@inject IStringLocalizer<SharedResource> SharedLocalizer
 
 @{
     var firstPlayerRanking = Model.FirstPlayerRanking;
@@ -53,7 +56,7 @@
     </style>
 }
 
-<h4 class="text-center">Player details</h4>
+<h4 class="text-center">@SharedLocalizer["PlayerDetails"]</h4>
 
 <div class="row">
 <div class="col-xs-2 left-side text-center">
@@ -78,7 +81,7 @@
 
     <div class="dropdown">
         <button class="btn btn-default btn-sm btn-block dropdown-toggle second" type="button" data-toggle="dropdown">
-            @(secondPlayer?.Name?.Truncate(10) ?? "Compare...")
+            @(secondPlayer?.Name?.Truncate(10) ?? SharedLocalizer["Compare"])
             <span class="caret"></span>
         </button>
         <ul class="dropdown-menu">
@@ -101,14 +104,14 @@
 
 <div class="panel panel-default">
     <div class="panel-heading">
-        General statistics
+        @SharedLocalizer["GeneralStatistics"]
     </div>
 
     <table class="table table-hover table-condensed table-responsive">
         <tbody>
         <tr>
-            <th>Ranking:</th>
-            <td data-label="Ranking:">
+            <th>@SharedLocalizer["Ranking"]:</th>
+            <td data-label="@SharedLocalizer["Ranking"]:">
                 #@firstPlayer.Position.ToString("N0")
                 @if (secondPlayer != null)
                 {
@@ -117,8 +120,8 @@
                 }
             </td>
 
-            <th>Steam ID:</th>
-            <td data-label="Steam ID:" colspan="3">
+            <th>@SharedLocalizer["SteamId"]:</th>
+            <td data-label="@SharedLocalizer["SteamId"]:" colspan="3">
                 @firstPlayer.SteamId
                 @if (secondPlayer != null)
                 {
@@ -128,8 +131,8 @@
             </td>
         </tr>
         <tr>
-            <th>Name:</th>
-            <td data-label="Name:">
+            <th>@SharedLocalizer["Name"]:</th>
+            <td data-label="@SharedLocalizer["Name"]:">
                 @firstPlayer.Name
                 @if (secondPlayer != null)
                 {
@@ -138,8 +141,8 @@
                 }
             </td>
 
-            <th>Profile URL:</th>
-            <td data-label="Profile URL:" colspan="3">
+            <th>@SharedLocalizer["ProfileUrl"]:</th>
+            <td data-label="@SharedLocalizer["ProfileUrl"]:" colspan="3">
                 @firstPlayer.ProfileUrl
                 @if (secondPlayer != null)
                 {
@@ -149,8 +152,8 @@
             </td>
         </tr>
         <tr class="hide-mobile">
-            <th class=" vertical-align-middle">Patent:</th>
-            <td class="vertical-align-middle" data-label="Patent:">
+            <th class="vertical-align-middle">@SharedLocalizer["Patent"]:</th>
+            <td class="vertical-align-middle" data-label="@SharedLocalizer["Patent"]:">
                 <img src="@firstPlayerPatent.Image" alt="@firstPlayerPatent.FullName" data-toggle="tooltip" data-placement="top" title="@firstPlayer.Name - @firstPlayerPatent.FullName" style="width: 32px"/>
                 @if (secondPlayer != null && secondPlayerPatent != null)
                 {
@@ -162,26 +165,26 @@
             <th class="vertical-align-middle">XP:</th>
             <td class="text-center vertical-align-middle" data-label="XP:" colspan="3">
                 <div class="progress" data-toggle="tooltip" data-placement="top" data-html="true" title="@firstPlayer.Name - @firstPlayerPatentProgress.Tooltip">
-                    <div class="progress-bar progress-bar-@firstPlayerPatentProgress.ProgressBarType" role="progressbar" style="width: @firstPlayerPatentProgress.ProgressBarWidth%;">
+                    <div class="progress-bar progress-bar-@firstPlayerPatentProgress.ProgressBarType" role="progressbar" style="width: @firstPlayerPatentProgress.ProgressBarWidth;">
                     </div>
-                    <div class="progress-bar progress-bar-@firstPlayerPatentProgress.PreviousExperienceProgressBarType" role="progressbar" style="width: @firstPlayerPatentProgress.PreviousExperienceProgressBarWidth%;">
+                    <div class="progress-bar progress-bar-@firstPlayerPatentProgress.PreviousExperienceProgressBarType" role="progressbar" style="width: @firstPlayerPatentProgress.PreviousExperienceProgressBarWidth;">
                     </div>
                 </div>
                 @if (secondPlayer != null && secondPlayerPatentProgress != null)
                 {
                     <p></p>
                     <div class="progress" data-toggle="tooltip" data-placement="top" data-html="true" title="@secondPlayer.Name - @secondPlayerPatentProgress.Tooltip">
-                        <div class="progress-bar progress-bar-@secondPlayerPatentProgress.ProgressBarType" role="progressbar" style="width: @secondPlayerPatentProgress.ProgressBarWidth%;">
+                        <div class="progress-bar progress-bar-@secondPlayerPatentProgress.ProgressBarType" role="progressbar" style="width: @secondPlayerPatentProgress.ProgressBarWidth;">
                         </div>
-                        <div class="progress-bar progress-bar-@secondPlayerPatentProgress.PreviousExperienceProgressBarType" role="progressbar" style="width: @secondPlayerPatentProgress.PreviousExperienceProgressBarWidth%;">
+                        <div class="progress-bar progress-bar-@secondPlayerPatentProgress.PreviousExperienceProgressBarType" role="progressbar" style="width: @secondPlayerPatentProgress.PreviousExperienceProgressBarWidth;">
                         </div>
                     </div>
                 }
             </td>
         </tr>
         <tr>
-            <th>Games:</th>
-            <td data-label="Games:">
+            <th>@SharedLocalizer["Games"]:</th>
+            <td data-label="@SharedLocalizer["Games"]:">
                 @firstPlayer.Games.ToString("N0")
                 @if (secondPlayer != null)
                 {
@@ -189,8 +192,8 @@
                     <span class="second">@secondPlayer.Games.ToString("N0")</span>
                 }
             </td>
-            <th>Wins:</th>
-            <td data-label="Wins:">
+            <th>@SharedLocalizer["Wins"]:</th>
+            <td data-label="@SharedLocalizer["Wins"]:">
                 @firstPlayer.Wins.ToString("N0")
                 @if (secondPlayer != null)
                 {
@@ -198,8 +201,8 @@
                     <span class="second">@secondPlayer.Wins.ToString("N0")</span>
                 }
             </td>
-            <th>Rage quit:</th>
-            <td data-label="Rage quit:">
+            <th>@SharedLocalizer["RageQuit"]:</th>
+            <td data-label="@SharedLocalizer["RageQuit"]:">
                 @firstPlayer.RageQuit.ToString("N0")
                 @if (secondPlayer != null)
                 {
@@ -209,8 +212,8 @@
             </td>
         </tr>
         <tr>
-            <th>Win rate:</th>
-            <td data-label="Win rate:">
+            <th>@SharedLocalizer["WinRate"]:</th>
+            <td data-label="@SharedLocalizer["WinRate"]:">
                 @firstPlayer.WinRate.ToString("P0")
                 @if (secondPlayer != null)
                 {
@@ -218,8 +221,8 @@
                     <span class="second">@secondPlayer.WinRate.ToString("P0")</span>
                 }
             </td>
-            <th>Loss:</th>
-            <td data-label="Loss:" colspan="3">
+            <th>@SharedLocalizer["Loss"]:</th>
+            <td data-label="@SharedLocalizer["Loss"]:" colspan="3">
                 @firstPlayer.Loss.ToString("N0")
                 @if (secondPlayer != null)
                 {
@@ -236,13 +239,13 @@
 
 <div class="panel panel-default">
     <div class="panel-heading">
-        Statistics as survivor
+        @SharedLocalizer["StatisticsAsSurvivor"]
     </div>
     <table class="table table-hover table-condensed table-responsive">
         <tbody>
         <tr>
-            <th>MVP SI:</th>
-            <td data-label="MVP SI:">
+            <th>@SharedLocalizer["MvpSI"]:</th>
+            <td data-label="@SharedLocalizer["MvpSI"]:">
                 @firstPlayer.MvpSiDamage.ToString("N0")
                 @if (secondPlayer != null)
                 {
@@ -250,8 +253,8 @@
                     <span class="second">@secondPlayer.MvpSiDamage.ToString("N0")</span>
                 }
             </td>
-            <th>MVP CI:</th>
-            <td data-label="MVP CI:">
+            <th>@SharedLocalizer["MvpCI"]:</th>
+            <td data-label="@SharedLocalizer["MvpCI"]:">
                 @firstPlayer.MvpCommon.ToString("N0")
                 @if (secondPlayer != null)
                 {
@@ -259,8 +262,8 @@
                     <span class="second">@secondPlayer.MvpCommon.ToString("N0")</span>
                 }
             </td>
-            <th>LVP:</th>
-            <td data-label="LVP:">
+            <th>@SharedLocalizer["Lvp"]:</th>
+            <td data-label="@SharedLocalizer["Lvp"]:">
                 @firstPlayer.LvpFfGiven.ToString("N0")
                 @if (secondPlayer != null)
                 {
@@ -271,8 +274,8 @@
         </tr>
 
         <tr>
-            <th>SI killed:</th>
-            <td data-label="SI killed:">
+            <th>@SharedLocalizer["SiKilled"]:</th>
+            <td data-label="@SharedLocalizer["SiKilled"]:">
                 @firstPlayer.SiKilled.ToString("N0")
                 @if (secondPlayer != null)
                 {
@@ -280,8 +283,8 @@
                     <span class="second">@secondPlayer.SiKilled.ToString("N0")</span>
                 }
             </td>
-            <th>Commons:</th>
-            <td data-label="Commons:">
+            <th>@SharedLocalizer["Commons"]:</th>
+            <td data-label="@SharedLocalizer["Commons"]:">
                 @firstPlayer.Common.ToString("N0")
                 @if (secondPlayer != null)
                 {
@@ -289,8 +292,8 @@
                     <span class="second">@secondPlayer.Common.ToString("N0")</span>
                 }
             </td>
-            <th>SI Damage:</th>
-            <td data-label="SI Damage:">
+            <th>@SharedLocalizer["SiDamage"]:</th>
+            <td data-label="@SharedLocalizer["SiDamage"]:">
                 @firstPlayer.SiDamage.ToString("N0")
                 @if (secondPlayer != null)
                 {
@@ -301,8 +304,8 @@
         </tr>
 
         <tr>
-            <th>Deaths:</th>
-            <td data-label="Deaths:">
+            <th>@SharedLocalizer["Deaths"]:</th>
+            <td data-label="@SharedLocalizer["Deaths"]:">
                 @firstPlayer.Died.ToString("N0")
                 @if (secondPlayer != null)
                 {
@@ -310,8 +313,8 @@
                     <span class="second">@secondPlayer.Died.ToString("N0")</span>
                 }
             </td>
-            <th>Times incap.:</th>
-            <td data-label="Times incap.:">
+            <th>@SharedLocalizer["TimesIncap"]:</th>
+            <td data-label="@SharedLocalizer["TimesIncap"]:">
                 @firstPlayer.Incaps.ToString("N0")
                 @if (secondPlayer != null)
                 {
@@ -319,8 +322,8 @@
                     <span class="second">@secondPlayer.Incaps.ToString("N0")</span>
                 }
             </td>
-            <th>Damage taken:</th>
-            <td data-label="Damage taken:">
+            <th>@SharedLocalizer["DamageTaken"]:</th>
+            <td data-label="@SharedLocalizer["DamageTaken"]:">
                 @firstPlayer.DmgTaken.ToString("N0")
                 @if (secondPlayer != null)
                 {
@@ -331,8 +334,8 @@
         </tr>
 
         <tr>
-            <th>Tank damage:</th>
-            <td data-label="Tank damage:">
+            <th>@SharedLocalizer["TankDamage"]:</th>
+            <td data-label="@SharedLocalizer["TankDamage"]:">
                 @firstPlayer.TankDamage.ToString("N0")
                 @if (secondPlayer != null)
                 {
@@ -340,8 +343,8 @@
                     <span class="second">@secondPlayer.TankDamage.ToString("N0")</span>
                 }
             </td>
-            <th>Skeets:</th>
-            <td data-label="Skeets:">
+            <th>@SharedLocalizer["Skeets"]:</th>
+            <td data-label="@SharedLocalizer["Skeets"]:">
                 @firstPlayer.Skeets.ToString("N0")
                 @if (secondPlayer != null)
                 {
@@ -349,8 +352,8 @@
                     <span class="second">@secondPlayer.Skeets.ToString("N0")</span>
                 }
             </td>
-            <th>Levels:</th>
-            <td data-label="Levels:">
+            <th>@SharedLocalizer["Levels"]:</th>
+            <td data-label="@SharedLocalizer["Levels"]:">
                 @firstPlayer.Levels.ToString("N0")
                 @if (secondPlayer != null)
                 {
@@ -361,8 +364,8 @@
         </tr>
 
         <tr>
-            <th>Rocks eats:</th>
-            <td data-label="Rocks eats:">
+            <th>@SharedLocalizer["RocksEats"]:</th>
+            <td data-label="@SharedLocalizer["RocksEats"]:">
                 @firstPlayer.RockEats.ToString("N0")
                 @if (secondPlayer != null)
                 {
@@ -370,8 +373,8 @@
                     <span class="second">@secondPlayer.RockEats.ToString("N0")</span>
                 }
             </td>
-            <th>FF Given:</th>
-            <td data-label="FF Given:">
+            <th>@SharedLocalizer["FfGiven"]:</th>
+            <td data-label="@SharedLocalizer["FfGiven"]:">
                 @firstPlayer.FfGiven.ToString("N0")
                 @if (secondPlayer != null)
                 {
@@ -388,13 +391,13 @@
 
 <div class="panel panel-default">
     <div class="panel-heading">
-        Statistics as infected
+        @SharedLocalizer["StatisticsAsInfected"]
     </div>
     <table class="table table-hover table-condensed table-responsive">
         <tbody>
         <tr>
-            <th>Total damage:</th>
-            <td data-label="Total damage:">
+            <th>@SharedLocalizer["TotalDamage"]:</th>
+            <td data-label="@SharedLocalizer["TotalDamage"]:">
                 @firstPlayer.DmgTotal.ToString("N0")
                 @if (secondPlayer != null)
                 {
@@ -403,8 +406,8 @@
                 }
             </td>
 
-            <th>Tank - Damage dealt:</th>
-            <td data-label="Tank - Damage dealt:">
+            <th>@SharedLocalizer["TankDamageDealt"]:</th>
+            <td data-label="@SharedLocalizer["TankDamageDealt"]:">
                 @firstPlayer.DmgTank.ToString("N0")
                 @if (secondPlayer != null)
                 {
@@ -415,8 +418,8 @@
         </tr>
 
         <tr>
-            <th>Damage - Spitter:</th>
-            <td data-label="Damage - Spitter:">
+            <th>@SharedLocalizer["DamageSpitter"]:</th>
+            <td data-label="@SharedLocalizer["DamageSpitter"]:">
                 @firstPlayer.DmgSpit.ToString("N0")
                 @if (secondPlayer != null)
                 {
@@ -425,8 +428,8 @@
                 }
             </td>
 
-            <th>Hunter - Pounce damage:</th>
-            <td data-label="Hunter - Pounce damage:">
+            <th>@SharedLocalizer["HunterPounceDamage"]:</th>
+            <td data-label="@SharedLocalizer["HunterPounceDamage"]:">
                 @firstPlayer.HunterDpDmg.ToString("N0")
                 @if (secondPlayer != null)
                 {

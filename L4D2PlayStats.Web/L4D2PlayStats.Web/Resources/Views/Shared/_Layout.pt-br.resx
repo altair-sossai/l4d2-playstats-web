@@ -117,17 +117,8 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="LastMatches" xml:space="preserve">
-    <value>Últimas partidas</value>
-  </data>
-  <data name="PatentSystem" xml:space="preserve">
-    <value>Sistema de patentes</value>
-  </data>
-  <data name="Ranking" xml:space="preserve">
-    <value>Ranking</value>
-  </data>
-  <data name="ServersInfo" xml:space="preserve">
-    <value>Informações dos servidores</value>
+  <data name="ServerName" xml:space="preserve">
+    <value>Cobra 4 Gaming</value>
   </data>
   <data name="ToggleNavigation" xml:space="preserve">
     <value>Alternar navegação</value>

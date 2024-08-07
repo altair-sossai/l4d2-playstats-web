@@ -22,14 +22,14 @@
             </div>
             <div class="col-xs-4 text-right">
                 <p data-toggle="tooltip" data-placement="top" title="@Localizer["GameOccurrenceDateTime"]">
-                    <img src="~/imgs/icons/calendar.png" alt="@SharedLocalizer["Calendar"]" class="icon" />
+                    <img src="~/imgs/icons/calendar.png" alt="@SharedLocalizer["Calendar"]" class="icon"/>
                     @string.Format(Localizer["MatchStartDateTime"].Value, Model.MatchStart)
                 </p>
 
                 @if (Model.MatchElapsed.HasValue)
                 {
                     <p data-toggle="tooltip" data-placement="top" title="@Localizer["GameDurationInHours"]">
-                        <img src="~/imgs/icons/clock.png" alt="Clock" class="icon"/>
+                        <img src="~/imgs/icons/clock.png" alt="@SharedLocalizer["Clock"]" class="icon"/>
                         @Model.MatchElapsed.Value.ToString(@"hh\:mm\:ss")
                     </p>
                 }
@@ -56,7 +56,7 @@
                                 <div class="panel-heading bold" style="padding: 3px 15px">
                                     <div class="row">
                                         <div class="col-xs-6">
-                                            Team @team.Code
+                                            @SharedLocalizer["Team"] @team.Code
                                         </div>
                                         <div class="col-xs-6 text-right">
                                             @team.Score.ToString("N0")
@@ -82,12 +82,12 @@
                                                     @Html.ActionLink(player.Name?.Truncate(30) ?? "-", "Index", "Player", new { communityId = player.CommunityId })
                                                     @for (var i = 0; i < player.MvpSiDamage; i++)
                                                     {
-                                                        <img src="~/imgs/icons/star.png" alt="Star" class="icon" data-toggle="tooltip" data-placement="top" title="MVP SI"/>
+                                                        <img src="~/imgs/icons/star.png" alt="@SharedLocalizer["Star"]" class="icon" data-toggle="tooltip" data-placement="top" title="@SharedLocalizer["MvpSI"]"/>
                                                     }
 
                                                     @for (var i = 0; i < player.MvpCommon; i++)
                                                     {
-                                                        <img src="~/imgs/icons/star-blue.png" alt="Star" class="icon" data-toggle="tooltip" data-placement="top" title="MVP CI"/>
+                                                        <img src="~/imgs/icons/star-blue.png" alt="@SharedLocalizer["Star"]" class="icon" data-toggle="tooltip" data-placement="top" title="@SharedLocalizer["MvpCI"]"/>
                                                     }
                                                 </td>
                                             </tr>

@@ -127,6 +127,6 @@
     <value>{0:d} às {0:t}</value>
   </data>
   <data name="TeamWonByPoints" xml:space="preserve">
-    <value>O time {0} venceu por {1:N0} pontos</value>
+    <value>A equipe {0} venceu por {1:N0} pontos</value>
   </data>
 </root>

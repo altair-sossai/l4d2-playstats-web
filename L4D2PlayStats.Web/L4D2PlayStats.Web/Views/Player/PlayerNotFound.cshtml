@@ -1,14 +1,18 @@
-﻿<div class="jumbotron text-center" style="margin-top: 20px">
-    <h2>Player Not Found</h2>
+﻿@using L4D2PlayStats.Web
+@using Microsoft.Extensions.Localization
+@inject IStringLocalizer<SharedResource> SharedLocalizer
+
+<div class="jumbotron text-center" style="margin-top: 20px">
+    <h2>@SharedLocalizer["PlayerNotFoundTitle"]</h2>
 
     <p>
-        The player you are looking for is not present in the ranking.
+        @SharedLocalizer["PlayerNotFoundMessage"]
     </p>
     <p>
-        Unfortunately, we cannot display the details of the requested player.
+        @SharedLocalizer["PlayerNotFoundDetails"]
     </p>
 
     <a href="@Url.Action("Index", "Ranking")" class="btn btn-primary">
-        Return to ranking page
+        @SharedLocalizer["ReturnToRanking"]
     </a>
 </div>

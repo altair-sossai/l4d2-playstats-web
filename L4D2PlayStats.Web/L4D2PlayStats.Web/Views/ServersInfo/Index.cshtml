@@ -1,5 +1,9 @@
-﻿@model List<L4D2PlayStats.Web.Models.ServerInfoModel>
-<h4 class="text-center">Servers info</h4>
+﻿@using L4D2PlayStats.Web
+@using Microsoft.Extensions.Localization
+@model List<L4D2PlayStats.Web.Models.ServerInfoModel>
+@inject IStringLocalizer<SharedResource> SharedLocalizer
+
+<h4 class="text-center">@SharedLocalizer["ServersInfo"]</h4>
 
 @foreach (var server in Model)
 {
@@ -16,26 +20,26 @@
             @if (server.ServersInfo != null)
             {
                 <tr>
-                    <th class="slim text-right">Server IP:</th>
-                    <td style="padding-left: 10px;" data-label="Server IP:">@server.ServerIp</td>
+                    <th class="slim text-right">@SharedLocalizer["ServerIP"]:</th>
+                    <td style="padding-left: 10px;" data-label="@SharedLocalizer["ServerIP"]:">@server.ServerIp</td>
 
-                    <th class="slim">Players:</th>
-                    <td data-label="Players:">@server.ServersInfo.Players?.ToString("N0") / @server.ServersInfo.MaxPlayers?.ToString("N0")</td>
+                    <th class="slim">@SharedLocalizer["Players"]:</th>
+                    <td data-label="@SharedLocalizer["Players"]:">@server.ServersInfo.Players?.ToString("N0") / @server.ServersInfo.MaxPlayers?.ToString("N0")</td>
 
-                    <th class="slim">Map:</th>
-                    <td data-label="Map:">@server.ServersInfo.Map</td>
+                    <th class="slim">@SharedLocalizer["Map"]:</th>
+                    <td data-label="@SharedLocalizer["Map"]:">@server.ServersInfo.Map</td>
                 </tr>
             }
             @if (server.Players != null && server.Players.Any())
             {
                 <tr>
-                    <th class="slim">Connected players:</th>
-                    <td colspan="5" data-label="Connected players:" style="margin: 0; padding: 0; padding-left: 10px;">
+                    <th class="slim">@SharedLocalizer["ConnectedPlayers"]:</th>
+                    <td colspan="5" data-label="@SharedLocalizer["ConnectedPlayers"]:" style="margin: 0; padding: 0; padding-left: 10px;">
                         <table class="table table-condensed table-responsive table-striped table-hover" style="margin: 0; padding: 0">
                             <thead>
                             <tr>
-                                <th>Player name</th>
-                                <th class="text-center slim hide-mobile">Time</th>
+                                <th>@SharedLocalizer["PlayerName"]</th>
+                                <th class="text-center slim hide-mobile">@SharedLocalizer["Time"]</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -44,8 +48,8 @@
                                 @foreach (var player in server.Players.OrderByDescending(p => p.Duration))
                                 {
                                     <tr>
-                                        <td data-label="Player name:">@player.Name</td>
-                                        <td data-label="Time:" class="text-center hide-mobile">@player.DurationTimeSpan.ToString(@"hh\:mm\:ss")</td>
+                                        <td data-label="@SharedLocalizer["PlayerName"]:">@player.Name</td>
+                                        <td data-label="@SharedLocalizer["Time"]:" class="text-center hide-mobile">@player.DurationTimeSpan.ToString(@"hh\:mm\:ss")</td>
                                     </tr>
                                 }
                             }
@@ -57,7 +61,7 @@
             else
             {
                 <tr>
-                    <td colspan="6" class="text-center">No players connected</td>
+                    <td colspan="6" class="text-center">@SharedLocalizer["NoPlayersConnected"]</td>
                 </tr>
             }
             </tbody>

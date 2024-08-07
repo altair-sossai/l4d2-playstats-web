@@ -1,17 +1,22 @@
-﻿@model L4D2PlayStats.Web.Models.PatentModel;
+﻿@using L4D2PlayStats.Web
+@using Microsoft.AspNetCore.Mvc.Localization
+@using Microsoft.Extensions.Localization
+@model L4D2PlayStats.Web.Models.PatentModel
+@inject IViewLocalizer Localizer
+@inject IStringLocalizer<SharedResource> SharedLocalizer
 
-<h4 class="text-center">Patent system</h4>
+<h4 class="text-center">@SharedLocalizer["PatentSystem"]</h4>
 
 <div class="panel panel-default">
     <div class="panel-heading">
-        <h3 class="panel-title">Understanding the patent system</h3>
+        <h3 class="panel-title">@Localizer["UnderstandingPatentSystem"]</h3>
     </div>
     <div class="panel-body">
-        <p>The patent system in our service takes into account the amount of XP that the player has earned during the games of the last <b>@Model.Config.DaysRange.ToString("N0")</b> days.</p>
         <p>
-            Each victory awards the player <b>@Model.Config.Win.ToString("N0")</b> XP points, while losses cause the player to lose <b>@Math.Abs(Model.Config.Loss).ToString("N0")</b> XP points.
-            An MVP SI title grants the player an additional <b>@Model.Config.Mvps.ToString("N0")</b> XP points, and an MVP CI title grants an additional <b>@Model.Config.MvpsCommon.ToString("N0")</b> XP points.
-            Rage quit result in a loss of <b>@Model.Config.RageQuit.ToString("N0")</b> XP points.
+            @Html.Raw(string.Format(Localizer["PatentSystemDescription1"].Value, Model.Config.DaysRange))
+        </p>
+        <p>
+            @Html.Raw(string.Format(Localizer["PatentSystemDescription2"].Value, Model.Config.Win, Math.Abs(Model.Config.Loss), Model.Config.Mvps, Model.Config.MvpsCommon, Model.Config.RageQuit))
         </p>
     </div>
 </div>
@@ -19,9 +24,9 @@
 <table class="table table-striped table-hover table-bordered table-condensed">
     <thead>
     <tr>
-        <th class="text-center">Level</th>
-        <th colspan="2">Description</th>
-        <th class="text-center">Experience required</th>
+        <th class="text-center">@Localizer["Level"]</th>
+        <th colspan="2">@Localizer["Description"]</th>
+        <th class="text-center">@Localizer["ExperienceRequired"]</th>
     </tr>
     </thead>
     <tbody>
@@ -36,7 +41,7 @@
                 @patent.Name
             </td>
             <td class="text-center vertical-align-middle">
-                @patent.Experience.ToString("N0")
+                @($"{patent.Experience:N0}")
             </td>
         </tr>
     }
@@ -45,15 +50,15 @@
 
 <div class="panel panel-default">
     <div class="panel-heading">
-        <h3 class="panel-title">XP Points Breakdown</h3>
+        <h3 class="panel-title">@Localizer["XPBreakdownTitle"]</h3>
     </div>
     <div class="panel-body">
         <ul>
-            <li>Victory: +@Model.Config.Win.ToString("N0") XP points</li>
-            <li>Defeat: @Model.Config.Loss.ToString("N0") XP points</li>
-            <li>MVP SI: +@Model.Config.Mvps.ToString("N0") XP points</li>
-            <li>MVP CI: +@Model.Config.MvpsCommon.ToString("N0") XP points</li>
-            <li>Rage quit: @Model.Config.RageQuit.ToString("N0") XP points</li>
+            <li>@string.Format(Localizer["VictoryXPPoints"].Value, Model.Config.Win)</li>
+            <li>@string.Format(Localizer["DefeatXPPoints"].Value, Model.Config.Loss)</li>
+            <li>@string.Format(Localizer["MVPSIPoints"].Value, Model.Config.Mvps)</li>
+            <li>@string.Format(Localizer["MVPCIPoints"].Value, Model.Config.MvpsCommon)</li>
+            <li>@string.Format(Localizer["RageQuitXPPoints"].Value, Model.Config.RageQuit)</li>
         </ul>
     </div>
 </div>

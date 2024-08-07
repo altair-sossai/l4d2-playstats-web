@@ -22,8 +22,10 @@
     <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
         <value>[base64 mime encoded serialized .NET Framework object]</value>
     </data>
-    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing"
+  mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework
+  object]</value>
         <comment>This is a comment</comment>
     </data>
                 
@@ -59,7 +61,8 @@
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
-  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
     <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
@@ -112,15 +115,263 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0,
+      Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0,
+      Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Calendar" xml:space="preserve">
     <value>Calendar</value>
   </data>
   <data name="Details" xml:space="preserve">
     <value>Details</value>
+  </data>
+  <data name="Maps" xml:space="preserve">
+    <value>Maps</value>
+  </data>
+  <data name="MatchDetails" xml:space="preserve">
+    <value>Match details</value>
+  </data>
+  <data name="NoMatchFound" xml:space="preserve">
+    <value>No match found</value>
+  </data>
+  <data name="MatchStatsTitle" xml:space="preserve">
+    <value>Map results</value>
+  </data>
+  <data name="Team" xml:space="preserve">
+    <value>Team</value>
+  </data>
+  <data name="Survivor" xml:space="preserve">
+    <value>Survivor</value>
+  </data>
+  <data name="TeamStatisticsAsSurvivor" xml:space="preserve">
+    <value>Statistics of team {0} playing as survivors</value>
+  </data>
+  <data name="Infected" xml:space="preserve">
+    <value>Infected</value>
+  </data>
+  <data name="TeamStatisticsAsInfected" xml:space="preserve">
+    <value>Statistics of team {0} playing as infected</value>
+  </data>
+  <data name="Start" xml:space="preserve">
+    <value>Start</value>
+  </data>
+  <data name="End" xml:space="preserve">
+    <value>End</value>
+  </data>
+  <data name="Elapsed" xml:space="preserve">
+    <value>Elapsed</value>
+  </data>
+  <data name="Map" xml:space="preserve">
+    <value>Map</value>
+  </data>
+  <data name="Scoreboard" xml:space="preserve">
+    <value>Scoreboard</value>
+  </data>
+  <data name="TeamAScore" xml:space="preserve">
+    <value>Team A score</value>
+  </data>
+  <data name="ScoreDifference" xml:space="preserve">
+    <value>Score difference</value>
+  </data>
+  <data name="TeamBScore" xml:space="preserve">
+    <value>Team B score</value>
+  </data>
+  <data name="MvpCommon" xml:space="preserve">
+    <value>MVP (Common)</value>
+  </data>
+  <data name="LvpFf" xml:space="preserve">
+    <value>LVP (FF)</value>
+  </data>
+  <data name="Deaths" xml:space="preserve">
+    <value>Deaths</value>
+  </data>
+  <data name="TimesIncapacitated" xml:space="preserve">
+    <value>Times incapacitated</value>
+  </data>
+  <data name="DamageTaken" xml:space="preserve">
+    <value>Damage taken</value>
+  </data>
+  <data name="CommonsKilled" xml:space="preserve">
+    <value>Commons killed</value>
+  </data>
+  <data name="SiKilled" xml:space="preserve">
+    <value>SI - killed</value>
+  </data>
+  <data name="SiDamageDealt" xml:space="preserve">
+    <value>SI - Damage dealt</value>
+  </data>
+  <data name="TankDamageDealt" xml:space="preserve">
+    <value>Tank - Damage dealt</value>
+  </data>
+  <data name="TankRocksTaken" xml:space="preserve">
+    <value>Tank - Rocks taken</value>
+  </data>
+  <data name="Skeets" xml:space="preserve">
+    <value>Skeets</value>
+  </data>
+  <data name="Levels" xml:space="preserve">
+    <value>Levels</value>
+  </data>
+  <data name="FireFriendGiven" xml:space="preserve">
+    <value>Fire-friend Given (FFG)</value>
+  </data>
+  <data name="TotalDamage" xml:space="preserve">
+    <value>Total damage</value>
+  </data>
+  <data name="DamageSpitter" xml:space="preserve">
+    <value>Damage - Spitter</value>
+  </data>
+  <data name="HunterPounceDamage" xml:space="preserve">
+    <value>Hunter - Pounce damage</value>
+  </data>
+  <data name="Total" xml:space="preserve">
+    <value>Total</value>
+  </data>
+  <data name="LastMatches" xml:space="preserve">
+    <value>Last matches</value>
+  </data>
+  <data name="PlayerDetails" xml:space="preserve">
+    <value>Player details</value>
+  </data>
+  <data name="GeneralStatistics" xml:space="preserve">
+    <value>General statistics</value>
+  </data>
+  <data name="Ranking" xml:space="preserve">
+    <value>Ranking</value>
+  </data>
+  <data name="SteamId" xml:space="preserve">
+    <value>Steam ID</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="ProfileUrl" xml:space="preserve">
+    <value>Profile URL</value>
+  </data>
+  <data name="Patent" xml:space="preserve">
+    <value>Patent</value>
+  </data>
+  <data name="Games" xml:space="preserve">
+    <value>Games</value>
+  </data>
+  <data name="Wins" xml:space="preserve">
+    <value>Wins</value>
+  </data>
+  <data name="RageQuit" xml:space="preserve">
+    <value>Rage quit</value>
+  </data>
+  <data name="WinRate" xml:space="preserve">
+    <value>Win rate</value>
+  </data>
+  <data name="Loss" xml:space="preserve">
+    <value>Loss</value>
+  </data>
+  <data name="StatisticsAsSurvivor" xml:space="preserve">
+    <value>Statistics as survivor</value>
+  </data>
+  <data name="MvpCI" xml:space="preserve">
+    <value>MVP CI</value>
+  </data>
+  <data name="Lvp" xml:space="preserve">
+    <value>LVP</value>
+  </data>
+  <data name="Commons" xml:space="preserve">
+    <value>Commons</value>
+  </data>
+  <data name="SiDamage" xml:space="preserve">
+    <value>SI Damage</value>
+  </data>
+  <data name="TimesIncap" xml:space="preserve">
+    <value>Times incap.</value>
+  </data>
+  <data name="TankDamage" xml:space="preserve">
+    <value>Tank damage</value>
+  </data>
+  <data name="RocksEats" xml:space="preserve">
+    <value>Rocks eats</value>
+  </data>
+  <data name="FfGiven" xml:space="preserve">
+    <value>FF Given</value>
+  </data>
+  <data name="StatisticsAsInfected" xml:space="preserve">
+    <value>Statistics as infected</value>
+  </data>
+  <data name="Compare" xml:space="preserve">
+    <value>Compare...</value>
+  </data>
+  <data name="PlayerNotFoundTitle" xml:space="preserve">
+    <value>Player Not Found</value>
+  </data>
+  <data name="PlayerNotFoundMessage" xml:space="preserve">
+    <value>The player you are looking for is not present in the ranking.</value>
+  </data>
+  <data name="PlayerNotFoundDetails" xml:space="preserve">
+    <value>Unfortunately, we cannot display the details of the requested player.</value>
+  </data>
+  <data name="ReturnToRanking" xml:space="preserve">
+    <value>Return to ranking page</value>
+  </data>
+  <data name="Player" xml:space="preserve">
+    <value>Player</value>
+  </data>
+  <data name="MvpSI" xml:space="preserve">
+    <value>MVP (SI)</value>
+  </data>
+  <data name="LevelUp" xml:space="preserve">
+    <value>Level Up!</value>
+  </data>
+  <data name="LevelDrop" xml:space="preserve">
+    <value>Level Drop!</value>
+  </data>
+  <data name="ServersInfo" xml:space="preserve">
+    <value>Servers info</value>
+  </data>
+  <data name="ServerIP" xml:space="preserve">
+    <value>Server IP</value>
+  </data>
+  <data name="Players" xml:space="preserve">
+    <value>Players</value>
+  </data>
+  <data name="ConnectedPlayers" xml:space="preserve">
+    <value>Connected Players</value>
+  </data>
+  <data name="PlayerName" xml:space="preserve">
+    <value>Player Name</value>
+  </data>
+  <data name="Time" xml:space="preserve">
+    <value>Time</value>
+  </data>
+  <data name="NoPlayersConnected" xml:space="preserve">
+    <value>No players connected</value>
+  </data>
+  <data name="Clock" xml:space="preserve">
+    <value>Clock</value>
+  </data>
+  <data name="Star" xml:space="preserve">
+    <value>Star</value>
+  </data>
+  <data name="PatentSystem" xml:space="preserve">
+    <value>Patent system</value>
+  </data>
+  <data name="MaxPatentReached" xml:space="preserve">
+    <value>Max patent reached</value>
+  </data>
+  <data name="LastGamePositiveXp" xml:space="preserve">
+    <value>Last game: +{0:N0} XP</value>
+  </data>
+  <data name="LastGameNegativeXp" xml:space="preserve">
+    <value>Last game: {0:N0} XP</value>
+  </data>
+  <data name="NextLevel" xml:space="preserve">
+    <value>Next Level: {0:N0}</value>
+  </data>
+  <data name="XpProgress" xml:space="preserve">
+    <value>XP: {0:N0} / {1:N0}</value>
+  </data>
+  <data name="ProgressPercentage" xml:space="preserve">
+    <value>Progress: {0:P0}</value>
   </data>
 </root>

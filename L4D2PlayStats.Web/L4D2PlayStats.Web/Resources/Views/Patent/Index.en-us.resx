@@ -122,7 +122,40 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0,
       Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Header" xml:space="preserve">
-    <value>Top 50 jogadores</value>
+  <data name="UnderstandingPatentSystem" xml:space="preserve">
+    <value>Understanding the patent system</value>
+  </data>
+  <data name="PatentSystemDescription1" xml:space="preserve">
+    <value>The patent system in our service takes into account the amount of XP that the player has earned during the games of the last &lt;b&gt;{0:N0}&lt;/b&gt; days.</value>
+  </data>
+  <data name="PatentSystemDescription2" xml:space="preserve">
+    <value>Each victory awards the player &lt;b&gt;{0:N0}&lt;/b&gt; XP points, while losses cause the player to lose &lt;b&gt;{1:N0}&lt;/b&gt; XP points. An MVP SI title grants the player an additional &lt;b&gt;{2:N0}&lt;/b&gt; XP points, and an MVP CI title grants an additional &lt;b&gt;{3:N0}&lt;/b&gt; XP points. Rage quit results in a loss of &lt;b&gt;{4:N0}&lt;/b&gt; XP points.</value>
+  </data>
+  <data name="Level" xml:space="preserve">
+    <value>Level</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="ExperienceRequired" xml:space="preserve">
+    <value>Experience required</value>
+  </data>
+  <data name="XPBreakdownTitle" xml:space="preserve">
+    <value>XP Points Breakdown</value>
+  </data>
+  <data name="VictoryXPPoints" xml:space="preserve">
+    <value>Victory: +{0:N0} XP points</value>
+  </data>
+  <data name="DefeatXPPoints" xml:space="preserve">
+    <value>Defeat: {0:N0} XP points</value>
+  </data>
+  <data name="MVPSIPoints" xml:space="preserve">
+    <value>MVP SI: +{0:N0} XP points</value>
+  </data>
+  <data name="MVPCIPoints" xml:space="preserve">
+    <value>MVP CI: +{0:N0} XP points</value>
+  </data>
+  <data name="RageQuitXPPoints" xml:space="preserve">
+    <value>Rage quit: {0:N0} XP points</value>
   </data>
 </root>

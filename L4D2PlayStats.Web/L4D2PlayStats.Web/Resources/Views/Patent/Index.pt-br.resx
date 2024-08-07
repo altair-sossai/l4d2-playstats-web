@@ -122,7 +122,40 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0,
       Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Header" xml:space="preserve">
-    <value>Top 50 jogadores</value>
+  <data name="UnderstandingPatentSystem" xml:space="preserve">
+    <value>Entendendo o sistema de patentes</value>
+  </data>
+  <data name="PatentSystemDescription1" xml:space="preserve">
+    <value>O sistema de patentes em nosso serviço leva em consideração a quantidade de XP que o jogador ganhou durante os jogos dos últimos &lt;b&gt;{0:N0}&lt;/b&gt; dias.</value>
+  </data>
+  <data name="PatentSystemDescription2" xml:space="preserve">
+    <value>Cada vitória concede ao jogador &lt;b&gt;{0:N0}&lt;/b&gt; pontos de XP, enquanto derrotas fazem o jogador perder &lt;b&gt;{1:N0}&lt;/b&gt; pontos de XP. Um título de MVP SI concede ao jogador um adicional de &lt;b&gt;{2:N0}&lt;/b&gt; pontos de XP, e um título de MVP CI concede um adicional de &lt;b&gt;{3:N0}&lt;/b&gt; pontos de XP. Rage quit resulta na perda de &lt;b&gt;{4:N0}&lt;/b&gt; pontos de XP.</value>
+  </data>
+  <data name="Level" xml:space="preserve">
+    <value>Nível</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>Descrição</value>
+  </data>
+  <data name="ExperienceRequired" xml:space="preserve">
+    <value>Experiência necessária</value>
+  </data>
+  <data name="XPBreakdownTitle" xml:space="preserve">
+    <value>Detalhamento dos pontos de XP</value>
+  </data>
+  <data name="VictoryXPPoints" xml:space="preserve">
+    <value>Vitória: +{0:N0} pontos de XP</value>
+  </data>
+  <data name="DefeatXPPoints" xml:space="preserve">
+    <value>Derrota: {0:N0} pontos de XP</value>
+  </data>
+  <data name="MVPSIPoints" xml:space="preserve">
+    <value>MVP SI: +{0:N0} pontos de XP</value>
+  </data>
+  <data name="MVPCIPoints" xml:space="preserve">
+    <value>MVP CI: +{0:N0} pontos de XP</value>
+  </data>
+  <data name="RageQuitXPPoints" xml:space="preserve">
+    <value>Rage quit: {0:N0} pontos de XP</value>
   </data>
 </root>
