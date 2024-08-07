@@ -38,7 +38,7 @@ stages:
       displayName: 'Restore NuGet Packages'
 
     - script: |
-        dotnet publish L4D2PlayStats.Web/L4D2PlayStats.Web/L4D2PlayStats.Web.csproj -c Release -o $(Build.ArtifactStagingDirectory)/publish
+        dotnet publish L4D2PlayStats.Web/L4D2PlayStats.Web/L4D2PlayStats.Web.csproj -c Release -o $(Build.ArtifactStagingDirectory)/publish -p:PublishSingleFile=true
       displayName: 'Publish Project'
 
     - script: |
