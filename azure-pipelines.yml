@@ -32,6 +32,11 @@ stages:
   jobs:
   - job: Publish
     steps:
+
+    - script: |
+        dotnet restore L4D2PlayStats.Web/L4D2PlayStats.Web/L4D2PlayStats.Web.csproj
+      displayName: 'Restore NuGet Packages'
+
     - script: |
         dotnet publish L4D2PlayStats.Web/L4D2PlayStats.Web/L4D2PlayStats.Web.csproj -c Release -o $(Build.ArtifactStagingDirectory)/publish
       displayName: 'Publish Project'
