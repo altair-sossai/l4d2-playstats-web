@@ -3,10 +3,14 @@ using L4D2PlayStats.Ranking;
 using L4D2PlayStats.UserAvatar;
 using L4D2PlayStats.Web.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Localization;
 
 namespace L4D2PlayStats.Web.Controllers;
 
-public class PlayerController(IRankingServiceCached rankingService, IUserAvatar userAvatar, IPatentService patentService) : Controller
+public class PlayerController(IStringLocalizer<SharedResource> sharedLocalizer,
+    IRankingServiceCached rankingService, 
+    IUserAvatar userAvatar, 
+    IPatentService patentService) : Controller
 {
     [Route("player/{communityId}/{compareWith:long?}")]
     public async Task<IActionResult> Index(long communityId, long? compareWith = null)
@@ -16,7 +20,7 @@ public class PlayerController(IRankingServiceCached rankingService, IUserAvatar 
         var secondPlayer = compareWith == null ? null : players.FirstOrDefault(p => p.CommunityId == compareWith);
 
         if (firstPlayer == null)
-            return NotFound();
+            return View("PlayerNotFound");
 
         await userAvatar.LoadAsync(firstPlayer.CommunityId);
 
@@ -26,8 +30,8 @@ public class PlayerController(IRankingServiceCached rankingService, IUserAvatar 
         var firstPlayerPatentProgress = patentService.GetPatentProgress(firstPlayer);
         var secondPlayerPatentProgress = secondPlayer == null ? null : patentService.GetPatentProgress(secondPlayer);
 
-        var firstPlayerRanking = new RankingModel(firstPlayer, firstPlayerPatentProgress);
-        var secondPlayerRanking = secondPlayer == null || secondPlayerPatentProgress == null ? null : new RankingModel(secondPlayer, secondPlayerPatentProgress);
+        var firstPlayerRanking = new RankingModel(sharedLocalizer, firstPlayer, firstPlayerPatentProgress);
+        var secondPlayerRanking = secondPlayer == null || secondPlayerPatentProgress == null ? null : new RankingModel(sharedLocalizer, secondPlayer, secondPlayerPatentProgress);
 
         var model = new PlayerDetailsModel(firstPlayerRanking, secondPlayerRanking, players);
 

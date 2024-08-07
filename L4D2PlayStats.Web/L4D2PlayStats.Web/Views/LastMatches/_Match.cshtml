@@ -2,9 +2,14 @@
 @using L4D2PlayStats.Infrastructure.Extensions
 @using L4D2PlayStats.Sdk.Matches.Results
 @using L4D2PlayStats.UserAvatar
+@using L4D2PlayStats.Web
+@using Microsoft.AspNetCore.Mvc.Localization
+@using Microsoft.Extensions.Localization
 @model L4D2PlayStats.Sdk.Matches.Results.MatchResult
 @inject ICampaignThumb CampaignThumb
 @inject IUserAvatar UserAvatar
+@inject IStringLocalizer<SharedResource> SharedLocalizer
+@inject IViewLocalizer Localizer
 
 <div class="panel panel-primary">
     <div class="panel-heading" style="padding: 6px 10px;">
@@ -12,19 +17,19 @@
             <div class="col-xs-8">
                 <h4>@Model.Campaign</h4>
                 <p>
-                    Team @Model.Winner?.Code won by @Model.Diff.ToString("N0") points
+                    @string.Format(Localizer["TeamWonByPoints"].Value, Model.Winner?.Code, Model.Diff)
                 </p>
             </div>
             <div class="col-xs-4 text-right">
-                <p data-toggle="tooltip" data-placement="top" title="Date and time when the game occurred">
-                    <img src="~/imgs/icons/calendar.png" alt="Calendar" class="icon"/>
-                    @Model.MatchStart.ToString("dd/MM/yy") at @Model.MatchStart.ToString("HH:mm")
+                <p data-toggle="tooltip" data-placement="top" title="@Localizer["GameOccurrenceDateTime"]">
+                    <img src="~/imgs/icons/calendar.png" alt="@SharedLocalizer["Calendar"]" class="icon"/>
+                    @string.Format(Localizer["MatchStartDateTime"].Value, Model.MatchStart)
                 </p>
 
                 @if (Model.MatchElapsed.HasValue)
                 {
-                    <p data-toggle="tooltip" data-placement="top" title="Duration of the game in hours">
-                        <img src="~/imgs/icons/clock.png" alt="Clock" class="icon"/>
+                    <p data-toggle="tooltip" data-placement="top" title="@Localizer["GameDurationInHours"]">
+                        <img src="~/imgs/icons/clock.png" alt="@SharedLocalizer["Clock"]" class="icon"/>
                         @Model.MatchElapsed.Value.ToString(@"hh\:mm\:ss")
                     </p>
                 }
@@ -38,7 +43,7 @@
                 @if (Model.ShowDetailsButton)
                 {
                     <a href="@Url.Action("Details", "LastMatches", new { start = Model.Start, end = Model.End })" class="btn btn-danger btn-sm btn-block" style="margin-top: 10px;">
-                        Details
+                        @SharedLocalizer["Details"]
                     </a>
                 }
             </div>
@@ -51,7 +56,7 @@
                                 <div class="panel-heading bold" style="padding: 3px 15px">
                                     <div class="row">
                                         <div class="col-xs-6">
-                                            Team @team.Code
+                                            @SharedLocalizer["Team"] @team.Code
                                         </div>
                                         <div class="col-xs-6 text-right">
                                             @team.Score.ToString("N0")
@@ -77,12 +82,12 @@
                                                     @Html.ActionLink(player.Name?.Truncate(30) ?? "-", "Index", "Player", new { communityId = player.CommunityId })
                                                     @for (var i = 0; i < player.MvpSiDamage; i++)
                                                     {
-                                                        <img src="~/imgs/icons/star.png" alt="Star" class="icon" data-toggle="tooltip" data-placement="top" title="MVP SI"/>
+                                                        <img src="~/imgs/icons/star.png" alt="@SharedLocalizer["Star"]" class="icon" data-toggle="tooltip" data-placement="top" title="@SharedLocalizer["MvpSI"]"/>
                                                     }
 
                                                     @for (var i = 0; i < player.MvpCommon; i++)
                                                     {
-                                                        <img src="~/imgs/icons/star-blue.png" alt="Star" class="icon" data-toggle="tooltip" data-placement="top" title="MVP CI"/>
+                                                        <img src="~/imgs/icons/star-blue.png" alt="@SharedLocalizer["Star"]" class="icon" data-toggle="tooltip" data-placement="top" title="@SharedLocalizer["MvpCI"]"/>
                                                     }
                                                 </td>
                                             </tr>

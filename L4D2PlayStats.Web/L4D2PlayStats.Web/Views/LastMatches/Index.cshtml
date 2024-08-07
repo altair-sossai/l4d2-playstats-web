@@ -1,6 +1,9 @@
-﻿@model List<L4D2PlayStats.Sdk.Matches.Results.MatchResult>
+﻿@using L4D2PlayStats.Web
+@using Microsoft.Extensions.Localization
+@model List<L4D2PlayStats.Sdk.Matches.Results.MatchResult>
+@inject IStringLocalizer<SharedResource> SharedLocalizer
 
-<h4 class="text-center">Last matches</h4>
+<h4 class="text-center">@SharedLocalizer["LastMatches"]</h4>
 
 <div class="match">
     @foreach (var match in Model)

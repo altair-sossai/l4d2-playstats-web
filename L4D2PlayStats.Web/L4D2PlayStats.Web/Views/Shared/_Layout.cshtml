@@ -1,18 +1,31 @@
-﻿<!DOCTYPE html>
+﻿@using L4D2PlayStats.Web
+@using Microsoft.AspNetCore.Mvc.Localization
+@using Microsoft.Extensions.Localization
+@inject IViewLocalizer Localizer
+@inject IStringLocalizer<SharedResource> SharedLocalizer
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>L4D2 Statistics</title>
+    <title>@Localizer["ServerName"]</title>
     <link rel="stylesheet" href="~/css/bootstrap.min.css"/>
 
     <style>
         a, a:visited, a:hover, a:active {
             color: inherit;
         }
+
         .navbar {
             margin-bottom: 0;
+        }
+
+        .navbar-nav .nav-item img {
+            width: 20px;
+            height: auto;
+            margin-top: -2px;
         }
 
         .vertical-align-middle {
@@ -106,30 +119,42 @@
     <div class="container-fluid">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-navbar-collapse" aria-expanded="false">
-                <span class="sr-only">Toggle navigation</span>
+                <span class="sr-only">@Localizer["ToggleNavigation"]</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/">Cobra 4 Gaming</a>
+            <a class="navbar-brand" href="/">@Localizer["ServerName"]</a>
         </div>
 
         <div class="collapse navbar-collapse" id="bs-navbar-collapse">
             <ul class="nav navbar-nav">
                 <li class="@ViewBag.Ranking">
-                    @Html.ActionLink("Ranking", "Index", "Ranking")
+                    @Html.ActionLink(SharedLocalizer["Ranking"].Value, "Index", "Ranking")
                 </li>
                 <li class="@ViewBag.LastMatches">
-                    @Html.ActionLink("Last matches", "Index", "LastMatches")
+                    @Html.ActionLink(SharedLocalizer["LastMatches"].Value, "Index", "LastMatches")
                 </li>
                 <li class="@ViewBag.ServersInfo">
-                    @Html.ActionLink("Servers info", "Index", "ServersInfo")
+                    @Html.ActionLink(SharedLocalizer["ServersInfo"].Value, "Index", "ServersInfo")
                 </li>
                 <li class="@ViewBag.Patent">
-                    @Html.ActionLink("Patent system", "Index", "Patent")
+                    @Html.ActionLink(SharedLocalizer["PatentSystem"].Value, "Index", "Patent")
                 </li>
                 <li class="hide show-in-https">
                     <a href="https://sourcebans.l4d2.com.br/">SourceBans++</a>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li id="lang-en">
+                    <a href="#">
+                        <img src="~/imgs/us.png" alt="English" title="English">
+                    </a>
+                </li>
+                <li id="lang-pt">
+                    <a href="#">
+                        <img src="~/imgs/br.png" alt="Português" title="Português">
+                    </a>
                 </li>
             </ul>
         </div>
@@ -150,6 +175,27 @@
 
             if (location.protocol === "https:")
                 $(".show-in-https").removeClass("hide");
+
+            $('#lang-en').click(function (e) {
+                e.preventDefault();
+                setLanguage('en-us');
+            });
+
+            $('#lang-pt').click(function (e) {
+                e.preventDefault();
+                setLanguage('pt-br');
+            });
+
+            function setLanguage(culture) {
+                $.ajax({
+                    url: '@Url.Action("Change", "Language")',
+                    type: 'POST',
+                    data: { culture: culture },
+                    success: function () {
+                        location.reload();
+                    }
+                });
+            }
         })
     </script>
 
@@ -158,7 +204,6 @@
         window.dataLayer = window.dataLayer || [];
         function gtag() { dataLayer.push(arguments); }
         gtag('js', new Date());
-
         gtag('config', 'G-4QMNBJLQST');
     </script>
 </body>

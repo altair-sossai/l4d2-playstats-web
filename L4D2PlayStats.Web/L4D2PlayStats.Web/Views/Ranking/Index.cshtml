@@ -1,6 +1,11 @@
 ﻿@using L4D2PlayStats.Infrastructure.Extensions
 @using L4D2PlayStats.UserAvatar
+@using L4D2PlayStats.Web
+@using Microsoft.AspNetCore.Mvc.Localization
+@using Microsoft.Extensions.Localization
 @model List<L4D2PlayStats.Web.Models.RankingModel>
+@inject IViewLocalizer Localizer
+@inject IStringLocalizer<SharedResource> SharedLocalizer
 @inject IUserAvatar UserAvatar
 
 @section Styles {
@@ -25,20 +30,20 @@
     </style>
 }
 
-<h4 class="text-center">Top 50 players</h4>
+<h4 class="text-center">@Localizer["Header"]</h4>
 <table class="table table-striped table-hover table-bordered table-condensed">
     <thead>
     <tr>
         <th class="text-center">#</th>
-        <th class="text-center">Patent</th>
-        <th colspan="2">Player</th>
+        <th class="text-center">@SharedLocalizer["Patent"]</th>
+        <th colspan="2">@SharedLocalizer["Player"]</th>
         <th class="text-center hide-mobile" style="min-width: 90px">XP</th>
-        <th class="text-center">Wins</th>
-        <th class="text-center hide-mobile">Loss</th>
-        <th class="text-center hide-mobile">MVP SI</th>
-        <th class="text-center hide-mobile">MVP CI</th>
-        <th class="text-center hide-mobile">Win rate</th>
-        <th class="text-center hide-mobile">Rage quit</th>
+        <th class="text-center">@SharedLocalizer["Wins"]</th>
+        <th class="text-center hide-mobile">@SharedLocalizer["Loss"]</th>
+        <th class="text-center hide-mobile">@SharedLocalizer["MvpSI"]</th>
+        <th class="text-center hide-mobile">@SharedLocalizer["MvpCI"]</th>
+        <th class="text-center hide-mobile">@SharedLocalizer["WinRate"]</th>
+        <th class="text-center hide-mobile">@SharedLocalizer["RageQuit"]</th>
     </tr>
     </thead>
     <tbody>
@@ -63,51 +68,51 @@
                 @if (patentProgress.LevelUp)
                 {
                     <span class="label label-success" style="float: right" data-toggle="tooltip" data-placement="top" data-html="true" title="@patentProgress.Tooltip">
-                        Level Up!
+                        @SharedLocalizer["LevelUp"]
                     </span>
                 }
                 @if (patentProgress.LevelDrop)
                 {
                     <span class="label label-danger" style="float: right" data-toggle="tooltip" data-placement="top" data-html="true" title="@patentProgress.Tooltip">
-                        Level Drop!
+                        @SharedLocalizer["LevelDrop"]
                     </span>
                 }
             </td>
             <td class="text-center vertical-align-middle hide-mobile">
                 <div class="progress" data-toggle="tooltip" data-placement="top" data-html="true" title="@patentProgress.Tooltip">
-                    <div class="progress-bar progress-bar-@patentProgress.ProgressBarType" role="progressbar" style="width: @patentProgress.ProgressBarWidth%;">
+                    <div class="progress-bar progress-bar-@patentProgress.ProgressBarType" role="progressbar" style="width: @patentProgress.ProgressBarWidth;">
                     </div>
-                    <div class="progress-bar progress-bar-@patentProgress.PreviousExperienceProgressBarType" role="progressbar" style="width: @patentProgress.PreviousExperienceProgressBarWidth%;">
+                    <div class="progress-bar progress-bar-@patentProgress.PreviousExperienceProgressBarType" role="progressbar" style="width: @patentProgress.PreviousExperienceProgressBarWidth;">
                     </div>
                 </div>
             </td>
             <td class="text-center vertical-align-middle">
-                <p data-toggle="tooltip" data-placement="top" title="Wins">
+                <p data-toggle="tooltip" data-placement="top" title="@SharedLocalizer["Wins"]">
                     @player.Wins.ToString("N0")
                 </p>
             </td>
             <td class="text-center vertical-align-middle hide-mobile">
-                <p data-toggle="tooltip" data-placement="top" title="Loss">
+                <p data-toggle="tooltip" data-placement="top" title="@SharedLocalizer["Loss"]">
                     @player.Loss.ToString("N0")
                 </p>
             </td>
             <td class="text-center vertical-align-middle hide-mobile">
-                <p data-toggle="tooltip" data-placement="top" title="MVP SI">
+                <p data-toggle="tooltip" data-placement="top" title="@SharedLocalizer["MvpSI"]">
                     @player.MvpSiDamage.ToString("N0")
                 </p>
             </td>
             <td class="text-center vertical-align-middle hide-mobile">
-                <p data-toggle="tooltip" data-placement="top" title="MVP CI">
+                <p data-toggle="tooltip" data-placement="top" title="@SharedLocalizer["MvpCI"]">
                     @player.MvpCommon.ToString("N0")
                 </p>
             </td>
             <td class="text-center vertical-align-middle hide-mobile">
-                <p data-toggle="tooltip" data-placement="top" title="Win rate">
+                <p data-toggle="tooltip" data-placement="top" title="@SharedLocalizer["WinRate"]">
                     @player.WinRate.ToString("P0")
                 </p>
             </td>
             <td class="text-center vertical-align-middle hide-mobile">
-                <p data-toggle="tooltip" data-placement="top" title="Rage quit">
+                <p data-toggle="tooltip" data-placement="top" title="@SharedLocalizer["RageQuit"]">
                     @player.RageQuit.ToString("N0")
                 </p>
             </td>
