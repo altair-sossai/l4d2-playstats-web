@@ -215,9 +215,6 @@
   <data name="Levels" xml:space="preserve">
     <value>Levels</value>
   </data>
-  <data name="FireFriendGiven" xml:space="preserve">
-    <value>Fire-friend Given (FFG)</value>
-  </data>
   <data name="TotalDamage" xml:space="preserve">
     <value>Total damage</value>
   </data>
@@ -293,8 +290,8 @@
   <data name="RocksEats" xml:space="preserve">
     <value>Rocks eats</value>
   </data>
-  <data name="FfGiven" xml:space="preserve">
-    <value>FF Given</value>
+  <data name="FF" xml:space="preserve">
+    <value>FF</value>
   </data>
   <data name="StatisticsAsInfected" xml:space="preserve">
     <value>Statistics as infected</value>

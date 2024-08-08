@@ -198,10 +198,10 @@
     <value>Comuns mortos</value>
   </data>
   <data name="SiKilled" xml:space="preserve">
-    <value>Infectados especiais mortos</value>
+    <value>SI - mortos</value>
   </data>
   <data name="SiDamageDealt" xml:space="preserve">
-    <value>Infectados especiais - Dano causado</value>
+    <value>SI - Dano causado</value>
   </data>
   <data name="TankDamageDealt" xml:space="preserve">
     <value>Tank - Dano causado</value>
@@ -214,9 +214,6 @@
   </data>
   <data name="Levels" xml:space="preserve">
     <value>Levels</value>
-  </data>
-  <data name="FireFriendGiven" xml:space="preserve">
-    <value>Fogo amigo (FFG)</value>
   </data>
   <data name="TotalDamage" xml:space="preserve">
     <value>Dano total</value>
@@ -249,7 +246,7 @@
     <value>Nome</value>
   </data>
   <data name="ProfileUrl" xml:space="preserve">
-    <value>URL do perfil</value>
+    <value>Perfil</value>
   </data>
   <data name="Patent" xml:space="preserve">
     <value>Patente</value>
@@ -282,7 +279,7 @@
     <value>Comuns</value>
   </data>
   <data name="SiDamage" xml:space="preserve">
-    <value>Dano aos infectados especiais</value>
+    <value>SI Dano</value>
   </data>
   <data name="TimesIncap" xml:space="preserve">
     <value>Vezes incapacitado</value>
@@ -293,8 +290,8 @@
   <data name="RocksEats" xml:space="preserve">
     <value>Pedras recebidas</value>
   </data>
-  <data name="FfGiven" xml:space="preserve">
-    <value>Fogo amigo</value>
+  <data name="FF" xml:space="preserve">
+    <value>FF</value>
   </data>
   <data name="StatisticsAsInfected" xml:space="preserve">
     <value>Estatísticas como infectado</value>
