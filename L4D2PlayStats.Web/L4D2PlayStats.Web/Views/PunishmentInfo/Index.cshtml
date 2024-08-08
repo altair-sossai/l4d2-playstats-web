@@ -1,0 +1,160 @@
+﻿<style>
+    .panel-heading {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+</style>
+
+<h4 class="text-center">Punishment Info</h4>
+
+<div class="panel panel-default" id="panel-pt">
+    <div class="panel-heading">
+        <h3 class="panel-title">Regulamento de Penalidades para Abandono de Partidas em Left 4 Dead 2</h3>
+        <div>
+            <img src="~/imgs/icons/language-icon-24-24.png" alt="Language" class="icon" />
+            <button class="btn btn-default" onclick="toggleLanguage()">en-US</button>
+        </div>
+    </div>
+    <div class="panel-body">
+        <ol>
+            <section>
+                <h3>
+            <li>Aplicabilidade das Penalidades.</li></h3>
+            <p>
+                1.1. As penalidades descritas neste regulamento se aplicam exclusivamente às partidas que tenham iniciado com quatro jogadores em cada equipe (4x4).
+            </p>
+            <p>
+                1.2. As penalidades são aplicáveis apenas aos jogadores que participaram do início da partida. Jogadores substitutos (subs) não estarão sujeitos a estas penalidades.
+            </p>
+            </section>
+
+            <section>
+                <h3>
+            <li>Procedimentos de Penalização</li></h3>
+            <p>2.1. Confirmação e Desativação de Penalidades:</p>
+            <ul>
+                <li>Após a confirmação do banimento de um jogador, todas as penalidades aplicadas devem ser desativadas até o início de uma nova partida.</li>
+            </ul>
+            <p>2.2. Penalidades por Intervalo:</p>
+            <ul>
+                <li>Todos os jogadores que estiverem com um intervalo de até 1 minuto do jogador banido também devem ser banidos.</li>
+            </ul>
+            <p>2.3. Penalidades Após Desconexão:</p>
+            <ul>
+                <li>Se um jogador se desconectar após o final do segundo round ou durante a troca de mapa, aguardar a exibição da mensagem de penalidade no início do próximo mapa.</li>
+                <li>No início do novo mapa, aguardar pelo menos 20 segundos antes de exibir os avisos de penalidade dos jogadores.</li>
+            </ul>
+            <p>2.4. Congelamento de Temporizadores:</p>
+            <ul>
+                <li>A função de pausa (!pause) deve congelar todos os temporizadores durante a partida.</li>
+            </ul>
+            <p>2.5. Alertas de Penalidade:</p>
+            <ul>
+                <li>Se um jogador se desconectar ou for para o modo espectador (spec), será exibido o alerta: "Se o jogador "NOME DO JOGADOR" não voltar em 5 minutos, ele será banido por 2 dias."</li>
+            </ul>
+            </section>
+
+            <section>
+                <h3>
+            <li>Cancelamento de Penalidades</li></h3>
+            <p>3.1. Cancelamento Geral:</p>
+            <ul>
+                <li>Todos os banimentos são cancelados quando ocorrer qualquer das seguintes condições:</li>
+                <ul>
+                    <li>Início de uma nova campanha.</li>
+                    <li>Início do mapa 5.</li>
+                    <li>Saída de todos os jogadores dos times.</li>
+                </ul>
+            </ul>
+            <p>3.2. Exceções:</p>
+            <ul>
+                <li>Nenhuma penalidade deve ser aplicada quando:</li>
+                <ul>
+                    <li>A penalização ocorre no quarto mapa, segundo round, e o jogador está morto como sobrevivente.</li>
+                </ul>
+            </ul>
+            </section>
+        </ol>
+    </div>
+</div>
+
+<div class="panel panel-default hidden" id="panel-en">
+    <div class="panel-heading">
+        <h3 class="panel-title">Penalties Regulation for Leaving Matches in Left 4 Dead 2</h3>
+        <div>
+            <img src="~/imgs/icons/language-icon-24-24.png" alt="Language" class="icon" />
+            <button class="btn btn-default" onclick="toggleLanguage()">pt-BR</button>
+        </div>
+    </div>
+    <div class="panel-body">
+        <ol>
+            <section>
+                <h3>
+            <li>Applicability of Penalties.</li></h3>
+            <p>
+                1.1. The penalties described in this regulation apply exclusively to matches that have started with four players on each team (4x4).
+            </p>
+            <p>
+                1.2. Penalties are applicable only to players who participated at the start of the match. Substitute players (subs) are not subject to these penalties.
+            </p>
+            </section>
+
+            <section>
+                <h3>
+            <li>Penalty Procedures</li></h3>
+            <p>2.1. Confirmation and Deactivation of Penalties:</p>
+            <ul>
+                <li>After a player's ban is confirmed, all applied penalties must be deactivated until the start of a new match.</li>
+            </ul>
+            <p>2.2. Interval Penalties:</p>
+            <ul>
+                <li>All players who are within 1 minute of the banned player must also be banned.</li>
+            </ul>
+            <p>2.3. Penalties After Disconnection:</p>
+            <ul>
+                <li>If a player disconnects after the end of the second round or during the map change, wait for the penalty message to be displayed at the start of the next map.</li>
+                <li>At the start of the new map, wait at least 20 seconds before displaying the penalty warnings for players.</li>
+            </ul>
+            <p>2.4. Timer Freezing:</p>
+            <ul>
+                <li>The pause function (!pause) must freeze all timers during the match.</li>
+            </ul>
+            <p>2.5. Penalty Alerts:</p>
+            <ul>
+                <li>If a player disconnects or goes to spectator mode (spec), the alert will be displayed: "If the player "PLAYER NAME" does not return in 5 minutes, they will be banned for 2 days."</li>
+            </ul>
+            </section>
+
+            <section>
+                <h3>
+            <li>Cancellation of Penalties</li></h3>
+            <p>3.1. General Cancellation:</p>
+            <ul>
+                <li>All bans are canceled when any of the following conditions occur:</li>
+                <ul>
+                    <li>Start of a new campaign.</li>
+                    <li>Start of map 5.</li>
+                    <li>All players leave the teams.</li>
+                </ul>
+            </ul>
+            <p>3.2. Exceptions:</p>
+            <ul>
+                <li>No penalty should be applied when:</li>
+                <ul>
+                    <li>The penalty occurs on the fourth map, second round, and the player is dead as a survivor.</li>
+                </ul>
+            </ul>
+            </section>
+        </ol>
+    </div>
+</div>
+
+<script>
+    function toggleLanguage() {
+        const panelPT = document.getElementById('panel-pt');
+        const panelEN = document.getElementById('panel-en');
+        panelPT.classList.toggle('hidden');
+        panelEN.classList.toggle('hidden');
+    }
+</script>
