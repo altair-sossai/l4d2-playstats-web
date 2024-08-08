@@ -179,9 +179,6 @@
   <data name="TeamBScore" xml:space="preserve">
     <value>Pontuação da equipe B</value>
   </data>
-  <data name="MvpCommon" xml:space="preserve">
-    <value>MVP (Comum)</value>
-  </data>
   <data name="LvpFf" xml:space="preserve">
     <value>LVP (FF)</value>
   </data>
@@ -270,7 +267,7 @@
     <value>Estatísticas como sobrevivente</value>
   </data>
   <data name="MvpCI" xml:space="preserve">
-    <value>MVP CI</value>
+    <value>MVP (CI)</value>
   </data>
   <data name="Lvp" xml:space="preserve">
     <value>LVP</value>
