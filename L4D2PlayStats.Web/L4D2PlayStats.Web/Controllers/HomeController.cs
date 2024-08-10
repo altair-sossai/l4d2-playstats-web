@@ -31,4 +31,16 @@ public class HomeController(
 
         return View(models);
     }
+
+    public IActionResult SetTheme(string theme)
+    {
+        var option = new CookieOptions
+        {
+            Expires = DateTime.Now.AddYears(1)
+        };
+
+        Response.Cookies.Append("theme", theme, option);
+
+        return Redirect(Request.Headers["Referer"].ToString());
+    }
 }

@@ -3,7 +3,9 @@
 @using Microsoft.Extensions.Localization
 @inject IViewLocalizer Localizer
 @inject IStringLocalizer<SharedResource> SharedLocalizer
-
+@{
+    var light = Context.Request.Cookies["theme"] == "light";
+}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,7 +23,14 @@
     <meta property="og:image" content="https://l4d2playstats.blob.core.windows.net/assets/motd.jpeg">
 
     <title>@Localizer["ServerName"]</title>
-    <link rel="stylesheet" href="~/css/bootstrap.min.css"/>
+    @if (light)
+    {
+        <link rel="stylesheet" href="~/css/bootstrap.light.min.css"/>
+    }
+    else
+    {
+        <link rel="stylesheet" href="~/css/bootstrap.min.css"/>
+    }
 
     <style>
         a, a:visited, a:hover, a:active {
@@ -39,8 +48,13 @@
         }
 
         .logo {
-            height: 100%; 
+            height: 100%;
             max-height: 50px;
+        }
+
+        .theme-icon {
+            height: 100%;
+            max-height: 20px;
         }
 
         .vertical-align-middle {
@@ -160,14 +174,28 @@
                 </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
+                <li>
+                    @if (light)
+                    {
+                        <a href="@Url.Action("SetTheme", "Home", new { theme = "default" })">
+                            <img src="~/imgs/dark-theme.png" alt="@SharedLocalizer["SwitchDarkTheme"]" title="@SharedLocalizer["SwitchDarkTheme"]" class="theme-icon img-responsive" data-toggle="tooltip" data-placement="bottom">
+                        </a>
+                    }
+                    else
+                    {
+                        <a href="@Url.Action("SetTheme", "Home", new { theme = "light" })">
+                            <img src="~/imgs/light-theme.png" alt="@SharedLocalizer["SwitchLightTheme"]" title="@SharedLocalizer["SwitchLightTheme"]" class="theme-icon img-responsive" data-toggle="tooltip" data-placement="bottom">
+                        </a>
+                    }
+                </li>
                 <li id="lang-en">
                     <a href="#">
-                        <img src="~/imgs/us.png" alt="English" title="English">
+                        <img src="~/imgs/us.png" alt="English" title="English" data-toggle="tooltip" data-placement="bottom">
                     </a>
                 </li>
                 <li id="lang-pt">
                     <a href="#">
-                        <img src="~/imgs/br.png" alt="Português" title="Português">
+                        <img src="~/imgs/br.png" alt="Português" title="Português" data-toggle="tooltip" data-placement="bottom">
                     </a>
                 </li>
             </ul>
