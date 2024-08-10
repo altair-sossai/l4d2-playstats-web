@@ -7,7 +7,7 @@ using Microsoft.Extensions.Localization;
 
 namespace L4D2PlayStats.Web.Controllers;
 
-public class RankingController(
+public class HomeController(
     IStringLocalizer<SharedResource> sharedLocalizer,
     IRankingServiceCached rankingService,
     IUserAvatar userAvatar,
@@ -15,7 +15,7 @@ public class RankingController(
 {
     public async Task<IActionResult> Index()
     {
-        ViewBag.Ranking = "active";
+        ViewBag.Home = "active";
 
         var players = await rankingService.GetAsync();
         var communityIds = players.Select(p => p.CommunityId);

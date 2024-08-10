@@ -48,5 +48,5 @@ app.UseRouting();
 app.UseAuthorization();
 app.UseWebMarkupMin();
 app.MapControllers();
-app.MapControllerRoute("default", "{controller=Ranking}/{action=Index}/{id?}");
+app.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}");
 app.Run();
