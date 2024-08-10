@@ -6,7 +6,7 @@ using Microsoft.Extensions.Caching.Memory;
 
 namespace L4D2PlayStats.Web.Controllers;
 
-public class ServersInfoController(
+public class ServersController(
     IConfiguration configuration,
     IMemoryCache memoryCache,
     IServerInfoService serverInfoService,
@@ -17,7 +17,7 @@ public class ServersInfoController(
 
     public async Task<IActionResult> Index()
     {
-        ViewBag.ServersInfo = "active";
+        ViewBag.Servers = "active";
 
         var models = (await memoryCache.GetOrCreateAsync("Servers", async entry =>
         {

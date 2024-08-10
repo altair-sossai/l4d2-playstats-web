@@ -320,8 +320,8 @@
   <data name="LevelDrop" xml:space="preserve">
     <value>Level Drop!</value>
   </data>
-  <data name="ServersInfo" xml:space="preserve">
-    <value>Servers info</value>
+  <data name="Servers" xml:space="preserve">
+    <value>Servers</value>
   </data>
   <data name="ServerIP" xml:space="preserve">
     <value>Server IP</value>

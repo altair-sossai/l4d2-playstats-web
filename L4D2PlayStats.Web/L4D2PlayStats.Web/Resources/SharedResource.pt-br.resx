@@ -225,7 +225,7 @@
     <value>Total</value>
   </data>
   <data name="LastMatches" xml:space="preserve">
-    <value>Últimas partidas</value>
+    <value>Últimos jogos</value>
   </data>
   <data name="PlayerDetails" xml:space="preserve">
     <value>Detalhes do jogador</value>
@@ -320,8 +320,8 @@
   <data name="LevelDrop" xml:space="preserve">
     <value>Caiu de Nível!</value>
   </data>
-  <data name="ServersInfo" xml:space="preserve">
-    <value>Informações dos servidores</value>
+  <data name="Servers" xml:space="preserve">
+    <value>Servidores</value>
   </data>
   <data name="ServerIP" xml:space="preserve">
     <value>IP do Servidor</value>
