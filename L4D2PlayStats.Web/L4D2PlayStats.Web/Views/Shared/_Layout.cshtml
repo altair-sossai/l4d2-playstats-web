@@ -4,7 +4,7 @@
 @inject IViewLocalizer Localizer
 @inject IStringLocalizer<SharedResource> SharedLocalizer
 @{
-    var light = false;
+    var light = Context.Request.Cookies["theme"] == "light";
 }
 <!DOCTYPE html>
 <html lang="en">
