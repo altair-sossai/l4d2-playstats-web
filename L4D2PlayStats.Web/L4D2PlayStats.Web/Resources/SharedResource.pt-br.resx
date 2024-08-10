@@ -347,8 +347,8 @@
   <data name="Star" xml:space="preserve">
     <value>Estrela</value>
   </data>
-  <data name="PatentSystem" xml:space="preserve">
-    <value>Sistema de patentes</value>
+  <data name="Patents" xml:space="preserve">
+    <value>Patentes</value>
   </data>
   <data name="MaxPatentReached" xml:space="preserve">
     <value>Patente máxima atingida</value>

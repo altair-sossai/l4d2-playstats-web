@@ -7,9 +7,10 @@ using Microsoft.Extensions.Localization;
 
 namespace L4D2PlayStats.Web.Controllers;
 
-public class PlayerController(IStringLocalizer<SharedResource> sharedLocalizer,
-    IRankingServiceCached rankingService, 
-    IUserAvatar userAvatar, 
+public class PlayerController(
+    IStringLocalizer<SharedResource> sharedLocalizer,
+    IRankingServiceCached rankingService,
+    IUserAvatar userAvatar,
     IPatentService patentService) : Controller
 {
     [Route("player/{communityId}/{compareWith:long?}")]
