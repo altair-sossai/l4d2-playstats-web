@@ -2,21 +2,11 @@ using System.Globalization;
 using L4D2PlayStats.DependencyInjection;
 using L4D2PlayStats.Sdk.DependencyInjection;
 using Microsoft.AspNetCore.Localization;
-using WebMarkupMin.AspNetCore8;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Configuration
     .AddJsonFile("appsettings.json", false, true);
-
-builder.Services
-    .AddWebMarkupMin(options =>
-    {
-        options.AllowMinificationInDevelopmentEnvironment = true;
-        options.AllowCompressionInDevelopmentEnvironment = true;
-    })
-    .AddHtmlMinification()
-    .AddHttpCompression();
 
 builder.Services.AddLocalization(options => options.ResourcesPath = "Resources");
 
@@ -46,8 +36,6 @@ app.UseRequestLocalization(new RequestLocalizationOptions
 
 app.UseStaticFiles();
 app.UseRouting();
-app.UseAuthorization();
-app.UseWebMarkupMin();
 app.MapControllers();
 app.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}");
 app.Run();
