@@ -8,7 +8,7 @@
 @{
     var light = Context.Request.Cookies["theme"] == "light";
     var requestCultureFeature = Context.Features.Get<IRequestCultureFeature>();
-    var cultureInfo = requestCultureFeature?.RequestCulture.Culture ?? new CultureInfo("en-us");
+    var cultureInfo = requestCultureFeature?.RequestCulture.Culture ?? new CultureInfo("en-US");
 }
 <!DOCTYPE html>
 <html lang="en">
@@ -207,7 +207,7 @@
                         </a>
                     }
                 </li>
-                @if (!cultureInfo.Name.Equals("en-us", StringComparison.InvariantCultureIgnoreCase))
+                @if (!cultureInfo.Name.Equals("en-US", StringComparison.InvariantCultureIgnoreCase))
                 {
                     <li id="lang-en">
                         <a href="#">
@@ -218,13 +218,24 @@
                         </a>
                     </li>
                 }
-                @if (!cultureInfo.Name.Equals("pt-br", StringComparison.InvariantCultureIgnoreCase))
+                @if (!cultureInfo.Name.Equals("pt-BR", StringComparison.InvariantCultureIgnoreCase))
                 {
                     <li id="lang-pt">
                         <a href="#">
                             <img src="~/imgs/br.png" alt="Português" title="Português" data-toggle="tooltip" data-placement="bottom">
                             <span class="show-mobile" style="margin-left: 5px">
                                 Português
+                            </span>
+                        </a>
+                    </li>
+                }
+                @if (!cultureInfo.Name.Equals("es-ES", StringComparison.InvariantCultureIgnoreCase))
+                {
+                    <li id="lang-es">
+                        <a href="#">
+                            <img src="~/imgs/es.png" alt="Español" title="Español" data-toggle="tooltip" data-placement="bottom">
+                            <span class="show-mobile" style="margin-left: 5px">
+                                Español
                             </span>
                         </a>
                     </li>
@@ -248,12 +259,17 @@
 
             $('#lang-en').click(function (e) {
                 e.preventDefault();
-                setLanguage('en-us');
+                setLanguage('en-US');
             });
 
             $('#lang-pt').click(function (e) {
                 e.preventDefault();
-                setLanguage('pt-br');
+                setLanguage('pt-BR');
+            });
+
+            $('#lang-es').click(function (e) {
+                e.preventDefault();
+                setLanguage('es-ES');
             });
 
             function setLanguage(culture) {

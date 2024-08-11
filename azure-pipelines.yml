@@ -39,6 +39,7 @@ stages:
 
     - script: |
         mkdir -p $(Build.ArtifactStagingDirectory)/publish/pt-BR
+        mkdir -p $(Build.ArtifactStagingDirectory)/publish/es-ES
       displayName: 'Create directories'
 
     - script: |

@@ -1,0 +1,372 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Calendar" xml:space="preserve">
+    <value>Calendario</value>
+  </data>
+  <data name="Details" xml:space="preserve">
+    <value>Detalles</value>
+  </data>
+  <data name="Maps" xml:space="preserve">
+    <value>Mapas</value>
+  </data>
+  <data name="MatchDetails" xml:space="preserve">
+    <value>Detalles del partido</value>
+  </data>
+  <data name="NoMatchFound" xml:space="preserve">
+    <value>No se encontró ningún partido</value>
+  </data>
+  <data name="MatchStatsTitle" xml:space="preserve">
+    <value>Resultados del mapa</value>
+  </data>
+  <data name="Team" xml:space="preserve">
+    <value>Equipo</value>
+  </data>
+  <data name="Survivor" xml:space="preserve">
+    <value>Superviviente</value>
+  </data>
+  <data name="TeamStatisticsAsSurvivor" xml:space="preserve">
+    <value>Estadísticas del equipo {0} jugando como supervivientes</value>
+  </data>
+  <data name="Infected" xml:space="preserve">
+    <value>Infectado</value>
+  </data>
+  <data name="TeamStatisticsAsInfected" xml:space="preserve">
+    <value>Estadísticas del equipo {0} jugando como infectados</value>
+  </data>
+  <data name="Start" xml:space="preserve">
+    <value>Inicio</value>
+  </data>
+  <data name="End" xml:space="preserve">
+    <value>Fin</value>
+  </data>
+  <data name="Elapsed" xml:space="preserve">
+    <value>Tiempo transcurrido</value>
+  </data>
+  <data name="Map" xml:space="preserve">
+    <value>Mapa</value>
+  </data>
+  <data name="Scoreboard" xml:space="preserve">
+    <value>Marcador</value>
+  </data>
+  <data name="TeamAScore" xml:space="preserve">
+    <value>Puntuación del equipo A</value>
+  </data>
+  <data name="ScoreDifference" xml:space="preserve">
+    <value>Diferencia de puntuación</value>
+  </data>
+  <data name="TeamBScore" xml:space="preserve">
+    <value>Puntuación del equipo B</value>
+  </data>
+  <data name="LvpFf" xml:space="preserve">
+    <value>LVP (FF)</value>
+  </data>
+  <data name="Deaths" xml:space="preserve">
+    <value>Muertes</value>
+  </data>
+  <data name="TimesIncapacitated" xml:space="preserve">
+    <value>Veces incapacitado</value>
+  </data>
+  <data name="DamageTaken" xml:space="preserve">
+    <value>Daño recibido</value>
+  </data>
+  <data name="CommonsKilled" xml:space="preserve">
+    <value>Comunes muertos</value>
+  </data>
+  <data name="SiKilled" xml:space="preserve">
+    <value>SI - Muertos</value>
+  </data>
+  <data name="SiDamageDealt" xml:space="preserve">
+    <value>SI - Daño infligido</value>
+  </data>
+  <data name="TankDamageDealt" xml:space="preserve">
+    <value>Tanque - Daño infligido</value>
+  </data>
+  <data name="TankRocksTaken" xml:space="preserve">
+    <value>Tanque - Rocas recibidas</value>
+  </data>
+  <data name="Skeets" xml:space="preserve">
+    <value>Skeets</value>
+  </data>
+  <data name="Levels" xml:space="preserve">
+    <value>Niveles</value>
+  </data>
+  <data name="TotalDamage" xml:space="preserve">
+    <value>Daño total</value>
+  </data>
+  <data name="DamageSpitter" xml:space="preserve">
+    <value>Daño - Spitter</value>
+  </data>
+  <data name="HunterPounceDamage" xml:space="preserve">
+    <value>Hunter - Daño por pounce</value>
+  </data>
+  <data name="Total" xml:space="preserve">
+    <value>Total</value>
+  </data>
+  <data name="LastMatches" xml:space="preserve">
+    <value>Últimos partidos</value>
+  </data>
+  <data name="PlayerDetails" xml:space="preserve">
+    <value>Detalles del jugador</value>
+  </data>
+  <data name="GeneralStatistics" xml:space="preserve">
+    <value>Estadísticas generales</value>
+  </data>
+  <data name="Ranking" xml:space="preserve">
+    <value>Clasificación</value>
+  </data>
+  <data name="SteamId" xml:space="preserve">
+    <value>Steam ID</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>Nombre</value>
+  </data>
+  <data name="ProfileUrl" xml:space="preserve">
+    <value>URL del perfil</value>
+  </data>
+  <data name="Patent" xml:space="preserve">
+    <value>Patente</value>
+  </data>
+  <data name="Games" xml:space="preserve">
+    <value>Juegos</value>
+  </data>
+  <data name="Wins" xml:space="preserve">
+    <value>Victorias</value>
+  </data>
+  <data name="RageQuit" xml:space="preserve">
+    <value>Rage quit</value>
+  </data>
+  <data name="WinRate" xml:space="preserve">
+    <value>Porcentaje de victorias</value>
+  </data>
+  <data name="Loss" xml:space="preserve">
+    <value>Derrota</value>
+  </data>
+  <data name="StatisticsAsSurvivor" xml:space="preserve">
+    <value>Estadísticas como superviviente</value>
+  </data>
+  <data name="MvpCI" xml:space="preserve">
+    <value>MVP (CI)</value>
+  </data>
+  <data name="Lvp" xml:space="preserve">
+    <value>LVP</value>
+  </data>
+  <data name="Commons" xml:space="preserve">
+    <value>Comunes</value>
+  </data>
+  <data name="SiDamage" xml:space="preserve">
+    <value>Daño SI</value>
+  </data>
+  <data name="TimesIncap" xml:space="preserve">
+    <value>Veces incapacitado</value>
+  </data>
+  <data name="TankDamage" xml:space="preserve">
+    <value>Daño del tanque</value>
+  </data>
+  <data name="RocksEats" xml:space="preserve">
+    <value>Rocas recibidas</value>
+  </data>
+  <data name="FF" xml:space="preserve">
+    <value>FF</value>
+  </data>
+  <data name="StatisticsAsInfected" xml:space="preserve">
+    <value>Estadísticas como infectado</value>
+  </data>
+  <data name="Compare" xml:space="preserve">
+    <value>Comparar...</value>
+  </data>
+  <data name="PlayerNotFoundTitle" xml:space="preserve">
+    <value>Jugador no encontrado</value>
+  </data>
+  <data name="PlayerNotFoundMessage" xml:space="preserve">
+    <value>El jugador que buscas no está presente en la clasificación.</value>
+  </data>
+  <data name="PlayerNotFoundDetails" xml:space="preserve">
+    <value>Desafortunadamente, no podemos mostrar los detalles del jugador solicitado.</value>
+  </data>
+  <data name="ReturnToRanking" xml:space="preserve">
+    <value>Volver a la página de clasificación</value>
+  </data>
+  <data name="Player" xml:space="preserve">
+    <value>Jugador</value>
+  </data>
+  <data name="MvpSI" xml:space="preserve">
+    <value>MVP (SI)</value>
+  </data>
+  <data name="LevelUp" xml:space="preserve">
+    <value>¡Subir de nivel!</value>
+  </data>
+  <data name="LevelDrop" xml:space="preserve">
+    <value>¡Bajar de nivel!</value>
+  </data>
+  <data name="Servers" xml:space="preserve">
+    <value>Servidores</value>
+  </data>
+  <data name="ServerIP" xml:space="preserve">
+    <value>IP del servidor</value>
+  </data>
+  <data name="Players" xml:space="preserve">
+    <value>Jugadores</value>
+  </data>
+  <data name="ConnectedPlayers" xml:space="preserve">
+    <value>Jugadores conectados</value>
+  </data>
+  <data name="PlayerName" xml:space="preserve">
+    <value>Nombre del jugador</value>
+  </data>
+  <data name="Time" xml:space="preserve">
+    <value>Tiempo</value>
+  </data>
+  <data name="NoPlayersConnected" xml:space="preserve">
+    <value>No hay jugadores conectados</value>
+  </data>
+  <data name="Clock" xml:space="preserve">
+    <value>Reloj</value>
+  </data>
+  <data name="Star" xml:space="preserve">
+    <value>Estrella</value>
+  </data>
+  <data name="Patents" xml:space="preserve">
+    <value>Patentes</value>
+  </data>
+  <data name="MaxPatentReached" xml:space="preserve">
+    <value>Patente máxima alcanzada</value>
+  </data>
+  <data name="LastGamePositiveXp" xml:space="preserve">
+    <value>Último juego: +{0:N0} XP</value>
+  </data>
+  <data name="LastGameNegativeXp" xml:space="preserve">
+    <value>Último juego: {0:N0} XP</value>
+  </data>
+  <data name="NextLevel" xml:space="preserve">
+    <value>Próximo nivel: {0:N0}</value>
+  </data>
+  <data name="XpProgress" xml:space="preserve">
+    <value>XP: {0:N0} / {1:N0}</value>
+  </data>
+  <data name="ProgressPercentage" xml:space="preserve">
+    <value>Progreso: {0:P0}</value>
+  </data>
+  <data name="SwitchDarkTheme" xml:space="preserve">
+    <value>Cambiar a tema oscuro</value>
+  </data>
+  <data name="SwitchLightTheme" xml:space="preserve">
+    <value>Cambiar a tema claro</value>
+  </data>
+</root>

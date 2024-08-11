@@ -32,13 +32,14 @@ var app = builder.Build();
 
 var supportedCultures = new[]
 {
-    new CultureInfo("en-us"),
-    new CultureInfo("pt-br")
+    new CultureInfo("en-US"),
+    new CultureInfo("pt-BR"),
+    new CultureInfo("es-ES")
 };
 
 app.UseRequestLocalization(new RequestLocalizationOptions
 {
-    DefaultRequestCulture = new RequestCulture("en-us"),
+    DefaultRequestCulture = new RequestCulture("en-US"),
     SupportedCultures = supportedCultures,
     SupportedUICultures = supportedCultures
 });
