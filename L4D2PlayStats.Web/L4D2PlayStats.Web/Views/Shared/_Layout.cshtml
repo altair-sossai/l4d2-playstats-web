@@ -1,10 +1,14 @@
-﻿@using L4D2PlayStats.Web
+﻿@using System.Globalization
+@using L4D2PlayStats.Web
+@using Microsoft.AspNetCore.Localization
 @using Microsoft.AspNetCore.Mvc.Localization
 @using Microsoft.Extensions.Localization
 @inject IViewLocalizer Localizer
 @inject IStringLocalizer<SharedResource> SharedLocalizer
 @{
     var light = Context.Request.Cookies["theme"] == "light";
+    var requestCultureFeature = Context.Features.Get<IRequestCultureFeature>();
+    var cultureInfo = requestCultureFeature?.RequestCulture.Culture ?? new CultureInfo("en-us");
 }
 <!DOCTYPE html>
 <html lang="en">
@@ -88,6 +92,10 @@
             max-height: 175px;
         }
 
+        .show-mobile {
+            display: none;
+        }
+
         @@media screen and (min-width: 700px) {
             .slim {
                 width: 1px;
@@ -98,6 +106,10 @@
         @@media screen and (max-width: 700px) {
             .hide-mobile {
                 display: none !important;
+            }
+
+            .show-mobile {
+                display: inline;
             }
 
             .match .left-side {
@@ -179,26 +191,44 @@
                     @if (light)
                     {
                         <a href="@Url.Action("SetTheme", "Home", new { theme = "default" })">
-                            <img src="~/imgs/dark-theme.png" alt="@SharedLocalizer["SwitchDarkTheme"]" title="@SharedLocalizer["SwitchDarkTheme"]" class="theme-icon img-responsive" data-toggle="tooltip" data-placement="bottom">
+                            <img src="~/imgs/dark-theme.png" alt="@SharedLocalizer["SwitchDarkTheme"]" title="@SharedLocalizer["SwitchDarkTheme"]" class="theme-icon" data-toggle="tooltip" data-placement="bottom">
+                            <span class="show-mobile" style="margin-left: 5px">
+                                @SharedLocalizer["SwitchDarkTheme"]
+                            </span>
                         </a>
                     }
                     else
                     {
                         <a href="@Url.Action("SetTheme", "Home", new { theme = "light" })">
-                            <img src="~/imgs/light-theme.png" alt="@SharedLocalizer["SwitchLightTheme"]" title="@SharedLocalizer["SwitchLightTheme"]" class="theme-icon img-responsive" data-toggle="tooltip" data-placement="bottom">
+                            <img src="~/imgs/light-theme.png" alt="@SharedLocalizer["SwitchLightTheme"]" title="@SharedLocalizer["SwitchLightTheme"]" class="theme-icon" data-toggle="tooltip" data-placement="bottom">
+                            <span class="show-mobile" style="margin-left: 5px">
+                                @SharedLocalizer["SwitchLightTheme"]
+                            </span>
                         </a>
                     }
                 </li>
-                <li id="lang-en">
-                    <a href="#">
-                        <img src="~/imgs/us.png" alt="English" title="English" data-toggle="tooltip" data-placement="bottom">
-                    </a>
-                </li>
-                <li id="lang-pt">
-                    <a href="#">
-                        <img src="~/imgs/br.png" alt="Português" title="Português" data-toggle="tooltip" data-placement="bottom">
-                    </a>
-                </li>
+                @if (!cultureInfo.Name.Equals("en-us", StringComparison.InvariantCultureIgnoreCase))
+                {
+                    <li id="lang-en">
+                        <a href="#">
+                            <img src="~/imgs/us.png" alt="English" title="English" data-toggle="tooltip" data-placement="bottom">
+                            <span class="show-mobile" style="margin-left: 5px">
+                                English
+                            </span>
+                        </a>
+                    </li>
+                }
+                @if (!cultureInfo.Name.Equals("pt-br", StringComparison.InvariantCultureIgnoreCase))
+                {
+                    <li id="lang-pt">
+                        <a href="#">
+                            <img src="~/imgs/br.png" alt="Português" title="Português" data-toggle="tooltip" data-placement="bottom">
+                            <span class="show-mobile" style="margin-left: 5px">
+                                Português
+                            </span>
+                        </a>
+                    </li>
+                }
             </ul>
         </div>
     </div>
