@@ -38,4 +38,5 @@ app.UseStaticFiles();
 app.UseRouting();
 app.MapControllers();
 app.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}");
-app.Run();
+
+await app.RunAsync();
