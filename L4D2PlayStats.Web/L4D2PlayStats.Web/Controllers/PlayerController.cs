@@ -1,3 +1,4 @@
+using L4D2PlayStats.Matches;
 using L4D2PlayStats.Patents.Services;
 using L4D2PlayStats.Ranking;
 using L4D2PlayStats.UserAvatar;
@@ -10,6 +11,7 @@ namespace L4D2PlayStats.Web.Controllers;
 public class PlayerController(
     IStringLocalizer<SharedResource> sharedLocalizer,
     IRankingServiceCached rankingService,
+    IMatchesServiceCached matchesServiceCached,
     IUserAvatar userAvatar,
     IPatentService patentService) : Controller
 {
@@ -34,7 +36,16 @@ public class PlayerController(
         var firstPlayerRanking = new RankingModel(sharedLocalizer, firstPlayer, firstPlayerPatentProgress);
         var secondPlayerRanking = secondPlayer == null || secondPlayerPatentProgress == null ? null : new RankingModel(sharedLocalizer, secondPlayer, secondPlayerPatentProgress);
 
-        var model = new PlayerDetailsModel(firstPlayerRanking, secondPlayerRanking, players);
+        var matches = await matchesServiceCached.GetAsync();
+
+        var communityIds = matches
+            .SelectMany(m => m.Teams ?? [])
+            .SelectMany(t => t.Players ?? [])
+            .Select(p => p.CommunityId);
+
+        await userAvatar.LoadAsync(communityIds);
+
+        var model = new PlayerDetailsModel(firstPlayerRanking, secondPlayerRanking, players, matches);
 
         return View(model);
     }
