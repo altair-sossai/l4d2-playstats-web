@@ -123,6 +123,6 @@
       Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Header" xml:space="preserve">
-    <value>Top 50 jugadores</value>
+    <value>Top 100 jugadores</value>
   </data>
 </root>
