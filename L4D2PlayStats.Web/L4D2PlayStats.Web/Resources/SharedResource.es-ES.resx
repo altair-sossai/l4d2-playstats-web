@@ -369,4 +369,7 @@
   <data name="SwitchLightTheme" xml:space="preserve">
     <value>Cambiar a tema claro</value>
   </data>
+  <data name="ShowMore" xml:space="preserve">
+    <value>Mostrar más...</value>
+  </data>
 </root>
