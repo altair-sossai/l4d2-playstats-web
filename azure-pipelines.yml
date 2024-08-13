@@ -47,14 +47,15 @@ stages:
       displayName: 'Publish Project'
 
     - script: |
+        tar -czf bash.tar.gz -C $(Build.Repository.LocalPath)/bash .
         tar -czf publish.tar.gz -C $(Build.ArtifactStagingDirectory)/publish .
       displayName: 'Compress Published Files'
 
     - task: CopyFilesOverSSH@0
       inputs:
-        sshEndpoint: 'L4D2'
+        sshEndpoint: 'L4D2 - Resources'
         sourceFolder: '$(System.DefaultWorkingDirectory)'
-        contents: 'publish.tar.gz'
+        contents: '*.tar.gz'
         targetFolder: '/home/devops'
         cleanTargetFolder: false
         overwrite: true
@@ -62,7 +63,7 @@ stages:
 
     - task: SSH@0
       inputs:
-        sshEndpoint: 'L4D2'
+        sshEndpoint: 'L4D2 - Resources'
         readyTimeout: '20000'
         runOptions: 'script'
         scriptPath: 'scripts/deploy.sh'
