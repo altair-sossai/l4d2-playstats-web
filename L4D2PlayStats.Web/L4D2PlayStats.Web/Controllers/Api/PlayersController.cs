@@ -14,13 +14,15 @@ public class PlayersController(IRankingServiceCached rankingService, IPatentServ
     {
         var players = await rankingService.GetAsync();
 
-        var models = players.Select(player =>
-        {
-            var patentProgress = patentService.GetPatentProgress(player);
-            var model = new PlayerPatentModel(player, patentProgress);
+        var models = players
+            .Take(50)
+            .Select(player =>
+            {
+                var patentProgress = patentService.GetPatentProgress(player);
+                var model = new PlayerPatentModel(player, patentProgress);
 
-            return model;
-        }).ToList();
+                return model;
+            }).ToList();
 
         return Ok(models);
     }
