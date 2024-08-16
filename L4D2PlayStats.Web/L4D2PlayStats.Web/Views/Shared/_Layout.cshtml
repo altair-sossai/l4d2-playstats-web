@@ -185,6 +185,9 @@
                 <li class="@ViewBag.Patent">
                     @Html.ActionLink(SharedLocalizer["Patents"].Value, "Index", "Patent")
                 </li>
+                <li class="hide show-in-https">
+                    <a href="https://sourcebans.l4d2.com.br/">SourceBans++</a>
+                </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li>
@@ -256,6 +259,9 @@
 <script>
         $(function () {
             $('[data-toggle="tooltip"]').tooltip();
+
+            if (location.protocol === "https:")
+                $(".show-in-https").removeClass("hide");
 
             $('#lang-en').click(function (e) {
                 e.preventDefault();
