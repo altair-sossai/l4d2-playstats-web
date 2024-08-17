@@ -26,7 +26,7 @@ public class OpenAiService(IConfiguration configuration, IMemoryCache memoryCach
 
             var players = match.Teams?
                 .SelectMany(t => t.Players ?? [])
-                .OrderBy(o => Guid.NewGuid())
+                .OrderBy(_ => Guid.NewGuid())
                 .Take(3)
                 .OrderByDescending(o => o.TotalMvp)
                 .Select(player => new PlayerInput(player))
