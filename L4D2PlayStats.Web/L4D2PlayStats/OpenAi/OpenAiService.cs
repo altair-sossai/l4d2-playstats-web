@@ -34,11 +34,11 @@ public class OpenAiService(IConfiguration configuration, IMemoryCache memoryCach
 
             var stringBuilder = new StringBuilder();
 
-            stringBuilder.AppendLine($"""
-                                      Extraia o desempenho dos jogadores {string.Join(" e ", players.Select(p => p.Nome))},
-                                      cada um em um parágrafo, de forma resumida, em até 250 caracteres cada parágrafo,
-                                      separe cada parágrafo por um |.
-                                      """);
+            stringBuilder.AppendLine($$"""
+                                       Extraia o desempenho dos jogadores {{string.Join(" e ", players.Select(p => p.Nome))}},
+                                       cada um em um parágrafo, de forma resumida, em até 250 caracteres cada parágrafo,
+                                       separe cada parágrafo por um |, envolva os nomes dos jogadores em {green}Nome{default}
+                                       """);
 
             stringBuilder.AppendLine($"JSON: {JsonSerializer.Serialize(players)}");
             stringBuilder.AppendLine("Resultado:");

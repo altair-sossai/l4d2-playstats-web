@@ -6,6 +6,7 @@ public class ChatResult(ChatCompletion chatCompletion)
 {
     public string[]? Phrases { get; set; } = chatCompletion.Content?
         .FirstOrDefault()?.Text?.Split('|', StringSplitOptions.RemoveEmptyEntries)
-        .Select(v => v.Trim())
+        .Select(phrase => phrase.Trim())
+        .Select(phrase => phrase.StartsWith("{green}") ? phrase : $"{{default}}{phrase}")
         .ToArray();
 }
