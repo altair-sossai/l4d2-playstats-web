@@ -3,6 +3,7 @@ using L4D2PlayStats.Patents.Services;
 using L4D2PlayStats.Ranking;
 using L4D2PlayStats.UserAvatar;
 using L4D2PlayStats.Web.Models;
+using L4D2PlayStats.Web.Models.OrderBy.Enum;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Localization;
 
@@ -48,5 +49,11 @@ public class PlayerController(
         var model = new PlayerDetailsModel(firstPlayerRanking, secondPlayerRanking, players, matches);
 
         return View(model);
+    }
+
+    [Route("players")]
+    public IActionResult All(OrderByFilter orderBy)
+    {        
+        return RedirectToAction("Index", "Home", new { orderBy });
     }
 }

@@ -1,7 +1,10 @@
 using L4D2PlayStats.Patents.Services;
 using L4D2PlayStats.Ranking;
+using L4D2PlayStats.Sdk.Ranking.Results;
 using L4D2PlayStats.UserAvatar;
 using L4D2PlayStats.Web.Models;
+using L4D2PlayStats.Web.Models.OrderBy;
+using L4D2PlayStats.Web.Models.OrderBy.Enum;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Localization;
 
@@ -13,11 +16,69 @@ public class HomeController(
     IUserAvatar userAvatar,
     IPatentService patentService) : Controller
 {
-    public async Task<IActionResult> Index()
+    public async Task<IActionResult> Index(OrderByFilter orderBy)
     {
         ViewBag.Home = "active";
+        ViewData["SelectedValue"] = OrderByFilterExtensions.ToFriendlyString(orderBy);
+        var selectedOption = ViewData["SelectedValue"]!.ToString();
+
+
+        var orderByOptions = Enum.GetValues(typeof(OrderByFilter))
+                                  .Cast<OrderByFilter>()
+                                  .Select(option => new OrderByOption
+                                  {
+                                      Value = option,
+                                      FriendlyName = option.ToFriendlyString()
+                                  })
+                                  .ToList();
+
+        OrderByOption optionToRemove = new OrderByOption();
+        foreach (var option in orderByOptions)
+        {
+            if (option.FriendlyName!.Equals(selectedOption))
+            {
+                optionToRemove = option;
+                break;
+            }                
+        }
+
+        orderByOptions.Remove(optionToRemove);
+
+        ViewBag.OrderByOptions = orderByOptions;
 
         var players = await rankingService.GetAsync();
+
+        switch (orderBy)
+        {
+            case OrderByFilter.Wins:
+                players = players.OrderByDescending(p => p.Wins).ToList();
+                break;
+
+            case OrderByFilter.Loss:
+                players = players.OrderByDescending(p => p.Loss).ToList();
+                break;
+
+            case OrderByFilter.Si:
+                players = players.OrderByDescending(p => p.MvpSiDamage).ToList();
+                break;
+
+            case OrderByFilter.Ci:
+                players = players.OrderByDescending(p => p.MvpCommon).ToList();
+                break;
+
+            case OrderByFilter.WinRate:
+                players = players.OrderByDescending(p => p.WinRate).ToList();
+                break;
+
+            case OrderByFilter.RageQuit:
+                players = players.OrderByDescending(p => p.RageQuit).ToList();
+                break;
+
+            default:
+                players = players.OrderByDescending(p => p.Experience).ToList();
+                break;
+        }
+
         var communityIds = players.Select(p => p.CommunityId);
         await userAvatar.LoadAsync(communityIds);
 
