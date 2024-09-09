@@ -271,7 +271,7 @@
     <value>Comuns</value>
   </data>
   <data name="SiDamage" xml:space="preserve">
-    <value>SI Dano</value>
+    <value>SI - Dano</value>
   </data>
   <data name="TimesIncap" xml:space="preserve">
     <value>Vezes incapacitado</value>
@@ -371,5 +371,11 @@
   </data>
   <data name="ShowMore" xml:space="preserve">
     <value>Mostrar mais...</value>
+  </data>
+  <data name="Experience" xml:space="preserve">
+    <value>Experiência</value>
+  </data>
+  <data name="OrderBy" xml:space="preserve">
+    <value>Ordenar por</value>
   </data>
 </root>

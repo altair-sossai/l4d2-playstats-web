@@ -271,7 +271,7 @@
     <value>Commons</value>
   </data>
   <data name="SiDamage" xml:space="preserve">
-    <value>SI Damage</value>
+    <value>SI - Damage</value>
   </data>
   <data name="TimesIncap" xml:space="preserve">
     <value>Times incap.</value>
@@ -371,5 +371,11 @@
   </data>
   <data name="ShowMore" xml:space="preserve">
     <value>Show more...</value>
+  </data>
+  <data name="Experience" xml:space="preserve">
+    <value>Experience</value>
+  </data>
+  <data name="OrderBy" xml:space="preserve">
+    <value>Order by</value>
   </data>
 </root>

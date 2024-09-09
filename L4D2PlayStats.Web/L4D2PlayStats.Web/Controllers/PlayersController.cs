@@ -1,5 +1,7 @@
 using L4D2PlayStats.Matches;
 using L4D2PlayStats.Patents.Services;
+using L4D2PlayStats.Players.Enums;
+using L4D2PlayStats.Players.Extensions;
 using L4D2PlayStats.Ranking;
 using L4D2PlayStats.UserAvatar;
 using L4D2PlayStats.Web.Models;
@@ -15,6 +17,21 @@ public class PlayersController(
     IUserAvatar userAvatar,
     IPatentService patentService) : Controller
 {
+    [Route("players")]
+    public async Task<IActionResult> Index(PlayerResultProperty orderBy = PlayerResultProperty.Wins, bool asc = false)
+    {
+        ViewBag.Players = "active";
+
+        var playersResult = await rankingService.GetAsync();
+        var communityIds = playersResult.Select(p => p.CommunityId);
+        await userAvatar.LoadAsync(communityIds);
+
+        var players = playersResult.SortPlayers(orderBy, asc).ToList();
+        var model = new PlayersModel(players, orderBy, asc);
+
+        return View(model);
+    }
+
     [Route("player/{communityId}/{compareWith:long?}")]
     public async Task<IActionResult> Details(long communityId, long? compareWith = null)
     {
