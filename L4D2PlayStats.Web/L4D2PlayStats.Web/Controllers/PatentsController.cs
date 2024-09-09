@@ -5,8 +5,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace L4D2PlayStats.Web.Controllers;
 
-public class PatentController(IRankingServiceCached rankingServiceCached, IPatentService patentService) : Controller
+public class PatentsController(IRankingServiceCached rankingServiceCached, IPatentService patentService) : Controller
 {
+    [Route("patents")]
     public async Task<IActionResult> Index()
     {
         ViewBag.Patent = "active";

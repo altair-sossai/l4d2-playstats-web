@@ -8,7 +8,7 @@ using Microsoft.Extensions.Localization;
 
 namespace L4D2PlayStats.Web.Controllers;
 
-public class PlayerController(
+public class PlayersController(
     IStringLocalizer<SharedResource> sharedLocalizer,
     IRankingServiceCached rankingService,
     IMatchesServiceCached matchesServiceCached,
@@ -16,7 +16,7 @@ public class PlayerController(
     IPatentService patentService) : Controller
 {
     [Route("player/{communityId}/{compareWith:long?}")]
-    public async Task<IActionResult> Index(long communityId, long? compareWith = null)
+    public async Task<IActionResult> Details(long communityId, long? compareWith = null)
     {
         var players = await rankingService.GetAsync();
         var firstPlayer = players.FirstOrDefault(p => p.CommunityId == communityId);

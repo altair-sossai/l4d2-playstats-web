@@ -15,6 +15,7 @@ public class ServersController(
     private string[] ServerIPs => configuration.GetValue<string>("ServerIPs")?.Split(';', StringSplitOptions.RemoveEmptyEntries) ?? [];
     private string SteamApiKey => configuration.GetValue<string>("SteamApiKey")!;
 
+    [Route("servers")]
     public async Task<IActionResult> Index()
     {
         ViewBag.Servers = "active";
