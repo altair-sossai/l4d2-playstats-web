@@ -24,69 +24,66 @@
 }
 
 <h4 class="text-center">@SharedLocalizer["Players"]</h4>
-<div class="container" style="padding: 0">
 
-    <div class="row" style="margin-bottom: 10px">
-        <div class="col-md-12">
-            <div class="dropdown">
-                <button class="btn btn-default btn-sm dropdown-toggle" type="button" data-toggle="dropdown">
-                    @SharedLocalizer["OrderBy"]: <b>@SharedLocalizer[Model.OrderByResourceKey]</b>
-                    <span class="caret"></span>
-                </button>
-                <ul class="dropdown-menu">
-                    @foreach (var property in Enum.GetValues<PlayerResultProperty>())
-                    {
-                        <li>
-                            <a href="@Url.Action("Index", "Players", new { orderBy = property, asc = false })">
-                                @SharedLocalizer[property.GetResourceKey()]
-                            </a>
-                        </li>
-                    }
-                </ul>
-            </div>
+<div class="row" style="margin-bottom: 10px">
+    <div class="col-md-12">
+        <div class="dropdown">
+            <button class="btn btn-default btn-sm dropdown-toggle" type="button" data-toggle="dropdown">
+                @SharedLocalizer["OrderBy"]: <b>@SharedLocalizer[Model.OrderByResourceKey]</b>
+                <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu">
+                @foreach (var property in Enum.GetValues<PlayerResultProperty>())
+                {
+                    <li>
+                        <a href="@Url.Action("Index", "Players", new { orderBy = property, asc = false })">
+                            @SharedLocalizer[property.GetResourceKey()]
+                        </a>
+                    </li>
+                }
+            </ul>
         </div>
     </div>
-
-
-    <table class="table table-striped table-hover table-bordered table-condensed">
-        <thead>
-        <tr>
-            <th class="text-center">#</th>
-            <th colspan="2">@SharedLocalizer["Player"]</th>
-            <th class="text-center">
-                <a href="@Url.Action("Index", "Players", new { orderBy = Model.OrderBy, asc = !Model.Asc })">
-                    @SharedLocalizer[Model.OrderByResourceKey]
-                    &nbsp;
-                    @(Model.Asc ? "\u2191" : "\u2193")
-                </a>
-            </th>
-        </tr>
-        </thead>
-        <tbody>
-        @{
-            var position = Model.Asc ? Model.Players.Count : 1;
-        }
-        @foreach (var player in Model.Players)
-        {
-            <tr class="hover">
-                <td class="text-center vertical-align-middle">#@position.ToString("N0")</td>
-                <td class="text-center vertical-align-middle slim" style="margin: 0; padding: 0">
-                    <a href="@Url.Action("Details", "Players", new { communityId = player.CommunityId })" title="@player.Name">
-                        <img src="@UserAvatar[player.CommunityId]" alt="@player.Name" style="width: 40px"/>
-                    </a>
-                </td>
-                <td class="vertical-align-middle">
-                    @Html.ActionLink(player.Name?.Truncate(30) ?? "-", "Details", "Players", new { communityId = player.CommunityId })
-                </td>
-                <td class="text-center vertical-align-middle">
-                    <p data-toggle="tooltip" data-placement="top" title="@SharedLocalizer[Model.OrderByResourceKey]">
-                        @player.Value.ToString("N0")
-                    </p>
-                </td>
-            </tr>
-
-            position += Model.Asc ? -1 : 1;
-        }
-        </tbody>
-    </table>
 </div>
+
+<table class="table table-striped table-hover table-bordered table-condensed">
+    <thead>
+    <tr>
+        <th class="text-center">#</th>
+        <th colspan="2">@SharedLocalizer["Player"]</th>
+        <th class="text-center">
+            <a href="@Url.Action("Index", "Players", new { orderBy = Model.OrderBy, asc = !Model.Asc })">
+                @SharedLocalizer[Model.OrderByResourceKey]
+                &nbsp;
+                @(Model.Asc ? "\u2191" : "\u2193")
+            </a>
+        </th>
+    </tr>
+    </thead>
+    <tbody>
+    @{
+        var position = Model.Asc ? Model.Players.Count : 1;
+    }
+    @foreach (var player in Model.Players)
+    {
+        <tr class="hover">
+            <td class="text-center vertical-align-middle">#@position.ToString("N0")</td>
+            <td class="text-center vertical-align-middle slim" style="margin: 0; padding: 0">
+                <a href="@Url.Action("Details", "Players", new { communityId = player.CommunityId })" title="@player.Name">
+                    <img src="@UserAvatar[player.CommunityId]" alt="@player.Name" style="width: 40px"/>
+                </a>
+            </td>
+            <td class="vertical-align-middle">
+                @Html.ActionLink(player.Name?.Truncate(30) ?? "-", "Details", "Players", new { communityId = player.CommunityId })
+            </td>
+            <td class="text-center vertical-align-middle">
+                <p data-toggle="tooltip" data-placement="top" title="@SharedLocalizer[Model.OrderByResourceKey]">
+                    @player.Value.ToString("N0")
+                </p>
+            </td>
+        </tr>
+
+        position += Model.Asc ? -1 : 1;
+    }
+    </tbody>
+</table>
