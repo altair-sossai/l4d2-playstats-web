@@ -109,25 +109,31 @@ confogl_addcvar open_ai_url ""
 Here are some example screenshots from the site [https://l4d2.com.br/](https://l4d2.com.br/):
 
 <p align="center">
-Ranking Interface
+Ranking Interface (dark mode)
 </p>
 
 ![Ranking Interface](https://github.com/altair-sossai/l4d2-playstats-web/blob/main/screenshot/screenshot_01.jpg)
 
 <p align="center">
+Ranking Interface (light mode)
+</p>
+
+![Ranking Interface](https://github.com/altair-sossai/l4d2-playstats-web/blob/main/screenshot/screenshot_02.jpg)
+
+<p align="center">
 Last matches
 </p>
 
-![Last matches](https://github.com/altair-sossai/l4d2-playstats-web/blob/main/screenshot/screenshot_02.jpg)
+![Last matches](https://github.com/altair-sossai/l4d2-playstats-web/blob/main/screenshot/screenshot_03.jpg)
 
 <p align="center">
 Player Comparison
 </p>
 
-![Player Comparison](https://github.com/altair-sossai/l4d2-playstats-web/blob/main/screenshot/screenshot_03.jpg)
+![Player Comparison](https://github.com/altair-sossai/l4d2-playstats-web/blob/main/screenshot/screenshot_04.jpg)
 
 <p align="center">
 Player rank displayed in-game
 </p>
 
-![Player Comparison](https://github.com/altair-sossai/l4d2-playstats-web/blob/main/screenshot/screenshot_04.jpg)
+![Player Comparison](https://github.com/altair-sossai/l4d2-playstats-web/blob/main/screenshot/screenshot_05.jpg)
