@@ -13,7 +13,7 @@
     </div>
     <div class="panel-body">
         <p>
-            @Html.Raw(string.Format(Localizer["PatentSystemDescription1"].Value, Model.Config.DaysRange))
+            @Localizer["PatentSystemDescription1"]
         </p>
         <p>
             @Html.Raw(string.Format(Localizer["PatentSystemDescription2"].Value, Model.Config.Win, Math.Abs(Model.Config.Loss), Model.Config.Mvps, Model.Config.MvpsCommon, Model.Config.RageQuit))

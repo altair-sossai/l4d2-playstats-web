@@ -126,7 +126,7 @@
     <value>Entendendo o sistema de patentes</value>
   </data>
   <data name="PatentSystemDescription1" xml:space="preserve">
-    <value>O sistema de patentes em nosso serviço leva em consideração a quantidade de XP que o jogador ganhou durante os jogos dos últimos &lt;b&gt;{0:N0}&lt;/b&gt; dias.</value>
+    <value>O sistema de patentes em nosso serviço leva em consideração a quantidade de XP que o jogador ganhou durante os jogos no período atual de dois meses. O sistema zera ao final de cada bimestre, ou seja, nos períodos de janeiro-fevereiro, março-abril, e assim por diante.</value>
   </data>
   <data name="PatentSystemDescription2" xml:space="preserve">
     <value>Cada vitória concede ao jogador &lt;b&gt;{0:N0}&lt;/b&gt; pontos de XP, enquanto derrotas fazem o jogador perder &lt;b&gt;{1:N0}&lt;/b&gt; pontos de XP. Um título de MVP SI concede ao jogador um adicional de &lt;b&gt;{2:N0}&lt;/b&gt; pontos de XP, e um título de MVP CI concede um adicional de &lt;b&gt;{3:N0}&lt;/b&gt; pontos de XP. Rage quit resulta na perda de &lt;b&gt;{4:N0}&lt;/b&gt; pontos de XP.</value>

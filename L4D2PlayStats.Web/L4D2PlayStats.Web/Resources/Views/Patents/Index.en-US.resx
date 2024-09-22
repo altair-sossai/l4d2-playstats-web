@@ -126,7 +126,7 @@
     <value>Understanding the patent system</value>
   </data>
   <data name="PatentSystemDescription1" xml:space="preserve">
-    <value>The patent system in our service takes into account the amount of XP that the player has earned during the games of the last &lt;b&gt;{0:N0}&lt;/b&gt; days.</value>
+    <value>The patent system in our service takes into account the amount of XP the player has earned during games in the current two-month period. The system resets at the end of each two-month cycle, i.e., in the periods of January-February, March-April, and so on.</value>
   </data>
   <data name="PatentSystemDescription2" xml:space="preserve">
     <value>Each victory awards the player &lt;b&gt;{0:N0}&lt;/b&gt; XP points, while losses cause the player to lose &lt;b&gt;{1:N0}&lt;/b&gt; XP points. An MVP SI title grants the player an additional &lt;b&gt;{2:N0}&lt;/b&gt; XP points, and an MVP CI title grants an additional &lt;b&gt;{3:N0}&lt;/b&gt; XP points. Rage quit results in a loss of &lt;b&gt;{4:N0}&lt;/b&gt; XP points.</value>

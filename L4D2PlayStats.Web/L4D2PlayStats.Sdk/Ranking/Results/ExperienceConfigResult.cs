@@ -2,7 +2,6 @@
 
 public class ExperienceConfigResult
 {
-    public int DaysRange { get; set; }
     public int Win { get; set; }
     public int Loss { get; set; }
     public int RageQuit { get; set; }
