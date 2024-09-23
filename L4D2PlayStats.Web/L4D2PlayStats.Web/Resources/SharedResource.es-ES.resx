@@ -378,4 +378,19 @@
   <data name="OrderBy" xml:space="preserve">
     <value>Ordenar por</value>
   </data>
+  <data name="History" xml:space="preserve">
+    <value>Historia</value>
+  </data>
+  <data name="HistoryNotFoundTitle" xml:space="preserve">
+    <value>Historial no encontrado</value>
+  </data>
+  <data name="HistoryNotFoundMessage" xml:space="preserve">
+    <value>El historial solicitado no fue localizado. Por favor, verifique la información y vuelva a intentarlo</value>
+  </data>
+  <data name="DisplayedPeriod" xml:space="preserve">
+    <value>Período mostrado</value>
+  </data>
+  <data name="PeriodRange" xml:space="preserve">
+    <value>De {1:00}/{0:0000} a {3:00}/{2:0000}</value>
+  </data>
 </root>

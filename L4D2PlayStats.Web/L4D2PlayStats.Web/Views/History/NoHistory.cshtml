@@ -1,0 +1,15 @@
+﻿@using L4D2PlayStats.Web
+@using Microsoft.Extensions.Localization
+@inject IStringLocalizer<SharedResource> SharedLocalizer
+
+<div class="jumbotron text-center" style="margin-top: 20px">
+    <h2>@SharedLocalizer["HistoryNotFoundTitle"]</h2>
+
+    <p>
+        @SharedLocalizer["HistoryNotFoundMessage"]
+    </p>
+
+    <a href="@Url.Action("Index", "Home")" class="btn btn-primary">
+        @SharedLocalizer["ReturnToRanking"]
+    </a>
+</div>
