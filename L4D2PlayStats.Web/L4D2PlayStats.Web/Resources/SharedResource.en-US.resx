@@ -393,4 +393,13 @@
   <data name="PeriodRange" xml:space="preserve">
     <value>From {1:00}/{0:0000} to {3:00}/{2:0000}</value>
   </data>
+  <data name="FirstPlace" xml:space="preserve">
+    <value>First place</value>
+  </data>
+  <data name="SecondPlace" xml:space="preserve">
+    <value>Second place</value>
+  </data>
+  <data name="ThirdPlace" xml:space="preserve">
+    <value>Third place</value>
+  </data>
 </root>

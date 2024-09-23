@@ -8,6 +8,10 @@
 
 @section Styles {
     <style>
+        .place {
+            width: 30px;
+        }
+
         table {
             margin-bottom: 0 !important;
         }
@@ -62,7 +66,23 @@
     @foreach (var player in Model.Players.Take(100))
     {
         <tr class="hover">
-            <td class="text-center vertical-align-middle">#@player.Position.ToString("N0")</td>
+            <td class="text-center vertical-align-middle">
+                @switch (player.Position)
+                {
+                    case 1:
+                        <img src="~/imgs/first-place.png" alt="@SharedLocalizer["FirstPlace"]" title="@SharedLocalizer["FirstPlace"]" class="place"/>
+                        break;
+                    case 2:
+                        <img src="~/imgs/second-place.png" alt="@SharedLocalizer["SecondPlace"]" title="@SharedLocalizer["SecondPlace"]" class="place"/>
+                        break;
+                    case 3:
+                        <img src="~/imgs/third-place.png" alt="@SharedLocalizer["ThirdPlace"]" title="@SharedLocalizer["ThirdPlace"]" class="place"/>
+                        break;
+                    default:
+                        @($"#{player.Position:N0}")
+                        break;
+                }
+            </td>
             <td class="text-center vertical-align-middle slim" style="margin: 0; padding: 0">
                 <a href="@Url.Action("Details", "Players", new { communityId = player.CommunityId })" title="@player.Name">
                     <img src="@UserAvatar[player.CommunityId]" alt="@player.Name" style="width: 40px"/>

@@ -10,6 +10,10 @@
 
 @section Styles {
     <style>
+        .place {
+            width: 30px;
+        }
+
         .progress {
             margin: 0;
             height: 10px;
@@ -63,7 +67,9 @@
     </tr>
     </thead>
     <tbody>
-    @{ var count = 0; }
+    @{
+        var count = 0;
+    }
     @foreach (var ranking in Model.Take(100))
     {
         var player = ranking.Player;
@@ -71,7 +77,23 @@
         var patent = patentProgress.Patent;
 
         <tr class="hover @(++count > 50 ? "hidden" : string.Empty)">
-            <td class="text-center vertical-align-middle">#@player.Position.ToString("N0")</td>
+            <td class="text-center vertical-align-middle">
+                @switch (player.Position)
+                {
+                    case 1:
+                        <img src="~/imgs/first-place.png" alt="@SharedLocalizer["FirstPlace"]" title="@SharedLocalizer["FirstPlace"]" class="place"/>
+                        break;
+                    case 2:
+                        <img src="~/imgs/second-place.png" alt="@SharedLocalizer["SecondPlace"]" title="@SharedLocalizer["SecondPlace"]" class="place"/>
+                        break;
+                    case 3:
+                        <img src="~/imgs/third-place.png" alt="@SharedLocalizer["ThirdPlace"]" title="@SharedLocalizer["ThirdPlace"]" class="place"/>
+                        break;
+                    default:
+                        @($"#{player.Position:N0}")
+                        break;
+                }
+            </td>
             <td class="text-center vertical-align-middle slim">
                 <img src="@patent.Image" alt="@patent.FullName" data-toggle="tooltip" data-placement="top" title="@patent.FullName" style="width: 32px"/>
             </td>
