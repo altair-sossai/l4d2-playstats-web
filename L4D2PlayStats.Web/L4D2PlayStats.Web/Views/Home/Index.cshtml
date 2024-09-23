@@ -81,13 +81,13 @@
                 @switch (player.Position)
                 {
                     case 1:
-                        <img src="~/imgs/first-place.png" alt="@SharedLocalizer["FirstPlace"]" title="@SharedLocalizer["FirstPlace"]" class="place"/>
+                        <img src="~/imgs/first-place.png" alt="@SharedLocalizer["FirstPlace"]" title="@SharedLocalizer["FirstPlace"]" class="place" data-toggle="tooltip" data-placement="top"/>
                         break;
                     case 2:
-                        <img src="~/imgs/second-place.png" alt="@SharedLocalizer["SecondPlace"]" title="@SharedLocalizer["SecondPlace"]" class="place"/>
+                        <img src="~/imgs/second-place.png" alt="@SharedLocalizer["SecondPlace"]" title="@SharedLocalizer["SecondPlace"]" class="place" data-toggle="tooltip" data-placement="top"/>
                         break;
                     case 3:
-                        <img src="~/imgs/third-place.png" alt="@SharedLocalizer["ThirdPlace"]" title="@SharedLocalizer["ThirdPlace"]" class="place"/>
+                        <img src="~/imgs/third-place.png" alt="@SharedLocalizer["ThirdPlace"]" title="@SharedLocalizer["ThirdPlace"]" class="place" data-toggle="tooltip" data-placement="top"/>
                         break;
                     default:
                         @($"#{player.Position:N0}")
