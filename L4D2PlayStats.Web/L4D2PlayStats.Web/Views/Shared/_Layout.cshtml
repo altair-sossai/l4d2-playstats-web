@@ -100,6 +100,12 @@
             display: none;
         }
 
+        .server-info {
+            font-size: 14px;
+            padding-left: 7px;
+            padding-right: 7px;
+        }
+
         @@media screen and (min-width: 700px) {
             .slim {
                 width: 1px;
@@ -155,6 +161,13 @@
                     padding-right: 15px;
                 }
         }
+
+        @@media (min-width: 768px) and (max-width: 930px) {
+            .navbar-nav > li > a {
+                padding-left: 10px;
+                padding-right: 10px;
+            }
+        }
     </style>
 
     @await RenderSectionAsync("Styles", false)
@@ -172,6 +185,9 @@
             </button>
             <a class="navbar-brand" href="/">
                 <img src="~/imgs/logo.png" alt="@Localizer["ServerName"]" class="logo img-responsive">
+            </a>
+            <a id="server-info" class="navbar-brand server-info pulsate" href="@Url.Action("Index", "Servers")" title="@SharedLocalizer["Servers"]" style="display:none;">
+                <span id="server-status" class="label label-success"></span>
             </a>
         </div>
 
@@ -292,6 +308,43 @@
                     }
                 });
             }
+
+            function pulsate() {
+                $(".pulsate").animate({ opacity: 0.6 }, 1000, function () {
+                    $(this).animate({ opacity: 1 }, 1000, pulsate);
+                });
+            };
+
+            function updateServerInfo() {
+                $.ajax({
+                    url: '/api/servers',
+                    method: 'GET',
+                    success: function(data) {
+                        if (!data || data.length == 0) {
+                            $('#server-info').hide();
+                            return;
+                        }
+
+                        var serverInfo = data[0];
+
+                        if (serverInfo.players == 0) {
+                            $('#server-info').hide();
+                            return;
+                        }
+
+                        $('#server-status').text('● ' + serverInfo.players + '/' + serverInfo.max_players);
+                        $('#server-info').show();
+                    },
+                    error: function() {
+                        $('#server-info').hide();
+                    }
+                });
+            }
+
+            pulsate();
+            updateServerInfo();
+
+            setInterval(updateServerInfo, 10000); 
         })
     </script>
 
