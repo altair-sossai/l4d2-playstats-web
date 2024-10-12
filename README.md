@@ -5,11 +5,15 @@ This ASP.NET MVC application (net8.0) serves as a ranking and statistics site fo
 ## Features
 
 - **Ranking System:** Utilizes data provided by the "Left 4 Dead 2 Match Data API" to create a comprehensive ranking system. [API Repository](https://github.com/altair-sossai/l4d2-playstats-api)
+  - The ranking system is reset every two months by default, though this can be configured as needed.
+  - Previous rankings can be consulted.
 - **User-Friendly Interface:** Displays rankings, latest matches, player rankings, and player comparisons in an intuitive and accessible format.
 - **Brazilian Community:** Currently available to the Brazilian community at [https://l4d2.com.br/](https://l4d2.com.br/).
 - **Steam API Integration:** Requires a Steam developer key (SteamApiKey) to fetch player information. Instructions for creating a Steam API key are provided below.
 - **Data Dependency:** Directly relies on the "Left 4 Dead 2 Match Data API" to retrieve and display player data.
 - **In-Game Integration:** Can be opened directly within the game when used in conjunction with the [l4d2_playstats_sync](https://github.com/altair-sossai/l4d2-zone-server/blob/master/addons/sourcemod/plugins/optional/l4d2_playstats_sync.smx) plugin. Configuration details for the plugin are provided below.
+- **Connected Players Indicator:** A flag in the site header shows how many players are currently connected to the server.
+
 
 ## Requirements
 
