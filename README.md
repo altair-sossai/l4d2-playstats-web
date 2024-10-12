@@ -2,6 +2,8 @@
 
 This ASP.NET MVC application (net8.0) serves as a ranking and statistics site for Left 4 Dead 2 matches.
 
+For an example of this site in action, visit the Brazilian community site at [https://l4d2.com.br/](https://l4d2.com.br/).
+
 ## Features
 
 - **Ranking System:** Utilizes data provided by the "Left 4 Dead 2 Match Data API" to create a comprehensive ranking system. [API Repository](https://github.com/altair-sossai/l4d2-playstats-api)
