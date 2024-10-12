@@ -125,4 +125,10 @@
   <data name="Header" xml:space="preserve">
     <value>Top 100 jugadores</value>
   </data>
+  <data name="NextResetIn" xml:space="preserve">
+    <value>Próximo reinicio en {0} día(s)</value>
+  </data>
+  <data name="ViewPreviousRankings" xml:space="preserve">
+    <value>Ver rankings anteriores</value>
+  </data>
 </root>

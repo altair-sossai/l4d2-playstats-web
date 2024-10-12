@@ -21,7 +21,7 @@ public class HomeController(
         var communityIds = players.Select(p => p.CommunityId);
         await userAvatar.LoadAsync(communityIds);
 
-        var models = players.Select(player =>
+        var ranking = players.Select(player =>
         {
             var patentProgress = patentService.GetPatentProgress(player);
             var model = new RankingModel(sharedLocalizer, player, patentProgress);
@@ -29,7 +29,9 @@ public class HomeController(
             return model;
         }).ToList();
 
-        return View(models);
+        var model = new HomeModel(ranking);
+
+        return View(model);
     }
 
     public IActionResult SetTheme(string theme)
