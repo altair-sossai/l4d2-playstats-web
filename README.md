@@ -13,7 +13,10 @@ This ASP.NET MVC application (net8.0) serves as a ranking and statistics site fo
 - **Data Dependency:** Directly relies on the "Left 4 Dead 2 Match Data API" to retrieve and display player data.
 - **In-Game Integration:** Can be opened directly within the game when used in conjunction with the [l4d2_playstats_sync](https://github.com/altair-sossai/l4d2-zone-server/blob/master/addons/sourcemod/plugins/optional/l4d2_playstats_sync.smx) plugin. Configuration details for the plugin are provided below.
 - **Connected Players Indicator:** A flag in the site header shows how many players are currently connected to the server.
-
+- **Language Support:** The site currently supports English, Portuguese (Brazil), and Spanish.
+- **Theme Support:** The site offers both light and dark themes, providing users with the option to choose their preferred mode.
+- **Technology Stack:** Built using Bootstrap v3.4.1 and jQuery v1.12.4 to ensure compatibility with the in-game browser.
+- **Responsive Design:** The site is fully responsive and adapts to both desktop and mobile devices.
 
 ## Requirements
 
