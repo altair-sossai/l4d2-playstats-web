@@ -101,34 +101,44 @@ The `sv_downloadurl` should point to a FastDL URL. FastDL is essentially a publi
 
 ## Example Screenshots
 
-Here are some example screenshots from the site [https://l4d2.com.br/](https://l4d2.com.br/):
+Below are some example screenshots showcasing the features of the site available at [https://l4d2.com.br/](https://l4d2.com.br/).
+
+### Ranking Interface (Dark Mode)
+
+The dark mode theme provides a visually appealing interface, reducing eye strain during night-time use.
 
 <p align="center">
-Ranking Interface (dark mode)
+  <img src="https://github.com/altair-sossai/l4d2-playstats-web/blob/main/screenshot/screenshot_01.jpg" alt="Ranking Interface (dark mode)">
 </p>
 
-![Ranking Interface](https://github.com/altair-sossai/l4d2-playstats-web/blob/main/screenshot/screenshot_01.jpg)
+### Ranking Interface (Light Mode)
+
+For users who prefer a brighter interface, the light mode offers a clean and modern design for viewing rankings and stats.
 
 <p align="center">
-Ranking Interface (light mode)
+  <img src="https://github.com/altair-sossai/l4d2-playstats-web/blob/main/screenshot/screenshot_02.jpg" alt="Ranking Interface (light mode)">
 </p>
 
-![Ranking Interface](https://github.com/altair-sossai/l4d2-playstats-web/blob/main/screenshot/screenshot_02.jpg)
+### Last Matches
+
+Quickly view recent match results, including player performance and match statistics in an organized format.
 
 <p align="center">
-Last matches
+  <img src="https://github.com/altair-sossai/l4d2-playstats-web/blob/main/screenshot/screenshot_03.jpg" alt="Last Matches">
 </p>
 
-![Last matches](https://github.com/altair-sossai/l4d2-playstats-web/blob/main/screenshot/screenshot_03.jpg)
+### Player Comparison
+
+Compare the performance of different players, analyzing key stats side by side to see who performed better.
 
 <p align="center">
-Player Comparison
+  <img src="https://github.com/altair-sossai/l4d2-playstats-web/blob/main/screenshot/screenshot_04.jpg" alt="Player Comparison">
 </p>
 
-![Player Comparison](https://github.com/altair-sossai/l4d2-playstats-web/blob/main/screenshot/screenshot_04.jpg)
+### Player Rank Displayed In-Game
+
+View a player’s ranking directly in-game, providing seamless integration between the website and gameplay.
 
 <p align="center">
-Player rank displayed in-game
+  <img src="https://github.com/altair-sossai/l4d2-playstats-web/blob/main/screenshot/screenshot_05.jpg" alt="Player Rank Displayed In-Game">
 </p>
-
-![Player Comparison](https://github.com/altair-sossai/l4d2-playstats-web/blob/main/screenshot/screenshot_05.jpg)
