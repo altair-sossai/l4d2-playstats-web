@@ -49,7 +49,7 @@
 <table class="table table-striped table-hover table-bordered table-condensed">
     <thead>
     <tr>
-        <th class="text-center">#</th>
+        <th class="text-center slim">#</th>
         <th colspan="2">@SharedLocalizer["Player"]</th>
         <th class="text-center">
             <a href="@Url.Action("Index", "Players", new { orderBy = Model.OrderBy, asc = !Model.Asc })">
@@ -67,10 +67,10 @@
     @foreach (var player in Model.Players)
     {
         <tr class="hover">
-            <td class="text-center vertical-align-middle">#@position.ToString("N0")</td>
+            <td class="text-center vertical-align-middle slim">#@position.ToString("N0")</td>
             <td class="text-center vertical-align-middle slim" style="margin: 0; padding: 0">
                 <a href="@Url.Action("Details", "Players", new { communityId = player.CommunityId })" title="@player.Name">
-                    <img src="@UserAvatar[player.CommunityId]" alt="@player.Name" style="width: 40px"/>
+                    <img src="@UserAvatar[player.CommunityId]" alt="@player.Name" style="width: 40px; border-radius: 5px; margin: 2px"/>
                 </a>
             </td>
             <td class="vertical-align-middle">

@@ -280,7 +280,52 @@
 @await RenderSectionAsync("Scripts", false)
 
 <script>
-        $(function () {
+        function setLanguage(culture) {
+            $.ajax({
+                url: '@Url.Action("Change", "Language")',
+                type: 'POST',
+                data: { culture: culture },
+                success: function () {
+                    location.reload();
+                }
+            });
+        };
+
+        function pulsate(element) {
+            $(element).animate({ opacity: 0.6 }, 700, function () {
+                $(this).animate({ opacity: 1 }, 700, function () {
+                    pulsate(this);
+                });
+            });
+        };
+
+        function updateServerInfo() {
+            $.ajax({
+                url: '/api/servers',
+                method: 'GET',
+                success: function (data) {
+                    if (!data || data.length == 0) {
+                        $('#server-info').hide();
+                        return;
+                    }
+
+                    var serverInfo = data[0];
+
+                    if (serverInfo.players == 0) {
+                        $('#server-info').hide();
+                        return;
+                    }
+
+                    $('#server-status').text('● ' + serverInfo.players + '/' + serverInfo.max_players);
+                    $('#server-info').show();
+                },
+                error: function () {
+                    $('#server-info').hide();
+                }
+            });
+        };
+
+        $(document).ready(function () { 
             $('[data-toggle="tooltip"]').tooltip();
 
             $('#lang-en').click(function (e) {
@@ -298,54 +343,13 @@
                 setLanguage('es-ES');
             });
 
-            function setLanguage(culture) {
-                $.ajax({
-                    url: '@Url.Action("Change", "Language")',
-                    type: 'POST',
-                    data: { culture: culture },
-                    success: function () {
-                        location.reload();
-                    }
-                });
-            }
+            $('.pulsate').each(function () {
+                pulsate(this);
+            });
 
-            function pulsate() {
-                $(".pulsate").animate({ opacity: 0.6 }, 1000, function () {
-                    $(this).animate({ opacity: 1 }, 1000, pulsate);
-                });
-            };
-
-            function updateServerInfo() {
-                $.ajax({
-                    url: '/api/servers',
-                    method: 'GET',
-                    success: function(data) {
-                        if (!data || data.length == 0) {
-                            $('#server-info').hide();
-                            return;
-                        }
-
-                        var serverInfo = data[0];
-
-                        if (serverInfo.players == 0) {
-                            $('#server-info').hide();
-                            return;
-                        }
-
-                        $('#server-status').text('● ' + serverInfo.players + '/' + serverInfo.max_players);
-                        $('#server-info').show();
-                    },
-                    error: function() {
-                        $('#server-info').hide();
-                    }
-                });
-            }
-
-            pulsate();
             updateServerInfo();
-
-            setInterval(updateServerInfo, 10000); 
-        })
+            setInterval(updateServerInfo, 10000);
+        });
     </script>
 
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-4QMNBJLQST"></script>
