@@ -43,6 +43,10 @@
             color: #979797;
         }
 
+        .previous-names .label {
+            border: 1px solid #979797;
+        }
+
         @@media screen and (max-width: 700px) {
             .left-side {
                 width: 100% !important;
@@ -143,14 +147,38 @@
 
             <th>@SharedLocalizer["ProfileUrl"]:</th>
             <td data-label="@SharedLocalizer["ProfileUrl"]:" colspan="3">
-                @firstPlayer.ProfileUrl
+                <a href="@firstPlayer.ProfileUrl" target="_blank">@firstPlayer.ProfileUrl</a>
                 @if (secondPlayer != null)
                 {
                     <br/>
-                    <span class="second">@secondPlayer.ProfileUrl</span>
+                    <span class="second">
+                        <a href="@secondPlayer.ProfileUrl" target="_blank">
+                            @secondPlayer.ProfileUrl
+                        </a>
+                    </span>
                 }
             </td>
         </tr>
+        @if (firstPlayer.PreviousNames != null && firstPlayer.PreviousNames.Any())
+        {
+            <tr class="previous-names">
+                <th>@SharedLocalizer["PreviousNames"]:</th>
+                <td data-label="@SharedLocalizer["PreviousNames"]:" colspan="5">
+                    @foreach (var previousName in firstPlayer.PreviousNames.Take(5))
+                    {
+                        <span class="label label-default" data-toggle="tooltip" data-placement="top" title="@previousName.Name">@previousName.Name</span>
+                    }
+                    @if (secondPlayer is { PreviousNames: not null } && secondPlayer.PreviousNames.Any())
+                    {
+                        <span class="separator"> | </span>
+                        @foreach (var previousName in secondPlayer.PreviousNames.Take(5))
+                        {
+                            <span class="label label-warning" data-toggle="tooltip" data-placement="top" title="@previousName.Name">@previousName.Name</span>
+                        }
+                    }
+                </td>
+            </tr>
+        }
         <tr class="hide-mobile">
             <th class="vertical-align-middle">@SharedLocalizer["Patent"]:</th>
             <td class="vertical-align-middle" data-label="@SharedLocalizer["Patent"]:">

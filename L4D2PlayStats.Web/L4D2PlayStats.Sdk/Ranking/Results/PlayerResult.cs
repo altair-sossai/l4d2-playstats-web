@@ -2,12 +2,22 @@
 
 public class PlayerResult
 {
+    private string? _name;
+
     public long CommunityId { get; set; }
     public string? SteamId { get; set; }
     public string? Steam3 { get; set; }
     public string? ProfileUrl { get; set; }
     public int Position { get; set; }
-    public string? Name { get; set; }
+
+    public string? Name
+    {
+        get => string.IsNullOrEmpty(MainName) ? _name : MainName;
+        set => _name = value;
+    }
+
+    public string? MainName { get; set; }
+    public List<PreviousNameResult>? PreviousNames { get; set; }
     public decimal Experience { get; set; }
     public decimal? PreviousExperience { get; set; }
     public decimal? ExperienceDifference { get; set; }

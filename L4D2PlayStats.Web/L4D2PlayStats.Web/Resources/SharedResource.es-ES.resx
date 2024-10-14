@@ -402,4 +402,7 @@
   <data name="ThirdPlace" xml:space="preserve">
     <value>Tercer lugar</value>
   </data>
+  <data name="PreviousNames" xml:space="preserve">
+    <value>Nombres anteriores</value>
+  </data>
 </root>
