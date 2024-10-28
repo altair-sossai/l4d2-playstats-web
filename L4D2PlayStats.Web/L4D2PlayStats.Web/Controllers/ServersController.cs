@@ -1,4 +1,6 @@
+using L4D2PlayStats.Steam.Players;
 using L4D2PlayStats.Steam.Players.Services;
+using L4D2PlayStats.Steam.ServerInfo.Responses;
 using L4D2PlayStats.Steam.ServerInfo.Services;
 using L4D2PlayStats.Web.Models;
 using Microsoft.AspNetCore.Mvc;
@@ -22,7 +24,7 @@ public class ServersController(
 
         var models = (await memoryCache.GetOrCreateAsync("Servers", async entry =>
         {
-            entry.AbsoluteExpirationRelativeToNow = TimeSpan.FromSeconds(10);
+            entry.AbsoluteExpirationRelativeToNow = TimeSpan.FromSeconds(1);
 
             var servers = new List<ServerInfoModel>();
 
@@ -46,9 +48,35 @@ public class ServersController(
             throw new ArgumentException("Invalid server port");
 
         var ip = segments[0];
-        var serverInfoResponse = await serverInfoService.GetServerInfo(SteamApiKey, $"addr\\{ip}:{port}");
-        var players = await playerService.GetPlayersAsync(ip, port).ToListAsync();
+        var serverInfo = await GetServerInfo(ip, port);
+        var players = await GetPlayersAsync(ip, port);
 
-        return new ServerInfoModel(serverIp, serverInfoResponse, players);
+        return new ServerInfoModel(serverIp, serverInfo, players);
+    }
+
+    private async Task<GetServerListResponse?> GetServerInfo(string ip, int port)
+    {
+        try
+        {
+            return await serverInfoService.GetServerInfo(SteamApiKey, $"addr\\{ip}:{port}");
+        }
+        catch (Exception exception)
+        {
+            Console.WriteLine(exception);
+            return await Task.FromResult<GetServerListResponse?>(null);
+        }
+    }
+
+    private async Task<List<Player>?> GetPlayersAsync(string ip, int port)
+    {
+        try
+        {
+            return await playerService.GetPlayersAsync(ip, port).ToListAsync();
+        }
+        catch (Exception exception)
+        {
+            Console.WriteLine(exception);
+            return await Task.FromResult<List<Player>?>(null);
+        }
     }
 }

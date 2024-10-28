@@ -15,6 +15,12 @@ public class SteamContext : ISteamContext
         WriteIndented = true
     };
 
+    private static readonly HttpClient HttpClient = new()
+    {
+        Timeout = TimeSpan.FromSeconds(5),
+        BaseAddress = new Uri(BaseUrl)
+    };
+
     private static readonly RefitSettings Settings = new()
     {
         ContentSerializer = new SystemTextJsonContentSerializer(Options)
@@ -25,6 +31,6 @@ public class SteamContext : ISteamContext
 
     private static T CreateService<T>()
     {
-        return RestService.For<T>(BaseUrl, Settings);
+        return RestService.For<T>(HttpClient, Settings);
     }
 }

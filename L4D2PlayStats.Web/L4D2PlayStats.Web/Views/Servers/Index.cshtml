@@ -17,19 +17,20 @@
 
         <table class="table table-condensed table-responsive">
             <tbody>
-            @if (server.ServersInfo != null)
-            {
-                <tr>
-                    <th class="slim text-right">@SharedLocalizer["ServerIP"]:</th>
-                    <td style="padding-left: 10px;" data-label="@SharedLocalizer["ServerIP"]:">@server.ServerIp</td>
+            <tr>
+                <th class="slim text-right">@SharedLocalizer["ServerIP"]:</th>
+                <td style="padding-left: 10px;" data-label="@SharedLocalizer["ServerIP"]:">@server.ServerIp</td>
 
+                @if (server.ServersInfo != null)
+                {
                     <th class="slim">@SharedLocalizer["Players"]:</th>
                     <td data-label="@SharedLocalizer["Players"]:">@server.ServersInfo.Players?.ToString("N0") / @server.ServersInfo.MaxPlayers?.ToString("N0")</td>
 
                     <th class="slim">@SharedLocalizer["Map"]:</th>
                     <td data-label="@SharedLocalizer["Map"]:">@server.ServersInfo.Map</td>
-                </tr>
-            }
+                }
+            </tr>
+
             @if (server.Players != null && server.Players.Any())
             {
                 <tr>
@@ -48,7 +49,7 @@
                                 @foreach (var player in server.Players.OrderByDescending(p => p.Duration))
                                 {
                                     <tr>
-                                                <td data-label="@player.DurationTimeSpan.ToString(@"hh\:mm\:ss")">@player.Name</td>
+                                        <td data-label="@player.DurationTimeSpan.ToString(@"hh\:mm\:ss")">@player.Name</td>
                                         <td data-label="@SharedLocalizer["Time"]:" class="text-center hide-mobile">@player.DurationTimeSpan.ToString(@"hh\:mm\:ss")</td>
                                     </tr>
                                 }
