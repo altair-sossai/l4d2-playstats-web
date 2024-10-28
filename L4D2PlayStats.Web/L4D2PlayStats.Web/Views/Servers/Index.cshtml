@@ -48,7 +48,7 @@
                                 @foreach (var player in server.Players.OrderByDescending(p => p.Duration))
                                 {
                                     <tr>
-                                        <td data-label="@SharedLocalizer["PlayerName"]:">@player.Name</td>
+                                                <td data-label="@player.DurationTimeSpan.ToString(@"hh\:mm\:ss")">@player.Name</td>
                                         <td data-label="@SharedLocalizer["Time"]:" class="text-center hide-mobile">@player.DurationTimeSpan.ToString(@"hh\:mm\:ss")</td>
                                     </tr>
                                 }
