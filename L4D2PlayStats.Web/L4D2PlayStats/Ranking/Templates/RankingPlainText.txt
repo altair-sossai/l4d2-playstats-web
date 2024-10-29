@@ -1,0 +1,15 @@
+﻿### Top 100 players ###
+
+Visit: l4d2.com.br
+
+Next reset in {{NextResetIn}} day(s)
+
+Ranking Table:
+
+#  | Player            | Wins | Loss |
+---|-------------------|------|------|
+{{#Ranking}}
+{{Player.Position}} | {{Player.Name}} | {{Player.Wins}} | {{Player.Loss}} |
+{{/Ranking}}
+
+Thanks Valve for fucking up the rankings!

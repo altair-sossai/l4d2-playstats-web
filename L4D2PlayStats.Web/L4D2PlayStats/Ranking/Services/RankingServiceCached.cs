@@ -3,7 +3,7 @@ using L4D2PlayStats.Sdk.Ranking.Results;
 using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Configuration;
 
-namespace L4D2PlayStats.Ranking;
+namespace L4D2PlayStats.Ranking.Services;
 
 public class RankingServiceCached(IConfiguration configuration, IMemoryCache memoryCache, IRankingService rankingService) : IRankingServiceCached
 {

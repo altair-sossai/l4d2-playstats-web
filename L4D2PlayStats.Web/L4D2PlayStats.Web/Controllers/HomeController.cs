@@ -1,5 +1,5 @@
 using L4D2PlayStats.Patents.Services;
-using L4D2PlayStats.Ranking;
+using L4D2PlayStats.Ranking.Services;
 using L4D2PlayStats.UserAvatar;
 using L4D2PlayStats.Web.Models;
 using Microsoft.AspNetCore.Mvc;
@@ -10,6 +10,7 @@ namespace L4D2PlayStats.Web.Controllers;
 public class HomeController(
     IStringLocalizer<SharedResource> sharedLocalizer,
     IRankingServiceCached rankingService,
+    IRankingTemplateService rankingTemplateService,
     IUserAvatar userAvatar,
     IPatentService patentService) : Controller
 {
@@ -17,6 +18,22 @@ public class HomeController(
     {
         ViewBag.Home = "active";
 
+        var model = await GetHomeModelAsync();
+
+        return View(model);
+    }
+
+    [Route("ranking/plain-text")]
+    public async Task<ActionResult> PlainText()
+    {
+        var model = await GetHomeModelAsync();
+        var plainText = rankingTemplateService.Render(model);
+
+        return Content(plainText);
+    }
+
+    private async Task<HomeModel> GetHomeModelAsync()
+    {
         var players = await rankingService.GetAsync();
         var communityIds = players.Select(p => p.CommunityId);
         await userAvatar.LoadAsync(communityIds);
@@ -31,7 +48,7 @@ public class HomeController(
 
         var model = new HomeModel(ranking);
 
-        return View(model);
+        return model;
     }
 
     public IActionResult SetTheme(string theme)
