@@ -106,6 +106,16 @@
             padding-right: 7px;
         }
 
+        .float-icon {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+        }
+
+            .float-icon img {
+                width: 70px;
+            }
+
         @@media screen and (min-width: 700px) {
             .slim {
                 width: 1px;
@@ -114,7 +124,7 @@
         }
 
         @@media screen and (max-width: 700px) {
-            .hide-mobile {
+            .hide-mobile, .float-icon {
                 display: none !important;
             }
 
@@ -292,6 +302,10 @@
         </div>
     </div>
 </div>
+
+<a href="steam://connect/181.214.221.198:27015" class="float-icon">
+    <img src="~/imgs/icons/l4d2.png" alt="steam://connect/181.214.221.198:27015" data-toggle="tooltip" data-placement="top" title="connect 181.214.221.198:27015" />
+</a>
 
 <script src="~/js/jquery.min.js"></script>
 <script src="~/js/bootstrap.min.js"></script>
