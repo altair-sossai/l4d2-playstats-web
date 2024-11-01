@@ -84,12 +84,14 @@
                 }
             </td>
             <td class="text-center vertical-align-middle slim" style="margin: 0; padding: 0">
-                <a href="@Url.Action("Details", "Players", new { communityId = player.CommunityId })" title="@player.Name">
+                <a href="@player.ProfileUrl" title="@player.Name">
                     <img src="@UserAvatar[player.CommunityId]" alt="@player.Name" style="width: 40px; border-radius: 5px"/>
                 </a>
             </td>
             <td class="vertical-align-middle">
-                @Html.ActionLink(player.Name?.Truncate(30) ?? "-", "Details", "Players", new { communityId = player.CommunityId })
+                <a href="@player.ProfileUrl" title="@player.Name">
+                    @player.Name?.Truncate(30)
+                </a>
             </td>
             <td class="text-center vertical-align-middle">
                 <p data-toggle="tooltip" data-placement="top" title="@SharedLocalizer["Wins"] - @player.WinRate.ToString("P0") @SharedLocalizer["WinRate"]">
