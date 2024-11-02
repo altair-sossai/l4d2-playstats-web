@@ -4,7 +4,7 @@ public class TimedValue<T>(T defaultValue = default!, TimeSpan? expireIn = null,
 {
     private readonly T _defaultValue = defaultValue;
     private readonly TimeSpan _delay = delay ?? TimeSpan.Zero;
-    private readonly TimeSpan _expireIn = expireIn ?? TimeSpan.FromMinutes(1);
+    private readonly TimeSpan _expireIn = expireIn ?? TimeSpan.FromSeconds(30);
 
     private DateTime _lastUpdate = DateTime.MinValue;
     private T _value = defaultValue;
