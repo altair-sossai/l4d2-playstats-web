@@ -81,7 +81,7 @@
                                                 </td>
                                                 <td class="vertical-align-middle">
                                                     @Html.ActionLink(player.Name?.Truncate(30) ?? "-", "Details", "Players", new { communityId = player.CommunityId })
-                                                    @if (player.MvpSiDamage > 0 || player.MvpCommon > 0 || player.LvpFfGiven > 0)
+                                                    @if (player.MvpSiDamage > 0 || player.MvpCommon > 0)
                                                     {
                                                         <small> | </small>
                                                     }
@@ -94,11 +94,6 @@
                                                     @for (var i = 0; i < player.MvpCommon; i++)
                                                     {
                                                         <img src="~/imgs/icons/star-blue.png" alt="@SharedLocalizer["MvpCI"]" class="icon" data-toggle="tooltip" data-placement="top" title="@SharedLocalizer["MvpCI"]"/>
-                                                    }
-
-                                                    @for (var i = 0; i < player.LvpFfGiven; i++)
-                                                    {
-                                                        <img src="~/imgs/icons/lvp.png" alt="@SharedLocalizer["Lvp"]" class="icon" data-toggle="tooltip" data-placement="top" title="@SharedLocalizer["Lvp"]" />
                                                     }
                                                 </td>
                                             </tr>
