@@ -16,8 +16,9 @@ public class GameInfoController : ControllerBase
         return Ok(GameInfo);
     }
 
-    [HttpPost, RequiredSecretKey]
-    public IActionResult Post([FromBody] GameInfoCommand command)
+    [HttpPut("update")]
+    [RequiredSecretKey]
+    public IActionResult Update([FromBody] GameInfoCommand command)
     {
         GameInfo.Update(command);
 
