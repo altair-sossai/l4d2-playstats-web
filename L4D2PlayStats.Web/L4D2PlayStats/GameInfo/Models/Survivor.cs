@@ -13,4 +13,10 @@ public class Survivor : Player
     public Weapon SlotNumber4 { get; set; }
     public Weapon SlotNumber5 { get; set; }
     public MeleeWeapon? MeleeWeapon { get; set; }
+    public bool BlackAndWhite { get; set; }
+    public bool Incapacitated { get; set; }
+    public bool Dead { get; set; }
+    public bool Alive { get; set; }
+    public bool IsBot { get; set; }
+    public int Progress { get; set; }
 }

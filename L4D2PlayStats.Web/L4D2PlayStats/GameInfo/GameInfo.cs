@@ -9,7 +9,8 @@ public class GameInfo
     private readonly TimedValue<bool> _areTeamsFlipped = new();
     private readonly TimedValue<string?> _configurationName = new();
     private readonly TimedValue<Infected[]> _infecteds = new([]);
-    private readonly TimedValue<string?> _map = new();
+    private readonly TimedValue<int> _maxChapterProgressPoints = new();
+    private readonly TimedValue<List<ChatMessage>> _messages = new([]);
     private readonly TimedValue<Player[]> _spectators = new([]);
     private readonly TimedValue<Survivor[]> _survivors = new([]);
     private readonly TimedValue<int> _teamSize = new(4);
@@ -20,8 +21,15 @@ public class GameInfo
         private set => _areTeamsFlipped.Value = value;
     }
 
-    public Scoreboard Scoreboard { get; } = new();
     public int Round => AreTeamsFlipped ? 2 : 1;
+
+    public Scoreboard Scoreboard { get; } = new();
+
+    public int MaxChapterProgressPoints
+    {
+        get => _maxChapterProgressPoints;
+        set => _maxChapterProgressPoints.Value = value;
+    }
 
     public int TeamSize
     {
@@ -33,12 +41,6 @@ public class GameInfo
     {
         get => _configurationName;
         set => _configurationName.Value = value;
-    }
-
-    public string? Map
-    {
-        get => _map;
-        set => _map.Value = value;
     }
 
     public Survivor[] Survivors
@@ -57,6 +59,12 @@ public class GameInfo
     {
         get => _spectators;
         set => _spectators.Value = value;
+    }
+
+    public List<ChatMessage> Messages
+    {
+        get => _messages;
+        set => _messages.Value = value;
     }
 
     public void Update(GameInfoCommand command)

@@ -167,10 +167,13 @@
     </tbody>
 </table>
 
-<div class="row text-center" style="margin: 10px">
-    <div class="col-md-12">
-        <button class="btn btn-sm btn-primary" id="btn-show-more">
-            @SharedLocalizer["ShowMore"]
-        </button>
+@if (Model.Ranking.Count > 50)
+{
+    <div class="row text-center" style="margin: 10px">
+        <div class="col-md-12">
+            <button class="btn btn-sm btn-primary" id="btn-show-more">
+                @SharedLocalizer["ShowMore"]
+            </button>
+        </div>
     </div>
-</div>
+}
