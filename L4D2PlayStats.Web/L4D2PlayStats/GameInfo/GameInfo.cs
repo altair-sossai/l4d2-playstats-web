@@ -9,7 +9,7 @@ public class GameInfo
     private readonly TimedValue<Configuration?> _configuration = new(expireIn: TimeSpan.FromDays(1));
     private readonly TimedValue<Infected[]> _infecteds = new([]);
     private readonly TimedList<ChatMessage> _messages = new();
-    private readonly TimedValue<Round?> _round = new();
+    private readonly TimedValue<Round?> _round = new(expireIn: TimeSpan.FromHours(2));
     private readonly TimedValue<Scoreboard?> _scoreboard = new();
     private readonly TimedValue<Player[]> _spectators = new([]);
     private readonly TimedValue<Survivor[]> _survivors = new([]);
