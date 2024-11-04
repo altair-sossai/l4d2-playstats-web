@@ -4,12 +4,12 @@ namespace L4D2PlayStats.GameInfo.Models;
 
 public class Player
 {
-    private SteamIdentifiers _steamIdentifiers;
+    private readonly SteamIdentifiers _steamIdentifiers;
 
-    public long CommunityId
+    public string? CommunityId
     {
-        get => _steamIdentifiers.CommunityId ?? 0;
-        init => SteamIdentifiers.TryParse(value.ToString(), out _steamIdentifiers);
+        get => _steamIdentifiers.CommunityId?.ToString();
+        init => SteamIdentifiers.TryParse(value, out _steamIdentifiers);
     }
 
     public string? SteamId => _steamIdentifiers.SteamId;

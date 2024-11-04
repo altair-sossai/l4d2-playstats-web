@@ -1,4 +1,5 @@
 ﻿using L4D2PlayStats.GameInfo.Commands;
+using L4D2PlayStats.GameInfo.Models;
 using L4D2PlayStats.Web.Attributes;
 using Microsoft.AspNetCore.Mvc;
 
@@ -17,6 +18,54 @@ public class GameInfoController : ControllerBase
     }
 
     [HttpGet]
+    [Route("configuration")]
+    public IActionResult Configuration()
+    {
+        return Ok(GameInfo.Configuration);
+    }
+
+    [HttpPut("configuration")]
+    [RequiredSecretKey]
+    public IActionResult Configuration([FromBody] Configuration configuration)
+    {
+        GameInfo.Configuration = configuration;
+
+        return Ok();
+    }
+
+    [HttpGet]
+    [Route("round")]
+    public IActionResult Round()
+    {
+        return Ok(GameInfo.Round);
+    }
+
+    [HttpPut("round")]
+    [RequiredSecretKey]
+    public IActionResult Round([FromBody] Round round)
+    {
+        GameInfo.Round = round;
+
+        return Ok();
+    }
+
+    [HttpGet]
+    [Route("scoreboard")]
+    public IActionResult Scoreboard()
+    {
+        return Ok(GameInfo.Scoreboard);
+    }
+
+    [HttpPut("scoreboard")]
+    [RequiredSecretKey]
+    public IActionResult Scoreboard([FromBody] Scoreboard scoreboard)
+    {
+        GameInfo.Scoreboard = scoreboard;
+
+        return Ok();
+    }
+
+    [HttpGet]
     [Route("players")]
     public IActionResult Players()
     {
@@ -28,29 +77,22 @@ public class GameInfoController : ControllerBase
         });
     }
 
+    [HttpPut("players")]
+    [RequiredSecretKey]
+    public IActionResult UpdatePlayers([FromBody] PlayersCommand command)
+    {
+        GameInfo.Survivors = command.Survivors?.ToArray() ?? [];
+        GameInfo.Infecteds = command.Infecteds?.ToArray() ?? [];
+        GameInfo.Spectators = command.Spectators?.ToArray() ?? [];
+
+        return Ok();
+    }
+
     [HttpGet]
     [Route("messages")]
     public IActionResult Messages()
     {
         return Ok(GameInfo.Messages);
-    }
-
-    [HttpPut]
-    [RequiredSecretKey]
-    public IActionResult Put([FromBody] GameInfoCommand command)
-    {
-        GameInfo.Update(command);
-
-        return Ok();
-    }
-
-    [HttpPut("players")]
-    [RequiredSecretKey]
-    public IActionResult UpdatePlayers([FromBody] PlayersCommand command)
-    {
-        GameInfo.UpdatePlayers(command);
-
-        return Ok();
     }
 
     [HttpPut("messages")]

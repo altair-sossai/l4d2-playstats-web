@@ -6,47 +6,36 @@ namespace L4D2PlayStats.GameInfo;
 
 public class GameInfo
 {
-    private readonly TimedValue<bool> _areTeamsFlipped = new();
-    private readonly TimedValue<string?> _configurationName = new();
+    private readonly TimedValue<Configuration?> _configuration = new();
     private readonly TimedValue<Infected[]> _infecteds = new([]);
-    private readonly TimedValue<int> _maxChapterProgressPoints = new();
     private readonly TimedList<ChatMessage> _messages = new();
+    private readonly TimedValue<Round?> _round = new();
+    private readonly TimedValue<Scoreboard?> _scoreboard = new();
     private readonly TimedValue<Player[]> _spectators = new([]);
     private readonly TimedValue<Survivor[]> _survivors = new([]);
-    private readonly TimedValue<int> _teamSize = new();
 
     public GameInfo()
     {
         _messages.ItemAdded += (_, _) => _messages.Items.Sort((a, b) => a.When.CompareTo(b.When));
     }
 
-    public int TeamSize
+    public Configuration? Configuration
     {
-        get => _teamSize;
-        set => _teamSize.Value = value;
+        get => _configuration;
+        set => _configuration.Value = value;
     }
 
-    public string? ConfigurationName
+    public Round? Round
     {
-        get => _configurationName;
-        set => _configurationName.Value = value;
+        get => _round;
+        set => _round.Value = value;
     }
 
-    public bool AreTeamsFlipped
+    public Scoreboard? Scoreboard
     {
-        get => _areTeamsFlipped;
-        private set => _areTeamsFlipped.Value = value;
+        get => _scoreboard;
+        set => _scoreboard.Value = value;
     }
-
-    public int Round => AreTeamsFlipped ? 2 : 1;
-
-    public int MaxChapterProgressPoints
-    {
-        get => _maxChapterProgressPoints;
-        set => _maxChapterProgressPoints.Value = value;
-    }
-
-    public Scoreboard Scoreboard { get; } = new();
 
     public Survivor[] Survivors
     {
@@ -67,23 +56,6 @@ public class GameInfo
     }
 
     public IReadOnlyCollection<ChatMessage> Messages => _messages.Items;
-
-    public void Update(GameInfoCommand command)
-    {
-        TeamSize = command.TeamSize;
-        ConfigurationName = command.ConfigurationName;
-        AreTeamsFlipped = command.AreTeamsFlipped == 1;
-        MaxChapterProgressPoints = command.MaxChapterProgressPoints;
-
-        Scoreboard.Update(command);
-    }
-
-    public void UpdatePlayers(PlayersCommand command)
-    {
-        Survivors = command.Survivors?.ToArray() ?? [];
-        Infecteds = command.Infecteds?.ToArray() ?? [];
-        Spectators = command.Spectators?.ToArray() ?? [];
-    }
 
     public void AddMessage(ChatMessageCommand command)
     {

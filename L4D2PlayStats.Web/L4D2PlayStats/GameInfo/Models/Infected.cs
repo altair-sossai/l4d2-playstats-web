@@ -6,8 +6,8 @@ public class Infected : Player
 {
     public InfectedType Type { get; set; }
     public int DamageTotal { get; set; }
-    public int HealthPoints { get; set; }
-    public int MaxHealthPoints { get; set; }
+    public int CurrentHp { get; set; }
+    public int MaxHp { get; set; }
     public bool Ghost { get; set; }
     public bool Dead { get; set; }
     public bool Alive => !Dead;
