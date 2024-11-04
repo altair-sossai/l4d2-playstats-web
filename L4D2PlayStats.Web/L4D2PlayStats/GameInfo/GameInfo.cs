@@ -20,6 +20,18 @@ public class GameInfo
         _messages.ItemAdded += (_, _) => _messages.Items.Sort((a, b) => a.When.CompareTo(b.When));
     }
 
+    public int TeamSize
+    {
+        get => _teamSize;
+        set => _teamSize.Value = value;
+    }
+
+    public string? ConfigurationName
+    {
+        get => _configurationName;
+        set => _configurationName.Value = value;
+    }
+
     public bool AreTeamsFlipped
     {
         get => _areTeamsFlipped;
@@ -34,20 +46,7 @@ public class GameInfo
         set => _maxChapterProgressPoints.Value = value;
     }
 
-    public int TeamSize
-    {
-        get => _teamSize;
-        set => _teamSize.Value = value;
-    }
-
-    public string? ConfigurationName
-    {
-        get => _configurationName;
-        set => _configurationName.Value = value;
-    }
-
     public Scoreboard Scoreboard { get; } = new();
-
 
     public Survivor[] Survivors
     {
@@ -71,10 +70,10 @@ public class GameInfo
 
     public void Update(GameInfoCommand command)
     {
-        AreTeamsFlipped = command.AreTeamsFlipped == 1;
-        MaxChapterProgressPoints = command.MaxChapterProgressPoints;
         TeamSize = command.TeamSize;
         ConfigurationName = command.ConfigurationName;
+        AreTeamsFlipped = command.AreTeamsFlipped == 1;
+        MaxChapterProgressPoints = command.MaxChapterProgressPoints;
 
         Scoreboard.Update(command);
     }
