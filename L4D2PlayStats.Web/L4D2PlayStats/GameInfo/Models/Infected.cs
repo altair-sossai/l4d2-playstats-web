@@ -8,8 +8,7 @@ public class Infected : Player
     public int DamageTotal { get; set; }
     public int CurrentHp { get; set; }
     public int MaxHp { get; set; }
-    public bool Ghost { get; set; }
-    public bool Dead { get; set; }
-    public bool Alive => !Dead;
-    public bool IsBot { get; set; }
+    public bool IsInfectedGhost { get; set; }
+    public bool IsPlayerAlive { get; set; }
+    public bool IsFakeClient { get; set; }
 }
