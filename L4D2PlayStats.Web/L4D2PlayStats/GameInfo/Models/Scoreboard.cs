@@ -4,6 +4,8 @@ public class Scoreboard
 {
     public int SurvivorScore { get; set; }
     public int InfectedScore { get; set; }
+    public int Bonus { get; set; }
+    public int MaxBonus { get; set; }
     public int Difference => SurvivorScore - InfectedScore;
     public int Comeback => Math.Abs(Difference);
     public bool IsSurvivorsWinning => SurvivorScore > InfectedScore;
