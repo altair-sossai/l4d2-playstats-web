@@ -9,7 +9,7 @@ namespace L4D2PlayStats.Web.Controllers.Api;
 [ApiController]
 public class GameInfoController : ControllerBase
 {
-    private static readonly GameInfo.GameInfo GameInfo = new();
+    private static readonly GameInfo.GameInfo GameInfo = L4D2PlayStats.GameInfo.GameInfo.Current;
 
     [HttpGet]
     public IActionResult Get()
