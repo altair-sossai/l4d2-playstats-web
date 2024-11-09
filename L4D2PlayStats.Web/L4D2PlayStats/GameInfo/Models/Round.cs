@@ -2,8 +2,8 @@
 
 public class Round
 {
-    public int AreTeamsFlipped { get; set; }
+    public bool AreTeamsFlipped { get; set; }
     public int MaxChapterProgressPoints { get; set; }
-    public int TankPercent { get; set; }
-	public int WitchPercent { get; set; }
+    public decimal TankPercent { get; set; }
+    public decimal WitchPercent { get; set; }
 }
