@@ -2,9 +2,19 @@
 
 public class TimedValue<T>(T defaultValue = default!, TimeSpan? expireIn = null, TimeSpan? delay = null)
 {
+#if DEBUG
+    private const int DefaultDelaySeconds = 1;
+    private const int DefaultExpireInMinutes = 2;
+#endif
+
+#if !DEBUG
+    private const int DefaultDelaySeconds = 30;
+    private const int DefaultExpireInMinutes = 2;
+#endif
+
     private readonly T _defaultValue = defaultValue;
-    private readonly TimeSpan _delay = delay ?? TimeSpan.FromSeconds(30);
-    private readonly TimeSpan _expireIn = expireIn ?? TimeSpan.FromMinutes(2);
+    private readonly TimeSpan _delay = delay ?? TimeSpan.FromSeconds(DefaultDelaySeconds);
+    private readonly TimeSpan _expireIn = expireIn ?? TimeSpan.FromMinutes(DefaultExpireInMinutes);
 
     private DateTime _lastUpdate = DateTime.MinValue;
     private T _value = defaultValue;

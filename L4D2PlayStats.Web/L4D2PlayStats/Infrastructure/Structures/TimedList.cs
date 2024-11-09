@@ -2,8 +2,18 @@
 
 public class TimedList<T>(int maxItems = 100, TimeSpan? expireIn = null, TimeSpan? delay = null)
 {
-    private readonly TimeSpan _delay = delay ?? TimeSpan.FromSeconds(30);
-    private readonly TimeSpan _expireIn = expireIn ?? TimeSpan.FromMinutes(10);
+#if DEBUG
+    private const int DefaultDelaySeconds = 1;
+    private const int DefaultExpireInMinutes = 10;
+#endif
+
+#if !DEBUG
+    private const int DefaultDelaySeconds = 30;
+    private const int DefaultExpireInMinutes = 10;
+#endif
+
+	private readonly TimeSpan _delay = delay ?? TimeSpan.FromSeconds(DefaultDelaySeconds);
+    private readonly TimeSpan _expireIn = expireIn ?? TimeSpan.FromMinutes(DefaultExpireInMinutes);
 
     public List<T> Items { get; } = [];
 
