@@ -90,9 +90,9 @@ public class GameInfoController : ControllerBase
 
     [HttpGet]
     [Route("messages")]
-    public IActionResult Messages()
+    public IActionResult Messages(int after = 0)
     {
-        return Ok(GameInfo.Messages);
+        return Ok(GameInfo.Messages.Where(m => m.When > after));
     }
 
     [HttpPut("messages")]
