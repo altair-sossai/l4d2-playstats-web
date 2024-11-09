@@ -8,13 +8,10 @@ using Microsoft.Extensions.Caching.Memory;
 
 namespace L4D2PlayStats.Web.Controllers;
 
-public class ServersController(
-    IConfiguration configuration,
-    IMemoryCache memoryCache,
-    IServerInfoService serverInfoService,
-    IPlayerService playerService) : Controller
+public class ServersController(IConfiguration configuration, IMemoryCache memoryCache, IServerInfoService serverInfoService, IPlayerService playerService) : Controller
 {
     private string[] ServerIPs => configuration.GetValue<string>("ServerIPs")?.Split(';', StringSplitOptions.RemoveEmptyEntries) ?? [];
+    private string ServerIp => ServerIPs.First();
     private string SteamApiKey => configuration.GetValue<string>("SteamApiKey")!;
 
     [Route("servers")]
@@ -22,19 +19,14 @@ public class ServersController(
     {
         ViewBag.Servers = "active";
 
-        var models = (await memoryCache.GetOrCreateAsync("Servers", async entry =>
+        var model = (await memoryCache.GetOrCreateAsync("Server", entry =>
         {
             entry.AbsoluteExpirationRelativeToNow = TimeSpan.FromSeconds(1);
 
-            var servers = new List<ServerInfoModel>();
-
-            foreach (var serverIp in ServerIPs)
-                servers.Add(await GetServerInfoAsync(serverIp));
-
-            return servers;
+            return GetServerInfoAsync(ServerIp);
         }))!;
 
-        return View(models);
+        return View(model);
     }
 
     private async Task<ServerInfoModel> GetServerInfoAsync(string serverIp)
