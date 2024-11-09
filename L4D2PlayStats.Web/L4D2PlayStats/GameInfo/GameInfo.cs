@@ -22,10 +22,11 @@ public class GameInfo
     {
         _userAvatar = userAvatar;
 
-        _messages.ItemAdded += MessagesItemAdded;
         _survivors.ValueUpdated += SurvivorsValueUpdated;
         _infecteds.ValueUpdated += InfectedsValueUpdated;
         _spectators.ValueUpdated += SpectatorsValueUpdated;
+
+        _messages.ItemAdded += MessagesItemAdded;
     }
 
     public Configuration? Configuration
@@ -64,6 +65,8 @@ public class GameInfo
         set => _spectators.Value = value;
     }
 
+    public bool AnyPlayerConnected => Survivors.Length > 0 || Infecteds.Length > 0 || Spectators.Length > 0;
+
     public IReadOnlyCollection<ChatMessage> Messages => _messages.Items;
 
     public static GameInfo GetOrInitializeInstance(IUserAvatar userAvatar)
@@ -84,18 +87,11 @@ public class GameInfo
         _messages.Add(message);
     }
 
-    private void MessagesItemAdded(object? sender, ChatMessage chatMessage)
-    {
-        _messages.Items.Sort((a, b) => a.When.CompareTo(b.When));
-    }
-
     private void SurvivorsValueUpdated(object? sender, Survivor[] survivors)
     {
         Array.Sort(survivors, (a, b) => a.Character.CompareTo(b.Character));
 
         LoadAvatarAsync(survivors).Wait();
-
-        _scoreboard.Value?.UpdateCurrentProgress(survivors);
     }
 
     private void InfectedsValueUpdated(object? sender, Infected[] infecteds)
@@ -108,6 +104,11 @@ public class GameInfo
     private static void SpectatorsValueUpdated(object? sender, Player[] players)
     {
         Array.Sort(players, (a, b) => a.Name?.CompareTo(b.Name) ?? 0);
+    }
+
+    private void MessagesItemAdded(object? sender, ChatMessage chatMessage)
+    {
+        _messages.Items.Sort((a, b) => a.When.CompareTo(b.When));
     }
 
     private async Task LoadAvatarAsync(IReadOnlyCollection<Player> players)

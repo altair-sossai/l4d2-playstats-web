@@ -1,0 +1,73 @@
+﻿@using L4D2PlayStats.Web
+@using Microsoft.Extensions.Localization
+@model L4D2PlayStats.Web.Models.ServerInfoModel
+@inject IStringLocalizer<SharedResource> SharedLocalizer
+@{
+    var serversInfo = Model.ServersInfo;
+    var gameInfo = Model.GameInfo;
+    var configuration = gameInfo.Configuration;
+    var round = gameInfo.Round;
+    var scoreboard = gameInfo.Scoreboard;
+}
+<h4 class="text-center">@SharedLocalizer["Servers"]</h4>
+
+<div class="panel panel-default">
+    <div class="panel-heading text-center">
+        @{
+            var header = new List<string>();
+
+            if (serversInfo != null && !string.IsNullOrEmpty(serversInfo.Name))
+                header.Add(serversInfo.Name);
+
+            if (configuration != null && !string.IsNullOrEmpty(configuration.Name))
+                header.Add(configuration.Name);
+
+            if (configuration is { TeamSize: > 0 })
+                header.Add($"{configuration.TeamSize}v{configuration.TeamSize}");
+        }
+
+        @string.Join(" - ", header)
+    </div>
+
+    <table class="table table-condensed table-responsive">
+        <tbody>
+        <tr>
+            <th class="slim text-right">@SharedLocalizer["ServerIP"]:</th>
+            <td style="padding-left: 10px;" data-label="@SharedLocalizer["ServerIP"]:">@Model.ServerIp</td>
+
+            @if (Model.ServersInfo != null)
+            {
+                <th class="slim">@SharedLocalizer["Players"]:</th>
+                <td data-label="@SharedLocalizer["Players"]:">@Model.ServersInfo.Players?.ToString("N0") / @Model.ServersInfo.MaxPlayers?.ToString("N0")</td>
+
+                <th class="slim">@SharedLocalizer["Map"]:</th>
+                <td data-label="@SharedLocalizer["Map"]:">
+                    @{
+                        var map = new List<string>();
+
+                        if (serversInfo != null && !string.IsNullOrEmpty(serversInfo.Map))
+                            map.Add(serversInfo.Map);
+
+                        if (round != null)
+                            map.Add(round.AreTeamsFlipped ? "2º round" : "1º round");
+                    }
+
+                    @string.Join(" - ", map)
+                </td>
+            }
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+@if (scoreboard != null)
+{
+    <div class="row">
+        <div class="col-xs-6">
+            Survivor score: @scoreboard.SurvivorScore.ToString("N0")
+        </div>
+        <div class="col-xs-6">
+            Infected score: @scoreboard.InfectedScore.ToString("N0")
+        </div>
+    </div>
+}
