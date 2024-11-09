@@ -8,7 +8,6 @@ public class TimedList<T>(int maxItems = 100, TimeSpan? expireIn = null, TimeSpa
     public List<T> Items { get; } = [];
 
     public event EventHandler<T>? ItemAdded;
-    public event EventHandler<T>? ItemRemoved;
 
     public void Add(T t)
     {
@@ -41,7 +40,6 @@ public class TimedList<T>(int maxItems = 100, TimeSpan? expireIn = null, TimeSpa
     private void RemoveItem(T t)
     {
         Items.Remove(t);
-        ItemRemoved?.Invoke(this, t);
     }
 
     public static implicit operator List<T>(TimedList<T> timedList)

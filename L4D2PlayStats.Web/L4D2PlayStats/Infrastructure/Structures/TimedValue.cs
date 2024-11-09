@@ -32,10 +32,14 @@ public class TimedValue<T>(T defaultValue = default!, TimeSpan? expireIn = null,
         }
     }
 
+    public event EventHandler<T>? ValueUpdated;
+
     private void UpdateValue(T value)
     {
         _value = value;
         _lastUpdate = DateTime.UtcNow;
+
+        ValueUpdated?.Invoke(this, value);
     }
 
     public static implicit operator T(TimedValue<T> timedValue)

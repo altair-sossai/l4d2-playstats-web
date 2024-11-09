@@ -18,7 +18,10 @@ public class GameInfo
 
     private GameInfo()
     {
-        _messages.ItemAdded += (_, _) => _messages.Items.Sort((a, b) => a.When.CompareTo(b.When));
+        _messages.ItemAdded += MessagesItemAdded;
+        _survivors.ValueUpdated += SurvivorsValueUpdated;
+        _infecteds.ValueUpdated += InfectedsValueUpdated;
+        _spectators.ValueUpdated += SpectatorsValueUpdated;
     }
 
     public Configuration? Configuration
@@ -64,5 +67,27 @@ public class GameInfo
         var message = new ChatMessage(command);
 
         _messages.Add(message);
+    }
+
+    private void MessagesItemAdded(object? sender, ChatMessage chatMessage)
+    {
+        _messages.Items.Sort((a, b) => a.When.CompareTo(b.When));
+    }
+
+    private void SurvivorsValueUpdated(object? sender, Survivor[] survivors)
+    {
+        Array.Sort(survivors, (a, b) => a.Character.CompareTo(b.Character));
+
+        _scoreboard.Value?.UpdateCurrentProgress(survivors);
+    }
+
+    private static void InfectedsValueUpdated(object? sender, Infected[] infecteds)
+    {
+        Array.Sort(infecteds, (a, b) => b.Damage.CompareTo(a.Damage));
+    }
+
+    private static void SpectatorsValueUpdated(object? sender, Player[] players)
+    {
+        Array.Sort(players, (a, b) => a.Name?.CompareTo(b.Name) ?? 0);
     }
 }
