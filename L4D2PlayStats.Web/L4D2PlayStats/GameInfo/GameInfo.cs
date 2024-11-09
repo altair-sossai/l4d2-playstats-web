@@ -7,6 +7,8 @@ namespace L4D2PlayStats.GameInfo;
 
 public class GameInfo
 {
+    private static readonly object Lock = new();
+    private static GameInfo? _gameInfo;
     private readonly TimedValue<Configuration?> _configuration = new(expireIn: TimeSpan.FromDays(1));
     private readonly TimedValue<Infected[]> _infecteds = new([], TimeSpan.FromHours(2));
     private readonly TimedList<ChatMessage> _messages = new();
@@ -16,7 +18,7 @@ public class GameInfo
     private readonly TimedValue<Survivor[]> _survivors = new([], TimeSpan.FromHours(2));
     private readonly IUserAvatar _userAvatar;
 
-    public GameInfo(IUserAvatar userAvatar)
+    private GameInfo(IUserAvatar userAvatar)
     {
         _userAvatar = userAvatar;
 
@@ -63,6 +65,17 @@ public class GameInfo
     }
 
     public IReadOnlyCollection<ChatMessage> Messages => _messages.Items;
+
+    public static GameInfo GetOrInitializeInstance(IUserAvatar userAvatar)
+    {
+        if (_gameInfo != null)
+            return _gameInfo;
+
+        lock (Lock)
+        {
+            return _gameInfo ??= new GameInfo(userAvatar);
+        }
+    }
 
     public void AddMessage(ChatMessageCommand command)
     {

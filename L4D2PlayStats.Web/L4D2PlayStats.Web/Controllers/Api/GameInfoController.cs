@@ -8,21 +8,9 @@ namespace L4D2PlayStats.Web.Controllers.Api;
 
 [Route("api/game-info")]
 [ApiController]
-public class GameInfoController : ControllerBase
+public class GameInfoController(IUserAvatar userAvatar) : ControllerBase
 {
-    private static GameInfo.GameInfo? _gameInfo;
-    private static readonly object Lock = new();
-
-    public GameInfoController(IUserAvatar userAvatar)
-    {
-        if (_gameInfo != null)
-            return;
-
-        lock (Lock)
-        {
-            _gameInfo ??= new GameInfo.GameInfo(userAvatar);
-        }
-    }
+    private readonly GameInfo.GameInfo _gameInfo = GameInfo.GameInfo.GetOrInitializeInstance(userAvatar);
 
     [HttpGet]
     public IActionResult Get()
@@ -34,15 +22,14 @@ public class GameInfoController : ControllerBase
     [Route("configuration")]
     public IActionResult Configuration()
     {
-        return Ok(_gameInfo?.Configuration);
+        return Ok(_gameInfo.Configuration);
     }
 
     [HttpPut("configuration")]
     [RequiredSecretKey]
     public IActionResult Configuration([FromBody] Configuration configuration)
     {
-        if (_gameInfo != null)
-            _gameInfo.Configuration = configuration;
+        _gameInfo.Configuration = configuration;
 
         return Ok();
     }
@@ -51,15 +38,14 @@ public class GameInfoController : ControllerBase
     [Route("round")]
     public IActionResult Round()
     {
-        return Ok(_gameInfo?.Round);
+        return Ok(_gameInfo.Round);
     }
 
     [HttpPut("round")]
     [RequiredSecretKey]
     public IActionResult Round([FromBody] Round round)
     {
-        if (_gameInfo != null)
-            _gameInfo.Round = round;
+        _gameInfo.Round = round;
 
         return Ok();
     }
@@ -68,15 +54,14 @@ public class GameInfoController : ControllerBase
     [Route("scoreboard")]
     public IActionResult Scoreboard()
     {
-        return Ok(_gameInfo?.Scoreboard);
+        return Ok(_gameInfo.Scoreboard);
     }
 
     [HttpPut("scoreboard")]
     [RequiredSecretKey]
     public IActionResult Scoreboard([FromBody] Scoreboard scoreboard)
     {
-        if (_gameInfo != null)
-            _gameInfo.Scoreboard = scoreboard;
+        _gameInfo.Scoreboard = scoreboard;
 
         return Ok();
     }
@@ -87,9 +72,9 @@ public class GameInfoController : ControllerBase
     {
         return Ok(new
         {
-            _gameInfo?.Survivors,
-            _gameInfo?.Infecteds,
-            _gameInfo?.Spectators
+            _gameInfo.Survivors,
+            _gameInfo.Infecteds,
+            _gameInfo.Spectators
         });
     }
 
@@ -97,12 +82,9 @@ public class GameInfoController : ControllerBase
     [RequiredSecretKey]
     public IActionResult UpdatePlayers([FromBody] PlayersCommand command)
     {
-        if (_gameInfo != null)
-        {
-            _gameInfo.Survivors = command.Survivors?.ToArray() ?? [];
-            _gameInfo.Infecteds = command.Infecteds?.ToArray() ?? [];
-            _gameInfo.Spectators = command.Spectators?.ToArray() ?? [];
-        }
+        _gameInfo.Survivors = command.Survivors?.ToArray() ?? [];
+        _gameInfo.Infecteds = command.Infecteds?.ToArray() ?? [];
+        _gameInfo.Spectators = command.Spectators?.ToArray() ?? [];
 
         return Ok();
     }
@@ -111,14 +93,14 @@ public class GameInfoController : ControllerBase
     [Route("messages")]
     public IActionResult Messages(int after = 0)
     {
-        return Ok(_gameInfo?.Messages.Where(m => m.When > after));
+        return Ok(_gameInfo.Messages.Where(m => m.When > after));
     }
 
     [HttpPut("messages")]
     [RequiredSecretKey]
     public IActionResult AddMessage([FromBody] ChatMessageCommand command)
     {
-        _gameInfo?.AddMessage(command);
+        _gameInfo.AddMessage(command);
 
         return Ok();
     }
