@@ -1,4 +1,7 @@
-﻿@using L4D2PlayStats.Web
+﻿@using L4D2PlayStats.GameInfo.Enums
+@using L4D2PlayStats.GameInfo.Extensions
+@using L4D2PlayStats.Infrastructure.Extensions
+@using L4D2PlayStats.Web
 @using Microsoft.Extensions.Localization
 @model L4D2PlayStats.Web.Models.ServerInfoModel
 @inject IStringLocalizer<SharedResource> SharedLocalizer
@@ -8,6 +11,45 @@
     var configuration = gameInfo.Configuration;
     var round = gameInfo.Round;
     var scoreboard = gameInfo.Scoreboard;
+    var survivors = gameInfo.Survivors;
+}
+
+@section Styles {
+    <style>
+        .table-survivors {
+            width: 100%;
+        }
+
+            .table-survivors .img-character {
+                margin-bottom: 5px;
+                padding-right: 5px;
+            }
+
+            .table-survivors .img-avatar {
+                padding-right: 5px;
+            }
+
+            .table-survivors .img-weapon {
+                display: inline-block;
+                height: 15px;
+                padding-right: 5px;
+                margin-bottom: 5px;
+            }
+
+            .table-survivors .progress {
+                margin-bottom: 1px;
+            }
+
+            .table-survivors .img-latency {
+                margin-bottom: 5px;
+                display: inline-block;
+                height: 16px;
+            }
+
+        .temporary {
+            opacity: 0.4;
+        }
+    </style>
 }
 
 <h4 class="text-center">@SharedLocalizer["Servers"]</h4>
@@ -111,3 +153,131 @@
         </tbody>
     </table>
 </div>
+
+@if (survivors is { Length: > 0 })
+{
+    <table class="table-survivors">
+        <tbody>
+        @foreach (var survivor in survivors)
+        {
+            <tr>
+                <td rowspan="3" style="width: 60px">
+                    <img src="imgs/survivor-character/@(survivor.Character.ToString().ToLower()).png" alt="@survivor.Character"
+                         data-toggle="tooltip" data-placement="top" title="@survivor.Character"
+                         class="img-responsive img-character"/>
+                </td>
+                <td style="width: 40px" rowspan="2">
+                    <a href="@survivor.ProfileUrl" target="_blank">
+                        <img src="@survivor.AvatarUrl" alt="@survivor.Name"
+                             data-toggle="tooltip" data-placement="top" title="@survivor.Name"
+                             class="img-responsive img-avatar"/>
+                    </a>
+                </td>
+                <td>
+                    <a href="@survivor.ProfileUrl" target="_blank">@survivor.Name</a>
+
+                    @if (!survivor.IsPlayerAlive)
+                    {
+                        <span class="label label-danger" data-toggle="tooltip" data-placement="top" title="Dead">
+                            Dead
+                        </span>
+                    }
+                    else if (survivor.Incapacitated == true)
+                    {
+                        <span class="label label-warning" data-toggle="tooltip" data-placement="top" title="Incapacitated">
+                            Incapacitated
+                        </span>
+                    }
+                    else if (survivor.BlackAndWhite == true)
+                    {
+                        <span class="label label-default" data-toggle="tooltip" data-placement="top" title="Black and white">
+                            Black and white
+                        </span>
+                    }
+                </td>
+                <td rowspan="3" style="width: 30px;" class="text-center">
+                    @{
+                        var latencyIcon = survivor.Latency == null ? string.Empty
+                            : survivor.Latency < 0.3m ? "low.png"
+                            : survivor.Latency < 0.6m ? "medium.png"
+                            : "high.png";
+
+                        var latencyTitle = survivor.Latency == null ? string.Empty
+                            : survivor.Latency < 0.3m ? "Low"
+                            : survivor.Latency < 0.6m ? "Medium"
+                            : "High";
+                    }
+
+                    @if (!string.IsNullOrEmpty(latencyIcon))
+                    {
+                        <img src="imgs/latency/@latencyIcon" alt="@latencyTitle"
+                             data-toggle="tooltip" data-placement="top" title="@latencyTitle"
+                             class="img-responsive img-latency"/>
+                    }
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @{
+                        var weapons = new List<Weapon?>
+                        {
+                            survivor.PrimaryWeapon,
+                            survivor.SecondaryWeapon,
+                            survivor.SlotNumber3,
+                            survivor.SlotNumber4,
+                            survivor.SlotNumber5
+                        };
+                    }
+
+                    @foreach (var weapon in weapons.Where(w => w != null).Cast<Weapon>())
+                    {
+                        if (weapon == Weapon.Melee && survivor.MeleeWeapon != null)
+                        {
+                            var meleeWeapon = survivor.MeleeWeapon.Value;
+
+                            <img src="imgs/melee-weapon/@(meleeWeapon.WeaponName()).png" alt="@meleeWeapon.Description()"
+                                 data-toggle="tooltip" data-placement="top" title="@meleeWeapon.Description()"
+                                 class="img-responsive img-weapon"/>
+                        }
+                        else
+                        {
+                            <img src="imgs/weapon/@(weapon.WeaponName()).png" alt="@weapon.Description()"
+                                 data-toggle="tooltip" data-placement="top" title="@weapon.Description()"
+                                 class="img-responsive img-weapon"/>
+                        }
+                    }
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    @{
+                        var permanentHealth = survivor.PermanentHealth ?? 0;
+                        var temporaryHealth = survivor.TemporaryHealth ?? 0;
+                        //TODO: check if it is correct
+                        var progressBarClass = permanentHealth >= 40 ? "progress-bar-success"
+                            : permanentHealth >= 15 ? "progress-bar-warning"
+                            : "progress-bar-danger";
+                    }
+                    <div class="progress" style="height: 10px" data-toggle="tooltip" data-placement="top" title="Health">
+                        <div class="progress-bar @progressBarClass" style="width: @permanentHealth%">
+                        </div>
+                        @if (temporaryHealth != 0)
+                        {
+                            <div class="progress-bar @progressBarClass temporary" style="width: @temporaryHealth%">
+                            </div>
+                        }
+                    </div>
+
+                    @{
+                        var progress = survivor.Progress * 100;
+                    }
+                    <div class="progress" style="height: 8px; margin-bottom: 10px" data-toggle="tooltip" data-placement="top" title="Progress">
+                        <div class="progress-bar" style="width: @progress%">
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+}

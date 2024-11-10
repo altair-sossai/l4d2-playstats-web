@@ -92,7 +92,7 @@
             @foreach (var player in Model.Players.Where(player => player.CommunityId != firstPlayer.CommunityId && player.CommunityId != secondPlayer?.CommunityId))
             {
                 <li>
-                        <a href="@Url.Action("Details", "Players", new { communityId = firstPlayer.CommunityId, compareWith = player.CommunityId })" class="second">
+                    <a href="@Url.Action("Details", "Players", new { communityId = firstPlayer.CommunityId, compareWith = player.CommunityId })" class="second">
                         #@player.Position - @player.Name
                     </a>
                 </li>
