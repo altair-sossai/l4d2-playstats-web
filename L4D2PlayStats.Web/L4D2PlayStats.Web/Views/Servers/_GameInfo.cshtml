@@ -3,12 +3,13 @@
 @model L4D2PlayStats.Web.Models.ServerInfoModel
 @inject IStringLocalizer<SharedResource> SharedLocalizer
 @{
-    var serversInfo = Model.ServersInfo;
+    var serverInfo = Model.ServerInfo;
     var gameInfo = Model.GameInfo;
     var configuration = gameInfo.Configuration;
     var round = gameInfo.Round;
     var scoreboard = gameInfo.Scoreboard;
 }
+
 <h4 class="text-center">@SharedLocalizer["Servers"]</h4>
 
 <div class="panel panel-default">
@@ -16,8 +17,8 @@
         @{
             var header = new List<string>();
 
-            if (serversInfo != null && !string.IsNullOrEmpty(serversInfo.Name))
-                header.Add(serversInfo.Name);
+            if (serverInfo != null && !string.IsNullOrEmpty(serverInfo.Name))
+                header.Add(serverInfo.Name);
 
             if (configuration != null && !string.IsNullOrEmpty(configuration.Name))
                 header.Add(configuration.Name);
@@ -33,41 +34,80 @@
         <tbody>
         <tr>
             <th class="slim text-right">@SharedLocalizer["ServerIP"]:</th>
-            <td style="padding-left: 10px;" data-label="@SharedLocalizer["ServerIP"]:">@Model.ServerIp</td>
+            <td data-label="@SharedLocalizer["ServerIP"]:">@Model.ServerIp</td>
 
-            @if (Model.ServersInfo != null)
-            {
-                <th class="slim">@SharedLocalizer["Players"]:</th>
-                <td data-label="@SharedLocalizer["Players"]:">@Model.ServersInfo.Players?.ToString("N0") / @Model.ServersInfo.MaxPlayers?.ToString("N0")</td>
+            <th class="slim text-right">@SharedLocalizer["Players"]:</th>
+            <td data-label="@SharedLocalizer["Players"]:">
+                @((serverInfo?.Players ?? 0).ToString("N0")) / @((serverInfo?.MaxPlayers ?? 0).ToString("N0"))
+            </td>
 
-                <th class="slim">@SharedLocalizer["Map"]:</th>
-                <td data-label="@SharedLocalizer["Map"]:">
-                    @{
-                        var map = new List<string>();
+            <th class="slim text-right">@SharedLocalizer["Map"]:</th>
+            <td data-label="@SharedLocalizer["Map"]:">
+                @{
+                    var map = new List<string>();
 
-                        if (serversInfo != null && !string.IsNullOrEmpty(serversInfo.Map))
-                            map.Add(serversInfo.Map);
+                    if (!string.IsNullOrEmpty(serverInfo?.Map))
+                        map.Add(serverInfo.Map);
 
-                        if (round != null)
-                            map.Add(round.AreTeamsFlipped ? "2º round" : "1º round");
-                    }
+                    if (round != null)
+                        map.Add(round.AreTeamsFlipped ? "2º round" : "1º round");
+                }
 
-                    @string.Join(" - ", map)
-                </td>
+                @string.Join(" - ", map)
+            </td>
+        </tr>
+        <tr>
+            @{
+                var survivorScore = scoreboard?.SurvivorScore ?? 0;
+                var infectedScore = scoreboard?.InfectedScore ?? 0;
+                var labelSurvivor = scoreboard?.IsDraw == true ? "default" : scoreboard?.IsSurvivorsWinning == true ? "success" : "danger";
+                var labelInfected = scoreboard?.IsDraw == true ? "default" : scoreboard?.IsInfectedsWinning == true ? "success" : "danger";
             }
+            <th class="slim text-right">Survivor score:</th>
+            <td data-label="Survivor / Infected score:">
+                <span class="label label-@labelSurvivor">
+                    @survivorScore.ToString("N0")
+                </span>
+                <span style="margin: 0 10px"> / </span>
+                <span class="label label-@labelInfected">
+                    @infectedScore.ToString("N0")
+                </span>
+            </td>
+
+            <th class="slim text-right">Progress:</th>
+            <td data-label="Progress:">
+                @((scoreboard?.CurrentProgressPoints ?? 0).ToString("N0"))
+                <span> / </span>
+                @((round?.MaxChapterProgressPoints ?? 0).ToString("N0"))
+                <span class="label label-default">
+                    @((scoreboard?.CurrentProgress ?? 0).ToString("P0"))
+                </span>
+            </td>
+
+            <th class="slim text-right">Bonus:</th>
+            <td data-label="Bonus:">
+                @((scoreboard?.Bonus ?? 0).ToString("N0"))
+                <span> / </span>
+                @((scoreboard?.MaxBonus ?? 0).ToString("N0"))
+                <span class="label label-default">
+                    @((scoreboard?.BonusPercentage ?? 0).ToString("P0"))
+                </span>
+            </td>
+        </tr>
+        <tr>
+            <th class="slim text-right">Comeback:</th>
+            <td data-label="Comeback:">
+                <span class="label label-default">
+                    @((scoreboard?.Comeback ?? 0).ToString("N0"))
+                </span>
+            </td>
+
+            <th class="slim text-right">Tank percent:</th>
+            <td data-label="Tank percent:">@((round?.TankPercent ?? 0).ToString("P0"))</td>
+
+            <th class="slim text-right">Witch percent:</th>
+            <td data-label="Witch percent:">@((round?.WitchPercent ?? 0).ToString("P0"))</td>
         </tr>
         </tbody>
     </table>
 </div>
-
-@if (scoreboard != null)
-{
-    <div class="row">
-        <div class="col-xs-6">
-            Survivor score: @scoreboard.SurvivorScore.ToString("N0")
-        </div>
-        <div class="col-xs-6">
-            Infected score: @scoreboard.InfectedScore.ToString("N0")
-        </div>
-    </div>
-}

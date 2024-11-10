@@ -7,9 +7,9 @@
 
 <div class="panel panel-default">
     <div class="panel-heading text-center">
-        @if (Model.ServersInfo != null)
+        @if (Model.ServerInfo != null)
         {
-            @Model.ServersInfo.Name
+            @Model.ServerInfo.Name
         }
     </div>
 
@@ -19,13 +19,13 @@
             <th class="slim text-right">@SharedLocalizer["ServerIP"]:</th>
             <td style="padding-left: 10px;" data-label="@SharedLocalizer["ServerIP"]:">@Model.ServerIp</td>
 
-            @if (Model.ServersInfo != null)
+            @if (Model.ServerInfo != null)
             {
                 <th class="slim">@SharedLocalizer["Players"]:</th>
-                <td data-label="@SharedLocalizer["Players"]:">@Model.ServersInfo.Players?.ToString("N0") / @Model.ServersInfo.MaxPlayers?.ToString("N0")</td>
+                <td data-label="@SharedLocalizer["Players"]:">@Model.ServerInfo.Players?.ToString("N0") / @Model.ServerInfo.MaxPlayers?.ToString("N0")</td>
 
                 <th class="slim">@SharedLocalizer["Map"]:</th>
-                <td data-label="@SharedLocalizer["Map"]:">@Model.ServersInfo.Map</td>
+                <td data-label="@SharedLocalizer["Map"]:">@Model.ServerInfo.Map</td>
             }
         </tr>
 

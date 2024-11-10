@@ -33,9 +33,9 @@ public class ServersController(
             return GetServerInfoAsync(ServerIp);
         }))!;
 
-        //var viewName = model.GameInfo.AnyPlayerConnected ? "_GameInfo" : "_ServersInfo";
+        var viewName = model.GameInfo.AnyPlayerConnected ? "_GameInfo" : "_ServersInfo";
 
-        return View("_ServersInfo", model);
+        return View(viewName, model);
     }
 
     private async Task<ServerInfoModel> GetServerInfoAsync(string serverIp)
