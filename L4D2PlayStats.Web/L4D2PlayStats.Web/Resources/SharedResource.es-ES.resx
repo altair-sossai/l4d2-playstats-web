@@ -405,4 +405,46 @@
   <data name="PreviousNames" xml:space="preserve">
     <value>Nombres anteriores</value>
   </data>
+  <data name="FirstRound" xml:space="preserve">
+    <value>1º ronda</value>
+  </data>
+  <data name="SecondRound" xml:space="preserve">
+    <value>2º ronda</value>
+  </data>
+  <data name="SurvivorInfectedScore" xml:space="preserve">
+    <value>Supervivientes / infectados</value>
+  </data>
+  <data name="Progress" xml:space="preserve">
+    <value>Progreso</value>
+  </data>
+  <data name="Bonus" xml:space="preserve">
+    <value>Bonificación</value>
+  </data>
+  <data name="Comeback" xml:space="preserve">
+    <value>Remontada</value>
+  </data>
+  <data name="TankPercent" xml:space="preserve">
+    <value>Porcentaje de tank</value>
+  </data>
+  <data name="WitchPercent" xml:space="preserve">
+    <value>Porcentaje de bruja</value>
+  </data>
+  <data name="Survivors" xml:space="preserve">
+    <value>Supervivientes</value>
+  </data>
+  <data name="Infecteds" xml:space="preserve">
+    <value>Infectados</value>
+  </data>
+  <data name="Damage" xml:space="preserve">
+    <value>Daño</value>
+  </data>
+  <data name="Dead" xml:space="preserve">
+    <value>Muerto</value>
+  </data>
+  <data name="Incapacitated" xml:space="preserve">
+    <value>Incapacitado</value>
+  </data>
+  <data name="BlackAndWhite" xml:space="preserve">
+    <value>Blanco y negro</value>
+  </data>
 </root>
