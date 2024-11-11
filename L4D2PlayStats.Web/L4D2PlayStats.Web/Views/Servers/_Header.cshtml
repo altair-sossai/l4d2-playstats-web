@@ -1,0 +1,116 @@
+﻿@using L4D2PlayStats.Web
+@using Microsoft.Extensions.Localization
+@model L4D2PlayStats.Web.Models.ServerInfoModel
+@inject IStringLocalizer<SharedResource> SharedLocalizer
+
+@{
+    var serverInfo = Model.ServerInfo;
+    var gameInfo = Model.GameInfo;
+    var configuration = gameInfo.Configuration;
+    var round = gameInfo.Round;
+    var scoreboard = gameInfo.Scoreboard;
+}
+
+<div class="panel panel-default">
+    <div class="panel-heading text-center">
+        @{
+            var header = new List<string>();
+
+            if (serverInfo != null && !string.IsNullOrEmpty(serverInfo.Name))
+                header.Add(serverInfo.Name);
+
+            if (configuration != null && !string.IsNullOrEmpty(configuration.Name))
+                header.Add(configuration.Name);
+
+            if (configuration is { TeamSize: > 0 })
+                header.Add($"{configuration.TeamSize}v{configuration.TeamSize}");
+        }
+
+        @string.Join(" - ", header)
+    </div>
+
+    <table class="table table-condensed table-responsive">
+        <tbody>
+        <tr>
+            <th class="slim text-right">@SharedLocalizer["ServerIP"]:</th>
+            <td data-label="@SharedLocalizer["ServerIP"]:">@Model.ServerIp</td>
+
+            <th class="slim text-right">@SharedLocalizer["Players"]:</th>
+            <td data-label="@SharedLocalizer["Players"]:">
+                @((serverInfo?.Players ?? 0).ToString("N0")) / @((serverInfo?.MaxPlayers ?? 0).ToString("N0"))
+            </td>
+
+            <th class="slim text-right">@SharedLocalizer["Map"]:</th>
+            <td data-label="@SharedLocalizer["Map"]:">
+                @{
+                    var map = new List<string>();
+
+                    if (!string.IsNullOrEmpty(serverInfo?.Map))
+                        map.Add(serverInfo.Map);
+
+                    if (round != null)
+                        map.Add(!round.AreTeamsFlipped ? SharedLocalizer["FirstRound"].Value : SharedLocalizer["SecondRound"].Value);
+                }
+
+                @string.Join(" - ", map)
+            </td>
+        </tr>
+        <tr>
+            @{
+                var survivorScore = scoreboard?.SurvivorScore ?? 0;
+                var infectedScore = scoreboard?.InfectedScore ?? 0;
+                var labelSurvivor = scoreboard?.IsDraw == true ? "default" : scoreboard?.IsSurvivorsWinning == true ? "success" : "danger";
+                var labelInfected = scoreboard?.IsDraw == true ? "default" : scoreboard?.IsInfectedsWinning == true ? "success" : "danger";
+            }
+            <th class="slim text-right">@SharedLocalizer["SurvivorInfectedScore"]:</th>
+            <td data-label="@SharedLocalizer["SurvivorInfectedScore"]:">
+                <span class="label label-@labelSurvivor" data-toggle="tooltip" data-placement="top" title="@SharedLocalizer["Survivors"]">
+                    @survivorScore.ToString("N0")
+                </span>
+                <span style="margin: 0 10px"> / </span>
+                <span class="label label-@labelInfected" data-toggle="tooltip" data-placement="top" title="@SharedLocalizer["Infecteds"]">
+                    @infectedScore.ToString("N0")
+                </span>
+            </td>
+
+            <th class="slim text-right">@SharedLocalizer["Progress"]:</th>
+            <td data-label="@SharedLocalizer["Progress"]:">
+                @((scoreboard?.CurrentProgressPoints ?? 0).ToString("N0"))
+                <span> / </span>
+                @((round?.MaxChapterProgressPoints ?? 0).ToString("N0"))
+                <span class="label label-default" data-toggle="tooltip" data-placement="top" title="@SharedLocalizer["Progress"] %">
+                    @((scoreboard?.CurrentProgress ?? 0).ToString("P0"))
+                </span>
+            </td>
+
+            <th class="slim text-right">@SharedLocalizer["Bonus"]:</th>
+            <td data-label="@SharedLocalizer["Bonus"]:">
+                @((scoreboard?.Bonus ?? 0).ToString("N0"))
+                <span> / </span>
+                @((scoreboard?.MaxBonus ?? 0).ToString("N0"))
+                <span class="label label-default" data-toggle="tooltip" data-placement="top" title="@SharedLocalizer["Bonus"] %">
+                    @((scoreboard?.BonusPercentage ?? 0).ToString("P0"))
+                </span>
+            </td>
+        </tr>
+        <tr>
+            <th class="slim text-right">@SharedLocalizer["ScoreDifference"]:</th>
+            <td data-label="@SharedLocalizer["ScoreDifference"]:">
+                <span class="label label-default">
+                    @((scoreboard?.Comeback ?? 0).ToString("N0"))
+                </span>
+            </td>
+
+            <th class="slim text-right">@SharedLocalizer["TankPercent"]:</th>
+            <td data-label="@SharedLocalizer["TankPercent"]:">
+                @((round?.TankPercent ?? 0).ToString("P0"))
+            </td>
+
+            <th class="slim text-right">@SharedLocalizer["WitchPercent"]:</th>
+            <td data-label="@SharedLocalizer["WitchPercent"]:">
+                @((round?.WitchPercent ?? 0).ToString("P0"))
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
