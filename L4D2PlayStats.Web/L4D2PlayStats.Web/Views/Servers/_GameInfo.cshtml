@@ -7,6 +7,8 @@
 @model L4D2PlayStats.Web.Models.ServerInfoModel
 @inject IStringLocalizer<SharedResource> SharedLocalizer
 @{
+    var theme = Context.Request.Cookies["theme"] == "light" ? "light" : "dark";
+
     var serverInfo = Model.ServerInfo;
     var gameInfo = Model.GameInfo;
     var configuration = gameInfo.Configuration;
@@ -282,13 +284,13 @@
                                     {
                                         var meleeWeapon = survivor.MeleeWeapon.Value;
 
-                                        <img src="imgs/melee-weapon/@(meleeWeapon.WeaponName()).png" alt="@meleeWeapon.Description()"
+                                        <img src="imgs/melee-weapon/@(meleeWeapon.WeaponName())-@(theme).png" alt="@meleeWeapon.Description()"
                                              data-toggle="tooltip" data-placement="top" title="@meleeWeapon.Description()"
                                              class="img-responsive img-weapon"/>
                                     }
                                     else
                                     {
-                                        <img src="imgs/weapon/@(weapon.WeaponName()).png" alt="@weapon.Description()"
+                                        <img src="imgs/weapon/@(weapon.WeaponName())-@(theme).png" alt="@weapon.Description()"
                                              data-toggle="tooltip" data-placement="top" title="@weapon.Description()"
                                              class="img-responsive img-weapon"/>
                                     }
