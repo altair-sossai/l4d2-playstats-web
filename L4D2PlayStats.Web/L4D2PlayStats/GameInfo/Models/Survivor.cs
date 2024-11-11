@@ -16,5 +16,5 @@ public class Survivor : Player
     public bool? BlackAndWhite { get; set; }
     public bool? Incapacitated { get; set; }
     public bool IsPlayerAlive { get; set; }
-    public float Progress { get; set; }
+    public decimal Progress { get; set; }
 }

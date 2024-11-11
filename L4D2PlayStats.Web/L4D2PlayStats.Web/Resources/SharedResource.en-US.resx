@@ -420,9 +420,6 @@
   <data name="Bonus" xml:space="preserve">
     <value>Bonus</value>
   </data>
-  <data name="Comeback" xml:space="preserve">
-    <value>Comeback</value>
-  </data>
   <data name="TankPercent" xml:space="preserve">
     <value>Tank percent</value>
   </data>
@@ -458,5 +455,11 @@
   </data>
   <data name="Health" xml:space="preserve">
     <value>Health</value>
+  </data>
+  <data name="Spawning" xml:space="preserve">
+    <value>Spawning</value>
+  </data>
+  <data name="Spectators" xml:space="preserve">
+    <value>Spectators</value>
   </data>
 </root>

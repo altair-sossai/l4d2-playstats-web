@@ -1,4 +1,5 @@
-﻿@using L4D2PlayStats.GameInfo.Enums
+﻿@using System.Globalization
+@using L4D2PlayStats.GameInfo.Enums
 @using L4D2PlayStats.GameInfo.Extensions
 @using L4D2PlayStats.Infrastructure.Extensions
 @using L4D2PlayStats.Web
@@ -20,6 +21,11 @@
         return health >= 40 ? "progress-bar-success"
             : health >= 15 ? "progress-bar-warning"
             : "progress-bar-danger";
+    }
+
+    string ProgressBarWidth(decimal percentage)
+    {
+        return $"{Math.Round(percentage * 100, 2).ToString(CultureInfo.InvariantCulture)}%";
     }
 }
 
@@ -172,8 +178,8 @@
             </td>
         </tr>
         <tr>
-            <th class="slim text-right">@SharedLocalizer["Comeback"]:</th>
-            <td data-label="@SharedLocalizer["Comeback"]:">
+            <th class="slim text-right">@SharedLocalizer["ScoreDifference"]:</th>
+            <td data-label="@SharedLocalizer["ScoreDifference"]:">
                 <span class="label label-default">
                     @((scoreboard?.Comeback ?? 0).ToString("N0"))
                 </span>
@@ -302,12 +308,12 @@
                                             <div class="progress" data-toggle="tooltip" data-placement="top" title="@SharedLocalizer["Health"]">
                                                 @if (permanentHealth > 0)
                                                 {
-                                                    <div class="progress-bar @progressBarClass" style="width: @permanentHealth%">
+                                                    <div class="progress-bar @progressBarClass" style="width: @ProgressBarWidth(permanentHealth / 100m)">
                                                     </div>
                                                 }
                                                 @if (temporaryHealth > 0)
                                                 {
-                                                    <div class="progress-bar @progressBarClass temporary" style="width: @temporaryHealth%">
+                                                    <div class="progress-bar @progressBarClass temporary" style="width: @ProgressBarWidth(temporaryHealth / 100m)">
                                                     </div>
                                                 }
                                             </div>
@@ -321,7 +327,7 @@
                                     <tr>
                                         <td style="width: 100%">
                                             <div class="progress" data-toggle="tooltip" data-placement="top" title="@SharedLocalizer["Progress"]">
-                                                <div class="progress-bar" style="width: @(survivor.Progress * 100)%">
+                                                <div class="progress-bar" style="width: @ProgressBarWidth(survivor.Progress)">
                                                 </div>
                                             </div>
                                         </td>
@@ -376,19 +382,19 @@
 
                             @if (infected.IsInfectedGhost)
                             {
-                                <span class="label label-default" data-toggle="tooltip" data-placement="top" title="Spawning">
-                                    Spawning
+                                <span class="label label-default" data-toggle="tooltip" data-placement="top" title="@SharedLocalizer["Spawning"]">
+                                    @SharedLocalizer["Spawning"]
                                 </span>
                             }
                             else if (!infected.IsPlayerAlive)
                             {
-                                <span class="label label-danger" data-toggle="tooltip" data-placement="top" title="Dead">
-                                    Dead
+                                <span class="label label-danger" data-toggle="tooltip" data-placement="top" title="@SharedLocalizer["Dead"]">
+                                    @SharedLocalizer["Dead"]
                                 </span>
                             }
                         </td>
                         <td rowspan="2" class="text-center slim">
-                            <h4 data-toggle="tooltip" data-placement="top" title="Damage">
+                            <h4 data-toggle="tooltip" data-placement="top" title="@SharedLocalizer["Damage"]">
                                 @infected.Damage.ToString("N0")
                             </h4>
                         </td>
@@ -413,13 +419,13 @@
                                 <table class="table-hp">
                                     <tr>
                                         <td style="width: 100%">
-                                            <div class="progress" data-toggle="tooltip" data-placement="top" title="Health">
-                                                <div class="progress-bar progress-bar-success" style="width: @(healthPercentage * 100)%">
+                                            <div class="progress" data-toggle="tooltip" data-placement="top" title="@SharedLocalizer["Health"]">
+                                                <div class="progress-bar progress-bar-success" style="width: @ProgressBarWidth(healthPercentage)">
                                                 </div>
                                             </div>
                                         </td>
                                         <td class="slim hp-number">
-                                            <span data-toggle="tooltip" data-placement="top" title="Health: @health.ToString("N0") / @maxHealth.ToString("N0")">
+                                            <span data-toggle="tooltip" data-placement="top" title="@SharedLocalizer["Health"]">
                                                 @health.ToString("N0") / @maxHealth.ToString("N0")
                                             </span>
                                         </td>
@@ -439,20 +445,23 @@
 {
     <div class="row">
         <div class="col-md-12">
-            <span style="font-weight: bold">Spectators: </span>
+            <span style="font-weight: bold">@SharedLocalizer["Spectators"]: </span>
             @for (var i = 0; i < spectators.Length; i++)
             {
                 var spectator = spectators[i];
 
-                if (i != 0)
-                {
-                    <span>, </span>
-                }
-
                 <a href="@spectator.ProfileUrl" target="_blank">
-                    @spectator.Name
+                    @(i == spectators.Length - 1 ? spectator.Name : $"{spectator.Name}, ")
                 </a>
             }
         </div>
     </div>
 }
+
+<div class="row hide-mobile">
+    <div class="col-md-12 text-center">
+        <a href="steam://connect/@Model.ServerIp" class="btn btn-sm btn-primary" style="margin: 10px">
+            connect @Model.ServerIp
+        </a>
+    </div>
+</div>
