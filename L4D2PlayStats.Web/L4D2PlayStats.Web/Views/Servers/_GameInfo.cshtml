@@ -40,7 +40,7 @@
         .table-survivors,
         .table-infecteds {
             width: 100%;
-            margin-bottom: 20px;
+            margin-bottom: 0;
         }
 
             .table-survivors .img-character,
@@ -87,6 +87,11 @@
                     font-size: 11px;
                     text-align: center;
                 }
+
+            .table-survivors hr,
+            .table-infecteds hr {
+                margin: 0px 0px 5px 0;
+            }
 
         .temporary {
             opacity: 0.4;
@@ -207,242 +212,254 @@
 
 <div class="row">
     <div class="col-xs-12 col-sm-6">
-        @if (survivors is { Length: > 0 })
-        {
-            <table class="table-survivors">
-                <thead>
-                <tr>
-                    <th colspan="4" class="text-center">
-                        @SharedLocalizer["Survivors"]
-                    </th>
-                </tr>
-                </thead>
-                <tbody>
-                @foreach (var survivor in survivors)
-                {
-                    <tr>
-                        <td rowspan="3" style="width: 70px">
-                            <img src="imgs/survivor-character/@(survivor.Character.ToString().ToLower()).png" alt="@survivor.Character"
-                                 data-toggle="tooltip" data-placement="top" title="@survivor.Character"
-                                 class="img-responsive img-character"/>
-                        </td>
-                        <td style="width: 40px" rowspan="2">
-                            <a href="@survivor.ProfileUrl" target="_blank">
-                                <img src="@survivor.AvatarUrl" alt="@survivor.Name"
-                                     data-toggle="tooltip" data-placement="top" title="@survivor.Name"
-                                     class="img-responsive img-avatar"/>
-                            </a>
-                        </td>
-                        <td>
-                            <a href="@survivor.ProfileUrl" target="_blank">@survivor.Name</a>
+        <div class="panel panel-default">
+            <div class="panel-heading text-center">
+                @SharedLocalizer["Survivors"]
+            </div>
+            @if (survivors is { Length: > 0 })
+            {
+                <table class="table-survivors">
+                    <tbody>
+                    @foreach (var survivor in survivors)
+                    {
+                        <tr>
+                            <td rowspan="3" style="width: 70px">
+                                <img src="imgs/survivor-character/@(survivor.Character.ToString().ToLower()).png" alt="@survivor.Character"
+                                     data-toggle="tooltip" data-placement="top" title="@survivor.Character"
+                                     class="img-responsive img-character"/>
+                            </td>
+                            <td style="width: 40px" rowspan="2">
+                                <a href="@survivor.ProfileUrl" target="_blank">
+                                    <img src="@survivor.AvatarUrl" alt="@survivor.Name"
+                                         data-toggle="tooltip" data-placement="top" title="@survivor.Name"
+                                         class="img-responsive img-avatar"/>
+                                </a>
+                            </td>
+                            <td>
+                                <a href="@survivor.ProfileUrl" target="_blank">@survivor.Name</a>
 
-                            @if (!survivor.IsPlayerAlive)
-                            {
-                                <span class="label label-danger" data-toggle="tooltip" data-placement="top" title="@SharedLocalizer["Dead"]">
-                                    @SharedLocalizer["Dead"]
-                                </span>
-                            }
-                            else if (survivor.Incapacitated == true)
-                            {
-                                <span class="label label-warning" data-toggle="tooltip" data-placement="top" title="@SharedLocalizer["Incapacitated"]">
-                                    @SharedLocalizer["Incapacitated"]
-                                </span>
-                            }
-                            else if (survivor.BlackAndWhite == true)
-                            {
-                                <span class="label label-default" data-toggle="tooltip" data-placement="top" title="@SharedLocalizer["BlackAndWhite"]">
-                                    @SharedLocalizer["BlackAndWhite"]
-                                </span>
-                            }
-                        </td>
-                        <td rowspan="3" style="width: 30px;" class="text-center">
-                            @if (survivor.LatencyType != null)
-                            {
-                                <img src="imgs/latency/@(survivor.LatencyType.Value.ToString().ToLower()).png"
-                                     alt="@SharedLocalizer[$"Latency{survivor.LatencyType.Value}"]"
-                                     data-toggle="tooltip" data-placement="top" title="@SharedLocalizer[$"Latency{survivor.LatencyType.Value}"]"
-                                     class="img-responsive img-latency"/>
-                            }
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="text-right">
-                            @if (survivor.IsPlayerAlive)
-                            {
-                                var weapons = new List<Weapon?>
+                                @if (!survivor.IsPlayerAlive)
                                 {
-                                    survivor.PrimaryWeapon,
-                                    survivor.SecondaryWeapon,
-                                    survivor.SlotNumber3,
-                                    survivor.SlotNumber4,
-                                    survivor.SlotNumber5
-                                };
-
-                                @foreach (var weapon in weapons.Where(w => w != null).Cast<Weapon>())
-                                {
-                                    if (weapon == Weapon.Melee && survivor.MeleeWeapon != null)
-                                    {
-                                        var meleeWeapon = survivor.MeleeWeapon.Value;
-
-                                        <img src="imgs/melee-weapon/@(meleeWeapon.WeaponName())-@(theme).png" alt="@meleeWeapon.Description()"
-                                             data-toggle="tooltip" data-placement="top" title="@meleeWeapon.Description()"
-                                             class="img-responsive img-weapon"/>
-                                    }
-                                    else
-                                    {
-                                        <img src="imgs/weapon/@(weapon.WeaponName())-@(theme).png" alt="@weapon.Description()"
-                                             data-toggle="tooltip" data-placement="top" title="@weapon.Description()"
-                                             class="img-responsive img-weapon"/>
-                                    }
+                                    <span class="label label-danger" data-toggle="tooltip" data-placement="top" title="@SharedLocalizer["Dead"]">
+                                        @SharedLocalizer["Dead"]
+                                    </span>
                                 }
-                            }
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan="2">
-                            <table class="table-hp-progress">
+                                else if (survivor.Incapacitated == true)
+                                {
+                                    <span class="label label-warning" data-toggle="tooltip" data-placement="top" title="@SharedLocalizer["Incapacitated"]">
+                                        @SharedLocalizer["Incapacitated"]
+                                    </span>
+                                }
+                                else if (survivor.BlackAndWhite == true)
+                                {
+                                    <span class="label label-default" data-toggle="tooltip" data-placement="top" title="@SharedLocalizer["BlackAndWhite"]">
+                                        @SharedLocalizer["BlackAndWhite"]
+                                    </span>
+                                }
+                            </td>
+                            <td rowspan="3" style="width: 30px;" class="text-center">
+                                @if (survivor.LatencyType != null)
+                                {
+                                    <img src="imgs/latency/@(survivor.LatencyType.Value.ToString().ToLower()).png"
+                                         alt="@SharedLocalizer[$"Latency{survivor.LatencyType.Value}"]"
+                                         data-toggle="tooltip" data-placement="top" title="@SharedLocalizer[$"Latency{survivor.LatencyType.Value}"]"
+                                         class="img-responsive img-latency"/>
+                                }
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="text-right">
                                 @if (survivor.IsPlayerAlive)
                                 {
-                                    <tr>
-                                        @{
-                                            var permanentHealth = survivor.PermanentHealth ?? 0;
-                                            var temporaryHealth = survivor.TemporaryHealth ?? 0;
-                                            var progressBarClass = HealthProgressBarClass(survivor.HealthColor);
+                                    var weapons = new List<Weapon?>
+                                    {
+                                        survivor.PrimaryWeapon,
+                                        survivor.SecondaryWeapon,
+                                        survivor.SlotNumber3,
+                                        survivor.SlotNumber4,
+                                        survivor.SlotNumber5
+                                    };
+
+                                    @foreach (var weapon in weapons.Where(w => w != null).Cast<Weapon>())
+                                    {
+                                        if (weapon == Weapon.Melee && survivor.MeleeWeapon != null)
+                                        {
+                                            var meleeWeapon = survivor.MeleeWeapon.Value;
+
+                                            <img src="imgs/melee-weapon/@(meleeWeapon.WeaponName())-@(theme).png" alt="@meleeWeapon.Description()"
+                                                 data-toggle="tooltip" data-placement="top" title="@meleeWeapon.Description()"
+                                                 class="img-responsive img-weapon"/>
                                         }
-                                        <td style="width: 100%">
-                                            <div class="progress" data-toggle="tooltip" data-placement="top" title="@SharedLocalizer["Health"]">
-                                                @if (permanentHealth > 0)
-                                                {
-                                                    <div class="progress-bar @progressBarClass" style="width: @ProgressBarWidth(permanentHealth / 100m)">
-                                                    </div>
-                                                }
-                                                @if (temporaryHealth > 0)
-                                                {
-                                                    <div class="progress-bar @progressBarClass temporary" style="width: @ProgressBarWidth(temporaryHealth / 100m)">
-                                                    </div>
-                                                }
-                                            </div>
-                                        </td>
-                                        <td class="slim hp-progress-number">
-                                            <span data-toggle="tooltip" data-placement="top" title="@SharedLocalizer["Health"]">
-                                                @survivor.Health.ToString("N0")
-                                            </span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td style="width: 100%">
-                                            <div class="progress" data-toggle="tooltip" data-placement="top" title="@SharedLocalizer["Progress"]">
-                                                <div class="progress-bar" style="width: @ProgressBarWidth(survivor.Progress)">
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td class="slim hp-progress-number">
-                                            <span data-toggle="tooltip" data-placement="top" title="@SharedLocalizer["Progress"]">
-                                                @survivor.Progress.ToString("P0")
-                                            </span>
-                                        </td>
-                                    </tr>
+                                        else
+                                        {
+                                            <img src="imgs/weapon/@(weapon.WeaponName())-@(theme).png" alt="@weapon.Description()"
+                                                 data-toggle="tooltip" data-placement="top" title="@weapon.Description()"
+                                                 class="img-responsive img-weapon"/>
+                                        }
+                                    }
                                 }
-                            </table>
-                        </td>
-                    </tr>
-                }
-                </tbody>
-            </table>
-        }
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <table class="table-hp-progress">
+                                    @if (survivor.IsPlayerAlive)
+                                    {
+                                        <tr>
+                                            @{
+                                                var permanentHealth = survivor.PermanentHealth ?? 0;
+                                                var temporaryHealth = survivor.TemporaryHealth ?? 0;
+                                                var progressBarClass = HealthProgressBarClass(survivor.HealthColor);
+                                            }
+                                            <td style="width: 100%">
+                                                <div class="progress" data-toggle="tooltip" data-placement="top" title="@SharedLocalizer["Health"]">
+                                                    @if (permanentHealth > 0)
+                                                    {
+                                                        <div class="progress-bar @progressBarClass" style="width: @ProgressBarWidth(permanentHealth / 100m)">
+                                                        </div>
+                                                    }
+                                                    @if (temporaryHealth > 0)
+                                                    {
+                                                        <div class="progress-bar @progressBarClass temporary" style="width: @ProgressBarWidth(temporaryHealth / 100m)">
+                                                        </div>
+                                                    }
+                                                </div>
+                                            </td>
+                                            <td class="slim hp-progress-number">
+                                                <span data-toggle="tooltip" data-placement="top" title="@SharedLocalizer["Health"]">
+                                                    @survivor.Health.ToString("N0")
+                                                </span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="width: 100%">
+                                                <div class="progress" data-toggle="tooltip" data-placement="top" title="@SharedLocalizer["Progress"]">
+                                                    <div class="progress-bar" style="width: @ProgressBarWidth(survivor.Progress)">
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td class="slim hp-progress-number">
+                                                <span data-toggle="tooltip" data-placement="top" title="@SharedLocalizer["Progress"]">
+                                                    @survivor.Progress.ToString("P0")
+                                                </span>
+                                            </td>
+                                        </tr>
+                                    }
+                                </table>
+                            </td>
+                        </tr>
+                        @if (survivor != survivors.Last())
+                        {
+                            <tr>
+                                <td colspan="4">
+                                    <hr/>
+                                </td>
+                            </tr>
+                        }
+                    }
+                    </tbody>
+                </table>
+            }
+        </div>
     </div>
     <div class="col-xs-12 col-sm-6">
-        @if (infecteds is { Length: > 0 })
-        {
-            <table class="table-infecteds">
-                <thead>
-                <tr>
-                    <th colspan="3" class="text-center">@SharedLocalizer["Infecteds"]</th>
-                    <th class="text-center">@SharedLocalizer["Damage"]</th>
-                    <th></th>
-                </tr>
-                </thead>
-                <tbody>
-                @foreach (var infected in infecteds)
-                {
-                    var infectedIcon = infected.Type == null ? "none" : infected.Type.Value.ToString().ToLower();
-                    var infectedTitle = infected.Type?.Description() ?? "None";
-                    <tr>
-                        <td style="width: 75px" rowspan="2">
-                            <img src="imgs/infected-type/@(infectedIcon).jpg" alt="@infectedTitle"
-                                 data-toggle="tooltip" data-placement="top" title="@infectedTitle"
-                                 class="img-responsive img-infected"/>
-                        </td>
-                        <td style="width: 40px">
-                            <a href="@infected.ProfileUrl" target="_blank">
-                                <img src="@infected.AvatarUrl" alt="@infected.Name"
-                                     data-toggle="tooltip" data-placement="top" title="@infected.Name"
-                                     class="img-responsive img-avatar"/>
-                            </a>
-                        </td>
-                        <td>
-                            <a href="@infected.ProfileUrl" target="_blank">
-                                @infected.Name
-                            </a>
+        <div class="panel panel-default">
+            <div class="panel-heading text-center">
+                @SharedLocalizer["Infecteds"]
+            </div>
+            @if (infecteds is { Length: > 0 })
+            {
+                <table class="table-infecteds">
+                    <tbody>
+                    @foreach (var infected in infecteds)
+                    {
+                        var infectedIcon = infected.Type == null ? "none" : infected.Type.Value.ToString().ToLower();
+                        var infectedTitle = infected.Type?.Description() ?? "None";
+                        <tr>
+                            <td style="width: 75px" rowspan="2">
+                                <img src="imgs/infected-type/@(infectedIcon).jpg" alt="@infectedTitle"
+                                     data-toggle="tooltip" data-placement="top" title="@infectedTitle"
+                                     class="img-responsive img-infected"/>
+                            </td>
+                            <td style="width: 40px">
+                                <a href="@infected.ProfileUrl" target="_blank">
+                                    <img src="@infected.AvatarUrl" alt="@infected.Name"
+                                         data-toggle="tooltip" data-placement="top" title="@infected.Name"
+                                         class="img-responsive img-avatar"/>
+                                </a>
+                            </td>
+                            <td>
+                                <a href="@infected.ProfileUrl" target="_blank">
+                                    @infected.Name
+                                </a>
 
-                            @if (infected.IsInfectedGhost)
-                            {
-                                <span class="label label-default" data-toggle="tooltip" data-placement="top" title="@SharedLocalizer["Spawning"]">
-                                    @SharedLocalizer["Spawning"]
-                                </span>
-                            }
-                            else if (!infected.IsPlayerAlive)
-                            {
-                                <span class="label label-danger" data-toggle="tooltip" data-placement="top" title="@SharedLocalizer["Dead"]">
-                                    @SharedLocalizer["Dead"]
-                                </span>
-                            }
-                        </td>
-                        <td rowspan="2" class="text-center slim">
-                            <h4 data-toggle="tooltip" data-placement="top" title="@SharedLocalizer["Damage"]">
-                                @infected.Damage.ToString("N0")
-                            </h4>
-                        </td>
-                        <td class="text-center" rowspan="2">
-                            @if (infected.LatencyType != null)
-                            {
-                                <img src="imgs/latency/@(infected.LatencyType.Value.ToString().ToLower()).png"
-                                     alt="@SharedLocalizer[$"Latency{infected.LatencyType.Value}"]"
-                                     data-toggle="tooltip" data-placement="top" title="@SharedLocalizer[$"Latency{infected.LatencyType.Value}"]"
-                                     class="img-responsive img-latency"/>
-                            }
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan="2">
-                            @if (infected.IsPlayerAlive)
-                            {
-                                var health = infected.Health ?? 0;
-                                var maxHealth = infected.MaxHealth ?? 0;
-                                var healthPercentage = maxHealth == 0 ? 0 : health / (decimal)maxHealth;
+                                @if (infected.IsInfectedGhost)
+                                {
+                                    <span class="label label-default" data-toggle="tooltip" data-placement="top" title="@SharedLocalizer["Spawning"]">
+                                        @SharedLocalizer["Spawning"]
+                                    </span>
+                                }
+                                else if (!infected.IsPlayerAlive)
+                                {
+                                    <span class="label label-danger" data-toggle="tooltip" data-placement="top" title="@SharedLocalizer["Dead"]">
+                                        @SharedLocalizer["Dead"]
+                                    </span>
+                                }
+                            </td>
+                            <td rowspan="2" class="text-center text-nowrap">
+                                <h4 data-toggle="tooltip" data-placement="top" title="@SharedLocalizer["Damage"]">
+                                    @infected.Damage.ToString("N0")
+                                </h4>
+                            </td>
+                            <td class="text-center" rowspan="2">
+                                @if (infected.LatencyType != null)
+                                {
+                                    <img src="imgs/latency/@(infected.LatencyType.Value.ToString().ToLower()).png"
+                                         alt="@SharedLocalizer[$"Latency{infected.LatencyType.Value}"]"
+                                         data-toggle="tooltip" data-placement="top" title="@SharedLocalizer[$"Latency{infected.LatencyType.Value}"]"
+                                         class="img-responsive img-latency"/>
+                                }
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                @if (infected.IsPlayerAlive)
+                                {
+                                    var health = infected.Health ?? 0;
+                                    var maxHealth = infected.MaxHealth ?? 0;
+                                    var healthPercentage = maxHealth == 0 ? 0 : health / (decimal)maxHealth;
 
-                                <table class="table-hp">
-                                    <tr>
-                                        <td style="width: 100%">
-                                            <div class="progress" data-toggle="tooltip" data-placement="top" title="@SharedLocalizer["Health"]">
-                                                <div class="progress-bar progress-bar-success" style="width: @ProgressBarWidth(healthPercentage)">
+                                    <table class="table-hp">
+                                        <tr>
+                                            <td style="width: 100%">
+                                                <div class="progress" data-toggle="tooltip" data-placement="top" title="@SharedLocalizer["Health"]">
+                                                    <div class="progress-bar progress-bar-success" style="width: @ProgressBarWidth(healthPercentage)">
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        </td>
-                                        <td class="slim hp-number">
-                                            <span data-toggle="tooltip" data-placement="top" title="@SharedLocalizer["Health"]">
-                                                @health.ToString("N0") / @maxHealth.ToString("N0")
-                                            </span>
-                                        </td>
-                                    </tr>
-                                </table>
-                            }
-                        </td>
-                    </tr>
-                }
-                </tbody>
-            </table>
-        }
+                                            </td>
+                                            <td class="slim hp-number">
+                                                <span data-toggle="tooltip" data-placement="top" title="@SharedLocalizer["Health"]">
+                                                    @health.ToString("N0") / @maxHealth.ToString("N0")
+                                                </span>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                }
+                            </td>
+                        </tr>
+                        @if (infected != infecteds.Last())
+                        {
+                            <tr>
+                                <td colspan="5">
+                                    <hr/>
+                                </td>
+                            </tr>
+                        }
+                    }
+                    </tbody>
+                </table>
+            }
+        </div>
     </div>
 </div>
 
