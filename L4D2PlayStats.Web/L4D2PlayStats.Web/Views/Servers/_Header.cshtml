@@ -62,8 +62,8 @@
                 var labelSurvivor = scoreboard?.IsDraw == true ? "default" : scoreboard?.IsSurvivorsWinning == true ? "success" : "danger";
                 var labelInfected = scoreboard?.IsDraw == true ? "default" : scoreboard?.IsInfectedsWinning == true ? "success" : "danger";
             }
-            <th class="slim text-right">@SharedLocalizer["SurvivorInfectedScore"]:</th>
-            <td data-label="@SharedLocalizer["SurvivorInfectedScore"]:">
+            <th class="text-right">@SharedLocalizer["Scoreboard"]:</th>
+            <td data-label="@SharedLocalizer["Scoreboard"]:" class="text-nowrap">
                 <span class="label label-@labelSurvivor" data-toggle="tooltip" data-placement="top" title="@SharedLocalizer["Survivors"]">
                     @survivorScore.ToString("N0")
                 </span>
@@ -73,8 +73,8 @@
                 </span>
             </td>
 
-            <th class="slim text-right">@SharedLocalizer["Progress"]:</th>
-            <td data-label="@SharedLocalizer["Progress"]:">
+            <th class="text-right">@SharedLocalizer["Progress"]:</th>
+            <td data-label="@SharedLocalizer["Progress"]:" class="text-nowrap">
                 @((scoreboard?.CurrentProgressPoints ?? 0).ToString("N0"))
                 <span> / </span>
                 @((round?.MaxChapterProgressPoints ?? 0).ToString("N0"))
@@ -83,8 +83,8 @@
                 </span>
             </td>
 
-            <th class="slim text-right">@SharedLocalizer["Bonus"]:</th>
-            <td data-label="@SharedLocalizer["Bonus"]:">
+            <th class="text-right">@SharedLocalizer["Bonus"]:</th>
+            <td data-label="@SharedLocalizer["Bonus"]:" class="text-nowrap">
                 @((scoreboard?.Bonus ?? 0).ToString("N0"))
                 <span> / </span>
                 @((scoreboard?.MaxBonus ?? 0).ToString("N0"))
@@ -94,19 +94,19 @@
             </td>
         </tr>
         <tr>
-            <th class="slim text-right">@SharedLocalizer["ScoreDifference"]:</th>
-            <td data-label="@SharedLocalizer["ScoreDifference"]:">
+            <th class="text-right text-nowrap">@SharedLocalizer["Difference"]:</th>
+            <td data-label="@SharedLocalizer["Difference"]:">
                 <span class="label label-default">
                     @((scoreboard?.Comeback ?? 0).ToString("N0"))
                 </span>
             </td>
 
-            <th class="slim text-right">@SharedLocalizer["TankPercent"]:</th>
+            <th class="text-right text-nowrap">@SharedLocalizer["TankPercent"]:</th>
             <td data-label="@SharedLocalizer["TankPercent"]:">
                 @((round?.TankPercent ?? 0).ToString("P0"))
             </td>
 
-            <th class="slim text-right">@SharedLocalizer["WitchPercent"]:</th>
+            <th class="text-right text-nowrap">@SharedLocalizer["WitchPercent"]:</th>
             <td data-label="@SharedLocalizer["WitchPercent"]:">
                 @((round?.WitchPercent ?? 0).ToString("P0"))
             </td>

@@ -77,7 +77,7 @@
 
 @section Scripts {
     <script>
-        function refreshHeaderContent() {
+        function refreshHeader() {
             $.ajax({
                 url: 'servers/header',
                 type: 'GET',
@@ -86,12 +86,12 @@
                     $('[data-toggle="tooltip"]').tooltip();
                 },
                 complete: function () {
-                    setTimeout(refreshHeaderContent, 2500);
+                    setTimeout(refreshHeader, 5000);
                 }
             });
         };
 
-        function refreshPlayersContent() {
+        function refreshPlayers() {
             $.ajax({
                 url: 'servers/players',
                 type: 'GET',
@@ -100,14 +100,14 @@
                     $('[data-toggle="tooltip"]').tooltip();
                 },
                 complete: function () {
-                    setTimeout(refreshPlayersContent, 1500);
+                    setTimeout(refreshPlayers, 4500);
                 }
             });
         };
 
         $(document).ready(function () {
-            refreshHeaderContent();
-            refreshPlayersContent();
+            refreshHeader();
+            refreshPlayers();
         });
     </script>
 }

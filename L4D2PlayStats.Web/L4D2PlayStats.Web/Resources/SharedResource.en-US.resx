@@ -171,6 +171,9 @@
   <data name="ScoreDifference" xml:space="preserve">
     <value>Score difference</value>
   </data>
+  <data name="Difference" xml:space="preserve">
+    <value>Difference</value>
+  </data>
   <data name="TeamBScore" xml:space="preserve">
     <value>Team B score</value>
   </data>
@@ -410,9 +413,6 @@
   </data>
   <data name="SecondRound" xml:space="preserve">
     <value>2nd round</value>
-  </data>
-  <data name="SurvivorInfectedScore" xml:space="preserve">
-    <value>Survivor / infected score</value>
   </data>
   <data name="Progress" xml:space="preserve">
     <value>Progress</value>
