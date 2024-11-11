@@ -38,13 +38,30 @@
 
             .table-survivors .progress {
                 margin-bottom: 1px;
+                border-radius: 0;
             }
 
             .table-survivors .img-latency {
-                margin-bottom: 5px;
                 display: inline-block;
                 height: 16px;
             }
+
+            .table-survivors .table-hp-progress {
+                width: 100%;
+                margin-bottom: 5px;
+            }
+
+                .table-survivors .table-hp-progress .progress {
+                    height: 12px;
+                }
+
+                .table-survivors .table-hp-progress .hp-progress-number {
+                    padding: 0;
+                    margin: 0;
+                    padding-left: 10px;
+                    font-size: 11px;
+                    text-align: center;
+                }
 
         .temporary {
             opacity: 0.4;
@@ -161,7 +178,7 @@
         @foreach (var survivor in survivors)
         {
             <tr>
-                <td rowspan="3" style="width: 60px">
+                <td rowspan="3" style="width: 70px">
                     <img src="imgs/survivor-character/@(survivor.Character.ToString().ToLower()).png" alt="@survivor.Character"
                          data-toggle="tooltip" data-placement="top" title="@survivor.Character"
                          class="img-responsive img-character"/>
@@ -197,6 +214,8 @@
                 </td>
                 <td rowspan="3" style="width: 30px;" class="text-center">
                     @{
+                        //TODO: check if it is correct
+
                         var latencyIcon = survivor.Latency == null ? string.Empty
                             : survivor.Latency < 0.3m ? "low.png"
                             : survivor.Latency < 0.6m ? "medium.png"
@@ -217,8 +236,9 @@
                 </td>
             </tr>
             <tr>
-                <td>
-                    @{
+                <td class="text-right">
+                    @if (survivor.IsPlayerAlive)
+                    {
                         var weapons = new List<Weapon?>
                         {
                             survivor.PrimaryWeapon,
@@ -227,54 +247,77 @@
                             survivor.SlotNumber4,
                             survivor.SlotNumber5
                         };
-                    }
 
-                    @foreach (var weapon in weapons.Where(w => w != null).Cast<Weapon>())
-                    {
-                        if (weapon == Weapon.Melee && survivor.MeleeWeapon != null)
+                        @foreach (var weapon in weapons.Where(w => w != null).Cast<Weapon>())
                         {
-                            var meleeWeapon = survivor.MeleeWeapon.Value;
+                            if (weapon == Weapon.Melee && survivor.MeleeWeapon != null)
+                            {
+                                var meleeWeapon = survivor.MeleeWeapon.Value;
 
-                            <img src="imgs/melee-weapon/@(meleeWeapon.WeaponName()).png" alt="@meleeWeapon.Description()"
-                                 data-toggle="tooltip" data-placement="top" title="@meleeWeapon.Description()"
-                                 class="img-responsive img-weapon"/>
-                        }
-                        else
-                        {
-                            <img src="imgs/weapon/@(weapon.WeaponName()).png" alt="@weapon.Description()"
-                                 data-toggle="tooltip" data-placement="top" title="@weapon.Description()"
-                                 class="img-responsive img-weapon"/>
+                                <img src="imgs/melee-weapon/@(meleeWeapon.WeaponName()).png" alt="@meleeWeapon.Description()"
+                                     data-toggle="tooltip" data-placement="top" title="@meleeWeapon.Description()"
+                                     class="img-responsive img-weapon"/>
+                            }
+                            else
+                            {
+                                <img src="imgs/weapon/@(weapon.WeaponName()).png" alt="@weapon.Description()"
+                                     data-toggle="tooltip" data-placement="top" title="@weapon.Description()"
+                                     class="img-responsive img-weapon"/>
+                            }
                         }
                     }
                 </td>
             </tr>
             <tr>
                 <td colspan="2">
-                    @{
-                        var permanentHealth = survivor.PermanentHealth ?? 0;
-                        var temporaryHealth = survivor.TemporaryHealth ?? 0;
-                        //TODO: check if it is correct
-                        var progressBarClass = permanentHealth >= 40 ? "progress-bar-success"
-                            : permanentHealth >= 15 ? "progress-bar-warning"
-                            : "progress-bar-danger";
-                    }
-                    <div class="progress" style="height: 10px" data-toggle="tooltip" data-placement="top" title="Health">
-                        <div class="progress-bar @progressBarClass" style="width: @permanentHealth%">
-                        </div>
-                        @if (temporaryHealth != 0)
+                    <table class="table-hp-progress">
+                        @if (survivor.IsPlayerAlive)
                         {
-                            <div class="progress-bar @progressBarClass temporary" style="width: @temporaryHealth%">
-                            </div>
+                            <tr>
+                                @{
+                                    var permanentHealth = survivor.PermanentHealth ?? 0;
+                                    var temporaryHealth = survivor.TemporaryHealth ?? 0;
+                                    var health = permanentHealth + temporaryHealth;
+                                    //TODO: check if it is correct
+                                    var progressBarClass = permanentHealth >= 40 ? "progress-bar-success"
+                                        : permanentHealth >= 15 ? "progress-bar-warning"
+                                        : "progress-bar-danger";
+                                }
+                                <td style="width: 100%">
+                                    <div class="progress" data-toggle="tooltip" data-placement="top" title="Health">
+                                        @if (permanentHealth > 0)
+                                        {
+                                            <div class="progress-bar @progressBarClass" style="width: @permanentHealth%">
+                                            </div>
+                                        }
+                                        @if (temporaryHealth > 0)
+                                        {
+                                            <div class="progress-bar @progressBarClass temporary" style="width: @temporaryHealth%">
+                                            </div>
+                                        }
+                                    </div>
+                                </td>
+                                <td class="slim hp-progress-number">
+                                    <span data-toggle="tooltip" data-placement="top" title="Health: @health.ToString("N0")">
+                                        @health.ToString("N0")
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="width: 100%">
+                                    <div class="progress" data-toggle="tooltip" data-placement="top" title="Progress">
+                                        <div class="progress-bar" style="width: @(survivor.Progress * 100)%">
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="slim hp-progress-number">
+                                    <span data-toggle="tooltip" data-placement="top" title="Progress: @survivor.Progress.ToString("P0")">
+                                        @survivor.Progress.ToString("P0")
+                                    </span>
+                                </td>
+                            </tr>
                         }
-                    </div>
-
-                    @{
-                        var progress = survivor.Progress * 100;
-                    }
-                    <div class="progress" style="height: 8px; margin-bottom: 10px" data-toggle="tooltip" data-placement="top" title="Progress">
-                        <div class="progress-bar" style="width: @progress%">
-                        </div>
-                    </div>
+                    </table>
                 </td>
             </tr>
         }
