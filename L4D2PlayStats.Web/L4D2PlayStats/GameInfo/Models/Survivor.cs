@@ -9,11 +9,10 @@ public class Survivor : Player
     public int? TemporaryHealth { get; set; }
     public int Health => (PermanentHealth ?? 0) + (TemporaryHealth ?? 0);
 
-    //TODO: check if it is correct
     public HealthColor? HealthColor => PermanentHealth switch
     {
         null => null,
-        < 30 => Enums.HealthColor.Red,
+        < 25 => Enums.HealthColor.Red,
         < 40 => Enums.HealthColor.Orange,
         _ => Enums.HealthColor.Green
     };

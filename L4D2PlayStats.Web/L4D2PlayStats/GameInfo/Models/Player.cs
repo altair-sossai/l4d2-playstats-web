@@ -20,12 +20,11 @@ public class Player
     public string? Name { get; set; }
     public decimal? Latency { get; set; }
 
-    //TODO: check if it is correct
     public LatencyType? LatencyType => Latency switch
     {
         null => null,
-        < 0.25m => Enums.LatencyType.Low,
-        < 0.5m => Enums.LatencyType.Medium,
+        < 0.05m => Enums.LatencyType.Low,
+        < 0.08m => Enums.LatencyType.Medium,
         _ => Enums.LatencyType.High
     };
 
