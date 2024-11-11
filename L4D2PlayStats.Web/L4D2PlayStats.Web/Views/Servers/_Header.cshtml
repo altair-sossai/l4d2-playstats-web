@@ -103,12 +103,26 @@
 
             <th class="text-right text-nowrap">@SharedLocalizer["Tank"]:</th>
             <td data-label="@SharedLocalizer["Tank"]:">
-                @((round?.TankPercent ?? 0).ToString("P0"))
+                @if (round?.TankDisabled == true)
+                {
+                    <span class="label label-default">Disabled</span>
+                }
+                else
+                {
+                    @((round?.TankPercent ?? 0).ToString("P0"))
+                }
             </td>
 
             <th class="text-right text-nowrap">@SharedLocalizer["Witch"]:</th>
             <td data-label="@SharedLocalizer["Witch"]:">
-                @((round?.WitchPercent ?? 0).ToString("P0"))
+                @if (round?.WitchDisabled == true)
+                {
+                    <span class="label label-default">Disabled</span>
+                }
+                else
+                {
+                    @((round?.WitchPercent ?? 0).ToString("P0"))
+                }
             </td>
         </tr>
         </tbody>
