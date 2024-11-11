@@ -96,7 +96,7 @@ public class GameInfo
 
     private void InfectedsValueUpdated(object? sender, Infected[] infecteds)
     {
-        Array.Sort(infecteds, (a, b) => b.Damage.CompareTo(a.Damage));
+        Array.Sort(infecteds, (a, b) => a.Damage.CompareTo(b.Damage));
 
         LoadAvatarAsync(infecteds).Wait();
     }
