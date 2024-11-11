@@ -23,8 +23,8 @@ public class Player
     public LatencyType? LatencyType => Latency switch
     {
         null => null,
-        < 0.05m => Enums.LatencyType.Low,
-        < 0.08m => Enums.LatencyType.Medium,
+        < 0.1m => Enums.LatencyType.Low,
+        < 0.2m => Enums.LatencyType.Medium,
         _ => Enums.LatencyType.High
     };
 
