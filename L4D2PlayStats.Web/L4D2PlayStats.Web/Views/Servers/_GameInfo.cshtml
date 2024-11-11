@@ -40,7 +40,6 @@
         .table-survivors,
         .table-infecteds {
             width: 100%;
-            margin-bottom: 0;
         }
 
             .table-survivors .img-character,
@@ -100,6 +99,10 @@
         .img-latency {
             display: inline-block;
             height: 16px;
+        }
+
+        .td-latency {
+            width: 40px;
         }
     </style>
 }
@@ -257,7 +260,7 @@
                                     </span>
                                 }
                             </td>
-                            <td rowspan="3" style="width: 30px;" class="text-center">
+                                <td rowspan="3" class="td-latency text-center">
                                 @if (survivor.LatencyType != null)
                                 {
                                     <img src="imgs/latency/@(survivor.LatencyType.Value.ToString().ToLower()).png"
@@ -411,7 +414,7 @@
                                     @infected.Damage.ToString("N0")
                                 </h4>
                             </td>
-                            <td class="text-center" rowspan="2">
+                            <td class="td-latency text-center" rowspan="2">
                                 @if (infected.LatencyType != null)
                                 {
                                     <img src="imgs/latency/@(infected.LatencyType.Value.ToString().ToLower()).png"
