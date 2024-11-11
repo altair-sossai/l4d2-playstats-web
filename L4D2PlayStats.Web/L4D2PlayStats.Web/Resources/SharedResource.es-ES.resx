@@ -420,11 +420,11 @@
   <data name="Bonus" xml:space="preserve">
     <value>Bonificación</value>
   </data>
-  <data name="TankPercent" xml:space="preserve">
-    <value>Porcentaje de tank</value>
+  <data name="Tank" xml:space="preserve">
+    <value>Tank</value>
   </data>
-  <data name="WitchPercent" xml:space="preserve">
-    <value>Porcentaje de bruja</value>
+  <data name="Witch" xml:space="preserve">
+    <value>Bruja</value>
   </data>
   <data name="Survivors" xml:space="preserve">
     <value>Supervivientes</value>

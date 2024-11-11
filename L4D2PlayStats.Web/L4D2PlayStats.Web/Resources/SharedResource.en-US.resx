@@ -420,11 +420,11 @@
   <data name="Bonus" xml:space="preserve">
     <value>Bonus</value>
   </data>
-  <data name="TankPercent" xml:space="preserve">
-    <value>Tank percent</value>
+  <data name="Tank" xml:space="preserve">
+    <value>Tank</value>
   </data>
-  <data name="WitchPercent" xml:space="preserve">
-    <value>Witch percent</value>
+  <data name="Witch" xml:space="preserve">
+    <value>Witch</value>
   </data>
   <data name="Survivors" xml:space="preserve">
     <value>Survivors</value>
