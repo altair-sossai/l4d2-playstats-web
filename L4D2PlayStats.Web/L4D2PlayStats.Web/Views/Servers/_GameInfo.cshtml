@@ -15,24 +15,6 @@
     var infecteds = gameInfo.Infecteds;
     var spectators = gameInfo.Spectators;
 
-    //TODO: check if it is correct
-
-    string LatencyIcon(decimal? latency)
-    {
-        return latency == null ? string.Empty
-            : latency < 0.3m ? "low.png"
-            : latency < 0.6m ? "medium.png"
-            : "high.png";
-    }
-
-    string LatencyTitle(decimal? latency)
-    {
-        return latency == null ? string.Empty
-            : latency < 0.3m ? "Low"
-            : latency < 0.6m ? "Medium"
-            : "High";
-    }
-
     string HealthProgressBarClass(int health)
     {
         return health >= 40 ? "progress-bar-success"
@@ -262,16 +244,11 @@
                             }
                         </td>
                         <td rowspan="3" style="width: 30px;" class="text-center">
-                            @{
-                                var latencyIcon = LatencyIcon(survivor.Latency);
-                            }
-
-                            @if (!string.IsNullOrEmpty(latencyIcon))
+                            @if (survivor.LatencyType != null)
                             {
-                                var latencyTitle = LatencyTitle(survivor.Latency);
-
-                                <img src="imgs/latency/@latencyIcon" alt="@latencyTitle"
-                                     data-toggle="tooltip" data-placement="top" title="@latencyTitle"
+                                <img src="imgs/latency/@(survivor.LatencyType.Value.ToString().ToLower()).png"
+                                     alt="@SharedLocalizer[$"Latency{survivor.LatencyType.Value}"]"
+                                     data-toggle="tooltip" data-placement="top" title="@SharedLocalizer[$"Latency{survivor.LatencyType.Value}"]"
                                      class="img-responsive img-latency"/>
                             }
                         </td>
@@ -416,16 +393,11 @@
                             </h4>
                         </td>
                         <td class="text-center" rowspan="2">
-                            @{
-                                var latencyIcon = LatencyIcon(infected.Latency);
-                            }
-
-                            @if (!string.IsNullOrEmpty(latencyIcon))
+                            @if (infected.LatencyType != null)
                             {
-                                var latencyTitle = LatencyTitle(infected.Latency);
-
-                                <img src="imgs/latency/@latencyIcon" alt="@latencyTitle"
-                                     data-toggle="tooltip" data-placement="top" title="@latencyTitle"
+                                <img src="imgs/latency/@(infected.LatencyType.Value.ToString().ToLower()).png"
+                                     alt="@SharedLocalizer[$"Latency{infected.LatencyType.Value}"]"
+                                     data-toggle="tooltip" data-placement="top" title="@SharedLocalizer[$"Latency{infected.LatencyType.Value}"]"
                                      class="img-responsive img-latency"/>
                             }
                         </td>

@@ -447,4 +447,13 @@
   <data name="BlackAndWhite" xml:space="preserve">
     <value>Preto e branco</value>
   </data>
+  <data name="LatencyLow" xml:space="preserve">
+    <value>Baixo</value>
+  </data>
+  <data name="LatencyMedium" xml:space="preserve">
+    <value>Médio</value>
+  </data>
+  <data name="LatencyHigh" xml:space="preserve">
+    <value>Alto</value>
+  </data>
 </root>

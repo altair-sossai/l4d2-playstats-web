@@ -1,4 +1,5 @@
-﻿using L4D2PlayStats.Infrastructure.Structures;
+﻿using L4D2PlayStats.GameInfo.Enums;
+using L4D2PlayStats.Infrastructure.Structures;
 using L4D2PlayStats.UserAvatar;
 
 namespace L4D2PlayStats.GameInfo.Models;
@@ -18,6 +19,16 @@ public class Player
     public string? ProfileUrl => _steamIdentifiers.ProfileUrl;
     public string? Name { get; set; }
     public decimal? Latency { get; set; }
+
+    //TODO: check if it is correct
+    public LatencyType? LatencyType => Latency switch
+    {
+        null => null,
+        < 0.25m => Enums.LatencyType.Low,
+        < 0.5m => Enums.LatencyType.Medium,
+        _ => Enums.LatencyType.High
+    };
+
     public string? AvatarUrl { get; private set; }
 
     public void UpdateAvatarUrl(IUserAvatar userAvatar)
