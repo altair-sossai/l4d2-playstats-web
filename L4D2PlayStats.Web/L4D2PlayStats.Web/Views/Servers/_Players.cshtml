@@ -101,7 +101,7 @@
                                         survivor.SlotNumber5
                                     };
 
-                                    @foreach (var weapon in weapons.Where(w => w != null).Cast<Weapon>())
+                                    @foreach (var weapon in weapons.Where(w => w != null && w != Weapon.None).Cast<Weapon>())
                                     {
                                         if (weapon == Weapon.Melee && survivor.MeleeWeapon != null)
                                         {
