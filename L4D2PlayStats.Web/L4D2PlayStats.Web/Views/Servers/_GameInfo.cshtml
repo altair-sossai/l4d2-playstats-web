@@ -299,7 +299,7 @@
                                             var progressBarClass = HealthProgressBarClass(permanentHealth);
                                         }
                                         <td style="width: 100%">
-                                            <div class="progress" data-toggle="tooltip" data-placement="top" title="Health">
+                                            <div class="progress" data-toggle="tooltip" data-placement="top" title="@SharedLocalizer["Health"]">
                                                 @if (permanentHealth > 0)
                                                 {
                                                     <div class="progress-bar @progressBarClass" style="width: @permanentHealth%">
@@ -313,20 +313,20 @@
                                             </div>
                                         </td>
                                         <td class="slim hp-progress-number">
-                                            <span data-toggle="tooltip" data-placement="top" title="Health: @health.ToString("N0")">
+                                            <span data-toggle="tooltip" data-placement="top" title="@SharedLocalizer["Health"]">
                                                 @health.ToString("N0")
                                             </span>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td style="width: 100%">
-                                            <div class="progress" data-toggle="tooltip" data-placement="top" title="Progress">
+                                            <div class="progress" data-toggle="tooltip" data-placement="top" title="@SharedLocalizer["Progress"]">
                                                 <div class="progress-bar" style="width: @(survivor.Progress * 100)%">
                                                 </div>
                                             </div>
                                         </td>
                                         <td class="slim hp-progress-number">
-                                            <span data-toggle="tooltip" data-placement="top" title="Progress: @survivor.Progress.ToString("P0")">
+                                            <span data-toggle="tooltip" data-placement="top" title="@SharedLocalizer["Progress"]">
                                                 @survivor.Progress.ToString("P0")
                                             </span>
                                         </td>

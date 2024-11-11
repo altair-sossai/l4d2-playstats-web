@@ -456,4 +456,7 @@
   <data name="LatencyHigh" xml:space="preserve">
     <value>Alto</value>
   </data>
+  <data name="Health" xml:space="preserve">
+    <value>Salud</value>
+  </data>
 </root>
