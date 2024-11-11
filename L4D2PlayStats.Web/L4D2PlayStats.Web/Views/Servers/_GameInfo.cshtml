@@ -77,13 +77,21 @@
 
 @section Scripts {
     <script>
+        function refreshElements() {
+            $('[data-toggle="tooltip"]').tooltip();
+            
+            var currentScroll = $(window).scrollTop();
+            $(window).scrollTop(currentScroll + 1);
+            $(window).scrollTop(currentScroll);
+        }
+
         function refreshHeader() {
             $.ajax({
                 url: 'servers/header',
                 type: 'GET',
                 success: function (html) {
                     $('#game-info-header').html(html);
-                    $('[data-toggle="tooltip"]').tooltip();
+                    refreshElements();
                 },
                 complete: function () {
                     setTimeout(refreshHeader, 5000);
@@ -97,7 +105,7 @@
                 type: 'GET',
                 success: function (html) {
                     $('#game-info-players').html(html);
-                    $('[data-toggle="tooltip"]').tooltip();
+                    refreshElements();
                 },
                 complete: function () {
                     setTimeout(refreshPlayers, 4500);
