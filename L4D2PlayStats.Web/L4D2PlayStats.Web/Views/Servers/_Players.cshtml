@@ -10,9 +10,15 @@
     var theme = Context.Request.Cookies["theme"] == "light" ? "light" : "dark";
 
     var gameInfo = Model.GameInfo;
+    var scoreboard = gameInfo.Scoreboard;
     var survivors = gameInfo.Survivors;
     var infecteds = gameInfo.Infecteds;
     var spectators = gameInfo.Spectators;
+
+    var survivorScore = scoreboard?.SurvivorScore ?? 0;
+    var infectedScore = scoreboard?.InfectedScore ?? 0;
+    var labelSurvivor = scoreboard?.IsDraw == true ? "default" : scoreboard?.IsSurvivorsWinning == true ? "success" : "danger";
+    var labelInfected = scoreboard?.IsDraw == true ? "default" : scoreboard?.IsInfectedsWinning == true ? "success" : "danger";
 
     string HealthProgressBarClass(HealthColor? healthColor)
     {
@@ -36,6 +42,9 @@
         <div class="panel panel-default">
             <div class="panel-heading text-center">
                 @SharedLocalizer["Survivors"]
+                <span class="label label-@labelSurvivor" data-toggle="tooltip" data-placement="top" title="@SharedLocalizer["Survivors"]">
+                    @survivorScore.ToString("N0")
+                </span>
             </div>
             @if (survivors is { Length: > 0 })
             {
@@ -187,6 +196,9 @@
         <div class="panel panel-default">
             <div class="panel-heading text-center">
                 @SharedLocalizer["Infecteds"]
+                <span class="label label-@labelInfected" data-toggle="tooltip" data-placement="top" title="@SharedLocalizer["Infecteds"]">
+                    @infectedScore.ToString("N0")
+                </span>
             </div>
             @if (infecteds is { Length: > 0 })
             {
