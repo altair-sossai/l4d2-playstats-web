@@ -16,11 +16,15 @@
     var infecteds = gameInfo.Infecteds;
     var spectators = gameInfo.Spectators;
 
-    string HealthProgressBarClass(int health)
+    string HealthProgressBarClass(HealthColor? healthColor)
     {
-        return health >= 40 ? "progress-bar-success"
-            : health >= 15 ? "progress-bar-warning"
-            : "progress-bar-danger";
+        return healthColor switch
+        {
+            HealthColor.Green => "progress-bar-success",
+            HealthColor.Orange => "progress-bar-warning",
+            HealthColor.Red => "progress-bar-danger",
+            _ => string.Empty
+        };
     }
 
     string ProgressBarWidth(decimal percentage)
@@ -301,8 +305,7 @@
                                         @{
                                             var permanentHealth = survivor.PermanentHealth ?? 0;
                                             var temporaryHealth = survivor.TemporaryHealth ?? 0;
-                                            var health = permanentHealth + temporaryHealth;
-                                            var progressBarClass = HealthProgressBarClass(permanentHealth);
+                                            var progressBarClass = HealthProgressBarClass(survivor.HealthColor);
                                         }
                                         <td style="width: 100%">
                                             <div class="progress" data-toggle="tooltip" data-placement="top" title="@SharedLocalizer["Health"]">
@@ -320,7 +323,7 @@
                                         </td>
                                         <td class="slim hp-progress-number">
                                             <span data-toggle="tooltip" data-placement="top" title="@SharedLocalizer["Health"]">
-                                                @health.ToString("N0")
+                                                @survivor.Health.ToString("N0")
                                             </span>
                                         </td>
                                     </tr>

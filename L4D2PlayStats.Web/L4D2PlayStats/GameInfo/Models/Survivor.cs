@@ -7,6 +7,17 @@ public class Survivor : Player
     public SurvivorCharacter Character { get; set; }
     public int? PermanentHealth { get; set; }
     public int? TemporaryHealth { get; set; }
+    public int Health => (PermanentHealth ?? 0) + (TemporaryHealth ?? 0);
+
+    //TODO: check if it is correct
+    public HealthColor? HealthColor => PermanentHealth switch
+    {
+        null => null,
+        < 30 => Enums.HealthColor.Red,
+        < 40 => Enums.HealthColor.Orange,
+        _ => Enums.HealthColor.Green
+    };
+
     public Weapon? PrimaryWeapon { get; set; }
     public Weapon? SecondaryWeapon { get; set; }
     public MeleeWeapon? MeleeWeapon { get; set; }
