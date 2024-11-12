@@ -1,0 +1,36 @@
+﻿@using L4D2PlayStats.GameInfo.Enums
+@using L4D2PlayStats.Web
+@using Microsoft.Extensions.Localization
+@model IReadOnlyCollection<L4D2PlayStats.GameInfo.Models.ChatMessage>
+@inject IStringLocalizer<SharedResource> SharedLocalizer
+
+@foreach (var message in Model)
+{
+    var @class = message.Team switch
+    {
+        Team.Survivor => "text-info",
+        Team.Infected => "text-danger",
+        _ => "text-muted"
+    };
+
+    <p data-message-when="@message.When">
+        @if (!message.Public)
+        {
+            <small>
+                @($"({SharedLocalizer[message.Team.ToString()]})")
+            </small>
+        }
+
+        <span class="@(@class)" style="font-weight: bold">
+            <a href="@message.Player?.ProfileUrl" target="_blank">
+                @message.Player?.Name
+            </a>
+        </span>
+        
+        <span>:</span>
+
+        <span>
+            @message.Message
+        </span>
+    </p>
+}

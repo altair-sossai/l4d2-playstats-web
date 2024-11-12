@@ -48,6 +48,15 @@ public class ServersController(
         return PartialView("_Players", model);
     }
 
+    [Route("servers/messages")]
+    public async Task<IActionResult> Messages([FromQuery] int after = 0)
+    {
+        var model = await GetServerInfoCacheedAsync(ServerIp);
+        var messages = model.GameInfo.Messages.Where(m => m.When > after).ToList();
+
+        return PartialView("_Messages", messages);
+    }
+
     private Task<ServerInfoModel> GetServerInfoCacheedAsync(string serverIp)
     {
         return memoryCache.GetOrCreateAsync("Server", entry =>

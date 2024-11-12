@@ -76,6 +76,11 @@
         .row-players .panel-body {
             padding: 5px;
         }
+
+        #chat-messages {
+            height: 250px;
+            overflow-y: scroll;
+        }
     </style>
 }
 
@@ -126,9 +131,36 @@
             });
         };
 
+        function refreshMessages() {
+            var after = $('#chat-messages p[data-message-when]').last().data('message-when') || 0;
+
+            $.ajax({
+                url: 'servers/messages?after=' + after,
+                type: 'GET',
+                success: function (html) {
+                    if (!html)
+                        return;
+
+                    var chatMessages = $('#chat-messages');
+                    var scrollDown = chatMessages[0].scrollHeight - chatMessages.scrollTop() === chatMessages.outerHeight();
+
+                    $('#chat-messages').append(html);
+
+                    if (scrollDown)
+                        chatMessages.scrollTop(chatMessages[0].scrollHeight);
+                },
+                complete: function () {
+                    setTimeout(refreshMessages, refreshInterval / 2);
+                }
+            });
+        };
+
         $(document).ready(function () {
             refreshHeader();
             refreshPlayers();
+            refreshMessages();
+
+            $('#chat-messages').scrollTop($('#chat-messages')[0].scrollHeight);
         });
     </script>
 }
@@ -141,6 +173,19 @@
 
 <div id="game-info-players">
     @await Html.PartialAsync("_Players", Model)
+</div>
+
+<div class="row" style="margin-top: 20px">
+    <div class="col-md-6 col-sm-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                @SharedLocalizer["ChatMessages"]
+            </div>
+            <div class="panel-body" id="chat-messages">
+                @await Html.PartialAsync("_Messages", Model.GameInfo.Messages)
+            </div>
+        </div>
+    </div>
 </div>
 
 <div class="row hide-mobile">

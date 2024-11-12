@@ -462,10 +462,16 @@
   <data name="Spectators" xml:space="preserve">
     <value>Espectadores</value>
   </data>
+  <data name="Spectator" xml:space="preserve">
+    <value>Espectador</value>
+  </data>
   <data name="Started" xml:space="preserve">
     <value>Iniciado</value>
   </data>
   <data name="Starting" xml:space="preserve">
     <value>Iniciando</value>
+  </data>
+  <data name="ChatMessages" xml:space="preserve">
+    <value>Mensajes de chat</value>
   </data>
 </root>
