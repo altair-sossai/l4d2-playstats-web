@@ -462,4 +462,10 @@
   <data name="Spectators" xml:space="preserve">
     <value>Espectadores</value>
   </data>
+  <data name="Started" xml:space="preserve">
+    <value>Iniciado</value>
+  </data>
+  <data name="Starting" xml:space="preserve">
+    <value>Iniciando</value>
+  </data>
 </root>

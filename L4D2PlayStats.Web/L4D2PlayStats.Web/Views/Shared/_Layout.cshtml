@@ -288,7 +288,7 @@
 
 <div class="container-fluid main-container">
     @RenderBody()
-    
+
     <hr/>
 
     <div class="row text-center" style="margin-bottom: 25px">
@@ -311,7 +311,7 @@
 @if (!string.IsNullOrEmpty(serverIp))
 {
     <a href="steam://connect/@serverIp" class="float-icon hide-mobile">
-        <img src="~/imgs/icons/l4d2.png" alt="connect @serverIp" data-toggle="tooltip" data-placement="top" title="connect @serverIp" />
+        <img src="~/imgs/icons/l4d2.png" alt="connect @serverIp" data-toggle="tooltip" data-placement="top" title="connect @serverIp"/>
     </a>
 }
 
@@ -331,10 +331,31 @@
             });
         };
 
-        function pulsate(element) {
-            $(element).animate({ opacity: 0.6 }, 700, function () {
-                $(this).animate({ opacity: 1 }, 700, function () {
-                    pulsate(this);
+        function pulsate(element, options) {
+            if (!options)
+                options = {};
+
+            if (!options.start)
+                options.start = {};
+
+            if (!options.start.opacity)
+                options.start.opacity = 0.6;
+
+            if (!options.start.interval)
+                options.start.interval = 700;
+
+            if (!options.end)
+                options.end = {};
+
+            if (!options.end.opacity)
+                options.end.opacity = 1;
+
+            if (!options.end.interval)
+                options.end.interval = 700;
+
+            $(element).animate(options.start, options.start.interval, function () {
+                $(this).animate(options.end, options.end.interval, function () {
+                    pulsate(this, options);
                 });
             });
         };

@@ -138,19 +138,23 @@
                                         <tr>
                                             @{
                                                 var permanentHealth = survivor.PermanentHealth ?? 0;
+                                                var permanentHealthPercentage = survivor.MaxHealth == 0 ? 0 : permanentHealth / (decimal)survivor.MaxHealth;
+
                                                 var temporaryHealth = survivor.TemporaryHealth ?? 0;
+                                                var temporaryHealthPercentage = survivor.MaxHealth == 0 ? 0 : temporaryHealth / (decimal)survivor.MaxHealth;
+
                                                 var progressBarClass = HealthProgressBarClass(survivor.HealthColor);
                                             }
                                             <td style="width: 100%">
                                                 <div class="progress" data-toggle="tooltip" data-placement="top" title="@SharedLocalizer["Health"]">
                                                     @if (permanentHealth > 0)
                                                     {
-                                                        <div class="progress-bar @progressBarClass" style="width: @ProgressBarWidth(permanentHealth / 100m)">
+                                                        <div class="progress-bar @progressBarClass @(survivor.Incapacitated == true ? "temporary" : string.Empty)" style="width: @ProgressBarWidth(permanentHealthPercentage)">
                                                         </div>
                                                     }
                                                     @if (temporaryHealth > 0)
                                                     {
-                                                        <div class="progress-bar @progressBarClass temporary" style="width: @ProgressBarWidth(temporaryHealth / 100m)">
+                                                        <div class="progress-bar @progressBarClass temporary" style="width: @ProgressBarWidth(temporaryHealthPercentage)">
                                                         </div>
                                                     }
                                                 </div>

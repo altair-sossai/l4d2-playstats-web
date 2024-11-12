@@ -53,6 +53,20 @@
                 }
 
                 @string.Join(" - ", map)
+
+                @if (round?.IsInReady == true)
+                {
+                    <span class="label label-info" data-toggle="tooltip" data-placement="top" title="@(SharedLocalizer["Starting"])...">
+                        @(SharedLocalizer["Starting"])...
+                    </span>
+                }
+
+                @if (round?.IsInReady == false)
+                {
+                    <span class="label label-success" data-toggle="tooltip" data-placement="top" title="@SharedLocalizer["Started"]">
+                        @SharedLocalizer["Started"]
+                    </span>
+                }
             </td>
         </tr>
         <tr>

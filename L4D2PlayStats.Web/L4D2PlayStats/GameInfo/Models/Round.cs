@@ -2,6 +2,7 @@
 
 public class Round
 {
+    public bool IsInReady { get; set; }
     public bool AreTeamsFlipped { get; set; }
     public int MaxChapterProgressPoints { get; set; }
     public decimal TankPercent { get; set; }

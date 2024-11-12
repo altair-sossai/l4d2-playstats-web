@@ -8,8 +8,8 @@ public class TimedValue<T>(T defaultValue = default!, TimeSpan? expireIn = null,
 #endif
 
 #if !DEBUG
-    private const int DefaultDelaySeconds = 30;
-    private const int DefaultExpireInMinutes = 2;
+    private const int DefaultDelaySeconds = 45;
+    private const int DefaultExpireInMinutes = 10;
 #endif
 
     private readonly T _defaultValue = defaultValue;

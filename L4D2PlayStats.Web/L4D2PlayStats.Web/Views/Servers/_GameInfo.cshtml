@@ -61,7 +61,7 @@
             }
 
         .temporary {
-            opacity: 0.4;
+            opacity: 0.5;
         }
 
         .img-latency {
@@ -77,8 +77,17 @@
 
 @section Scripts {
     <script>
+        var refreshInterval = 5100;
+
         function refreshElements() {
             $('[data-toggle="tooltip"]').tooltip();
+
+            $('.temporary').each(function () {
+                pulsate(this, {
+                    start: { opacity: 0.3, interval: refreshInterval / 5 },
+                    end: { opacity: 0.5, interval: refreshInterval / 5 }
+                });
+            });
             
             var currentScroll = $(window).scrollTop();
             $(window).scrollTop(currentScroll + 1);
@@ -94,7 +103,7 @@
                     refreshElements();
                 },
                 complete: function () {
-                    setTimeout(refreshHeader, 5000);
+                    setTimeout(refreshHeader, refreshInterval);
                 }
             });
         };
@@ -108,7 +117,7 @@
                     refreshElements();
                 },
                 complete: function () {
-                    setTimeout(refreshPlayers, 4500);
+                    setTimeout(refreshPlayers, refreshInterval);
                 }
             });
         };
