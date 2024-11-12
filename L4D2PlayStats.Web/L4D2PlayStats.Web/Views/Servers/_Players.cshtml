@@ -3,6 +3,7 @@
 @using L4D2PlayStats.GameInfo.Extensions
 @using L4D2PlayStats.Infrastructure.Extensions
 @using L4D2PlayStats.Web
+@using L4D2PlayStats.Web.Extensions
 @using Microsoft.Extensions.Localization
 @model L4D2PlayStats.Web.Models.ServerInfoModel
 @inject IStringLocalizer<SharedResource> SharedLocalizer
@@ -110,9 +111,9 @@
                                         survivor.SlotNumber5
                                     };
 
-                                    @foreach (var weapon in weapons.Where(w => w != null && w != Weapon.None).Cast<Weapon>())
+                                    @foreach (var weapon in weapons.Where(w => w.HasIcon()).Cast<Weapon>())
                                     {
-                                        if (weapon == Weapon.Melee && survivor.MeleeWeapon != null)
+                                        if (weapon == Weapon.Melee && survivor.MeleeWeapon != null && survivor.MeleeWeapon.HasIcon())
                                         {
                                             var meleeWeapon = survivor.MeleeWeapon.Value;
 
