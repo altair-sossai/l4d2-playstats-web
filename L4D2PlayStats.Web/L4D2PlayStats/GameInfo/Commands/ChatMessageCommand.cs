@@ -14,6 +14,6 @@ public class ChatMessageCommand
     public string? Message
     {
         get => _message;
-        set => _message = value?.Trim('"');
+        set => _message = value?.Trim();
     }
 }
