@@ -56,14 +56,14 @@
 
                 @if (round?.IsInReady == true)
                 {
-                    <span class="label label-info" data-toggle="tooltip" data-placement="top" title="@(SharedLocalizer["Starting"])...">
+                    <span class="label label-info" data-toggle="tooltip" data-placement="top" title="@(SharedLocalizer["Starting"])..." style="margin-left: 5px">
                         @(SharedLocalizer["Starting"])...
                     </span>
                 }
 
                 @if (round?.IsInReady == false)
                 {
-                    <span class="label label-success" data-toggle="tooltip" data-placement="top" title="@SharedLocalizer["Started"]">
+                    <span class="label label-success" data-toggle="tooltip" data-placement="top" title="@SharedLocalizer["Started"]" style="margin-left: 5px">
                         @SharedLocalizer["Started"]
                     </span>
                 }
