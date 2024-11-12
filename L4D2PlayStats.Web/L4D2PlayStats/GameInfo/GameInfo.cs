@@ -84,6 +84,9 @@ public class GameInfo
     {
         var message = new ChatMessage(command);
 
+        if (message.Empty)
+            return;
+
         _messages.Add(message);
     }
 
