@@ -148,7 +148,7 @@
                                                     var progressBarClass = HealthProgressBarClass(survivor.HealthColor);
                                                 }
                                                 <td style="width: 100%">
-                                                    <div class="progress" data-toggle="tooltip" data-placement="top" title="@SharedLocalizer["Health"]">
+                                                    <div class="progress" data-toggle="tooltip" data-placement="top" title="@SharedLocalizer["Health"]" style="height: 12px">
                                                         @if (permanentHealth > 0)
                                                         {
                                                             <div class="progress-bar @progressBarClass @(survivor.Incapacitated == true ? "temporary" : string.Empty)" style="width: @ProgressBarWidth(permanentHealthPercentage)">
@@ -169,7 +169,7 @@
                                             </tr>
                                             <tr>
                                                 <td style="width: 100%">
-                                                    <div class="progress" data-toggle="tooltip" data-placement="top" title="@SharedLocalizer["Progress"]">
+                                                    <div class="progress" data-toggle="tooltip" data-placement="top" title="@SharedLocalizer["Progress"]" style="height: 8px">
                                                         <div class="progress-bar" style="width: @ProgressBarWidth(survivor.Progress)">
                                                         </div>
                                                     </div>
