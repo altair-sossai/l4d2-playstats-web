@@ -3,7 +3,7 @@ using L4D2PlayStats.Sdk.Statistics.Results;
 
 namespace L4D2PlayStats.Web.Models;
 
-public class MatchDetailsModel(MatchResult match, List<StatisticsResult> statistics)
+public class StatisticsDetailsModel(MatchResult match, StatisticsResult statistics)
 {
     public MatchResult Match
     {
@@ -14,5 +14,5 @@ public class MatchDetailsModel(MatchResult match, List<StatisticsResult> statist
         }
     }
 
-    public List<StatisticsResult> Statistics { get; } = statistics;
+    public StatisticsResult Statistics { get; } = statistics;
 }

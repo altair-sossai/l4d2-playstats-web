@@ -1,0 +1,35 @@
+﻿@using L4D2PlayStats.Sdk.Statistics.Results
+@using L4D2PlayStats.UserAvatar
+@using L4D2PlayStats.Web
+@using Microsoft.Extensions.Localization
+@model L4D2PlayStats.Web.Models.StatisticsDetailsModel
+@inject IStringLocalizer<SharedResource> SharedLocalizer
+@inject IUserAvatar UserAvatar
+
+@section Styles {
+    <style>
+        
+    </style>
+}
+
+@{
+    var statistics = Model.Statistics;
+    var match = Model.Match;
+    var statistic = statistics.Statistic;
+    var teamA = statistic?.TeamA ?? new List<StatisticsResult.PlayerNameResult>();
+    var teamB = statistic?.TeamB ?? new List<StatisticsResult.PlayerNameResult>();
+    var teams = new List<List<StatisticsResult.PlayerNameResult>> { teamA, teamB };
+}
+
+<p>@match.Campaign</p>
+
+@foreach (var team in teams)
+{
+    foreach (var playerName in team)
+    {
+        <img src="@UserAvatar[playerName.CommunityId]" alt="@playerName.Name"/>
+        <a href="@playerName.ProfileUrl">
+            <p>@playerName.Name</p>
+        </a>
+    }
+}
