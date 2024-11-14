@@ -16,6 +16,11 @@
     var secondPlayer = secondPlayerRanking?.Player;
     var secondPlayerPatentProgress = secondPlayerRanking?.PatentProgress;
     var secondPlayerPatent = secondPlayerPatentProgress?.Patent;
+
+    string FormatPunishment(int punishment)
+    {
+        return punishment == 0 ? "0" : $"-{punishment:N0} XP";
+    }
 }
 
 @section Styles {
@@ -250,12 +255,21 @@
                 }
             </td>
             <th>@SharedLocalizer["Loss"]:</th>
-            <td data-label="@SharedLocalizer["Loss"]:" colspan="3">
+            <td data-label="@SharedLocalizer["Loss"]:">
                 @firstPlayer.Loss.ToString("N0")
                 @if (secondPlayer != null)
                 {
                     <span class="separator"> | </span>
                     <span class="second">@secondPlayer.Loss.ToString("N0")</span>
+                }
+            </td>
+            <th>@SharedLocalizer["Punishment"]:</th>
+            <td data-label="@SharedLocalizer["Punishment"]:">
+                @FormatPunishment(firstPlayer.Punishment)
+                @if (secondPlayer != null)
+                {
+                    <span class="separator"> | </span>
+                    <span class="second">@FormatPunishment(secondPlayer.Punishment)</span>
                 }
             </td>
         </tr>

@@ -474,4 +474,7 @@
   <data name="ChatMessages" xml:space="preserve">
     <value>Chat messages</value>
   </data>
+  <data name="Punishment" xml:space="preserve">
+    <value>Punishment</value>
+  </data>
 </root>

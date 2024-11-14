@@ -25,6 +25,7 @@ public class PlayerResult
     public int Wins { get; set; }
     public int Loss { get; set; }
     public int RageQuit { get; set; }
+    public int Punishment { get; set; }
     public decimal WinRate { get; set; }
 
     /* Survivor */
