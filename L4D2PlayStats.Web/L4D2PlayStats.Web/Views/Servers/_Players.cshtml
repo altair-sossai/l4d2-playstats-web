@@ -308,14 +308,12 @@
 @if (spectators is { Length: > 0 })
 {
     <div class="row">
-        <div class="col-md-12">
-            <span style="font-weight: bold">@SharedLocalizer["Spectators"]: </span>
-            @for (var i = 0; i < spectators.Length; i++)
+        <div class="col-md-12 spectators">
+            <span style="font-weight: bold">@SharedLocalizer["Spectators"] (@spectators.Length): </span>
+            @foreach (var spectator in spectators)
             {
-                var spectator = spectators[i];
-
-                <a href="@spectator.ProfileUrl" target="_blank">
-                    @(i == spectators.Length - 1 ? spectator.Name : $"{spectator.Name}, ")
+                <a href="@spectator.ProfileUrl" target="_blank" class="label label-default">
+                    @spectator.Name
                 </a>
             }
         </div>
