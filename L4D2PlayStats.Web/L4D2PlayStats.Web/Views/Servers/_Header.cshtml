@@ -49,7 +49,7 @@
                         map.Add(serverInfo.Map);
 
                     if (round != null)
-                        map.Add(!round.AreTeamsFlipped ? SharedLocalizer["FirstRound"].Value : SharedLocalizer["SecondRound"].Value);
+                        map.Add(SharedLocalizer[round.FirstRound ? "FirstRound" : "SecondRound"].Value);
                 }
 
                 @string.Join(" - ", map)
