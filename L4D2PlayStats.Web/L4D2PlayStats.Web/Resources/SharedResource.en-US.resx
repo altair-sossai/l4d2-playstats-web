@@ -480,4 +480,7 @@
   <data name="ProgressPoints" xml:space="preserve">
     <value>Progress points</value>
   </data>
+  <data name="Alive" xml:space="preserve">
+    <value>Alive</value>
+  </data>
 </root>

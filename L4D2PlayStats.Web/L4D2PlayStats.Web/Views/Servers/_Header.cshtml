@@ -132,6 +132,12 @@
                 else
                 {
                     @((round?.TankPercent ?? 0).ToString("P0"))
+                    if (scoreboard?.IsTankInPlay == true)
+                    {
+                        <span class="label label-info" data-toggle="tooltip" data-placement="top" title="@SharedLocalizer["Alive"]" style="margin-left: 5px">
+                            @SharedLocalizer["Alive"]
+                        </span>
+                    }
                 }
             </td>
 
