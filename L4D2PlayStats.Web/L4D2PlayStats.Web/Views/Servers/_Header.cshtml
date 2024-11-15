@@ -78,22 +78,32 @@
             }
             <th class="text-right">@SharedLocalizer["Scoreboard"]:</th>
             <td data-label="@SharedLocalizer["Scoreboard"]:" class="text-nowrap">
-                <span class="label label-@labelSurvivor" data-toggle="tooltip" data-placement="top" title="@SharedLocalizer["Survivors"]">
+                <span class="label label-@labelSurvivor" data-toggle="tooltip" data-placement="top" title="@SharedLocalizer["Survivors"]" style="margin-left: 5px">
                     @survivorScore.ToString("N0")
                 </span>
-                <span style="margin: 0 10px"> / </span>
-                <span class="label label-@labelInfected" data-toggle="tooltip" data-placement="top" title="@SharedLocalizer["Infecteds"]">
+                <span class="label label-@labelInfected" data-toggle="tooltip" data-placement="top" title="@SharedLocalizer["Infecteds"]" style="margin-left: 5px">
                     @infectedScore.ToString("N0")
                 </span>
+                @if (scoreboard?.Comeback is > 0)
+                {
+                    <span class="label label-default" data-toggle="tooltip" data-placement="top" title="@SharedLocalizer["Difference"]" style="margin-left: 5px">
+                        @scoreboard.Comeback.ToString("N0")
+                    </span>
+                }
             </td>
 
-            <th class="text-right">@SharedLocalizer["Progress"]:</th>
-            <td data-label="@SharedLocalizer["Progress"]:" class="text-nowrap">
-                @((scoreboard?.CurrentProgressPoints ?? 0).ToString("N0"))
+            <th class="text-right text-nowrap">@SharedLocalizer["ProgressPoints"]:</th>
+            <td data-label="@SharedLocalizer["ProgressPoints"]:" class="text-nowrap">
+                @{
+                    var currentProgressPoints = scoreboard?.CurrentProgressPoints ?? 0;
+                    var maxChapterProgressPoints = round?.MaxChapterProgressPoints ?? 0;
+                    var progressPercentage = maxChapterProgressPoints == 0 ? 0 : currentProgressPoints / (decimal)maxChapterProgressPoints;
+                }
+                @currentProgressPoints.ToString("N0")
                 <span> / </span>
-                @((round?.MaxChapterProgressPoints ?? 0).ToString("N0"))
-                <span class="label label-default" data-toggle="tooltip" data-placement="top" title="@SharedLocalizer["Progress"] %">
-                    @((scoreboard?.CurrentProgress ?? 0).ToString("P0"))
+                @maxChapterProgressPoints.ToString("N0")
+                <span class="label label-default" data-toggle="tooltip" data-placement="top" title="@SharedLocalizer["ProgressPoints"] %">
+                    @progressPercentage.ToString("P0")
                 </span>
             </td>
 
@@ -108,11 +118,9 @@
             </td>
         </tr>
         <tr>
-            <th class="text-right text-nowrap">@SharedLocalizer["Difference"]:</th>
-            <td data-label="@SharedLocalizer["Difference"]:">
-                <span class="label label-default">
-                    @((scoreboard?.Comeback ?? 0).ToString("N0"))
-                </span>
+            <th class="text-right">@SharedLocalizer["Progress"]:</th>
+            <td data-label="@SharedLocalizer["Progress"]:" class="text-nowrap">
+                @((scoreboard?.CurrentProgress ?? 0).ToString("P0"))
             </td>
 
             <th class="text-right text-nowrap">@SharedLocalizer["Tank"]:</th>

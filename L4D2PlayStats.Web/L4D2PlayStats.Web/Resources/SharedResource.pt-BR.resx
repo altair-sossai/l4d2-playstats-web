@@ -477,4 +477,7 @@
   <data name="Punishment" xml:space="preserve">
     <value>Punição</value>
   </data>
+  <data name="ProgressPoints" xml:space="preserve">
+    <value>Pontos de progresso</value>
+  </data>
 </root>
