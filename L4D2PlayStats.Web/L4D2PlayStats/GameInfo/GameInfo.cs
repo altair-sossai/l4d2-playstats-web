@@ -11,6 +11,7 @@ public class GameInfo
     private static GameInfo? _gameInfo;
     private readonly TimedValue<Configuration?> _configuration = new(expireIn: TimeSpan.FromDays(1));
     private readonly TimedValue<Infected[]> _infecteds = new([], TimeSpan.FromHours(2));
+    private readonly Dictionary<string, string> _lastMessage = new();
     private readonly TimedList<ChatMessage> _messages = new();
     private readonly TimedValue<Round?> _round = new(expireIn: TimeSpan.FromHours(2));
     private readonly TimedValue<Scoreboard?> _scoreboard = new();
@@ -82,10 +83,15 @@ public class GameInfo
 
     public void AddMessage(ChatMessageCommand command)
     {
-        var message = new ChatMessage(command);
-
-        if (message.Empty)
+        if (string.IsNullOrEmpty(command.CommunityId) || string.IsNullOrEmpty(command.Message))
             return;
+
+        if (_lastMessage.ContainsKey(command.CommunityId) && _lastMessage[command.CommunityId].Equals(command.Message, StringComparison.CurrentCultureIgnoreCase))
+            return;
+
+        _lastMessage[command.CommunityId] = command.Message;
+
+        var message = new ChatMessage(command);
 
         _messages.Add(message);
     }
