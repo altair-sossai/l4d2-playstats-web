@@ -58,13 +58,13 @@
                                 <td rowspan="3" style="width: 70px">
                                     <img src="imgs/survivor-character/@(survivor.Character.ToString().ToLower()).png" alt="@survivor.Character"
                                          data-toggle="tooltip" data-placement="top" title="@survivor.Character"
-                                         class="img-responsive img-character"/>
+                                         class="img-responsive img-character @(survivor.Dead ? "img-gray" : string.Empty)"/>
                                 </td>
                                 <td style="width: 40px" rowspan="2">
                                     <a href="@survivor.ProfileUrl" target="_blank">
                                         <img src="@survivor.AvatarUrl" alt="@survivor.Name"
                                              data-toggle="tooltip" data-placement="top" title="@survivor.Name"
-                                             class="img-responsive img-avatar"/>
+                                             class="img-responsive img-avatar @(survivor.Dead ? "img-gray" : string.Empty)" />
                                     </a>
                                 </td>
                                 <td>
