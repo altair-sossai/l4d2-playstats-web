@@ -97,28 +97,14 @@
     <script>
         var refreshInterval = 5100;
 
-        function refreshElements() {
-            $('[data-toggle="tooltip"]').tooltip();
-
-            $('.temporary').each(function () {
-                pulsate(this, {
-                    start: { opacity: 0.3, interval: refreshInterval / 5 },
-                    end: { opacity: 0.5, interval: refreshInterval / 5 }
-                });
-            });
-            
-            var currentScroll = $(window).scrollTop();
-            $(window).scrollTop(currentScroll + 1);
-            $(window).scrollTop(currentScroll);
-        }
-
         function refreshHeader() {
             $.ajax({
                 url: 'servers/header',
                 type: 'GET',
                 success: function (html) {
-                    $('#game-info-header').html(html);
-                    refreshElements();
+                    var target = $('#game-info-header').children().first().get(0);
+                    var source = $(html).get(0);
+                    morphdom(target, source);
                 },
                 complete: function () {
                     setTimeout(refreshHeader, refreshInterval);
@@ -131,8 +117,9 @@
                 url: 'servers/players',
                 type: 'GET',
                 success: function (html) {
-                    $('#game-info-players').html(html);
-                    refreshElements();
+                    var target = $('#game-info-players').children().first().get(0);
+                    var source = $(html).get(0);
+                    morphdom(target, source);
                 },
                 complete: function () {
                     setTimeout(refreshPlayers, refreshInterval);
