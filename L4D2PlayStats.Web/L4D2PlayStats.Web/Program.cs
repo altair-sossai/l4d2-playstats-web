@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 using L4D2PlayStats.DependencyInjection;
 using L4D2PlayStats.Sdk.DependencyInjection;
 using Microsoft.AspNetCore.Localization;
-using WebMarkupMin.AspNetCore8;
+using WebMarkupMin.AspNetCoreLatest;
 
 var builder = WebApplication.CreateBuilder(args);
 
