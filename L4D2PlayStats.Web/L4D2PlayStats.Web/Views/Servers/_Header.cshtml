@@ -54,14 +54,19 @@
 
                 @string.Join(" - ", map)
 
-                @if (round?.IsInReady == true)
+                @if (round?.IsInPause == true)
+                {
+                    <span class="label label-default" data-toggle="tooltip" data-placement="top" title="@SharedLocalizer["Paused"]" style="margin-left: 5px">
+                        @SharedLocalizer["Paused"]
+                    </span>
+                }
+                else if (round?.IsInReady == true)
                 {
                     <span class="label label-info" data-toggle="tooltip" data-placement="top" title="@(SharedLocalizer["Starting"])..." style="margin-left: 5px">
                         @(SharedLocalizer["Starting"])...
                     </span>
                 }
-
-                @if (round?.IsInReady == false)
+                else if (round?.IsInReady == false)
                 {
                     <span class="label label-success" data-toggle="tooltip" data-placement="top" title="@SharedLocalizer["Started"]" style="margin-left: 5px">
                         @SharedLocalizer["Started"]

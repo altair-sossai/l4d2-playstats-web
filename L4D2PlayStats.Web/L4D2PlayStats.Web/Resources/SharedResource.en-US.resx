@@ -483,4 +483,7 @@
   <data name="Alive" xml:space="preserve">
     <value>Alive</value>
   </data>
+  <data name="Paused" xml:space="preserve">
+    <value>Paused</value>
+  </data>
 </root>

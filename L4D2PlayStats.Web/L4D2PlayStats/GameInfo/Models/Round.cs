@@ -3,6 +3,7 @@
 public class Round
 {
     public bool IsInReady { get; set; }
+    public bool IsInPause { get; set; }
     public bool AreTeamsFlipped { get; set; }
     public bool FirstRound => !AreTeamsFlipped;
     public int MaxChapterProgressPoints { get; set; }
