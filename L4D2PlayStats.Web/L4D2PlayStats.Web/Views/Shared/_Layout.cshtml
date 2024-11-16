@@ -1,4 +1,5 @@
 ﻿@using System.Globalization
+@using L4D2PlayStats.Auth
 @using L4D2PlayStats.Web
 @using Microsoft.AspNetCore.Localization
 @using Microsoft.AspNetCore.Mvc.Localization
@@ -8,6 +9,7 @@
 @inject IViewLocalizer Localizer
 @inject IStringLocalizer<SharedResource> SharedLocalizer
 @inject IConfiguration Configuration
+@inject ICurrentUser CurrentUser
 @{
     var light = Context.Request.Cookies["theme"] == "light";
     var requestCultureFeature = Context.Features.Get<IRequestCultureFeature>();
@@ -77,6 +79,14 @@
 
         .bold {
             font-weight: bold;
+        }
+
+        .tooltip-inner {
+            min-width: 150px;
+        }
+
+        .img-current-user {
+            width: 20px;
         }
 
         .match .panel h4,
@@ -277,6 +287,28 @@
                             <img src="~/imgs/es.png" alt="Español" title="Español" data-toggle="tooltip" data-placement="bottom">
                             <span class="show-mobile" style="margin-left: 5px">
                                 Español
+                            </span>
+                        </a>
+                    </li>
+                }
+                @if (CurrentUser.IsAuthenticated)
+                {
+                    <li>
+                        <a href="@Url.Action("Logout", "Account")">
+                            <img src="@CurrentUser.AvatarUrl" class="img-responsive img-current-user" alt="Logout" title="@string.Format(SharedLocalizer["HelloClickHereToLogout"].Value, CurrentUser.Name)" data-toggle="tooltip" data-placement="bottom">
+                            <span class="show-mobile" style="margin-left: 5px">
+                                @string.Format(SharedLocalizer["HelloClickHereToLogout"].Value, CurrentUser.Name)
+                            </span>
+                        </a>
+                    </li>
+                }
+                else
+                {
+                    <li>
+                        <a href="@Url.Action("Login", "Account")">
+                            <img src="~/imgs/steam.png" alt="@SharedLocalizer["LoginWithSteam"]" title="@SharedLocalizer["LoginWithSteam"]" data-toggle="tooltip" data-placement="bottom">
+                            <span class="show-mobile" style="margin-left: 5px">
+                                @SharedLocalizer["LoginWithSteam"]
                             </span>
                         </a>
                     </li>

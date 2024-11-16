@@ -486,4 +486,10 @@
   <data name="Paused" xml:space="preserve">
     <value>Pausado</value>
   </data>
+  <data name="HelloClickHereToLogout" xml:space="preserve">
+    <value>Hola {0}, haz clic aquí para salir</value>
+  </data>
+  <data name="LoginWithSteam" xml:space="preserve">
+    <value>Iniciar sesión con Steam</value>
+  </data>
 </root>
