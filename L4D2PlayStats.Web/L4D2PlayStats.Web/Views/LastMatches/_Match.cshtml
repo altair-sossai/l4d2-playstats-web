@@ -1,4 +1,5 @@
-﻿@using L4D2PlayStats.Campaign
+﻿@using L4D2PlayStats.Auth
+@using L4D2PlayStats.Campaign
 @using L4D2PlayStats.Infrastructure.Extensions
 @using L4D2PlayStats.Sdk.Matches.Results
 @using L4D2PlayStats.UserAvatar
@@ -10,6 +11,7 @@
 @inject IUserAvatar UserAvatar
 @inject IStringLocalizer<SharedResource> SharedLocalizer
 @inject IViewLocalizer Localizer
+@inject ICurrentUser CurrentUser
 
 <div class="panel panel-primary">
     <div class="panel-heading" style="padding: 6px 10px;">
@@ -73,7 +75,7 @@
                                                       .ThenBy(p => p.LvpFfGiven)
                                                       .ToList() ?? new List<MatchResult.PlayerResult>())
                                         {
-                                            <tr>
+                                            <tr class="@(CurrentUser.ItIsMe(player.CommunityId) ? "active" : string.Empty)">
                                                 <td style="padding: 2px" class="slim">
                                                     <a href="@Url.Action("Details", "Players", new { communityId = player.CommunityId })" title="@player.Name">
                                                         <img src="@UserAvatar[player.CommunityId]" alt="@player.Name" style="width: 32px; border-radius: 5px"/>

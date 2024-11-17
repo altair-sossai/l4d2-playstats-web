@@ -53,6 +53,19 @@ public class CurrentUser : ICurrentUser
     public string? Name => _user?.Name;
     public string? AvatarUrl => _user?.AvatarUrl;
 
+    public bool ItIsMe(long? communityId)
+    {
+        return ItIsMe(communityId?.ToString());
+    }
+
+    public bool ItIsMe(string? communityId)
+    {
+        if (!IsAuthenticated || string.IsNullOrEmpty(CommunityId) || string.IsNullOrEmpty(communityId))
+            return false;
+
+        return CommunityId.Equals(communityId, StringComparison.CurrentCultureIgnoreCase);
+    }
+
     private Task<User?> GetUserAsync()
     {
         if (string.IsNullOrEmpty(CommunityId))

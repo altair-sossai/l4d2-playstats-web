@@ -9,4 +9,6 @@ public interface ICurrentUser
     public string? ProfileUrl { get; }
     public string? Name { get; }
     public string? AvatarUrl { get; }
+    public bool ItIsMe(long? communityId);
+    public bool ItIsMe(string? communityId);
 }

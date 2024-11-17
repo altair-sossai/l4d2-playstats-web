@@ -1,4 +1,5 @@
-﻿@using L4D2PlayStats.Infrastructure.Extensions
+﻿@using L4D2PlayStats.Auth
+@using L4D2PlayStats.Infrastructure.Extensions
 @using L4D2PlayStats.UserAvatar
 @using L4D2PlayStats.Web
 @using Microsoft.AspNetCore.Mvc.Localization
@@ -7,6 +8,7 @@
 @inject IViewLocalizer Localizer
 @inject IStringLocalizer<SharedResource> SharedLocalizer
 @inject IUserAvatar UserAvatar
+@inject ICurrentUser CurrentUser
 
 @section Styles {
     <style>
@@ -83,7 +85,7 @@
         var patentProgress = ranking.PatentProgress;
         var patent = patentProgress.Patent;
 
-        <tr class="hover @(++count > 50 ? "hidden" : string.Empty)">
+        <tr class="hover @(++count > 50 ? "hidden" : string.Empty) @(CurrentUser.ItIsMe(player.CommunityId) ? "active" : string.Empty)">
             <td class="text-center vertical-align-middle">
                 @switch (player.Position)
                 {
