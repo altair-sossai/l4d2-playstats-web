@@ -265,6 +265,9 @@
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                         <img src="~/imgs/settings.png" alt="@SharedLocalizer["Settings"]" title="@SharedLocalizer["Settings"]" class="img-responsive img-header-icon">
+                        <span class="show-mobile">
+                            @SharedLocalizer["Settings"]
+                        </span>
                         <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu">
@@ -286,6 +289,7 @@
                                 </a>
                             </li>
                         }
+                        <li role="separator" class="divider"></li>
                         @if (!cultureInfo.Name.Equals("en-US", StringComparison.InvariantCultureIgnoreCase))
                         {
                             <li id="lang-en">
@@ -313,6 +317,7 @@
                                 </a>
                             </li>
                         }
+                        <li role="separator" class="divider"></li>
                         @if (CurrentUser.IsAuthenticated)
                         {
                             <li>
