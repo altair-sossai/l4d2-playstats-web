@@ -67,7 +67,7 @@
     <tbody>
     @foreach (var player in Model.Players.Take(100))
     {
-        <tr class="hover @(CurrentUser.ItIsMe(player.CommunityId) ? "active" : string.Empty)">
+        <tr class="hover @(CurrentUser.ItIsMe(player.CommunityId) ? "it-is-me" : string.Empty)">
             <td class="text-center vertical-align-middle">
                 @switch (player.Position)
                 {

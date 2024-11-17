@@ -85,7 +85,7 @@
         var patentProgress = ranking.PatentProgress;
         var patent = patentProgress.Patent;
 
-        <tr class="hover @(++count > 50 ? "hidden" : string.Empty) @(CurrentUser.ItIsMe(player.CommunityId) ? "active" : string.Empty)">
+        <tr class="hover @(++count > 50 ? "hidden" : string.Empty) @(CurrentUser.ItIsMe(player.CommunityId) ? "it-is-me" : string.Empty)">
             <td class="text-center vertical-align-middle">
                 @switch (player.Position)
                 {

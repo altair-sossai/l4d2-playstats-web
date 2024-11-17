@@ -75,7 +75,7 @@
                                                       .ThenBy(p => p.LvpFfGiven)
                                                       .ToList() ?? new List<MatchResult.PlayerResult>())
                                         {
-                                            <tr class="@(CurrentUser.ItIsMe(player.CommunityId) ? "active" : string.Empty)">
+                                            <tr class="@(CurrentUser.ItIsMe(player.CommunityId) ? "it-is-me" : string.Empty)">
                                                 <td style="padding: 2px" class="slim">
                                                     <a href="@Url.Action("Details", "Players", new { communityId = player.CommunityId })" title="@player.Name">
                                                         <img src="@UserAvatar[player.CommunityId]" alt="@player.Name" style="width: 32px; border-radius: 5px"/>

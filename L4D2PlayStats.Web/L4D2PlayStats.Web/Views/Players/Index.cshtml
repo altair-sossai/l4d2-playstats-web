@@ -68,7 +68,7 @@
     }
     @foreach (var player in Model.Players)
     {
-        <tr class="hover @(CurrentUser.ItIsMe(player.CommunityId) ? "active" : string.Empty)">
+        <tr class="hover @(CurrentUser.ItIsMe(player.CommunityId) ? "it-is-me" : string.Empty)">
             <td class="text-center vertical-align-middle slim">#@position.ToString("N0")</td>
             <td class="text-center vertical-align-middle slim" style="margin: 0; padding: 0">
                 <a href="@Url.Action("Details", "Players", new { communityId = player.CommunityId })" title="@player.Name">

@@ -129,6 +129,21 @@
                 width: 70px;
             }
 
+        .table > thead > tr > td.it-is-me,
+        .table > tbody > tr > td.it-is-me,
+        .table > tfoot > tr > td.it-is-me,
+        .table > thead > tr > th.it-is-me,
+        .table > tbody > tr > th.it-is-me,
+        .table > tfoot > tr > th.it-is-me,
+        .table > thead > tr.it-is-me > td,
+        .table > tbody > tr.it-is-me > td,
+        .table > tfoot > tr.it-is-me > td,
+        .table > thead > tr.it-is-me > th,
+        .table > tbody > tr.it-is-me > th,
+        .table > tfoot > tr.it-is-me > th {
+            background-color: @Html.Raw(light ? "#bcf3a6" : "#2e6b2e");
+        }
+
         @@media screen and (min-width: 700px) {
             .slim {
                 width: 1px;
