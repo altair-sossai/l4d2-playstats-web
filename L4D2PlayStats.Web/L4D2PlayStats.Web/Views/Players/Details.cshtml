@@ -35,7 +35,7 @@
             margin: 0;
         }
 
-        .dropdown-menu {
+        .players-dropdown-menu {
             height: 175px;
             overflow-y: auto;
         }
@@ -74,7 +74,7 @@
             @firstPlayer.Name?.Truncate(10)
             <span class="caret"></span>
         </button>
-        <ul class="dropdown-menu">
+        <ul class="dropdown-menu players-dropdown-menu">
             @foreach (var player in Model.Players.Where(player => player.CommunityId != firstPlayer.CommunityId && player.CommunityId != secondPlayer?.CommunityId))
             {
                 <li>
@@ -93,7 +93,7 @@
             @(secondPlayer?.Name?.Truncate(10) ?? SharedLocalizer["Compare"])
             <span class="caret"></span>
         </button>
-        <ul class="dropdown-menu">
+        <ul class="dropdown-menu players-dropdown-menu">
             @foreach (var player in Model.Players.Where(player => player.CommunityId != firstPlayer.CommunityId && player.CommunityId != secondPlayer?.CommunityId))
             {
                 <li>

@@ -67,10 +67,12 @@
             max-height: 50px;
         }
 
-        .theme-icon {
+        .img-header-icon {
             height: 100%;
             max-height: 20px !important;
             max-width: 20px !important;
+            display: inline !important;
+            margin-right: 5px;
         }
 
         .vertical-align-middle {
@@ -83,10 +85,6 @@
 
         .tooltip-inner {
             min-width: 150px;
-        }
-
-        .img-current-user {
-            width: 20px;
         }
 
         .match .panel h4,
@@ -238,81 +236,88 @@
                 </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li>
-                    @if (light)
-                    {
-                        <a href="@Url.Action("SetTheme", "Home", new { theme = "default" })">
-                            <img src="~/imgs/dark-theme.png" alt="@SharedLocalizer["SwitchDarkTheme"]" title="@SharedLocalizer["SwitchDarkTheme"]" class="theme-icon" data-toggle="tooltip" data-placement="bottom">
-                            <span class="show-mobile" style="margin-left: 5px">
-                                @SharedLocalizer["SwitchDarkTheme"]
-                            </span>
-                        </a>
-                    }
-                    else
-                    {
-                        <a href="@Url.Action("SetTheme", "Home", new { theme = "light" })">
-                            <img src="~/imgs/light-theme.png" alt="@SharedLocalizer["SwitchLightTheme"]" title="@SharedLocalizer["SwitchLightTheme"]" class="theme-icon" data-toggle="tooltip" data-placement="bottom">
-                            <span class="show-mobile" style="margin-left: 5px">
-                                @SharedLocalizer["SwitchLightTheme"]
-                            </span>
-                        </a>
-                    }
-                </li>
-                @if (!cultureInfo.Name.Equals("en-US", StringComparison.InvariantCultureIgnoreCase))
-                {
-                    <li id="lang-en">
-                        <a href="#">
-                            <img src="~/imgs/us.png" alt="English" title="English" data-toggle="tooltip" data-placement="bottom">
-                            <span class="show-mobile" style="margin-left: 5px">
-                                English
-                            </span>
-                        </a>
-                    </li>
-                }
-                @if (!cultureInfo.Name.Equals("pt-BR", StringComparison.InvariantCultureIgnoreCase))
-                {
-                    <li id="lang-pt">
-                        <a href="#">
-                            <img src="~/imgs/br.png" alt="Português" title="Português" data-toggle="tooltip" data-placement="bottom">
-                            <span class="show-mobile" style="margin-left: 5px">
-                                Português
-                            </span>
-                        </a>
-                    </li>
-                }
-                @if (!cultureInfo.Name.Equals("es-ES", StringComparison.InvariantCultureIgnoreCase))
-                {
-                    <li id="lang-es">
-                        <a href="#">
-                            <img src="~/imgs/es.png" alt="Español" title="Español" data-toggle="tooltip" data-placement="bottom">
-                            <span class="show-mobile" style="margin-left: 5px">
-                                Español
-                            </span>
-                        </a>
-                    </li>
-                }
                 @if (CurrentUser.IsAuthenticated)
                 {
                     <li>
-                        <a href="@Url.Action("Logout", "Account")">
-                            <img src="@CurrentUser.AvatarUrl" class="img-responsive img-current-user" alt="Logout" title="@string.Format(SharedLocalizer["HelloClickHereToLogout"].Value, CurrentUser.Name)" data-toggle="tooltip" data-placement="bottom">
+                        <a href="@Url.Action("Details", "Players", new { communityId = CurrentUser.CommunityId })">
+                            <img src="@CurrentUser.AvatarUrl" alt="@CurrentUser.Name" title="@CurrentUser.Name" class="img-responsive img-header-icon" data-toggle="tooltip" data-placement="bottom">
                             <span class="show-mobile" style="margin-left: 5px">
-                                @string.Format(SharedLocalizer["HelloClickHereToLogout"].Value, CurrentUser.Name)
+                                @CurrentUser.Name
                             </span>
                         </a>
                     </li>
                 }
-                else
-                {
-                    <li>
-                        <a href="@Url.Action("Login", "Account")">
-                            <img src="~/imgs/steam.png" alt="@SharedLocalizer["LoginWithSteam"]" title="@SharedLocalizer["LoginWithSteam"]" data-toggle="tooltip" data-placement="bottom">
-                            <span class="show-mobile" style="margin-left: 5px">
-                                @SharedLocalizer["LoginWithSteam"]
-                            </span>
-                        </a>
-                    </li>
-                }
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                        <img src="~/imgs/settings.png" alt="@SharedLocalizer["Settings"]" title="@SharedLocalizer["Settings"]" class="img-responsive img-header-icon">
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        @if (light)
+                        {
+                            <li>
+                                <a href="@Url.Action("SetTheme", "Home", new { theme = "default" })">
+                                    <img src="~/imgs/dark-theme.png" alt="@SharedLocalizer["SwitchDarkTheme"]" title="@SharedLocalizer["SwitchDarkTheme"]" class="img-responsive img-header-icon">
+                                    @SharedLocalizer["SwitchDarkTheme"]
+                                </a>
+                            </li>
+                        }
+                        else
+                        {
+                            <li>
+                                <a href="@Url.Action("SetTheme", "Home", new { theme = "light" })">
+                                    <img src="~/imgs/light-theme.png" alt="@SharedLocalizer["SwitchLightTheme"]" title="@SharedLocalizer["SwitchLightTheme"]" class="img-responsive img-header-icon">
+                                    @SharedLocalizer["SwitchLightTheme"]
+                                </a>
+                            </li>
+                        }
+                        @if (!cultureInfo.Name.Equals("en-US", StringComparison.InvariantCultureIgnoreCase))
+                        {
+                            <li id="lang-en">
+                                <a href="#">
+                                    <img src="~/imgs/us.png" alt="English" title="English" class="img-responsive img-header-icon">
+                                    English
+                                </a>
+                            </li>
+                        }
+                        @if (!cultureInfo.Name.Equals("pt-BR", StringComparison.InvariantCultureIgnoreCase))
+                        {
+                            <li id="lang-pt">
+                                <a href="#">
+                                    <img src="~/imgs/br.png" alt="Português" title="Português" class="img-responsive img-header-icon">
+                                    Português
+                                </a>
+                            </li>
+                        }
+                        @if (!cultureInfo.Name.Equals("es-ES", StringComparison.InvariantCultureIgnoreCase))
+                        {
+                            <li id="lang-es">
+                                <a href="#">
+                                    <img src="~/imgs/es.png" alt="Español" title="Español" class="img-responsive img-header-icon">
+                                    Español
+                                </a>
+                            </li>
+                        }
+                        @if (CurrentUser.IsAuthenticated)
+                        {
+                            <li>
+                                <a href="@Url.Action("Logout", "Account")">
+                                    <img src="~/imgs/logout.png" class="img-responsive img-header-icon" alt="@SharedLocalizer["ClickHereToLogout"]" title="@SharedLocalizer["ClickHereToLogout"]" class="img-responsive img-header-icon">
+                                    @SharedLocalizer["ClickHereToLogout"]
+                                </a>
+                            </li>
+                        }
+                        else
+                        {
+                            <li>
+                                <a href="@Url.Action("Login", "Account")">
+                                    <img src="~/imgs/steam.png" alt="@SharedLocalizer["LoginWithSteam"]" title="@SharedLocalizer["LoginWithSteam"]" class="img-responsive img-header-icon">
+                                    @SharedLocalizer["LoginWithSteam"]
+                                </a>
+                            </li>
+                        }
+                    </ul>
+                </li>
             </ul>
         </div>
     </div>
