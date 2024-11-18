@@ -46,7 +46,7 @@ builder.Services.AddAuthentication(options =>
     .AddSteam();
 
 builder.Services.AddApp();
-builder.Services.AddPlayStatsSdk();
+builder.Services.AddPlayStatsSdk(builder.Configuration);
 
 builder.Services.AddScoped<ICurrentUser, CurrentUser>();
 

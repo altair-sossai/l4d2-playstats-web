@@ -1,21 +1,53 @@
-﻿using System.Reflection;
+﻿using System.Text.Json;
+using L4D2PlayStats.Sdk.Handlers;
+using L4D2PlayStats.Sdk.Matches;
+using L4D2PlayStats.Sdk.Punishments;
+using L4D2PlayStats.Sdk.Ranking;
+using L4D2PlayStats.Sdk.Statistics;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Refit;
 
 namespace L4D2PlayStats.Sdk.DependencyInjection;
 
 public static class AppInjection
 {
-    private static readonly Assembly[] Assemblies = [typeof(AppInjection).Assembly];
-
-    public static void AddPlayStatsSdk(this IServiceCollection serviceCollection)
+    private static readonly JsonSerializerOptions Options = new()
     {
-        serviceCollection.Scan(scan => scan
-            .FromAssemblies(Assemblies)
-            .AddClasses()
-            .AsImplementedInterfaces(type => Assemblies.Contains(type.Assembly)));
+        PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
+        WriteIndented = true
+    };
 
-        serviceCollection.AddScoped(r => r.GetRequiredService<IPlayStatsContext>().RankingService);
-        serviceCollection.AddScoped(r => r.GetRequiredService<IPlayStatsContext>().MatchesService);
-        serviceCollection.AddScoped(r => r.GetRequiredService<IPlayStatsContext>().StatisticsService);
+    private static readonly RefitSettings Settings = new()
+    {
+        ContentSerializer = new SystemTextJsonContentSerializer(Options)
+    };
+
+    public static void AddPlayStatsSdk(this IServiceCollection serviceCollection, IConfiguration configuration)
+    {
+        var apiUrl = configuration.GetValue<string>("PlayStatsApiUrl")!;
+        var serverId = configuration.GetValue<string>("ServerId")!;
+        var secret = configuration.GetValue<string>("PlayStatsSecret")!;
+
+        var apiUri = new Uri(apiUrl);
+
+        serviceCollection.AddTransient(_ => new AuthHeaderHandler(serverId, secret));
+
+        serviceCollection
+            .AddApi<IRankingService>(apiUri)
+            .AddApi<IMatchesService>(apiUri)
+            .AddApi<IStatisticsService>(apiUri)
+            .AddApi<IPunishmentsService>(apiUri);
+    }
+
+    private static IServiceCollection AddApi<T>(this IServiceCollection serviceCollection, Uri baseAddress)
+        where T : class
+    {
+        serviceCollection
+            .AddRefitClient<T>(Settings)
+            .ConfigureHttpClient(c => c.BaseAddress = baseAddress)
+            .AddHttpMessageHandler<AuthHeaderHandler>();
+
+        return serviceCollection;
     }
 }
