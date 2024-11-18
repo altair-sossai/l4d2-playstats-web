@@ -1,9 +1,11 @@
-﻿@using L4D2PlayStats.Infrastructure.Extensions
+﻿@using L4D2PlayStats.Auth
+@using L4D2PlayStats.Infrastructure.Extensions
 @using L4D2PlayStats.UserAvatar
 @using L4D2PlayStats.Web
 @using Microsoft.Extensions.Localization
 @model L4D2PlayStats.Web.Models.PlayerDetailsModel
 @inject IUserAvatar UserAvatar
+@inject ICurrentUser CurrentUser
 @inject IStringLocalizer<SharedResource> SharedLocalizer
 
 @{
@@ -63,6 +65,53 @@
             }
         }
     </style>
+}
+
+@section Scripts {
+    <script>
+        function reloadPage() {
+            location.reload();
+        }
+
+        function addPunishments(communityId, lostExperiencePoints) {
+            var command = { 
+                communityId: communityId, 
+                lostExperiencePoints: lostExperiencePoints 
+            };
+
+            $.ajax({
+                url: "/api/punishments",
+                type: "POST",
+                contentType: "application/json",
+                data: JSON.stringify(command)
+            }).done(reloadPage);
+        }
+
+        function deletePunishments(communityId) {
+            $.ajax({
+                url: "/api/punishments/" + communityId,
+                type: "DELETE"
+            }).done(reloadPage);
+        }
+
+        function editPunishment(communityId, punishment) {
+            var output = prompt("@Html.Raw(SharedLocalizer["HowManyExperiencePointsShouldTheUserLose"])", punishment);
+
+            if (!output)
+                return;
+
+            var lostExperiencePoints = +output;
+
+            if (isNaN(lostExperiencePoints))
+                return;
+
+            else if (lostExperiencePoints > 0)
+                addPunishments(communityId, lostExperiencePoints);
+
+            else if (lostExperiencePoints === 0)
+                deletePunishments(communityId);
+        }
+    </script>
 }
 
 <h4 class="text-center">@SharedLocalizer["PlayerDetails"]</h4>
@@ -266,10 +315,25 @@
             <th>@SharedLocalizer["Punishment"]:</th>
             <td data-label="@SharedLocalizer["Punishment"]:">
                 @FormatPunishment(firstPlayer.Punishment)
+
+                @if (CurrentUser.IsAdmin)
+                {
+                    <button type="button" class="btn btn-link btn-xs" onclick="editPunishment('@(firstPlayer.CommunityId)', '150')" title="@SharedLocalizer["Edit"]" data-toggle="tooltip" data-placement="bottom">
+                        @SharedLocalizer["Edit"]
+                    </button>
+                }
+
                 @if (secondPlayer != null)
                 {
                     <span class="separator"> | </span>
                     <span class="second">@FormatPunishment(secondPlayer.Punishment)</span>
+
+                    @if (CurrentUser.IsAdmin)
+                    {
+                        <button type="button" class="btn btn-link btn-xs" onclick="editPunishment('@(secondPlayer.CommunityId)', '150')" title="@SharedLocalizer["Edit"]" data-toggle="tooltip" data-placement="bottom">
+                            @SharedLocalizer["Edit"]
+                        </button>
+                    }
                 }
             </td>
         </tr>

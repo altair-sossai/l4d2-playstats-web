@@ -495,4 +495,10 @@
   <data name="Settings" xml:space="preserve">
     <value>Configurações</value>
   </data>
+  <data name="Edit" xml:space="preserve">
+    <value>Editar</value>
+  </data>
+  <data name="HowManyExperiencePointsShouldTheUserLose" xml:space="preserve">
+    <value>Quantos pontos de experiência o usuário deve perder?</value>
+  </data>
 </root>

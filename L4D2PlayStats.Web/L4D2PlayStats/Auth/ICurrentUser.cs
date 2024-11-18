@@ -3,6 +3,7 @@
 public interface ICurrentUser
 {
     public bool IsAuthenticated { get; }
+    public bool IsAdmin { get; }
     public string? SteamId { get; }
     public string? CommunityId { get; }
     public string? Steam3 { get; }

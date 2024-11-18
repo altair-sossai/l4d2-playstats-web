@@ -11,7 +11,6 @@ public class CurrentUser : ICurrentUser
 {
     private const string Pattern = @"https:\/\/steamcommunity\.com\/openid\/id\/(\d+)";
     private static readonly Regex Regex = new(Pattern);
-    private readonly IConfiguration _configuration;
     private readonly IMemoryCache _memoryCache;
     private readonly SteamIdentifiers _steamIdentifiers;
     private readonly ISteamUserService _steamUserService;
@@ -22,9 +21,11 @@ public class CurrentUser : ICurrentUser
         IMemoryCache memoryCache,
         ISteamUserService steamUserService)
     {
-        _configuration = configuration;
         _steamUserService = steamUserService;
         _memoryCache = memoryCache;
+
+        SteamApiKey = new Lazy<string>(() => configuration.GetValue<string>("SteamApiKey")!);
+        ServerAdmins = new Lazy<string[]>(() => configuration.GetValue<string>("ServerAdmins")?.Split(';', StringSplitOptions.RemoveEmptyEntries) ?? []);
 
         IsAuthenticated = httpContextAccessor.HttpContext?.User.Identity?.IsAuthenticated ?? false;
         if (!IsAuthenticated)
@@ -37,9 +38,12 @@ public class CurrentUser : ICurrentUser
         _user = GetUserAsync().Result;
     }
 
-    private string SteamApiKey => _configuration.GetValue<string>("SteamApiKey")!;
+    private Lazy<string> SteamApiKey { get; }
+    private Lazy<string[]> ServerAdmins { get; }
 
     public bool IsAuthenticated { get; }
+
+    public bool IsAdmin => IsAuthenticated && !string.IsNullOrEmpty(CommunityId) && ServerAdmins.Value.Contains(CommunityId);
 
     public string? CommunityId
     {
@@ -75,7 +79,7 @@ public class CurrentUser : ICurrentUser
         {
             entry.AbsoluteExpirationRelativeToNow = TimeSpan.FromHours(4);
 
-            var response = await _steamUserService.GetPlayerSummariesAsync(SteamApiKey, CommunityId);
+            var response = await _steamUserService.GetPlayerSummariesAsync(SteamApiKey.Value, CommunityId);
             var responsePlayers = response?.Response?.Players;
             if (responsePlayers == null || responsePlayers.Count == 0)
                 return null;
