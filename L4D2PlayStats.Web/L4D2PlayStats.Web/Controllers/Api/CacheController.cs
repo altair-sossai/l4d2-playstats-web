@@ -20,7 +20,6 @@ public class CacheController(IMemoryCache memoryCache) : ControllerBase
 
         memoryCache.Remove("Matches");
         memoryCache.Remove("Ranking");
-        memoryCache.Remove("OpenAi.LastMatchSummary");
 
         return Ok();
     }
