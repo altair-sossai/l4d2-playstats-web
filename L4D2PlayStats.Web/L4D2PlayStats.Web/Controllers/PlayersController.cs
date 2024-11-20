@@ -18,7 +18,7 @@ public class PlayersController(
     IPatentService patentService) : Controller
 {
     [Route("players")]
-    public async Task<IActionResult> Index(PlayerResultProperty orderBy = PlayerResultProperty.Wins, bool asc = false)
+    public async Task<IActionResult> Index(PlayerResultProperty orderBy = PlayerResultProperty.Experience, bool asc = false)
     {
         ViewBag.Players = "active";
 
