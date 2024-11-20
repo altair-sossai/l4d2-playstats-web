@@ -449,27 +449,7 @@
                     <span class="second">@secondPlayer.TankDamage.ToString("N0")</span>
                 }
             </td>
-            <th>@SharedLocalizer["Skeets"]:</th>
-            <td data-label="@SharedLocalizer["Skeets"]:">
-                @firstPlayer.Skeets.ToString("N0")
-                @if (secondPlayer != null)
-                {
-                    <span class="separator"> | </span>
-                    <span class="second">@secondPlayer.Skeets.ToString("N0")</span>
-                }
-            </td>
-            <th>@SharedLocalizer["Levels"]:</th>
-            <td data-label="@SharedLocalizer["Levels"]:">
-                @firstPlayer.Levels.ToString("N0")
-                @if (secondPlayer != null)
-                {
-                    <span class="separator"> | </span>
-                    <span class="second">@secondPlayer.Levels.ToString("N0")</span>
-                }
-            </td>
-        </tr>
 
-        <tr>
             <th>@SharedLocalizer["RocksEats"]:</th>
             <td data-label="@SharedLocalizer["RocksEats"]:">
                 @firstPlayer.RockEats.ToString("N0")
@@ -488,8 +468,38 @@
                     <span class="second">@secondPlayer.FfGiven.ToString("N0")</span>
                 }
             </td>
-            <th class="hide-mobile"></th>
-            <td class="hide-mobile"></td>
+        </tr>
+
+        <tr>
+            <th>@SharedLocalizer["Skeets"]:</th>
+            <td data-label="@SharedLocalizer["Skeets"]:">
+                @firstPlayer.Skeets.ToString("N0")
+                @if (secondPlayer != null)
+                {
+                    <span class="separator"> | </span>
+                    <span class="second">@secondPlayer.Skeets.ToString("N0")</span>
+                }
+            </td>
+
+            <th>@SharedLocalizer["SkeetsMelee"]:</th>
+            <td data-label="@SharedLocalizer["SkeetsMelee"]:">
+                @firstPlayer.SkeetsMelee.ToString("N0")
+                @if (secondPlayer != null)
+                {
+                    <span class="separator"> | </span>
+                    <span class="second">@secondPlayer.SkeetsMelee.ToString("N0")</span>
+                }
+            </td>
+
+            <th>@SharedLocalizer["Levels"]:</th>
+            <td data-label="@SharedLocalizer["Levels"]:">
+                @firstPlayer.Levels.ToString("N0")
+                @if (secondPlayer != null)
+                {
+                    <span class="separator"> | </span>
+                    <span class="second">@secondPlayer.Levels.ToString("N0")</span>
+                }
+            </td>
         </tr>
         </tbody>
     </table>

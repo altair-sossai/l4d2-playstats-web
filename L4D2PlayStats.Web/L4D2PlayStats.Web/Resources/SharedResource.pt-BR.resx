@@ -207,6 +207,9 @@
   <data name="Skeets" xml:space="preserve">
     <value>Skeets</value>
   </data>
+  <data name="SkeetsMelee" xml:space="preserve">
+    <value>Melee skeets</value>
+  </data>
   <data name="Levels" xml:space="preserve">
     <value>Levels</value>
   </data>

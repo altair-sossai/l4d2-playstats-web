@@ -38,6 +38,7 @@ public class PlayerResult
     public int TankDamage { get; set; }
     public int RockEats { get; set; }
     public int Skeets { get; set; }
+    public int SkeetsMelee { get; set; }
     public int Levels { get; set; }
     public int FfGiven { get; set; }
 

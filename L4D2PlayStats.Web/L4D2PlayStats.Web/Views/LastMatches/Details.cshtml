@@ -269,6 +269,20 @@
             </tr>
 
             <tr>
+                <td>@SharedLocalizer["SkeetsMelee"]</td>
+                @foreach (var player in team.Players ?? new List<MatchResult.PlayerResult>())
+                {
+                    <td class="text-right" data-label="@player.Name">
+                        @player.SkeetsMelee.ToString("N0")
+                    </td>
+                    <td class="text-left hide-mobile">
+                        @player.SkeetsMeleePercentage.ToString("P0")
+                    </td>
+                }
+                <td class="text-center" data-label="@SharedLocalizer["Total"]">@team.SkeetsMelee.ToString("N0")</td>
+            </tr>
+
+            <tr>
                 <td>@SharedLocalizer["Levels"]</td>
                 @foreach (var player in team.Players ?? new List<MatchResult.PlayerResult>())
                 {

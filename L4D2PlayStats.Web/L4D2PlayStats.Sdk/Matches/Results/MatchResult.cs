@@ -43,6 +43,7 @@ public class MatchResult
         public int RockEats { get; set; }
         public int WitchDamage { get; set; }
         public int Skeets { get; set; }
+        public int SkeetsMelee { get; set; }
         public int Levels { get; set; }
         public int Crowns { get; set; }
         public int FfGiven { get; set; }
@@ -89,6 +90,8 @@ public class MatchResult
         public decimal WitchDamagePercentage { get; set; }
         public int Skeets { get; set; }
         public decimal SkeetsPercentage { get; set; }
+        public int SkeetsMelee { get; set; }
+        public decimal SkeetsMeleePercentage { get; set; }
         public int Levels { get; set; }
         public decimal LevelsPercentage { get; set; }
         public int Crowns { get; set; }
