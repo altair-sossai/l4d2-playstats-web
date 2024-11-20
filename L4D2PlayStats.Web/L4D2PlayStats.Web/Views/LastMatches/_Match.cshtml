@@ -51,7 +51,7 @@
             </div>
             <div class="col-xs-10 right-side">
                 <div class="row teams">
-                    @foreach (var team in Model.Teams ?? new List<MatchResult.TeamResult>())
+                    @foreach (var team in Model.Teams ?? MatchResult.TeamResult.EmptyCollection)
                     {
                         <div class="col-xs-6">
                             <div class="panel panel-@(team.Code == Model.Winner?.Code ? "success" : "danger")" style="margin-bottom: 0;">
@@ -73,7 +73,7 @@
                                                       .ThenByDescending(p => p.MvpSiDamage)
                                                       .ThenByDescending(p => p.MvpCommon)
                                                       .ThenBy(p => p.LvpFfGiven)
-                                                      .ToList() ?? new List<MatchResult.PlayerResult>())
+                                                      .ToList() ?? MatchResult.PlayerResult.EmptyCollection)
                                         {
                                             <tr class="@(CurrentUser.ItIsMe(player.CommunityId) ? "it-is-me" : string.Empty)">
                                                 <td style="padding: 2px" class="slim">

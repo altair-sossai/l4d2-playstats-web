@@ -28,6 +28,8 @@ public class MatchResult
 
     public class TeamResult
     {
+        public static readonly List<TeamResult> EmptyCollection = [];
+
         public char Code { get; set; }
         public int Score { get; set; }
         public List<PlayerResult>? Players { get; set; }
@@ -62,6 +64,8 @@ public class MatchResult
 
     public class PlayerResult
     {
+        public static readonly List<PlayerResult> EmptyCollection = [];
+
         public string? SteamId { get; set; }
         public string? CommunityId { get; set; }
         public string? Steam3 { get; set; }
