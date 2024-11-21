@@ -207,6 +207,9 @@
   <data name="Skeets" xml:space="preserve">
     <value>Skeets</value>
   </data>
+  <data name="SkeetsMelee" xml:space="preserve">
+    <value>Melee skeets</value>
+  </data>
   <data name="Levels" xml:space="preserve">
     <value>Levels</value>
   </data>
@@ -473,5 +476,32 @@
   </data>
   <data name="ChatMessages" xml:space="preserve">
     <value>Chat messages</value>
+  </data>
+  <data name="Punishment" xml:space="preserve">
+    <value>Punishment</value>
+  </data>
+  <data name="ProgressPoints" xml:space="preserve">
+    <value>Progress points</value>
+  </data>
+  <data name="Alive" xml:space="preserve">
+    <value>Alive</value>
+  </data>
+  <data name="Paused" xml:space="preserve">
+    <value>Paused</value>
+  </data>
+  <data name="ClickHereToLogout" xml:space="preserve">
+    <value>Click here to logout</value>
+  </data>
+  <data name="LoginWithSteam" xml:space="preserve">
+    <value>Login with Steam</value>
+  </data>
+  <data name="Settings" xml:space="preserve">
+    <value>Settings</value>
+  </data>
+  <data name="Edit" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="HowManyExperiencePointsShouldTheUserLose" xml:space="preserve">
+    <value>How many experience points should the user lose?</value>
   </data>
 </root>

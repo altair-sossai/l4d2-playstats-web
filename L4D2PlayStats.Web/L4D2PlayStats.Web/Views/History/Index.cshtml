@@ -1,10 +1,12 @@
-﻿@using L4D2PlayStats.Infrastructure.Extensions
+﻿@using L4D2PlayStats.Auth
+@using L4D2PlayStats.Infrastructure.Extensions
 @using L4D2PlayStats.UserAvatar
 @using L4D2PlayStats.Web
 @using Microsoft.Extensions.Localization
 @model L4D2PlayStats.Web.Models.HistoryModel
 @inject IStringLocalizer<SharedResource> SharedLocalizer
 @inject IUserAvatar UserAvatar
+@inject ICurrentUser CurrentUser
 
 @section Styles {
     <style>
@@ -65,7 +67,7 @@
     <tbody>
     @foreach (var player in Model.Players.Take(100))
     {
-        <tr class="hover">
+        <tr class="hover @(CurrentUser.ItIsMe(player.CommunityId) ? "it-is-me" : string.Empty)">
             <td class="text-center vertical-align-middle">
                 @switch (player.Position)
                 {

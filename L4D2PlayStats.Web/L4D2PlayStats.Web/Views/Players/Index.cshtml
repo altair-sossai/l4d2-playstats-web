@@ -1,4 +1,5 @@
-﻿@using L4D2PlayStats.Infrastructure.Extensions
+﻿@using L4D2PlayStats.Auth
+@using L4D2PlayStats.Infrastructure.Extensions
 @using L4D2PlayStats.Players.Enums
 @using L4D2PlayStats.UserAvatar
 @using L4D2PlayStats.Web
@@ -6,6 +7,7 @@
 @model L4D2PlayStats.Web.Models.PlayersModel
 @inject IStringLocalizer<SharedResource> SharedLocalizer
 @inject IUserAvatar UserAvatar
+@inject ICurrentUser CurrentUser
 
 @section Styles {
     <style>
@@ -66,7 +68,7 @@
     }
     @foreach (var player in Model.Players)
     {
-        <tr class="hover">
+        <tr class="hover @(CurrentUser.ItIsMe(player.CommunityId) ? "it-is-me" : string.Empty)">
             <td class="text-center vertical-align-middle slim">#@position.ToString("N0")</td>
             <td class="text-center vertical-align-middle slim" style="margin: 0; padding: 0">
                 <a href="@Url.Action("Details", "Players", new { communityId = player.CommunityId })" title="@player.Name">

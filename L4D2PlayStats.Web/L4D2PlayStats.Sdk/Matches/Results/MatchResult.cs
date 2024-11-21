@@ -28,6 +28,8 @@ public class MatchResult
 
     public class TeamResult
     {
+        public static readonly List<TeamResult> EmptyCollection = [];
+
         public char Code { get; set; }
         public int Score { get; set; }
         public List<PlayerResult>? Players { get; set; }
@@ -43,6 +45,7 @@ public class MatchResult
         public int RockEats { get; set; }
         public int WitchDamage { get; set; }
         public int Skeets { get; set; }
+        public int SkeetsMelee { get; set; }
         public int Levels { get; set; }
         public int Crowns { get; set; }
         public int FfGiven { get; set; }
@@ -61,6 +64,8 @@ public class MatchResult
 
     public class PlayerResult
     {
+        public static readonly List<PlayerResult> EmptyCollection = [];
+
         public string? SteamId { get; set; }
         public string? CommunityId { get; set; }
         public string? Steam3 { get; set; }
@@ -89,6 +94,8 @@ public class MatchResult
         public decimal WitchDamagePercentage { get; set; }
         public int Skeets { get; set; }
         public decimal SkeetsPercentage { get; set; }
+        public int SkeetsMelee { get; set; }
+        public decimal SkeetsMeleePercentage { get; set; }
         public int Levels { get; set; }
         public decimal LevelsPercentage { get; set; }
         public int Crowns { get; set; }

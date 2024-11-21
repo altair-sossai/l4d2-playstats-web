@@ -1,26 +1,16 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Caching.Memory;
+﻿using L4D2PlayStats.Cache.Services;
+using Microsoft.AspNetCore.Mvc;
 
 namespace L4D2PlayStats.Web.Controllers.Api;
 
 [Route("api/cache")]
 [ApiController]
-public class CacheController(IMemoryCache memoryCache) : ControllerBase
+public class CacheController(ICacheService cacheService) : ControllerBase
 {
-    private static DateTime _lastClear = DateTime.MinValue;
-    private static readonly TimeSpan CacheDuration = TimeSpan.FromMinutes(2);
-
     [HttpPost("clear")]
     public IActionResult Clear()
     {
-        if (DateTime.UtcNow - _lastClear < CacheDuration)
-            return BadRequest("Cache was cleared recently");
-
-        _lastClear = DateTime.UtcNow;
-
-        memoryCache.Remove("Matches");
-        memoryCache.Remove("Ranking");
-        memoryCache.Remove("OpenAi.LastMatchSummary");
+        cacheService.ClearCache();
 
         return Ok();
     }

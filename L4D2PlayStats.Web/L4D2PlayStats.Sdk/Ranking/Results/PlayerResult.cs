@@ -25,6 +25,7 @@ public class PlayerResult
     public int Wins { get; set; }
     public int Loss { get; set; }
     public int RageQuit { get; set; }
+    public int Punishment { get; set; }
     public decimal WinRate { get; set; }
 
     /* Survivor */
@@ -37,6 +38,7 @@ public class PlayerResult
     public int TankDamage { get; set; }
     public int RockEats { get; set; }
     public int Skeets { get; set; }
+    public int SkeetsMelee { get; set; }
     public int Levels { get; set; }
     public int FfGiven { get; set; }
 
