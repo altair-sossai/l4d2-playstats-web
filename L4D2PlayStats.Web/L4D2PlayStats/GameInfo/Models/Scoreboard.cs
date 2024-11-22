@@ -9,6 +9,7 @@ public class Scoreboard
     public decimal CurrentProgress { get; set; }
     public int CurrentProgressPoints { get; set; }
     public bool IsTankInPlay { get; set; }
+    public bool TankIsDead { get; set; }
     public decimal BonusPercentage => MaxBonus == 0 ? 0 : Bonus / (decimal)MaxBonus;
     public int Difference => SurvivorScore - InfectedScore;
     public int Comeback => Math.Abs(Difference);
