@@ -31,6 +31,8 @@ public class StatisticsResult
 
     public class HalfResult
     {
+        public static readonly List<HalfResult> EmptyCollection = [];
+
         public RoundHalfResult? RoundHalf { get; set; }
         public ProgressResult? Progress { get; set; }
         public List<PlayerResult> Players { get; set; } = [];
@@ -213,6 +215,8 @@ public class StatisticsResult
 
     public class PlayerNameResult : SteamUserResult
     {
+        public static readonly List<PlayerNameResult> EmptyCollection = [];
+
         public int Index { get; set; }
         public string? Name { get; set; }
     }

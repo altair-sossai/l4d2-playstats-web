@@ -8,7 +8,7 @@
 
 @section Styles {
     <style>
-        
+
     </style>
 }
 
@@ -16,8 +16,9 @@
     var statistics = Model.Statistics;
     var match = Model.Match;
     var statistic = statistics.Statistic;
-    var teamA = statistic?.TeamA ?? new List<StatisticsResult.PlayerNameResult>();
-    var teamB = statistic?.TeamB ?? new List<StatisticsResult.PlayerNameResult>();
+    var halves = statistic?.Halves ?? StatisticsResult.HalfResult.EmptyCollection;
+    var teamA = statistic?.TeamA ?? StatisticsResult.PlayerNameResult.EmptyCollection;
+    var teamB = statistic?.TeamB ?? StatisticsResult.PlayerNameResult.EmptyCollection;
     var teams = new List<List<StatisticsResult.PlayerNameResult>> { teamA, teamB };
 }
 
@@ -33,3 +34,31 @@
         </a>
     }
 }
+
+<ul class="nav nav-tabs">
+    @for (var round = 1; round <= halves.Count; round++)
+    {
+        var firstRound = round == 1;
+
+        <li class="@(firstRound ? "active" : string.Empty)">
+            <a href="#tab-round-half-@round" data-toggle="tab">
+                Round @round
+            </a>
+        </li>
+    }
+</ul>
+
+<div class="tab-content">
+    @for (var round = 1; round <= halves.Count; round++)
+    {
+        var firstRound = round == 1;
+        var half = halves[round - 1];
+        var roundHalf = half.RoundHalf;
+
+        <div id="tab-round-half-@round" class="tab-pane fade @(firstRound ? "in active" : string.Empty)">
+            <p>
+                Deaths: @((roundHalf?.Deaths ?? 0).ToString("N0"))
+            </p>
+        </div>
+    }
+</div>
