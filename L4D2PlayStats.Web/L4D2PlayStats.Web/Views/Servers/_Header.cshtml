@@ -49,7 +49,7 @@
                         map.Add(serverInfo.Map);
 
                     if (round != null)
-                        map.Add(SharedLocalizer[round.FirstRound ? "FirstRound" : "SecondRound"].Value);
+                        map.Add(SharedLocalizer[round.InSecondHalfOfRound ? "SecondRound" : "FirstRound"].Value);
                 }
 
                 @string.Join(" - ", map)
@@ -141,6 +141,12 @@
                     {
                         <span class="label label-info" data-toggle="tooltip" data-placement="top" title="@SharedLocalizer["Alive"]" style="margin-left: 5px">
                             @SharedLocalizer["Alive"]
+                        </span>
+                    }
+                    else if (scoreboard?.TankIsDead == true)
+                    {
+                        <span class="label label-danger" data-toggle="tooltip" data-placement="top" title="@SharedLocalizer["Dead"]" style="margin-left: 5px">
+                            @SharedLocalizer["Dead"]
                         </span>
                     }
                 }

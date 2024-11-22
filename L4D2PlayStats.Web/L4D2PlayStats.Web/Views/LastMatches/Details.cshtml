@@ -26,9 +26,24 @@
 
 <h4 class="text-center">@SharedLocalizer["MatchDetails"]</h4>
 
+<ol class="breadcrumb">
+    <li>
+        @Html.ActionLink(SharedLocalizer["LastMatches"].Value, "Index", "LastMatches")
+    </li>
+    <li class="active">
+        @Model.Match.Campaign
+    </li>
+</ol>
+
+<div class="match">
+    @await Html.PartialAsync("_Match", Model.Match)
+</div>
+
 <div class="maps">
     <div class="panel panel-default">
-        <div class="panel-heading">@SharedLocalizer["Maps"]</div>
+        <div class="panel-heading">
+            @SharedLocalizer["Maps"]
+        </div>
         <div class="panel-body">
             @SharedLocalizer["MatchStatsTitle"]
         </div>
@@ -77,10 +92,6 @@
             </tbody>
         </table>
     </div>
-</div>
-
-<div class="match">
-    @await Html.PartialAsync("_Match", Model.Match)
 </div>
 
 @foreach (var team in Model.Match.Teams ?? MatchResult.TeamResult.EmptyCollection)
