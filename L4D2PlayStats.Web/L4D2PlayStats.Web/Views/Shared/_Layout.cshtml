@@ -209,6 +209,15 @@
     </style>
 
     @await RenderSectionAsync("Styles", false)
+    
+    <script>
+
+        function imgOnError(img) {
+            img.onerror = null;
+            img.src = '/imgs/avatar-empty.png';
+        }
+
+    </script>
 </head>
 <body>
 

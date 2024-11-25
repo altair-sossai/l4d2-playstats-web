@@ -108,7 +108,7 @@
             </td>
             <td class="text-center vertical-align-middle slim" style="margin: 0; padding: 0">
                 <a href="@Url.Action("Details", "Players", new { communityId = player.CommunityId })" title="@player.Name">
-                    <img src="@UserAvatar[player.CommunityId]" alt="@player.Name" style="width: 40px; border-radius: 5px"/>
+                    <img src="@UserAvatar[player.CommunityId]" alt="@player.Name" style="width: 40px; border-radius: 5px" onerror="imgOnError(this)" />
                 </a>
             </td>
             <td class="vertical-align-middle">
