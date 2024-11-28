@@ -1,4 +1,6 @@
-﻿namespace L4D2PlayStats.Sdk.Matches.Results;
+﻿using L4D2PlayStats.Sdk.Statistics.Results;
+
+namespace L4D2PlayStats.Sdk.Matches.Results;
 
 public class MatchResult
 {
@@ -9,6 +11,7 @@ public class MatchResult
     public string? Campaign { get; set; }
     public List<TeamResult>? Teams { get; set; }
     public List<string>? Statistics { get; set; }
+    public List<MapResult>? Maps { get; set; }
 
     public string? Start => Statistics?.FirstOrDefault();
     public string? End => Statistics?.LastOrDefault();
@@ -121,5 +124,11 @@ public class MatchResult
         public int TotalMvp => MvpSiDamage + MvpCommon;
         public int LvpFfGiven { get; set; }
         public decimal LvpFfGivenPercentage { get; set; }
+    }
+
+    public class MapResult
+    {
+        public string? MapName { get; set; }
+        public StatisticsResult.ScoringResult? Scoring { get; set; }
     }
 }
