@@ -507,4 +507,7 @@
   <data name="PointsEarnedOnMap" xml:space="preserve">
     <value>Pontos conquistados no mapa</value>
   </data>
+  <data name="Disabled" xml:space="preserve">
+    <value>Desabilitado</value>
+  </data>
 </root>

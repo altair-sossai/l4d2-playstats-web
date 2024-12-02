@@ -132,7 +132,9 @@
             <td data-label="@SharedLocalizer["Tank"]:">
                 @if (round?.TankDisabled == true)
                 {
-                    <span class="label label-default">Disabled</span>
+                    <span class="label label-default">
+                        @SharedLocalizer["Disabled"]
+                    </span>
                 }
                 else
                 {
@@ -156,7 +158,9 @@
             <td data-label="@SharedLocalizer["Witch"]:">
                 @if (round?.WitchDisabled == true)
                 {
-                    <span class="label label-default">Disabled</span>
+                    <span class="label label-default">
+                        @SharedLocalizer["Disabled"]
+                    </span>
                 }
                 else
                 {
