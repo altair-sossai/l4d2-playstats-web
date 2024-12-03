@@ -52,6 +52,4 @@ public class PlayerResult
     public int MvpSiDamage { get; set; }
     public int MvpCommon { get; set; }
     public int LvpFfGiven { get; set; }
-
-    public List<AnotherPlayerResult>? Anothers { get; set; }
 }

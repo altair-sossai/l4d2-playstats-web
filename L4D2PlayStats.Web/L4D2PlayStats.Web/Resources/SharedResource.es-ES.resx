@@ -510,10 +510,4 @@
   <data name="Disabled" xml:space="preserve">
     <value>Deshabilitado</value>
   </data>
-  <data name="PlayingTogether" xml:space="preserve">
-    <value>Jugando juntos</value>
-  </data>
-  <data name="Against" xml:space="preserve">
-    <value>Contra</value>
-  </data>
 </root>

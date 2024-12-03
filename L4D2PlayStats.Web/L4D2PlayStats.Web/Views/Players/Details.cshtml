@@ -19,8 +19,6 @@
     var secondPlayerPatentProgress = secondPlayerRanking?.PatentProgress;
     var secondPlayerPatent = secondPlayerPatentProgress?.Patent;
 
-    var anotherPlayer = secondPlayer == null ? null : firstPlayer.Anothers?.FirstOrDefault(a => a.CommunityId == secondPlayer.CommunityId);
-
     string FormatPunishment(int punishment)
     {
         return punishment == 0 ? "0" : $"-{punishment:N0} XP";
@@ -32,6 +30,7 @@
         th {
             width: 1%;
             white-space: nowrap;
+            padding-right: 24px !important;
         }
 
         .progress {
@@ -134,7 +133,7 @@
         </ul>
     </div>
 
-    <img src="@UserAvatar[firstPlayer.CommunityId]" alt="@firstPlayer.Name" class="img-responsive img-thumbnail" style="margin-top: 5px" onerror="imgOnError(this)"/>
+    <img src="@UserAvatar[firstPlayer.CommunityId]" alt="@firstPlayer.Name" class="img-responsive img-thumbnail" style="margin-top: 5px" onerror="imgOnError(this)" />
 
     <hr/>
 
@@ -156,7 +155,7 @@
     </div>
     @if (secondPlayer != null)
     {
-        <img src="@UserAvatar[secondPlayer.CommunityId]" alt="@secondPlayer.Name" class="img-responsive img-thumbnail" style="background-color: #FFBC00; margin-top: 5px" onerror="imgOnError(this)"/>
+        <img src="@UserAvatar[secondPlayer.CommunityId]" alt="@secondPlayer.Name" class="img-responsive img-thumbnail" style="background-color: #FFBC00; margin-top: 5px" onerror="imgOnError(this)" />
     }
 </div>
 <div class="col-xs-10 right-side">
@@ -343,74 +342,6 @@
 </div>
 
 <hr/>
-
-@if (secondPlayer != null && anotherPlayer != null)
-{
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            <span>@firstPlayer.Name</span>
-            <span class="separator"> | </span>
-            <span class="second">@secondPlayer.Name</span>
-        </div>
-
-        <table class="table table-hover table-condensed table-responsive">
-            <tbody>
-            <tr>
-                <th></th>
-                <th colspan="2" class="slim text-center">@SharedLocalizer["Wins"]</th>
-                <th colspan="2" class="slim text-center">@SharedLocalizer["Loss"]</th>
-                <th class="slim text-center">@SharedLocalizer["Total"]</th>
-            </tr>
-            <tr>
-                <th>@SharedLocalizer["PlayingTogether"]:</th>
-                <td class="slim text-right" style="min-width: 85px" data-label="@SharedLocalizer["PlayingTogether"] - @SharedLocalizer["Wins"]">
-                    @anotherPlayer.WinsWith.ToString("N0")
-                    <span class="separator show-mobile">|</span>
-                    <span class="show-mobile">@anotherPlayer.WinRateWith.ToString("P0")</span>
-                </td>
-                <td class="slim text-left hide-mobile" style="min-width: 85px">
-                    @anotherPlayer.WinRateWith.ToString("P0")
-                </td>
-                <td class="slim text-right" style="min-width: 85px" data-label="@SharedLocalizer["Loss"]">
-                    @anotherPlayer.LossWith.ToString("N0")
-                    <span class="separator show-mobile">|</span>
-                    <span class="show-mobile">@anotherPlayer.LossRateWith.ToString("P0")</span>
-                </td>
-                <td class="slim text-left hide-mobile" style="min-width: 85px">
-                    @anotherPlayer.LossRateWith.ToString("P0")
-                </td>
-                <td class="slim text-center" data-label="@SharedLocalizer["Total"]">
-                    @anotherPlayer.GamesWith.ToString("N0")
-                </td>
-            </tr>
-            <tr>
-                <th>
-                    @SharedLocalizer["Against"] <span class="second">@secondPlayer.Name</span>:
-                </th>
-                <td class="slim text-right" style="min-width: 85px" data-label="@SharedLocalizer["Against"] @secondPlayer.Name - @SharedLocalizer["Wins"]">
-                    @anotherPlayer.WinsAgainst.ToString("N0")
-                    <span class="separator show-mobile">|</span>
-                    <span class="show-mobile">@anotherPlayer.WinRateAgainst.ToString("P0")</span>
-                </td>
-                <td class="slim text-left hide-mobile" style="min-width: 85px">
-                    @anotherPlayer.WinRateAgainst.ToString("P0")
-                </td>
-                <td class="slim text-right" style="min-width: 85px" data-label="@SharedLocalizer["Loss"]">
-                    @anotherPlayer.LossAgainst.ToString("N0")
-                    <span class="separator show-mobile">|</span>
-                    <span class="show-mobile">@anotherPlayer.LossRateAgainst.ToString("P0")</span>
-                </td>
-                <td class="slim text-left hide-mobile" style="min-width: 85px">
-                    @anotherPlayer.LossRateAgainst.ToString("P0")
-                </td>
-                <td class="slim text-center" data-label="@SharedLocalizer["Total"]">
-                    @anotherPlayer.GamesAgainst.ToString("N0")
-                </td>
-            </tr>
-            </tbody>
-        </table>
-    </div>
-}
 
 <div class="panel panel-default">
     <div class="panel-heading">
