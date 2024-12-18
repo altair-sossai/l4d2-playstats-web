@@ -1,4 +1,6 @@
-﻿@using L4D2PlayStats.Campaign
+﻿@using System.Text.Json
+@using L4D2PlayStats.Auth
+@using L4D2PlayStats.Campaign
 @using L4D2PlayStats.Infrastructure.Extensions
 @using L4D2PlayStats.Sdk.Matches.Results
 @using L4D2PlayStats.UserAvatar
@@ -10,6 +12,150 @@
 @inject IUserAvatar UserAvatar
 @inject IStringLocalizer<SharedResource> SharedLocalizer
 @inject IViewLocalizer Localizer
+@inject ICurrentUser CurrentUser
+
+@{
+    var light = Context.Request.Cookies["theme"] == "light";
+
+    const string success = "rgba(40, 167, 69, 1)";
+    const string danger = "rgba(220, 53, 69, 1)";
+    const string transparent = "rgba(0, 0, 0, 0)";
+
+    var fontColor = light ? "#222222" : "#c8c8c8";
+
+    var scoreboardChart = new
+    {
+        type = "line",
+        data = new
+        {
+            labels = Model.Maps?.Select(m => m.MapName),
+            datasets = Model.Teams?.Select(team => new
+            {
+                label = $"{SharedLocalizer["Team"].Value} {team.Code}",
+                data = Model.Maps?.Select(m => team.Code == 'A' ? m.Scoring?.TeamA : m.Scoring?.TeamB).Select(s => s?.Score ?? 0),
+                borderColor = team.Code == Model.Winner?.Code ? success : danger,
+                backgroundColor = transparent,
+                lineTension = 0
+            })
+        },
+        options = new
+        {
+            title = new
+            {
+                display = true,
+                text = SharedLocalizer["Scoreboard"].Value,
+                fontColor
+            },
+            legend = new
+            {
+                display = true,
+                position = "bottom",
+                labels = new { fontColor }
+            },
+            responsive = true,
+            maintainAspectRatio = false,
+            scales = new
+            {
+                xAxes = new object[]
+                {
+                    new
+                    {
+                        ticks = new { fontColor }
+                    }
+                },
+                yAxes = new object[]
+                {
+                    new
+                    {
+                        ticks = new
+                        {
+                            fontColor,
+                            beginAtZero = true
+                        }
+                    }
+                }
+            }
+        }
+    };
+
+    var pointsEarnedOnMapChart = new
+    {
+        type = "bar",
+        data = new
+        {
+            labels = Model.Maps?.Select(m => m.MapName),
+            datasets = new List<object>()
+        },
+        options = new
+        {
+            title = new
+            {
+                display = true,
+                text = SharedLocalizer["PointsEarnedOnMap"].Value,
+                fontColor
+            },
+            legend = new
+            {
+                display = true,
+                position = "bottom",
+                labels = new { fontColor }
+            },
+            responsive = true,
+            maintainAspectRatio = false,
+            scales = new
+            {
+                xAxes = new object[]
+                {
+                    new
+                    {
+                        ticks = new { fontColor }
+                    }
+                },
+                yAxes = new object[]
+                {
+                    new
+                    {
+                        ticks = new
+                        {
+                            fontColor,
+                            beginAtZero = true
+                        }
+                    }
+                }
+            }
+        }
+    };
+
+    var empty = Array.Empty<int>();
+
+    var teamA = Model.Maps?
+        .Select(m => m.Scoring?.TeamA?.Score ?? 0)
+        .ToArray() ?? empty;
+
+    var teamB = Model.Maps?
+        .Select(m => m.Scoring?.TeamB?.Score ?? 0)
+        .ToArray() ?? empty;
+
+    for (var i = teamA.Length - 1; i > 0; i--)
+        teamA[i] -= teamA[i - 1];
+
+    for (var i = teamB.Length - 1; i > 0; i--)
+        teamB[i] -= teamB[i - 1];
+
+    for (var i = 0; i < 2; i++)
+    {
+        var team = Model.Teams?[i];
+        var color = team?.Code == Model.Winner?.Code ? success : danger;
+
+        pointsEarnedOnMapChart.data.datasets.Add(new
+        {
+            label = $"{SharedLocalizer["Team"].Value} {team?.Code}",
+            data = team?.Code == 'A' ? teamA : teamB,
+            borderColor = color,
+            backgroundColor = color
+        });
+    }
+}
 
 <div class="panel panel-primary">
     <div class="panel-heading" style="padding: 6px 10px;">
@@ -42,14 +188,14 @@
                 <img src="@CampaignThumb[Model.Campaign]" alt="@Model.Campaign" class="img-responsive img-thumbnail img-campaign"/>
                 @if (Model.ShowDetailsButton)
                 {
-                    <a href="@Url.Action("Details", "LastMatches", new { start = Model.Start, end = Model.End })" class="btn btn-danger btn-sm btn-block" style="margin-top: 10px;">
+                    <a href="@Url.Action("Details", "LastMatches", new { start = Model.Start, end = Model.End })" class="btn btn-danger btn-xs btn-block" style="margin-top: 10px;">
                         @SharedLocalizer["Details"]
                     </a>
                 }
             </div>
             <div class="col-xs-10 right-side">
                 <div class="row teams">
-                    @foreach (var team in Model.Teams ?? new List<MatchResult.TeamResult>())
+                    @foreach (var team in Model.Teams ?? MatchResult.TeamResult.EmptyCollection)
                     {
                         <div class="col-xs-6">
                             <div class="panel panel-@(team.Code == Model.Winner?.Code ? "success" : "danger")" style="margin-bottom: 0;">
@@ -71,12 +217,12 @@
                                                       .ThenByDescending(p => p.MvpSiDamage)
                                                       .ThenByDescending(p => p.MvpCommon)
                                                       .ThenBy(p => p.LvpFfGiven)
-                                                      .ToList() ?? new List<MatchResult.PlayerResult>())
+                                                      .ToList() ?? MatchResult.PlayerResult.EmptyCollection)
                                         {
-                                            <tr>
+                                            <tr class="@(CurrentUser.ItIsMe(player.CommunityId) ? "it-is-me" : string.Empty)">
                                                 <td style="padding: 2px" class="slim">
                                                     <a href="@Url.Action("Details", "Players", new { communityId = player.CommunityId })" title="@player.Name">
-                                                        <img src="@UserAvatar[player.CommunityId]" alt="@player.Name" style="width: 32px; border-radius: 5px"/>
+                                                        <img src="@UserAvatar[player.CommunityId]" alt="@player.Name" style="width: 32px; border-radius: 5px" onerror="imgOnError(this)"/>
                                                     </a>
                                                 </td>
                                                 <td class="vertical-align-middle">
@@ -104,6 +250,34 @@
                             </div>
                         </div>
                     }
+                </div>
+            </div>
+        </div>
+
+        <hr/>
+
+        <div class="row">
+            <div class="col-sm-6 col-xs-12" style="padding-right: 0">
+                <div style="height: 200px;">
+                    @{
+                        var canvas = new TagBuilder("canvas");
+                        canvas.AddCssClass("app-chart");
+                        canvas.Attributes.Add("style", "max-height: 100%;");
+                        canvas.Attributes.Add("data-chart", JsonSerializer.Serialize(scoreboardChart));
+                    }
+                    @canvas
+                </div>
+            </div>
+
+            <div class="col-sm-6 col-xs-12" style="padding-left: 0">
+                <div style="height: 200px;">
+                    @{
+                        canvas = new TagBuilder("canvas");
+                        canvas.AddCssClass("app-chart");
+                        canvas.Attributes.Add("style", "max-height: 100%;");
+                        canvas.Attributes.Add("data-chart", JsonSerializer.Serialize(pointsEarnedOnMapChart));
+                    }
+                    @canvas
                 </div>
             </div>
         </div>

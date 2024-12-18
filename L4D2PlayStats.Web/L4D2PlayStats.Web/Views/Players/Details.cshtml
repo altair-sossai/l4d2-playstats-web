@@ -1,9 +1,11 @@
-﻿@using L4D2PlayStats.Infrastructure.Extensions
+﻿@using L4D2PlayStats.Auth
+@using L4D2PlayStats.Infrastructure.Extensions
 @using L4D2PlayStats.UserAvatar
 @using L4D2PlayStats.Web
 @using Microsoft.Extensions.Localization
 @model L4D2PlayStats.Web.Models.PlayerDetailsModel
 @inject IUserAvatar UserAvatar
+@inject ICurrentUser CurrentUser
 @inject IStringLocalizer<SharedResource> SharedLocalizer
 
 @{
@@ -16,6 +18,11 @@
     var secondPlayer = secondPlayerRanking?.Player;
     var secondPlayerPatentProgress = secondPlayerRanking?.PatentProgress;
     var secondPlayerPatent = secondPlayerPatentProgress?.Patent;
+
+    string FormatPunishment(int punishment)
+    {
+        return punishment == 0 ? "0" : $"-{punishment:N0} XP";
+    }
 }
 
 @section Styles {
@@ -30,7 +37,7 @@
             margin: 0;
         }
 
-        .dropdown-menu {
+        .players-dropdown-menu {
             height: 175px;
             overflow-y: auto;
         }
@@ -60,6 +67,53 @@
     </style>
 }
 
+@section Scripts {
+    <script>
+        function reloadPage() {
+            location.reload();
+        }
+
+        function addPunishments(communityId, lostExperiencePoints) {
+            var command = { 
+                communityId: communityId, 
+                lostExperiencePoints: lostExperiencePoints 
+            };
+
+            $.ajax({
+                url: "/api/punishments",
+                type: "POST",
+                contentType: "application/json",
+                data: JSON.stringify(command)
+            }).done(reloadPage);
+        }
+
+        function deletePunishments(communityId) {
+            $.ajax({
+                url: "/api/punishments/" + communityId,
+                type: "DELETE"
+            }).done(reloadPage);
+        }
+
+        function editPunishment(communityId, punishment) {
+            var output = prompt("@Html.Raw(SharedLocalizer["HowManyExperiencePointsShouldTheUserLose"])", punishment);
+
+            if (!output)
+                return;
+
+            var lostExperiencePoints = +output;
+
+            if (isNaN(lostExperiencePoints))
+                return;
+
+            else if (lostExperiencePoints > 0)
+                addPunishments(communityId, lostExperiencePoints);
+
+            else if (lostExperiencePoints === 0)
+                deletePunishments(communityId);
+        }
+    </script>
+}
+
 <h4 class="text-center">@SharedLocalizer["PlayerDetails"]</h4>
 
 <div class="row">
@@ -69,7 +123,7 @@
             @firstPlayer.Name?.Truncate(10)
             <span class="caret"></span>
         </button>
-        <ul class="dropdown-menu">
+        <ul class="dropdown-menu players-dropdown-menu">
             @foreach (var player in Model.Players.Where(player => player.CommunityId != firstPlayer.CommunityId && player.CommunityId != secondPlayer?.CommunityId))
             {
                 <li>
@@ -79,7 +133,7 @@
         </ul>
     </div>
 
-    <img src="@UserAvatar[firstPlayer.CommunityId]" alt="@firstPlayer.Name" class="img-responsive img-thumbnail" style="margin-top: 5px"/>
+    <img src="@UserAvatar[firstPlayer.CommunityId]" alt="@firstPlayer.Name" class="img-responsive img-thumbnail" style="margin-top: 5px" onerror="imgOnError(this)" />
 
     <hr/>
 
@@ -88,7 +142,7 @@
             @(secondPlayer?.Name?.Truncate(10) ?? SharedLocalizer["Compare"])
             <span class="caret"></span>
         </button>
-        <ul class="dropdown-menu">
+        <ul class="dropdown-menu players-dropdown-menu">
             @foreach (var player in Model.Players.Where(player => player.CommunityId != firstPlayer.CommunityId && player.CommunityId != secondPlayer?.CommunityId))
             {
                 <li>
@@ -101,7 +155,7 @@
     </div>
     @if (secondPlayer != null)
     {
-        <img src="@UserAvatar[secondPlayer.CommunityId]" alt="@secondPlayer.Name" class="img-responsive img-thumbnail" style="background-color: #FFBC00; margin-top: 5px"/>
+        <img src="@UserAvatar[secondPlayer.CommunityId]" alt="@secondPlayer.Name" class="img-responsive img-thumbnail" style="background-color: #FFBC00; margin-top: 5px" onerror="imgOnError(this)" />
     }
 </div>
 <div class="col-xs-10 right-side">
@@ -250,12 +304,36 @@
                 }
             </td>
             <th>@SharedLocalizer["Loss"]:</th>
-            <td data-label="@SharedLocalizer["Loss"]:" colspan="3">
+            <td data-label="@SharedLocalizer["Loss"]:">
                 @firstPlayer.Loss.ToString("N0")
                 @if (secondPlayer != null)
                 {
                     <span class="separator"> | </span>
                     <span class="second">@secondPlayer.Loss.ToString("N0")</span>
+                }
+            </td>
+            <th>@SharedLocalizer["Punishment"]:</th>
+            <td data-label="@SharedLocalizer["Punishment"]:">
+                @FormatPunishment(firstPlayer.Punishment)
+
+                @if (CurrentUser.IsAdmin)
+                {
+                    <button type="button" class="btn btn-link btn-xs" onclick="editPunishment('@(firstPlayer.CommunityId)', '150')" title="@SharedLocalizer["Edit"]" data-toggle="tooltip" data-placement="bottom">
+                        @SharedLocalizer["Edit"]
+                    </button>
+                }
+
+                @if (secondPlayer != null)
+                {
+                    <span class="separator"> | </span>
+                    <span class="second">@FormatPunishment(secondPlayer.Punishment)</span>
+
+                    @if (CurrentUser.IsAdmin)
+                    {
+                        <button type="button" class="btn btn-link btn-xs" onclick="editPunishment('@(secondPlayer.CommunityId)', '150')" title="@SharedLocalizer["Edit"]" data-toggle="tooltip" data-placement="bottom">
+                            @SharedLocalizer["Edit"]
+                        </button>
+                    }
                 }
             </td>
         </tr>
@@ -371,27 +449,7 @@
                     <span class="second">@secondPlayer.TankDamage.ToString("N0")</span>
                 }
             </td>
-            <th>@SharedLocalizer["Skeets"]:</th>
-            <td data-label="@SharedLocalizer["Skeets"]:">
-                @firstPlayer.Skeets.ToString("N0")
-                @if (secondPlayer != null)
-                {
-                    <span class="separator"> | </span>
-                    <span class="second">@secondPlayer.Skeets.ToString("N0")</span>
-                }
-            </td>
-            <th>@SharedLocalizer["Levels"]:</th>
-            <td data-label="@SharedLocalizer["Levels"]:">
-                @firstPlayer.Levels.ToString("N0")
-                @if (secondPlayer != null)
-                {
-                    <span class="separator"> | </span>
-                    <span class="second">@secondPlayer.Levels.ToString("N0")</span>
-                }
-            </td>
-        </tr>
 
-        <tr>
             <th>@SharedLocalizer["RocksEats"]:</th>
             <td data-label="@SharedLocalizer["RocksEats"]:">
                 @firstPlayer.RockEats.ToString("N0")
@@ -410,8 +468,38 @@
                     <span class="second">@secondPlayer.FfGiven.ToString("N0")</span>
                 }
             </td>
-            <th class="hide-mobile"></th>
-            <td class="hide-mobile"></td>
+        </tr>
+
+        <tr>
+            <th>@SharedLocalizer["Skeets"]:</th>
+            <td data-label="@SharedLocalizer["Skeets"]:">
+                @firstPlayer.Skeets.ToString("N0")
+                @if (secondPlayer != null)
+                {
+                    <span class="separator"> | </span>
+                    <span class="second">@secondPlayer.Skeets.ToString("N0")</span>
+                }
+            </td>
+
+            <th>@SharedLocalizer["SkeetsMelee"]:</th>
+            <td data-label="@SharedLocalizer["SkeetsMelee"]:">
+                @firstPlayer.SkeetsMelee.ToString("N0")
+                @if (secondPlayer != null)
+                {
+                    <span class="separator"> | </span>
+                    <span class="second">@secondPlayer.SkeetsMelee.ToString("N0")</span>
+                }
+            </td>
+
+            <th>@SharedLocalizer["Levels"]:</th>
+            <td data-label="@SharedLocalizer["Levels"]:">
+                @firstPlayer.Levels.ToString("N0")
+                @if (secondPlayer != null)
+                {
+                    <span class="separator"> | </span>
+                    <span class="second">@secondPlayer.Levels.ToString("N0")</span>
+                }
+            </td>
         </tr>
         </tbody>
     </table>

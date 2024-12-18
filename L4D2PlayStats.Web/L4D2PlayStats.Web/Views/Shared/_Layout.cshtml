@@ -1,4 +1,5 @@
 ﻿@using System.Globalization
+@using L4D2PlayStats.Auth
 @using L4D2PlayStats.Web
 @using Microsoft.AspNetCore.Localization
 @using Microsoft.AspNetCore.Mvc.Localization
@@ -8,6 +9,7 @@
 @inject IViewLocalizer Localizer
 @inject IStringLocalizer<SharedResource> SharedLocalizer
 @inject IConfiguration Configuration
+@inject ICurrentUser CurrentUser
 @{
     var light = Context.Request.Cookies["theme"] == "light";
     var requestCultureFeature = Context.Features.Get<IRequestCultureFeature>();
@@ -65,10 +67,12 @@
             max-height: 50px;
         }
 
-        .theme-icon {
+        .img-header-icon {
             height: 100%;
             max-height: 20px !important;
             max-width: 20px !important;
+            display: inline !important;
+            margin-right: 5px;
         }
 
         .vertical-align-middle {
@@ -77,6 +81,10 @@
 
         .bold {
             font-weight: bold;
+        }
+
+        .tooltip-inner {
+            min-width: 150px;
         }
 
         .match .panel h4,
@@ -98,7 +106,7 @@
         }
 
         .match .img-campaign {
-            max-height: 175px;
+            max-height: 155px;
         }
 
         .show-mobile {
@@ -120,6 +128,21 @@
             .float-icon img {
                 width: 70px;
             }
+
+        .table > thead > tr > td.it-is-me,
+        .table > tbody > tr > td.it-is-me,
+        .table > tfoot > tr > td.it-is-me,
+        .table > thead > tr > th.it-is-me,
+        .table > tbody > tr > th.it-is-me,
+        .table > tfoot > tr > th.it-is-me,
+        .table > thead > tr.it-is-me > td,
+        .table > tbody > tr.it-is-me > td,
+        .table > tfoot > tr.it-is-me > td,
+        .table > thead > tr.it-is-me > th,
+        .table > tbody > tr.it-is-me > th,
+        .table > tfoot > tr.it-is-me > th {
+            background-color: @Html.Raw(light ? "#bcf3a6" : "#2e6b2e");
+        }
 
         @@media screen and (min-width: 700px) {
             .slim {
@@ -186,6 +209,15 @@
     </style>
 
     @await RenderSectionAsync("Styles", false)
+
+    <script>
+
+        function imgOnError(img) {
+            img.onerror = null;
+            img.src = '/imgs/avatar-empty.png';
+        }
+
+    </script>
 </head>
 <body>
 
@@ -228,59 +260,93 @@
                 </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li>
-                    @if (light)
-                    {
-                        <a href="@Url.Action("SetTheme", "Home", new { theme = "default" })">
-                            <img src="~/imgs/dark-theme.png" alt="@SharedLocalizer["SwitchDarkTheme"]" title="@SharedLocalizer["SwitchDarkTheme"]" class="theme-icon" data-toggle="tooltip" data-placement="bottom">
+                @if (CurrentUser.IsAuthenticated)
+                {
+                    <li>
+                        <a href="@Url.Action("Details", "Players", new { communityId = CurrentUser.CommunityId })">
+                            <img src="@CurrentUser.AvatarUrl" alt="@CurrentUser.Name" title="@CurrentUser.Name" class="img-responsive img-header-icon" data-toggle="tooltip" data-placement="bottom">
                             <span class="show-mobile" style="margin-left: 5px">
-                                @SharedLocalizer["SwitchDarkTheme"]
+                                @CurrentUser.Name
                             </span>
                         </a>
-                    }
-                    else
-                    {
-                        <a href="@Url.Action("SetTheme", "Home", new { theme = "light" })">
-                            <img src="~/imgs/light-theme.png" alt="@SharedLocalizer["SwitchLightTheme"]" title="@SharedLocalizer["SwitchLightTheme"]" class="theme-icon" data-toggle="tooltip" data-placement="bottom">
-                            <span class="show-mobile" style="margin-left: 5px">
-                                @SharedLocalizer["SwitchLightTheme"]
-                            </span>
-                        </a>
-                    }
+                    </li>
+                }
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                        <img src="~/imgs/settings.png" alt="@SharedLocalizer["Settings"]" title="@SharedLocalizer["Settings"]" class="img-responsive img-header-icon">
+                        <span class="show-mobile">
+                            @SharedLocalizer["Settings"]
+                        </span>
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        @if (light)
+                        {
+                            <li>
+                                <a href="@Url.Action("SetTheme", "Home", new { theme = "default" })">
+                                    <img src="~/imgs/dark-theme.png" alt="@SharedLocalizer["SwitchDarkTheme"]" title="@SharedLocalizer["SwitchDarkTheme"]" class="img-responsive img-header-icon">
+                                    @SharedLocalizer["SwitchDarkTheme"]
+                                </a>
+                            </li>
+                        }
+                        else
+                        {
+                            <li>
+                                <a href="@Url.Action("SetTheme", "Home", new { theme = "light" })">
+                                    <img src="~/imgs/light-theme.png" alt="@SharedLocalizer["SwitchLightTheme"]" title="@SharedLocalizer["SwitchLightTheme"]" class="img-responsive img-header-icon">
+                                    @SharedLocalizer["SwitchLightTheme"]
+                                </a>
+                            </li>
+                        }
+                        <li role="separator" class="divider"></li>
+                        @if (!cultureInfo.Name.Equals("en-US", StringComparison.InvariantCultureIgnoreCase))
+                        {
+                            <li id="lang-en">
+                                <a href="#">
+                                    <img src="~/imgs/us.png" alt="English" title="English" class="img-responsive img-header-icon">
+                                    English
+                                </a>
+                            </li>
+                        }
+                        @if (!cultureInfo.Name.Equals("pt-BR", StringComparison.InvariantCultureIgnoreCase))
+                        {
+                            <li id="lang-pt">
+                                <a href="#">
+                                    <img src="~/imgs/br.png" alt="Português" title="Português" class="img-responsive img-header-icon">
+                                    Português
+                                </a>
+                            </li>
+                        }
+                        @if (!cultureInfo.Name.Equals("es-ES", StringComparison.InvariantCultureIgnoreCase))
+                        {
+                            <li id="lang-es">
+                                <a href="#">
+                                    <img src="~/imgs/es.png" alt="Español" title="Español" class="img-responsive img-header-icon">
+                                    Español
+                                </a>
+                            </li>
+                        }
+                        <li role="separator" class="divider"></li>
+                        @if (CurrentUser.IsAuthenticated)
+                        {
+                            <li>
+                                <a href="@Url.Action("Logout", "Account")">
+                                    <img src="~/imgs/logout.png" class="img-responsive img-header-icon" alt="@SharedLocalizer["ClickHereToLogout"]" title="@SharedLocalizer["ClickHereToLogout"]" class="img-responsive img-header-icon">
+                                    @SharedLocalizer["ClickHereToLogout"]
+                                </a>
+                            </li>
+                        }
+                        else
+                        {
+                            <li>
+                                <a href="@Url.Action("Login", "Account")">
+                                    <img src="~/imgs/steam.png" alt="@SharedLocalizer["LoginWithSteam"]" title="@SharedLocalizer["LoginWithSteam"]" class="img-responsive img-header-icon">
+                                    @SharedLocalizer["LoginWithSteam"]
+                                </a>
+                            </li>
+                        }
+                    </ul>
                 </li>
-                @if (!cultureInfo.Name.Equals("en-US", StringComparison.InvariantCultureIgnoreCase))
-                {
-                    <li id="lang-en">
-                        <a href="#">
-                            <img src="~/imgs/us.png" alt="English" title="English" data-toggle="tooltip" data-placement="bottom">
-                            <span class="show-mobile" style="margin-left: 5px">
-                                English
-                            </span>
-                        </a>
-                    </li>
-                }
-                @if (!cultureInfo.Name.Equals("pt-BR", StringComparison.InvariantCultureIgnoreCase))
-                {
-                    <li id="lang-pt">
-                        <a href="#">
-                            <img src="~/imgs/br.png" alt="Português" title="Português" data-toggle="tooltip" data-placement="bottom">
-                            <span class="show-mobile" style="margin-left: 5px">
-                                Português
-                            </span>
-                        </a>
-                    </li>
-                }
-                @if (!cultureInfo.Name.Equals("es-ES", StringComparison.InvariantCultureIgnoreCase))
-                {
-                    <li id="lang-es">
-                        <a href="#">
-                            <img src="~/imgs/es.png" alt="Español" title="Español" data-toggle="tooltip" data-placement="bottom">
-                            <span class="show-mobile" style="margin-left: 5px">
-                                Español
-                            </span>
-                        </a>
-                    </li>
-                }
             </ul>
         </div>
     </div>
@@ -317,6 +383,8 @@
 
 <script src="~/js/jquery.min.js"></script>
 <script src="~/js/bootstrap.min.js"></script>
+<script src="~/js/morphdom-umd.min.js"></script>
+<script src="~/js/chart.min.js"></script>
 @await RenderSectionAsync("Scripts", false)
 
 <script>
@@ -386,6 +454,43 @@
             });
         };
 
+        function createChart(canvas) {
+            var ctx = canvas.getContext('2d');
+            var chartData = $(canvas).data('chart');
+
+            new Chart(ctx, chartData);
+        }
+
+        function isElementInViewport(el, margin) {
+            margin = margin || 150;
+            var rect = el.getBoundingClientRect();
+
+            return (
+                rect.top >= -margin &&
+                rect.left >= -margin &&
+                rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) + margin &&
+                rect.right <= (window.innerWidth || document.documentElement.clientWidth) + margin
+            );
+        }
+
+        function lazyLoadCharts() {
+            $('.app-chart').each(function () {
+                if ($(this).data('loaded')) 
+                    return;
+
+                if (!isElementInViewport(this))
+                    return;
+
+                createChart(this);
+
+                $(this).data('loaded', true);
+            });
+        }
+
+        $(window).on('scroll resize', function () {
+            lazyLoadCharts();
+        });
+
         $(document).ready(function () { 
             $('[data-toggle="tooltip"]').tooltip();
 
@@ -410,6 +515,8 @@
 
             updateServerInfo();
             setInterval(updateServerInfo, 10000);
+
+            lazyLoadCharts();
         });
     </script>
 

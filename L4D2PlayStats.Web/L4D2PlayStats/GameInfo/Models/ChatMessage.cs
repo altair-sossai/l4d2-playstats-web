@@ -16,5 +16,4 @@ public class ChatMessage(ChatMessageCommand command)
     };
 
     public string? Message { get; } = command.Message;
-    public bool Empty => string.IsNullOrEmpty(Message);
 }

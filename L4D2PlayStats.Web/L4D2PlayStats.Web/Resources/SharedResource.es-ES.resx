@@ -207,6 +207,9 @@
   <data name="Skeets" xml:space="preserve">
     <value>Skeets</value>
   </data>
+  <data name="SkeetsMelee" xml:space="preserve">
+    <value>Melee skeets</value>
+  </data>
   <data name="Levels" xml:space="preserve">
     <value>Niveles</value>
   </data>
@@ -473,5 +476,38 @@
   </data>
   <data name="ChatMessages" xml:space="preserve">
     <value>Mensajes de chat</value>
+  </data>
+  <data name="Punishment" xml:space="preserve">
+    <value>Castigo</value>
+  </data>
+  <data name="ProgressPoints" xml:space="preserve">
+    <value>Puntos de progreso</value>
+  </data>
+  <data name="Alive" xml:space="preserve">
+    <value>Vivo</value>
+  </data>
+  <data name="Paused" xml:space="preserve">
+    <value>Pausado</value>
+  </data>
+  <data name="ClickHereToLogout" xml:space="preserve">
+    <value>Clic aquí para salir</value>
+  </data>
+  <data name="LoginWithSteam" xml:space="preserve">
+    <value>Iniciar sesión con Steam</value>
+  </data>
+  <data name="Settings" xml:space="preserve">
+    <value>Configuración</value>
+  </data>
+  <data name="Edit" xml:space="preserve">
+    <value>Editar</value>
+  </data>
+  <data name="HowManyExperiencePointsShouldTheUserLose" xml:space="preserve">
+    <value>¿Cuántos puntos de experiencia debería perder el usuario?</value>
+  </data>
+  <data name="PointsEarnedOnMap" xml:space="preserve">
+    <value>Puntos obtenidos en el mapa</value>
+  </data>
+  <data name="Disabled" xml:space="preserve">
+    <value>Deshabilitado</value>
   </data>
 </root>

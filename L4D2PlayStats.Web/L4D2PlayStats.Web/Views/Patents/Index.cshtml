@@ -30,7 +30,7 @@
     </tr>
     </thead>
     <tbody>
-    @foreach (var patent in Model.Patents)
+    @foreach (var patent in Model.Patents.OrderByDescending(p => p.Level))
     {
         <tr>
             <td class="text-center vertical-align-middle">#@patent.Level</td>

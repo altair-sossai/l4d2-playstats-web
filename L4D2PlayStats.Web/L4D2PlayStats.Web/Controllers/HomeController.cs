@@ -10,7 +10,6 @@ namespace L4D2PlayStats.Web.Controllers;
 public class HomeController(
     IStringLocalizer<SharedResource> sharedLocalizer,
     IRankingServiceCached rankingService,
-    IRankingTemplateService rankingTemplateService,
     IUserAvatar userAvatar,
     IPatentService patentService) : Controller
 {
@@ -33,24 +32,6 @@ public class HomeController(
         var model = new HomeModel(ranking);
 
         return View(model);
-    }
-
-    [Route("ranking/plain-text")]
-    public async Task<ActionResult> PlainText()
-    {
-        var players = await rankingService.GetAsync();
-        var ranking = players.Select(player =>
-        {
-            var patentProgress = patentService.GetPatentProgress(player);
-            var model = new RankingModel(sharedLocalizer, player, patentProgress);
-
-            return model;
-        }).ToList();
-
-        var model = new HomeModel(ranking);
-        var content = rankingTemplateService.Render(model);
-
-        return Content(content);
     }
 
     public IActionResult SetTheme(string theme)

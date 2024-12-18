@@ -55,6 +55,9 @@ public enum PlayerResultProperty
     [ResourceKey("Skeets")]
     Skeets,
 
+    [ResourceKey("SkeetsMelee")]
+    SkeetsMelee,
+
     [ResourceKey("Levels")]
     Levels,
 

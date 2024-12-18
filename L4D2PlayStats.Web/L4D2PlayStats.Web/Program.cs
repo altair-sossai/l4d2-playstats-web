@@ -1,9 +1,13 @@
 using System.Globalization;
 using System.Text.Json.Serialization;
+using AspNet.Security.OpenId.Steam;
+using L4D2PlayStats.Auth;
 using L4D2PlayStats.DependencyInjection;
 using L4D2PlayStats.Sdk.DependencyInjection;
+using L4D2PlayStats.Web.Auth;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Localization;
-using WebMarkupMin.AspNetCore8;
+using WebMarkupMin.AspNetCoreLatest;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -31,8 +35,25 @@ builder.Services.AddControllersWithViews()
         options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
     });
 
+builder.Services.AddHttpContextAccessor();
+
+builder.Services.AddAuthentication(options =>
+    {
+        options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+        options.DefaultChallengeScheme = SteamAuthenticationDefaults.AuthenticationScheme;
+    })
+    .AddCookie(options =>
+    {
+        options.Cookie.HttpOnly = true;
+        options.ExpireTimeSpan = TimeSpan.FromDays(30);
+        options.SlidingExpiration = true;
+    })
+    .AddSteam();
+
 builder.Services.AddApp();
-builder.Services.AddPlayStatsSdk();
+builder.Services.AddPlayStatsSdk(builder.Configuration);
+
+builder.Services.AddScoped<ICurrentUser, CurrentUser>();
 
 var app = builder.Build();
 
@@ -52,6 +73,7 @@ app.UseRequestLocalization(new RequestLocalizationOptions
 
 app.UseStaticFiles();
 app.UseRouting();
+app.UseAuthentication();
 app.UseAuthorization();
 app.UseWebMarkupMin();
 app.MapControllers();

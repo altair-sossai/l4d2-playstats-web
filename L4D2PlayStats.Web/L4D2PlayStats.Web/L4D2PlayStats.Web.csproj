@@ -8,10 +8,11 @@
     </PropertyGroup>
 
     <ItemGroup>
+        <PackageReference Include="AspNet.Security.OpenId.Steam" Version="9.0.0" />
         <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="9.0.0" />
         <PackageReference Include="Microsoft.Extensions.Localization" Version="9.0.0" />
         <PackageReference Include="System.Linq.Async" Version="6.0.1" />
-        <PackageReference Include="WebMarkupMin.AspNetCore8" Version="2.17.0" />
+        <PackageReference Include="WebMarkupMin.AspNetCore8" Version="2.18.1" />
     </ItemGroup>
 
     <ItemGroup>

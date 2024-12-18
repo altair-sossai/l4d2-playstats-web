@@ -1,4 +1,5 @@
-﻿@using L4D2PlayStats.Infrastructure.Extensions
+﻿@using L4D2PlayStats.Auth
+@using L4D2PlayStats.Infrastructure.Extensions
 @using L4D2PlayStats.UserAvatar
 @using L4D2PlayStats.Web
 @using Microsoft.AspNetCore.Mvc.Localization
@@ -7,6 +8,7 @@
 @inject IViewLocalizer Localizer
 @inject IStringLocalizer<SharedResource> SharedLocalizer
 @inject IUserAvatar UserAvatar
+@inject ICurrentUser CurrentUser
 
 @section Styles {
     <style>
@@ -83,7 +85,7 @@
         var patentProgress = ranking.PatentProgress;
         var patent = patentProgress.Patent;
 
-        <tr class="hover @(++count > 50 ? "hidden" : string.Empty)">
+        <tr class="hover @(++count > 50 ? "hidden" : string.Empty) @(CurrentUser.ItIsMe(player.CommunityId) ? "it-is-me" : string.Empty)">
             <td class="text-center vertical-align-middle">
                 @switch (player.Position)
                 {
@@ -106,7 +108,7 @@
             </td>
             <td class="text-center vertical-align-middle slim" style="margin: 0; padding: 0">
                 <a href="@Url.Action("Details", "Players", new { communityId = player.CommunityId })" title="@player.Name">
-                    <img src="@UserAvatar[player.CommunityId]" alt="@player.Name" style="width: 40px; border-radius: 5px"/>
+                    <img src="@UserAvatar[player.CommunityId]" alt="@player.Name" style="width: 40px; border-radius: 5px" onerror="imgOnError(this)" />
                 </a>
             </td>
             <td class="vertical-align-middle">
