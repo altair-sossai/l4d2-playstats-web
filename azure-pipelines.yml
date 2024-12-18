@@ -32,6 +32,11 @@ stages:
   jobs:
   - job: Publish
     steps:
+    - task: UseDotNet@2
+      inputs:
+        packageType: 'sdk'
+        version: '9.0.x'
+        installationPath: $(Agent.ToolsDirectory)/dotnet
 
     - script: |
         dotnet restore L4D2PlayStats.Web/L4D2PlayStats.Web/L4D2PlayStats.Web.csproj
