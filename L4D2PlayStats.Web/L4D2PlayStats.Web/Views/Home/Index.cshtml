@@ -108,7 +108,7 @@
             </td>
             <td class="text-center vertical-align-middle slim" style="margin: 0; padding: 0">
                 <a href="@Url.Action("Details", "Players", new { communityId = player.CommunityId })" title="@player.Name">
-                    <img src="@UserAvatar[player.CommunityId]" alt="@player.Name" style="width: 40px; border-radius: 5px" onerror="imgOnError(this)" />
+                    <img src="@UserAvatar[player.CommunityId]" alt="@player.Name" style="width: 40px; border-radius: 5px" onerror="imgOnError(this)"/>
                 </a>
             </td>
             <td class="vertical-align-middle">
@@ -128,7 +128,7 @@
             </td>
             <td class="text-center vertical-align-middle hide-mobile">
                 <div class="progress" data-toggle="tooltip" data-placement="top" data-html="true" title="@patentProgress.Tooltip">
-                        <div class="progress-bar progress-bar-@patentProgress.ProgressBarType @(@patentProgress.ProgressBarType != "info" ? "pulsate" : string.Empty)" role="progressbar" style="width: @patentProgress.ProgressBarWidth;">
+                    <div class="progress-bar progress-bar-@patentProgress.ProgressBarType @(patentProgress.ProgressBarPulsate ? "pulsate" : string.Empty) @(patentProgress.MaxLevel ? "progress-bar-striped active" : string.Empty)" role="progressbar" style="width: @patentProgress.ProgressBarWidth;">
                     </div>
                     <div class="progress-bar progress-bar-@patentProgress.PreviousExperienceProgressBarType pulsate" role="progressbar" style="width: @patentProgress.PreviousExperienceProgressBarWidth;">
                     </div>
