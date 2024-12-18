@@ -1,4 +1,5 @@
 ﻿using System.Text.Json;
+using L4D2PlayStats.Sdk.Converters;
 using L4D2PlayStats.Sdk.Handlers;
 using L4D2PlayStats.Sdk.Matches;
 using L4D2PlayStats.Sdk.Punishments;
@@ -22,6 +23,11 @@ public static class AppInjection
     {
         ContentSerializer = new SystemTextJsonContentSerializer(Options)
     };
+
+    static AppInjection()
+    {
+        Options.Converters.Add(new DateTimeConverter());
+    }
 
     public static void AddPlayStatsSdk(this IServiceCollection serviceCollection, IConfiguration configuration)
     {
