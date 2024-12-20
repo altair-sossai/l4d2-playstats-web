@@ -33,6 +33,7 @@ stages:
   - job: Publish
     steps:
     - task: UseDotNet@2
+      displayName: 'Use .NET Core sdk 9.0.x'
       inputs:
         packageType: 'sdk'
         version: '9.0.x'
@@ -57,6 +58,7 @@ stages:
       displayName: 'Compress Published Files'
 
     - task: CopyFilesOverSSH@0
+      displayName: 'Copy Files Over SSH'
       inputs:
         sshEndpoint: 'L4D2 - Resources'
         sourceFolder: '$(System.DefaultWorkingDirectory)'
@@ -67,6 +69,7 @@ stages:
         readyTimeout: '20000'
 
     - task: SSH@0
+      displayName: 'Extract Files'
       inputs:
         sshEndpoint: 'L4D2 - Resources'
         readyTimeout: '20000'
