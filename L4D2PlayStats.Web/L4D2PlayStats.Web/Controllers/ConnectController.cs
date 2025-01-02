@@ -8,7 +8,7 @@ public class ConnectController(IConfiguration configuration) : Controller
     private string ServerIp => ServerIPs.First();
 
     [Route("connect")]
-    public async Task<IActionResult> Index()
+    public IActionResult Index()
     {
         return Redirect($"steam://connect/{ServerIp}");
     }
