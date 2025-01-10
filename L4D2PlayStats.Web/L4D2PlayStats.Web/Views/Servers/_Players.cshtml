@@ -54,9 +54,10 @@
                     {
                         <table class="table-survivors">
                             <tbody>
-                            @foreach (var survivor in survivors)
+                            @for (var i = 0; i < survivors.Length; i++)
                             {
-                                <tr id="tr0-survivor-@survivor.CommunityId">
+                                var survivor = survivors[i];
+                                <tr id="tr0-survivor-@i">
                                     <td rowspan="3" style="width: 70px">
                                         <img src="imgs/survivor-character/@(survivor.Character.ToString().ToLower()).png" alt="@survivor.Character"
                                              data-toggle="tooltip" data-placement="top" title="@survivor.Character"
@@ -78,17 +79,20 @@
                                                 @SharedLocalizer["Dead"]
                                             </span>
                                         }
-                                        else if (survivor.Incapacitated == true)
+                                        else
                                         {
-                                            <span class="label label-warning" data-toggle="tooltip" data-placement="top" title="@SharedLocalizer["Incapacitated"]">
-                                                @SharedLocalizer["Incapacitated"]
-                                            </span>
-                                        }
-                                        else if (survivor.BlackAndWhite == true)
-                                        {
-                                            <span class="label label-default" data-toggle="tooltip" data-placement="top" title="@SharedLocalizer["BlackAndWhite"]">
-                                                @SharedLocalizer["BlackAndWhite"]
-                                            </span>
+                                            if (survivor.Incapacitated == true)
+                                            {
+                                                <span class="label label-warning" data-toggle="tooltip" data-placement="top" title="@SharedLocalizer["Incapacitated"]">
+                                                    @SharedLocalizer["Incapacitated"]
+                                                </span>
+                                            }
+                                            else if (survivor.BlackAndWhite == true)
+                                            {
+                                                <span class="label label-default" data-toggle="tooltip" data-placement="top" title="@SharedLocalizer["BlackAndWhite"]">
+                                                    @SharedLocalizer["BlackAndWhite"]
+                                                </span>
+                                            }
                                         }
                                     </td>
                                     <td rowspan="3" class="td-latency text-center">
@@ -101,7 +105,7 @@
                                         }
                                     </td>
                                 </tr>
-                                <tr id="tr1-survivor-@survivor.CommunityId">
+                                <tr id="tr1-survivor-@i">
                                     <td class="text-right">
                                         @if (survivor.IsPlayerAlive)
                                         {
@@ -114,19 +118,19 @@
                                                 survivor.SlotNumber5
                                             };
 
-                                            @foreach (var weapon in weapons.Where(w => w.HasIcon()).Cast<Weapon>())
+                                            foreach (var weapon in weapons.Where(w => w.HasIcon()).Cast<Weapon>())
                                             {
                                                 if (weapon == Weapon.Melee && survivor.MeleeWeapon != null && survivor.MeleeWeapon.HasIcon())
                                                 {
                                                     var meleeWeapon = survivor.MeleeWeapon.Value;
 
-                                                    <img src="imgs/melee-weapon/@(meleeWeapon.WeaponName())-@(theme).png" alt="@meleeWeapon.Description()"
+                                                    <img src="imgs/melee-weapon/@meleeWeapon.WeaponName()-@(theme).png" alt="@meleeWeapon.Description()"
                                                          data-toggle="tooltip" data-placement="top" title="@meleeWeapon.Description()"
                                                          class="img-responsive img-weapon"/>
                                                 }
                                                 else
                                                 {
-                                                    <img src="imgs/weapon/@(weapon.WeaponName())-@(theme).png" alt="@weapon.Description()"
+                                                    <img src="imgs/weapon/@weapon.WeaponName()-@(theme).png" alt="@weapon.Description()"
                                                          data-toggle="tooltip" data-placement="top" title="@weapon.Description()"
                                                          class="img-responsive img-weapon"/>
                                                 }
@@ -134,7 +138,7 @@
                                         }
                                     </td>
                                 </tr>
-                                <tr id="tr2-survivor-@survivor.CommunityId">
+                                <tr id="tr2-survivor-@i">
                                     <td colspan="2">
                                         <table class="table-hp-progress">
                                             @if (survivor.IsPlayerAlive)
@@ -142,11 +146,19 @@
                                                 <tr>
                                                     @{
                                                         var permanentHealth = survivor.PermanentHealth ?? 0;
+                                                    }
+
+                                                    @{
                                                         var permanentHealthPercentage = survivor.MaxHealth == 0 ? 0 : permanentHealth / (decimal)survivor.MaxHealth;
-
+                                                    }
+                                                    @{
                                                         var temporaryHealth = survivor.TemporaryHealth ?? 0;
-                                                        var temporaryHealthPercentage = survivor.MaxHealth == 0 ? 0 : temporaryHealth / (decimal)survivor.MaxHealth;
+                                                    }
 
+                                                    @{
+                                                        var temporaryHealthPercentage = survivor.MaxHealth == 0 ? 0 : temporaryHealth / (decimal)survivor.MaxHealth;
+                                                    }
+                                                    @{
                                                         var progressBarClass = HealthProgressBarClass(survivor.HealthColor);
                                                     }
                                                     <td style="width: 100%">
@@ -186,9 +198,9 @@
                                         </table>
                                     </td>
                                 </tr>
-                                @if (survivor != survivors.Last())
+                                if (survivor != survivors.Last())
                                 {
-                                    <tr id="tr3-survivor-@survivor.CommunityId">
+                                    <tr id="tr3-survivor-@i">
                                         <td colspan="4">
                                             <hr/>
                                         </td>
@@ -214,11 +226,12 @@
                     {
                         <table class="table-infecteds">
                             <tbody>
-                            @foreach (var infected in infecteds)
+                            @for (var i = 0; i < infecteds.Length; i++)
                             {
+                                var infected = infecteds[i];
                                 var infectedIcon = infected.Type == null ? "none" : infected.Type.Value.ToString().ToLower();
                                 var infectedTitle = infected.Type?.Description() ?? "None";
-                                <tr id="tr0-infected-@infected.CommunityId">
+                                <tr id="tr0-infected-@i">
                                     <td style="width: 75px" rowspan="2">
                                         <img src="imgs/infected-type/@(infectedIcon).jpg" alt="@infectedTitle"
                                              data-toggle="tooltip" data-placement="top" title="@infectedTitle"
@@ -242,11 +255,14 @@
                                                 @SharedLocalizer["Spawning"]
                                             </span>
                                         }
-                                        else if (!infected.IsPlayerAlive)
+                                        else
                                         {
-                                            <span class="label label-danger" data-toggle="tooltip" data-placement="top" title="@SharedLocalizer["Dead"]">
-                                                @SharedLocalizer["Dead"]
-                                            </span>
+                                            if (!infected.IsPlayerAlive)
+                                            {
+                                                <span class="label label-danger" data-toggle="tooltip" data-placement="top" title="@SharedLocalizer["Dead"]">
+                                                    @SharedLocalizer["Dead"]
+                                                </span>
+                                            }
                                         }
                                     </td>
                                     <td rowspan="2" class="text-center text-nowrap">
@@ -264,7 +280,7 @@
                                         }
                                     </td>
                                 </tr>
-                                <tr id="tr1-infected-@infected.CommunityId">
+                                <tr id="tr1-infected-@i">
                                     <td colspan="2">
                                         @if (infected.IsPlayerAlive)
                                         {
@@ -290,9 +306,9 @@
                                         }
                                     </td>
                                 </tr>
-                                @if (infected != infecteds.Last())
+                                if (infected != infecteds.Last())
                                 {
-                                    <tr id="tr2-infected-@infected.CommunityId">
+                                    <tr id="tr2-infected-@i">
                                         <td colspan="5">
                                             <hr/>
                                         </td>
