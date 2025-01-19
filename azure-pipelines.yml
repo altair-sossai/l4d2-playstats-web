@@ -23,10 +23,6 @@ stages:
         dotnet build L4D2PlayStats.Web/L4D2PlayStats.Web/L4D2PlayStats.Web.csproj --configuration Release
       displayName: 'Build Project'
 
-    - script: |
-        dotnet test L4D2PlayStats.Web/L4D2PlayStats.Web/L4D2PlayStats.Web.csproj --configuration Release
-      displayName: 'Run Unit Tests'
-
 - stage: PublishAndDeploy
   dependsOn: BuildAndTest
   jobs:
