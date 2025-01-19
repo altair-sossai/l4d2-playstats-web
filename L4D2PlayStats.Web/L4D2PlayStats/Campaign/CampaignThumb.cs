@@ -18,7 +18,8 @@ public class CampaignThumb : ICampaignThumb
         "Blood Harvest",
         "Cold Stream",
         "The Last Stand",
-        "Dark Carnival Remix"
+        "Dark Carnival Remix",
+        "Open Road"
     ];
 
     public string this[string? campaign]
