@@ -1,6 +1,6 @@
 # Left 4 Dead 2 Match Stats and Ranking Site
 
-This ASP.NET MVC application (net8.0) serves as a ranking and statistics site for Left 4 Dead 2 matches.
+This ASP.NET MVC application (net9.0) serves as a ranking and statistics site for Left 4 Dead 2 matches.
 
 For an example of this site in action, visit the Brazilian community site at [https://l4d2.com.br/](https://l4d2.com.br/).
 
