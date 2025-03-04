@@ -376,7 +376,7 @@
 
 @if (!string.IsNullOrEmpty(serverIp))
 {
-    <a href="steam://connect/@serverIp" class="float-icon hide-mobile">
+    <a href="@Url.Action("Index", "Connect")" class="float-icon hide-mobile">
         <img src="~/imgs/icons/l4d2.png" alt="connect @serverIp" data-toggle="tooltip" data-placement="top" title="connect @serverIp"/>
     </a>
 }
