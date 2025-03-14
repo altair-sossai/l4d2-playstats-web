@@ -4,6 +4,7 @@ namespace L4D2PlayStats.Sdk.Matches.Results;
 
 public class MatchResult
 {
+    public string? ConfigurationName { get; set; }
     public int TeamSize { get; set; }
     public DateTime MatchStart { get; set; }
     public DateTime? MatchEnd { get; set; }
