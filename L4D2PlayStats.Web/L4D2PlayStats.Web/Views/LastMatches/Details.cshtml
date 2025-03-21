@@ -55,6 +55,7 @@
             <th class="text-center">@SharedLocalizer["Elapsed"]</th>
             <th class="text-center">@SharedLocalizer["Map"]</th>
             <th class="text-center slim" colspan="3">@SharedLocalizer["Scoreboard"]</th>
+            <th></th>
             </thead>
             <tbody>
             @for (var i = 0; i < Model.Statistics.Count; i++)
@@ -67,11 +68,19 @@
                 var labelTeamB = scoring?.Draw == true ? "default" : scoring?.TeamBWon == true ? "success" : "danger";
 
                 <tr>
-                    <td class="text-center" data-label="#">#@(i + 1)</td>
+                    <td class="text-center" data-label="#">
+                        <a href="@Url.Action("Statistics", "LastMatches", new { start = Model.Match.Start, end = Model.Match.End, statisticId = result.StatisticId })">
+                            #@(i + 1)
+                        </a>
+                    </td>
                     <td class="text-center" data-label="@SharedLocalizer["Start"]">@statistic?.MapStart?.ToString("d") @statistic?.MapStart?.ToString("HH:mm")</td>
                     <td class="text-center" data-label="@SharedLocalizer["End"]">@statistic?.MapEnd?.ToString("d") @statistic?.MapEnd?.ToString("HH:mm")</td>
                     <td class="text-center" data-label="@SharedLocalizer["Elapsed"]">@statistic?.MapElapsed?.ToString(@"hh\:mm\:ss")</td>
-                    <td class="text-center" data-label="@SharedLocalizer["Map"]">@gameRound?.MapName</td>
+                    <td class="text-center" data-label="@SharedLocalizer["Map"]">
+                        <a href="@Url.Action("Statistics", "LastMatches", new { start = Model.Match.Start, end = Model.Match.End, statisticId = result.StatisticId })">
+                            @gameRound?.MapName
+                        </a>
+                    </td>
                     <td class="text-center slim" data-label="@SharedLocalizer["TeamAScore"]">
                         <span class="label label-@labelTeamA" data-toggle="tooltip" data-placement="top" title="@SharedLocalizer["TeamAScore"]">
                             @scoring?.TeamA?.Score.ToString("N0")
@@ -86,6 +95,11 @@
                         <span class="label label-@labelTeamB" data-toggle="tooltip" data-placement="top" title="@SharedLocalizer["TeamBScore"]">
                             @scoring?.TeamB?.Score.ToString("N0")
                         </span>
+                    </td>
+                    <td class="text-center slim" data-label="@SharedLocalizer["Details"]">
+                        <a href="@Url.Action("Statistics", "LastMatches", new { start = Model.Match.Start, end = Model.Match.End, statisticId = result.StatisticId })" class="btn btn-danger btn-xs">
+                            @SharedLocalizer["Details"]
+                        </a>
                     </td>
                 </tr>
             }
