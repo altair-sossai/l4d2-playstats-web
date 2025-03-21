@@ -7,22 +7,102 @@
 @inject IUserAvatar UserAvatar
 
 @section Styles {
-    <style>
+<style>
+    .maps .label {
+    margin: 0 3px;
+    }
+</style>
+}
 
-    </style>
+@if (Model.Statistics.Count == 0)
+{
+    <div class="row">
+        <div class="col-xs-12">
+            <h4 class="text-center">
+                @SharedLocalizer["NoMatchFound"]
+            </h4>
+        </div>
+    </div>
+    return;
 }
 
 @{
-    var statistics = Model.Statistics;
     var match = Model.Match;
-    var statistic = statistics.Statistic;
-    var halves = statistic?.Halves ?? StatisticsResult.HalfResult.EmptyCollection;
-    var teamA = statistic?.TeamA ?? StatisticsResult.PlayerNameResult.EmptyCollection;
-    var teamB = statistic?.TeamB ?? StatisticsResult.PlayerNameResult.EmptyCollection;
+    var gameRound = Model.Statistic?.Statistic?.GameRound;
+    var halves = Model.Statistic?.Statistic?.Halves ?? StatisticsResult.HalfResult.EmptyCollection;
+    var teamA = Model.Statistic?.Statistic?.TeamA ?? StatisticsResult.PlayerNameResult.EmptyCollection;
+    var teamB = Model.Statistic?.Statistic?.TeamB ?? StatisticsResult.PlayerNameResult.EmptyCollection;
     var teams = new List<List<StatisticsResult.PlayerNameResult>> { teamA, teamB };
 }
 
-<p>@match.Campaign</p>
+<h4 class="text-center">@SharedLocalizer["MatchDetails"]</h4>
+
+<ol class="breadcrumb">
+    <li>
+        @Html.ActionLink(SharedLocalizer["LastMatches"].Value, "Index", "LastMatches")
+    </li>
+    <li>
+        @Html.ActionLink(match.Campaign ?? SharedLocalizer["Campaign"].Value, "Details", "LastMatches", new { start = match.Start, end = match.End })
+    </li>
+    <li>
+        @gameRound?.MapName
+    </li>
+</ol>
+
+<div class="maps">
+    <div class="panel panel-default">
+        <table class="table table-striped table-hover table-condensed table-responsive">
+            <thead>
+            <th class="text-center">#</th>
+            <th class="text-center">@SharedLocalizer["Map"]</th>
+            <th class="text-center">@SharedLocalizer["Start"]</th>
+            <th class="text-center">@SharedLocalizer["End"]</th>
+            <th class="text-center">@SharedLocalizer["Elapsed"]</th>
+            <th class="text-center slim" colspan="3">@SharedLocalizer["Scoreboard"]</th>
+            </thead>
+            <tbody>
+                @for (var i = 0; i < Model.Statistics.Count; i++)
+                {
+                    var result = Model.Statistics[i];
+                    var scoring = result.Statistic?.Scoring;
+                    var labelTeamA = scoring?.Draw == true ? "default" : scoring?.TeamAWon == true ? "success" : "danger";
+                    var labelTeamB = scoring?.Draw == true ? "default" : scoring?.TeamBWon == true ? "success" : "danger";
+
+                    <tr class="@(Model.Statistic?.StatisticId == result.StatisticId ? "info" : string.Empty)">
+                        <td class="text-center" data-label="#">
+                            <a href="@Url.Action("Statistics", "LastMatches", new { start = Model.Match.Start, end = Model.Match.End, statisticId = result.StatisticId })">
+                                #@(i + 1)
+                            </a>
+                        </td>
+                        <td class="text-center" data-label="@SharedLocalizer["Map"]">
+                            <a href="@Url.Action("Statistics", "LastMatches", new { start = Model.Match.Start, end = Model.Match.End, statisticId = result.StatisticId })">
+                                @result.Statistic?.GameRound?.MapName
+                            </a>
+                        </td>
+                        <td class="text-center" data-label="@SharedLocalizer["Start"]">@result.Statistic?.MapStart?.ToString("d") @result.Statistic?.MapStart?.ToString("HH:mm")</td>
+                        <td class="text-center" data-label="@SharedLocalizer["End"]">@result.Statistic?.MapEnd?.ToString("d") @result.Statistic?.MapEnd?.ToString("HH:mm")</td>
+                        <td class="text-center" data-label="@SharedLocalizer["Elapsed"]">@result.Statistic?.MapElapsed?.ToString(@"hh\:mm\:ss")</td>
+                        <td class="text-center slim" data-label="@SharedLocalizer["TeamAScore"]">
+                            <span class="label label-@labelTeamA" data-toggle="tooltip" data-placement="top" title="@SharedLocalizer["TeamAScore"]">
+                                @scoring?.TeamA?.Score.ToString("N0")
+                            </span>
+                        </td>
+                        <td class="text-center slim" data-label="@SharedLocalizer["ScoreDifference"]">
+                            <span class="label label-default" data-toggle="tooltip" data-placement="top" title="@SharedLocalizer["ScoreDifference"]">
+                                @scoring?.ScoreDiff?.ToString("N0")
+                            </span>
+                        </td>
+                        <td class="text-center slim" data-label="@SharedLocalizer["TeamBScore"]">
+                            <span class="label label-@labelTeamB" data-toggle="tooltip" data-placement="top" title="@SharedLocalizer["TeamBScore"]">
+                                @scoring?.TeamB?.Score.ToString("N0")
+                            </span>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
 
 @foreach (var team in teams)
 {

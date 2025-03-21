@@ -6,7 +6,6 @@ using L4D2PlayStats.Sdk.Statistics.Results;
 using L4D2PlayStats.UserAvatar;
 using L4D2PlayStats.Web.Models;
 using Microsoft.AspNetCore.Mvc;
-using static L4D2PlayStats.Sdk.Statistics.Results.StatisticsResult;
 
 namespace L4D2PlayStats.Web.Controllers;
 
@@ -50,12 +49,16 @@ public class LastMatchesController(
     {
         var matches = await matchesService.BetweenAsync(ServerId, start, end);
         var match = matches.First();
-        var statistics = await statisticsService.StatisticsAsync(ServerId, statisticId);
+        var statistics = await statisticsService.BetweenAsync(ServerId, start, end);
+        var statistic = statistics.FirstOrDefault(f => f.StatisticId == statisticId);
+
+        if (statistic == null)
+            return NotFound();
 
         await LoadAvatarsAsync(matches);
         await LoadAvatarsAsync(statistics);
 
-        var model = new StatisticsDetailsModel(match, statistics);
+        var model = new StatisticsDetailsModel(match, statistics, statistic);
 
         return View(model);
     }
@@ -70,15 +73,14 @@ public class LastMatchesController(
         await userAvatar.LoadAsync(communityIds);
     }
 
-    private async Task LoadAvatarsAsync(StatisticsResult statistics)
+    private async Task LoadAvatarsAsync(List<StatisticsResult> statistics)
     {
-        var teams = new List<List<PlayerNameResult>?>
-        {
-            statistics.Statistic?.TeamA,
-            statistics.Statistic?.TeamB
-        };
+        var communityIds = new HashSet<string>();
 
-        var communityIds = teams.SelectMany(team => team?.Select(pn => pn.CommunityId) ?? []);
+        foreach (var statistic in statistics.Select(s => s.Statistic))
+        foreach (var team in new[] { statistic?.TeamA ?? [], statistic?.TeamB ?? [] })
+        foreach (var player in team.Where(player => !string.IsNullOrEmpty(player.CommunityId)))
+            communityIds.Add(player.CommunityId!);
 
         await userAvatar.LoadAsync(communityIds);
     }
