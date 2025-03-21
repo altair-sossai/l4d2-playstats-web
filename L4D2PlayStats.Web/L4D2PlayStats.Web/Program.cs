@@ -42,7 +42,12 @@ builder.Services.AddAuthentication(options =>
         options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
         options.DefaultChallengeScheme = SteamAuthenticationDefaults.AuthenticationScheme;
     })
-    .AddCookie()
+    .AddCookie(options =>
+    {
+        options.Cookie.HttpOnly = true;
+        options.ExpireTimeSpan = TimeSpan.FromDays(30);
+        options.SlidingExpiration = true;
+    })
     .AddSteam();
 
 builder.Services.AddApp();

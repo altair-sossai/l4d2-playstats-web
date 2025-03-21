@@ -83,7 +83,7 @@
         }
 
         #chat-messages {
-            height: 250px;
+            height: 400px;
             overflow-y: scroll;
         }
 
@@ -97,14 +97,25 @@
     <script>
         var refreshInterval = 2600;
 
+        var dd = new diffDOM.DiffDOM();
+
+        function sync(current, html) {
+            var source = document.createElement('div');
+            source.id = current.id;
+            source.innerHTML = html;
+
+            var diffs = dd.diff(current, source);
+            dd.apply(current, diffs);
+        }
+
         function refreshHeader() {
             $.ajax({
                 url: 'servers/header',
                 type: 'GET',
                 success: function (html) {
-                    var target = $('#game-info-header').children().first().get(0);
-                    var source = $(html).get(0);
-                    morphdom(target, source);
+                    var target = document.getElementById('game-info-header');
+                    sync(target, html);
+
                 },
                 complete: function () {
                     setTimeout(refreshHeader, refreshInterval);
@@ -117,9 +128,8 @@
                 url: 'servers/players',
                 type: 'GET',
                 success: function (html) {
-                    var target = $('#game-info-players').children().first().get(0);
-                    var source = $(html).get(0);
-                    morphdom(target, source);
+                    var target = document.getElementById('game-info-players');
+                    sync(target, html);
                 },
                 complete: function () {
                     setTimeout(refreshPlayers, refreshInterval);
@@ -186,7 +196,7 @@
 
 <div class="row hide-mobile">
     <div class="col-md-12 text-center">
-        <a href="steam://connect/@Model.ServerIp" class="btn btn-sm btn-primary" style="margin: 10px">
+        <a href="@Url.Action("Index", "Connect")" class="btn btn-sm btn-primary" style="margin: 10px">
             connect @Model.ServerIp
         </a>
     </div>

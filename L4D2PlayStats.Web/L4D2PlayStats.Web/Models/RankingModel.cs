@@ -24,7 +24,11 @@ public class RankingModel(IStringLocalizer<SharedResource> sharedLocalizer, Play
 
         public decimal? ExperienceDifference => player.ExperienceDifference;
 
-        public string ProgressBarType => LevelUp ? "success" : LevelDrop ? "danger" : "info";
+        public string ProgressBarType => MaxLevel || LevelUp ? "success"
+            : LevelDrop ? "danger"
+            : "info";
+
+        public bool ProgressBarPulsate => !MaxLevel && ProgressBarType != "info";
 
         public string ProgressBarWidth
         {

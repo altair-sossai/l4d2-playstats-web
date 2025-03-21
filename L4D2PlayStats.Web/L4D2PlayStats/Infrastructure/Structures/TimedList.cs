@@ -1,6 +1,6 @@
 ﻿namespace L4D2PlayStats.Infrastructure.Structures;
 
-public class TimedList<T>(int maxItems = 150, TimeSpan? expireIn = null, TimeSpan? delay = null)
+public class TimedList<T>(int maxItems = 250, TimeSpan? expireIn = null, TimeSpan? delay = null)
 {
 #if DEBUG
     private const int DefaultDelaySeconds = 1;

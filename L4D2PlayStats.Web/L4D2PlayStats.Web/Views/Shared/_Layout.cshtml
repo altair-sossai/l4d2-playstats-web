@@ -106,7 +106,7 @@
         }
 
         .match .img-campaign {
-            max-height: 175px;
+            max-height: 155px;
         }
 
         .show-mobile {
@@ -209,6 +209,15 @@
     </style>
 
     @await RenderSectionAsync("Styles", false)
+
+    <script>
+
+        function imgOnError(img) {
+            img.onerror = null;
+            img.src = '/imgs/avatar-empty.png';
+        }
+
+    </script>
 </head>
 <body>
 
@@ -367,14 +376,15 @@
 
 @if (!string.IsNullOrEmpty(serverIp))
 {
-    <a href="steam://connect/@serverIp" class="float-icon hide-mobile">
+    <a href="@Url.Action("Index", "Connect")" class="float-icon hide-mobile">
         <img src="~/imgs/icons/l4d2.png" alt="connect @serverIp" data-toggle="tooltip" data-placement="top" title="connect @serverIp"/>
     </a>
 }
 
 <script src="~/js/jquery.min.js"></script>
 <script src="~/js/bootstrap.min.js"></script>
-<script src="~/js/morphdom-umd.min.js"></script>
+<script src="~/js/diffDOM.min.js"></script>
+<script src="~/js/chart.min.js"></script>
 @await RenderSectionAsync("Scripts", false)
 
 <script>
@@ -444,6 +454,43 @@
             });
         };
 
+        function createChart(canvas) {
+            var ctx = canvas.getContext('2d');
+            var chartData = $(canvas).data('chart');
+
+            new Chart(ctx, chartData);
+        }
+
+        function isElementInViewport(el, margin) {
+            margin = margin || 150;
+            var rect = el.getBoundingClientRect();
+
+            return (
+                rect.top >= -margin &&
+                rect.left >= -margin &&
+                rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) + margin &&
+                rect.right <= (window.innerWidth || document.documentElement.clientWidth) + margin
+            );
+        }
+
+        function lazyLoadCharts() {
+            $('.app-chart').each(function () {
+                if ($(this).data('loaded')) 
+                    return;
+
+                if (!isElementInViewport(this))
+                    return;
+
+                createChart(this);
+
+                $(this).data('loaded', true);
+            });
+        }
+
+        $(window).on('scroll resize', function () {
+            lazyLoadCharts();
+        });
+
         $(document).ready(function () { 
             $('[data-toggle="tooltip"]').tooltip();
 
@@ -468,6 +515,8 @@
 
             updateServerInfo();
             setInterval(updateServerInfo, 10000);
+
+            lazyLoadCharts();
         });
     </script>
 

@@ -1,0 +1,331 @@
+{
+	"info": {
+		"_postman_id": "42e2a55f-515b-4d18-a867-b1c43dad7404",
+		"name": "L4D2",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "71337"
+	},
+	"item": [
+		{
+			"name": "api",
+			"item": [
+				{
+					"name": "game-info",
+					"item": [
+						{
+							"name": "get",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:5000/api/game-info",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"game-info"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "configuration",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:5000/api/game-info/configuration",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"game-info",
+										"configuration"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "configuration",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "SecretKey",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"teamSize\": 4,\r\n    \"name\": \"ZoneMod v2.8.9d\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:5000/api/game-info/configuration",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"game-info",
+										"configuration"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "round",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:5000/api/game-info/round",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"game-info",
+										"round"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "round",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "SecretKey",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"isInReady\": false,\r\n    \"isInPause\": false,\r\n    \"areTeamsFlipped\": true,\r\n    \"maxChapterProgressPoints\": 700,\r\n    \"tankPercent\": 0.3,\r\n    \"witchPercent\": 0\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:5000/api/game-info/round",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"game-info",
+										"round"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "scoreboard",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:5000/api/game-info/scoreboard",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"game-info",
+										"scoreboard"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "scoreboard",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "SecretKey",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"survivorScore\": 1050,\r\n    \"infectedScore\": 950,\r\n    \"bonus\": 300,\r\n    \"maxBonus\": 1100,\r\n    \"currentProgress\": 0.33,\r\n    \"currentProgressPoints\": 450,\r\n    \"isTankInPlay\": true\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:5000/api/game-info/scoreboard",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"game-info",
+										"scoreboard"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "players",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:5000/api/game-info/players",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"game-info",
+										"players"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "players",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "SecretKey",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"survivors\": [\r\n        {\r\n            \"communityId\": \"76561198200134383\",\r\n            \"name\": \"AmeriKKKa'z Most Wanted\",\r\n            \"latency\": 0.16,\r\n            \"character\": 1,\r\n            \"permanentHealth\": 50,\r\n            \"temporaryHealth\": 6,\r\n            \"primaryWeapon\": 5,\r\n            \"secondaryWeapon\": 19,\r\n            \"meleeWeapon\": 8,\r\n            \"slotNumber3\": 13,\r\n            \"slotNumber4\": 12,\r\n            \"slotNumber5\": 15,\r\n            \"blackAndWhite\": false,\r\n            \"incapacitated\": false,\r\n            \"isPlayerAlive\": true,\r\n            \"progress\": 0.76\r\n        },\r\n        {\r\n            \"communityId\": \"76561199157667941\",\r\n            \"name\": \"hard\",\r\n            \"latency\": 0.04,\r\n            \"character\": 0,\r\n            \"permanentHealth\": 50,\r\n            \"temporaryHealth\": 5,\r\n            \"primaryWeapon\": 2,\r\n            \"secondaryWeapon\": 1,\r\n            \"slotNumber3\": 13,\r\n            \"slotNumber4\": 12,\r\n            \"slotNumber5\": 15,\r\n            \"blackAndWhite\": true,\r\n            \"incapacitated\": true,\r\n            \"isPlayerAlive\": true,\r\n            \"progress\": 0.92\r\n        },\r\n        {\r\n            \"communityId\": \"76561199248670342\",\r\n            \"name\": \"vse\",\r\n            \"latency\": 0.1,\r\n            \"character\": 2,\r\n            \"permanentHealth\": 5,\r\n            \"temporaryHealth\": 40,\r\n            \"primaryWeapon\": 7,\r\n            \"secondaryWeapon\": 1,\r\n            \"slotNumber5\": 15,\r\n            \"blackAndWhite\": true,\r\n            \"incapacitated\": false,\r\n            \"isPlayerAlive\": true,\r\n            \"progress\": 0.75\r\n        },\r\n        {\r\n            \"communityId\": \"76561199121159583\",\r\n            \"name\": \"wäled!\",\r\n            \"latency\": 0.1,\r\n            \"character\": 3,\r\n            \"permanentHealth\": 45,\r\n            \"temporaryHealth\": 0,\r\n            \"primaryWeapon\": 8,\r\n            \"secondaryWeapon\": 1,\r\n            \"slotNumber5\": 23,\r\n            \"blackAndWhite\": false,\r\n            \"incapacitated\": false,\r\n            \"isPlayerAlive\": true,\r\n            \"progress\": 0.75\r\n        }\r\n    ],\r\n    \"infecteds\": [\r\n        {\r\n            \"communityId\": \"76561198055718285\",\r\n            \"name\": \"whyyy\",\r\n            \"latency\": 0.4,\r\n            \"type\": 8,\r\n            \"damage\": 150,\r\n            \"health\": 25,\r\n            \"maxHealth\": 100,\r\n            \"isInfectedGhost\": false,\r\n            \"isPlayerAlive\": true\r\n        },\r\n        {\r\n            \"communityId\": \"76561198085860651\",\r\n            \"name\": \"Gewësse\",\r\n            \"latency\": 0.4,\r\n            \"type\": 2,\r\n            \"damage\": 10,\r\n            \"health\": 50,\r\n            \"maxHealth\": 50,\r\n            \"isInfectedGhost\": false,\r\n            \"isPlayerAlive\": true\r\n        },\r\n        {\r\n            \"communityId\": \"76561198343656064\",\r\n            \"name\": \"<]:v\",\r\n            \"latency\": 0.4,\r\n            \"type\": 3,\r\n            \"damage\": 15,\r\n            \"health\": 10,\r\n            \"maxHealth\": 80,\r\n            \"isInfectedGhost\": true,\r\n            \"isPlayerAlive\": false\r\n        },\r\n        {\r\n            \"communityId\": \"76561199040881931\",\r\n            \"name\": \"Amaruk\",\r\n            \"latency\": 0.4,\r\n            \"type\": 4,\r\n            \"damage\": 25,\r\n            \"health\": 50,\r\n            \"maxHealth\": 100,\r\n            \"isInfectedGhost\": false,\r\n            \"isPlayerAlive\": true\r\n        }\r\n    ],\r\n    \"spectators\": [\r\n        {\r\n            \"communityId\": \"76561199157667941\",\r\n            \"name\": \"hard2\"\r\n        },\r\n        {\r\n            \"communityId\": \"76561199040881931\",\r\n            \"name\": \"Amaruk!!!\"\r\n        }\r\n    ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:5000/api/game-info/players",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"game-info",
+										"players"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "messages",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:5000/api/game-info/messages?after=0",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"game-info",
+										"messages"
+									],
+									"query": [
+										{
+											"key": "after",
+											"value": "0"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "messages",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "SecretKey",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"when\": 19,\r\n    \"public\": true,\r\n    \"team\": 2,\r\n    \"communityId\": \"6561198135872483\",\r\n    \"name\": \"fear\",\r\n    \"message\": \"Bom dia!!\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:5000/api/game-info/messages",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"game-info",
+										"messages"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	]
+}

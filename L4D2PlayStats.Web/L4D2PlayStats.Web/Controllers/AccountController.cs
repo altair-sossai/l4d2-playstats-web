@@ -10,13 +10,23 @@ public class AccountController : Controller
     [HttpGet("login")]
     public IActionResult Login(string? returnUrl = null)
     {
-        return Challenge(new AuthenticationProperties { RedirectUri = RedirectUrl(returnUrl) }, SteamAuthenticationDefaults.AuthenticationScheme);
+        return Challenge(AuthenticationProperties(returnUrl), SteamAuthenticationDefaults.AuthenticationScheme);
     }
 
     [HttpGet("logout")]
     public IActionResult Logout(string? returnUrl = null)
     {
-        return SignOut(new AuthenticationProperties { RedirectUri = RedirectUrl(returnUrl) }, CookieAuthenticationDefaults.AuthenticationScheme);
+        return SignOut(AuthenticationProperties(returnUrl), CookieAuthenticationDefaults.AuthenticationScheme);
+    }
+
+    private AuthenticationProperties AuthenticationProperties(string? returnUrl)
+    {
+        return new AuthenticationProperties
+        {
+            IsPersistent = true,
+            ExpiresUtc = DateTime.UtcNow.AddDays(30),
+            RedirectUri = RedirectUrl(returnUrl)
+        };
     }
 
     private string RedirectUrl(string? returnUrl)

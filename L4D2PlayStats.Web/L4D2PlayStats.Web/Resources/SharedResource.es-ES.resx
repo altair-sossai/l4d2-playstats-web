@@ -504,4 +504,10 @@
   <data name="HowManyExperiencePointsShouldTheUserLose" xml:space="preserve">
     <value>¿Cuántos puntos de experiencia debería perder el usuario?</value>
   </data>
+  <data name="PointsEarnedOnMap" xml:space="preserve">
+    <value>Puntos obtenidos en el mapa</value>
+  </data>
+  <data name="Disabled" xml:space="preserve">
+    <value>Deshabilitado</value>
+  </data>
 </root>

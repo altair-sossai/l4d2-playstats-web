@@ -7,7 +7,7 @@ namespace L4D2PlayStats.GameInfo;
 
 public class GameInfo
 {
-    private static readonly object Lock = new();
+    private static readonly Lock Lock = new();
     private static GameInfo? _gameInfo;
     private readonly TimedValue<Configuration?> _configuration = new(expireIn: TimeSpan.FromDays(1));
     private readonly TimedValue<Infected[]> _infecteds = new([], TimeSpan.FromHours(2));
