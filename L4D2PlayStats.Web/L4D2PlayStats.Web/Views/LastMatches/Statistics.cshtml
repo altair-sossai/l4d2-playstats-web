@@ -316,74 +316,96 @@
                                 <div class="col-md-6 right-side">
                                     <table class="table table-striped table-hover table-bordered table-condensed">
                                         <tbody>
-                                            @if (roundHalf.StartTime != null)
-                                            {
-                                                <tr>
-                                                    <th>@SharedLocalizer["RoundStart"]:</th>
-                                                    <td class="slim text-center">@($"{roundHalf.StartTime.Value:d} {roundHalf.StartTime.Value:HH:mm}")</td>
-                                                </tr>
-                                            }
-                                            @if (roundHalf.EndTime != null)
-                                            {
-                                                <tr>
-                                                    <th>@SharedLocalizer["RoundEnd"]:</th>
-                                                    <td class="slim text-center">@($"{roundHalf.EndTime.Value:d} {roundHalf.EndTime.Value:HH:mm}")</td>
-                                                </tr>
-                                            }
-                                            @if (!string.IsNullOrWhiteSpace(roundHalf.RoundElapsed))
-                                            {
-                                                <tr>
-                                                    <th>@SharedLocalizer["RoundDuration"]:</th>
-                                                    <td class="slim text-center">@roundHalf.RoundElapsed</td>
-                                                </tr>
-                                            }
-                                            @if (roundHalf.StartTimePause != null)
-                                            {
-                                                <tr>
-                                                    <th>@SharedLocalizer["PauseStart"]:</th>
-                                                    <td class="slim text-center">@($"{roundHalf.StartTimePause.Value:d} {roundHalf.StartTimePause.Value:HH:mm}")</td>
-                                                </tr>
-                                            }
-                                            @if (roundHalf.StopTimePause != null)
-                                            {
-                                                <tr>
-                                                    <th>@SharedLocalizer["PauseEnd"]:</th>
-                                                    <td class="slim text-center">@($"{roundHalf.StopTimePause.Value:d} {roundHalf.StopTimePause.Value:HH:mm}")</td>
-                                                </tr>
-                                            }
-                                            @if (!string.IsNullOrWhiteSpace(roundHalf.PauseElapsed))
-                                            {
-                                                <tr>
-                                                    <th>@SharedLocalizer["PauseDuration"]:</th>
-                                                    <td class="slim text-center">@roundHalf.PauseElapsed</td>
-                                                </tr>
-                                            }
-                                            @if (roundHalf.StartTimeTank != null)
-                                            {
-                                                <tr>
-                                                    <th>@SharedLocalizer["TankStart"]:</th>
-                                                    <td class="slim text-center">@($"{roundHalf.StartTimeTank.Value:d} {roundHalf.StartTimeTank.Value:HH:mm}")</td>
-                                                </tr>
-                                            }
-                                            @if (roundHalf.StopTimeTank != null)
-                                            {
-                                                <tr>
-                                                    <th>@SharedLocalizer["TankEnd"]:</th>
-                                                    <td class="slim text-center">@($"{roundHalf.StopTimeTank.Value:d} {roundHalf.StopTimeTank.Value:HH:mm}")</td>
-                                                </tr>
-                                            }
-                                            @if (!string.IsNullOrWhiteSpace(roundHalf.TankElapsed))
-                                            {
-                                                <tr>
-                                                    <th>@SharedLocalizer["TankDuration"]:</th>
-                                                    <td class="slim text-center">@roundHalf.TankElapsed</td>
-                                                </tr>
-                                            }
+                                        @if (roundHalf.StartTime != null)
+                                        {
+                                            <tr>
+                                                <th>@SharedLocalizer["RoundStart"]:</th>
+                                                <td class="slim text-center">@($"{roundHalf.StartTime.Value:d} {roundHalf.StartTime.Value:HH:mm}")</td>
+                                            </tr>
+                                        }
+                                        @if (roundHalf.EndTime != null)
+                                        {
+                                            <tr>
+                                                <th>@SharedLocalizer["RoundEnd"]:</th>
+                                                <td class="slim text-center">@($"{roundHalf.EndTime.Value:d} {roundHalf.EndTime.Value:HH:mm}")</td>
+                                            </tr>
+                                        }
+                                        @if (!string.IsNullOrWhiteSpace(roundHalf.RoundElapsed))
+                                        {
+                                            <tr>
+                                                <th>@SharedLocalizer["RoundDuration"]:</th>
+                                                <td class="slim text-center">@roundHalf.RoundElapsed</td>
+                                            </tr>
+                                        }
+                                        @if (roundHalf.StartTimePause != null)
+                                        {
+                                            <tr>
+                                                <th>@SharedLocalizer["PauseStart"]:</th>
+                                                <td class="slim text-center">@($"{roundHalf.StartTimePause.Value:d} {roundHalf.StartTimePause.Value:HH:mm}")</td>
+                                            </tr>
+                                        }
+                                        @if (roundHalf.StopTimePause != null)
+                                        {
+                                            <tr>
+                                                <th>@SharedLocalizer["PauseEnd"]:</th>
+                                                <td class="slim text-center">@($"{roundHalf.StopTimePause.Value:d} {roundHalf.StopTimePause.Value:HH:mm}")</td>
+                                            </tr>
+                                        }
+                                        @if (!string.IsNullOrWhiteSpace(roundHalf.PauseElapsed))
+                                        {
+                                            <tr>
+                                                <th>@SharedLocalizer["PauseDuration"]:</th>
+                                                <td class="slim text-center">@roundHalf.PauseElapsed</td>
+                                            </tr>
+                                        }
+                                        @if (roundHalf.StartTimeTank != null)
+                                        {
+                                            <tr>
+                                                <th>@SharedLocalizer["TankStart"]:</th>
+                                                <td class="slim text-center">@($"{roundHalf.StartTimeTank.Value:d} {roundHalf.StartTimeTank.Value:HH:mm}")</td>
+                                            </tr>
+                                        }
+                                        @if (roundHalf.StopTimeTank != null)
+                                        {
+                                            <tr>
+                                                <th>@SharedLocalizer["TankEnd"]:</th>
+                                                <td class="slim text-center">@($"{roundHalf.StopTimeTank.Value:d} {roundHalf.StopTimeTank.Value:HH:mm}")</td>
+                                            </tr>
+                                        }
+                                        @if (!string.IsNullOrWhiteSpace(roundHalf.TankElapsed))
+                                        {
+                                            <tr>
+                                                <th>@SharedLocalizer["TankDuration"]:</th>
+                                                <td class="slim text-center">@roundHalf.TankElapsed</td>
+                                            </tr>
+                                        }
                                         </tbody>
                                     </table>
 
                                 </div>
                             </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-md-5">
+                    <div class="panel panel-default" style="margin-bottom: 0;">
+                        <div class="panel-heading bold" style="padding: 3px 15px">
+                            @SharedLocalizer["Survivors"]
+                        </div>
+                        <div class="panel-body" style="padding: 0">
+                           
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-7">
+                    <div class="panel panel-default" style="margin-bottom: 0;">
+                        <div class="panel-heading bold" style="padding: 3px 15px">
+                            @SharedLocalizer["Infecteds"]
+                        </div>
+                        <div class="panel-body" style="padding: 0">
                         </div>
                     </div>
                 </div>
