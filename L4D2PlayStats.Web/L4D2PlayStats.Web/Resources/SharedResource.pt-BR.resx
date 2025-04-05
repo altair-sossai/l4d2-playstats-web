@@ -277,7 +277,7 @@
     <value>Comuns</value>
   </data>
   <data name="SiDamage" xml:space="preserve">
-    <value>SI - Dano</value>
+    <value>SI - Dano recebido</value>
   </data>
   <data name="TimesIncap" xml:space="preserve">
     <value>Vezes incapacitado</value>
@@ -509,5 +509,59 @@
   </data>
   <data name="Disabled" xml:space="preserve">
     <value>Desabilitado</value>
+  </data>
+  <data name="Campaign" xml:space="preserve">
+    <value>Campanha</value>
+    </data>
+  <data name="Restarts" xml:space="preserve">
+    <value>Reinícios</value>
+  </data>
+  <data name="PillsUsed" xml:space="preserve">
+    <value>Pílulas utilizadas</value>
+  </data>
+  <data name="KitsUsed" xml:space="preserve">
+    <value>Kits utilizados</value>
+  </data>
+  <data name="DefibrillatorsUsed" xml:space="preserve">
+    <value>Desfibriladores utilizados</value>
+  </data>
+  <data name="SiSpawned" xml:space="preserve">
+    <value>SI - spawnados</value>
+  </data>
+  <data name="TanksKilled" xml:space="preserve">
+    <value>Tanks mortos</value>
+  </data>
+  <data name="WitchesKilled" xml:space="preserve">
+    <value>Witches mortas</value>
+  </data>
+  <data name="CommonsKilled" xml:space="preserve">
+    <value>Infectados comuns mortos</value>
+  </data>
+  <data name="RoundStart" xml:space="preserve">
+    <value>Início do round</value>
+  </data>
+  <data name="RoundEnd" xml:space="preserve">
+    <value>Fim do round</value>
+  </data>
+  <data name="RoundDuration" xml:space="preserve">
+    <value>Duração do round</value>
+  </data>
+  <data name="PauseStart" xml:space="preserve">
+    <value>Início do pause</value>
+  </data>
+  <data name="PauseEnd" xml:space="preserve">
+    <value>Fim do pause</value>
+  </data>
+  <data name="PauseDuration" xml:space="preserve">
+    <value>Duração do pause</value>
+  </data>
+  <data name="TankStart" xml:space="preserve">
+    <value>Início do Tank</value>
+  </data>
+  <data name="TankEnd" xml:space="preserve">
+    <value>Fim do Tank</value>
+  </data>
+  <data name="TankDuration" xml:space="preserve">
+    <value>Duração do Tank</value>
   </data>
 </root>

@@ -277,7 +277,7 @@
     <value>Commons</value>
   </data>
   <data name="SiDamage" xml:space="preserve">
-    <value>SI - Damage</value>
+    <value>SI - Damage taken</value>
   </data>
   <data name="TimesIncap" xml:space="preserve">
     <value>Times incap.</value>
@@ -509,5 +509,59 @@
   </data>
   <data name="Disabled" xml:space="preserve">
     <value>Disabled</value>
+  </data>
+  <data name="Campaign" xml:space="preserve">
+    <value>Campaign</value>
+  </data>
+  <data name="Restarts" xml:space="preserve">
+    <value>Restarts</value>
+  </data>
+  <data name="PillsUsed" xml:space="preserve">
+    <value>Pills used</value>
+  </data>
+  <data name="KitsUsed" xml:space="preserve">
+    <value>First aid kits used</value>
+  </data>
+  <data name="DefibrillatorsUsed" xml:space="preserve">
+    <value>Defibrillators used</value>
+  </data>
+  <data name="SiSpawned" xml:space="preserve">
+    <value>SI - spawned</value>
+  </data>
+  <data name="TanksKilled" xml:space="preserve">
+    <value>Tanks killed</value>
+  </data>
+  <data name="WitchesKilled" xml:space="preserve">
+    <value>Witches killed</value>
+  </data>
+  <data name="CommonsKilled" xml:space="preserve">
+    <value>Common infected killed</value>
+  </data>
+  <data name="RoundStart" xml:space="preserve">
+    <value>Round start</value>
+  </data>
+  <data name="RoundEnd" xml:space="preserve">
+    <value>Round end</value>
+  </data>
+  <data name="RoundDuration" xml:space="preserve">
+    <value>Round duration</value>
+  </data>
+  <data name="PauseStart" xml:space="preserve">
+    <value>Pause start</value>
+  </data>
+  <data name="PauseEnd" xml:space="preserve">
+    <value>Pause end</value>
+  </data>
+  <data name="PauseDuration" xml:space="preserve">
+    <value>Pause duration</value>
+  </data>
+  <data name="TankStart" xml:space="preserve">
+    <value>Tank start</value>
+  </data>
+  <data name="TankEnd" xml:space="preserve">
+    <value>Tank end</value>
+  </data>
+  <data name="TankDuration" xml:space="preserve">
+    <value>Tank duration</value>
   </data>
 </root>
