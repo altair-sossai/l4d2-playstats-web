@@ -1,7 +1,9 @@
-﻿@using L4D2PlayStats.Web
+﻿@using L4D2PlayStats.Campaign
+@using L4D2PlayStats.Web
 @using Microsoft.Extensions.Localization
 @model L4D2PlayStats.Web.Models.ServerInfoModel
 @inject IStringLocalizer<SharedResource> SharedLocalizer
+@inject ICampaignName CampaignName
 
 @{
     var serverInfo = Model.ServerInfo;
@@ -44,6 +46,10 @@
             <td data-label="@SharedLocalizer["Map"]:">
                 @{
                     var map = new List<string>();
+                    var campaign = CampaignName[serverInfo?.Map];
+
+                    if (!string.IsNullOrEmpty(campaign))
+                        map.Add(campaign);
 
                     if (!string.IsNullOrEmpty(serverInfo?.Map))
                         map.Add(serverInfo.Map);
