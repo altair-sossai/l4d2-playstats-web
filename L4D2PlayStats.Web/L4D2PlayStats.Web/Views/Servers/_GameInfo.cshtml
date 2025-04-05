@@ -116,9 +116,6 @@
                     var target = document.getElementById('game-info-header');
                     sync(target, html);
 
-                },
-                complete: function () {
-                    setTimeout(refreshHeader, refreshInterval);
                 }
             });
         };
@@ -130,9 +127,6 @@
                 success: function (html) {
                     var target = document.getElementById('game-info-players');
                     sync(target, html);
-                },
-                complete: function () {
-                    setTimeout(refreshPlayers, refreshInterval);
                 }
             });
         };
@@ -154,9 +148,6 @@
 
                     if (scrollDown)
                         chatMessages.scrollTop(chatMessages[0].scrollHeight);
-                },
-                complete: function () {
-                    setTimeout(refreshMessages, refreshInterval / 2);
                 }
             });
         };
@@ -165,6 +156,10 @@
             refreshHeader();
             refreshPlayers();
             refreshMessages();
+
+            setInterval(refreshHeader, refreshInterval);
+            setInterval(refreshPlayers, refreshInterval);
+            setInterval(refreshMessages, refreshInterval / 2);
 
             $('#chat-messages').scrollTop($('#chat-messages')[0].scrollHeight);
         });
