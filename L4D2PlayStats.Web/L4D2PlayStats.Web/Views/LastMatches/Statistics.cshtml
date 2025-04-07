@@ -466,7 +466,7 @@
         <th>@SharedLocalizer["ShotgunHitsPercent"]:</th>
         @foreach (var player in players)
         {
-            var percent = player.ShotsShotgun != 0 ? player.HitsShotgun / player.ShotsShotgun : 0;
+            var percent = player.ShotsShotgun != 0 ? player.HitsShotgun / (decimal)player.ShotsShotgun : 0;
             <td class="slim text-center">@percent.ToString("P0")</td>
         }
     </tr>
@@ -481,7 +481,7 @@
         <th>@SharedLocalizer["ShotgunHitsSIPercent"]:</th>
         @foreach (var player in players)
         {
-            var percent = player.ShotsShotgun != 0 ? player.HitsSiShotgun / player.ShotsShotgun : 0;
+            var percent = player.ShotsShotgun != 0 ? player.HitsSiShotgun / (decimal)player.ShotsShotgun : 0;
             <td class="slim text-center">@percent.ToString("P0")</td>
         }
     </tr>
@@ -496,7 +496,7 @@
         <th>@SharedLocalizer["ShotgunHitsTankPercent"]:</th>
         @foreach (var player in players)
         {
-            var percent = player.ShotsShotgun != 0 ? player.HitsTankShotgun / player.ShotsShotgun : 0;
+            var percent = player.ShotsShotgun != 0 ? player.HitsTankShotgun / (decimal)player.ShotsShotgun : 0;
             <td class="slim text-center">@percent.ToString("P0")</td>
         }
     </tr>
@@ -521,7 +521,7 @@
         <th>@SharedLocalizer["SmgHitsPercent"]:</th>
         @foreach (var player in players)
         {
-            var percent = player.ShotsSmg != 0 ? player.HitsSmg / player.ShotsSmg : 0;
+            var percent = player.ShotsSmg != 0 ? player.HitsSmg / (decimal)player.ShotsSmg : 0;
             <td class="slim text-center">@percent.ToString("P0")</td>
         }
     </tr>
@@ -536,7 +536,7 @@
         <th>@SharedLocalizer["SmgHitsSIPercent"]:</th>
         @foreach (var player in players)
         {
-            var percent = player.ShotsSmg != 0 ? player.HitsSiSmg / player.ShotsSmg : 0;
+            var percent = player.ShotsSmg != 0 ? player.HitsSiSmg / (decimal)player.ShotsSmg : 0;
             <td class="slim text-center">@percent.ToString("P0")</td>
         }
     </tr>
@@ -551,7 +551,7 @@
         <th>@SharedLocalizer["SmgHitsTankPercent"]:</th>
         @foreach (var player in players)
         {
-            var percent = player.ShotsSmg != 0 ? player.HitsTankSmg / player.ShotsSmg : 0;
+            var percent = player.ShotsSmg != 0 ? player.HitsTankSmg / (decimal)player.ShotsSmg : 0;
             <td class="slim text-center">@percent.ToString("P0")</td>
         }
     </tr>
@@ -566,7 +566,7 @@
         <th>@SharedLocalizer["SmgHSPercent"]:</th>
         @foreach (var player in players)
         {
-            var percent = player.ShotsSmg != 0 ? player.HeadshotsSmg / player.ShotsSmg : 0;
+            var percent = player.ShotsSmg != 0 ? player.HeadshotsSmg / (decimal)player.ShotsSmg : 0;
             <td class="slim text-center">@percent.ToString("P0")</td>
         }
     </tr>
@@ -581,7 +581,7 @@
         <th>@SharedLocalizer["SmgHSSIPercent"]:</th>
         @foreach (var player in players)
         {
-            var percent = player.ShotsSmg != 0 ? player.HeadshotsSiSmg / player.ShotsSmg : 0;
+            var percent = player.ShotsSmg != 0 ? player.HeadshotsSiSmg / (decimal)player.ShotsSmg : 0;
             <td class="slim text-center">@percent.ToString("P0")</td>
         }
     </tr>
@@ -606,7 +606,7 @@
         <th>@SharedLocalizer["SniperHitsPercent"]:</th>
         @foreach (var player in players)
         {
-            var percent = player.ShotsSniper != 0 ? (double)player.HitsSniper / player.ShotsSniper : 0;
+            var percent = player.ShotsSniper != 0 ? player.HitsSniper / (decimal)player.ShotsSniper : 0;
             <td class="slim text-center">@percent.ToString("P0")</td>
         }
     </tr>
@@ -621,7 +621,7 @@
         <th>@SharedLocalizer["SniperHitsSIPercent"]:</th>
         @foreach (var player in players)
         {
-            var percent = player.ShotsSniper != 0 ? (double)player.HitsSiSniper / player.ShotsSniper : 0;
+            var percent = player.ShotsSniper != 0 ? player.HitsSiSniper / (decimal)player.ShotsSniper : 0;
             <td class="slim text-center">@percent.ToString("P0")</td>
         }
     </tr>
@@ -636,7 +636,7 @@
         <th>@SharedLocalizer["SniperHitsTankPercent"]:</th>
         @foreach (var player in players)
         {
-            var percent = player.ShotsSniper != 0 ? (double)player.HitsTankSniper / player.ShotsSniper : 0;
+            var percent = player.ShotsSniper != 0 ? player.HitsTankSniper / (decimal)player.ShotsSniper : 0;
             <td class="slim text-center">@percent.ToString("P0")</td>
         }
     </tr>
@@ -651,7 +651,7 @@
         <th>@SharedLocalizer["SniperHSPercent"]:</th>
         @foreach (var player in players)
         {
-            var percent = player.ShotsSniper != 0 ? (double)player.HeadshotsSniper / player.ShotsSniper : 0;
+            var percent = player.ShotsSniper != 0 ? player.HeadshotsSniper / (decimal)player.ShotsSniper : 0;
             <td class="slim text-center">@percent.ToString("P0")</td>
         }
     </tr>
@@ -666,7 +666,7 @@
         <th>@SharedLocalizer["SniperHSSIPercent"]:</th>
         @foreach (var player in players)
         {
-            var percent = player.ShotsSniper != 0 ? (double)player.HeadshotsSiSniper / player.ShotsSniper : 0;
+            var percent = player.ShotsSniper != 0 ? player.HeadshotsSiSniper / (decimal)player.ShotsSniper : 0;
             <td class="slim text-center">@percent.ToString("P0")</td>
         }
     </tr>
@@ -691,7 +691,7 @@
         <th>@SharedLocalizer["PistolHitsPercent"]:</th>
         @foreach (var player in players)
         {
-            var percent = player.ShotsPistol != 0 ? (double)player.HitsPistol / player.ShotsPistol : 0;
+            var percent = player.ShotsPistol != 0 ? player.HitsPistol / (decimal)player.ShotsPistol : 0;
             <td class="slim text-center">@percent.ToString("P0")</td>
         }
     </tr>
@@ -706,7 +706,7 @@
         <th>@SharedLocalizer["PistolHitsSIPercent"]:</th>
         @foreach (var player in players)
         {
-            var percent = player.ShotsPistol != 0 ? (double)player.HitsSiPistol / player.ShotsPistol : 0;
+            var percent = player.ShotsPistol != 0 ? player.HitsSiPistol / (decimal)player.ShotsPistol : 0;
             <td class="slim text-center">@percent.ToString("P0")</td>
         }
     </tr>
@@ -721,7 +721,7 @@
         <th>@SharedLocalizer["PistolHitsTankPercent"]:</th>
         @foreach (var player in players)
         {
-            var percent = player.ShotsPistol != 0 ? (double)player.HitsTankPistol / player.ShotsPistol : 0;
+            var percent = player.ShotsPistol != 0 ? player.HitsTankPistol / (decimal)player.ShotsPistol : 0;
             <td class="slim text-center">@percent.ToString("P0")</td>
         }
     </tr>
@@ -736,7 +736,7 @@
         <th>@SharedLocalizer["PistolHSPercent"]:</th>
         @foreach (var player in players)
         {
-            var percent = player.ShotsPistol != 0 ? (double)player.HeadshotsPistol / player.ShotsPistol : 0;
+            var percent = player.ShotsPistol != 0 ? player.HeadshotsPistol / (decimal)player.ShotsPistol : 0;
             <td class="slim text-center">@percent.ToString("P0")</td>
         }
     </tr>
@@ -751,7 +751,7 @@
         <th>@SharedLocalizer["PistolHSSIPercent"]:</th>
         @foreach (var player in players)
         {
-            var percent = player.ShotsPistol != 0 ? (double)player.HeadshotsSiPistol / player.ShotsPistol : 0;
+            var percent = player.ShotsPistol != 0 ? player.HeadshotsSiPistol / (decimal)player.ShotsPistol : 0;
             <td class="slim text-center">@percent.ToString("P0")</td>
         }
     </tr>
