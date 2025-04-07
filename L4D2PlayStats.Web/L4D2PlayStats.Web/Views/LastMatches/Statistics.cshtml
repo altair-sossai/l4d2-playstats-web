@@ -59,12 +59,14 @@
     <div class="panel panel-default">
         <table class="table table-striped table-hover table-condensed table-responsive">
             <thead>
-            <th class="text-center">#</th>
-            <th class="text-center">@SharedLocalizer["Map"]</th>
-            <th class="text-center">@SharedLocalizer["Start"]</th>
-            <th class="text-center">@SharedLocalizer["End"]</th>
-            <th class="text-center">@SharedLocalizer["Elapsed"]</th>
-            <th class="text-center slim" colspan="3">@SharedLocalizer["Scoreboard"]</th>
+            <tr>
+                <th class="text-center">#</th>
+                <th class="text-center">@SharedLocalizer["Map"]</th>
+                <th class="text-center">@SharedLocalizer["Start"]</th>
+                <th class="text-center">@SharedLocalizer["End"]</th>
+                <th class="text-center">@SharedLocalizer["Elapsed"]</th>
+                <th class="text-center slim" colspan="3">@SharedLocalizer["Scoreboard"]</th>
+            </tr>
             </thead>
             <tbody>
             @for (var i = 0; i < Model.Statistics.Count; i++)
@@ -398,210 +400,892 @@
     <br/>
 
     <div class="row">
-        <div class="col-md-5">
-            <div class="panel panel-default" style="margin-bottom: 0;">
-                <div class="panel-heading bold" style="padding: 3px 15px">
-                    @SharedLocalizer["Survivors"]
-                </div>
-                <div class="panel-body" style="padding: 0">
-                    <table class="table table-striped table-hover table-bordered table-condensed">
-                        <thead>
-                        <tr>
-                            <th></th>
-                            @foreach (var player in players)
-                            {
-                                <th class="text-center">@player.PlayerName</th>
-                            }
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <th>@SharedLocalizer["Deaths"]:</th>
-                            @foreach (var player in players)
-                            {
-                                <td class="slim text-center">@player.Died.ToString("N0")</td>
-                            }
-                        </tr>
-                        <tr>
-                            <th>@SharedLocalizer["TimesIncapacitated"]:</th>
-                            @foreach (var player in players)
-                            {
-                                <td class="slim text-center">@player.Incaps.ToString("N0")</td>
-                            }
-                        </tr>
-                        <tr>
-                            <th>@SharedLocalizer["DamageTaken"]:</th>
-                            @foreach (var player in players)
-                            {
-                                <td class="slim text-center">@player.DmgTaken.ToString("N0")</td>
-                            }
-                        </tr>
-                        <tr>
-                            <th>@SharedLocalizer["FallDamage"]:</th>
-                            @foreach (var player in players)
-                            {
-                                <td class="slim text-center">@player.FallDamage.ToString("N0")</td>
-                            }
-                        </tr>
-                        <tr>
-                            <td colspan="@(players.Count + 1)"></td>
-                        </tr>
-                        <tr>
-                            <th>@SharedLocalizer["ShotgunShots"]:</th>
-                            @foreach (var player in players)
-                            {
-                                <td class="slim text-center">@player.ShotsShotgun.ToString("N0")</td>
-                            }
-                        </tr>
-                        <tr>
-                            <th>@SharedLocalizer["ShotgunHits"]:</th>
-                            @foreach (var player in players)
-                            {
-                                <td class="slim text-center">@player.HitsShotgun.ToString("N0")</td>
-                            }
-                        </tr>
-                        <tr>
-                            <th>@SharedLocalizer["ShotgunHitsPercent"]:</th>
-                            @foreach (var player in players)
-                            {
-                                var percent = player.ShotsShotgun != 0 ? player.HitsShotgun / player.ShotsShotgun : 0;
-                                <td class="slim text-center">@percent.ToString("P0")</td>
-                            }
-                        </tr>
-                        <tr>
-                            <th>@SharedLocalizer["ShotgunHitsSI"]:</th>
-                            @foreach (var player in players)
-                            {
-                                <td class="slim text-center">@player.HitsSiShotgun.ToString("N0")</td>
-                            }
-                        </tr>
-                        <tr>
-                            <th>@SharedLocalizer["ShotgunHitsSIPercent"]:</th>
-                            @foreach (var player in players)
-                            {
-                                var percent = player.ShotsShotgun != 0 ? player.HitsSiShotgun / player.ShotsShotgun : 0;
-                                <td class="slim text-center">@percent.ToString("P0")</td>
-                            }
-                        </tr>
-                        <tr>
-                            <th>@SharedLocalizer["ShotgunHitsTank"]:</th>
-                            @foreach (var player in players)
-                            {
-                                <td class="slim text-center">@player.HitsTankShotgun.ToString("N0")</td>
-                            }
-                        </tr>
-                        <tr>
-                            <th>@SharedLocalizer["ShotgunHitsTankPercent"]:</th>
-                            @foreach (var player in players)
-                            {
-                                var percent = player.ShotsShotgun != 0 ? player.HitsTankShotgun / player.ShotsShotgun : 0;
-                                <td class="slim text-center">@percent.ToString("P0")</td>
-                            }
-                        </tr>
-                        <tr>
-                            <td colspan="@(players.Count + 1)"></td>
-                        </tr>
-                        <tr>
-                            <th>@SharedLocalizer["SmgShots"]:</th>
-                            @foreach (var player in players)
-                            {
-                                <td class="slim text-center">@player.ShotsSmg.ToString("N0")</td>
-                            }
-                        </tr>
-                        <tr>
-                            <th>@SharedLocalizer["SmgHits"]:</th>
-                            @foreach (var player in players)
-                            {
-                                <td class="slim text-center">@player.HitsSmg.ToString("N0")</td>
-                            }
-                        </tr>
-                        <tr>
-                            <th>@SharedLocalizer["SmgHitsPercent"]:</th>
-                            @foreach (var player in players)
-                            {
-                                var percent = player.ShotsSmg != 0 ? player.HitsSmg / player.ShotsSmg : 0;
-                                <td class="slim text-center">@percent.ToString("P0")</td>
-                            }
-                        </tr>
-                        <tr>
-                            <th>@SharedLocalizer["SmgHitsSI"]:</th>
-                            @foreach (var player in players)
-                            {
-                                <td class="slim text-center">@player.HitsSiSmg.ToString("N0")</td>
-                            }
-                        </tr>
-                        <tr>
-                            <th>@SharedLocalizer["SmgHitsSIPercent"]:</th>
-                            @foreach (var player in players)
-                            {
-                                var percent = player.ShotsSmg != 0 ? player.HitsSiSmg / player.ShotsSmg : 0;
-                                <td class="slim text-center">@percent.ToString("P0")</td>
-                            }
-                        </tr>
-                        <tr>
-                            <th>@SharedLocalizer["SmgHitsTank"]:</th>
-                            @foreach (var player in players)
-                            {
-                                <td class="slim text-center">@player.HitsTankSmg.ToString("N0")</td>
-                            }
-                        </tr>
-                        <tr>
-                            <th>@SharedLocalizer["SmgHitsTankPercent"]:</th>
-                            @foreach (var player in players)
-                            {
-                                var percent = player.ShotsSmg != 0 ? player.HitsTankSmg / player.ShotsSmg : 0;
-                                <td class="slim text-center">@percent.ToString("P0")</td>
-                            }
-                        </tr>
-                        <tr>
-                            <th>@SharedLocalizer["SmgHS"]:</th>
-                            @foreach (var player in players)
-                            {
-                                <td class="slim text-center">@player.HeadshotsSmg.ToString("N0")</td>
-                            }
-                        </tr>
-                        <tr>
-                            <th>@SharedLocalizer["SmgHSPercent"]:</th>
-                            @foreach (var player in players)
-                            {
-                                var percent = player.ShotsSmg != 0 ? player.HeadshotsSmg / player.ShotsSmg : 0;
-                                <td class="slim text-center">@percent.ToString("P0")</td>
-                            }
-                        </tr>
-                        <tr>
-                            <th>@SharedLocalizer["SmgHSSI"]:</th>
-                            @foreach (var player in players)
-                            {
-                                <td class="slim text-center">@player.HeadshotsSiSmg.ToString("N0")</td>
-                            }
-                        </tr>
-                        <tr>
-                            <th>@SharedLocalizer["SmgHSSIPercent"]:</th>
-                            @foreach (var player in players)
-                            {
-                                var percent = player.ShotsSmg != 0 ? player.HeadshotsSiSmg / player.ShotsSmg : 0;
-                                <td class="slim text-center">@percent.ToString("P0")</td>
-                            }
-                        </tr>
-                        <tr>
-                            <td colspan="@(players.Count + 1)"></td>
-                        </tr>
+    <div class="col-md-6">
+    <div class="panel panel-default" style="margin-bottom: 0;">
+    <div class="panel-heading bold" style="padding: 3px 15px">
+        @SharedLocalizer["Survivors"]
+    </div>
+    <div class="panel-body" style="padding: 0">
+    <table class="table table-striped table-hover table-bordered table-condensed">
+    <thead>
+    <tr>
+        <th></th>
+        @foreach (var player in players)
+        {
+            <th class="text-center">@player.PlayerName</th>
+        }
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <th>@SharedLocalizer["Deaths"]:</th>
+        @foreach (var player in players)
+        {
+            <td class="slim text-center">@player.Died.ToString("N0")</td>
+        }
+    </tr>
+    <tr>
+        <th>@SharedLocalizer["TimesIncapacitated"]:</th>
+        @foreach (var player in players)
+        {
+            <td class="slim text-center">@player.Incaps.ToString("N0")</td>
+        }
+    </tr>
+    <tr>
+        <th>@SharedLocalizer["DamageTaken"]:</th>
+        @foreach (var player in players)
+        {
+            <td class="slim text-center">@player.DmgTaken.ToString("N0")</td>
+        }
+    </tr>
+    <tr>
+        <th>@SharedLocalizer["FallDamage"]:</th>
+        @foreach (var player in players)
+        {
+            <td class="slim text-center">@player.FallDamage.ToString("N0")</td>
+        }
+    </tr>
+    <tr>
+        <td colspan="@(players.Count + 1)"></td>
+    </tr>
+    <tr>
+        <th>@SharedLocalizer["ShotgunShots"]:</th>
+        @foreach (var player in players)
+        {
+            <td class="slim text-center">@player.ShotsShotgun.ToString("N0")</td>
+        }
+    </tr>
+    <tr>
+        <th>@SharedLocalizer["ShotgunHits"]:</th>
+        @foreach (var player in players)
+        {
+            <td class="slim text-center">@player.HitsShotgun.ToString("N0")</td>
+        }
+    </tr>
+    <tr>
+        <th>@SharedLocalizer["ShotgunHitsPercent"]:</th>
+        @foreach (var player in players)
+        {
+            var percent = player.ShotsShotgun != 0 ? player.HitsShotgun / player.ShotsShotgun : 0;
+            <td class="slim text-center">@percent.ToString("P0")</td>
+        }
+    </tr>
+    <tr>
+        <th>@SharedLocalizer["ShotgunHitsSI"]:</th>
+        @foreach (var player in players)
+        {
+            <td class="slim text-center">@player.HitsSiShotgun.ToString("N0")</td>
+        }
+    </tr>
+    <tr>
+        <th>@SharedLocalizer["ShotgunHitsSIPercent"]:</th>
+        @foreach (var player in players)
+        {
+            var percent = player.ShotsShotgun != 0 ? player.HitsSiShotgun / player.ShotsShotgun : 0;
+            <td class="slim text-center">@percent.ToString("P0")</td>
+        }
+    </tr>
+    <tr>
+        <th>@SharedLocalizer["ShotgunHitsTank"]:</th>
+        @foreach (var player in players)
+        {
+            <td class="slim text-center">@player.HitsTankShotgun.ToString("N0")</td>
+        }
+    </tr>
+    <tr>
+        <th>@SharedLocalizer["ShotgunHitsTankPercent"]:</th>
+        @foreach (var player in players)
+        {
+            var percent = player.ShotsShotgun != 0 ? player.HitsTankShotgun / player.ShotsShotgun : 0;
+            <td class="slim text-center">@percent.ToString("P0")</td>
+        }
+    </tr>
+    <tr>
+        <td colspan="@(players.Count + 1)"></td>
+    </tr>
+    <tr>
+        <th>@SharedLocalizer["SmgShots"]:</th>
+        @foreach (var player in players)
+        {
+            <td class="slim text-center">@player.ShotsSmg.ToString("N0")</td>
+        }
+    </tr>
+    <tr>
+        <th>@SharedLocalizer["SmgHits"]:</th>
+        @foreach (var player in players)
+        {
+            <td class="slim text-center">@player.HitsSmg.ToString("N0")</td>
+        }
+    </tr>
+    <tr>
+        <th>@SharedLocalizer["SmgHitsPercent"]:</th>
+        @foreach (var player in players)
+        {
+            var percent = player.ShotsSmg != 0 ? player.HitsSmg / player.ShotsSmg : 0;
+            <td class="slim text-center">@percent.ToString("P0")</td>
+        }
+    </tr>
+    <tr>
+        <th>@SharedLocalizer["SmgHitsSI"]:</th>
+        @foreach (var player in players)
+        {
+            <td class="slim text-center">@player.HitsSiSmg.ToString("N0")</td>
+        }
+    </tr>
+    <tr>
+        <th>@SharedLocalizer["SmgHitsSIPercent"]:</th>
+        @foreach (var player in players)
+        {
+            var percent = player.ShotsSmg != 0 ? player.HitsSiSmg / player.ShotsSmg : 0;
+            <td class="slim text-center">@percent.ToString("P0")</td>
+        }
+    </tr>
+    <tr>
+        <th>@SharedLocalizer["SmgHitsTank"]:</th>
+        @foreach (var player in players)
+        {
+            <td class="slim text-center">@player.HitsTankSmg.ToString("N0")</td>
+        }
+    </tr>
+    <tr>
+        <th>@SharedLocalizer["SmgHitsTankPercent"]:</th>
+        @foreach (var player in players)
+        {
+            var percent = player.ShotsSmg != 0 ? player.HitsTankSmg / player.ShotsSmg : 0;
+            <td class="slim text-center">@percent.ToString("P0")</td>
+        }
+    </tr>
+    <tr>
+        <th>@SharedLocalizer["SmgHS"]:</th>
+        @foreach (var player in players)
+        {
+            <td class="slim text-center">@player.HeadshotsSmg.ToString("N0")</td>
+        }
+    </tr>
+    <tr>
+        <th>@SharedLocalizer["SmgHSPercent"]:</th>
+        @foreach (var player in players)
+        {
+            var percent = player.ShotsSmg != 0 ? player.HeadshotsSmg / player.ShotsSmg : 0;
+            <td class="slim text-center">@percent.ToString("P0")</td>
+        }
+    </tr>
+    <tr>
+        <th>@SharedLocalizer["SmgHSSI"]:</th>
+        @foreach (var player in players)
+        {
+            <td class="slim text-center">@player.HeadshotsSiSmg.ToString("N0")</td>
+        }
+    </tr>
+    <tr>
+        <th>@SharedLocalizer["SmgHSSIPercent"]:</th>
+        @foreach (var player in players)
+        {
+            var percent = player.ShotsSmg != 0 ? player.HeadshotsSiSmg / player.ShotsSmg : 0;
+            <td class="slim text-center">@percent.ToString("P0")</td>
+        }
+    </tr>
+    <tr>
+        <td colspan="@(players.Count + 1)"></td>
+    </tr>
+    <tr>
+        <th>@SharedLocalizer["SniperShots"]:</th>
+        @foreach (var player in players)
+        {
+            <td class="slim text-center">@player.ShotsSniper.ToString("N0")</td>
+        }
+    </tr>
+    <tr>
+        <th>@SharedLocalizer["SniperHits"]:</th>
+        @foreach (var player in players)
+        {
+            <td class="slim text-center">@player.HitsSniper.ToString("N0")</td>
+        }
+    </tr>
+    <tr>
+        <th>@SharedLocalizer["SniperHitsPercent"]:</th>
+        @foreach (var player in players)
+        {
+            var percent = player.ShotsSniper != 0 ? (double)player.HitsSniper / player.ShotsSniper : 0;
+            <td class="slim text-center">@percent.ToString("P0")</td>
+        }
+    </tr>
+    <tr>
+        <th>@SharedLocalizer["SniperHitsSI"]:</th>
+        @foreach (var player in players)
+        {
+            <td class="slim text-center">@player.HitsSiSniper.ToString("N0")</td>
+        }
+    </tr>
+    <tr>
+        <th>@SharedLocalizer["SniperHitsSIPercent"]:</th>
+        @foreach (var player in players)
+        {
+            var percent = player.ShotsSniper != 0 ? (double)player.HitsSiSniper / player.ShotsSniper : 0;
+            <td class="slim text-center">@percent.ToString("P0")</td>
+        }
+    </tr>
+    <tr>
+        <th>@SharedLocalizer["SniperHitsTank"]:</th>
+        @foreach (var player in players)
+        {
+            <td class="slim text-center">@player.HitsTankSniper.ToString("N0")</td>
+        }
+    </tr>
+    <tr>
+        <th>@SharedLocalizer["SniperHitsTankPercent"]:</th>
+        @foreach (var player in players)
+        {
+            var percent = player.ShotsSniper != 0 ? (double)player.HitsTankSniper / player.ShotsSniper : 0;
+            <td class="slim text-center">@percent.ToString("P0")</td>
+        }
+    </tr>
+    <tr>
+        <th>@SharedLocalizer["SniperHS"]:</th>
+        @foreach (var player in players)
+        {
+            <td class="slim text-center">@player.HeadshotsSniper.ToString("N0")</td>
+        }
+    </tr>
+    <tr>
+        <th>@SharedLocalizer["SniperHSPercent"]:</th>
+        @foreach (var player in players)
+        {
+            var percent = player.ShotsSniper != 0 ? (double)player.HeadshotsSniper / player.ShotsSniper : 0;
+            <td class="slim text-center">@percent.ToString("P0")</td>
+        }
+    </tr>
+    <tr>
+        <th>@SharedLocalizer["SniperHSSI"]:</th>
+        @foreach (var player in players)
+        {
+            <td class="slim text-center">@player.HeadshotsSiSniper.ToString("N0")</td>
+        }
+    </tr>
+    <tr>
+        <th>@SharedLocalizer["SniperHSSIPercent"]:</th>
+        @foreach (var player in players)
+        {
+            var percent = player.ShotsSniper != 0 ? (double)player.HeadshotsSiSniper / player.ShotsSniper : 0;
+            <td class="slim text-center">@percent.ToString("P0")</td>
+        }
+    </tr>
+    <tr>
+        <td colspan="@(players.Count + 1)"></td>
+    </tr>
+    <tr>
+        <th>@SharedLocalizer["PistolShots"]:</th>
+        @foreach (var player in players)
+        {
+            <td class="slim text-center">@player.ShotsPistol.ToString("N0")</td>
+        }
+    </tr>
+    <tr>
+        <th>@SharedLocalizer["PistolHits"]:</th>
+        @foreach (var player in players)
+        {
+            <td class="slim text-center">@player.HitsPistol.ToString("N0")</td>
+        }
+    </tr>
+    <tr>
+        <th>@SharedLocalizer["PistolHitsPercent"]:</th>
+        @foreach (var player in players)
+        {
+            var percent = player.ShotsPistol != 0 ? (double)player.HitsPistol / player.ShotsPistol : 0;
+            <td class="slim text-center">@percent.ToString("P0")</td>
+        }
+    </tr>
+    <tr>
+        <th>@SharedLocalizer["PistolHitsSI"]:</th>
+        @foreach (var player in players)
+        {
+            <td class="slim text-center">@player.HitsSiPistol.ToString("N0")</td>
+        }
+    </tr>
+    <tr>
+        <th>@SharedLocalizer["PistolHitsSIPercent"]:</th>
+        @foreach (var player in players)
+        {
+            var percent = player.ShotsPistol != 0 ? (double)player.HitsSiPistol / player.ShotsPistol : 0;
+            <td class="slim text-center">@percent.ToString("P0")</td>
+        }
+    </tr>
+    <tr>
+        <th>@SharedLocalizer["PistolHitsTank"]:</th>
+        @foreach (var player in players)
+        {
+            <td class="slim text-center">@player.HitsTankPistol.ToString("N0")</td>
+        }
+    </tr>
+    <tr>
+        <th>@SharedLocalizer["PistolHitsTankPercent"]:</th>
+        @foreach (var player in players)
+        {
+            var percent = player.ShotsPistol != 0 ? (double)player.HitsTankPistol / player.ShotsPistol : 0;
+            <td class="slim text-center">@percent.ToString("P0")</td>
+        }
+    </tr>
+    <tr>
+        <th>@SharedLocalizer["PistolHS"]:</th>
+        @foreach (var player in players)
+        {
+            <td class="slim text-center">@player.HeadshotsPistol.ToString("N0")</td>
+        }
+    </tr>
+    <tr>
+        <th>@SharedLocalizer["PistolHSPercent"]:</th>
+        @foreach (var player in players)
+        {
+            var percent = player.ShotsPistol != 0 ? (double)player.HeadshotsPistol / player.ShotsPistol : 0;
+            <td class="slim text-center">@percent.ToString("P0")</td>
+        }
+    </tr>
+    <tr>
+        <th>@SharedLocalizer["PistolHSSI"]:</th>
+        @foreach (var player in players)
+        {
+            <td class="slim text-center">@player.HeadshotsSiPistol.ToString("N0")</td>
+        }
+    </tr>
+    <tr>
+        <th>@SharedLocalizer["PistolHSSIPercent"]:</th>
+        @foreach (var player in players)
+        {
+            var percent = player.ShotsPistol != 0 ? (double)player.HeadshotsSiPistol / player.ShotsPistol : 0;
+            <td class="slim text-center">@percent.ToString("P0")</td>
+        }
+    </tr>
+    <tr>
+        <td colspan="@(players.Count + 1)"></td>
+    </tr>
+    <tr>
+        <th>@SharedLocalizer["CommonsKilled"]:</th>
+        @foreach (var player in players)
+        {
+            <td class="slim text-center">@player.Common.ToString("N0")</td>
+        }
+    </tr>
+    <tr>
+        <th>@SharedLocalizer["CommonsKilledDuringTank"]:</th>
+        @foreach (var player in players)
+        {
+            <td class="slim text-center">@player.CommonTankUp.ToString("N0")</td>
+        }
+    </tr>
+    <tr>
+        <th>@SharedLocalizer["SIKilled"]:</th>
+        @foreach (var player in players)
+        {
+            <td class="slim text-center">@player.SiKilled.ToString("N0")</td>
+        }
+    </tr>
+    <tr>
+        <th>@SharedLocalizer["SIKilledDuringTank"]:</th>
+        @foreach (var player in players)
+        {
+            <td class="slim text-center">@player.SiKilledTankUp.ToString("N0")</td>
+        }
+    </tr>
+    <tr>
+        <th>@SharedLocalizer["SiDamage"]:</th>
+        @foreach (var player in players)
+        {
+            <td class="slim text-center">@player.SiDamage.ToString("N0")</td>
+        }
+    </tr>
+    <tr>
+        <th>@SharedLocalizer["SIDamageDuringTank"]:</th>
+        @foreach (var player in players)
+        {
+            <td class="slim text-center">@player.SiDamageTankUp.ToString("N0")</td>
+        }
+    </tr>
+    <tr>
+        <td colspan="@(players.Count + 1)"></td>
+    </tr>
+    <tr>
+        <th>@SharedLocalizer["TankDamage"]:</th>
+        @foreach (var player in players)
+        {
+            <td class="slim text-center">@player.TankDamage.ToString("N0")</td>
+        }
+    </tr>
+    <tr>
+        <th>@SharedLocalizer["TankMelees"]:</th>
+        @foreach (var player in players)
+        {
+            <td class="slim text-center">@player.MeleesOnTank.ToString("N0")</td>
+        }
+    </tr>
+    <tr>
+        <th>@SharedLocalizer["TankRocksTaken"]:</th>
+        @foreach (var player in players)
+        {
+            <td class="slim text-center">@player.RockEats.ToString("N0")</td>
+        }
+    </tr>
+    <tr>
+        <th>@SharedLocalizer["WitchDamage"]:</th>
+        @foreach (var player in players)
+        {
+            <td class="slim text-center">@player.WitchDamage.ToString("N0")</td>
+        }
+    </tr>
+    <tr>
+        <td colspan="@(players.Count + 1)"></td>
+    </tr>
+    <tr>
+        <th>@SharedLocalizer["Skeets"]:</th>
+        @foreach (var player in players)
+        {
+            <td class="slim text-center">@player.Skeets.ToString("N0")</td>
+        }
+    </tr>
+    <tr>
+        <th>@SharedLocalizer["SkeetsHurt"]:</th>
+        @foreach (var player in players)
+        {
+            <td class="slim text-center">@player.SkeetsHurt.ToString("N0")</td>
+        }
+    </tr>
+    <tr>
+        <th>@SharedLocalizer["Levels"]:</th>
+        @foreach (var player in players)
+        {
+            <td class="slim text-center">@player.Levels.ToString("N0")</td>
+        }
+    </tr>
+    <tr>
+        <th>@SharedLocalizer["LevelsHurt"]:</th>
+        @foreach (var player in players)
+        {
+            <td class="slim text-center">@player.LevelsHurt.ToString("N0")</td>
+        }
+    </tr>
+    <tr>
+        <th>@SharedLocalizer["Crowns"]:</th>
+        @foreach (var player in players)
+        {
+            <td class="slim text-center">@player.Crowns.ToString("N0")</td>
+        }
+    </tr>
+    <tr>
+        <th>@SharedLocalizer["CrownsHurt"]:</th>
+        @foreach (var player in players)
+        {
+            <td class="slim text-center">@player.CrownsHurt.ToString("N0")</td>
+        }
+    </tr>
+    <tr>
+        <th>@SharedLocalizer["MeleeSkeets"]:</th>
+        @foreach (var player in players)
+        {
+            <td class="slim text-center">@player.SkeetsMelee.ToString("N0")</td>
+        }
+    </tr>
+    <tr>
+        <th>@SharedLocalizer["RockSkeets"]:</th>
+        @foreach (var player in players)
+        {
+            <td class="slim text-center">@player.RockSkeets.ToString("N0")</td>
+        }
+    </tr>
+    <tr>
+        <th>@SharedLocalizer["DeadStops"]:</th>
+        @foreach (var player in players)
+        {
+            <td class="slim text-center">@player.DeadStops.ToString("N0")</td>
+        }
+    </tr>
+    <tr>
+        <th>@SharedLocalizer["TongueCuts"]:</th>
+        @foreach (var player in players)
+        {
+            <td class="slim text-center">@player.TongueCuts.ToString("N0")</td>
+        }
+    </tr>
+    <tr>
+        <th>@SharedLocalizer["SelfClears"]:</th>
+        @foreach (var player in players)
+        {
+            <td class="slim text-center">@player.SelfClears.ToString("N0")</td>
+        }
+    </tr>
+    <tr>
+        <th>@SharedLocalizer["Clears"]:</th>
+        @foreach (var player in players)
+        {
+            <td class="slim text-center">@player.Clears.ToString("N0")</td>
+        }
+    </tr>
+    <tr>
+        <th>@SharedLocalizer["AvgClearTime"]:</th>
+        @foreach (var player in players)
+        {
+            <td class="slim text-center">@player.AvgClearTime.ToString("N0")</td>
+        }
+    </tr>
+    <tr>
+        <th>@SharedLocalizer["BoomersPopped"]:</th>
+        @foreach (var player in players)
+        {
+            <td class="slim text-center">@player.Pops.ToString("N0")</td>
+        }
+    </tr>
+    <tr>
+        <th>@SharedLocalizer["Shoves"]:</th>
+        @foreach (var player in players)
+        {
+            <td class="slim text-center">@player.Shoves.ToString("N0")</td>
+        }
+    </tr>
+    <tr>
+        <td colspan="@(players.Count + 1)"></td>
+    </tr>
+    <tr>
+        <th>@SharedLocalizer["FfHits"]:</th>
+        @foreach (var player in players)
+        {
+            <td class="slim text-center">@player.FfHits.ToString("N0")</td>
+        }
+    </tr>
+    <tr>
+        <th>@SharedLocalizer["FfGiven"]:</th>
+        @foreach (var player in players)
+        {
+            <td class="slim text-center">@player.FfGiven.ToString("N0")</td>
+        }
+    </tr>
+    <tr>
+        <th>@SharedLocalizer["FfGivenPellet"]:</th>
+        @foreach (var player in players)
+        {
+            <td class="slim text-center">@player.FfGivenPellet.ToString("N0")</td>
+        }
+    </tr>
+    <tr>
+        <th>@SharedLocalizer["FfGivenBullet"]:</th>
+        @foreach (var player in players)
+        {
+            <td class="slim text-center">@player.FfGivenBullet.ToString("N0")</td>
+        }
+    </tr>
+    <tr>
+        <th>@SharedLocalizer["FfGivenSniper"]:</th>
+        @foreach (var player in players)
+        {
+            <td class="slim text-center">@player.FfGivenSniper.ToString("N0")</td>
+        }
+    </tr>
+    <tr>
+        <th>@SharedLocalizer["FfGivenMelee"]:</th>
+        @foreach (var player in players)
+        {
+            <td class="slim text-center">@player.FfGivenMelee.ToString("N0")</td>
+        }
+    </tr>
+    <tr>
+        <th>@SharedLocalizer["FfGivenFire"]:</th>
+        @foreach (var player in players)
+        {
+            <td class="slim text-center">@player.FfGivenFire.ToString("N0")</td>
+        }
+    </tr>
+    <tr>
+        <th>@SharedLocalizer["FfGivenIncap"]:</th>
+        @foreach (var player in players)
+        {
+            <td class="slim text-center">@player.FfGivenIncap.ToString("N0")</td>
+        }
+    </tr>
+    <tr>
+        <th>@SharedLocalizer["FfGivenSelf"]:</th>
+        @foreach (var player in players)
+        {
+            <td class="slim text-center">@player.FfGivenSelf.ToString("N0")</td>
+        }
+    </tr>
+    <tr>
+        <th>@SharedLocalizer["FfGivenOther"]:</th>
+        @foreach (var player in players)
+        {
+            <td class="slim text-center">@player.FfGivenOther.ToString("N0")</td>
+        }
+    </tr>
+    <tr>
+        <th>@SharedLocalizer["FfGivenTotal"]:</th>
+        @foreach (var player in players)
+        {
+            <td class="slim text-center">@player.FfGivenTotal.ToString("N0")</td>
+        }
+    </tr>
+    <tr>
+        <td colspan="@(players.Count + 1)"></td>
+    </tr>
+    <tr>
+        <th>@SharedLocalizer["FfTaken"]:</th>
+        <td colspan="@players.Count"></td>
+    </tr>
+    <tr>
+        <th>@SharedLocalizer["FfTakenPellet"]:</th>
+        @foreach (var player in players)
+        {
+            <td class="slim text-center">@player.FfTakenPellet.ToString("N0")</td>
+        }
+    </tr>
+    <tr>
+        <th>@SharedLocalizer["FfTakenBullet"]:</th>
+        @foreach (var player in players)
+        {
+            <td class="slim text-center">@player.FfTakenBullet.ToString("N0")</td>
+        }
+    </tr>
+    <tr>
+        <th>@SharedLocalizer["FfTakenSniper"]:</th>
+        @foreach (var player in players)
+        {
+            <td class="slim text-center">@player.FfTakenSniper.ToString("N0")</td>
+        }
+    </tr>
+    <tr>
+        <th>@SharedLocalizer["FfTakenMelee"]:</th>
+        @foreach (var player in players)
+        {
+            <td class="slim text-center">@player.FfTakenMelee.ToString("N0")</td>
+        }
+    </tr>
+    <tr>
+        <th>@SharedLocalizer["FfTakenFire"]:</th>
+        @foreach (var player in players)
+        {
+            <td class="slim text-center">@player.FfTakenFire.ToString("N0")</td>
+        }
+    </tr>
+    <tr>
+        <th>@SharedLocalizer["FfTakenIncap"]:</th>
+        @foreach (var player in players)
+        {
+            <td class="slim text-center">@player.FfTakenIncap.ToString("N0")</td>
+        }
+    </tr>
+    <tr>
+        <th>@SharedLocalizer["FfTakenOther"]:</th>
+        @foreach (var player in players)
+        {
+            <td class="slim text-center">@player.FfTakenOther.ToString("N0")</td>
+        }
+    </tr>
+    <tr>
+        <th>@SharedLocalizer["FfTakenTotal"]:</th>
+        @foreach (var player in players)
+        {
+            <td class="slim text-center">@player.FfTakenTotal.ToString("N0")</td>
+        }
+    </tr>
+    </tbody>
+    </table>
+    </div>
+    </div>
+    </div>
+    <div class="col-md-6">
+        <div class="panel panel-default" style="margin-bottom: 0;">
+            <div class="panel-heading bold" style="padding: 3px 15px">
+                @SharedLocalizer["Infecteds"]
+            </div>
+            <div class="panel-body" style="padding: 0">
+                <table class="table table-striped table-hover table-bordered table-condensed">
+                    <thead>
+                    <tr>
+                        <th></th>
+                        @foreach (var infectedPlayer in infectedPlayers)
+                        {
+                            <th class="text-center">@infectedPlayer.PlayerName</th>
+                        }
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <th>@SharedLocalizer["DmgTotal"]:</th>
+                        @foreach (var infectedPlayer in infectedPlayers)
+                        {
+                            <td class="slim text-center">@infectedPlayer.DmgTotal.ToString("N0")</td>
+                        }
+                    </tr>
+                    <tr>
+                        <th>@SharedLocalizer["DmgUpright"]:</th>
+                        @foreach (var infectedPlayer in infectedPlayers)
+                        {
+                            <td class="slim text-center">@infectedPlayer.DmgUpright.ToString("N0")</td>
+                        }
+                    </tr>
+                    <tr>
+                                        <td colspan="@(infectedPlayers.Count + 1)"></td>
+                    </tr>
+                    <tr>
+                        <th>@SharedLocalizer["TankDmg"]:</th>
+                        @foreach (var infectedPlayer in infectedPlayers)
+                        {
+                            <td class="slim text-center">@infectedPlayer.DmgTank.ToString("N0")</td>
+                        }
+                    </tr>
+                    <tr>
+                        <th>@SharedLocalizer["TankIncap"]:</th>
+                        @foreach (var infectedPlayer in infectedPlayers)
+                        {
+                            <td class="slim text-center">@infectedPlayer.DmgTankIncap.ToString("N0")</td>
+                        }
+                    </tr>
+                    <tr>
+                        <th>@SharedLocalizer["TankPasses"]:</th>
+                        @foreach (var infectedPlayer in infectedPlayers)
+                        {
+                            <td class="slim text-center">@infectedPlayer.TankPasses.ToString("N0")</td>
+                        }
+                    </tr>
+                    <tr>
+                        <td colspan="@(infectedPlayers.Count + 1)"></td>
+                    </tr>
+                    <tr>
+                        <th>@SharedLocalizer["DmgScratch"]:</th>
+                        @foreach (var infectedPlayer in infectedPlayers)
+                        {
+                            <td class="slim text-center">@infectedPlayer.DmgScratch.ToString("N0")</td>
+                        }
+                    </tr>
+                    <tr>
+                        <th>@SharedLocalizer["DmgTankUp"]:</th>
+                        @foreach (var infectedPlayer in infectedPlayers)
+                        {
+                            <td class="slim text-center">@infectedPlayer.DmgTankUp.ToString("N0")</td>
+                        }
+                    </tr>
+                    <tr>
+                        <th>@SharedLocalizer["DmgSpit"]:</th>
+                        @foreach (var infectedPlayer in infectedPlayers)
+                        {
+                            <td class="slim text-center">@infectedPlayer.DmgSpit.ToString("N0")</td>
+                        }
+                    </tr>
+                    <tr>
+                        <th>@SharedLocalizer["DmgBoom"]:</th>
+                        @foreach (var infectedPlayer in infectedPlayers)
+                        {
+                            <td class="slim text-center">@infectedPlayer.DmgBoom.ToString("N0")</td>
+                        }
+                    </tr>
+                    <tr>
+                        <td colspan="@(infectedPlayers.Count + 1)"></td>
+                    </tr>
+                    <tr>
+                        <th>@SharedLocalizer["HunterDPs"]:</th>
+                        @foreach (var infectedPlayer in infectedPlayers)
+                        {
+                            <td class="slim text-center">@infectedPlayer.HunterDPs.ToString("N0")</td>
+                        }
+                    </tr>
+                    <tr>
+                        <th>@SharedLocalizer["HunterDpDmg"]:</th>
+                        @foreach (var infectedPlayer in infectedPlayers)
+                        {
+                            <td class="slim text-center">@infectedPlayer.HunterDpDmg.ToString("N0")</td>
+                        }
+                    </tr>
+                    <tr>
+                        <th>@SharedLocalizer["JockeyDPs"]:</th>
+                        @foreach (var infectedPlayer in infectedPlayers)
+                        {
+                            <td class="slim text-center">@infectedPlayer.JockeyDPs.ToString("N0")</td>
+                        }
+                    </tr>
+                    <tr>
+                        <th>@SharedLocalizer["DeathCharges"]:</th>
+                        @foreach (var infectedPlayer in infectedPlayers)
+                        {
+                            <td class="slim text-center">@infectedPlayer.DeathCharges.ToString("N0")</td>
+                        }
+                    </tr>
+                    <tr>
+                        <th>@SharedLocalizer["Booms"]:</th>
+                        @foreach (var infectedPlayer in infectedPlayers)
+                        {
+                            <td class="slim text-center">@infectedPlayer.Booms.ToString("N0")</td>
+                        }
+                    </tr>
+                    <tr>
+                        <th>@SharedLocalizer["Ledged"]:</th>
+                        @foreach (var infectedPlayer in infectedPlayers)
+                        {
+                            <td class="slim text-center">@infectedPlayer.Lerged.ToString("N0")</td>
+                        }
+                    </tr>
+                    <tr>
+                        <td colspan="@(infectedPlayers.Count + 1)"></td>
+                    </tr>
+                    <tr>
+                        <th>@SharedLocalizer["CommonsKilled"]:</th>
+                        @foreach (var infectedPlayer in infectedPlayers)
+                        {
+                            <td class="slim text-center">@infectedPlayer.Common.ToString("N0")</td>
+                        }
+                    </tr>
+                    <tr>
+                                        <td colspan="@(infectedPlayers.Count + 1)"></td>
+                    </tr>
+                    <tr>
+                        <th>@SharedLocalizer["Spawns"]:</th>
+                        @foreach (var infectedPlayer in infectedPlayers)
+                        {
+                            <td class="slim text-center">@infectedPlayer.Spawns.ToString("N0")</td>
+                        }
+                    </tr>
+                    <tr>
+                        <th>@SharedLocalizer["SpawnsSmoker"]:</th>
+                        @foreach (var infectedPlayer in infectedPlayers)
+                        {
+                            <td class="slim text-center">@infectedPlayer.SpawnSmoker.ToString("N0")</td>
+                        }
+                    </tr>
+                    <tr>
+                        <th>@SharedLocalizer["SpawnsBoomer"]:</th>
+                        @foreach (var infectedPlayer in infectedPlayers)
+                        {
+                            <td class="slim text-center">@infectedPlayer.SpawnBoomer.ToString("N0")</td>
+                        }
+                    </tr>
+                    <tr>
+                        <th>@SharedLocalizer["SpawnsHunter"]:</th>
+                        @foreach (var infectedPlayer in infectedPlayers)
+                        {
+                            <td class="slim text-center">@infectedPlayer.SpawnHunter.ToString("N0")</td>
+                        }
+                    </tr>
+                    <tr>
+                        <th>@SharedLocalizer["SpawnsCharger"]:</th>
+                        @foreach (var infectedPlayer in infectedPlayers)
+                        {
+                            <td class="slim text-center">@infectedPlayer.SpawnCharger.ToString("N0")</td>
+                        }
+                    </tr>
+                    <tr>
+                        <th>@SharedLocalizer["SpawnsSpitter"]:</th>
+                        @foreach (var infectedPlayer in infectedPlayers)
+                        {
+                            <td class="slim text-center">@infectedPlayer.SpawnSpitter.ToString("N0")</td>
+                        }
+                    </tr>
+                    <tr>
+                        <th>@SharedLocalizer["SpawnsJockey"]:</th>
+                        @foreach (var infectedPlayer in infectedPlayers)
+                        {
+                            <td class="slim text-center">@infectedPlayer.SpawnJockey.ToString("N0")</td>
+                        }
+                    </tr>
+                    </tbody>
+                </table>
 
-                        </tbody>
-                    </table>
-
-                </div>
             </div>
         </div>
-        <div class="col-md-7">
-            <div class="panel panel-default" style="margin-bottom: 0;">
-                <div class="panel-heading bold" style="padding: 3px 15px">
-                    @SharedLocalizer["Infecteds"]
-                </div>
-                <div class="panel-body" style="padding: 0">
-                </div>
-            </div>
-        </div>
+    </div>
     </div>
     </div>
 }

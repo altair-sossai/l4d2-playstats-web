@@ -534,9 +534,6 @@
   <data name="WitchesKilled" xml:space="preserve">
     <value>Witches muertas</value>
   </data>
-  <data name="CommonsKilled" xml:space="preserve">
-    <value>Infectados comunes muertos</value>
-  </data>
   <data name="RoundStart" xml:space="preserve">
     <value>Inicio de la ronda</value>
   </data>
@@ -620,5 +617,249 @@
   </data>
   <data name="SmgHSSIPercent" xml:space="preserve">
     <value>SMG - Headshots a IE (%)</value>
+  </data>
+    <data name="SniperShots" xml:space="preserve"><value>Sniper - Disparos</value></data>
+  <data name="SniperHits" xml:space="preserve">
+    <value>Sniper - Impactos</value>
+  </data>
+  <data name="SniperHitsPercent" xml:space="preserve">
+    <value>Sniper - Impactos (%)</value>
+  </data>
+  <data name="SniperHitsSI" xml:space="preserve">
+    <value>Sniper - Impactos a Infectados Especiales</value>
+  </data>
+  <data name="SniperHitsSIPercent" xml:space="preserve">
+    <value>Sniper - Impactos a IE (%)</value>
+  </data>
+  <data name="SniperHitsTank" xml:space="preserve">
+    <value>Sniper - Impactos al Tank</value>
+  </data>
+  <data name="SniperHitsTankPercent" xml:space="preserve">
+    <value>Sniper - Impactos al Tank (%)</value>
+  </data>
+  <data name="SniperHS" xml:space="preserve">
+    <value>Sniper - Headshots</value>
+  </data>
+  <data name="SniperHSPercent" xml:space="preserve">
+    <value>Sniper - Headshots (%)</value>
+  </data>
+  <data name="SniperHSSI" xml:space="preserve">
+    <value>Sniper - Headshots a Infectados Especiales</value>
+  </data>
+  <data name="SniperHSSIPercent" xml:space="preserve">
+    <value>Sniper - Headshots a IE (%)</value>
+  </data>
+  <data name="PistolShots" xml:space="preserve">
+    <value>Pistol - Disparos</value>
+  </data>
+  <data name="PistolHits" xml:space="preserve">
+    <value>Pistol - Impactos</value>
+  </data>
+  <data name="PistolHitsPercent" xml:space="preserve">
+    <value>Pistol - Impactos (%)</value>
+  </data>
+  <data name="PistolHitsSI" xml:space="preserve">
+    <value>Pistol - Impactos a Infectados Especiales</value>
+  </data>
+  <data name="PistolHitsSIPercent" xml:space="preserve">
+    <value>Pistol - Impactos a IE (%)</value>
+  </data>
+  <data name="PistolHitsTank" xml:space="preserve">
+    <value>Pistol - Impactos al Tank</value>
+  </data>
+  <data name="PistolHitsTankPercent" xml:space="preserve">
+    <value>Pistol - Impactos al Tank (%)</value>
+  </data>
+  <data name="PistolHS" xml:space="preserve">
+    <value>Pistol - Headshots</value>
+  </data>
+  <data name="PistolHSPercent" xml:space="preserve">
+    <value>Pistol - Headshots (%)</value>
+  </data>
+  <data name="PistolHSSI" xml:space="preserve">
+    <value>Pistol - Headshots a Infectados Especiales</value>
+  </data>
+  <data name="PistolHSSIPercent" xml:space="preserve">
+    <value>Pistol - Headshots a IE (%)</value>
+  </data>
+  <data name="CommonsKilledDuringTank" xml:space="preserve">
+    <value>Commons - Muertos durante el Tank</value>
+  </data>
+  <data name="SIKilledDuringTank" xml:space="preserve">
+    <value>Infectados Especiales - Muertos durante el Tank</value>
+  </data>
+  <data name="SIDamageDuringTank" xml:space="preserve">
+    <value>Infectados Especiales - Daño durante el Tank</value>
+  </data>
+  <data name="TankMelees" xml:space="preserve">
+    <value>Tank - Golpes cuerpo a cuerpo</value>
+  </data>
+  <data name="WitchDamage" xml:space="preserve">
+    <value>Witch - Daño causado</value>
+  </data>
+  <data name="SkeetsHurt" xml:space="preserve">
+    <value>Skeets - Daño</value>
+  </data>
+  <data name="LevelsHurt" xml:space="preserve">
+    <value>Levels - Daño</value>
+  </data>
+  <data name="Crowns" xml:space="preserve">
+    <value>Crowns (Matar a la Witch de un disparo)</value>
+  </data>
+  <data name="CrownsHurt" xml:space="preserve">
+    <value>Crowns - Daño</value>
+  </data>
+  <data name="MeleeSkeets" xml:space="preserve">
+    <value>Melee skeets</value>
+  </data>
+  <data name="RockSkeets" xml:space="preserve">
+    <value>Rock skeets</value>
+  </data>
+  <data name="DeadStops" xml:space="preserve">
+    <value>Dead stops</value>
+  </data>
+  <data name="TongueCuts" xml:space="preserve">
+    <value>Lenguas cortadas</value>
+  </data>
+  <data name="SelfClears" xml:space="preserve">
+    <value>Auto despejes</value>
+  </data>
+  <data name="Clears" xml:space="preserve">
+    <value>Despejes</value>
+  </data>
+  <data name="AvgClearTime" xml:space="preserve">
+    <value>Despejes - Tiempo promedio</value>
+  </data>
+  <data name="BoomersPopped" xml:space="preserve">
+    <value>Boomers explotados</value>
+  </data>
+  <data name="Shoves" xml:space="preserve">
+    <value>Empujones</value>
+  </data>
+  <data name="FfHits" xml:space="preserve">
+    <value>Impactos de fuego amigo</value>
+  </data>
+  <data name="FfGiven" xml:space="preserve">
+    <value>Fuego amigo causado (FFG)</value>
+  </data>
+  <data name="FfGivenPellet" xml:space="preserve">
+    <value>FFG - Pellet</value>
+  </data>
+  <data name="FfGivenBullet" xml:space="preserve">
+    <value>FFG - Bala</value>
+  </data>
+  <data name="FfGivenSniper" xml:space="preserve">
+    <value>FFG - Sniper</value>
+  </data>
+  <data name="FfGivenMelee" xml:space="preserve">
+    <value>FFG - Melee</value>
+  </data>
+  <data name="FfGivenFire" xml:space="preserve">
+    <value>FFG - Fuego</value>
+  </data>
+  <data name="FfGivenIncap" xml:space="preserve">
+    <value>FFG - Incapacitados</value>
+  </data>
+  <data name="FfGivenSelf" xml:space="preserve">
+    <value>FFG - A sí mismo</value>
+  </data>
+  <data name="FfGivenOther" xml:space="preserve">
+    <value>FFG - Otros</value>
+  </data>
+  <data name="FfGivenTotal" xml:space="preserve">
+    <value>FFG - Total</value>
+  </data>
+  <data name="FfTaken" xml:space="preserve">
+    <value>Fuego amigo recibido (FFT)</value>
+  </data>
+  <data name="FfTakenPellet" xml:space="preserve">
+    <value>FFT - Pellet</value>
+  </data>
+  <data name="FfTakenBullet" xml:space="preserve">
+    <value>FFT - Bala</value>
+  </data>
+  <data name="FfTakenSniper" xml:space="preserve">
+    <value>FFT - Sniper</value>
+  </data>
+  <data name="FfTakenMelee" xml:space="preserve">
+    <value>FFT - Melee</value>
+  </data>
+  <data name="FfTakenFire" xml:space="preserve">
+    <value>FFT - Fuego</value>
+  </data>
+  <data name="FfTakenIncap" xml:space="preserve">
+    <value>FFT - Incapacitados</value>
+  </data>
+  <data name="FfTakenOther" xml:space="preserve">
+    <value>FFT - Otros</value>
+  </data>
+  <data name="FfTakenTotal" xml:space="preserve">
+    <value>FFT - Total</value>
+  </data>
+  <data name="DmgTotal" xml:space="preserve">
+    <value>Total damage</value>
+  </data>
+  <data name="DmgUpright" xml:space="preserve">
+    <value>Upright damage</value>
+  </data>
+  <data name="TankDmg" xml:space="preserve">
+    <value>Tank - Damage</value>
+  </data>
+  <data name="TankIncap" xml:space="preserve">
+    <value>Tank - Incapacitations</value>
+  </data>
+  <data name="TankPasses" xml:space="preserve">
+    <value>Tank - Control losses</value>
+  </data>
+  <data name="DmgScratch" xml:space="preserve">
+    <value>Damage - Scratches</value>
+  </data>
+  <data name="DmgTankUp" xml:space="preserve">
+    <value>Damage - During Tank</value>
+  </data>
+  <data name="DmgSpit" xml:space="preserve">
+    <value>Damage - Spitter</value>
+  </data>
+  <data name="DmgBoom" xml:space="preserve">
+    <value>Damage - Boomer</value>
+  </data>
+  <data name="HunterDPs" xml:space="preserve">
+    <value>Hunter - Pounces</value>
+  </data>
+  <data name="HunterDpDmg" xml:space="preserve">
+    <value>Hunter - Pounce damage</value>
+  </data>
+  <data name="JockeyDPs" xml:space="preserve">
+    <value>Jockey - Pounces</value>
+  </data>
+  <data name="DeathCharges" xml:space="preserve">
+    <value>Charges - Instant kills</value>
+  </data>
+  <data name="Booms" xml:space="preserve">
+    <value>Boomed</value>
+  </data>
+  <data name="Ledged" xml:space="preserve">
+    <value>Ledged</value>
+  </data>
+  <data name="Spawns" xml:space="preserve">
+    <value>Apariciones</value>
+  </data>
+  <data name="SpawnsSmoker" xml:space="preserve">
+    <value>Apariciones - Smoker</value>
+  </data>
+  <data name="SpawnsBoomer" xml:space="preserve">
+    <value>Apariciones - Boomer</value>
+  </data>
+  <data name="SpawnsHunter" xml:space="preserve">
+    <value>Apariciones - Hunter</value>
+  </data>
+  <data name="SpawnsCharger" xml:space="preserve">
+    <value>Apariciones - Charger</value>
+  </data>
+  <data name="SpawnsSpitter" xml:space="preserve">
+    <value>Apariciones - Spitter</value>
+  </data>
+  <data name="SpawnsJockey" xml:space="preserve">
+    <value>Apariciones - Jockey</value>
   </data>
 </root>
