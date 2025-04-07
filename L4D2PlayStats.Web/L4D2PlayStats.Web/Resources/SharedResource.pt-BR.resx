@@ -567,4 +567,58 @@
   <data name="FallDamage" xml:space="preserve">
     <value>Dano por queda</value>
   </data>
+  <data name="ShotgunShots" xml:space="preserve">
+    <value>Shotgun - Disparos</value>
+  </data>
+  <data name="ShotgunHits" xml:space="preserve">
+    <value>Shotgun - Acertos</value>
+  </data>
+  <data name="ShotgunHitsPercent" xml:space="preserve">
+    <value>Shotgun - Acertos (%)</value>
+  </data>
+  <data name="ShotgunHitsSI" xml:space="preserve">
+    <value>Shotgun - Acertos em Infectados Especiais</value>
+  </data>
+  <data name="ShotgunHitsSIPercent" xml:space="preserve">
+    <value>Shotgun - Acertos em IE (%)</value>
+  </data>
+  <data name="ShotgunHitsTank" xml:space="preserve">
+    <value>Shotgun - Acertos no Tank</value>
+  </data>
+  <data name="ShotgunHitsTankPercent" xml:space="preserve">
+    <value>Shotgun - Acertos no Tank (%)</value>
+  </data>
+  <data name="SmgShots" xml:space="preserve">
+    <value>SMG - Disparos</value>
+  </data>
+  <data name="SmgHits" xml:space="preserve">
+    <value>SMG - Acertos</value>
+  </data>
+  <data name="SmgHitsPercent" xml:space="preserve">
+    <value>SMG - Acertos (%)</value>
+  </data>
+  <data name="SmgHitsSI" xml:space="preserve">
+    <value>SMG - Acertos em Infectados Especiais</value>
+  </data>
+  <data name="SmgHitsSIPercent" xml:space="preserve">
+    <value>SMG - Acertos em IE (%)</value>
+  </data>
+  <data name="SmgHitsTank" xml:space="preserve">
+    <value>SMG - Acertos no Tank</value>
+  </data>
+  <data name="SmgHitsTankPercent" xml:space="preserve">
+    <value>SMG - Acertos no Tank (%)</value>
+  </data>
+  <data name="SmgHS" xml:space="preserve">
+    <value>SMG - Headshots</value>
+  </data>
+  <data name="SmgHSPercent" xml:space="preserve">
+    <value>SMG - Headshots (%)</value>
+  </data>
+  <data name="SmgHSSI" xml:space="preserve">
+    <value>SMG - Headshots em Infectados Especiais</value>
+  </data>
+  <data name="SmgHSSIPercent" xml:space="preserve">
+    <value>SMG - Headshots em IE (%)</value>
+  </data>
 </root>
