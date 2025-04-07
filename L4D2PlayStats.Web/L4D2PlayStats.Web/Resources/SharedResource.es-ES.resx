@@ -564,4 +564,7 @@
   <data name="TankDuration" xml:space="preserve">
     <value>Duración del Tank</value>
   </data>
+  <data name="FallDamage" xml:space="preserve">
+    <value>Daño por caída</value>
+  </data>
 </root>

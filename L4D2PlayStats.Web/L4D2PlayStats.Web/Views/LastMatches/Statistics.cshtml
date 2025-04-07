@@ -121,295 +121,347 @@
     }
 </ul>
 
+<br />
+
 <div class="tab-content">
-    @for (var round = 1; round <= halves.Count; round++)
-    {
-        var half = halves[round - 1];
-        var roundHalf = half.RoundHalf!;
-        var scoring = Model.Statistic?.Statistic?.Scoring;
-        var survivorWinning = round == 1 ? scoring?.TeamAWon : scoring?.TeamBWon;
-        var infectedWinning = round == 1 ? scoring?.TeamBWon : scoring?.TeamAWon;
+@for (var round = 1; round <= halves.Count; round++)
+{
+    var half = halves[round - 1];
+    var roundHalf = half.RoundHalf!;
+    var scoring = Model.Statistic?.Statistic?.Scoring;
+    var survivorWinning = round == 1 ? scoring?.TeamAWon : scoring?.TeamBWon;
+    var infectedWinning = round == 1 ? scoring?.TeamBWon : scoring?.TeamAWon;
 
-        var players = half.Players;
-        var mvpSiDamage = players.OrderByDescending(p => p.SiDamage).FirstOrDefault();
-        var mvpCommon = players.OrderByDescending(p => p.Common).FirstOrDefault();
-        var lvpFfGiven = players.OrderByDescending(p => p.FfGiven).FirstOrDefault();
+    var mvpSiDamage = half.Players.OrderByDescending(p => p.SiDamage).FirstOrDefault();
+    var mvpCommon = half.Players.OrderByDescending(p => p.Common).FirstOrDefault();
+    var lvpFfGiven = half.Players.OrderByDescending(p => p.FfGiven).FirstOrDefault();
 
-        var infectedPlayers = half.InfectedPlayers;
+    var players = half.Players
+        .OrderByDescending(p => p == mvpSiDamage)
+        .ThenByDescending(p => p == mvpCommon)
+        .ThenBy(p => p == lvpFfGiven)
+        .ToList();
 
-        <div id="tab-round-half-@round" class="tab-pane fade @(round == 1 ? "in active" : string.Empty) match">
+    var infectedPlayers = half.InfectedPlayers
+        .OrderByDescending(p => p.DmgTotal)
+        .ToList();
+
+    <div id="tab-round-half-@round" class="tab-pane fade @(round == 1 ? "in active" : string.Empty) match">
+    <div class="row">
+        <div class="col-md-5">
             <div class="row">
-                <div class="col-md-5">
-                    <div class="row">
-                        <div class="col-xs-6" style="padding-right: 3px">
-                            <div class="panel panel-@(survivorWinning == true ? "success" : "danger")" style="margin-bottom: 0;">
-                                <div class="panel-heading bold" style="padding: 3px 15px">
-                                    @SharedLocalizer["Survivors"]
-                                </div>
-                                <div class="panel-body" style="padding: 0">
-                                    <table class="table table-striped table-hover table-bordered table-condensed">
-                                        <tbody>
-                                        @foreach (var player in players
-                                                      .OrderByDescending(p => p == mvpSiDamage)
-                                                      .ThenByDescending(p => p == mvpCommon)
-                                                      .ThenBy(p => p == lvpFfGiven))
-                                        {
-                                            <tr class="@(CurrentUser.ItIsMe(player.CommunityId) ? "it-is-me" : string.Empty)">
-                                                <td style="padding: 2px" class="slim">
-                                                    <a href="@Url.Action("Details", "Players", new { communityId = player.CommunityId })" title="@player.PlayerName">
-                                                        <img src="@UserAvatar[player.CommunityId]" alt="@player.PlayerName" style="width: 32px; border-radius: 5px" onerror="imgOnError(this)"/>
-                                                    </a>
-                                                </td>
-                                                <td class="vertical-align-middle">
-                                                    @Html.ActionLink(player.PlayerName?.Truncate(30) ?? "-", "Details", "Players", new { communityId = player.CommunityId })
-
-                                                    @if (player == mvpSiDamage)
-                                                    {
-                                                        <img src="~/imgs/icons/star.png" alt="@SharedLocalizer["MvpSI"]" class="icon" data-toggle="tooltip" data-placement="top" title="@SharedLocalizer["MvpSI"]"/>
-                                                    }
-
-                                                    @if (player == mvpCommon)
-                                                    {
-                                                        <img src="~/imgs/icons/star-blue.png" alt="@SharedLocalizer["MvpCI"]" class="icon" data-toggle="tooltip" data-placement="top" title="@SharedLocalizer["MvpCI"]"/>
-                                                    }
-
-                                                    @if (player == lvpFfGiven)
-                                                    {
-                                                        <img src="~/imgs/icons/lvp.png" alt="@SharedLocalizer["Lvp"]" class="icon" data-toggle="tooltip" data-placement="top" title="@SharedLocalizer["Lvp"]"/>
-                                                    }
-                                                </td>
-                                            </tr>
-                                        }
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xs-6" style="padding-left: 3px">
-                            <div class="panel panel-@(infectedWinning == true ? "success" : "danger")" style="margin-bottom: 0;">
-                                <div class="panel-heading bold" style="padding: 3px 15px">
-                                    @SharedLocalizer["Infecteds"]
-                                </div>
-                                <div class="panel-body" style="padding: 0">
-                                    <table class="table table-striped table-hover table-bordered table-condensed">
-                                        <tbody>
-                                        @foreach (var infectedPlayer in infectedPlayers.OrderByDescending(p => p.DmgTotal))
-                                        {
-                                            <tr class="@(CurrentUser.ItIsMe(infectedPlayer.CommunityId) ? "it-is-me" : string.Empty)">
-                                                <td style="padding: 2px" class="slim">
-                                                    <a href="@Url.Action("Details", "Players", new { communityId = infectedPlayer.CommunityId })" title="@infectedPlayer.PlayerName">
-                                                        <img src="@UserAvatar[infectedPlayer.CommunityId]" alt="@infectedPlayer.PlayerName" style="width: 32px; border-radius: 5px" onerror="imgOnError(this)"/>
-                                                    </a>
-                                                </td>
-                                                <td class="vertical-align-middle">
-                                                    @Html.ActionLink(infectedPlayer.PlayerName?.Truncate(30) ?? "-", "Details", "Players", new { communityId = infectedPlayer.CommunityId })
-                                                </td>
-                                                <td class="slim text-center">
-                                                    <span data-toggle="tooltip" data-placement="top" title="@SharedLocalizer["TotalDamage"]">
-                                                        @infectedPlayer.DmgTotal.ToString("N0")
-                                                    </span>
-                                                </td>
-                                            </tr>
-                                        }
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-7">
-                    <div class="panel panel-default" style="margin-bottom: 0;">
-                        <div class="panel-heading bold" style="padding: 3px 15px">
-                            @SharedLocalizer["Details"]
-                        </div>
-                        <div class="panel-body" style="padding: 0">
-                            <div class="row round-details">
-                                <div class="col-md-6 left-side">
-                                    <table class="table table-striped table-hover table-bordered table-condensed">
-                                        <tbody>
-                                        @if (roundHalf.Restarts != 0)
-                                        {
-                                            <tr>
-                                                <th>@SharedLocalizer["Restarts"]:</th>
-                                                <td class="slim text-center">@roundHalf.Restarts.ToString("N0")</td>
-                                            </tr>
-                                        }
-                                        <tr>
-                                            <th>@SharedLocalizer["PillsUsed"]:</th>
-                                            <td class="slim text-center">@roundHalf.PillsUsed.ToString("N0")</td>
-                                        </tr>
-                                        @if (roundHalf.KitsUsed != 0)
-                                        {
-                                            <tr>
-                                                <th>@SharedLocalizer["KitsUsed"]:</th>
-                                                <td class="slim text-center">@roundHalf.KitsUsed.ToString("N0")</td>
-                                            </tr>
-                                        }
-                                        @if (roundHalf.DefibsUsed != 0)
-                                        {
-                                            <tr>
-                                                <th>@SharedLocalizer["DefibrillatorsUsed"]:</th>
-                                                <td class="slim text-center">@roundHalf.DefibsUsed.ToString("N0")</td>
-                                            </tr>
-                                        }
-                                        <tr>
-                                            <th>@SharedLocalizer["TimesIncapacitated"]:</th>
-                                            <td class="slim text-center">@roundHalf.Incaps.ToString("N0")</td>
-                                        </tr>
-                                        <tr>
-                                            <th>@SharedLocalizer["Deaths"]:</th>
-                                            <td class="slim text-center">@roundHalf.Deaths.ToString("N0")</td>
-                                        </tr>
-                                        @if (roundHalf.FfDamageTotal != 0)
-                                        {
-                                            <tr>
-                                                <th>@SharedLocalizer["FF"]:</th>
-                                                <td class="slim text-center">@roundHalf.FfDamageTotal.ToString("N0")</td>
-                                            </tr>
-                                        }
-                                        @if (roundHalf.SiSpawned != 0)
-                                        {
-                                            <tr>
-                                                <th>@SharedLocalizer["SiSpawned"]:</th>
-                                                <td class="slim text-center">@roundHalf.SiSpawned.ToString("N0")</td>
-                                            </tr>
-                                        }
-                                        @if (roundHalf.SiKilled != 0)
-                                        {
-                                            <tr>
-                                                <th>@SharedLocalizer["SiKilled"]:</th>
-                                                <td class="slim text-center">@roundHalf.SiKilled.ToString("N0")</td>
-                                            </tr>
-                                        }
-                                        @if (roundHalf.SiDamage != 0)
-                                        {
-                                            <tr>
-                                                <th>@SharedLocalizer["SiDamage"]:</th>
-                                                <td class="slim text-center">@roundHalf.SiDamage.ToString("N0")</td>
-                                            </tr>
-                                        }
-                                        @if (roundHalf.TankKilled != 0)
-                                        {
-                                            <tr>
-                                                <th>@SharedLocalizer["TanksKilled"]:</th>
-                                                <td class="slim text-center">@roundHalf.TankKilled.ToString("N0")</td>
-                                            </tr>
-                                        }
-                                        @if (roundHalf.WitchKilled != 0)
-                                        {
-                                            <tr>
-                                                <th>@SharedLocalizer["WitchesKilled"]:</th>
-                                                <td class="slim text-center">@roundHalf.WitchKilled.ToString("N0")</td>
-                                            </tr>
-                                        }
-                                        @if (roundHalf.Common != 0)
-                                        {
-                                            <tr>
-                                                <th>@SharedLocalizer["CommonsKilled"]:</th>
-                                                <td class="slim text-center">@roundHalf.Common.ToString("N0")</td>
-                                            </tr>
-                                        }
-                                        </tbody>
-                                    </table>
-                                </div>
-                                <div class="col-md-6 right-side">
-                                    <table class="table table-striped table-hover table-bordered table-condensed">
-                                        <tbody>
-                                        @if (roundHalf.StartTime != null)
-                                        {
-                                            <tr>
-                                                <th>@SharedLocalizer["RoundStart"]:</th>
-                                                <td class="slim text-center">@($"{roundHalf.StartTime.Value:d} {roundHalf.StartTime.Value:HH:mm}")</td>
-                                            </tr>
-                                        }
-                                        @if (roundHalf.EndTime != null)
-                                        {
-                                            <tr>
-                                                <th>@SharedLocalizer["RoundEnd"]:</th>
-                                                <td class="slim text-center">@($"{roundHalf.EndTime.Value:d} {roundHalf.EndTime.Value:HH:mm}")</td>
-                                            </tr>
-                                        }
-                                        @if (!string.IsNullOrWhiteSpace(roundHalf.RoundElapsed))
-                                        {
-                                            <tr>
-                                                <th>@SharedLocalizer["RoundDuration"]:</th>
-                                                <td class="slim text-center">@roundHalf.RoundElapsed</td>
-                                            </tr>
-                                        }
-                                        @if (roundHalf.StartTimePause != null)
-                                        {
-                                            <tr>
-                                                <th>@SharedLocalizer["PauseStart"]:</th>
-                                                <td class="slim text-center">@($"{roundHalf.StartTimePause.Value:d} {roundHalf.StartTimePause.Value:HH:mm}")</td>
-                                            </tr>
-                                        }
-                                        @if (roundHalf.StopTimePause != null)
-                                        {
-                                            <tr>
-                                                <th>@SharedLocalizer["PauseEnd"]:</th>
-                                                <td class="slim text-center">@($"{roundHalf.StopTimePause.Value:d} {roundHalf.StopTimePause.Value:HH:mm}")</td>
-                                            </tr>
-                                        }
-                                        @if (!string.IsNullOrWhiteSpace(roundHalf.PauseElapsed))
-                                        {
-                                            <tr>
-                                                <th>@SharedLocalizer["PauseDuration"]:</th>
-                                                <td class="slim text-center">@roundHalf.PauseElapsed</td>
-                                            </tr>
-                                        }
-                                        @if (roundHalf.StartTimeTank != null)
-                                        {
-                                            <tr>
-                                                <th>@SharedLocalizer["TankStart"]:</th>
-                                                <td class="slim text-center">@($"{roundHalf.StartTimeTank.Value:d} {roundHalf.StartTimeTank.Value:HH:mm}")</td>
-                                            </tr>
-                                        }
-                                        @if (roundHalf.StopTimeTank != null)
-                                        {
-                                            <tr>
-                                                <th>@SharedLocalizer["TankEnd"]:</th>
-                                                <td class="slim text-center">@($"{roundHalf.StopTimeTank.Value:d} {roundHalf.StopTimeTank.Value:HH:mm}")</td>
-                                            </tr>
-                                        }
-                                        @if (!string.IsNullOrWhiteSpace(roundHalf.TankElapsed))
-                                        {
-                                            <tr>
-                                                <th>@SharedLocalizer["TankDuration"]:</th>
-                                                <td class="slim text-center">@roundHalf.TankElapsed</td>
-                                            </tr>
-                                        }
-                                        </tbody>
-                                    </table>
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="row">
-                <div class="col-md-5">
-                    <div class="panel panel-default" style="margin-bottom: 0;">
+                <div class="col-xs-6" style="padding-right: 3px">
+                    <div class="panel panel-@(survivorWinning == true ? "success" : "danger")" style="margin-bottom: 0;">
                         <div class="panel-heading bold" style="padding: 3px 15px">
                             @SharedLocalizer["Survivors"]
                         </div>
                         <div class="panel-body" style="padding: 0">
-                           
+                            <table class="table table-striped table-hover table-bordered table-condensed">
+                                <tbody>
+                                @foreach (var player in players)
+                                {
+                                    <tr class="@(CurrentUser.ItIsMe(player.CommunityId) ? "it-is-me" : string.Empty)">
+                                        <td style="padding: 2px" class="slim">
+                                            <a href="@Url.Action("Details", "Players", new { communityId = player.CommunityId })" title="@player.PlayerName">
+                                                <img src="@UserAvatar[player.CommunityId]" alt="@player.PlayerName" style="width: 32px; border-radius: 5px" onerror="imgOnError(this)"/>
+                                            </a>
+                                        </td>
+                                        <td class="vertical-align-middle">
+                                            @Html.ActionLink(player.PlayerName?.Truncate(30) ?? "-", "Details", "Players", new { communityId = player.CommunityId })
+
+                                            @if (player == mvpSiDamage)
+                                            {
+                                                <img src="~/imgs/icons/star.png" alt="@SharedLocalizer["MvpSI"]" class="icon" data-toggle="tooltip" data-placement="top" title="@SharedLocalizer["MvpSI"]"/>
+                                            }
+
+                                            @if (player == mvpCommon)
+                                            {
+                                                <img src="~/imgs/icons/star-blue.png" alt="@SharedLocalizer["MvpCI"]" class="icon" data-toggle="tooltip" data-placement="top" title="@SharedLocalizer["MvpCI"]"/>
+                                            }
+
+                                            @if (player == lvpFfGiven)
+                                            {
+                                                <img src="~/imgs/icons/lvp.png" alt="@SharedLocalizer["Lvp"]" class="icon" data-toggle="tooltip" data-placement="top" title="@SharedLocalizer["Lvp"]"/>
+                                            }
+                                        </td>
+                                    </tr>
+                                }
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-7">
-                    <div class="panel panel-default" style="margin-bottom: 0;">
+                <div class="col-xs-6" style="padding-left: 3px">
+                    <div class="panel panel-@(infectedWinning == true ? "success" : "danger")" style="margin-bottom: 0;">
                         <div class="panel-heading bold" style="padding: 3px 15px">
                             @SharedLocalizer["Infecteds"]
                         </div>
                         <div class="panel-body" style="padding: 0">
+                            <table class="table table-striped table-hover table-bordered table-condensed">
+                                <tbody>
+                                @foreach (var infectedPlayer in infectedPlayers)
+                                {
+                                    <tr class="@(CurrentUser.ItIsMe(infectedPlayer.CommunityId) ? "it-is-me" : string.Empty)">
+                                        <td style="padding: 2px" class="slim">
+                                            <a href="@Url.Action("Details", "Players", new { communityId = infectedPlayer.CommunityId })" title="@infectedPlayer.PlayerName">
+                                                <img src="@UserAvatar[infectedPlayer.CommunityId]" alt="@infectedPlayer.PlayerName" style="width: 32px; border-radius: 5px" onerror="imgOnError(this)"/>
+                                            </a>
+                                        </td>
+                                        <td class="vertical-align-middle">
+                                            @Html.ActionLink(infectedPlayer.PlayerName?.Truncate(30) ?? "-", "Details", "Players", new { communityId = infectedPlayer.CommunityId })
+                                        </td>
+                                        <td class="slim text-center">
+                                            <span data-toggle="tooltip" data-placement="top" title="@SharedLocalizer["TotalDamage"]">
+                                                @infectedPlayer.DmgTotal.ToString("N0")
+                                            </span>
+                                        </td>
+                                    </tr>
+                                }
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    }
+        <div class="col-md-7">
+            <div class="panel panel-default" style="margin-bottom: 0;">
+                <div class="panel-heading bold" style="padding: 3px 15px">
+                    @SharedLocalizer["Details"]
+                </div>
+                <div class="panel-body" style="padding: 0">
+                    <div class="row round-details">
+                        <div class="col-md-6 left-side">
+                            <table class="table table-striped table-hover table-bordered table-condensed">
+                                <tbody>
+                                @if (roundHalf.Restarts != 0)
+                                {
+                                    <tr>
+                                        <th>@SharedLocalizer["Restarts"]:</th>
+                                        <td class="slim text-center">@roundHalf.Restarts.ToString("N0")</td>
+                                    </tr>
+                                }
+                                <tr>
+                                    <th>@SharedLocalizer["PillsUsed"]:</th>
+                                    <td class="slim text-center">@roundHalf.PillsUsed.ToString("N0")</td>
+                                </tr>
+                                @if (roundHalf.KitsUsed != 0)
+                                {
+                                    <tr>
+                                        <th>@SharedLocalizer["KitsUsed"]:</th>
+                                        <td class="slim text-center">@roundHalf.KitsUsed.ToString("N0")</td>
+                                    </tr>
+                                }
+                                @if (roundHalf.DefibsUsed != 0)
+                                {
+                                    <tr>
+                                        <th>@SharedLocalizer["DefibrillatorsUsed"]:</th>
+                                        <td class="slim text-center">@roundHalf.DefibsUsed.ToString("N0")</td>
+                                    </tr>
+                                }
+                                <tr>
+                                    <th>@SharedLocalizer["TimesIncapacitated"]:</th>
+                                    <td class="slim text-center">@roundHalf.Incaps.ToString("N0")</td>
+                                </tr>
+                                <tr>
+                                    <th>@SharedLocalizer["Deaths"]:</th>
+                                    <td class="slim text-center">@roundHalf.Deaths.ToString("N0")</td>
+                                </tr>
+                                @if (roundHalf.FfDamageTotal != 0)
+                                {
+                                    <tr>
+                                        <th>@SharedLocalizer["FF"]:</th>
+                                        <td class="slim text-center">@roundHalf.FfDamageTotal.ToString("N0")</td>
+                                    </tr>
+                                }
+                                @if (roundHalf.SiSpawned != 0)
+                                {
+                                    <tr>
+                                        <th>@SharedLocalizer["SiSpawned"]:</th>
+                                        <td class="slim text-center">@roundHalf.SiSpawned.ToString("N0")</td>
+                                    </tr>
+                                }
+                                @if (roundHalf.SiKilled != 0)
+                                {
+                                    <tr>
+                                        <th>@SharedLocalizer["SiKilled"]:</th>
+                                        <td class="slim text-center">@roundHalf.SiKilled.ToString("N0")</td>
+                                    </tr>
+                                }
+                                @if (roundHalf.SiDamage != 0)
+                                {
+                                    <tr>
+                                        <th>@SharedLocalizer["SiDamage"]:</th>
+                                        <td class="slim text-center">@roundHalf.SiDamage.ToString("N0")</td>
+                                    </tr>
+                                }
+                                @if (roundHalf.TankKilled != 0)
+                                {
+                                    <tr>
+                                        <th>@SharedLocalizer["TanksKilled"]:</th>
+                                        <td class="slim text-center">@roundHalf.TankKilled.ToString("N0")</td>
+                                    </tr>
+                                }
+                                @if (roundHalf.WitchKilled != 0)
+                                {
+                                    <tr>
+                                        <th>@SharedLocalizer["WitchesKilled"]:</th>
+                                        <td class="slim text-center">@roundHalf.WitchKilled.ToString("N0")</td>
+                                    </tr>
+                                }
+                                @if (roundHalf.Common != 0)
+                                {
+                                    <tr>
+                                        <th>@SharedLocalizer["CommonsKilled"]:</th>
+                                        <td class="slim text-center">@roundHalf.Common.ToString("N0")</td>
+                                    </tr>
+                                }
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="col-md-6 right-side">
+                            <table class="table table-striped table-hover table-bordered table-condensed">
+                                <tbody>
+                                @if (roundHalf.StartTime != null)
+                                {
+                                    <tr>
+                                        <th>@SharedLocalizer["RoundStart"]:</th>
+                                        <td class="slim text-center">@($"{roundHalf.StartTime.Value:d} {roundHalf.StartTime.Value:HH:mm}")</td>
+                                    </tr>
+                                }
+                                @if (roundHalf.EndTime != null)
+                                {
+                                    <tr>
+                                        <th>@SharedLocalizer["RoundEnd"]:</th>
+                                        <td class="slim text-center">@($"{roundHalf.EndTime.Value:d} {roundHalf.EndTime.Value:HH:mm}")</td>
+                                    </tr>
+                                }
+                                @if (!string.IsNullOrWhiteSpace(roundHalf.RoundElapsed))
+                                {
+                                    <tr>
+                                        <th>@SharedLocalizer["RoundDuration"]:</th>
+                                        <td class="slim text-center">@roundHalf.RoundElapsed</td>
+                                    </tr>
+                                }
+                                @if (roundHalf.StartTimePause != null)
+                                {
+                                    <tr>
+                                        <th>@SharedLocalizer["PauseStart"]:</th>
+                                        <td class="slim text-center">@($"{roundHalf.StartTimePause.Value:d} {roundHalf.StartTimePause.Value:HH:mm}")</td>
+                                    </tr>
+                                }
+                                @if (roundHalf.StopTimePause != null)
+                                {
+                                    <tr>
+                                        <th>@SharedLocalizer["PauseEnd"]:</th>
+                                        <td class="slim text-center">@($"{roundHalf.StopTimePause.Value:d} {roundHalf.StopTimePause.Value:HH:mm}")</td>
+                                    </tr>
+                                }
+                                @if (!string.IsNullOrWhiteSpace(roundHalf.PauseElapsed))
+                                {
+                                    <tr>
+                                        <th>@SharedLocalizer["PauseDuration"]:</th>
+                                        <td class="slim text-center">@roundHalf.PauseElapsed</td>
+                                    </tr>
+                                }
+                                @if (roundHalf.StartTimeTank != null)
+                                {
+                                    <tr>
+                                        <th>@SharedLocalizer["TankStart"]:</th>
+                                        <td class="slim text-center">@($"{roundHalf.StartTimeTank.Value:d} {roundHalf.StartTimeTank.Value:HH:mm}")</td>
+                                    </tr>
+                                }
+                                @if (roundHalf.StopTimeTank != null)
+                                {
+                                    <tr>
+                                        <th>@SharedLocalizer["TankEnd"]:</th>
+                                        <td class="slim text-center">@($"{roundHalf.StopTimeTank.Value:d} {roundHalf.StopTimeTank.Value:HH:mm}")</td>
+                                    </tr>
+                                }
+                                @if (!string.IsNullOrWhiteSpace(roundHalf.TankElapsed))
+                                {
+                                    <tr>
+                                        <th>@SharedLocalizer["TankDuration"]:</th>
+                                        <td class="slim text-center">@roundHalf.TankElapsed</td>
+                                    </tr>
+                                }
+                                </tbody>
+                            </table>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <br/>
+
+    <div class="row">
+        <div class="col-md-5">
+            <div class="panel panel-default" style="margin-bottom: 0;">
+                <div class="panel-heading bold" style="padding: 3px 15px">
+                    @SharedLocalizer["Survivors"]
+                </div>
+                <div class="panel-body" style="padding: 0">
+                    <table class="table table-striped table-hover table-bordered table-condensed">
+                        <thead>
+                        <tr>
+                            <th></th>
+                            @foreach (var player in players)
+                            {
+                                <th class="text-center">@player.PlayerName</th>
+                            }
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <th>@SharedLocalizer["Deaths"]:</th>
+                            @foreach (var player in players)
+                            {
+                                <td class="slim text-center">@player.Died.ToString("N0")</td>
+                            }
+                        </tr>
+                        <tr>
+                            <th>@SharedLocalizer["TimesIncapacitated"]:</th>
+                            @foreach (var player in players)
+                            {
+                                <td class="slim text-center">@player.Incaps.ToString("N0")</td>
+                            }
+                        </tr>
+                        <tr>
+                            <th>@SharedLocalizer["DamageTaken"]:</th>
+                            @foreach (var player in players)
+                            {
+                                <td class="slim text-center">@player.DmgTaken.ToString("N0")</td>
+                            }
+                        </tr>
+                        <tr>
+                            <th>@SharedLocalizer["FallDamage"]:</th>
+                            @foreach (var player in players)
+                            {
+                                <td class="slim text-center">@player.FallDamage.ToString("N0")</td>
+                            }
+                        </tr>
+                        <tr>
+                            <td colspan="@(players.Count() + 1)"></td>
+                        </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+        <div class="col-md-7">
+            <div class="panel panel-default" style="margin-bottom: 0;">
+                <div class="panel-heading bold" style="padding: 3px 15px">
+                    @SharedLocalizer["Infecteds"]
+                </div>
+                <div class="panel-body" style="padding: 0">
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+}
 </div>
