@@ -39,6 +39,7 @@
     var match = Model.Match;
     var gameRound = Model.Statistic?.Statistic?.GameRound;
     var halves = Model.Statistic?.Statistic?.Halves ?? StatisticsResult.HalfResult.EmptyCollection;
+    var allPlayers = Model.Statistic?.Statistic?.PlayerNames ?? StatisticsResult.PlayerNameResult.EmptyCollection;
 }
 
 <h4 class="text-center">@SharedLocalizer["MatchDetails"]</h4>
@@ -1280,6 +1281,44 @@
                             <td class="slim text-center">@infectedPlayer.SpawnJockey.ToString("N0")</td>
                         }
                     </tr>
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+
+
+        <br/>
+
+        <div class="panel panel-default" style="margin-bottom: 0;">
+            <div class="panel-heading bold" style="padding: 3px 15px">
+                @SharedLocalizer["Spectators"]
+            </div>
+            <div class="panel-body" style="padding: 0">
+                <table class="table table-striped table-hover table-bordered table-condensed">
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Steam ID</th>
+                        <th>Community ID</th>
+                        <th>@SharedLocalizer["Name"]</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    @for (var i = 0; i < allPlayers.Count; i++)
+                    {
+                        var playerName = allPlayers[i];
+                        <tr>
+                            <td>@(i + 1)</td>
+                            <td>@playerName.SteamId</td>
+                            <td>@playerName.CommunityId</td>
+                            <td>
+                                <a href="@playerName.ProfileUrl" title="@playerName.Name">
+                                    @playerName.Name
+                                </a>
+                            </td>
+                        </tr>
+                    }
                     </tbody>
                 </table>
 
