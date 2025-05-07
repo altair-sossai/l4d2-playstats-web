@@ -146,6 +146,14 @@
 
                     $('#chat-messages').append(html);
 
+                    $('#chat-messages p[data-message-when]').each(function () {
+                        var messageWhen = $(this).data('message-when');
+                        if (messageWhen) {
+                            var $duplicates = $('#chat-messages p[data-message-when="' + messageWhen + '"]').slice(1);
+                            $duplicates.remove();
+                        }
+                    });
+
                     if (scrollDown)
                         chatMessages.scrollTop(chatMessages[0].scrollHeight);
                 }
