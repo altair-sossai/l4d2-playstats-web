@@ -198,7 +198,7 @@
   <data name="TankDamageDealt" xml:space="preserve">
     <value>Tank - Dano causado</value>
   </data>
-  <data name="TankRocksTaken" xml:space="preserve">
+  <data name="RockEats" xml:space="preserve">
     <value>Tank - Pedras recebidas</value>
   </data>
   <data name="Skeets" xml:space="preserve">
@@ -711,7 +711,7 @@
   <data name="CrownsHurt" xml:space="preserve">
     <value>Crowns - Dano</value>
   </data>
-  <data name="MeleeSkeets" xml:space="preserve">
+  <data name="SkeetsMelee" xml:space="preserve">
     <value>Melee skeets</value>
   </data>
   <data name="RockSkeets" xml:space="preserve">
@@ -732,7 +732,7 @@
   <data name="AvgClearTime" xml:space="preserve">
     <value>Clears - Tempo médio</value>
   </data>
-  <data name="BoomersPopped" xml:space="preserve">
+  <data name="Pops" xml:space="preserve">
     <value>Boomers estourados</value>
   </data>
   <data name="Shoves" xml:space="preserve">
