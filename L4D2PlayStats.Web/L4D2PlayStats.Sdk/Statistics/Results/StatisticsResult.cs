@@ -1,4 +1,7 @@
-﻿namespace L4D2PlayStats.Sdk.Statistics.Results;
+﻿using L4D2PlayStats.Sdk.Statistics.Enums;
+using L4D2PlayStats.Sdk.Statistics.Extensions;
+
+namespace L4D2PlayStats.Sdk.Statistics.Results;
 
 public class StatisticsResult
 {
@@ -65,6 +68,36 @@ public class StatisticsResult
         public DateTime? StartTimeTank { get; set; }
         public DateTime? StopTimeTank { get; set; }
         public string? TankElapsed { get; set; }
+
+        public long this[RoundStats roundStats]
+        {
+            get
+            {
+                return roundStats switch
+                {
+                    RoundStats.Restarts => Restarts,
+                    RoundStats.PillsUsed => PillsUsed,
+                    RoundStats.KitsUsed => KitsUsed,
+                    RoundStats.DefibsUsed => DefibsUsed,
+                    RoundStats.Common => Common,
+                    RoundStats.SiKilled => SiKilled,
+                    RoundStats.SiDamage => SiDamage,
+                    RoundStats.SiSpawned => SiSpawned,
+                    RoundStats.WitchKilled => WitchKilled,
+                    RoundStats.TankKilled => TankKilled,
+                    RoundStats.Incaps => Incaps,
+                    RoundStats.Deaths => Deaths,
+                    RoundStats.FfDamageTotal => FfDamageTotal,
+                    RoundStats.StartTime => StartTime.ToUnixTimeSeconds(),
+                    RoundStats.EndTime => EndTime.ToUnixTimeSeconds(),
+                    RoundStats.StartTimePause => StartTimePause.ToUnixTimeSeconds(),
+                    RoundStats.StopTimePause => StopTimePause.ToUnixTimeSeconds(),
+                    RoundStats.StartTimeTank => StartTimeTank.ToUnixTimeSeconds(),
+                    RoundStats.StopTimeTank => StopTimeTank.ToUnixTimeSeconds(),
+                    _ => throw new ArgumentOutOfRangeException(nameof(roundStats), roundStats, null)
+                };
+            }
+        }
     }
 
     public class ProgressResult
@@ -168,6 +201,94 @@ public class StatisticsResult
         public DateTime? TimeStartUpright { get; set; }
         public DateTime? TimeStopUpright { get; set; }
         public string? TimeUprightElapsed { get; set; }
+
+        public long this[PlayerStats playerStats]
+        {
+            get
+            {
+                return playerStats switch
+                {
+                    PlayerStats.ShotsShotgun => ShotsShotgun,
+                    PlayerStats.ShotsSmg => ShotsSmg,
+                    PlayerStats.ShotsSniper => ShotsSniper,
+                    PlayerStats.ShotsPistol => ShotsPistol,
+                    PlayerStats.HitsShotgun => HitsShotgun,
+                    PlayerStats.HitsSmg => HitsSmg,
+                    PlayerStats.HitsSniper => HitsSniper,
+                    PlayerStats.HitsPistol => HitsPistol,
+                    PlayerStats.HeadshotsSmg => HeadshotsSmg,
+                    PlayerStats.HeadshotsSniper => HeadshotsSniper,
+                    PlayerStats.HeadshotsPistol => HeadshotsPistol,
+                    PlayerStats.HeadshotsSiSmg => HeadshotsSiSmg,
+                    PlayerStats.HeadshotsSiSniper => HeadshotsSiSniper,
+                    PlayerStats.HeadshotsSiPistol => HeadshotsSiPistol,
+                    PlayerStats.HitsSiShotgun => HitsSiShotgun,
+                    PlayerStats.HitsSiSmg => HitsSiSmg,
+                    PlayerStats.HitsSiSniper => HitsSiSniper,
+                    PlayerStats.HitsSiPistol => HitsSiPistol,
+                    PlayerStats.HitsTankShotgun => HitsTankShotgun,
+                    PlayerStats.HitsTankSmg => HitsTankSmg,
+                    PlayerStats.HitsTankSniper => HitsTankSniper,
+                    PlayerStats.HitsTankPistol => HitsTankPistol,
+                    PlayerStats.Common => Common,
+                    PlayerStats.CommonTankUp => CommonTankUp,
+                    PlayerStats.SiKilled => SiKilled,
+                    PlayerStats.SiKilledTankUp => SiKilledTankUp,
+                    PlayerStats.SiDamage => SiDamage,
+                    PlayerStats.SiDamageTankUp => SiDamageTankUp,
+                    PlayerStats.Incaps => Incaps,
+                    PlayerStats.Died => Died,
+                    PlayerStats.Skeets => Skeets,
+                    PlayerStats.SkeetsHurt => SkeetsHurt,
+                    PlayerStats.SkeetsMelee => SkeetsMelee,
+                    PlayerStats.Levels => Levels,
+                    PlayerStats.LevelsHurt => LevelsHurt,
+                    PlayerStats.Pops => Pops,
+                    PlayerStats.Crowns => Crowns,
+                    PlayerStats.CrownsHurt => CrownsHurt,
+                    PlayerStats.Shoves => Shoves,
+                    PlayerStats.DeadStops => DeadStops,
+                    PlayerStats.TongueCuts => TongueCuts,
+                    PlayerStats.SelfClears => SelfClears,
+                    PlayerStats.FallDamage => FallDamage,
+                    PlayerStats.DmgTaken => DmgTaken,
+                    PlayerStats.FfGiven => FfGiven,
+                    PlayerStats.FfTaken => FfTaken,
+                    PlayerStats.FfHits => FfHits,
+                    PlayerStats.TankDamage => TankDamage,
+                    PlayerStats.WitchDamage => WitchDamage,
+                    PlayerStats.MeleesOnTank => MeleesOnTank,
+                    PlayerStats.RockSkeets => RockSkeets,
+                    PlayerStats.RockEats => RockEats,
+                    PlayerStats.FfGivenPellet => FfGivenPellet,
+                    PlayerStats.FfGivenBullet => FfGivenBullet,
+                    PlayerStats.FfGivenSniper => FfGivenSniper,
+                    PlayerStats.FfGivenMelee => FfGivenMelee,
+                    PlayerStats.FfGivenFire => FfGivenFire,
+                    PlayerStats.FfGivenIncap => FfGivenIncap,
+                    PlayerStats.FfGivenOther => FfGivenOther,
+                    PlayerStats.FfGivenSelf => FfGivenSelf,
+                    PlayerStats.FfTakenPellet => FfTakenPellet,
+                    PlayerStats.FfTakenBullet => FfTakenBullet,
+                    PlayerStats.FfTakenSniper => FfTakenSniper,
+                    PlayerStats.FfTakenMelee => FfTakenMelee,
+                    PlayerStats.FfTakenFire => FfTakenFire,
+                    PlayerStats.FfTakenIncap => FfTakenIncap,
+                    PlayerStats.FfTakenOther => FfTakenOther,
+                    PlayerStats.FfGivenTotal => FfGivenTotal,
+                    PlayerStats.FfTakenTotal => FfTakenTotal,
+                    PlayerStats.Clears => Clears,
+                    PlayerStats.AvgClearTime => AvgClearTime,
+                    PlayerStats.TimeStartPresent => TimeStartPresent.ToUnixTimeSeconds(),
+                    PlayerStats.TimeStopPresent => TimeStopPresent.ToUnixTimeSeconds(),
+                    PlayerStats.TimeStartAlive => TimeStartAlive.ToUnixTimeSeconds(),
+                    PlayerStats.TimeStopAlive => TimeStopAlive.ToUnixTimeSeconds(),
+                    PlayerStats.TimeStartUpright => TimeStartUpright.ToUnixTimeSeconds(),
+                    PlayerStats.TimeStopUpright => TimeStopUpright.ToUnixTimeSeconds(),
+                    _ => throw new ArgumentOutOfRangeException(nameof(playerStats), playerStats, null)
+                };
+            }
+        }
     }
 
     public class InfectedPlayerResult : SteamUserResult
@@ -188,7 +309,7 @@ public class StatisticsResult
         public int JockeyDPs { get; set; }
         public int DeathCharges { get; set; }
         public int Booms { get; set; }
-        public int Lerged { get; set; }
+        public int Ledged { get; set; }
         public int Common { get; set; }
         public int Spawns { get; set; }
         public int SpawnSmoker { get; set; }
@@ -201,6 +322,42 @@ public class StatisticsResult
         public DateTime? TimeStartPresent { get; set; }
         public DateTime? TimeStopPresent { get; set; }
         public string? TimePresentElapsed { get; set; }
+
+        public long this[InfectedStats infectedStats]
+        {
+            get
+            {
+                return infectedStats switch
+                {
+                    InfectedStats.DmgTotal => DmgTotal,
+                    InfectedStats.DmgUpright => DmgUpright,
+                    InfectedStats.DmgTank => DmgTank,
+                    InfectedStats.DmgTankIncap => DmgTankIncap,
+                    InfectedStats.DmgScratch => DmgScratch,
+                    InfectedStats.DmgSpit => DmgSpit,
+                    InfectedStats.DmgBoom => DmgBoom,
+                    InfectedStats.DmgTankUp => DmgTankUp,
+                    InfectedStats.HunterDPs => HunterDPs,
+                    InfectedStats.HunterDpDmg => HunterDpDmg,
+                    InfectedStats.JockeyDPs => JockeyDPs,
+                    InfectedStats.DeathCharges => DeathCharges,
+                    InfectedStats.Booms => Booms,
+                    InfectedStats.Ledged => Ledged,
+                    InfectedStats.Common => Common,
+                    InfectedStats.Spawns => Spawns,
+                    InfectedStats.SpawnSmoker => SpawnSmoker,
+                    InfectedStats.SpawnBoomer => SpawnBoomer,
+                    InfectedStats.SpawnHunter => SpawnHunter,
+                    InfectedStats.SpawnCharger => SpawnCharger,
+                    InfectedStats.SpawnSpitter => SpawnSpitter,
+                    InfectedStats.SpawnJockey => SpawnJockey,
+                    InfectedStats.TankPasses => TankPasses,
+                    InfectedStats.TimeStartPresent => TimeStartPresent.ToUnixTimeSeconds(),
+                    InfectedStats.TimeStopPresent => TimeStopPresent.ToUnixTimeSeconds(),
+                    _ => throw new ArgumentOutOfRangeException(nameof(infectedStats), infectedStats, null)
+                };
+            }
+        }
     }
 
     public class ScoringResult
