@@ -413,7 +413,11 @@
         <th></th>
         @foreach (var player in players)
         {
-            <th class="text-center">@player.PlayerName</th>
+            <th class="text-center">
+                <a href="@player.ProfileUrl" title="@player.PlayerName">
+                    @player.PlayerName
+                </a>
+            </th>
         }
     </tr>
     </thead>
@@ -1100,7 +1104,11 @@
                         <th></th>
                         @foreach (var infectedPlayer in infectedPlayers)
                         {
-                            <th class="text-center">@infectedPlayer.PlayerName</th>
+                            <th class="text-center">
+                                <a href="@infectedPlayer.ProfileUrl" title="@infectedPlayer.PlayerName">
+                                    @infectedPlayer.PlayerName
+                                </a>
+                            </th>
                         }
                     </tr>
                     </thead>

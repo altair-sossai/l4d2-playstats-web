@@ -114,7 +114,11 @@
             <th class="text-center"></th>
             @foreach (var player in team.Players ?? MatchResult.PlayerResult.EmptyCollection)
             {
-                <th class="text-center" colspan="2">@player.Name</th>
+                <th class="text-center" colspan="2">
+                    <a href="@player.ProfileUrl" title="@player.Name">
+                        @player.Name
+                    </a>
+                </th>
             }
             <th class="text-center">@SharedLocalizer["Total"]</th>
             </thead>
@@ -345,7 +349,11 @@
             <th class="text-center"></th>
             @foreach (var player in team.Players ?? MatchResult.PlayerResult.EmptyCollection)
             {
-                <th class="text-center" colspan="2">@player.Name</th>
+                <th class="text-center" colspan="2">
+                    <a href="@player.ProfileUrl" title="@player.Name">
+                        @player.Name
+                    </a>
+                </th>
             }
             <th class="text-center">@SharedLocalizer["Total"]</th>
             </thead>
