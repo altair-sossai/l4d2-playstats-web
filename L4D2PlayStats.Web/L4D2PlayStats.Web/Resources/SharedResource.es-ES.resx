@@ -802,10 +802,10 @@
   <data name="DmgUpright" xml:space="preserve">
     <value>Upright damage</value>
   </data>
-  <data name="TankDmg" xml:space="preserve">
+  <data name="DmgTank" xml:space="preserve">
     <value>Tank - Damage</value>
   </data>
-  <data name="TankIncap" xml:space="preserve">
+  <data name="DmgTankIncap" xml:space="preserve">
     <value>Tank - Incapacitations</value>
   </data>
   <data name="TankPasses" xml:space="preserve">
@@ -844,22 +844,22 @@
   <data name="Spawns" xml:space="preserve">
     <value>Apariciones</value>
   </data>
-  <data name="SpawnsSmoker" xml:space="preserve">
+  <data name="SpawnSmoker" xml:space="preserve">
     <value>Apariciones - Smoker</value>
   </data>
-  <data name="SpawnsBoomer" xml:space="preserve">
+  <data name="SpawnBoomer" xml:space="preserve">
     <value>Apariciones - Boomer</value>
   </data>
-  <data name="SpawnsHunter" xml:space="preserve">
+  <data name="SpawnHunter" xml:space="preserve">
     <value>Apariciones - Hunter</value>
   </data>
-  <data name="SpawnsCharger" xml:space="preserve">
+  <data name="SpawnCharger" xml:space="preserve">
     <value>Apariciones - Charger</value>
   </data>
-  <data name="SpawnsSpitter" xml:space="preserve">
+  <data name="SpawnSpitter" xml:space="preserve">
     <value>Apariciones - Spitter</value>
   </data>
-  <data name="SpawnsJockey" xml:space="preserve">
+  <data name="SpawnJockey" xml:space="preserve">
     <value>Apariciones - Jockey</value>
   </data>
 </root>
