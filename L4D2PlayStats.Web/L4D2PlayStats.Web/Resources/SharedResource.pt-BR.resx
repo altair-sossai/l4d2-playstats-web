@@ -531,7 +531,7 @@
   <data name="WitchesKilled" xml:space="preserve">
     <value>Witches mortas</value>
   </data>
-  <data name="CommonsKilled" xml:space="preserve">
+  <data name="Common" xml:space="preserve">
     <value>Infectados comuns mortos</value>
   </data>
   <data name="RoundStart" xml:space="preserve">
@@ -564,136 +564,136 @@
   <data name="FallDamage" xml:space="preserve">
     <value>Dano por queda</value>
   </data>
-  <data name="ShotgunShots" xml:space="preserve">
+  <data name="ShotsShotgun" xml:space="preserve">
     <value>Shotgun - Disparos</value>
   </data>
-  <data name="ShotgunHits" xml:space="preserve">
+  <data name="HitsShotgun" xml:space="preserve">
     <value>Shotgun - Acertos</value>
   </data>
-  <data name="ShotgunHitsPercent" xml:space="preserve">
+  <data name="HitsShotgunPercent" xml:space="preserve">
     <value>Shotgun - Acertos (%)</value>
   </data>
-  <data name="ShotgunHitsSI" xml:space="preserve">
+  <data name="HitsSiShotgun" xml:space="preserve">
     <value>Shotgun - Acertos em Infectados Especiais</value>
   </data>
-  <data name="ShotgunHitsSIPercent" xml:space="preserve">
+  <data name="HitsSiShotgunPercent" xml:space="preserve">
     <value>Shotgun - Acertos em IE (%)</value>
   </data>
-  <data name="ShotgunHitsTank" xml:space="preserve">
+  <data name="HitsTankShotgun" xml:space="preserve">
     <value>Shotgun - Acertos no Tank</value>
   </data>
-  <data name="ShotgunHitsTankPercent" xml:space="preserve">
+  <data name="HitsTankShotgunPercent" xml:space="preserve">
     <value>Shotgun - Acertos no Tank (%)</value>
   </data>
-  <data name="SmgShots" xml:space="preserve">
+  <data name="ShotsSmg" xml:space="preserve">
     <value>SMG - Disparos</value>
   </data>
-  <data name="SmgHits" xml:space="preserve">
+  <data name="HitsSmg" xml:space="preserve">
     <value>SMG - Acertos</value>
   </data>
-  <data name="SmgHitsPercent" xml:space="preserve">
+  <data name="HitsSmgPercent" xml:space="preserve">
     <value>SMG - Acertos (%)</value>
   </data>
-  <data name="SmgHitsSI" xml:space="preserve">
+  <data name="HitsSiSmg" xml:space="preserve">
     <value>SMG - Acertos em Infectados Especiais</value>
   </data>
-  <data name="SmgHitsSIPercent" xml:space="preserve">
+  <data name="HitsSiSmgPercent" xml:space="preserve">
     <value>SMG - Acertos em IE (%)</value>
   </data>
-  <data name="SmgHitsTank" xml:space="preserve">
+  <data name="HitsTankSmg" xml:space="preserve">
     <value>SMG - Acertos no Tank</value>
   </data>
-  <data name="SmgHitsTankPercent" xml:space="preserve">
+  <data name="HitsTankSmgPercent" xml:space="preserve">
     <value>SMG - Acertos no Tank (%)</value>
   </data>
-  <data name="SmgHS" xml:space="preserve">
+  <data name="HeadshotsSmg" xml:space="preserve">
     <value>SMG - Headshots</value>
   </data>
-  <data name="SmgHSPercent" xml:space="preserve">
+  <data name="HeadshotsSmgPercent" xml:space="preserve">
     <value>SMG - Headshots (%)</value>
   </data>
-  <data name="SmgHSSI" xml:space="preserve">
+  <data name="HeadshotsSiSmg" xml:space="preserve">
     <value>SMG - Headshots em Infectados Especiais</value>
   </data>
-  <data name="SmgHSSIPercent" xml:space="preserve">
+  <data name="HeadshotsSiSmgPercent" xml:space="preserve">
     <value>SMG - Headshots em IE (%)</value>
   </data>
-  <data name="SniperShots" xml:space="preserve">
+  <data name="ShotsSniper" xml:space="preserve">
     <value>Sniper - Disparos</value>
   </data>
-  <data name="SniperHits" xml:space="preserve">
+  <data name="HitsSniper" xml:space="preserve">
     <value>Sniper - Acertos</value>
   </data>
-  <data name="SniperHitsPercent" xml:space="preserve">
+  <data name="HitsSniperPercent" xml:space="preserve">
     <value>Sniper - Acertos (%)</value>
   </data>
-  <data name="SniperHitsSI" xml:space="preserve">
+  <data name="HitsSiSniper" xml:space="preserve">
     <value>Sniper - Acertos em Infectados Especiais</value>
   </data>
-  <data name="SniperHitsSIPercent" xml:space="preserve">
+  <data name="HitsSiSniperPercent" xml:space="preserve">
     <value>Sniper - Acertos em IE (%)</value>
   </data>
-  <data name="SniperHitsTank" xml:space="preserve">
+  <data name="HitsTankSniper" xml:space="preserve">
     <value>Sniper - Acertos no Tank</value>
   </data>
-  <data name="SniperHitsTankPercent" xml:space="preserve">
+  <data name="HitsTankSniperPercent" xml:space="preserve">
     <value>Sniper - Acertos no Tank (%)</value>
   </data>
-  <data name="SniperHS" xml:space="preserve">
+  <data name="HeadshotsSniper" xml:space="preserve">
     <value>Sniper - Headshots</value>
   </data>
-  <data name="SniperHSPercent" xml:space="preserve">
+  <data name="HeadshotsSniperPercent" xml:space="preserve">
     <value>Sniper - Headshots (%)</value>
   </data>
-  <data name="SniperHSSI" xml:space="preserve">
+  <data name="HeadshotsSiSniper" xml:space="preserve">
     <value>Sniper - Headshots em Infectados Especiais</value>
   </data>
-  <data name="SniperHSSIPercent" xml:space="preserve">
+  <data name="HeadshotsSiSniperPercent" xml:space="preserve">
     <value>Sniper - Headshots em IE (%)</value>
   </data>
-  <data name="PistolShots" xml:space="preserve">
+  <data name="ShotsPistol" xml:space="preserve">
     <value>Pistol - Disparos</value>
   </data>
-  <data name="PistolHits" xml:space="preserve">
+  <data name="HitsPistol" xml:space="preserve">
     <value>Pistol - Acertos</value>
   </data>
-  <data name="PistolHitsPercent" xml:space="preserve">
+  <data name="HitsPistolPercent" xml:space="preserve">
     <value>Pistol - Acertos (%)</value>
   </data>
-  <data name="PistolHitsSI" xml:space="preserve">
+  <data name="HitsSiPistol" xml:space="preserve">
     <value>Pistol - Acertos em Infectados Especiais</value>
   </data>
-  <data name="PistolHitsSIPercent" xml:space="preserve">
+  <data name="HitsSiPistolPercent" xml:space="preserve">
     <value>Pistol - Acertos em IE (%)</value>
   </data>
-  <data name="PistolHitsTank" xml:space="preserve">
+  <data name="HitsTankPistol" xml:space="preserve">
     <value>Pistol - Acertos no Tank</value>
   </data>
-  <data name="PistolHitsTankPercent" xml:space="preserve">
+  <data name="HitsTankPistolPercent" xml:space="preserve">
     <value>Pistol - Acertos no Tank (%)</value>
   </data>
-  <data name="PistolHS" xml:space="preserve">
+  <data name="HeadshotsPistol" xml:space="preserve">
     <value>Pistol - Headshots</value>
   </data>
-  <data name="PistolHSPercent" xml:space="preserve">
+  <data name="HeadshotsPistolPercent" xml:space="preserve">
     <value>Pistol - Headshots (%)</value>
   </data>
-  <data name="PistolHSSI" xml:space="preserve">
+  <data name="HeadshotsSiPistol" xml:space="preserve">
     <value>Pistol - Headshots em Infectados Especiais</value>
   </data>
-  <data name="PistolHSSIPercent" xml:space="preserve">
+  <data name="HeadshotsSiPistolPercent" xml:space="preserve">
     <value>Pistol - Headshots em IE (%)</value>
   </data>
-  <data name="CommonsKilledDuringTank" xml:space="preserve">
+  <data name="CommonTankUp" xml:space="preserve">
     <value>Commons - Mortos durante o Tank</value>
   </data>
-  <data name="SIKilledDuringTank" xml:space="preserve">
+  <data name="SiKilledTankUp" xml:space="preserve">
     <value>Infectados Especiais - Mortos durante o Tank</value>
   </data>
-  <data name="SIDamageDuringTank" xml:space="preserve">
+  <data name="SiDamageTankUp" xml:space="preserve">
     <value>Infectados Especiais - Dano causado durante o Tank</value>
   </data>
-  <data name="TankMelees" xml:space="preserve">
+  <data name="MeleesOnTank" xml:space="preserve">
     <value>Tank - Melees acertadas</value>
   </data>
   <data name="WitchDamage" xml:space="preserve">
