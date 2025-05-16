@@ -10,7 +10,7 @@ public class PlayerService : IPlayerService
 
     public async IAsyncEnumerable<Player> GetPlayersAsync(string ip, int port)
     {
-        const int timeout = 2000;
+        const int timeout = 1_000;
 
         var ipAddress = IPAddress.Parse(ip);
         var ipEndPoint = new IPEndPoint(ipAddress, port);
