@@ -1,8 +1,8 @@
 using System.Globalization;
 using System.Text.Json.Serialization;
 using AspNet.Security.OpenId.Steam;
-using L4D2PlayStats.Auth;
-using L4D2PlayStats.DependencyInjection;
+using L4D2PlayStats.Core.Auth;
+using L4D2PlayStats.Core.DependencyInjection;
 using L4D2PlayStats.Sdk.DependencyInjection;
 using L4D2PlayStats.Web.Auth;
 using Microsoft.AspNetCore.Authentication.Cookies;

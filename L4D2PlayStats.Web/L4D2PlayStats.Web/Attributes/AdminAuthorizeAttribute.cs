@@ -1,4 +1,4 @@
-﻿using L4D2PlayStats.Auth;
+﻿using L4D2PlayStats.Core.Auth;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 

@@ -17,7 +17,7 @@
 
     <ItemGroup>
         <ProjectReference Include="..\L4D2PlayStats.Sdk\L4D2PlayStats.Sdk.csproj" />
-        <ProjectReference Include="..\L4D2PlayStats\L4D2PlayStats.csproj" />
+        <ProjectReference Include="..\L4D2PlayStats.Core\L4D2PlayStats.Core.csproj" />
     </ItemGroup>
 
     <ItemGroup>

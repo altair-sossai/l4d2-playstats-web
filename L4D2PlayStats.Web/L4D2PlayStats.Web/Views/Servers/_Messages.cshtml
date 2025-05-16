@@ -1,7 +1,7 @@
-﻿@using L4D2PlayStats.GameInfo.Enums
+﻿@using L4D2PlayStats.Core.GameInfo.Enums
 @using L4D2PlayStats.Web
 @using Microsoft.Extensions.Localization
-@model IReadOnlyCollection<L4D2PlayStats.GameInfo.Models.ChatMessage>
+@model IReadOnlyCollection<L4D2PlayStats.Core.GameInfo.Models.ChatMessage>
 @inject IStringLocalizer<SharedResource> SharedLocalizer
 
 @foreach (var message in Model)

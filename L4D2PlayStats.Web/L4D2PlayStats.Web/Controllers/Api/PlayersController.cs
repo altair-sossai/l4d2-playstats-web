@@ -1,5 +1,5 @@
-﻿using L4D2PlayStats.Patents.Services;
-using L4D2PlayStats.Ranking.Services;
+﻿using L4D2PlayStats.Core.Patents.Services;
+using L4D2PlayStats.Core.Ranking.Services;
 using L4D2PlayStats.Web.Models;
 using Microsoft.AspNetCore.Mvc;
 

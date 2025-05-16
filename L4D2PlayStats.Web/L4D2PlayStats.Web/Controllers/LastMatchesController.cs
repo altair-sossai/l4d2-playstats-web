@@ -1,9 +1,9 @@
-using L4D2PlayStats.Matches;
+using L4D2PlayStats.Core.Matches;
+using L4D2PlayStats.Core.UserAvatar;
 using L4D2PlayStats.Sdk.Matches;
 using L4D2PlayStats.Sdk.Matches.Results;
 using L4D2PlayStats.Sdk.Statistics;
 using L4D2PlayStats.Sdk.Statistics.Results;
-using L4D2PlayStats.UserAvatar;
 using L4D2PlayStats.Web.Models;
 using Microsoft.AspNetCore.Mvc;
 

@@ -1,6 +1,6 @@
-﻿using L4D2PlayStats.Infrastructure.Extensions;
-using L4D2PlayStats.Players;
-using L4D2PlayStats.Players.Enums;
+﻿using L4D2PlayStats.Core.Infrastructure.Extensions;
+using L4D2PlayStats.Core.Players;
+using L4D2PlayStats.Core.Players.Enums;
 
 namespace L4D2PlayStats.Web.Models;
 

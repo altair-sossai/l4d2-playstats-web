@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "L4D2PlayStats.Web", "L4D2Pl
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "L4D2PlayStats.Sdk", "L4D2PlayStats.Sdk\L4D2PlayStats.Sdk.csproj", "{A5137972-78A5-4F82-94EA-D9F5E22E7331}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "L4D2PlayStats", "L4D2PlayStats\L4D2PlayStats.csproj", "{E3DE947B-A97E-400E-9B22-0949C21C4163}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "L4D2PlayStats.Core", "L4D2PlayStats.Core\L4D2PlayStats.Core.csproj", "{E3DE947B-A97E-400E-9B22-0949C21C4163}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".devops", ".devops", "{AC1C3BA8-9808-4E27-A60D-F2255F9C05E7}"
 	ProjectSection(SolutionItems) = preProject

@@ -1,8 +1,8 @@
 ﻿using System.Text.RegularExpressions;
-using L4D2PlayStats.Auth;
-using L4D2PlayStats.Infrastructure.Structures;
-using L4D2PlayStats.Steam.SteamUser.Responses;
-using L4D2PlayStats.Steam.SteamUser.Services;
+using L4D2PlayStats.Core.Auth;
+using L4D2PlayStats.Core.Infrastructure.Structures;
+using L4D2PlayStats.Core.Steam.SteamUser.Responses;
+using L4D2PlayStats.Core.Steam.SteamUser.Services;
 using Microsoft.Extensions.Caching.Memory;
 
 namespace L4D2PlayStats.Web.Auth;

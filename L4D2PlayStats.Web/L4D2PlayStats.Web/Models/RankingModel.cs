@@ -1,5 +1,5 @@
 ﻿using System.Globalization;
-using L4D2PlayStats.Patents;
+using L4D2PlayStats.Core.Patents;
 using L4D2PlayStats.Sdk.Ranking.Results;
 using Microsoft.Extensions.Localization;
 

@@ -1,4 +1,4 @@
-﻿using L4D2PlayStats.Cache.Services;
+﻿using L4D2PlayStats.Core.Cache.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace L4D2PlayStats.Web.Controllers.Api;

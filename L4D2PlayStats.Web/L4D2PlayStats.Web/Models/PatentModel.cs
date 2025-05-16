@@ -1,4 +1,4 @@
-﻿using L4D2PlayStats.Patents;
+﻿using L4D2PlayStats.Core.Patents;
 using L4D2PlayStats.Sdk.Ranking.Results;
 
 namespace L4D2PlayStats.Web.Models;

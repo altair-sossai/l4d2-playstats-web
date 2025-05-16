@@ -1,6 +1,7 @@
-﻿using L4D2PlayStats.GameInfo.Commands;
-using L4D2PlayStats.GameInfo.Models;
-using L4D2PlayStats.UserAvatar;
+﻿using L4D2PlayStats.Core.GameInfo;
+using L4D2PlayStats.Core.GameInfo.Commands;
+using L4D2PlayStats.Core.GameInfo.Models;
+using L4D2PlayStats.Core.UserAvatar;
 using L4D2PlayStats.Web.Attributes;
 using Microsoft.AspNetCore.Mvc;
 
@@ -10,7 +11,7 @@ namespace L4D2PlayStats.Web.Controllers.Api;
 [ApiController]
 public class GameInfoController(IUserAvatar userAvatar) : ControllerBase
 {
-    private readonly GameInfo.GameInfo _gameInfo = GameInfo.GameInfo.GetOrInitializeInstance(userAvatar);
+    private readonly GameInfo _gameInfo = GameInfo.GetOrInitializeInstance(userAvatar);
 
     [HttpGet]
     public IActionResult Get()

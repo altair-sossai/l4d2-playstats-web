@@ -1,8 +1,9 @@
-using L4D2PlayStats.Steam.Players;
-using L4D2PlayStats.Steam.Players.Services;
-using L4D2PlayStats.Steam.ServerInfo.Responses;
-using L4D2PlayStats.Steam.ServerInfo.Services;
-using L4D2PlayStats.UserAvatar;
+using L4D2PlayStats.Core.GameInfo;
+using L4D2PlayStats.Core.Steam.Players;
+using L4D2PlayStats.Core.Steam.Players.Services;
+using L4D2PlayStats.Core.Steam.ServerInfo.Responses;
+using L4D2PlayStats.Core.Steam.ServerInfo.Services;
+using L4D2PlayStats.Core.UserAvatar;
 using L4D2PlayStats.Web.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Memory;
@@ -78,7 +79,7 @@ public class ServersController(
             throw new ArgumentException("Invalid server port");
 
         var ip = segments[0];
-        var gameInfo = GameInfo.GameInfo.GetOrInitializeInstance(userAvatar);
+        var gameInfo = GameInfo.GetOrInitializeInstance(userAvatar);
         var serverInfo = await GetServerInfo(ip, port);
         var players = await GetPlayersAsync(ip, port);
 

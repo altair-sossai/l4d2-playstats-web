@@ -1,4 +1,4 @@
-﻿using L4D2PlayStats.GameInfo.Enums;
+﻿using L4D2PlayStats.Core.GameInfo.Enums;
 
 namespace L4D2PlayStats.Web.Extensions;
 

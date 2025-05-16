@@ -1,8 +1,8 @@
-﻿using L4D2PlayStats.Steam.ServerInfo.Responses;
-using L4D2PlayStats.Steam.ServerInfo.Services;
+﻿using L4D2PlayStats.Core.Steam.ServerInfo.Responses;
+using L4D2PlayStats.Core.Steam.ServerInfo.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Memory;
-using static L4D2PlayStats.Steam.ServerInfo.Responses.GetServerListResponse;
+using static L4D2PlayStats.Core.Steam.ServerInfo.Responses.GetServerListResponse;
 
 namespace L4D2PlayStats.Web.Controllers.Api;
 
