@@ -258,12 +258,12 @@
                                 @if (roundHalf.DefibsUsed != 0)
                                 {
                                     <tr>
-                                        <th>@SharedLocalizer["DefibrillatorsUsed"]:</th>
+                                        <th>@SharedLocalizer["DefibsUsed"]:</th>
                                         <td class="slim text-center">@roundHalf.DefibsUsed.ToString("N0")</td>
                                     </tr>
                                 }
                                 <tr>
-                                    <th>@SharedLocalizer["TimesIncapacitated"]:</th>
+                                    <th>@SharedLocalizer["Incaps"]:</th>
                                     <td class="slim text-center">@roundHalf.Incaps.ToString("N0")</td>
                                 </tr>
                                 <tr>
@@ -343,7 +343,7 @@
                                 {
                                     <tr>
                                         <th>@SharedLocalizer["RoundDuration"]:</th>
-                                        <td class="slim text-center">@roundHalf.RoundElapsed.Value.ToString(@"mm\:ss")</td>
+                                        <td class="slim text-center">@roundHalf.RoundElapsed.Value.ToString(@"hh\:mm\:ss")</td>
                                     </tr>
                                 }
                                 @if (roundHalf.StartTimePause != null)
@@ -364,7 +364,7 @@
                                 {
                                     <tr>
                                         <th>@SharedLocalizer["PauseDuration"]:</th>
-                                        <td class="slim text-center">@roundHalf.PauseElapsed.Value.ToString(@"mm\:ss")</td>
+                                        <td class="slim text-center">@roundHalf.PauseElapsed.Value.ToString(@"hh\:mm\:ss")</td>
                                     </tr>
                                 }
                                 @if (roundHalf.StartTimeTank != null)
@@ -385,7 +385,7 @@
                                 {
                                     <tr>
                                         <th>@SharedLocalizer["TankDuration"]:</th>
-                                        <td class="slim text-center">@roundHalf.TankElapsed.Value.ToString(@"mm\:ss")</td>
+                                        <td class="slim text-center">@roundHalf.TankElapsed.Value.ToString(@"hh\:mm\:ss")</td>
                                     </tr>
                                 }
                                 </tbody>
@@ -430,7 +430,7 @@
         }
     </tr>
     <tr>
-        <th>@SharedLocalizer["TimesIncapacitated"]:</th>
+        <th>@SharedLocalizer["Incaps"]:</th>
         @foreach (var player in players)
         {
             <td class="slim text-center">@player.Incaps.ToString("N0")</td>

@@ -183,7 +183,7 @@
   <data name="Deaths" xml:space="preserve">
     <value>Muertes</value>
   </data>
-  <data name="TimesIncapacitated" xml:space="preserve">
+  <data name="Incaps" xml:space="preserve">
     <value>Veces incapacitado</value>
   </data>
   <data name="DamageTaken" xml:space="preserve">
@@ -522,7 +522,7 @@
   <data name="KitsUsed" xml:space="preserve">
     <value>Botiquines usados</value>
   </data>
-  <data name="DefibrillatorsUsed" xml:space="preserve">
+  <data name="DefibsUsed" xml:space="preserve">
     <value>Desfibriladores usados</value>
   </data>
   <data name="SiSpawned" xml:space="preserve">
