@@ -559,7 +559,7 @@
     <value>Daño por caída</value>
   </data>
   <data name="ShotsShotgun" xml:space="preserve">
-    <value>Shotgun - Disparos</value>
+    <value>Shotgun - Disparos (Pellets)</value>
   </data>
   <data name="HitsShotgun" xml:space="preserve">
     <value>Shotgun - Impactos</value>

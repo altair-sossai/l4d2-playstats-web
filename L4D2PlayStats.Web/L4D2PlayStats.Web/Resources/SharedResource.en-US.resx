@@ -559,7 +559,7 @@
     <value>Fall damage</value>
   </data>
   <data name="ShotsShotgun" xml:space="preserve">
-    <value>Shotgun - Shots</value>
+    <value>Shotgun - Shots (Pellets)</value>
   </data>
   <data name="HitsShotgun" xml:space="preserve">
     <value>Shotgun - Hits</value>
