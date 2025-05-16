@@ -176,17 +176,17 @@
 
                                             @if (player == mvpSiDamage)
                                             {
-                                                <img src="~/imgs/icons/star.png" alt="@SharedLocalizer["MvpSI"]" class="icon" data-toggle="tooltip" data-placement="top" title="@SharedLocalizer["MvpSI"]"/>
+                                                <img src="~/imgs/icons/star.png" alt="@SharedLocalizer["MvpSiDamage"]" class="icon" data-toggle="tooltip" data-placement="top" title="@SharedLocalizer["MvpSiDamage"]"/>
                                             }
 
                                             @if (player == mvpCommon)
                                             {
-                                                <img src="~/imgs/icons/star-blue.png" alt="@SharedLocalizer["MvpCI"]" class="icon" data-toggle="tooltip" data-placement="top" title="@SharedLocalizer["MvpCI"]"/>
+                                                <img src="~/imgs/icons/star-blue.png" alt="@SharedLocalizer["MvpCommon"]" class="icon" data-toggle="tooltip" data-placement="top" title="@SharedLocalizer["MvpCommon"]"/>
                                             }
 
                                             @if (player == lvpFfGiven)
                                             {
-                                                <img src="~/imgs/icons/lvp.png" alt="@SharedLocalizer["Lvp"]" class="icon" data-toggle="tooltip" data-placement="top" title="@SharedLocalizer["Lvp"]"/>
+                                                <img src="~/imgs/icons/lvp.png" alt="@SharedLocalizer["LvpFfGiven"]" class="icon" data-toggle="tooltip" data-placement="top" title="@SharedLocalizer["LvpFfGiven"]"/>
                                             }
                                         </td>
                                     </tr>
@@ -216,7 +216,7 @@
                                             @Html.ActionLink(infectedPlayer.PlayerName?.Truncate(30) ?? "-", "Details", "Players", new { communityId = infectedPlayer.CommunityId })
                                         </td>
                                         <td class="slim text-center">
-                                            <span data-toggle="tooltip" data-placement="top" title="@SharedLocalizer["TotalDamage"]">
+                                            <span data-toggle="tooltip" data-placement="top" title="@SharedLocalizer["DmgTotal"]">
                                                 @infectedPlayer.DmgTotal.ToString("N0")
                                             </span>
                                         </td>
@@ -352,7 +352,7 @@
     </thead>
     <tbody>
     <tr>
-        <th>@SharedLocalizer["Deaths"]:</th>
+        <th>@SharedLocalizer["Died"]:</th>
         @foreach (var player in players)
         {
             <td class="slim text-center">@player.Died.ToString("N0")</td>
@@ -366,7 +366,7 @@
         }
     </tr>
     <tr>
-        <th>@SharedLocalizer["DamageTaken"]:</th>
+        <th>@SharedLocalizer["DmgTaken"]:</th>
         @foreach (var player in players)
         {
             <td class="slim text-center">@player.DmgTaken.ToString("N0")</td>

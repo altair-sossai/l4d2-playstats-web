@@ -31,7 +31,7 @@
     <div class="col-md-12">
         <div class="dropdown">
             <button class="btn btn-default btn-sm dropdown-toggle" type="button" data-toggle="dropdown">
-                @SharedLocalizer["OrderBy"]: <b>@SharedLocalizer[Model.OrderByResourceKey]</b>
+                @SharedLocalizer["OrderBy"]: <b>@SharedLocalizer[Model.OrderBy.ToString()]</b>
                 <span class="caret"></span>
             </button>
             <ul class="dropdown-menu">
@@ -39,7 +39,7 @@
                 {
                     <li>
                         <a href="@Url.Action("Index", "Players", new { orderBy = property, asc = false })">
-                            @SharedLocalizer[property.GetResourceKey()]
+                            @SharedLocalizer[property.ToString()]
                         </a>
                     </li>
                 }
@@ -55,7 +55,7 @@
         <th colspan="2">@SharedLocalizer["Player"]</th>
         <th class="text-center">
             <a href="@Url.Action("Index", "Players", new { orderBy = Model.OrderBy, asc = !Model.Asc })">
-                @SharedLocalizer[Model.OrderByResourceKey]
+                @SharedLocalizer[Model.OrderBy.ToString()]
                 &nbsp;
                 @(Model.Asc ? "\u2191" : "\u2193")
             </a>
@@ -79,7 +79,7 @@
                 @Html.ActionLink(player.Name?.Truncate(30) ?? "-", "Details", "Players", new { communityId = player.CommunityId })
             </td>
             <td class="text-center vertical-align-middle">
-                <p data-toggle="tooltip" data-placement="top" title="@SharedLocalizer[Model.OrderByResourceKey]">
+                <p data-toggle="tooltip" data-placement="top" title="@SharedLocalizer[Model.OrderBy.ToString()]">
                     @player.Value.ToString("N0")
                 </p>
             </td>

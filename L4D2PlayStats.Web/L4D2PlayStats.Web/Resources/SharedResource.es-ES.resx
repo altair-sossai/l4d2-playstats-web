@@ -180,13 +180,13 @@
   <data name="LvpFf" xml:space="preserve">
     <value>LVP (FF)</value>
   </data>
-  <data name="Deaths" xml:space="preserve">
+  <data name="Died" xml:space="preserve">
     <value>Muertes</value>
   </data>
   <data name="Incaps" xml:space="preserve">
     <value>Veces incapacitado</value>
   </data>
-  <data name="DamageTaken" xml:space="preserve">
+  <data name="DmgTaken" xml:space="preserve">
     <value>Daño recibido</value>
   </data>
   <data name="Common" xml:space="preserve">
@@ -198,7 +198,7 @@
   <data name="SiDamageDealt" xml:space="preserve">
     <value>SI - Daño infligido</value>
   </data>
-  <data name="TankDamageDealt" xml:space="preserve">
+  <data name="DmgTank" xml:space="preserve">
     <value>Tanque - Daño infligido</value>
   </data>
   <data name="RockEats" xml:space="preserve">
@@ -213,13 +213,13 @@
   <data name="Levels" xml:space="preserve">
     <value>Niveles</value>
   </data>
-  <data name="TotalDamage" xml:space="preserve">
+  <data name="DmgTotal" xml:space="preserve">
     <value>Daño total</value>
   </data>
-  <data name="DamageSpitter" xml:space="preserve">
+  <data name="DmgSpit" xml:space="preserve">
     <value>Daño - Spitter</value>
   </data>
-  <data name="HunterPounceDamage" xml:space="preserve">
+  <data name="HunterDpDmg" xml:space="preserve">
     <value>Hunter - Daño por pounce</value>
   </data>
   <data name="Total" xml:space="preserve">
@@ -267,25 +267,19 @@
   <data name="StatisticsAsSurvivor" xml:space="preserve">
     <value>Estadísticas como superviviente</value>
   </data>
-  <data name="MvpCI" xml:space="preserve">
+  <data name="MvpCommon" xml:space="preserve">
     <value>MVP (CI)</value>
   </data>
-  <data name="Lvp" xml:space="preserve">
+  <data name="LvpFfGiven" xml:space="preserve">
     <value>LVP</value>
-  </data>
-  <data name="Commons" xml:space="preserve">
-    <value>Comunes</value>
   </data>
   <data name="SiDamage" xml:space="preserve">
     <value>SI - Daño recebido</value>
   </data>
-  <data name="TimesIncap" xml:space="preserve">
-    <value>Veces incapacitado</value>
-  </data>
   <data name="TankDamage" xml:space="preserve">
     <value>Daño del tanque</value>
   </data>
-  <data name="RocksEats" xml:space="preserve">
+  <data name="RockEats" xml:space="preserve">
     <value>Rocas recibidas</value>
   </data>
   <data name="FfDamageTotal" xml:space="preserve">
@@ -312,7 +306,7 @@
   <data name="Player" xml:space="preserve">
     <value>Jugador</value>
   </data>
-  <data name="MvpSI" xml:space="preserve">
+  <data name="MvpSiDamage" xml:space="preserve">
     <value>MVP (SI)</value>
   </data>
   <data name="LevelUp" xml:space="preserve">
