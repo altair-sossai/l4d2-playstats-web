@@ -61,7 +61,7 @@ public enum PlayerResultProperty
     [ResourceKey("Levels")]
     Levels,
 
-    [ResourceKey("FF")]
+    [ResourceKey("FfGiven")]
     FfGiven,
 
     [ResourceKey("TotalDamage")]

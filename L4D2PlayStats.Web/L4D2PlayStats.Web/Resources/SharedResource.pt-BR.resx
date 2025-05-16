@@ -285,7 +285,7 @@
   <data name="RocksEats" xml:space="preserve">
     <value>Pedras recebidas</value>
   </data>
-  <data name="FF" xml:space="preserve">
+  <data name="FfDamageTotal" xml:space="preserve">
     <value>FF</value>
   </data>
   <data name="StatisticsAsInfected" xml:space="preserve">
@@ -525,40 +525,40 @@
   <data name="SiSpawned" xml:space="preserve">
     <value>SI - spawnados</value>
   </data>
-  <data name="TanksKilled" xml:space="preserve">
+  <data name="TankKilled" xml:space="preserve">
     <value>Tanks mortos</value>
   </data>
-  <data name="WitchesKilled" xml:space="preserve">
+  <data name="WitchKilled" xml:space="preserve">
     <value>Witches mortas</value>
   </data>
   <data name="Common" xml:space="preserve">
     <value>Infectados comuns mortos</value>
   </data>
-  <data name="RoundStart" xml:space="preserve">
+  <data name="StartTime" xml:space="preserve">
     <value>Início do round</value>
   </data>
-  <data name="RoundEnd" xml:space="preserve">
+  <data name="EndTime" xml:space="preserve">
     <value>Fim do round</value>
   </data>
-  <data name="RoundDuration" xml:space="preserve">
+  <data name="RoundElapsed" xml:space="preserve">
     <value>Duração do round</value>
   </data>
-  <data name="PauseStart" xml:space="preserve">
+  <data name="StartTimePause" xml:space="preserve">
     <value>Início do pause</value>
   </data>
-  <data name="PauseEnd" xml:space="preserve">
+  <data name="StopTimePause" xml:space="preserve">
     <value>Fim do pause</value>
   </data>
-  <data name="PauseDuration" xml:space="preserve">
+  <data name="PauseElapsed" xml:space="preserve">
     <value>Duração do pause</value>
   </data>
-  <data name="TankStart" xml:space="preserve">
+  <data name="StartTimeTank" xml:space="preserve">
     <value>Início do Tank</value>
   </data>
-  <data name="TankEnd" xml:space="preserve">
+  <data name="StopTimeTank" xml:space="preserve">
     <value>Fim do Tank</value>
   </data>
-  <data name="TankDuration" xml:space="preserve">
+  <data name="TankElapsed" xml:space="preserve">
     <value>Duração do Tank</value>
   </data>
   <data name="FallDamage" xml:space="preserve">

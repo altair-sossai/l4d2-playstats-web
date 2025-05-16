@@ -273,7 +273,7 @@
                                 @if (roundHalf.FfDamageTotal != 0)
                                 {
                                     <tr>
-                                        <th>@SharedLocalizer["FF"]:</th>
+                                        <th>@SharedLocalizer["FfDamageTotal"]:</th>
                                         <td class="slim text-center">@roundHalf.FfDamageTotal.ToString("N0")</td>
                                     </tr>
                                 }
@@ -301,14 +301,14 @@
                                 @if (roundHalf.TankKilled != 0)
                                 {
                                     <tr>
-                                        <th>@SharedLocalizer["TanksKilled"]:</th>
+                                        <th>@SharedLocalizer["TankKilled"]:</th>
                                         <td class="slim text-center">@roundHalf.TankKilled.ToString("N0")</td>
                                     </tr>
                                 }
                                 @if (roundHalf.WitchKilled != 0)
                                 {
                                     <tr>
-                                        <th>@SharedLocalizer["WitchesKilled"]:</th>
+                                        <th>@SharedLocalizer["WitchKilled"]:</th>
                                         <td class="slim text-center">@roundHalf.WitchKilled.ToString("N0")</td>
                                     </tr>
                                 }
@@ -328,63 +328,63 @@
                                 @if (roundHalf.StartTime != null)
                                 {
                                     <tr>
-                                        <th>@SharedLocalizer["RoundStart"]:</th>
+                                        <th>@SharedLocalizer["StartTime"]:</th>
                                         <td class="slim text-center">@($"{roundHalf.StartTime.Value:d} {roundHalf.StartTime.Value:HH:mm}")</td>
                                     </tr>
                                 }
                                 @if (roundHalf.EndTime != null)
                                 {
                                     <tr>
-                                        <th>@SharedLocalizer["RoundEnd"]:</th>
+                                        <th>@SharedLocalizer["EndTime"]:</th>
                                         <td class="slim text-center">@($"{roundHalf.EndTime.Value:d} {roundHalf.EndTime.Value:HH:mm}")</td>
                                     </tr>
                                 }
                                 @if (roundHalf.RoundElapsed != null)
                                 {
                                     <tr>
-                                        <th>@SharedLocalizer["RoundDuration"]:</th>
+                                        <th>@SharedLocalizer["RoundElapsed"]:</th>
                                         <td class="slim text-center">@roundHalf.RoundElapsed.Value.ToString(@"hh\:mm\:ss")</td>
                                     </tr>
                                 }
                                 @if (roundHalf.StartTimePause != null)
                                 {
                                     <tr>
-                                        <th>@SharedLocalizer["PauseStart"]:</th>
+                                        <th>@SharedLocalizer["StartTimePause"]:</th>
                                         <td class="slim text-center">@($"{roundHalf.StartTimePause.Value:d} {roundHalf.StartTimePause.Value:HH:mm}")</td>
                                     </tr>
                                 }
                                 @if (roundHalf.StopTimePause != null)
                                 {
                                     <tr>
-                                        <th>@SharedLocalizer["PauseEnd"]:</th>
+                                        <th>@SharedLocalizer["StopTimePause"]:</th>
                                         <td class="slim text-center">@($"{roundHalf.StopTimePause.Value:d} {roundHalf.StopTimePause.Value:HH:mm}")</td>
                                     </tr>
                                 }
                                 @if (roundHalf.PauseElapsed != null)
                                 {
                                     <tr>
-                                        <th>@SharedLocalizer["PauseDuration"]:</th>
+                                        <th>@SharedLocalizer["PauseElapsed"]:</th>
                                         <td class="slim text-center">@roundHalf.PauseElapsed.Value.ToString(@"hh\:mm\:ss")</td>
                                     </tr>
                                 }
                                 @if (roundHalf.StartTimeTank != null)
                                 {
                                     <tr>
-                                        <th>@SharedLocalizer["TankStart"]:</th>
+                                        <th>@SharedLocalizer["StartTimeTank"]:</th>
                                         <td class="slim text-center">@($"{roundHalf.StartTimeTank.Value:d} {roundHalf.StartTimeTank.Value:HH:mm}")</td>
                                     </tr>
                                 }
                                 @if (roundHalf.StopTimeTank != null)
                                 {
                                     <tr>
-                                        <th>@SharedLocalizer["TankEnd"]:</th>
+                                        <th>@SharedLocalizer["StopTimeTank"]:</th>
                                         <td class="slim text-center">@($"{roundHalf.StopTimeTank.Value:d} {roundHalf.StopTimeTank.Value:HH:mm}")</td>
                                     </tr>
                                 }
                                 @if (roundHalf.TankElapsed != null)
                                 {
                                     <tr>
-                                        <th>@SharedLocalizer["TankDuration"]:</th>
+                                        <th>@SharedLocalizer["TankElapsed"]:</th>
                                         <td class="slim text-center">@roundHalf.TankElapsed.Value.ToString(@"hh\:mm\:ss")</td>
                                     </tr>
                                 }
