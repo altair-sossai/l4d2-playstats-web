@@ -2,6 +2,8 @@
 @using L4D2PlayStats.Core.Auth
 @using L4D2PlayStats.Core.Infrastructure.Extensions
 @using L4D2PlayStats.Core.UserAvatar
+@using L4D2PlayStats.Enums
+@using L4D2PlayStats.Extensions
 @using L4D2PlayStats.Web
 @using Microsoft.Extensions.Localization
 @model L4D2PlayStats.Web.Models.StatisticsDetailsModel
@@ -237,86 +239,13 @@
                         <div class="col-md-6 left-side">
                             <table class="table table-striped table-hover table-bordered table-condensed">
                                 <tbody>
-                                @if (roundHalf.Restarts != 0)
+                                @foreach (var roundStats in Enum
+                                              .GetValues<RoundStats>()
+                                              .Where(rs => rs.DataType() == DataType.Number && @roundHalf[rs] != 0))
                                 {
                                     <tr>
-                                        <th>@SharedLocalizer["Restarts"]:</th>
-                                        <td class="slim text-center">@roundHalf.Restarts.ToString("N0")</td>
-                                    </tr>
-                                }
-                                <tr>
-                                    <th>@SharedLocalizer["PillsUsed"]:</th>
-                                    <td class="slim text-center">@roundHalf.PillsUsed.ToString("N0")</td>
-                                </tr>
-                                @if (roundHalf.KitsUsed != 0)
-                                {
-                                    <tr>
-                                        <th>@SharedLocalizer["KitsUsed"]:</th>
-                                        <td class="slim text-center">@roundHalf.KitsUsed.ToString("N0")</td>
-                                    </tr>
-                                }
-                                @if (roundHalf.DefibsUsed != 0)
-                                {
-                                    <tr>
-                                        <th>@SharedLocalizer["DefibsUsed"]:</th>
-                                        <td class="slim text-center">@roundHalf.DefibsUsed.ToString("N0")</td>
-                                    </tr>
-                                }
-                                <tr>
-                                    <th>@SharedLocalizer["Incaps"]:</th>
-                                    <td class="slim text-center">@roundHalf.Incaps.ToString("N0")</td>
-                                </tr>
-                                <tr>
-                                    <th>@SharedLocalizer["Deaths"]:</th>
-                                    <td class="slim text-center">@roundHalf.Deaths.ToString("N0")</td>
-                                </tr>
-                                @if (roundHalf.FfDamageTotal != 0)
-                                {
-                                    <tr>
-                                        <th>@SharedLocalizer["FfDamageTotal"]:</th>
-                                        <td class="slim text-center">@roundHalf.FfDamageTotal.ToString("N0")</td>
-                                    </tr>
-                                }
-                                @if (roundHalf.SiSpawned != 0)
-                                {
-                                    <tr>
-                                        <th>@SharedLocalizer["SiSpawned"]:</th>
-                                        <td class="slim text-center">@roundHalf.SiSpawned.ToString("N0")</td>
-                                    </tr>
-                                }
-                                @if (roundHalf.SiKilled != 0)
-                                {
-                                    <tr>
-                                        <th>@SharedLocalizer["SiKilled"]:</th>
-                                        <td class="slim text-center">@roundHalf.SiKilled.ToString("N0")</td>
-                                    </tr>
-                                }
-                                @if (roundHalf.SiDamage != 0)
-                                {
-                                    <tr>
-                                        <th>@SharedLocalizer["SiDamage"]:</th>
-                                        <td class="slim text-center">@roundHalf.SiDamage.ToString("N0")</td>
-                                    </tr>
-                                }
-                                @if (roundHalf.TankKilled != 0)
-                                {
-                                    <tr>
-                                        <th>@SharedLocalizer["TankKilled"]:</th>
-                                        <td class="slim text-center">@roundHalf.TankKilled.ToString("N0")</td>
-                                    </tr>
-                                }
-                                @if (roundHalf.WitchKilled != 0)
-                                {
-                                    <tr>
-                                        <th>@SharedLocalizer["WitchKilled"]:</th>
-                                        <td class="slim text-center">@roundHalf.WitchKilled.ToString("N0")</td>
-                                    </tr>
-                                }
-                                @if (roundHalf.Common != 0)
-                                {
-                                    <tr>
-                                        <th>@SharedLocalizer["Common"]:</th>
-                                        <td class="slim text-center">@roundHalf.Common.ToString("N0")</td>
+                                        <th>@SharedLocalizer[roundStats.ToString()]:</th>
+                                        <td class="slim text-center">@roundHalf[roundStats].ToString("N0")</td>
                                     </tr>
                                 }
                                 </tbody>
