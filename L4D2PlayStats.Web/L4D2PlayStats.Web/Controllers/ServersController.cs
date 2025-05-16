@@ -1,5 +1,4 @@
 using L4D2PlayStats.Core.GameInfo;
-using L4D2PlayStats.Core.Steam.Players;
 using L4D2PlayStats.Core.Steam.Players.Services;
 using L4D2PlayStats.Core.Steam.ServerInfo.Responses;
 using L4D2PlayStats.Core.Steam.ServerInfo.Services;
@@ -99,7 +98,7 @@ public class ServersController(
         }
     }
 
-    private async Task<List<Player>?> GetPlayersAsync(string ip, int port)
+    private async Task<List<Core.Steam.Players.Player>?> GetPlayersAsync(string ip, int port)
     {
         try
         {
@@ -108,7 +107,7 @@ public class ServersController(
         catch (Exception exception)
         {
             Console.WriteLine(exception);
-            return await Task.FromResult<List<Player>?>(null);
+            return await Task.FromResult<List<Core.Steam.Players.Player>?>(null);
         }
     }
 }

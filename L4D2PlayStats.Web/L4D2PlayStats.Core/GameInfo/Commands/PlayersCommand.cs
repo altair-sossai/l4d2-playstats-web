@@ -6,5 +6,5 @@ public class PlayersCommand
 {
     public List<Survivor>? Survivors { get; set; }
     public List<Infected>? Infecteds { get; set; }
-    public List<Player>? Spectators { get; set; }
+    public List<Models.Player>? Spectators { get; set; }
 }

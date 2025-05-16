@@ -1,6 +1,4 @@
-﻿using L4D2PlayStats.Sdk.Statistics.Results;
-
-namespace L4D2PlayStats.Sdk.Matches.Results;
+﻿namespace L4D2PlayStats.Sdk.Matches.Results;
 
 public class MatchResult
 {
@@ -130,6 +128,6 @@ public class MatchResult
     public class MapResult
     {
         public string? MapName { get; set; }
-        public StatisticsResult.ScoringResult? Scoring { get; set; }
+        public Scoring? Scoring { get; set; }
     }
 }

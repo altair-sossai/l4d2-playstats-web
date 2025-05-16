@@ -1,5 +1,4 @@
 ﻿using L4D2PlayStats.Core.GameInfo;
-using L4D2PlayStats.Core.Steam.Players;
 using L4D2PlayStats.Core.Steam.ServerInfo.Responses;
 using static L4D2PlayStats.Core.Steam.ServerInfo.Responses.GetServerListResponse;
 
@@ -9,10 +8,10 @@ public class ServerInfoModel(
     string serverIp,
     GameInfo gameInfo,
     GetServerListResponse? serverListResponse,
-    List<Player>? players)
+    List<Core.Steam.Players.Player>? players)
 {
     public string ServerIp { get; } = serverIp;
     public GameInfo GameInfo { get; } = gameInfo;
     public ServerInfo? ServerInfo { get; } = serverListResponse?.Response?.Servers?.FirstOrDefault();
-    public List<Player>? Players { get; } = players;
+    public List<Core.Steam.Players.Player>? Players { get; } = players;
 }

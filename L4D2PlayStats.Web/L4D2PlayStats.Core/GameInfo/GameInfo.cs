@@ -15,7 +15,7 @@ public class GameInfo
     private readonly TimedList<ChatMessage> _messages = new();
     private readonly TimedValue<Round?> _round = new(expireIn: TimeSpan.FromHours(2));
     private readonly TimedValue<Scoreboard?> _scoreboard = new();
-    private readonly TimedValue<Player[]> _spectators = new([], TimeSpan.FromHours(2));
+    private readonly TimedValue<Models.Player[]> _spectators = new([], TimeSpan.FromHours(2));
     private readonly TimedValue<Survivor[]> _survivors = new([], TimeSpan.FromHours(2));
     private readonly IUserAvatar _userAvatar;
 
@@ -60,7 +60,7 @@ public class GameInfo
         set => _infecteds.Value = value;
     }
 
-    public Player[] Spectators
+    public Models.Player[] Spectators
     {
         get => _spectators;
         set => _spectators.Value = value;
@@ -110,7 +110,7 @@ public class GameInfo
         LoadAvatarAsync(infecteds).Wait();
     }
 
-    private static void SpectatorsValueUpdated(object? sender, Player[] players)
+    private static void SpectatorsValueUpdated(object? sender, Models.Player[] players)
     {
         Array.Sort(players, (a, b) => a.Name?.CompareTo(b.Name) ?? 0);
     }
@@ -120,7 +120,7 @@ public class GameInfo
         _messages.Items.Sort((a, b) => a.When.CompareTo(b.When));
     }
 
-    private async Task LoadAvatarAsync(IReadOnlyCollection<Player> players)
+    private async Task LoadAvatarAsync(IReadOnlyCollection<Models.Player> players)
     {
         var communityIds = players.Select(p => p.CommunityId);
 

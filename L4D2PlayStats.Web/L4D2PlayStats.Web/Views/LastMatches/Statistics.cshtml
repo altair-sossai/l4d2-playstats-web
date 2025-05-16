@@ -1,7 +1,7 @@
-﻿@using L4D2PlayStats.Core.Auth
+﻿@using L4D2PlayStats
+@using L4D2PlayStats.Core.Auth
 @using L4D2PlayStats.Core.Infrastructure.Extensions
 @using L4D2PlayStats.Core.UserAvatar
-@using L4D2PlayStats.Sdk.Statistics.Results
 @using L4D2PlayStats.Web
 @using Microsoft.Extensions.Localization
 @model L4D2PlayStats.Web.Models.StatisticsDetailsModel
@@ -38,8 +38,8 @@
 @{
     var match = Model.Match;
     var gameRound = Model.Statistic?.Statistic?.GameRound;
-    var halves = Model.Statistic?.Statistic?.Halves ?? StatisticsResult.HalfResult.EmptyCollection;
-    var allPlayers = Model.Statistic?.Statistic?.PlayerNames ?? StatisticsResult.PlayerNameResult.EmptyCollection;
+    var halves = Model.Statistic?.Statistic?.Halves ?? new List<Statistics.Half>();
+    var allPlayers = Model.Statistic?.Statistic?.PlayerNames ?? new List<PlayerName>();
 }
 
 <h4 class="text-center">@SharedLocalizer["MatchDetails"]</h4>
@@ -339,11 +339,11 @@
                                         <td class="slim text-center">@($"{roundHalf.EndTime.Value:d} {roundHalf.EndTime.Value:HH:mm}")</td>
                                     </tr>
                                 }
-                                @if (!string.IsNullOrWhiteSpace(roundHalf.RoundElapsed))
+                                @if (roundHalf.RoundElapsed != null)
                                 {
                                     <tr>
                                         <th>@SharedLocalizer["RoundDuration"]:</th>
-                                        <td class="slim text-center">@roundHalf.RoundElapsed</td>
+                                        <td class="slim text-center">@roundHalf.RoundElapsed.Value.ToString(@"mm\:ss")</td>
                                     </tr>
                                 }
                                 @if (roundHalf.StartTimePause != null)
@@ -360,11 +360,11 @@
                                         <td class="slim text-center">@($"{roundHalf.StopTimePause.Value:d} {roundHalf.StopTimePause.Value:HH:mm}")</td>
                                     </tr>
                                 }
-                                @if (!string.IsNullOrWhiteSpace(roundHalf.PauseElapsed))
+                                @if (roundHalf.PauseElapsed != null)
                                 {
                                     <tr>
                                         <th>@SharedLocalizer["PauseDuration"]:</th>
-                                        <td class="slim text-center">@roundHalf.PauseElapsed</td>
+                                        <td class="slim text-center">@roundHalf.PauseElapsed.Value.ToString(@"mm\:ss")</td>
                                     </tr>
                                 }
                                 @if (roundHalf.StartTimeTank != null)
@@ -381,11 +381,11 @@
                                         <td class="slim text-center">@($"{roundHalf.StopTimeTank.Value:d} {roundHalf.StopTimeTank.Value:HH:mm}")</td>
                                     </tr>
                                 }
-                                @if (!string.IsNullOrWhiteSpace(roundHalf.TankElapsed))
+                                @if (roundHalf.TankElapsed != null)
                                 {
                                     <tr>
                                         <th>@SharedLocalizer["TankDuration"]:</th>
-                                        <td class="slim text-center">@roundHalf.TankElapsed</td>
+                                        <td class="slim text-center">@roundHalf.TankElapsed.Value.ToString(@"mm\:ss")</td>
                                     </tr>
                                 }
                                 </tbody>
