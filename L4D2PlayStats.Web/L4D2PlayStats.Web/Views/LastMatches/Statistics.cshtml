@@ -26,27 +26,45 @@
 }
 
 @{
-    void RenderPlayerStats(List<Player> players, PlayerStats start, PlayerStats end, bool lineBreak = true)
+    void RenderPlayerStats(List<Player> players, PlayerStats playerStats)
     {
-        @for (var playerStats = start; playerStats <= end; playerStats++)
+        <tr>
+            <th>@SharedLocalizer[playerStats.ToString()]:</th>
+            @foreach (var player in players)
+            {
+                <td class="slim text-center">
+                    @player[playerStats].ToString("N0")
+                </td>
+            }
+        </tr>
+    }
+
+    void RenderPlayerStatsCollection(List<Player> players, IEnumerable<PlayerStats> playerStats, bool lineBreak = true)
+    {
+        var any = false;
+
+        @foreach (var ps in playerStats)
         {
-            <tr>
-                <th>@SharedLocalizer[playerStats.ToString()]:</th>
-                @foreach (var player in players)
-                {
-                    <td class="slim text-center">
-                        @player[playerStats].ToString("N0")
-                    </td>
-                }
-            </tr>
+            RenderPlayerStats(players, ps);
+            any = true;
         }
 
-        @if (lineBreak)
+        @if (lineBreak && any)
         {
             <tr>
                 <td colspan="@(players.Count + 1)"></td>
             </tr>
         }
+    }
+
+    void RenderPlayerStatsBetween(List<Player> players, PlayerStats start, PlayerStats end, bool lineBreak = true)
+    {
+        var startValue = (int)start;
+        var endValue = (int)end;
+        var count = Math.Max(endValue - startValue + 1, 1);
+        var playerStats = Enumerable.Range(startValue, count).Select(v => (PlayerStats)v);
+
+        RenderPlayerStatsCollection(players, playerStats, lineBreak);
     }
 }
 
@@ -377,37 +395,15 @@
     </thead>
     <tbody>
     
-    <tr>
-        <th>@SharedLocalizer["Died"]:</th>
-        @foreach (var player in players)
+    @{
+        RenderPlayerStatsCollection(players, new []
         {
-            <td class="slim text-center">@player.Died.ToString("N0")</td>
-        }
-    </tr>
-    <tr>
-        <th>@SharedLocalizer["Incaps"]:</th>
-        @foreach (var player in players)
-        {
-            <td class="slim text-center">@player.Incaps.ToString("N0")</td>
-        }
-    </tr>
-    <tr>
-        <th>@SharedLocalizer["DmgTaken"]:</th>
-        @foreach (var player in players)
-        {
-            <td class="slim text-center">@player.DmgTaken.ToString("N0")</td>
-        }
-    </tr>
-    <tr>
-        <th>@SharedLocalizer["FallDamage"]:</th>
-        @foreach (var player in players)
-        {
-            <td class="slim text-center">@player.FallDamage.ToString("N0")</td>
-        }
-    </tr>
-    <tr>
-        <td colspan="@(players.Count + 1)"></td>
-    </tr>
+            PlayerStats.Died,
+            PlayerStats.Incaps,
+            PlayerStats.DmgTaken,
+            PlayerStats.FallDamage
+        });
+    }
 
     @{
         var weapons = Enum
@@ -540,39 +536,17 @@
     }
     
     @{
-        RenderPlayerStats(players, PlayerStats.Common, PlayerStats.SiDamageTankUp);
-        RenderPlayerStats(players, PlayerStats.TankDamage, PlayerStats.RockEats);
-        RenderPlayerStats(players, PlayerStats.Skeets, PlayerStats.SelfClears, lineBreak: false);
-        RenderPlayerStats(players, PlayerStats.Clears, PlayerStats.AvgClearTime);
+        RenderPlayerStatsBetween(players, PlayerStats.Common, PlayerStats.SiDamageTankUp);
+        RenderPlayerStatsBetween(players, PlayerStats.TankDamage, PlayerStats.RockEats);
+        RenderPlayerStatsBetween(players, PlayerStats.Skeets, PlayerStats.SelfClears, lineBreak: false);
+        RenderPlayerStatsBetween(players, PlayerStats.Clears, PlayerStats.AvgClearTime);
     }
 
-    <tr>
-        <th>@SharedLocalizer["FfHits"]:</th>
-        @foreach (var player in players)
-        {
-            <td class="slim text-center">@player.FfHits.ToString("N0")</td>
-        }
-    </tr>
-
-    <tr>
-        <th>@SharedLocalizer["FfGiven"]:</th>
-        @foreach (var player in players)
-        {
-            <td class="slim text-center">@player.FfGiven.ToString("N0")</td>
-        }
-    </tr>
-    
     @{
-        RenderPlayerStats(players, PlayerStats.FfGivenPellet, PlayerStats.FfGivenSelf, lineBreak: false);
+        RenderPlayerStatsCollection(players, new [] { PlayerStats.FfHits, PlayerStats.FfGiven }, lineBreak: false);
+        RenderPlayerStatsBetween(players, PlayerStats.FfGivenPellet, PlayerStats.FfGivenSelf, lineBreak: false);
+        RenderPlayerStats(players, PlayerStats.FfGivenTotal);
     }
-
-    <tr>
-        <th>@SharedLocalizer["FfGivenTotal"]:</th>
-        @foreach (var player in players)
-        {
-            <td class="slim text-center">@player.FfGivenTotal.ToString("N0")</td>
-        }
-    </tr>
 
     <tr>
         <td colspan="@(players.Count + 1)"></td>
@@ -584,16 +558,9 @@
     </tr>
     
     @{
-        RenderPlayerStats(players, PlayerStats.FfTakenPellet, PlayerStats.FfTakenOther, lineBreak: false);
+        RenderPlayerStatsBetween(players, PlayerStats.FfTakenPellet, PlayerStats.FfTakenOther, lineBreak: false);
+        RenderPlayerStats(players, PlayerStats.FfTakenTotal);
     }
-
-    <tr>
-        <th>@SharedLocalizer["FfTakenTotal"]:</th>
-        @foreach (var player in players)
-        {
-            <td class="slim text-center">@player.FfTakenTotal.ToString("N0")</td>
-        }
-    </tr>
     </tbody>
     </table>
     </div>
