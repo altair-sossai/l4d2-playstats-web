@@ -22,6 +22,11 @@
                 padding-left: 3px;
             }
     }
+
+    .player-name {
+        overflow-wrap: break-word;
+        white-space: wrap;
+    }
     </style>
 }
 
@@ -65,6 +70,47 @@
         var playerStats = Enumerable.Range(startValue, count).Select(v => (PlayerStats)v);
 
         RenderPlayerStatsCollection(players, playerStats, lineBreak);
+    }
+
+    void RenderInfectedStats(List<InfectedPlayer> infectedPlayers, InfectedStats infectedStats)
+    {
+        <tr>
+            <th>@SharedLocalizer[infectedStats.ToString()]:</th>
+            @foreach (var infectedPlayer in infectedPlayers)
+            {
+                <td class="slim text-center">
+                    @infectedPlayer[infectedStats].ToString("N0")
+                </td>
+            }
+        </tr>
+    }
+
+    void RenderInfectedStatsCollection(List<InfectedPlayer> infectedPlayers, IEnumerable<InfectedStats> infectedStats, bool lineBreak = true)
+    {
+        var any = false;
+
+        @foreach (var ps in infectedStats)
+        {
+            RenderInfectedStats(infectedPlayers, ps);
+            any = true;
+        }
+
+        @if (lineBreak && any)
+        {
+            <tr>
+                <td colspan="@(infectedPlayers.Count + 1)"></td>
+            </tr>
+        }
+    }
+
+    void RenderInfectedStatsBetween(List<InfectedPlayer> infectedPlayers, InfectedStats start, InfectedStats end, bool lineBreak = true)
+    {
+        var startValue = (int)start;
+        var endValue = (int)end;
+        var count = Math.Max(endValue - startValue + 1, 1);
+        var infectedStats = Enumerable.Range(startValue, count).Select(v => (InfectedStats)v);
+
+        RenderInfectedStatsCollection(infectedPlayers, infectedStats, lineBreak);
     }
 }
 
@@ -385,7 +431,7 @@
         <th></th>
         @foreach (var player in players)
         {
-            <th class="text-center">
+            <th class="text-center player-name">
                 <a href="@player.ProfileUrl" title="@player.PlayerName">
                     @player.PlayerName
                 </a>
@@ -578,7 +624,7 @@
                         <th></th>
                         @foreach (var infectedPlayer in infectedPlayers)
                         {
-                            <th class="text-center">
+                            <th class="text-center player-name">
                                 <a href="@infectedPlayer.ProfileUrl" title="@infectedPlayer.PlayerName">
                                     @infectedPlayer.PlayerName
                                 </a>
@@ -587,182 +633,36 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <th>@SharedLocalizer["DmgTotal"]:</th>
-                        @foreach (var infectedPlayer in infectedPlayers)
+                    @{
+                        RenderInfectedStatsBetween(infectedPlayers, InfectedStats.DmgTotal, InfectedStats.DmgUpright);
+                        
+                        RenderInfectedStatsCollection(infectedPlayers, new []
                         {
-                            <td class="slim text-center">@infectedPlayer.DmgTotal.ToString("N0")</td>
-                        }
-                    </tr>
-                    <tr>
-                        <th>@SharedLocalizer["DmgUpright"]:</th>
-                        @foreach (var infectedPlayer in infectedPlayers)
+                            InfectedStats.DmgTank,
+                            InfectedStats.DmgTankIncap,
+                            InfectedStats.TankPasses
+                        });
+                        
+                        RenderInfectedStatsCollection(infectedPlayers, new []
                         {
-                            <td class="slim text-center">@infectedPlayer.DmgUpright.ToString("N0")</td>
-                        }
-                    </tr>
+                            InfectedStats.DmgScratch,
+                            InfectedStats.DmgTankUp,
+                            InfectedStats.DmgSpit,
+                            InfectedStats.DmgBoom
+                        });
+
+                        RenderInfectedStatsBetween(infectedPlayers, InfectedStats.HunterDPs, InfectedStats.Ledged, lineBreak:false);
+
+                        RenderInfectedStats(infectedPlayers, InfectedStats.Common);
+                    }
+                    
                     <tr>
                         <td colspan="@(infectedPlayers.Count + 1)"></td>
                     </tr>
-                    <tr>
-                        <th>@SharedLocalizer["DmgTank"]:</th>
-                        @foreach (var infectedPlayer in infectedPlayers)
-                        {
-                            <td class="slim text-center">@infectedPlayer.DmgTank.ToString("N0")</td>
-                        }
-                    </tr>
-                    <tr>
-                        <th>@SharedLocalizer["DmgTankIncap"]:</th>
-                        @foreach (var infectedPlayer in infectedPlayers)
-                        {
-                            <td class="slim text-center">@infectedPlayer.DmgTankIncap.ToString("N0")</td>
-                        }
-                    </tr>
-                    <tr>
-                        <th>@SharedLocalizer["TankPasses"]:</th>
-                        @foreach (var infectedPlayer in infectedPlayers)
-                        {
-                            <td class="slim text-center">@infectedPlayer.TankPasses.ToString("N0")</td>
-                        }
-                    </tr>
-                    <tr>
-                        <td colspan="@(infectedPlayers.Count + 1)"></td>
-                    </tr>
-                    <tr>
-                        <th>@SharedLocalizer["DmgScratch"]:</th>
-                        @foreach (var infectedPlayer in infectedPlayers)
-                        {
-                            <td class="slim text-center">@infectedPlayer.DmgScratch.ToString("N0")</td>
-                        }
-                    </tr>
-                    <tr>
-                        <th>@SharedLocalizer["DmgTankUp"]:</th>
-                        @foreach (var infectedPlayer in infectedPlayers)
-                        {
-                            <td class="slim text-center">@infectedPlayer.DmgTankUp.ToString("N0")</td>
-                        }
-                    </tr>
-                    <tr>
-                        <th>@SharedLocalizer["DmgSpit"]:</th>
-                        @foreach (var infectedPlayer in infectedPlayers)
-                        {
-                            <td class="slim text-center">@infectedPlayer.DmgSpit.ToString("N0")</td>
-                        }
-                    </tr>
-                    <tr>
-                        <th>@SharedLocalizer["DmgBoom"]:</th>
-                        @foreach (var infectedPlayer in infectedPlayers)
-                        {
-                            <td class="slim text-center">@infectedPlayer.DmgBoom.ToString("N0")</td>
-                        }
-                    </tr>
-                    <tr>
-                        <td colspan="@(infectedPlayers.Count + 1)"></td>
-                    </tr>
-                    <tr>
-                        <th>@SharedLocalizer["HunterDPs"]:</th>
-                        @foreach (var infectedPlayer in infectedPlayers)
-                        {
-                            <td class="slim text-center">@infectedPlayer.HunterDPs.ToString("N0")</td>
-                        }
-                    </tr>
-                    <tr>
-                        <th>@SharedLocalizer["HunterDpDmg"]:</th>
-                        @foreach (var infectedPlayer in infectedPlayers)
-                        {
-                            <td class="slim text-center">@infectedPlayer.HunterDpDmg.ToString("N0")</td>
-                        }
-                    </tr>
-                    <tr>
-                        <th>@SharedLocalizer["JockeyDPs"]:</th>
-                        @foreach (var infectedPlayer in infectedPlayers)
-                        {
-                            <td class="slim text-center">@infectedPlayer.JockeyDPs.ToString("N0")</td>
-                        }
-                    </tr>
-                    <tr>
-                        <th>@SharedLocalizer["DeathCharges"]:</th>
-                        @foreach (var infectedPlayer in infectedPlayers)
-                        {
-                            <td class="slim text-center">@infectedPlayer.DeathCharges.ToString("N0")</td>
-                        }
-                    </tr>
-                    <tr>
-                        <th>@SharedLocalizer["Booms"]:</th>
-                        @foreach (var infectedPlayer in infectedPlayers)
-                        {
-                            <td class="slim text-center">@infectedPlayer.Booms.ToString("N0")</td>
-                        }
-                    </tr>
-                    <tr>
-                        <th>@SharedLocalizer["Ledged"]:</th>
-                        @foreach (var infectedPlayer in infectedPlayers)
-                        {
-                            <td class="slim text-center">@infectedPlayer.Ledged.ToString("N0")</td>
-                        }
-                    </tr>
-                    <tr>
-                        <td colspan="@(infectedPlayers.Count + 1)"></td>
-                    </tr>
-                    <tr>
-                        <th>@SharedLocalizer["Common"]:</th>
-                        @foreach (var infectedPlayer in infectedPlayers)
-                        {
-                            <td class="slim text-center">@infectedPlayer.Common.ToString("N0")</td>
-                        }
-                    </tr>
-                    <tr>
-                        <td colspan="@(infectedPlayers.Count + 1)"></td>
-                    </tr>
-                    <tr>
-                        <th>@SharedLocalizer["Spawns"]:</th>
-                        @foreach (var infectedPlayer in infectedPlayers)
-                        {
-                            <td class="slim text-center">@infectedPlayer.Spawns.ToString("N0")</td>
-                        }
-                    </tr>
-                    <tr>
-                        <th>@SharedLocalizer["SpawnSmoker"]:</th>
-                        @foreach (var infectedPlayer in infectedPlayers)
-                        {
-                            <td class="slim text-center">@infectedPlayer.SpawnSmoker.ToString("N0")</td>
-                        }
-                    </tr>
-                    <tr>
-                        <th>@SharedLocalizer["SpawnBoomer"]:</th>
-                        @foreach (var infectedPlayer in infectedPlayers)
-                        {
-                            <td class="slim text-center">@infectedPlayer.SpawnBoomer.ToString("N0")</td>
-                        }
-                    </tr>
-                    <tr>
-                        <th>@SharedLocalizer["SpawnHunter"]:</th>
-                        @foreach (var infectedPlayer in infectedPlayers)
-                        {
-                            <td class="slim text-center">@infectedPlayer.SpawnHunter.ToString("N0")</td>
-                        }
-                    </tr>
-                    <tr>
-                        <th>@SharedLocalizer["SpawnCharger"]:</th>
-                        @foreach (var infectedPlayer in infectedPlayers)
-                        {
-                            <td class="slim text-center">@infectedPlayer.SpawnCharger.ToString("N0")</td>
-                        }
-                    </tr>
-                    <tr>
-                        <th>@SharedLocalizer["SpawnSpitter"]:</th>
-                        @foreach (var infectedPlayer in infectedPlayers)
-                        {
-                            <td class="slim text-center">@infectedPlayer.SpawnSpitter.ToString("N0")</td>
-                        }
-                    </tr>
-                    <tr>
-                        <th>@SharedLocalizer["SpawnJockey"]:</th>
-                        @foreach (var infectedPlayer in infectedPlayers)
-                        {
-                            <td class="slim text-center">@infectedPlayer.SpawnJockey.ToString("N0")</td>
-                        }
-                    </tr>
+                    
+                    @{
+                        RenderInfectedStatsBetween(infectedPlayers, InfectedStats.Spawns, InfectedStats.SpawnJockey, lineBreak:false);
+                    }
                     </tbody>
                 </table>
 
@@ -774,7 +674,7 @@
 
         <div class="panel panel-default" style="margin-bottom: 0;">
             <div class="panel-heading bold" style="padding: 3px 15px">
-                @SharedLocalizer["Spectators"]
+                @SharedLocalizer["ConnectedPlayers"]
             </div>
             <div class="panel-body" style="padding: 0">
                 <table class="table table-striped table-hover table-bordered table-condensed">
