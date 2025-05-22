@@ -17,7 +17,7 @@ public class ExternalChatController(ICurrentUser currentUser, IExternalChatServi
     {
         var messages = externalChatService.GetMessages(after);
 
-        return Ok(new { messages });
+        return Ok(messages);
     }
 
     [HttpPost]

@@ -9,6 +9,7 @@ public class Message(User user, MessageCommand command)
 {
     public DateTime When { get; } = DateTime.UtcNow;
     public TimeSpan Age => DateTime.UtcNow - When;
+    public string Ticks => When.Ticks.ToString();
     public string? SteamId { get; } = user.SteamId;
     public string? CommunityId { get; } = user.CommunityId;
     public string? Name { get; } = user.Name;
