@@ -15,7 +15,7 @@ public class ExternalChatController(ICurrentUser currentUser, IExternalChatServi
     [HttpGet]
     public IActionResult GetAsync([FromQuery] long after = 0)
     {
-        var messages = externalChatService.GetMessages(after);
+        var messages = externalChatService.GetMessages(after).ToList();
 
         return Ok(messages);
     }
