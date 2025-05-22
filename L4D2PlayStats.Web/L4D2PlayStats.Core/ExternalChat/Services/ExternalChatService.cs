@@ -7,6 +7,10 @@ namespace L4D2PlayStats.Core.ExternalChat.Services;
 
 public class ExternalChatService : IExternalChatService
 {
+    private static readonly TimeSpan GlobalMessageCooldown = TimeSpan.FromSeconds(20);
+    private static readonly TimeSpan UserMessageCooldown = TimeSpan.FromMinutes(2);
+    private static readonly TimeSpan MessageRetention = TimeSpan.FromMinutes(30);
+
     private static readonly List<Message> Messages = [];
     private static readonly Lock Lock = new();
 
@@ -45,11 +49,11 @@ public class ExternalChatService : IExternalChatService
             RemoveOldMessages();
 
             var lastMessage = Messages.LastOrDefault();
-            if (lastMessage is { Age.TotalSeconds: < 20 })
+            if (lastMessage != null && lastMessage.Age < GlobalMessageCooldown)
                 return SendMessageResult.FailureResult("Max message rate exceeded. Please wait.");
 
             var lastUserMessage = Messages.LastOrDefault(m => m.SteamId == user.SteamId);
-            if (lastUserMessage is { Age.TotalMinutes: < 5 })
+            if (lastUserMessage != null && lastUserMessage.Age < UserMessageCooldown)
                 return SendMessageResult.FailureResult("Max message rate exceeded. Please wait.");
 
             var message = new Message(user, command);
@@ -62,6 +66,6 @@ public class ExternalChatService : IExternalChatService
 
     private static void RemoveOldMessages()
     {
-        Messages.RemoveAll(m => m.Age.TotalMinutes >= 15);
+        Messages.RemoveAll(m => m.Age >= MessageRetention);
     }
 }
