@@ -13,9 +13,9 @@ namespace L4D2PlayStats.Web.Controllers.Api;
 public class ExternalChatController(ICurrentUser currentUser, IExternalChatService externalChatService) : ControllerBase
 {
     [HttpGet]
-    public IActionResult GetAsync()
+    public IActionResult GetAsync([FromQuery] long after = 0)
     {
-        var messages = externalChatService.GetMessages();
+        var messages = externalChatService.GetMessages(after);
 
         return Ok(new { messages });
     }

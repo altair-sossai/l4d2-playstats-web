@@ -99,8 +99,7 @@ public class GameInfoController(IUserAvatar userAvatar, IExternalChatService ext
             .Where(m => m.When.Ticks > after)
             .ToList();
 
-        var externalMessages = externalChatService.GetMessages()
-            .Where(message => message.When.Ticks > after)
+        var externalMessages = externalChatService.GetMessages(after)
             .Select(message => (ChatMessage)message)
             .ToList();
 

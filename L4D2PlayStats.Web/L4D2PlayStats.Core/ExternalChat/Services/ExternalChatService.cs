@@ -1,5 +1,4 @@
-﻿using System.Collections.ObjectModel;
-using L4D2PlayStats.Core.ExternalChat.Commands;
+﻿using L4D2PlayStats.Core.ExternalChat.Commands;
 using L4D2PlayStats.Core.ExternalChat.Models;
 using L4D2PlayStats.Core.ExternalChat.Results;
 
@@ -14,13 +13,13 @@ public class ExternalChatService : IExternalChatService
     private static readonly List<Message> Messages = [];
     private static readonly Lock Lock = new();
 
-    public ReadOnlyCollection<Message> GetMessages()
+    public IEnumerable<Message> GetMessages(long after)
     {
         lock (Lock)
         {
             RemoveOldMessages();
 
-            return Messages.AsReadOnly();
+            return Messages.Where(message => message.When.Ticks > after);
         }
     }
 
