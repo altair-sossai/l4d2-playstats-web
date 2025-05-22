@@ -7,8 +7,8 @@ namespace L4D2PlayStats.Core.ExternalChat.Services;
 public class ExternalChatService : IExternalChatService
 {
     private static readonly TimeSpan GlobalMessageCooldown = TimeSpan.FromSeconds(20);
-    private static readonly TimeSpan UserMessageCooldown = TimeSpan.FromMinutes(2);
-    private static readonly TimeSpan MessageRetention = TimeSpan.FromMinutes(30);
+    private static readonly TimeSpan UserMessageCooldown = TimeSpan.FromSeconds(90);
+    private static readonly TimeSpan MessageRetention = TimeSpan.FromMinutes(45);
 
     private static readonly List<Message> Messages = [];
     private static readonly Lock Lock = new();
