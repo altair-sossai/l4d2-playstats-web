@@ -858,4 +858,16 @@
   <data name="SpawnJockey" xml:space="preserve">
     <value>Spawns - Jockey</value>
   </data>
+  <data name="Send" xml:space="preserve">
+    <value>Enviar</value>
+  </data>
+  <data name="TypeYourMessage" xml:space="preserve">
+    <value>Digite sua mensagem</value>
+  </data>
+  <data name="ChatLoginRequiredMessage" xml:space="preserve">
+    <value>Para interagir com o chat, você precisa estar logado com a Steam.</value>
+  </data>
+  <data name="External" xml:space="preserve">
+    <value>Externo</value>
+  </data>
 </root>

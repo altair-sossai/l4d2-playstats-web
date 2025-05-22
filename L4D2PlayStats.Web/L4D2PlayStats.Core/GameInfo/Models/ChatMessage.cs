@@ -3,9 +3,9 @@ using L4D2PlayStats.Core.GameInfo.Enums;
 
 namespace L4D2PlayStats.Core.GameInfo.Models;
 
-public class ChatMessage(ChatMessageCommand command)
+public class ChatMessage(ChatMessageCommand command, DateTime? when = null)
 {
-    public long When { get; } = command.When;
+    public DateTime When { get; } = when ?? DateTime.UtcNow;
     public bool Public { get; } = command.Public;
     public Team Team { get; } = command.Team;
 

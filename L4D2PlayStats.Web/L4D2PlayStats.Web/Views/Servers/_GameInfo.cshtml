@@ -1,7 +1,11 @@
-﻿@using L4D2PlayStats.Web
+﻿@using L4D2PlayStats.Core.Auth
+@using L4D2PlayStats.Web
 @using Microsoft.Extensions.Localization
+
 @model L4D2PlayStats.Web.Models.ServerInfoModel
+
 @inject IStringLocalizer<SharedResource> SharedLocalizer
+@inject ICurrentUser CurrentUser
 
 @section Styles {
     <style>
@@ -160,6 +164,30 @@
             });
         };
 
+        function sendMessage() {
+            var message = $('#message').val().trim();
+            if (!message)
+                return;
+
+            $.ajax({
+                url: '/api/external-chat',
+                type: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify({ message: message }),
+                success: function (result) {
+                    if (!result)
+                        return;
+
+                    if (result.success) {
+                        refreshMessages();
+                        $('#message').val('');
+                    } else {
+                        alert(result.errorMessage)
+                    }
+                }
+            });
+        }
+
         $(document).ready(function () {
             refreshHeader();
             refreshPlayers();
@@ -170,6 +198,17 @@
             setInterval(refreshMessages, refreshInterval / 2);
 
             $('#chat-messages').scrollTop($('#chat-messages')[0].scrollHeight);
+
+             $('#chatForm').on('submit', function () {
+                sendMessage();
+            });
+
+             $('#message').on('keypress', function (e) {
+                if (e.which === 13) {
+                    e.preventDefault();
+                    sendMessage();
+                }
+            });
         });
     </script>
 }
@@ -190,8 +229,29 @@
             <div class="panel-heading">
                 @SharedLocalizer["ChatMessages"]
             </div>
-            <div class="panel-body" id="chat-messages">
-                @await Html.PartialAsync("_Messages", Model.GameInfo.Messages)
+            <div class="panel-body">
+                <div id="chat-messages" style="margin-bottom: 20px">
+                    @await Html.PartialAsync("_Messages", Model.GameInfo.Messages)
+                </div>
+                @if (CurrentUser.IsAuthenticated)
+                {
+                    <form id="chatForm" class="form-inline" onsubmit="return false;">
+                        <div class="input-group" style="width: 100%">
+                            <input type="text" id="message" name="message" class="form-control" placeholder="@SharedLocalizer["TypeYourMessage"]" />
+                            <span class="input-group-btn">
+                                <button type="submit" class="btn btn-primary btn-block">
+                                    @SharedLocalizer["Send"]
+                                </button>
+                            </span>
+                        </div>
+                    </form>
+                }
+                else
+                {
+                    <div class="alert alert-warning" role="alert" style="margin-bottom: 0px">
+                        @SharedLocalizer["ChatLoginRequiredMessage"]
+                    </div>
+                }
             </div>
         </div>
     </div>

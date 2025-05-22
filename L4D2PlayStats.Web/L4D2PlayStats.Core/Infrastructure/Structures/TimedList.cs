@@ -8,7 +8,7 @@ public class TimedList<T>(int maxItems = 250, TimeSpan? expireIn = null, TimeSpa
 #endif
 
 #if !DEBUG
-    private const int DefaultDelaySeconds = 45;
+    private const int DefaultDelaySeconds = 30;
     private const int DefaultExpireInMinutes = 60;
 #endif
 

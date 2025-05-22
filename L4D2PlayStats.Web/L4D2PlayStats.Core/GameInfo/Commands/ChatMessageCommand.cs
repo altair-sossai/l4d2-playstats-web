@@ -5,7 +5,6 @@ namespace L4D2PlayStats.Core.GameInfo.Commands;
 public class ChatMessageCommand
 {
     private string? _message;
-    public int When { get; set; }
     public bool Public { get; set; }
     public Team Team { get; set; }
     public string? CommunityId { get; set; }

@@ -10,10 +10,11 @@
     {
         Team.Survivor => "text-info",
         Team.Infected => "text-danger",
+        Team.External => "text-warning",
         _ => "text-muted"
     };
 
-    <p data-message-when="@message.When">
+    <p data-message-when="@message.When.Ticks">
         @if (!message.Public)
         {
             <small>

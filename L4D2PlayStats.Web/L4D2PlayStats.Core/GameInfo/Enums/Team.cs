@@ -4,5 +4,6 @@ public enum Team
 {
     Spectator = 1,
     Survivor = 2,
-    Infected = 3
+    Infected = 3,
+    External = 4,
 }

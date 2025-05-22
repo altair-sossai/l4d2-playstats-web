@@ -1,4 +1,6 @@
+using L4D2PlayStats.Core.ExternalChat.Services;
 using L4D2PlayStats.Core.GameInfo;
+using L4D2PlayStats.Core.GameInfo.Models;
 using L4D2PlayStats.Core.Steam.Players.Services;
 using L4D2PlayStats.Core.Steam.ServerInfo.Responses;
 using L4D2PlayStats.Core.Steam.ServerInfo.Services;
@@ -14,7 +16,8 @@ public class ServersController(
     IMemoryCache memoryCache,
     IUserAvatar userAvatar,
     IServerInfoService serverInfoService,
-    IPlayerService playerService)
+    IPlayerService playerService,
+    IExternalChatService externalChatService)
     : Controller
 {
     private string[] ServerIPs => configuration.GetValue<string>("ServerIPs")?.Split(';', StringSplitOptions.RemoveEmptyEntries) ?? [];
@@ -49,10 +52,21 @@ public class ServersController(
     }
 
     [Route("servers/messages")]
-    public async Task<IActionResult> Messages([FromQuery] int after = 0)
+    public async Task<IActionResult> Messages([FromQuery] long after = 0)
     {
         var model = await GetServerInfoCacheedAsync(ServerIp);
-        var messages = model.GameInfo.Messages.Where(m => m.When > after).ToList();
+
+        var messages = model.GameInfo.Messages
+            .Where(m => m.When.Ticks > after)
+            .ToList();
+
+        var externalMessages = externalChatService.GetMessages()
+            .Where(message => message.When.Ticks > after)
+            .Select(message => (ChatMessage)message)
+            .ToList();
+
+        messages.AddRange(externalMessages);
+        messages.Sort((a, b) => a.When.CompareTo(b.When));
 
         return PartialView("_Messages", messages);
     }
