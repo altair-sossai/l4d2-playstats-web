@@ -8,7 +8,6 @@ using Microsoft.AspNetCore.Mvc;
 namespace L4D2PlayStats.Web.Controllers.Api;
 
 [Route("api/external-chat")]
-[Authorize]
 [ApiController]
 public class ExternalChatController(ICurrentUser currentUser, IExternalChatService externalChatService) : ControllerBase
 {
@@ -17,10 +16,11 @@ public class ExternalChatController(ICurrentUser currentUser, IExternalChatServi
     {
         var messages = externalChatService.GetMessages(after);
 
-        return Ok(new { messages });
+        return Ok(messages);
     }
 
     [HttpPost]
+    [Authorize]
     public IActionResult PostAsync([FromBody] MessageCommand command)
     {
         var user = new User(currentUser);
