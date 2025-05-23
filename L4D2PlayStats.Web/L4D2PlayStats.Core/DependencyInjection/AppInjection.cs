@@ -1,4 +1,4 @@
-using L4D2PlayStats.Core.Steam;
+using L4D2PlayStats.Core.Steam.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace L4D2PlayStats.Core.DependencyInjection;
@@ -19,7 +19,6 @@ public static class AppInjection
             .AddClasses()
             .AsImplementedInterfaces(type => assemblies.Contains(type.Assembly)));
 
-        serviceCollection.AddScoped(sp => sp.GetRequiredService<ISteamContext>().SteamUserService);
-        serviceCollection.AddScoped(sp => sp.GetRequiredService<ISteamContext>().ServerInfoService);
+        serviceCollection.AddSteamServices();
     }
 }

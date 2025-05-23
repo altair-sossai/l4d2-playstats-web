@@ -195,9 +195,6 @@
   <data name="SiDamageDealt" xml:space="preserve">
     <value>SI - Dano causado</value>
   </data>
-  <data name="DmgTank" xml:space="preserve">
-    <value>Tank - Dano causado</value>
-  </data>
   <data name="RockEats" xml:space="preserve">
     <value>Tank - Pedras recebidas</value>
   </data>
