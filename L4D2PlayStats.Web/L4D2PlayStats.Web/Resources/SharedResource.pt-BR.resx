@@ -195,9 +195,6 @@
   <data name="SiDamageDealt" xml:space="preserve">
     <value>SI - Dano causado</value>
   </data>
-  <data name="RockEats" xml:space="preserve">
-    <value>Tank - Pedras recebidas</value>
-  </data>
   <data name="Skeets" xml:space="preserve">
     <value>Skeets</value>
   </data>
@@ -702,9 +699,6 @@
   <data name="CrownsHurt" xml:space="preserve">
     <value>Crowns - Dano</value>
   </data>
-  <data name="SkeetsMelee" xml:space="preserve">
-    <value>Melee skeets</value>
-  </data>
   <data name="RockSkeets" xml:space="preserve">
     <value>Rock skeets</value>
   </data>
@@ -789,9 +783,6 @@
   <data name="FfTakenTotal" xml:space="preserve">
     <value>FFT - Total</value>
   </data>
-  <data name="DmgTotal" xml:space="preserve">
-    <value>Dano total</value>
-  </data>
   <data name="DmgUpright" xml:space="preserve">
     <value>Dano em pé</value>
   </data>
@@ -810,17 +801,11 @@
   <data name="DmgTankUp" xml:space="preserve">
     <value>Dano - Durante o Tank</value>
   </data>
-  <data name="DmgSpit" xml:space="preserve">
-    <value>Dano - Spitter</value>
-  </data>
   <data name="DmgBoom" xml:space="preserve">
     <value>Dano - Boomer</value>
   </data>
   <data name="HunterDPs" xml:space="preserve">
     <value>Hunter - Pounces</value>
-  </data>
-  <data name="HunterDpDmg" xml:space="preserve">
-    <value>Hunter - Dano por pounces</value>
   </data>
   <data name="JockeyDPs" xml:space="preserve">
     <value>Jockey - Pounces</value>
