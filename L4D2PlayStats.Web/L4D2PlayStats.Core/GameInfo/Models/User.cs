@@ -1,6 +1,6 @@
 ﻿using L4D2PlayStats.Core.Auth;
 
-namespace L4D2PlayStats.Core.ExternalChat.Models;
+namespace L4D2PlayStats.Core.GameInfo.Models;
 
 public class User
 {

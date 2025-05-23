@@ -211,6 +211,11 @@
                     sendMessage();
                 }
             });
+
+            $('#message').on('input', function() {
+                var message = $('#message').val().trim();
+                $('button[type="submit"]').prop('disabled', message.length === 0);
+            });
         });
     </script>
 }
@@ -233,7 +238,7 @@
             </div>
             <div class="panel-body">
                 <div id="chat-messages" style="margin-bottom: 20px">
-                    @await Html.PartialAsync("_Messages", Model.GameInfo.Messages)
+                    @await Html.PartialAsync("_Messages", Model.GameInfo.AllMessages)
                 </div>
                 @if (CurrentUser.IsAuthenticated)
                 {
@@ -241,7 +246,7 @@
                         <div class="input-group" style="width: 100%">
                             <input type="text" id="message" name="message" class="form-control" placeholder="@SharedLocalizer["TypeYourMessage"]" />
                             <span class="input-group-btn">
-                                <button type="submit" class="btn btn-primary btn-block">
+                                <button type="submit" class="btn btn-primary btn-block" disabled>
                                     @SharedLocalizer["Send"]
                                 </button>
                             </span>

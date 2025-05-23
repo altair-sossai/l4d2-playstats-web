@@ -1,5 +1,6 @@
 ﻿using L4D2PlayStats.Core.GameInfo.Commands;
 using L4D2PlayStats.Core.GameInfo.Models;
+using L4D2PlayStats.Core.GameInfo.Results;
 using L4D2PlayStats.Core.Infrastructure.Structures;
 using L4D2PlayStats.Core.UserAvatar;
 
@@ -7,9 +8,14 @@ namespace L4D2PlayStats.Core.GameInfo;
 
 public class GameInfo
 {
+    private static readonly TimeSpan GlobalMessageCooldown = TimeSpan.FromSeconds(15);
+    private static readonly TimeSpan UserMessageCooldown = TimeSpan.FromSeconds(30);
+    private static readonly TimeSpan MessageRetention = TimeSpan.FromHours(1);
+
     private static readonly Lock Lock = new();
     private static GameInfo? _gameInfo;
     private readonly TimedValue<Configuration?> _configuration = new(expireIn: TimeSpan.FromDays(1));
+    private readonly List<ExternalChatMessage> _externalMessages = [];
     private readonly TimedValue<Infected[]> _infecteds = new([], TimeSpan.FromHours(2));
     private readonly Dictionary<string, string> _lastMessage = new();
     private readonly TimedList<ChatMessage> _messages = new();
@@ -69,6 +75,12 @@ public class GameInfo
     public bool AnyPlayerConnected => Survivors.Length > 0 || Infecteds.Length > 0 || Spectators.Length > 0;
 
     public IReadOnlyCollection<ChatMessage> Messages => _messages.Items;
+    public IReadOnlyCollection<ExternalChatMessage> ExternalMessages => _externalMessages;
+
+    public IReadOnlyCollection<ChatMessage> AllMessages => Messages
+        .Concat(_externalMessages.Select(em => (ChatMessage)em))
+        .OrderBy(m => m.When)
+        .ToList();
 
     public static GameInfo GetOrInitializeInstance(IUserAvatar userAvatar)
     {
@@ -94,6 +106,46 @@ public class GameInfo
         var message = new ChatMessage(command);
 
         _messages.Add(message);
+    }
+
+    public SendExternalMessageResult AddExternalMessage(User? user, ExternalChatMessageCommand? command)
+    {
+        if (user == null)
+            return SendExternalMessageResult.FailureResult("User cannot be null.");
+
+        if (command == null)
+            return SendExternalMessageResult.FailureResult("Command cannot be null.");
+
+        if (string.IsNullOrEmpty(user.SteamId))
+            return SendExternalMessageResult.FailureResult("User SteamId cannot be null or empty.");
+
+        if (string.IsNullOrEmpty(user.Name))
+            return SendExternalMessageResult.FailureResult("User Name cannot be null or empty.");
+
+        if (string.IsNullOrEmpty(command.Message))
+            return SendExternalMessageResult.FailureResult("Message cannot be null or empty.");
+
+        if (command.Message.Length > 200)
+            return SendExternalMessageResult.FailureResult("Message cannot be longer than 200 characters.");
+
+        lock (Lock)
+        {
+            _externalMessages.RemoveAll(m => m.Age >= MessageRetention);
+
+            var lastMessage = _externalMessages.LastOrDefault();
+            if (lastMessage != null && lastMessage.Age < GlobalMessageCooldown)
+                return SendExternalMessageResult.FailureResult("Max message rate exceeded. Please wait.");
+
+            var lastUserMessage = _externalMessages.LastOrDefault(m => m.SteamId == user.SteamId);
+            if (lastUserMessage != null && lastUserMessage.Age < UserMessageCooldown)
+                return SendExternalMessageResult.FailureResult("Max message rate exceeded. Please wait.");
+
+            var message = new ExternalChatMessage(user, command);
+
+            _externalMessages.Add(message);
+        }
+
+        return SendExternalMessageResult.SuccessResult();
     }
 
     private void SurvivorsValueUpdated(object? sender, Survivor[] survivors)

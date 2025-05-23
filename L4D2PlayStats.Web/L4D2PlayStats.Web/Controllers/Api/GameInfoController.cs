@@ -1,6 +1,6 @@
-﻿using L4D2PlayStats.Core.ExternalChat.Services;
-using L4D2PlayStats.Core.GameInfo;
+﻿using L4D2PlayStats.Core.GameInfo;
 using L4D2PlayStats.Core.GameInfo.Commands;
+using L4D2PlayStats.Core.GameInfo.Extensions;
 using L4D2PlayStats.Core.GameInfo.Models;
 using L4D2PlayStats.Core.UserAvatar;
 using L4D2PlayStats.Web.Attributes;
@@ -10,7 +10,7 @@ namespace L4D2PlayStats.Web.Controllers.Api;
 
 [Route("api/game-info")]
 [ApiController]
-public class GameInfoController(IUserAvatar userAvatar, IExternalChatService externalChatService) : ControllerBase
+public class GameInfoController(IUserAvatar userAvatar) : ControllerBase
 {
     private readonly GameInfo _gameInfo = GameInfo.GetOrInitializeInstance(userAvatar);
 
@@ -95,16 +95,7 @@ public class GameInfoController(IUserAvatar userAvatar, IExternalChatService ext
     [Route("messages")]
     public IActionResult Messages(long after = 0)
     {
-        var messages = _gameInfo.Messages
-            .Where(m => m.When.Ticks > after)
-            .ToList();
-
-        var externalMessages = externalChatService.GetMessages(after)
-            .Select(message => (ChatMessage)message)
-            .ToList();
-
-        messages.AddRange(externalMessages);
-        messages.Sort((a, b) => a.When.CompareTo(b.When));
+        var messages = _gameInfo.AllMessages.After(after);
 
         return Ok(messages);
     }

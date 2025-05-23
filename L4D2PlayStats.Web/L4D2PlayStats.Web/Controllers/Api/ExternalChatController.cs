@@ -1,7 +1,9 @@
 ﻿using L4D2PlayStats.Core.Auth;
-using L4D2PlayStats.Core.ExternalChat.Commands;
-using L4D2PlayStats.Core.ExternalChat.Models;
-using L4D2PlayStats.Core.ExternalChat.Services;
+using L4D2PlayStats.Core.GameInfo;
+using L4D2PlayStats.Core.GameInfo.Commands;
+using L4D2PlayStats.Core.GameInfo.Extensions;
+using L4D2PlayStats.Core.GameInfo.Models;
+using L4D2PlayStats.Core.UserAvatar;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -9,22 +11,24 @@ namespace L4D2PlayStats.Web.Controllers.Api;
 
 [Route("api/external-chat")]
 [ApiController]
-public class ExternalChatController(ICurrentUser currentUser, IExternalChatService externalChatService) : ControllerBase
+public class ExternalChatController(ICurrentUser currentUser, IUserAvatar userAvatar) : ControllerBase
 {
+    private readonly GameInfo _gameInfo = GameInfo.GetOrInitializeInstance(userAvatar);
+
     [HttpGet]
     public IActionResult GetAsync([FromQuery] long after = 0)
     {
-        var messages = externalChatService.GetMessages(after);
+        var messages = _gameInfo.ExternalMessages.After(after);
 
         return Ok(messages);
     }
 
     [HttpPost]
     [Authorize]
-    public IActionResult PostAsync([FromBody] MessageCommand command)
+    public IActionResult PostAsync([FromBody] ExternalChatMessageCommand command)
     {
         var user = new User(currentUser);
-        var message = externalChatService.SendMessage(user, command);
+        var message = _gameInfo.AddExternalMessage(user, command);
 
         return Ok(message);
     }
