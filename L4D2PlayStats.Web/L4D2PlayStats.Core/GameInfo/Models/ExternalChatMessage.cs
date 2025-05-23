@@ -10,6 +10,7 @@ public class ExternalChatMessage(User user, ExternalChatMessageCommand command)
     public string Ticks => When.Ticks.ToString();
     public string? SteamId { get; } = user.SteamId;
     public string? CommunityId { get; } = user.CommunityId;
+    public string? ProfileUrl { get; } = user.ProfileUrl;
     public string? Name { get; } = user.Name;
     public string? Text { get; } = command.Message;
 
