@@ -75,10 +75,10 @@ public class GameInfo
     public bool AnyPlayerConnected => Survivors.Length > 0 || Infecteds.Length > 0 || Spectators.Length > 0;
 
     public IReadOnlyCollection<ChatMessage> Messages => _messages.Items;
-    public IReadOnlyCollection<ExternalChatMessage> ExternalMessages => _externalMessages;
+    public IReadOnlyCollection<ExternalChatMessage> ExternalMessages => _externalMessages.Where(w => w.Age < MessageRetention).ToList();
 
     public IReadOnlyCollection<ChatMessage> AllMessages => Messages
-        .Concat(_externalMessages.Select(em => (ChatMessage)em))
+        .Concat(ExternalMessages.Select(em => (ChatMessage)em))
         .OrderBy(m => m.When)
         .ToList();
 
