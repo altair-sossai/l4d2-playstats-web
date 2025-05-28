@@ -34,6 +34,9 @@
     <meta property="og:image" content="https://l4d2playstats.blob.core.windows.net/assets/motd.jpeg">
 
     <title>@Localizer["ServerName"]</title>
+    
+    <link rel="stylesheet" href="~/css/lity.min.css"/>
+
     @if (light)
     {
         <link rel="stylesheet" href="~/css/bootstrap.light.min.css"/>
@@ -385,6 +388,7 @@
 <script src="~/js/bootstrap.min.js"></script>
 <script src="~/js/diffDOM.min.js"></script>
 <script src="~/js/chart.min.js"></script>
+<script src="~/js/lity.min.js"></script>
 @await RenderSectionAsync("Scripts", false)
 
 <script>

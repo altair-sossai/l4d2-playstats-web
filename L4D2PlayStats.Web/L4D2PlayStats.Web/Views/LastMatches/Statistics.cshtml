@@ -257,7 +257,7 @@
                                     <tr class="@(CurrentUser.ItIsMe(player.CommunityId) ? "it-is-me" : string.Empty)">
                                         <td style="padding: 2px" class="slim">
                                             <a href="@Url.Action("Details", "Players", new { communityId = player.CommunityId })" title="@player.PlayerName">
-                                                <img src="@UserAvatar[player.CommunityId]" alt="@player.PlayerName" style="width: 32px; border-radius: 5px" onerror="imgOnError(this)"/>
+                                                <img src="@UserAvatar[player.CommunityId]" alt="@player.PlayerName" title="@player.PlayerName" style="width: 32px; border-radius: 5px" onerror="imgOnError(this)"/>
                                             </a>
                                         </td>
                                         <td class="vertical-align-middle">
@@ -298,7 +298,7 @@
                                     <tr class="@(CurrentUser.ItIsMe(infectedPlayer.CommunityId) ? "it-is-me" : string.Empty)">
                                         <td style="padding: 2px" class="slim">
                                             <a href="@Url.Action("Details", "Players", new { communityId = infectedPlayer.CommunityId })" title="@infectedPlayer.PlayerName">
-                                                <img src="@UserAvatar[infectedPlayer.CommunityId]" alt="@infectedPlayer.PlayerName" style="width: 32px; border-radius: 5px" onerror="imgOnError(this)"/>
+                                                <img src="@UserAvatar[infectedPlayer.CommunityId]" alt="@infectedPlayer.PlayerName" title="@infectedPlayer.PlayerName" style="width: 32px; border-radius: 5px" onerror="imgOnError(this)"/>
                                             </a>
                                         </td>
                                         <td class="vertical-align-middle">

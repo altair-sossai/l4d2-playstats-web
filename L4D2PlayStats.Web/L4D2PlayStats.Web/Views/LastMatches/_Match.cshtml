@@ -188,7 +188,7 @@
     <div class="panel-body">
         <div class="row">
             <div class="col-xs-2 left-side text-center">
-                <img src="@CampaignThumb[Model.Campaign]" alt="@Model.Campaign" class="img-responsive img-thumbnail img-campaign"/>
+                <img src="@CampaignThumb[Model.Campaign]" alt="@Model.Campaign" title="@Model.Campaign" class="img-responsive img-thumbnail img-campaign" data-lity />
                 @if (Model.ShowDetailsButton)
                 {
                     <a href="@Url.Action("Details", "LastMatches", new { start = Model.Start, end = Model.End })" class="btn btn-danger btn-xs btn-block" style="margin-top: 10px;">
@@ -225,7 +225,7 @@
                                             <tr class="@(CurrentUser.ItIsMe(player.CommunityId) ? "it-is-me" : string.Empty)">
                                                 <td style="padding: 2px" class="slim">
                                                     <a href="@Url.Action("Details", "Players", new { communityId = player.CommunityId })" title="@player.Name">
-                                                        <img src="@UserAvatar[player.CommunityId]" alt="@player.Name" style="width: 32px; border-radius: 5px" onerror="imgOnError(this)"/>
+                                                        <img src="@UserAvatar[player.CommunityId]" alt="@player.Name" title="@player.Name" style="width: 32px; border-radius: 5px" onerror="imgOnError(this)"/>
                                                     </a>
                                                 </td>
                                                 <td class="vertical-align-middle">
