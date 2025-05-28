@@ -18,7 +18,7 @@ public class GameInfo
     private readonly List<ExternalChatMessage> _externalMessages = [];
     private readonly TimedValue<Infected[]> _infecteds = new([], TimeSpan.FromHours(2));
     private readonly Dictionary<string, string> _lastMessage = new();
-    private readonly TimedList<ChatMessage> _messages = new();
+    private readonly TimedList<ChatMessage> _messages = new(delay: TimeSpan.FromSeconds(10));
     private readonly TimedValue<Round?> _round = new(expireIn: TimeSpan.FromHours(2));
     private readonly TimedValue<Scoreboard?> _scoreboard = new();
     private readonly TimedValue<Models.Player[]> _spectators = new([], TimeSpan.FromHours(2));
