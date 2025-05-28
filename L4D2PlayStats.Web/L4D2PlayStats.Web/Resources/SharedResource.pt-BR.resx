@@ -847,7 +847,7 @@
     <value>Digite sua mensagem</value>
   </data>
   <data name="ChatLoginRequiredMessage" xml:space="preserve">
-    <value>Para interagir com o chat, você precisa estar logado com a Steam.</value>
+    <value>Entre com a Steam para usar o chat.</value>
   </data>
   <data name="External" xml:space="preserve">
     <value>Externo</value>
