@@ -43,6 +43,11 @@ public class HomeController(
 
         Response.Cookies.Append("theme", theme, option);
 
-        return Redirect(Request.Headers["Referer"].ToString());
+        var referer = Request.Headers["Referer"].ToString();
+
+        if (string.IsNullOrEmpty(referer))
+            return RedirectToAction("Index");
+
+        return Redirect(referer);
     }
 }
