@@ -27,7 +27,7 @@ public class ServersController(
     {
         ViewBag.Servers = "active";
 
-        var model = await GetServerInfoCacheedAsync(ServerIp);
+        var model = await GetServerInfoCachedAsync(ServerIp);
         var viewName = model.GameInfo.AnyPlayerConnected ? "_GameInfo" : "_ServersInfo";
 
         return View(viewName, model);
@@ -36,7 +36,7 @@ public class ServersController(
     [Route("servers/header")]
     public async Task<IActionResult> Header()
     {
-        var model = await GetServerInfoCacheedAsync(ServerIp);
+        var model = await GetServerInfoCachedAsync(ServerIp);
 
         return PartialView("_Header", model);
     }
@@ -44,7 +44,7 @@ public class ServersController(
     [Route("servers/players")]
     public async Task<IActionResult> Players()
     {
-        var model = await GetServerInfoCacheedAsync(ServerIp);
+        var model = await GetServerInfoCachedAsync(ServerIp);
 
         return PartialView("_Players", model);
     }
@@ -52,7 +52,7 @@ public class ServersController(
     [Route("servers/messages")]
     public async Task<IActionResult> Messages([FromQuery] long after = 0)
     {
-        var model = await GetServerInfoCacheedAsync(ServerIp);
+        var model = await GetServerInfoCachedAsync(ServerIp);
 
         var messages = model.GameInfo.AllMessages
             .After(after)
@@ -61,7 +61,7 @@ public class ServersController(
         return PartialView("_Messages", messages);
     }
 
-    private Task<ServerInfoModel> GetServerInfoCacheedAsync(string serverIp)
+    private Task<ServerInfoModel> GetServerInfoCachedAsync(string serverIp)
     {
         return memoryCache.GetOrCreateAsync("Server", entry =>
         {
