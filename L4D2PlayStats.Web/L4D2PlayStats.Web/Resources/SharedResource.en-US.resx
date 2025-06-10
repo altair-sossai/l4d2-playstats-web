@@ -493,7 +493,7 @@
     <value>How many experience points should the user lose?</value>
   </data>
   <data name="PointsEarnedOnMap" xml:space="preserve">
-    <value>Points earned on the map</value>
+    <value>Points earned per map</value>
   </data>
   <data name="Disabled" xml:space="preserve">
     <value>Disabled</value>
