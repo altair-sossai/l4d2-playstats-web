@@ -34,7 +34,9 @@ public class LastMatchesController(
     public async Task<IActionResult> Details(string start, string end)
     {
         var matches = await matchesService.BetweenAsync(ServerId, start, end);
-        var match = matches.First();
+        var match = matches.FirstOrDefault();
+        if (match == null)
+            return NotFound();
         var statistics = await statisticsService.BetweenAsync(ServerId, start, end);
 
         await LoadAvatarsAsync(matches);
@@ -48,7 +50,9 @@ public class LastMatchesController(
     public async Task<IActionResult> Statistics(string start, string end, string statisticId)
     {
         var matches = await matchesService.BetweenAsync(ServerId, start, end);
-        var match = matches.First();
+        var match = matches.FirstOrDefault();
+        if (match == null)
+            return NotFound();
         var statistics = await statisticsService.BetweenAsync(ServerId, start, end);
         var statistic = statistics.FirstOrDefault(f => f.StatisticId == statisticId);
 
