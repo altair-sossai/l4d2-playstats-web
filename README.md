@@ -34,7 +34,7 @@ At times, the application needs to access player data such as profile pictures, 
 4. Copy the generated API key and set it in your project's configuration as `SteamApiKey`.
 
 ### 3. Hosting Environment
-This application needs to be hosted on a Linux or Windows machine, or in a cloud environment capable of hosting .NET Core 8 applications. The publishing process depends on the chosen hosting environment, but generally, you will need to generate the binary for the project:
+This application needs to be hosted on a Linux or Windows machine, or in a cloud environment capable of hosting .NET 9 applications. The publishing process depends on the chosen hosting environment, but generally, you will need to generate the binary for the project:
 
 ```bash
 dotnet publish L4D2PlayStats.Web/L4D2PlayStats.Web/L4D2PlayStats.Web.csproj -c Release -o /path/to/output
