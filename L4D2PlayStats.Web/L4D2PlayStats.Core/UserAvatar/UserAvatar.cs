@@ -1,12 +1,13 @@
-﻿using L4D2PlayStats.Core.Steam.SteamUser.Services;
+﻿using L4D2PlayStats.Core.Infrastructure.Options;
+using L4D2PlayStats.Core.Steam.SteamUser.Services;
 using Microsoft.Extensions.Caching.Memory;
-using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Options;
 
 namespace L4D2PlayStats.Core.UserAvatar;
 
-public class UserAvatar(ISteamUserService steamUserService, IMemoryCache memoryCache, IConfiguration configuration) : IUserAvatar
+public class UserAvatar(ISteamUserService steamUserService, IMemoryCache memoryCache, IOptions<AppOptions> config) : IUserAvatar
 {
-    private string SteamApiKey => configuration.GetValue<string>("SteamApiKey")!;
+    private string SteamApiKey => config.Value.SteamApiKey!;
 
     public string this[long communityId] => this[communityId.ToString()];
     public string this[string? communityId] => memoryCache.Get<string>(communityId ?? string.Empty) ?? "/imgs/avatar-empty.png";

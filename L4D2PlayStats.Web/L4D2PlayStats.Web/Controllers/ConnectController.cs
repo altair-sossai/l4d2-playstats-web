@@ -1,10 +1,12 @@
+using L4D2PlayStats.Core.Infrastructure.Options;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Options;
 
 namespace L4D2PlayStats.Web.Controllers;
 
-public class ConnectController(IConfiguration configuration) : Controller
+public class ConnectController(IOptions<AppOptions> config) : Controller
 {
-    private string[] ServerIPs => configuration.GetValue<string>("ServerIPs")?.Split(';', StringSplitOptions.RemoveEmptyEntries) ?? [];
+    private string[] ServerIPs => config.Value.ServerIPs?.Split(';', StringSplitOptions.RemoveEmptyEntries) ?? [];
     private string ServerIp => ServerIPs.First();
 
     [Route("connect")]

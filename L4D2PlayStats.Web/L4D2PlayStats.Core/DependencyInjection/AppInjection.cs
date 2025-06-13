@@ -1,11 +1,13 @@
+using L4D2PlayStats.Core.Infrastructure.Options;
 using L4D2PlayStats.Core.Steam.DependencyInjection;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace L4D2PlayStats.Core.DependencyInjection;
 
 public static class AppInjection
 {
-    public static void AddApp(this IServiceCollection serviceCollection)
+    public static void AddApp(this IServiceCollection serviceCollection, IConfiguration configuration)
     {
         var assemblies = new[]
         {
@@ -20,5 +22,7 @@ public static class AppInjection
             .AsImplementedInterfaces(type => assemblies.Contains(type.Assembly)));
 
         serviceCollection.AddSteamServices();
+
+        serviceCollection.Configure<AppOptions>(configuration);
     }
 }

@@ -1,3 +1,4 @@
+using L4D2PlayStats.Core.Infrastructure.Options;
 using L4D2PlayStats.Core.Matches;
 using L4D2PlayStats.Core.UserAvatar;
 using L4D2PlayStats.Sdk.Matches;
@@ -6,18 +7,19 @@ using L4D2PlayStats.Sdk.Statistics;
 using L4D2PlayStats.Sdk.Statistics.Results;
 using L4D2PlayStats.Web.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Options;
 
 namespace L4D2PlayStats.Web.Controllers;
 
 [Route("last-matches")]
 public class LastMatchesController(
-    IConfiguration configuration,
+    IOptions<AppOptions> config,
     IMatchesService matchesService,
     IStatisticsService statisticsService,
     IMatchesServiceCached matchesServiceCached,
     IUserAvatar userAvatar) : Controller
 {
-    private string ServerId => configuration.GetValue<string>("ServerId")!;
+    private string ServerId => config.Value.ServerId!;
 
     public async Task<IActionResult> Index()
     {

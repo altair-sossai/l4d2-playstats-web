@@ -1,13 +1,14 @@
-﻿using L4D2PlayStats.Sdk.Ranking;
+﻿using L4D2PlayStats.Core.Infrastructure.Options;
+using L4D2PlayStats.Sdk.Ranking;
 using L4D2PlayStats.Sdk.Ranking.Results;
 using Microsoft.Extensions.Caching.Memory;
-using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Options;
 
 namespace L4D2PlayStats.Core.Ranking.Services;
 
-public class RankingServiceCached(IConfiguration configuration, IMemoryCache memoryCache, IRankingService rankingService) : IRankingServiceCached
+public class RankingServiceCached(IOptions<AppOptions> config, IMemoryCache memoryCache, IRankingService rankingService) : IRankingServiceCached
 {
-    private string ServerId => configuration.GetValue<string>("ServerId")!;
+    private string ServerId => config.Value.ServerId!;
 
     public async Task<List<PlayerResult>> GetAsync()
     {

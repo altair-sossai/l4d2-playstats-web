@@ -1,9 +1,11 @@
 ﻿using System.Text.RegularExpressions;
 using L4D2PlayStats.Core.Auth;
+using L4D2PlayStats.Core.Infrastructure.Options;
 using L4D2PlayStats.Core.Infrastructure.Structures;
 using L4D2PlayStats.Core.Steam.SteamUser.Responses;
 using L4D2PlayStats.Core.Steam.SteamUser.Services;
 using Microsoft.Extensions.Caching.Memory;
+using Microsoft.Extensions.Options;
 using Polly;
 using Polly.Retry;
 
@@ -23,7 +25,7 @@ public class CurrentUser : ICurrentUser
     private readonly ISteamUserService _steamUserService;
     private readonly User? _user;
 
-    public CurrentUser(IConfiguration configuration,
+    public CurrentUser(IOptions<AppOptions> config,
         IHttpContextAccessor httpContextAccessor,
         IMemoryCache memoryCache,
         ISteamUserService steamUserService)
@@ -31,8 +33,8 @@ public class CurrentUser : ICurrentUser
         _steamUserService = steamUserService;
         _memoryCache = memoryCache;
 
-        SteamApiKey = new Lazy<string>(() => configuration.GetValue<string>("SteamApiKey")!);
-        ServerAdmins = new Lazy<string[]>(() => configuration.GetValue<string>("ServerAdmins")?.Split(';', StringSplitOptions.RemoveEmptyEntries) ?? []);
+        SteamApiKey = new Lazy<string>(() => config.Value.SteamApiKey!);
+        ServerAdmins = new Lazy<string[]>(() => config.Value.ServerAdmins?.Split(';', StringSplitOptions.RemoveEmptyEntries) ?? []);
 
         IsAuthenticated = httpContextAccessor.HttpContext?.User.Identity?.IsAuthenticated ?? false;
         if (!IsAuthenticated)

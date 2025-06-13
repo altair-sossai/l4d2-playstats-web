@@ -1,5 +1,6 @@
 using L4D2PlayStats.Core.GameInfo;
 using L4D2PlayStats.Core.GameInfo.Extensions;
+using L4D2PlayStats.Core.Infrastructure.Options;
 using L4D2PlayStats.Core.Steam.Players.Services;
 using L4D2PlayStats.Core.Steam.ServerInfo.Responses;
 using L4D2PlayStats.Core.Steam.ServerInfo.Services;
@@ -7,20 +8,21 @@ using L4D2PlayStats.Core.UserAvatar;
 using L4D2PlayStats.Web.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Memory;
+using Microsoft.Extensions.Options;
 
 namespace L4D2PlayStats.Web.Controllers;
 
 public class ServersController(
-    IConfiguration configuration,
+    IOptions<AppOptions> config,
     IMemoryCache memoryCache,
     IUserAvatar userAvatar,
     IServerInfoService serverInfoService,
     IPlayerService playerService)
     : Controller
 {
-    private string[] ServerIPs => configuration.GetValue<string>("ServerIPs")?.Split(';', StringSplitOptions.RemoveEmptyEntries) ?? [];
+    private string[] ServerIPs => config.Value.ServerIPs?.Split(';', StringSplitOptions.RemoveEmptyEntries) ?? [];
     private string ServerIp => ServerIPs.First();
-    private string SteamApiKey => configuration.GetValue<string>("SteamApiKey")!;
+    private string SteamApiKey => config.Value.SteamApiKey!;
 
     [Route("servers")]
     public async Task<IActionResult> Index()

@@ -1,7 +1,9 @@
-﻿using L4D2PlayStats.Core.Steam.ServerInfo.Responses;
+﻿using L4D2PlayStats.Core.Infrastructure.Options;
+using L4D2PlayStats.Core.Steam.ServerInfo.Responses;
 using L4D2PlayStats.Core.Steam.ServerInfo.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Memory;
+using Microsoft.Extensions.Options;
 using Polly;
 using Polly.Retry;
 using static L4D2PlayStats.Core.Steam.ServerInfo.Responses.GetServerListResponse;
@@ -11,7 +13,7 @@ namespace L4D2PlayStats.Web.Controllers.Api;
 [Route("api/servers")]
 [ApiController]
 public class ServersController(
-    IConfiguration configuration,
+    IOptions<AppOptions> config,
     IMemoryCache memoryCache,
     IServerInfoService serverInfoService) : ControllerBase
 {
@@ -19,8 +21,8 @@ public class ServersController(
         .Handle<Exception>()
         .WaitAndRetryAsync(3, attempt => TimeSpan.FromSeconds(Math.Pow(3, attempt)), (exception, _, retryCount, _) => { Console.WriteLine($"Retry {retryCount} due to: {exception.Message}"); });
 
-    private string[] ServerIPs => configuration.GetValue<string>("ServerIPs")?.Split(';', StringSplitOptions.RemoveEmptyEntries) ?? [];
-    private string SteamApiKey => configuration.GetValue<string>("SteamApiKey")!;
+    private string[] ServerIPs => config.Value.ServerIPs?.Split(';', StringSplitOptions.RemoveEmptyEntries) ?? [];
+    private string SteamApiKey => config.Value.SteamApiKey!;
 
     [HttpGet]
     public async Task<IActionResult> Get()

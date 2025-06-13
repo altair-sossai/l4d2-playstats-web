@@ -1,20 +1,21 @@
 ﻿@using System.Globalization
 @using L4D2PlayStats.Core.Auth
+@using L4D2PlayStats.Core.Infrastructure.Options
 @using L4D2PlayStats.Web
 @using Microsoft.AspNetCore.Localization
 @using Microsoft.AspNetCore.Mvc.Localization
 @using Microsoft.Extensions.Localization
-@using Microsoft.Extensions.Configuration
+@using Microsoft.Extensions.Options
 
 @inject IViewLocalizer Localizer
 @inject IStringLocalizer<SharedResource> SharedLocalizer
-@inject IConfiguration Configuration
+@inject IOptions<AppOptions> Config
 @inject ICurrentUser CurrentUser
 @{
     var light = Context.Request.Cookies["theme"] == "light";
     var requestCultureFeature = Context.Features.Get<IRequestCultureFeature>();
     var cultureInfo = requestCultureFeature?.RequestCulture.Culture ?? new CultureInfo("en-US");
-    var serverIPs = Configuration.GetValue<string>("ServerIPs")?.Split(';', StringSplitOptions.RemoveEmptyEntries);
+    var serverIPs = Config.Value.ServerIPs?.Split(';', StringSplitOptions.RemoveEmptyEntries);
     var serverIp = serverIPs?.FirstOrDefault();
 }
 <!DOCTYPE html>

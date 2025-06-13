@@ -1,16 +1,17 @@
-﻿using L4D2PlayStats.Sdk.Matches;
+﻿using L4D2PlayStats.Core.Infrastructure.Options;
+using L4D2PlayStats.Sdk.Matches;
 using L4D2PlayStats.Sdk.Matches.Results;
 using Microsoft.Extensions.Caching.Memory;
-using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Options;
 
 namespace L4D2PlayStats.Core.Matches;
 
 public class MatchesServiceCached(
-    IConfiguration configuration,
+    IOptions<AppOptions> config,
     IMatchesService matchesService,
     IMemoryCache memoryCache) : IMatchesServiceCached
 {
-    private string ServerId => configuration.GetValue<string>("ServerId")!;
+    private string ServerId => config.Value.ServerId!;
 
     public async Task<List<MatchResult>> GetAsync()
     {
