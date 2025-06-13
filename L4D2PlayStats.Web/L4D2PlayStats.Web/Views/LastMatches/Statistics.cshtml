@@ -261,7 +261,7 @@
                                             </a>
                                         </td>
                                         <td class="vertical-align-middle">
-                                            @Html.ActionLink(player.PlayerName?.Truncate(30) ?? "-", "Details", "Players", new { communityId = player.CommunityId })
+                                            @Html.ActionLink(player.PlayerName?.TruncatePlayerName() ?? "-", "Details", "Players", new { communityId = player.CommunityId })
 
                                             @if (player == mvpSiDamage)
                                             {
@@ -302,7 +302,7 @@
                                             </a>
                                         </td>
                                         <td class="vertical-align-middle">
-                                            @Html.ActionLink(infectedPlayer.PlayerName?.Truncate(30) ?? "-", "Details", "Players", new { communityId = infectedPlayer.CommunityId })
+                                            @Html.ActionLink(infectedPlayer.PlayerName?.TruncatePlayerName() ?? "-", "Details", "Players", new { communityId = infectedPlayer.CommunityId })
                                         </td>
                                         <td class="slim text-center">
                                             <span data-toggle="tooltip" data-placement="top" title="@SharedLocalizer["DmgTotal"]">
@@ -433,7 +433,7 @@
         {
             <th class="text-center player-name">
                 <a href="@player.ProfileUrl" title="@player.PlayerName">
-                    @player.PlayerName
+                    @player.PlayerName?.TruncatePlayerName()
                 </a>
             </th>
         }
@@ -626,7 +626,7 @@
                         {
                             <th class="text-center player-name">
                                 <a href="@infectedPlayer.ProfileUrl" title="@infectedPlayer.PlayerName">
-                                    @infectedPlayer.PlayerName
+                                    @infectedPlayer.PlayerName?.TruncatePlayerName()
                                 </a>
                             </th>
                         }
@@ -692,11 +692,11 @@
                         var playerName = allPlayers[i];
                         <tr>
                             <td>@(i + 1)</td>
-                            <td>@playerName.SteamId</td>
-                            <td>@playerName.CommunityId</td>
+                            <td class="line-break-anywhere">@playerName.SteamId</td>
+                            <td class="line-break-anywhere">@playerName.CommunityId</td>
                             <td>
                                 <a href="@playerName.ProfileUrl" title="@playerName.Name">
-                                    @playerName.Name
+                                    @playerName.Name?.TruncatePlayerName()
                                 </a>
                             </td>
                         </tr>

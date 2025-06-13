@@ -1,4 +1,5 @@
-﻿@using L4D2PlayStats.Sdk.Matches.Results
+﻿@using L4D2PlayStats.Core.Infrastructure.Extensions
+@using L4D2PlayStats.Sdk.Matches.Results
 @using L4D2PlayStats.Web
 @using Microsoft.Extensions.Localization
 @model L4D2PlayStats.Web.Models.MatchDetailsModel
@@ -115,8 +116,8 @@
             @foreach (var player in team.Players ?? MatchResult.PlayerResult.EmptyCollection)
             {
                 <th class="text-center" colspan="2">
-                    <a href="@player.ProfileUrl" title="@player.Name">
-                        @player.Name
+                    <a href="@player.ProfileUrl" title="@player.Name?.TruncatePlayerName()">
+                        @player.Name?.TruncatePlayerName()
                     </a>
                 </th>
             }
@@ -127,7 +128,7 @@
                 <td>@SharedLocalizer["MvpSiDamage"]</td>
                 @foreach (var player in team.Players ?? MatchResult.PlayerResult.EmptyCollection)
                 {
-                    <td class="text-right" data-label="@player.Name">
+                    <td class="text-right" data-label="@player.Name?.TruncatePlayerName()">
                         @player.MvpSiDamage.ToString("N0")
                     </td>
                     <td class="text-left hide-mobile">
@@ -141,7 +142,7 @@
                 <td>@SharedLocalizer["MvpCommon"]</td>
                 @foreach (var player in team.Players ?? MatchResult.PlayerResult.EmptyCollection)
                 {
-                    <td class="text-right" data-label="@player.Name">
+                    <td class="text-right" data-label="@player.Name?.TruncatePlayerName()">
                         @player.MvpCommon.ToString("N0")
                     </td>
                     <td class="text-left hide-mobile">
@@ -155,7 +156,7 @@
                 <td>@SharedLocalizer["LvpFf"]</td>
                 @foreach (var player in team.Players ?? MatchResult.PlayerResult.EmptyCollection)
                 {
-                    <td class="text-right" data-label="@player.Name">
+                    <td class="text-right" data-label="@player.Name?.TruncatePlayerName()">
                         @player.LvpFfGiven.ToString("N0")
                     </td>
                     <td class="text-left hide-mobile">
@@ -169,7 +170,7 @@
                 <td>@SharedLocalizer["Died"]</td>
                 @foreach (var player in team.Players ?? MatchResult.PlayerResult.EmptyCollection)
                 {
-                    <td class="text-right" data-label="@player.Name">
+                    <td class="text-right" data-label="@player.Name?.TruncatePlayerName()">
                         @player.Died.ToString("N0")
                     </td>
                     <td class="text-left hide-mobile">
@@ -183,7 +184,7 @@
                 <td>@SharedLocalizer["Incaps"]</td>
                 @foreach (var player in team.Players ?? MatchResult.PlayerResult.EmptyCollection)
                 {
-                    <td class="text-right" data-label="@player.Name">
+                    <td class="text-right" data-label="@player.Name?.TruncatePlayerName()">
                         @player.Incaps.ToString("N0")
                     </td>
                     <td class="text-left hide-mobile">
@@ -197,7 +198,7 @@
                 <td>@SharedLocalizer["DmgTaken"]</td>
                 @foreach (var player in team.Players ?? MatchResult.PlayerResult.EmptyCollection)
                 {
-                    <td class="text-right" data-label="@player.Name">
+                    <td class="text-right" data-label="@player.Name?.TruncatePlayerName()">
                         @player.DmgTaken.ToString("N0")
                     </td>
                     <td class="text-left hide-mobile">
@@ -211,7 +212,7 @@
                 <td>@SharedLocalizer["Common"]</td>
                 @foreach (var player in team.Players ?? MatchResult.PlayerResult.EmptyCollection)
                 {
-                    <td class="text-right" data-label="@player.Name">
+                    <td class="text-right" data-label="@player.Name?.TruncatePlayerName()">
                         @player.Common.ToString("N0")
                     </td>
                     <td class="text-left hide-mobile">
@@ -225,7 +226,7 @@
                 <td>@SharedLocalizer["SiKilled"]</td>
                 @foreach (var player in team.Players ?? MatchResult.PlayerResult.EmptyCollection)
                 {
-                    <td class="text-right" data-label="@player.Name">
+                    <td class="text-right" data-label="@player.Name?.TruncatePlayerName()">
                         @player.SiKilled.ToString("N0")
                     </td>
                     <td class="text-left hide-mobile">
@@ -239,7 +240,7 @@
                 <td>@SharedLocalizer["SiDamageDealt"]</td>
                 @foreach (var player in team.Players ?? MatchResult.PlayerResult.EmptyCollection)
                 {
-                    <td class="text-right" data-label="@player.Name">
+                    <td class="text-right" data-label="@player.Name?.TruncatePlayerName()">
                         @player.SiDamage.ToString("N0")
                     </td>
                     <td class="text-left hide-mobile">
@@ -253,7 +254,7 @@
                 <td>@SharedLocalizer["DmgTank"]</td>
                 @foreach (var player in team.Players ?? MatchResult.PlayerResult.EmptyCollection)
                 {
-                    <td class="text-right" data-label="@player.Name">
+                    <td class="text-right" data-label="@player.Name?.TruncatePlayerName()">
                         @player.TankDamage.ToString("N0")
                     </td>
                     <td class="text-left hide-mobile">
@@ -267,7 +268,7 @@
                 <td>@SharedLocalizer["RockEats"]</td>
                 @foreach (var player in team.Players ?? MatchResult.PlayerResult.EmptyCollection)
                 {
-                    <td class="text-right" data-label="@player.Name">
+                    <td class="text-right" data-label="@player.Name?.TruncatePlayerName()">
                         @player.RockEats.ToString("N0")
                     </td>
                     <td class="text-left hide-mobile">
@@ -281,7 +282,7 @@
                 <td>@SharedLocalizer["Skeets"]</td>
                 @foreach (var player in team.Players ?? MatchResult.PlayerResult.EmptyCollection)
                 {
-                    <td class="text-right" data-label="@player.Name">
+                    <td class="text-right" data-label="@player.Name?.TruncatePlayerName()">
                         @player.Skeets.ToString("N0")
                     </td>
                     <td class="text-left hide-mobile">
@@ -295,7 +296,7 @@
                 <td>@SharedLocalizer["SkeetsMelee"]</td>
                 @foreach (var player in team.Players ?? MatchResult.PlayerResult.EmptyCollection)
                 {
-                    <td class="text-right" data-label="@player.Name">
+                    <td class="text-right" data-label="@player.Name?.TruncatePlayerName()">
                         @player.SkeetsMelee.ToString("N0")
                     </td>
                     <td class="text-left hide-mobile">
@@ -309,7 +310,7 @@
                 <td>@SharedLocalizer["Levels"]</td>
                 @foreach (var player in team.Players ?? MatchResult.PlayerResult.EmptyCollection)
                 {
-                    <td class="text-right" data-label="@player.Name">
+                    <td class="text-right" data-label="@player.Name?.TruncatePlayerName()">
                         @player.Levels.ToString("N0")
                     </td>
                     <td class="text-left hide-mobile">
@@ -323,7 +324,7 @@
                 <td>@SharedLocalizer["FfGiven"]</td>
                 @foreach (var player in team.Players ?? MatchResult.PlayerResult.EmptyCollection)
                 {
-                    <td class="text-right" data-label="@player.Name">
+                    <td class="text-right" data-label="@player.Name?.TruncatePlayerName()">
                         @player.FfGiven.ToString("N0")
                     </td>
                     <td class="text-left hide-mobile">
@@ -350,8 +351,8 @@
             @foreach (var player in team.Players ?? MatchResult.PlayerResult.EmptyCollection)
             {
                 <th class="text-center" colspan="2">
-                    <a href="@player.ProfileUrl" title="@player.Name">
-                        @player.Name
+                    <a href="@player.ProfileUrl" title="@player.Name?.TruncatePlayerName()">
+                        @player.Name?.TruncatePlayerName()
                     </a>
                 </th>
             }
@@ -362,7 +363,7 @@
                 <td>@SharedLocalizer["DmgTotal"]</td>
                 @foreach (var player in team.Players ?? MatchResult.PlayerResult.EmptyCollection)
                 {
-                    <td class="text-right" data-label="@player.Name">
+                    <td class="text-right" data-label="@player.Name?.TruncatePlayerName()">
                         @player.DmgTotal.ToString("N0")
                     </td>
                     <td class="text-left hide-mobile">
@@ -376,7 +377,7 @@
                 <td>@SharedLocalizer["DmgTank"]</td>
                 @foreach (var player in team.Players ?? MatchResult.PlayerResult.EmptyCollection)
                 {
-                    <td class="text-right" data-label="@player.Name">
+                    <td class="text-right" data-label="@player.Name?.TruncatePlayerName()">
                         @player.DmgTank.ToString("N0")
                     </td>
                     <td class="text-left hide-mobile">
@@ -390,7 +391,7 @@
                 <td>@SharedLocalizer["DmgSpit"]</td>
                 @foreach (var player in team.Players ?? MatchResult.PlayerResult.EmptyCollection)
                 {
-                    <td class="text-right" data-label="@player.Name">
+                    <td class="text-right" data-label="@player.Name?.TruncatePlayerName()">
                         @player.DmgSpit.ToString("N0")
                     </td>
                     <td class="text-left hide-mobile">
@@ -404,7 +405,7 @@
                 <td>@SharedLocalizer["HunterDpDmg"]</td>
                 @foreach (var player in team.Players ?? MatchResult.PlayerResult.EmptyCollection)
                 {
-                    <td class="text-right" data-label="@player.Name">
+                    <td class="text-right" data-label="@player.Name?.TruncatePlayerName()">
                         @player.HunterDpDmg.ToString("N0")
                     </td>
                     <td class="text-left hide-mobile">

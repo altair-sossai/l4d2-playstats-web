@@ -76,7 +76,7 @@
                 </a>
             </td>
             <td class="vertical-align-middle">
-                @Html.ActionLink(player.Name?.Truncate(30) ?? "-", "Details", "Players", new { communityId = player.CommunityId })
+                @Html.ActionLink(player.Name?.TruncatePlayerName() ?? "-", "Details", "Players", new { communityId = player.CommunityId })
             </td>
             <td class="text-center vertical-align-middle">
                 <p data-toggle="tooltip" data-placement="top" title="@SharedLocalizer[Model.OrderBy.ToString()]">
