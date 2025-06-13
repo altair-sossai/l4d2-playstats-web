@@ -7,20 +7,17 @@ using L4D2PlayStats.Sdk.Statistics;
 using L4D2PlayStats.Sdk.Statistics.Results;
 using L4D2PlayStats.Web.Models;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Options;
 
 namespace L4D2PlayStats.Web.Controllers;
 
 [Route("last-matches")]
 public class LastMatchesController(
-    IOptions<AppOptions> config,
+    IAppOptionsWraper config,
     IMatchesService matchesService,
     IStatisticsService statisticsService,
     IMatchesServiceCached matchesServiceCached,
     IUserAvatar userAvatar) : Controller
 {
-    private string ServerId => config.Value.ServerId!;
-
     public async Task<IActionResult> Index()
     {
         ViewBag.LastMatches = "active";
@@ -35,11 +32,11 @@ public class LastMatchesController(
     [Route("details/{start}/{end}")]
     public async Task<IActionResult> Details(string start, string end)
     {
-        var matches = await matchesService.BetweenAsync(ServerId, start, end);
+        var matches = await matchesService.BetweenAsync(config.ServerId, start, end);
         var match = matches.FirstOrDefault();
         if (match == null)
             return NotFound();
-        var statistics = await statisticsService.BetweenAsync(ServerId, start, end);
+        var statistics = await statisticsService.BetweenAsync(config.ServerId, start, end);
 
         await LoadAvatarsAsync(matches);
 
@@ -51,11 +48,11 @@ public class LastMatchesController(
     [Route("details/{start}/{end}/statistics/{statisticId}")]
     public async Task<IActionResult> Statistics(string start, string end, string statisticId)
     {
-        var matches = await matchesService.BetweenAsync(ServerId, start, end);
+        var matches = await matchesService.BetweenAsync(config.ServerId, start, end);
         var match = matches.FirstOrDefault();
         if (match == null)
             return NotFound();
-        var statistics = await statisticsService.BetweenAsync(ServerId, start, end);
+        var statistics = await statisticsService.BetweenAsync(config.ServerId, start, end);
         var statistic = statistics.FirstOrDefault(f => f.StatisticId == statisticId);
 
         if (statistic == null)

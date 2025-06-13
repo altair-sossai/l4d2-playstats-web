@@ -8,28 +8,23 @@ using L4D2PlayStats.Core.UserAvatar;
 using L4D2PlayStats.Web.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Memory;
-using Microsoft.Extensions.Options;
 
 namespace L4D2PlayStats.Web.Controllers;
 
 public class ServersController(
-    IOptions<AppOptions> config,
+    IAppOptionsWraper config,
     IMemoryCache memoryCache,
     IUserAvatar userAvatar,
     IServerInfoService serverInfoService,
     IPlayerService playerService)
     : Controller
 {
-    private string[] ServerIPs => config.Value.ServerIPs?.Split(';', StringSplitOptions.RemoveEmptyEntries) ?? [];
-    private string ServerIp => ServerIPs.First();
-    private string SteamApiKey => config.Value.SteamApiKey!;
-
     [Route("servers")]
     public async Task<IActionResult> Index()
     {
         ViewBag.Servers = "active";
 
-        var model = await GetServerInfoCachedAsync(ServerIp);
+        var model = await GetServerInfoCachedAsync(config.PrimaryServerIp);
         var viewName = model.GameInfo.AnyPlayerConnected ? "_GameInfo" : "_ServersInfo";
 
         return View(viewName, model);
@@ -38,7 +33,7 @@ public class ServersController(
     [Route("servers/header")]
     public async Task<IActionResult> Header()
     {
-        var model = await GetServerInfoCachedAsync(ServerIp);
+        var model = await GetServerInfoCachedAsync(config.PrimaryServerIp);
 
         return PartialView("_Header", model);
     }
@@ -46,7 +41,7 @@ public class ServersController(
     [Route("servers/players")]
     public async Task<IActionResult> Players()
     {
-        var model = await GetServerInfoCachedAsync(ServerIp);
+        var model = await GetServerInfoCachedAsync(config.PrimaryServerIp);
 
         return PartialView("_Players", model);
     }
@@ -54,7 +49,7 @@ public class ServersController(
     [Route("servers/messages")]
     public async Task<IActionResult> Messages([FromQuery] long after = 0)
     {
-        var model = await GetServerInfoCachedAsync(ServerIp);
+        var model = await GetServerInfoCachedAsync(config.PrimaryServerIp);
 
         var messages = model.GameInfo.AllMessages
             .After(after)
@@ -95,7 +90,7 @@ public class ServersController(
     {
         try
         {
-            return await serverInfoService.GetServerInfo(SteamApiKey, $"addr\\{ip}:{port}");
+            return await serverInfoService.GetServerInfo(config.SteamApiKey, $"addr\\{ip}:{port}");
         }
         catch (Exception exception)
         {

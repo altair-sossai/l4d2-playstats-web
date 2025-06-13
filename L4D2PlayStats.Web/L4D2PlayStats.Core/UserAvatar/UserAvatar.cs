@@ -1,14 +1,11 @@
 ﻿using L4D2PlayStats.Core.Infrastructure.Options;
 using L4D2PlayStats.Core.Steam.SteamUser.Services;
 using Microsoft.Extensions.Caching.Memory;
-using Microsoft.Extensions.Options;
 
 namespace L4D2PlayStats.Core.UserAvatar;
 
-public class UserAvatar(ISteamUserService steamUserService, IMemoryCache memoryCache, IOptions<AppOptions> config) : IUserAvatar
+public class UserAvatar(ISteamUserService steamUserService, IMemoryCache memoryCache, IAppOptionsWraper config) : IUserAvatar
 {
-    private string SteamApiKey => config.Value.SteamApiKey!;
-
     public string this[long communityId] => this[communityId.ToString()];
     public string this[string? communityId] => memoryCache.Get<string>(communityId ?? string.Empty) ?? "/imgs/avatar-empty.png";
 
@@ -45,7 +42,7 @@ public class UserAvatar(ISteamUserService steamUserService, IMemoryCache memoryC
         {
             foreach (var steamIdsChunked in steamIds.Chunk(99))
             {
-                var response = await steamUserService.GetPlayerSummariesAsync(SteamApiKey, string.Join(',', steamIdsChunked));
+                var response = await steamUserService.GetPlayerSummariesAsync(config.SteamApiKey, string.Join(',', steamIdsChunked));
                 if (response?.Response?.Players == null)
                     return;
 

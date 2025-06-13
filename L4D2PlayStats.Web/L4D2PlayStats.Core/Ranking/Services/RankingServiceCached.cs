@@ -2,21 +2,18 @@
 using L4D2PlayStats.Sdk.Ranking;
 using L4D2PlayStats.Sdk.Ranking.Results;
 using Microsoft.Extensions.Caching.Memory;
-using Microsoft.Extensions.Options;
 
 namespace L4D2PlayStats.Core.Ranking.Services;
 
-public class RankingServiceCached(IOptions<AppOptions> config, IMemoryCache memoryCache, IRankingService rankingService) : IRankingServiceCached
+public class RankingServiceCached(IAppOptionsWraper config, IMemoryCache memoryCache, IRankingService rankingService) : IRankingServiceCached
 {
-    private string ServerId => config.Value.ServerId!;
-
     public async Task<List<PlayerResult>> GetAsync()
     {
         return (await memoryCache.GetOrCreateAsync("Ranking", async entry =>
         {
             entry.AbsoluteExpirationRelativeToNow = TimeSpan.FromHours(1);
 
-            return await rankingService.GetAsync(ServerId);
+            return await rankingService.GetAsync(config.ServerId);
         }))!;
     }
 
@@ -36,7 +33,7 @@ public class RankingServiceCached(IOptions<AppOptions> config, IMemoryCache memo
         {
             entry.AbsoluteExpirationRelativeToNow = TimeSpan.FromHours(8);
 
-            return await rankingService.AllHistoryAsync(ServerId);
+            return await rankingService.AllHistoryAsync(config.ServerId);
         }))!;
     }
 
@@ -46,7 +43,7 @@ public class RankingServiceCached(IOptions<AppOptions> config, IMemoryCache memo
         {
             entry.AbsoluteExpirationRelativeToNow = TimeSpan.FromHours(8);
 
-            return await rankingService.HistoryAsync(ServerId, historyId);
+            return await rankingService.HistoryAsync(config.ServerId, historyId);
         }))!;
     }
 }
