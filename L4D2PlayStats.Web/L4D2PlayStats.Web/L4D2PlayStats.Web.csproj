@@ -9,8 +9,9 @@
 
     <ItemGroup>
         <PackageReference Include="AspNet.Security.OpenId.Steam" Version="9.0.0" />
-        <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="9.0.5" />
-        <PackageReference Include="Microsoft.Extensions.Localization" Version="9.0.5" />
+        <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="9.0.6" />
+        <PackageReference Include="Microsoft.Extensions.Localization" Version="9.0.6" />
+        <PackageReference Include="Polly" Version="8.6.0" />
         <PackageReference Include="System.Linq.Async" Version="6.0.1" />
         <PackageReference Include="WebMarkupMin.AspNetCoreLatest" Version="2.19.0" />
     </ItemGroup>
