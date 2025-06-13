@@ -2,6 +2,8 @@
 using L4D2PlayStats.Core.Steam.ServerInfo.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Memory;
+using Polly;
+using Polly.Retry;
 using static L4D2PlayStats.Core.Steam.ServerInfo.Responses.GetServerListResponse;
 
 namespace L4D2PlayStats.Web.Controllers.Api;
@@ -13,6 +15,10 @@ public class ServersController(
     IMemoryCache memoryCache,
     IServerInfoService serverInfoService) : ControllerBase
 {
+    private readonly AsyncRetryPolicy _retryPolicy = Policy
+        .Handle<Exception>()
+        .WaitAndRetryAsync(3, attempt => TimeSpan.FromSeconds(Math.Pow(3, attempt)), (exception, _, retryCount, _) => { Console.WriteLine($"Retry {retryCount} due to: {exception.Message}"); });
+
     private string[] ServerIPs => configuration.GetValue<string>("ServerIPs")?.Split(';', StringSplitOptions.RemoveEmptyEntries) ?? [];
     private string SteamApiKey => configuration.GetValue<string>("SteamApiKey")!;
 
@@ -58,6 +64,6 @@ public class ServersController(
 
         var ip = segments[0];
 
-        return serverInfoService.GetServerInfo(SteamApiKey, $"addr\\{ip}:{port}");
+        return _retryPolicy.ExecuteAsync(() => serverInfoService.GetServerInfo(SteamApiKey, $"addr\\{ip}:{port}"));
     }
 }
