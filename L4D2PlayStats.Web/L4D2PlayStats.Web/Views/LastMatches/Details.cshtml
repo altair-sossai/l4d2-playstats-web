@@ -1,8 +1,10 @@
-﻿@using L4D2PlayStats.Core.Infrastructure.Extensions
+﻿@using L4D2PlayStats.Core.Auth
+@using L4D2PlayStats.Core.Infrastructure.Extensions
 @using L4D2PlayStats.Sdk.Matches.Results
 @using L4D2PlayStats.Web
 @using Microsoft.Extensions.Localization
 @model L4D2PlayStats.Web.Models.MatchDetailsModel
+@inject ICurrentUser CurrentUser
 @inject IStringLocalizer<SharedResource> SharedLocalizer
 
 @section Styles {
@@ -11,6 +13,43 @@
             margin: 0 3px;
         }
     </style>
+}
+
+@section Scripts {
+    <script>
+        function reloadPage() {
+            location.reload();
+        }
+
+        function editScore(statisticId, team, score, message) {
+            var output = prompt(message, score);
+
+            if (!output)
+                return;
+
+            var score = +output;
+
+            if (isNaN(score))
+                return;
+
+            if (score < 0 || score > 10000) {
+                alert("@SharedLocalizer["InvalidScoreRange"]");
+                return;
+            }
+
+            var command = {
+                team: team,
+                score: score
+            };
+
+            $.ajax({
+                url: "/api/statistics/" + statisticId + "/update-score",
+                type: "PUT",
+                contentType: "application/json",
+                data: JSON.stringify(command)
+            }).done(reloadPage);
+        }
+    </script>
 }
 
 @if (Model.Statistics.Count == 0)
@@ -85,6 +124,14 @@
                         <span class="label label-@labelTeamA" data-toggle="tooltip" data-placement="top" title="@SharedLocalizer["TeamAScore"]">
                             @scoring?.TeamA?.Score.ToString("N0")
                         </span>
+                        @if (CurrentUser.IsAdmin)
+                        {
+                            var team = scoring?.TeamA;
+
+                            <button type="button" class="btn btn-link btn-xs" onclick="editScore('@result.StatisticId', '@team?.Letter', @team?.Score, '@string.Format(SharedLocalizer["TeamXScore"].Value, team?.Letter)')" title="@SharedLocalizer["Edit"]" data-toggle="tooltip" data-placement="bottom">
+                                @SharedLocalizer["Edit"]
+                            </button>
+                        }
                     </td>
                     <td class="text-center slim" data-label="@SharedLocalizer["ScoreDifference"]">
                         <span class="label label-default" data-toggle="tooltip" data-placement="top" title="@SharedLocalizer["ScoreDifference"]">
@@ -95,6 +142,14 @@
                         <span class="label label-@labelTeamB" data-toggle="tooltip" data-placement="top" title="@SharedLocalizer["TeamBScore"]">
                             @scoring?.TeamB?.Score.ToString("N0")
                         </span>
+                        @if (CurrentUser.IsAdmin)
+                        {
+                            var team = scoring?.TeamB;
+
+                            <button type="button" class="btn btn-link btn-xs" onclick="editScore('@result.StatisticId', '@team?.Letter', @team?.Score, '@string.Format(SharedLocalizer["TeamXScore"].Value, team?.Letter)')" title="@SharedLocalizer["Edit"]" data-toggle="tooltip" data-placement="bottom">
+                                @SharedLocalizer["Edit"]
+                            </button>
+                        }
                     </td>
                 </tr>
             }

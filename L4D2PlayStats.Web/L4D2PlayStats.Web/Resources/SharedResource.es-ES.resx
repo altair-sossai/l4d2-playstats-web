@@ -850,4 +850,10 @@
   <data name="External" xml:space="preserve">
     <value>Externo</value>
   </data>
+  <data name="TeamXScore" xml:space="preserve">
+    <value>Puntuación del equipo {0}</value>
+  </data>
+  <data name="InvalidScoreRange" xml:space="preserve">
+    <value>Rango de puntuación no válido</value>
+  </data>
 </root>
