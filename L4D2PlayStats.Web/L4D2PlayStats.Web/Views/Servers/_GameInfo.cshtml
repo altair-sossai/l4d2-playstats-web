@@ -118,10 +118,21 @@
             $.ajax({
                 url: 'servers/header',
                 type: 'GET',
+                timeout: 2000,
                 success: function (html) {
                     var target = document.getElementById('game-info-header');
                     sync(target, html);
 
+                },
+                error: function (xhr, textStatus) {
+                    if (textStatus === 'timeout') {
+                        refreshHeader();
+                    }
+                },
+                complete: function (xhr, textStatus) {
+                    if (textStatus !== 'timeout') {
+                        setTimeout(refreshHeader, refreshInterval);
+                    }
                 }
             });
         };
@@ -130,9 +141,20 @@
             $.ajax({
                 url: 'servers/players',
                 type: 'GET',
+                timeout: 2000,
                 success: function (html) {
                     var target = document.getElementById('game-info-players');
                     sync(target, html);
+                },
+                error: function (xhr, textStatus) {
+                    if (textStatus === 'timeout') {
+                        refreshPlayers();
+                    }
+                },
+                complete: function (xhr, textStatus) {
+                    if (textStatus !== 'timeout') {
+                        setTimeout(refreshPlayers, refreshInterval);
+                    }
                 }
             });
         };
@@ -143,6 +165,7 @@
             $.ajax({
                 url: 'servers/messages?after=' + after,
                 type: 'GET',
+                timeout: 2000,
                 success: function (html) {
                     if (!html)
                         return;
@@ -162,6 +185,16 @@
 
                     if (scrollDown)
                         chatMessages.scrollTop(chatMessages[0].scrollHeight);
+                },
+                error: function (xhr, textStatus) {
+                    if (textStatus === 'timeout') {
+                        refreshMessages();
+                    }
+                },
+                complete: function (xhr, textStatus) {
+                    if (textStatus !== 'timeout') {
+                        setTimeout(refreshMessages, refreshInterval / 2);
+                    }
                 }
             });
         };
@@ -194,10 +227,6 @@
             refreshHeader();
             refreshPlayers();
             refreshMessages();
-
-            setInterval(refreshHeader, refreshInterval);
-            setInterval(refreshPlayers, refreshInterval);
-            setInterval(refreshMessages, refreshInterval / 2);
 
             $('#chat-messages').scrollTop($('#chat-messages')[0].scrollHeight);
 
