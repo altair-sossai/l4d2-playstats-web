@@ -172,22 +172,20 @@
             <div class="col-xs-4 text-right">
                 <p data-toggle="tooltip" data-placement="top" title="@Localizer["GameOccurrenceDateTime"]">
                     <img src="~/imgs/icons/calendar.png" alt="@SharedLocalizer["Calendar"]" class="icon"/>
-@{
-    string matchStartText;
-    if (Model.MatchStart.Date == DateTime.Today)
-    {
-        matchStartText = string.Format(Localizer["MatchStartToday"].Value, Model.MatchStart);
-    }
-    else if (Model.MatchStart.Date == DateTime.Today.AddDays(-1))
-    {
-        matchStartText = string.Format(Localizer["MatchStartYesterday"].Value, Model.MatchStart);
-    }
-    else
-    {
-        matchStartText = string.Format(Localizer["MatchStartDateTime"].Value, Model.MatchStart);
-    }
-}
-                    @matchStartText
+                    @{
+                        if (Model.MatchStart.Date == DateTime.Today)
+                        {
+                            @string.Format(Localizer["MatchStartToday"].Value, Model.MatchStart)
+                        }
+                        else if (Model.MatchStart.Date == DateTime.Today.AddDays(-1))
+                        {
+                            @string.Format(Localizer["MatchStartYesterday"].Value, Model.MatchStart)
+                        }
+                        else
+                        {
+                            @string.Format(Localizer["MatchStartDateTime"].Value, Model.MatchStart)
+                        }
+                    }
                 </p>
 
                 @if (Model.MatchElapsed.HasValue)
