@@ -126,6 +126,12 @@
   <data name="MatchStartDateTime" xml:space="preserve">
     <value>{0:d} a las {0:t}</value>
   </data>
+  <data name="MatchStartToday" xml:space="preserve">
+    <value>Hoy a las {0:t}</value>
+  </data>
+  <data name="MatchStartYesterday" xml:space="preserve">
+    <value>Ayer a las {0:t}</value>
+  </data>
   <data name="TeamWonByPoints" xml:space="preserve">
     <value>El equipo {0} ganó por {1:N0} puntos</value>
   </data>
