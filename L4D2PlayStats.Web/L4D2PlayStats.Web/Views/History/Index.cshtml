@@ -58,6 +58,7 @@
         <th colspan="2">@SharedLocalizer["Player"]</th>
         <th class="text-center">@SharedLocalizer["Wins"]</th>
         <th class="text-center hide-mobile">@SharedLocalizer["Loss"]</th>
+        <th class="text-center hide-mobile">@SharedLocalizer["Games"]</th>
         <th class="text-center hide-mobile">@SharedLocalizer["MvpSiDamage"]</th>
         <th class="text-center hide-mobile">@SharedLocalizer["MvpCommon"]</th>
         <th class="text-center hide-mobile">@SharedLocalizer["WinRate"]</th>
@@ -103,6 +104,11 @@
             <td class="text-center vertical-align-middle hide-mobile">
                 <p data-toggle="tooltip" data-placement="top" title="@SharedLocalizer["Loss"]">
                     @player.Loss.ToString("N0")
+                </p>
+            </td>
+            <td class="text-center vertical-align-middle hide-mobile">
+                <p data-toggle="tooltip" data-placement="top" title="@SharedLocalizer["Games"]">
+                    @player.Games.ToString("N0")
                 </p>
             </td>
             <td class="text-center vertical-align-middle hide-mobile">
