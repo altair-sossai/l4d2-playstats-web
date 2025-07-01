@@ -131,4 +131,7 @@
   <data name="ViewPreviousRankings" xml:space="preserve">
     <value>Ver rankings anteriores</value>
   </data>
+  <data name="NoRankingMessage" xml:space="preserve">
+    <value>Não existem dados no momento. Assim que houver uma partida ela será contabilizada aqui.</value>
+  </data>
 </root>
