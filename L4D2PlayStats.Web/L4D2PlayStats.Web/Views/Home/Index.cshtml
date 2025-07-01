@@ -60,6 +60,14 @@
     @Html.ActionLink(Localizer["ViewPreviousRankings"].Value, "Index", "History")
 </small>
 
+@if (!Model.Ranking.Any())
+{
+    <div class="jumbotron text-center" style="margin-top: 20px">
+        <p>@Localizer["NoRankingMessage"]</p>
+    </div>
+}
+else
+{
 <table class="table table-striped table-hover table-bordered table-condensed" id="table-ranking">
     <thead>
     <tr>
@@ -184,4 +192,5 @@
             </button>
         </div>
     </div>
+}
 }
