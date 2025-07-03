@@ -16,6 +16,10 @@ public class HistoryController(IRankingServiceCached rankingService, IUserAvatar
         if (allHistory.Count == 0)
             return View("NoHistory");
 
+        allHistory = allHistory
+            .Where(h => h.IsAnnual || h.StartYear == DateTime.UtcNow.Year)
+            .ToList();
+
         var history = allHistory.LastOrDefault();
 
         if (!string.IsNullOrEmpty(historyId))
