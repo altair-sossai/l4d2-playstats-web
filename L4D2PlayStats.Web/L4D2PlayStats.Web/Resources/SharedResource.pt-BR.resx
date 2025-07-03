@@ -384,6 +384,9 @@
   <data name="PeriodRange" xml:space="preserve">
     <value>De {1:00}/{0:0000} até {3:00}/{2:0000}</value>
   </data>
+  <data name="YearOf" xml:space="preserve">
+     <value>Ano de {0}</value>
+   </data>
   <data name="FirstPlace" xml:space="preserve">
     <value>Primeiro lugar</value>
   </data>

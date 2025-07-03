@@ -34,7 +34,21 @@
     <div class="col-md-12">
         <div class="dropdown">
             <button class="btn btn-default btn-sm dropdown-toggle" type="button" data-toggle="dropdown">
-                @SharedLocalizer["DisplayedPeriod"]: <b>@string.Format(SharedLocalizer["PeriodRange"], Model.History.StartYear, Model.History.StartMonth, Model.History.EndYear, Model.History.EndMonth)</b>
+                @SharedLocalizer["DisplayedPeriod"]: 
+                <b>
+                    @if (Model.History.IsBimonthly)
+                    {
+                        @string.Format(SharedLocalizer["PeriodRange"], Model.History.StartYear, Model.History.StartMonth, Model.History.EndYear, Model.History.EndMonth)
+                    }
+                    else if (Model.History.IsAnnual)
+                    {
+                        @string.Format(SharedLocalizer["YearOf"], Model.History.StartYear)
+                    }
+                    else
+                    {
+                        @Model.History.Id
+                    }
+                </b>
                 <span class="caret"></span>
             </button>
             <ul class="dropdown-menu">
@@ -42,7 +56,18 @@
                 {
                     <li>
                         <a href="@Url.Action("Index", "History", new { historyId = history.Id })">
-                            @string.Format(SharedLocalizer["PeriodRange"], history.StartYear, history.StartMonth, history.EndYear, history.EndMonth)
+                            @if (history.IsBimonthly)
+                            {
+                                @string.Format(SharedLocalizer["PeriodRange"], history.StartYear, history.StartMonth, history.EndYear, history.EndMonth)
+                            }
+                            else if (history.IsAnnual)
+                            {
+                                @string.Format(SharedLocalizer["YearOf"], history.StartYear)
+                            }
+                            else
+                            {
+                                @history.Id
+                            }
                         </a>
                     </li>
                 }

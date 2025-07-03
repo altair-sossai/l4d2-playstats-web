@@ -2,9 +2,11 @@
 
 public class HistoryResult
 {
-    public string Id { get; set; } = default!;
-    public int StartYear { get; set; } = default!;
-    public int StartMonth { get; set; } = default!;
-    public int EndYear { get; set; } = default!;
-    public int EndMonth { get; set; } = default!;
+    public string Id { get; set; } = null!;
+    public int StartYear { get; set; }
+    public int StartMonth { get; set; }
+    public int EndYear { get; set; }
+    public int EndMonth { get; set; }
+    public bool IsBimonthly { get; set; }
+    public bool IsAnnual { get; set; }
 }
