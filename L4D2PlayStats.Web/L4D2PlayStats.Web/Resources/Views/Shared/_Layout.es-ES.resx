@@ -119,7 +119,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="ServerName" xml:space="preserve">
-    <value>Cobra 4 Gaming</value>
+    <value>L4D2 Competitive</value>
   </data>
   <data name="ToggleNavigation" xml:space="preserve">
     <value>Alternar navegación</value>
