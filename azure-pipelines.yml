@@ -1,4 +1,4 @@
-trigger:
+﻿trigger:
 - main
 
 pool:
@@ -10,6 +10,7 @@ stages:
   - job: Build
     steps:
     - task: UseDotNet@2
+      displayName: '📦 Install .NET 9 SDK'
       inputs:
         packageType: 'sdk'
         version: '9.0.x'
@@ -17,11 +18,11 @@ stages:
 
     - script: |
         dotnet restore L4D2PlayStats.Web/L4D2PlayStats.Web/L4D2PlayStats.Web.csproj
-      displayName: 'Restore NuGet Packages'
+      displayName: '🔄 Restore NuGet Packages'
 
     - script: |
         dotnet build L4D2PlayStats.Web/L4D2PlayStats.Web/L4D2PlayStats.Web.csproj --configuration Release
-      displayName: 'Build Project'
+      displayName: '🏗️ Build Project'
 
 - stage: PublishAndDeploy
   dependsOn: BuildAndTest
@@ -29,7 +30,7 @@ stages:
   - job: Publish
     steps:
     - task: UseDotNet@2
-      displayName: 'Use .NET Core sdk 9.0.x'
+      displayName: '📦 Install .NET 9 SDK'
       inputs:
         packageType: 'sdk'
         version: '9.0.x'
@@ -37,24 +38,24 @@ stages:
 
     - script: |
         dotnet restore L4D2PlayStats.Web/L4D2PlayStats.Web/L4D2PlayStats.Web.csproj
-      displayName: 'Restore NuGet Packages'
+      displayName: '🔄 Restore NuGet Packages'
 
     - script: |
         mkdir -p $(Build.ArtifactStagingDirectory)/publish/pt-BR
         mkdir -p $(Build.ArtifactStagingDirectory)/publish/es-ES
-      displayName: 'Create directories'
+      displayName: '📂 Create Directories'
 
     - script: |
         dotnet publish L4D2PlayStats.Web/L4D2PlayStats.Web/L4D2PlayStats.Web.csproj -c Release -o $(Build.ArtifactStagingDirectory)/publish
-      displayName: 'Publish Project'
+      displayName: '🚀 Publish Project'
 
     - script: |
         tar -czf bash.tar.gz -C $(Build.Repository.LocalPath)/bash .
         tar -czf publish.tar.gz -C $(Build.ArtifactStagingDirectory)/publish .
-      displayName: 'Compress Published Files'
+      displayName: '🗜️ Compress Published Files'
 
     - task: CopyFilesOverSSH@0
-      displayName: 'Copy Files Over SSH'
+      displayName: '📤 Copy Files Over SSH'
       inputs:
         sshEndpoint: 'L4D2 - Resources'
         sourceFolder: '$(System.DefaultWorkingDirectory)'
@@ -65,7 +66,7 @@ stages:
         readyTimeout: '20000'
 
     - task: SSH@0
-      displayName: 'Extract Files'
+      displayName: '📦 Extract Files'
       inputs:
         sshEndpoint: 'L4D2 - Resources'
         readyTimeout: '20000'
