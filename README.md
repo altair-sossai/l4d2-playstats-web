@@ -4,13 +4,15 @@ This ASP.NET MVC application (net9.0) serves as a ranking and statistics site fo
 
 For an example of this site in action, visit the Brazilian community site at [https://l4d2.com.br/](https://l4d2.com.br/).
 
+> **Note:** The public deployment at [l4d2.com.br](https://l4d2.com.br/) has been deactivated. You can still use the files in this repository to host your own instance of the site.
+
 ## Features
 
 - **Ranking System:** Utilizes data provided by the "Left 4 Dead 2 Match Data API" to create a comprehensive ranking system. [API Repository](https://github.com/altair-sossai/l4d2-playstats-api)
   - The ranking system is reset every two months by default, though this can be configured as needed.
   - Previous rankings can be consulted.
 - **User-Friendly Interface:** Displays rankings, latest matches, player rankings, and player comparisons in an intuitive and accessible format.
-- **Brazilian Community:** Currently available to the Brazilian community at [https://l4d2.com.br/](https://l4d2.com.br/).
+- **Brazilian Community:** Previously available to the Brazilian community at [https://l4d2.com.br/](https://l4d2.com.br/), which has since been deactivated. The project files remain fully functional for self-hosted deployments.
 - **Steam API Integration:** Requires a Steam developer key (SteamApiKey) to fetch player information. Instructions for creating a Steam API key are provided below.
 - **Data Dependency:** Directly relies on the "Left 4 Dead 2 Match Data API" to retrieve and display player data.
 - **In-Game Integration:** Can be opened directly within the game when used in conjunction with the [l4d2_playstats_sync](https://github.com/altair-sossai/l4d2-zone-server/blob/master/addons/sourcemod/plugins/optional/l4d2_playstats_sync.smx) plugin. Configuration details for the plugin are provided below.
@@ -101,7 +103,7 @@ The `sv_downloadurl` should point to a FastDL URL. FastDL is essentially a publi
 
 ## Example Screenshots
 
-Below are some example screenshots showcasing the features of the site available at [https://l4d2.com.br/](https://l4d2.com.br/).
+Below are some example screenshots showcasing the features of the site that was previously hosted at [https://l4d2.com.br/](https://l4d2.com.br/), now deactivated. The visuals remain accurate for self-hosted instances.
 
 ### Ranking Interface (Dark Mode)
 
