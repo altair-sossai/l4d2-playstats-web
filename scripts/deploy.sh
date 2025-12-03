@@ -4,6 +4,7 @@ if screen -list | grep -q "l4d2-playstats-web"; then
   screen -S l4d2-playstats-web -X quit
 fi
 
+mkdir -p /home/devops
 mkdir -p /home/l4d2-playstats-web/bash
 
 tar -xzf /home/devops/bash.tar.gz -C /home/l4d2-playstats-web/bash
