@@ -10,10 +10,10 @@ stages:
   - job: Build
     steps:
     - task: UseDotNet@2
-      displayName: '📦 Install .NET 9 SDK'
+      displayName: '📦 Install .NET 10 SDK'
       inputs:
         packageType: 'sdk'
-        version: '9.0.x'
+        version: '10.0.x'
         installationPath: $(Agent.ToolsDirectory)/dotnet
 
     - script: |
@@ -30,10 +30,10 @@ stages:
   - job: Publish
     steps:
     - task: UseDotNet@2
-      displayName: '📦 Install .NET 9 SDK'
+      displayName: '📦 Install .NET 10 SDK'
       inputs:
         packageType: 'sdk'
-        version: '9.0.x'
+        version: '10.0.x'
         installationPath: $(Agent.ToolsDirectory)/dotnet
 
     - script: |
