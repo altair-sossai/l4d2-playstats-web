@@ -46,7 +46,7 @@ stages:
       displayName: '📂 Create Directories'
 
     - script: |
-        dotnet publish L4D2PlayStats.Web/L4D2PlayStats.Web/L4D2PlayStats.Web.csproj -c Release -o $(Build.ArtifactStagingDirectory)/publish
+        dotnet publish L4D2PlayStats.Web/L4D2PlayStats.Web/L4D2PlayStats.Web.csproj -c Release --self-contained true -o $(Build.ArtifactStagingDirectory)/publish
       displayName: '🚀 Publish Project'
 
     - script: |
