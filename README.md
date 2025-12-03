@@ -1,6 +1,6 @@
 # Left 4 Dead 2 Match Stats and Ranking Site
 
-This ASP.NET MVC application (net9.0) serves as a ranking and statistics site for Left 4 Dead 2 matches.
+This ASP.NET MVC application (net10.0) serves as a ranking and statistics site for Left 4 Dead 2 matches.
 
 For an example of this site in action, visit the Brazilian community site at [https://l4d2.com.br/](https://l4d2.com.br/).
 
@@ -34,7 +34,7 @@ At times, the application needs to access player data such as profile pictures, 
 4. Copy the generated API key and set it in your project's configuration as `SteamApiKey`.
 
 ### 3. Hosting Environment
-This application needs to be hosted on a Linux or Windows machine, or in a cloud environment capable of hosting .NET 9 applications. The publishing process depends on the chosen hosting environment, but generally, you will need to generate the binary for the project:
+This application needs to be hosted on a Linux or Windows machine, or in a cloud environment capable of hosting .NET 10 applications. The publishing process depends on the chosen hosting environment, but generally, you will need to generate the binary for the project:
 
 ```bash
 dotnet publish L4D2PlayStats.Web/L4D2PlayStats.Web/L4D2PlayStats.Web.csproj -c Release -o /path/to/output
