@@ -442,13 +442,12 @@
     <tbody>
     
     @{
-        RenderPlayerStatsCollection(players, new []
-        {
+        RenderPlayerStatsCollection(players, [
             PlayerStats.Died,
             PlayerStats.Incaps,
             PlayerStats.DmgTaken,
             PlayerStats.FallDamage
-        });
+        ]);
     }
 
     @{
@@ -589,7 +588,7 @@
     }
 
     @{
-        RenderPlayerStatsCollection(players, new [] { PlayerStats.FfHits, PlayerStats.FfGiven }, lineBreak: false);
+        RenderPlayerStatsCollection(players, [PlayerStats.FfHits, PlayerStats.FfGiven], lineBreak: false);
         RenderPlayerStatsBetween(players, PlayerStats.FfGivenPellet, PlayerStats.FfGivenSelf, lineBreak: false);
         RenderPlayerStats(players, PlayerStats.FfGivenTotal);
     }
@@ -636,20 +635,18 @@
                     @{
                         RenderInfectedStatsBetween(infectedPlayers, InfectedStats.DmgTotal, InfectedStats.DmgUpright);
                         
-                        RenderInfectedStatsCollection(infectedPlayers, new []
-                        {
+                        RenderInfectedStatsCollection(infectedPlayers, [
                             InfectedStats.DmgTank,
                             InfectedStats.DmgTankIncap,
                             InfectedStats.TankPasses
-                        });
+                        ]);
                         
-                        RenderInfectedStatsCollection(infectedPlayers, new []
-                        {
+                        RenderInfectedStatsCollection(infectedPlayers, [
                             InfectedStats.DmgScratch,
                             InfectedStats.DmgTankUp,
                             InfectedStats.DmgSpit,
                             InfectedStats.DmgBoom
-                        });
+                        ]);
 
                         RenderInfectedStatsBetween(infectedPlayers, InfectedStats.HunterDPs, InfectedStats.Ledged, lineBreak:false);
 
