@@ -861,4 +861,13 @@
   <data name="InvalidScoreRange" xml:space="preserve">
     <value>Intervalo de score inválido</value>
   </data>
+  <data name="CopyText" xml:space="preserve">
+    <value>Copiar</value>
+  </data>
+  <data name="TextCopied" xml:space="preserve">
+    <value>Texto copiado</value>
+  </data>
+  <data name="CopyFailedMessage" xml:space="preserve">
+    <value>Não foi possível copiar o texto automaticamente. Por favor, copie manualmente.</value>
+  </data>
 </root>

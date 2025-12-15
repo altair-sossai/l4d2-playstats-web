@@ -35,7 +35,7 @@
     <meta property="og:image" content="https://l4d2playstats.blob.core.windows.net/assets/motd.jpeg">
 
     <title>@Localizer["ServerName"]</title>
-    
+
     <link rel="stylesheet" href="~/css/lity.min.css"/>
 
     @if (light)
@@ -93,6 +93,14 @@
 
         .tooltip-inner {
             min-width: 150px;
+        }
+
+        .icon-copy {
+            cursor: pointer;
+            width: 14px;
+            height: 14px;
+            margin: 0 5px;
+            margin-bottom: 4px;
         }
 
         .match .panel h4,
@@ -223,6 +231,22 @@
         function imgOnError(img) {
             img.onerror = null;
             img.src = '/imgs/avatar-empty.png';
+        }
+
+        function copyTextToClipboard(text, sender) {
+            var $this = $(sender);
+
+            navigator.clipboard.writeText(text)
+                .then(function(){
+                    $this.popover("show");
+
+                    setTimeout(function () {
+                        $this.popover("hide");
+                    }, 1500);
+                })
+                .catch(function () {
+                    alert('@SharedLocalizer["CopyFailedMessage"]');
+                });
         }
 
     </script>

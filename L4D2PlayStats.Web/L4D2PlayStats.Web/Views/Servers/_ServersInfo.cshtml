@@ -3,6 +3,11 @@
 @model L4D2PlayStats.Web.Models.ServerInfoModel
 @inject IStringLocalizer<SharedResource> SharedLocalizer
 
+@{
+    var light = Context.Request.Cookies["theme"] == "light";
+    var copyIcon = light ? "copy-light.png" : "copy-dark.png";
+}
+
 <h4 class="text-center">@SharedLocalizer["Servers"]</h4>
 
 <div class="panel panel-default">
@@ -17,7 +22,13 @@
         <tbody>
         <tr>
             <th class="slim text-right">@SharedLocalizer["ServerIP"]:</th>
-            <td style="padding-left: 10px;" data-label="@SharedLocalizer["ServerIP"]:">@Model.ServerIp</td>
+            <td style="padding-left: 10px;" data-label="@SharedLocalizer["ServerIP"]:">
+                @Model.ServerIp
+
+                <img src="~/imgs/icons/@copyIcon" alt="@SharedLocalizer["CopyText"]" class="icon-copy" 
+                     data-toggle="popover" data-placement="top" data-content="@SharedLocalizer["TextCopied"]" 
+                     onclick="copyTextToClipboard('@Model.ServerIp', this)" />
+            </td>
 
             @if (Model.ServerInfo != null)
             {
