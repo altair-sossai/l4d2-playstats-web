@@ -11,6 +11,9 @@
     var configuration = gameInfo.Configuration;
     var round = gameInfo.Round;
     var scoreboard = gameInfo.Scoreboard;
+
+    var light = Context.Request.Cookies["theme"] == "light";
+    var copyIcon = light ? "copy-light.png" : "copy-dark.png";
 }
 
 <div class="panel panel-default">
@@ -35,7 +38,13 @@
         <tbody>
         <tr>
             <th class="slim text-right">@SharedLocalizer["ServerIP"]:</th>
-            <td data-label="@SharedLocalizer["ServerIP"]:">@Model.ServerIp</td>
+            <td data-label="@SharedLocalizer["ServerIP"]:">
+                @Model.ServerIp
+                
+                <img src="~/imgs/icons/@copyIcon" alt="@SharedLocalizer["CopyText"]" class="icon-copy" 
+                     data-toggle="popover" data-placement="top" data-content="@SharedLocalizer["TextCopied"]" 
+                     onclick="copyTextToClipboard('@Model.ServerIp', this)" />
+            </td>
 
             <th class="slim text-right">@SharedLocalizer["Players"]:</th>
             <td data-label="@SharedLocalizer["Players"]:">

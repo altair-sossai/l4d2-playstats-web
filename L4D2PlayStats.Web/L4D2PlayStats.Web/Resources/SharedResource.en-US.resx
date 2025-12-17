@@ -865,7 +865,7 @@
     <value>Copy</value>
   </data>
   <data name="TextCopied" xml:space="preserve">
-    <value>Text copied</value>
+    <value>Text copied!</value>
   </data>
   <data name="CopyFailedMessage" xml:space="preserve">
     <value>It was not possible to copy the text automatically. Please copy it manually.</value>
