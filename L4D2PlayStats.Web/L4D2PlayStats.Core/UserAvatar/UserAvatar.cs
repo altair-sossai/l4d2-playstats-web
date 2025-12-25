@@ -1,66 +1,124 @@
 ﻿using L4D2PlayStats.Core.Infrastructure.Options;
 using L4D2PlayStats.Core.Steam.SteamUser.Services;
-using Microsoft.Extensions.Caching.Memory;
+using Microsoft.AspNetCore.Hosting;
 
 namespace L4D2PlayStats.Core.UserAvatar;
 
-public class UserAvatar(ISteamUserService steamUserService, IMemoryCache memoryCache, IAppOptionsWraper config) : IUserAvatar
+public class UserAvatar(ISteamUserService steamUserService, IAppOptionsWraper config, IWebHostEnvironment env) : IUserAvatar
 {
+    private const string EmptyAvatarPath = "/imgs/avatar-empty.png";
+    private static readonly SemaphoreSlim SemaphoreSlim = new(5);
+    private static readonly HttpClient HttpClient = new();
+
     public string this[long communityId] => this[communityId.ToString()];
-    public string this[string? communityId] => memoryCache.Get<string>(communityId ?? string.Empty) ?? "/imgs/avatar-empty.png";
 
-    public Task LoadAsync(params long[] communityIds)
+    public string this[string? communityId]
     {
-        return LoadAsync(communityIds.AsEnumerable());
-    }
-
-    public async Task LoadAsync(IEnumerable<long> communityIds)
-    {
-        await LoadAsync(communityIds.Select(communityId => communityId.ToString()));
-    }
-
-    public async Task LoadAsync(IEnumerable<string?> communityIds)
-    {
-        var steamIds = new HashSet<string>();
-
-        foreach (var communityId in communityIds)
+        get
         {
             if (string.IsNullOrEmpty(communityId))
-                continue;
+                return EmptyAvatarPath;
 
-            var avatarUrl = memoryCache.Get<string>(communityId);
-            if (!string.IsNullOrEmpty(avatarUrl))
-                continue;
+            var fileInfo = FileInfo(communityId);
 
-            steamIds.Add(communityId);
+            return fileInfo.Exists ? RelativeUrl(communityId) : EmptyAvatarPath;
         }
+    }
+
+    public Task LoadAsync(long communityId, bool fireAndForget = true)
+    {
+        return LoadAsync([communityId], fireAndForget);
+    }
+
+    public async Task LoadAsync(IEnumerable<long> communityIds, bool fireAndForget = true)
+    {
+        await LoadAsync(communityIds.Select(communityId => communityId.ToString()), fireAndForget);
+    }
+
+    public async Task LoadAsync(IEnumerable<string?> communityIds, bool fireAndForget = true)
+    {
+        var steamIds = communityIds
+            .Where(NeedToDownload)
+            .Cast<string>()
+            .ToList();
 
         if (steamIds.Count == 0)
             return;
 
-        try
+        var tasks = new List<Task>
         {
-            foreach (var steamIdsChunked in steamIds.Chunk(99))
-            {
-                var response = await steamUserService.GetPlayerSummariesAsync(config.SteamApiKey, string.Join(',', steamIdsChunked));
-                if (response?.Response?.Players == null)
-                    return;
+            DownloadSteamPlayerAvatarsAsync(steamIds)
+        };
 
-                foreach (var player in response.Response.Players)
+        if (fireAndForget)
+            tasks.Add(Task.Delay(TimeSpan.FromSeconds(1)));
+
+        await Task.WhenAny(tasks);
+    }
+
+    private async Task DownloadSteamPlayerAvatarsAsync(IEnumerable<string> steamIds)
+    {
+        foreach (var steamIdsChunked in steamIds.Chunk(99))
+        {
+            var response = await steamUserService.GetPlayerSummariesAsync(config.SteamApiKey, string.Join(',', steamIdsChunked));
+
+            if (response?.Response?.Players == null)
+                continue;
+
+            var tasks = response.Response.Players
+                .Select(async player =>
                 {
                     if (string.IsNullOrEmpty(player.SteamId) || string.IsNullOrEmpty(player.AvatarFull))
-                        continue;
+                        return;
 
-                    using var cacheEntry = memoryCache.CreateEntry(player.SteamId);
+                    await SemaphoreSlim.WaitAsync();
 
-                    cacheEntry.Value = player.AvatarFull.Replace("https://", "http://");
-                    cacheEntry.AbsoluteExpiration = DateTime.UtcNow.AddHours(4);
-                }
-            }
+                    try
+                    {
+                        var fileInfo = FileInfo(player.SteamId);
+
+                        if (fileInfo.Directory is { Exists: false })
+                            fileInfo.Directory.Create();
+
+                        await using var stream = await HttpClient.GetStreamAsync(player.AvatarFull);
+                        await using var fileStream = new FileStream(fileInfo.FullName, FileMode.Create, FileAccess.Write, FileShare.None, 4096, true);
+
+                        await stream.CopyToAsync(fileStream);
+                    }
+                    finally
+                    {
+                        SemaphoreSlim.Release();
+                    }
+                });
+
+            await Task.WhenAll(tasks);
         }
-        catch (Exception exception)
-        {
-            Console.WriteLine(exception);
-        }
+    }
+
+    private bool NeedToDownload(string? communityId)
+    {
+        if (string.IsNullOrEmpty(communityId))
+            return false;
+
+        var fileInfo = FileInfo(communityId);
+
+        if (!fileInfo.Exists)
+            return true;
+
+        var diff = DateTime.UtcNow - fileInfo.LastWriteTimeUtc;
+
+        return diff.TotalHours > 24;
+    }
+
+    private FileInfo FileInfo(string communityId)
+    {
+        var path = Path.Combine(env.WebRootPath, "imgs", "players", $"{communityId}.jpg".ToLowerInvariant());
+
+        return new FileInfo(path);
+    }
+
+    private static string RelativeUrl(string communityId)
+    {
+        return $"/imgs/players/{communityId.ToLowerInvariant()}.jpg";
     }
 }

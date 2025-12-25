@@ -397,3 +397,6 @@ FodyWeavers.xsd
 # JetBrains Rider
 *.sln.iml
 appsettings.json
+
+# Application Files
+/L4D2PlayStats.Web/L4D2PlayStats.Web/wwwroot/imgs/players
