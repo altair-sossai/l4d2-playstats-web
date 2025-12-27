@@ -18,12 +18,10 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "http://localhost:5000/api/game-info",
-									"protocol": "http",
+									"raw": "{{baseURL}}/api/game-info",
 									"host": [
-										"localhost"
+										"{{baseURL}}"
 									],
-									"port": "5000",
 									"path": [
 										"api",
 										"game-info"
@@ -38,12 +36,10 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "http://localhost:5000/api/game-info/configuration",
-									"protocol": "http",
+									"raw": "{{baseURL}}/api/game-info/configuration",
 									"host": [
-										"localhost"
+										"{{baseURL}}"
 									],
-									"port": "5000",
 									"path": [
 										"api",
 										"game-info",
@@ -74,12 +70,10 @@
 									}
 								},
 								"url": {
-									"raw": "http://localhost:5000/api/game-info/configuration",
-									"protocol": "http",
+									"raw": "{{baseURL}}/api/game-info/configuration",
 									"host": [
-										"localhost"
+										"{{baseURL}}"
 									],
-									"port": "5000",
 									"path": [
 										"api",
 										"game-info",
@@ -95,12 +89,10 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "http://localhost:5000/api/game-info/round",
-									"protocol": "http",
+									"raw": "{{baseURL}}/api/game-info/round",
 									"host": [
-										"localhost"
+										"{{baseURL}}"
 									],
-									"port": "5000",
 									"path": [
 										"api",
 										"game-info",
@@ -131,12 +123,10 @@
 									}
 								},
 								"url": {
-									"raw": "http://localhost:5000/api/game-info/round",
-									"protocol": "http",
+									"raw": "{{baseURL}}/api/game-info/round",
 									"host": [
-										"localhost"
+										"{{baseURL}}"
 									],
-									"port": "5000",
 									"path": [
 										"api",
 										"game-info",
@@ -152,12 +142,10 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "http://localhost:5000/api/game-info/scoreboard",
-									"protocol": "http",
+									"raw": "{{baseURL}}/api/game-info/scoreboard",
 									"host": [
-										"localhost"
+										"{{baseURL}}"
 									],
-									"port": "5000",
 									"path": [
 										"api",
 										"game-info",
@@ -188,12 +176,10 @@
 									}
 								},
 								"url": {
-									"raw": "http://localhost:5000/api/game-info/scoreboard",
-									"protocol": "http",
+									"raw": "{{baseURL}}/api/game-info/scoreboard",
 									"host": [
-										"localhost"
+										"{{baseURL}}"
 									],
-									"port": "5000",
 									"path": [
 										"api",
 										"game-info",
@@ -209,12 +195,10 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "http://localhost:5000/api/game-info/players",
-									"protocol": "http",
+									"raw": "{{baseURL}}/api/game-info/players",
 									"host": [
-										"localhost"
+										"{{baseURL}}"
 									],
-									"port": "5000",
 									"path": [
 										"api",
 										"game-info",
@@ -237,7 +221,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"survivors\": [\r\n        {\r\n            \"communityId\": \"76561198200134383\",\r\n            \"name\": \"AmeriKKKa'z Most Wanted\",\r\n            \"latency\": 0.16,\r\n            \"character\": 1,\r\n            \"permanentHealth\": 50,\r\n            \"temporaryHealth\": 6,\r\n            \"primaryWeapon\": 5,\r\n            \"secondaryWeapon\": 19,\r\n            \"meleeWeapon\": 8,\r\n            \"slotNumber3\": 13,\r\n            \"slotNumber4\": 12,\r\n            \"slotNumber5\": 15,\r\n            \"blackAndWhite\": false,\r\n            \"incapacitated\": false,\r\n            \"isPlayerAlive\": true,\r\n            \"progress\": 0.76\r\n        },\r\n        {\r\n            \"communityId\": \"76561199157667941\",\r\n            \"name\": \"hard\",\r\n            \"latency\": 0.04,\r\n            \"character\": 0,\r\n            \"permanentHealth\": 50,\r\n            \"temporaryHealth\": 5,\r\n            \"primaryWeapon\": 2,\r\n            \"secondaryWeapon\": 1,\r\n            \"slotNumber3\": 13,\r\n            \"slotNumber4\": 12,\r\n            \"slotNumber5\": 15,\r\n            \"blackAndWhite\": true,\r\n            \"incapacitated\": true,\r\n            \"isPlayerAlive\": true,\r\n            \"progress\": 0.92\r\n        },\r\n        {\r\n            \"communityId\": \"76561199248670342\",\r\n            \"name\": \"vse\",\r\n            \"latency\": 0.1,\r\n            \"character\": 2,\r\n            \"permanentHealth\": 5,\r\n            \"temporaryHealth\": 40,\r\n            \"primaryWeapon\": 7,\r\n            \"secondaryWeapon\": 1,\r\n            \"slotNumber5\": 15,\r\n            \"blackAndWhite\": true,\r\n            \"incapacitated\": false,\r\n            \"isPlayerAlive\": true,\r\n            \"progress\": 0.75\r\n        },\r\n        {\r\n            \"communityId\": \"76561199121159583\",\r\n            \"name\": \"wäled!\",\r\n            \"latency\": 0.1,\r\n            \"character\": 3,\r\n            \"permanentHealth\": 45,\r\n            \"temporaryHealth\": 0,\r\n            \"primaryWeapon\": 8,\r\n            \"secondaryWeapon\": 1,\r\n            \"slotNumber5\": 23,\r\n            \"blackAndWhite\": false,\r\n            \"incapacitated\": false,\r\n            \"isPlayerAlive\": true,\r\n            \"progress\": 0.75\r\n        }\r\n    ],\r\n    \"infecteds\": [\r\n        {\r\n            \"communityId\": \"76561198055718285\",\r\n            \"name\": \"whyyy\",\r\n            \"latency\": 0.4,\r\n            \"type\": 8,\r\n            \"damage\": 150,\r\n            \"health\": 25,\r\n            \"maxHealth\": 100,\r\n            \"isInfectedGhost\": false,\r\n            \"isPlayerAlive\": true\r\n        },\r\n        {\r\n            \"communityId\": \"76561198085860651\",\r\n            \"name\": \"Gewësse\",\r\n            \"latency\": 0.4,\r\n            \"type\": 2,\r\n            \"damage\": 10,\r\n            \"health\": 50,\r\n            \"maxHealth\": 50,\r\n            \"isInfectedGhost\": false,\r\n            \"isPlayerAlive\": true\r\n        },\r\n        {\r\n            \"communityId\": \"76561198343656064\",\r\n            \"name\": \"<]:v\",\r\n            \"latency\": 0.4,\r\n            \"type\": 3,\r\n            \"damage\": 15,\r\n            \"health\": 10,\r\n            \"maxHealth\": 80,\r\n            \"isInfectedGhost\": true,\r\n            \"isPlayerAlive\": false\r\n        },\r\n        {\r\n            \"communityId\": \"76561199040881931\",\r\n            \"name\": \"Amaruk\",\r\n            \"latency\": 0.4,\r\n            \"type\": 4,\r\n            \"damage\": 25,\r\n            \"health\": 50,\r\n            \"maxHealth\": 100,\r\n            \"isInfectedGhost\": false,\r\n            \"isPlayerAlive\": true\r\n        }\r\n    ],\r\n    \"spectators\": [\r\n        {\r\n            \"communityId\": \"76561199157667941\",\r\n            \"name\": \"hard2\"\r\n        },\r\n        {\r\n            \"communityId\": \"76561199040881931\",\r\n            \"name\": \"Amaruk!!!\"\r\n        }\r\n    ]\r\n}",
+									"raw": "{\r\n    \"survivors\": [\r\n        {\r\n            \"communityId\": \"76561198200134383\",\r\n            \"name\": \"AmeriKKKa'z Most Wanted\",\r\n            \"isAdmin\": false,\r\n            \"latency\": 0.16,\r\n            \"character\": 1,\r\n            \"permanentHealth\": 50,\r\n            \"temporaryHealth\": 6,\r\n            \"primaryWeapon\": 5,\r\n            \"secondaryWeapon\": 19,\r\n            \"meleeWeapon\": 8,\r\n            \"slotNumber3\": 13,\r\n            \"slotNumber4\": 12,\r\n            \"slotNumber5\": 15,\r\n            \"blackAndWhite\": false,\r\n            \"incapacitated\": false,\r\n            \"isPlayerAlive\": true,\r\n            \"progress\": 0.76\r\n        },\r\n        {\r\n            \"communityId\": \"76561199157667941\",\r\n            \"name\": \"hard\",\r\n            \"isAdmin\": false,\r\n            \"latency\": 0.04,\r\n            \"character\": 0,\r\n            \"permanentHealth\": 50,\r\n            \"temporaryHealth\": 5,\r\n            \"primaryWeapon\": 2,\r\n            \"secondaryWeapon\": 1,\r\n            \"slotNumber3\": 13,\r\n            \"slotNumber4\": 12,\r\n            \"slotNumber5\": 15,\r\n            \"blackAndWhite\": true,\r\n            \"incapacitated\": true,\r\n            \"isPlayerAlive\": true,\r\n            \"progress\": 0.92\r\n        },\r\n        {\r\n            \"communityId\": \"76561199248670342\",\r\n            \"name\": \"vse\",\r\n            \"isAdmin\": false,\r\n            \"latency\": 0.1,\r\n            \"character\": 2,\r\n            \"permanentHealth\": 5,\r\n            \"temporaryHealth\": 40,\r\n            \"primaryWeapon\": 7,\r\n            \"secondaryWeapon\": 1,\r\n            \"slotNumber5\": 15,\r\n            \"blackAndWhite\": true,\r\n            \"incapacitated\": false,\r\n            \"isPlayerAlive\": true,\r\n            \"progress\": 0.75\r\n        },\r\n        {\r\n            \"communityId\": \"76561199121159583\",\r\n            \"name\": \"wäled!\",\r\n            \"isAdmin\": false,\r\n            \"latency\": 0.1,\r\n            \"character\": 3,\r\n            \"permanentHealth\": 45,\r\n            \"temporaryHealth\": 0,\r\n            \"primaryWeapon\": 8,\r\n            \"secondaryWeapon\": 1,\r\n            \"slotNumber5\": 23,\r\n            \"blackAndWhite\": false,\r\n            \"incapacitated\": false,\r\n            \"isPlayerAlive\": true,\r\n            \"progress\": 0.75\r\n        }\r\n    ],\r\n    \"infecteds\": [\r\n        {\r\n            \"communityId\": \"76561198055718285\",\r\n            \"name\": \"whyyy\",\r\n            \"isAdmin\": true,\r\n            \"latency\": 0.4,\r\n            \"type\": 8,\r\n            \"damage\": 150,\r\n            \"health\": 25,\r\n            \"maxHealth\": 100,\r\n            \"isInfectedGhost\": false,\r\n            \"isPlayerAlive\": true\r\n        },\r\n        {\r\n            \"communityId\": \"76561198085860651\",\r\n            \"name\": \"Gewësse\",\r\n            \"isAdmin\": false,\r\n            \"latency\": 0.4,\r\n            \"type\": 2,\r\n            \"damage\": 10,\r\n            \"health\": 50,\r\n            \"maxHealth\": 50,\r\n            \"isInfectedGhost\": false,\r\n            \"isPlayerAlive\": true\r\n        },\r\n        {\r\n            \"communityId\": \"76561198343656064\",\r\n            \"name\": \"<]:v\",\r\n            \"isAdmin\": false,\r\n            \"latency\": 0.4,\r\n            \"type\": 3,\r\n            \"damage\": 15,\r\n            \"health\": 10,\r\n            \"maxHealth\": 80,\r\n            \"isInfectedGhost\": true,\r\n            \"isPlayerAlive\": false\r\n        },\r\n        {\r\n            \"communityId\": \"76561199040881931\",\r\n            \"name\": \"Amaruk\",\r\n            \"isAdmin\": false,\r\n            \"latency\": 0.4,\r\n            \"type\": 4,\r\n            \"damage\": 25,\r\n            \"health\": 50,\r\n            \"maxHealth\": 100,\r\n            \"isInfectedGhost\": false,\r\n            \"isPlayerAlive\": true\r\n        }\r\n    ],\r\n    \"spectators\": [\r\n        {\r\n            \"communityId\": \"76561199157667941\",\r\n            \"name\": \"hard2\",\r\n            \"isAdmin\": false\r\n        },\r\n        {\r\n            \"communityId\": \"76561199040881931\",\r\n            \"name\": \"Amaruk!!!\",\r\n            \"isAdmin\": false\r\n        }\r\n    ]\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -245,12 +229,10 @@
 									}
 								},
 								"url": {
-									"raw": "http://localhost:5000/api/game-info/players",
-									"protocol": "http",
+									"raw": "{{baseURL}}/api/game-info/players",
 									"host": [
-										"localhost"
+										"{{baseURL}}"
 									],
-									"port": "5000",
 									"path": [
 										"api",
 										"game-info",
@@ -266,12 +248,10 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "http://localhost:5000/api/game-info/messages?after=0",
-									"protocol": "http",
+									"raw": "{{baseURL}}/api/game-info/messages?after=0",
 									"host": [
-										"localhost"
+										"{{baseURL}}"
 									],
-									"port": "5000",
 									"path": [
 										"api",
 										"game-info",
@@ -300,7 +280,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"when\": 19,\r\n    \"public\": true,\r\n    \"team\": 2,\r\n    \"communityId\": \"6561198135872483\",\r\n    \"name\": \"fear\",\r\n    \"message\": \"Bom dia!!\"\r\n}",
+									"raw": "{\r\n    \"when\": 20,\r\n    \"public\": false,\r\n    \"team\": 2,\r\n    \"communityId\": \"6561198135872483\",\r\n    \"name\": \"fear\",\r\n    \"isAdmin\": true,\r\n    \"message\": \"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled\"\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -308,12 +288,10 @@
 									}
 								},
 								"url": {
-									"raw": "http://localhost:5000/api/game-info/messages",
-									"protocol": "http",
+									"raw": "{{baseURL}}/api/game-info/messages",
 									"host": [
-										"localhost"
+										"{{baseURL}}"
 									],
-									"port": "5000",
 									"path": [
 										"api",
 										"game-info",
@@ -326,6 +304,13 @@
 					]
 				}
 			]
+		}
+	],
+	"variable": [
+		{
+			"key": "baseURL",
+			"value": "",
+			"type": "default"
 		}
 	]
 }

@@ -27,6 +27,11 @@
                 @message.Player?.Name
             </a>
         </span>
+        
+        @if (message.IsAdmin)
+        {
+            <span class="text-muted">(Admin)</span>
+        }
 
         <span>:</span>
 

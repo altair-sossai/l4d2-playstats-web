@@ -9,6 +9,7 @@ public class ChatMessageCommand
     public Team Team { get; set; }
     public string? CommunityId { get; set; }
     public string? Name { get; set; }
+    public bool IsAdmin { get; set; }
 
     public string? Message
     {

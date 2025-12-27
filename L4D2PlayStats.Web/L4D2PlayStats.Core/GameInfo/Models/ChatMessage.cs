@@ -15,5 +15,6 @@ public class ChatMessage(ChatMessageCommand command, DateTime? when = null)
         Name = command.Name
     };
 
+    public bool IsAdmin { get; } = command.IsAdmin;
     public string? Message { get; } = command.Message;
 }

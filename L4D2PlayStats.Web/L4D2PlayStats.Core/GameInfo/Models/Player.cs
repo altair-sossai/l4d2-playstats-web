@@ -18,6 +18,7 @@ public class Player
     public string? Steam3 => _steamIdentifiers.Steam3;
     public string? ProfileUrl => _steamIdentifiers.ProfileUrl;
     public string? Name { get; set; }
+    public bool IsAdmin { get; set; }
     public decimal? Latency { get; set; }
 
     public LatencyType? LatencyType => Latency switch

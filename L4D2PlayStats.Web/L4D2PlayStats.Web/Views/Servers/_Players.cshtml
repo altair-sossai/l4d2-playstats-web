@@ -72,6 +72,13 @@
                                     </td>
                                     <td>
                                         <a href="@survivor.ProfileUrl" target="_blank">@survivor.Name</a>
+                                        
+                                        @if (survivor.IsAdmin)
+                                        {
+                                            <span class="label label-primary" data-toggle="tooltip" data-placement="top" title="Admin" style="margin-right: 3px">
+                                                Admin
+                                            </span>
+                                        }
 
                                         @if (!survivor.IsPlayerAlive)
                                         {
@@ -248,6 +255,13 @@
                                         <a href="@infected.ProfileUrl" target="_blank">
                                             @infected.Name
                                         </a>
+                                        
+                                        @if (infected.IsAdmin)
+                                        {
+                                            <span class="label label-primary" data-toggle="tooltip" data-placement="top" title="Admin" style="margin-right: 3px">
+                                                Admin
+                                            </span>
+                                        }
 
                                         @if (infected.IsInfectedGhost)
                                         {
