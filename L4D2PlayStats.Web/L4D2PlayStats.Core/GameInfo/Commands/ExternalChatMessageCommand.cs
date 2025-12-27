@@ -1,6 +1,14 @@
-﻿namespace L4D2PlayStats.Core.GameInfo.Commands;
+﻿using L4D2PlayStats.Core.GameInfo.Models;
+
+namespace L4D2PlayStats.Core.GameInfo.Commands;
 
 public class ExternalChatMessageCommand
 {
-    public string? Message { get; set; }
+    public string? Message
+    {
+        get;
+        set => field = value?.Trim();
+    }
+
+    public bool IsCommandMessage => ServerCommand.IsCommand(Message);
 }

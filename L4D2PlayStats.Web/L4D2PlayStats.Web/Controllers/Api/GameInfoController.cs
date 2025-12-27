@@ -108,4 +108,15 @@ public class GameInfoController(IUserAvatar userAvatar) : ControllerBase
 
         return Ok();
     }
+
+    [HttpGet]
+    [Route("server-command/dequeue")]
+    [RequiredSecretKey]
+    public IActionResult ServerCommand()
+    {
+        if (_gameInfo.ServerCommands.Count == 0)
+            return NoContent();
+
+        return Ok(_gameInfo.ServerCommands.Dequeue());
+    }
 }

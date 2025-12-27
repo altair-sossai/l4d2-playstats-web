@@ -209,15 +209,12 @@
                 type: 'POST',
                 contentType: 'application/json',
                 data: JSON.stringify({ message: message }),
-                success: function (result) {
-                    if (!result)
-                        return;
-
-                    if (result.success) {
+                success: function (result, statusCode) {
+                    if (statusCode == "success" || statusCode == "nocontent") {
                         refreshMessages();
                         $('#message').val('');
                     } else {
-                        alert(result.errorMessage)
+                        alert(result?.errorMessage ?? statusCode);
                     }
                 }
             });

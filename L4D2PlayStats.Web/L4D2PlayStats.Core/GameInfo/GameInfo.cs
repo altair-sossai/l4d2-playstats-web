@@ -25,6 +25,8 @@ public class GameInfo
     private readonly TimedValue<Survivor[]> _survivors = new([], TimeSpan.FromHours(2));
     private readonly IUserAvatar _userAvatar;
 
+    public readonly Queue<ServerCommand> ServerCommands = new();
+
     private GameInfo(IUserAvatar userAvatar)
     {
         _userAvatar = userAvatar;
