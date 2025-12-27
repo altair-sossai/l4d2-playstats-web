@@ -58,6 +58,7 @@
                             {
                                 var survivor = survivors[i];
                                 <tr id="tr0-survivor-@i">
+                                    @Html.Hidden("survivors", survivor.Name)
                                     <td rowspan="3" style="width: 70px">
                                         <img src="imgs/survivor-character/@(survivor.Character.ToString().ToLower()).png" alt="@survivor.Character"
                                              data-toggle="tooltip" data-placement="top" title="@survivor.Character"
@@ -72,7 +73,7 @@
                                     </td>
                                     <td>
                                         <a href="@survivor.ProfileUrl" target="_blank">@survivor.Name</a>
-                                        
+
                                         @if (survivor.IsAdmin)
                                         {
                                             <span class="label label-primary" data-toggle="tooltip" data-placement="top" title="Admin" style="margin-right: 3px">
@@ -239,6 +240,7 @@
                                 var infectedIcon = infected.Type == null ? "none" : infected.Type.Value.ToString().ToLower();
                                 var infectedTitle = infected.Type?.Description() ?? "None";
                                 <tr id="tr0-infected-@i">
+                                    @Html.Hidden("infecteds", infected.Name)
                                     <td style="width: 75px" rowspan="2">
                                         <img src="imgs/infected-type/@(infectedIcon).jpg" alt="@infectedTitle"
                                              data-toggle="tooltip" data-placement="top" title="@infectedTitle"
@@ -255,7 +257,7 @@
                                         <a href="@infected.ProfileUrl" target="_blank">
                                             @infected.Name
                                         </a>
-                                        
+
                                         @if (infected.IsAdmin)
                                         {
                                             <span class="label label-primary" data-toggle="tooltip" data-placement="top" title="Admin" style="margin-right: 3px">
@@ -344,6 +346,7 @@
                 <span style="font-weight: bold">@SharedLocalizer["Spectators"] (@spectators.Length): </span>
                 @foreach (var spectator in spectators)
                 {
+                    @Html.Hidden("spectators", spectator.Name)
                     <a href="@spectator.ProfileUrl" target="_blank" class="label label-default" id="spectator-@spectator.CommunityId">
                         @spectator.Name
                     </a>

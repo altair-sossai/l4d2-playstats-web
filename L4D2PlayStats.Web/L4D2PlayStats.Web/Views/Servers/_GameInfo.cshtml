@@ -1,7 +1,6 @@
 ﻿@using L4D2PlayStats.Core.Auth
 @using L4D2PlayStats.Web
 @using Microsoft.Extensions.Localization
-
 @model L4D2PlayStats.Web.Models.ServerInfoModel
 
 @inject IStringLocalizer<SharedResource> SharedLocalizer
@@ -101,9 +100,13 @@
 
 @section Scripts {
     <script>
+        var isAdmin = @Html.Raw(CurrentUser.IsAdmin.ToString().ToLowerInvariant());
         var refreshInterval = 2600;
 
         var dd = new diffDOM.DiffDOM();
+
+        var commands = ["!kick", "!ban", "!swapto", "!charge"];
+        var players = ["a", "b"];
 
         function sync(current, html) {
             var source = document.createElement('div');
@@ -145,6 +148,20 @@
                 success: function (html) {
                     var target = document.getElementById('game-info-players');
                     sync(target, html);
+
+                    players = ["@@all", "@@survivors", "@@infected"];
+
+                    $("input[name='survivors']").each(function () {
+                        players.push($(this).val());
+                    });
+
+                    $("input[name='infecteds']").each(function () {
+                        players.push($(this).val());
+                    });
+
+                    $("input[name='spectators']").each(function () {
+                        players.push($(this).val());
+                    });
                 },
                 error: function (xhr, textStatus) {
                     if (textStatus === 'timeout') {
@@ -242,6 +259,33 @@
                 var message = $('#message').val().trim();
                 $('button[type="submit"]').prop('disabled', message.length === 0);
             });
+
+            isAdmin && $("#message").autocomplete({
+                source: function (request, response) {
+                    var term = request.term;
+                    var parts = term.split(' ');
+
+                    if (parts.length === 1)
+                        response($.ui.autocomplete.filter(commands, parts[0]));
+                    else
+                        response($.ui.autocomplete.filter(players, parts[1]));
+                },
+                focus: function (event, ui) {
+                    event.preventDefault();
+                },
+                select: function (event, ui) {
+                    var parts = this.value.split(' ');
+
+                    if (parts.length === 1)
+                        this.value = ui.item.value + ' ';
+                    else {
+                        parts[1] = ui.item.value;
+                        this.value = parts.join(' ');
+                    }
+
+                    return false;
+                }
+            });
         });
     </script>
 }
@@ -270,7 +314,7 @@
                 {
                     <form id="chatForm" class="form-inline" onsubmit="return false;">
                         <div class="input-group" style="width: 100%">
-                            <input type="text" id="message" name="message" class="form-control" placeholder="@SharedLocalizer["TypeYourMessage"]" />
+                            <input type="text" id="message" name="message" class="form-control" placeholder="@SharedLocalizer["TypeYourMessage"]"/>
                             <span class="input-group-btn">
                                 <button type="submit" class="btn btn-primary btn-block" disabled>
                                     @SharedLocalizer["Send"]
