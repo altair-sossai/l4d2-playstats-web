@@ -876,6 +876,12 @@
   <data name="BansPlayers" xml:space="preserve">
     <value>Bans players for a specified amount of time</value>
   </data>
+  <data name="InitiatesVoteKick" xml:space="preserve">
+    <value>Initiates a vote to kick a player</value>
+  </data>
+  <data name="InitiatesVoteBan" xml:space="preserve">
+    <value>Initiates a vote to ban a player</value>
+  </data>
   <data name="GagsPlayer" xml:space="preserve">
     <value>Gags a player</value>
   </data>

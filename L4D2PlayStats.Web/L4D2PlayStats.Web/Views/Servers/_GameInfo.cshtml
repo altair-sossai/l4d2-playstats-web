@@ -238,9 +238,17 @@
                     description: '@Html.Raw(SharedLocalizer["KicksPlayer"])',
                     args: ['players', 'reason']
                 },
+                sm_votekick: {
+                    description: '@Html.Raw(SharedLocalizer["InitiatesVoteKick"])',
+                    args: ['players', 'reason']
+                },
                 sm_ban: {
                     description: '@Html.Raw(SharedLocalizer["BansPlayers"])',
                     args: ['players', 'minutes', 'reason']
+                },
+                sm_voteban: {
+                    description: '@Html.Raw(SharedLocalizer["InitiatesVoteBan"])',
+                    args: ['players', 'reason']
                 },
                 sm_swapto: {
                     description: '@Html.Raw(SharedLocalizer["SwapsPlayers"])',

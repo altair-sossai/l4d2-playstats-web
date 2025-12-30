@@ -874,6 +874,12 @@
   <data name="BansPlayers" xml:space="preserve">
     <value>Prohíbe a jugadores por un período de tiempo determinado</value>
   </data>
+  <data name="InitiatesVoteKick" xml:space="preserve">
+    <value>Inicia una votación para expulsar a un jugador</value>
+  </data>
+  <data name="InitiatesVoteBan" xml:space="preserve">
+    <value>Inicia una votación para banear a un jugador</value>
+  </data>
   <data name="GagsPlayer" xml:space="preserve">
     <value>Silencia el chat de un jugador</value>
   </data>
