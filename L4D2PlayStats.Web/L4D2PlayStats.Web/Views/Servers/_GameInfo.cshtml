@@ -105,6 +105,10 @@
             max-height: 75vh;
             overflow-y: auto;
         }
+
+        #commands h5 {
+            margin: 0;
+        }
     </style>
 }
 
@@ -252,7 +256,7 @@
                         var survivors = JSON.parse($('#survivors').text());
 
                         return $.map(survivors, function(survivor) {
-                            return { displayText: survivor.name, value: survivor.steamId }
+                            return survivor.name;
                         });
                     }
                 },
@@ -262,7 +266,7 @@
                         var infecteds = JSON.parse($('#infecteds').text());
 
                         return $.map(infecteds, function(infected) {
-                            return { displayText: infected.name, value: infected.steamId }
+                            return infected.name;
                         });
                     }
                 },
@@ -272,7 +276,7 @@
                         var spectators = JSON.parse($('#spectators').text());
 
                         return $.map(spectators, function(spectator) {
-                            return { displayText: spectator.name, value: spectator.steamId }
+                            return spectator.name;
                         });
                     }
                 },
