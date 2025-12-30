@@ -870,4 +870,94 @@
   <data name="CopyFailedMessage" xml:space="preserve">
     <value>Não foi possível copiar o texto automaticamente. Por favor, copie manualmente.</value>
   </data>
+  <data name="KicksPlayer" xml:space="preserve">
+    <value>Remove um jogador do servidor</value>
+  </data>
+  <data name="BansPlayers" xml:space="preserve">
+    <value>Bane jogadores por um período determinado</value>
+  </data>
+  <data name="SelectWildcard" xml:space="preserve">
+    <value>Selecionar curinga</value>
+  </data>
+  <data name="SelectSurvivor" xml:space="preserve">
+    <value>Selecionar sobrevivente</value>
+  </data>
+  <data name="SelectInfected" xml:space="preserve">
+    <value>Selecionar infectado</value>
+  </data>
+  <data name="SelectSpectator" xml:space="preserve">
+    <value>Selecionar espectador</value>
+  </data>
+  <data name="SelectPlayer" xml:space="preserve">
+    <value>Selecionar jogador</value>
+  </data>
+  <data name="SelectDurationMinutes" xml:space="preserve">
+    <value>Selecionar duração em minutos</value>
+  </data>
+  <data name="FiveMinutes" xml:space="preserve">
+    <value>5 minutos</value>
+  </data>
+  <data name="TenMinutes" xml:space="preserve">
+    <value>10 minutos</value>
+  </data>
+  <data name="ThirtyMinutes" xml:space="preserve">
+    <value>30 minutos</value>
+  </data>
+  <data name="OneHour" xml:space="preserve">
+    <value>1 hora</value>
+  </data>
+  <data name="OneDay" xml:space="preserve">
+    <value>1 dia</value>
+  </data>
+  <data name="Permanent" xml:space="preserve">
+    <value>Permanente</value>
+  </data>
+  <data name="SelectReason" xml:space="preserve">
+    <value>Selecionar motivo</value>
+  </data>
+  <data name="None" xml:space="preserve">
+    <value>Nenhum</value>
+  </data>
+  <data name="ToxicBehavior" xml:space="preserve">
+    <value>Comportamento tóxico</value>
+  </data>
+  <data name="Griefing" xml:space="preserve">
+    <value>Griefing</value>
+  </data>
+  <data name="Cheating" xml:space="preserve">
+    <value>Trapaça</value>
+  </data>
+  <data name="MicSpam" xml:space="preserve">
+    <value>Spam de microfone</value>
+  </data>
+  <data name="AFK" xml:space="preserve">
+    <value>Ausente (AFK)</value>
+  </data>
+  <data name="Harassment" xml:space="preserve">
+    <value>Assédio</value>
+  </data>
+  <data name="TeamKill" xml:space="preserve">
+    <value>Fogo amigo</value>
+  </data>
+  <data name="RuleViolation" xml:space="preserve">
+    <value>Violação de regras</value>
+  </data>
+  <data name="Other" xml:space="preserve">
+    <value>Outro</value>
+  </data>
+  <data name="SelectCommand" xml:space="preserve">
+    <value>Selecionar comando</value>
+  </data>
+  <data name="Back" xml:space="preserve">
+    <value>Voltar</value>
+  </data>
+  <data name="ConfirmExecuteCommand" xml:space="preserve">
+    <value>Tem certeza de que deseja executar o seguinte comando?</value>
+  </data>
+  <data name="Preview" xml:space="preserve">
+    <value>Pré-visualização</value>
+  </data>
+  <data name="Terminal" xml:space="preserve">
+    <value>Terminal</value>
+  </data>
 </root>

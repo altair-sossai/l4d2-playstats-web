@@ -870,4 +870,94 @@
   <data name="CopyFailedMessage" xml:space="preserve">
     <value>It was not possible to copy the text automatically. Please copy it manually.</value>
   </data>
+  <data name="KicksPlayer" xml:space="preserve">
+    <value>Kicks a player from the server</value>
+  </data>
+  <data name="BansPlayers" xml:space="preserve">
+    <value>Bans players for a specified amount of time</value>
+  </data>
+  <data name="SelectWildcard" xml:space="preserve">
+    <value>Select a wildcard</value>
+  </data>
+  <data name="SelectSurvivor" xml:space="preserve">
+    <value>Select a survivor</value>
+  </data>
+  <data name="SelectInfected" xml:space="preserve">
+    <value>Select an infected</value>
+  </data>
+  <data name="SelectSpectator" xml:space="preserve">
+    <value>Select a spectator</value>
+  </data>
+  <data name="SelectPlayer" xml:space="preserve">
+    <value>Select a player</value>
+  </data>
+  <data name="SelectDurationMinutes" xml:space="preserve">
+    <value>Select duration in minutes</value>
+  </data>
+  <data name="FiveMinutes" xml:space="preserve">
+    <value>5 minutes</value>
+  </data>
+  <data name="TenMinutes" xml:space="preserve">
+    <value>10 minutes</value>
+  </data>
+  <data name="ThirtyMinutes" xml:space="preserve">
+    <value>30 minutes</value>
+  </data>
+  <data name="OneHour" xml:space="preserve">
+    <value>1 hour</value>
+  </data>
+  <data name="OneDay" xml:space="preserve">
+    <value>1 day</value>
+  </data>
+  <data name="Permanent" xml:space="preserve">
+    <value>Permanent</value>
+  </data>
+  <data name="SelectReason" xml:space="preserve">
+    <value>Select a reason</value>
+  </data>
+  <data name="None" xml:space="preserve">
+    <value>None</value>
+  </data>
+  <data name="ToxicBehavior" xml:space="preserve">
+    <value>Toxic behavior</value>
+  </data>
+  <data name="Griefing" xml:space="preserve">
+    <value>Griefing</value>
+  </data>
+  <data name="Cheating" xml:space="preserve">
+    <value>Cheating</value>
+  </data>
+  <data name="MicSpam" xml:space="preserve">
+    <value>Mic spam</value>
+  </data>
+  <data name="AFK" xml:space="preserve">
+    <value>AFK</value>
+  </data>
+  <data name="Harassment" xml:space="preserve">
+    <value>Harassment</value>
+  </data>
+  <data name="TeamKill" xml:space="preserve">
+    <value>Team kill</value>
+  </data>
+  <data name="RuleViolation" xml:space="preserve">
+    <value>Rule violation</value>
+  </data>
+  <data name="Other" xml:space="preserve">
+    <value>Other</value>
+  </data>
+  <data name="SelectCommand" xml:space="preserve">
+    <value>Select a command</value>
+  </data>
+  <data name="Back" xml:space="preserve">
+    <value>Back</value>
+  </data>
+  <data name="ConfirmExecuteCommand" xml:space="preserve">
+    <value>Are you sure you want to execute the following command?</value>
+  </data>
+  <data name="Preview" xml:space="preserve">
+    <value>Preview</value>
+  </data>
+  <data name="Terminal" xml:space="preserve">
+    <value>Terminal</value>
+  </data>
 </root>

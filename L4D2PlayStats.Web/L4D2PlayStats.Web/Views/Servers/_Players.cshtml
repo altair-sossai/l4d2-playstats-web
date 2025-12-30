@@ -39,6 +39,18 @@
 }
 
 <div>
+    
+    <script id="survivors" type="application/json">
+        @Html.Raw(Json.Serialize(survivors))
+    </script>
+    
+    <script id="infecteds" type="application/json">
+        @Html.Raw(Json.Serialize(infecteds))
+    </script>
+
+    <script id="spectators" type="application/json">
+        @Html.Raw(Json.Serialize(spectators))
+    </script>
 
     <div class="row row-players">
         <div class="col-xs-12 col-sm-6">
@@ -58,7 +70,6 @@
                             {
                                 var survivor = survivors[i];
                                 <tr id="tr0-survivor-@i">
-                                    @Html.Hidden("survivors", survivor.Name)
                                     <td rowspan="3" style="width: 70px">
                                         <img src="imgs/survivor-character/@(survivor.Character.ToString().ToLower()).png" alt="@survivor.Character"
                                              data-toggle="tooltip" data-placement="top" title="@survivor.Character"
@@ -240,7 +251,6 @@
                                 var infectedIcon = infected.Type == null ? "none" : infected.Type.Value.ToString().ToLower();
                                 var infectedTitle = infected.Type?.Description() ?? "None";
                                 <tr id="tr0-infected-@i">
-                                    @Html.Hidden("infecteds", infected.Name)
                                     <td style="width: 75px" rowspan="2">
                                         <img src="imgs/infected-type/@(infectedIcon).jpg" alt="@infectedTitle"
                                              data-toggle="tooltip" data-placement="top" title="@infectedTitle"
@@ -346,7 +356,6 @@
                 <span style="font-weight: bold">@SharedLocalizer["Spectators"] (@spectators.Length): </span>
                 @foreach (var spectator in spectators)
                 {
-                    @Html.Hidden("spectators", spectator.Name)
                     <a href="@spectator.ProfileUrl" target="_blank" class="label label-default" id="spectator-@spectator.CommunityId">
                         @spectator.Name
                     </a>

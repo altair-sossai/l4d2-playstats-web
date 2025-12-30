@@ -95,18 +95,23 @@
         .spectators a {
             margin-left: 8px;
         }
+
+        #command-container {
+            text-align: center;
+            margin: 8px 0;
+        }
+
+        #commands {
+            max-height: 75vh;
+            overflow-y: auto;
+        }
     </style>
 }
 
 @section Scripts {
     <script>
-        var isAdmin = @Html.Raw(CurrentUser.IsAdmin.ToString().ToLowerInvariant());
         var refreshInterval = 2600;
-
         var dd = new diffDOM.DiffDOM();
-
-        var commands = ["!kick", "!ban", "!swapto", "!charge"];
-        var players = [];
 
         function sync(current, html) {
             var source = document.createElement('div');
@@ -138,7 +143,7 @@
                     }
                 }
             });
-        };
+        }
 
         function refreshPlayers() {
             $.ajax({
@@ -148,20 +153,6 @@
                 success: function (html) {
                     var target = document.getElementById('game-info-players');
                     sync(target, html);
-
-                    players = ["@@all", "@@survivors", "@@infected"];
-
-                    $("input[name='survivors']").each(function () {
-                        players.push($(this).val());
-                    });
-
-                    $("input[name='infecteds']").each(function () {
-                        players.push($(this).val());
-                    });
-
-                    $("input[name='spectators']").each(function () {
-                        players.push($(this).val());
-                    });
                 },
                 error: function (xhr, textStatus) {
                     if (textStatus === 'timeout') {
@@ -174,7 +165,7 @@
                     }
                 }
             });
-        };
+        }
 
         function refreshMessages() {
             var after = $('#chat-messages p[data-message-when]').last().data('message-when') || 0;
@@ -214,7 +205,7 @@
                     }
                 }
             });
-        };
+        }
 
         function sendMessage() {
             var message = $('#message').val().trim();
@@ -227,7 +218,7 @@
                 contentType: 'application/json',
                 data: JSON.stringify({ message: message }),
                 success: function (result, statusCode) {
-                    if (statusCode == "success" || statusCode == "nocontent") {
+                    if (statusCode == 'success' || statusCode == 'nocontent') {
                         refreshMessages();
                         $('#message').val('');
                     } else {
@@ -236,6 +227,253 @@
                 }
             });
         }
+
+        var terminal = {
+            commands: {
+                sm_kick: {
+                    description: '@Html.Raw(SharedLocalizer["KicksPlayer"])',
+                    args: ['players', 'reason']
+                },
+                sm_ban: {
+                    description: '@Html.Raw(SharedLocalizer["BansPlayers"])',
+                    args: ['players', 'minutes', 'reason']
+                }
+            },
+            dataSources: {
+                wildcards : {
+                    title: '@Html.Raw(SharedLocalizer["SelectWildcard"])',
+                    items: function() {
+                        return ['@@all', '@@survivors', '@@infected'];
+                    }
+                },
+                survivors : {
+                    title: '@Html.Raw(SharedLocalizer["SelectSurvivor"])',
+                    items: function() {
+                        var survivors = JSON.parse($('#survivors').text());
+
+                        return $.map(survivors, function(survivor) {
+                            return { displayText: survivor.name, value: survivor.steamId }
+                        });
+                    }
+                },
+                infecteds : {
+                    title: '@Html.Raw(SharedLocalizer["SelectInfected"])',
+                    items: function() {
+                        var infecteds = JSON.parse($('#infecteds').text());
+
+                        return $.map(infecteds, function(infected) {
+                            return { displayText: infected.name, value: infected.steamId }
+                        });
+                    }
+                },
+                spectators : {
+                    title: '@Html.Raw(SharedLocalizer["SelectSpectator"])',
+                    items: function() {
+                        var spectators = JSON.parse($('#spectators').text());
+
+                        return $.map(spectators, function(spectator) {
+                            return { displayText: spectator.name, value: spectator.steamId }
+                        });
+                    }
+                },
+                players: {
+                    title: '@Html.Raw(SharedLocalizer["SelectPlayer"])',
+                    items: function() {
+                        return []
+                            .concat(terminal.dataSources.survivors.items())
+                            .concat(terminal.dataSources.infecteds.items())
+                            .concat(terminal.dataSources.spectators.items())
+                            .concat(terminal.dataSources.wildcards.items());
+                    }
+                },
+                minutes: {
+                    title: '@Html.Raw(SharedLocalizer["SelectDurationMinutes"])',
+                    items: function() {
+                        return [
+                            { displayText: '@Html.Raw(SharedLocalizer["FiveMinutes"])', value: 5 },
+                            { displayText: '@Html.Raw(SharedLocalizer["TenMinutes"])', value: 10 },
+                            { displayText: '@Html.Raw(SharedLocalizer["ThirtyMinutes"])', value: 30 },
+                            { displayText: '@Html.Raw(SharedLocalizer["OneHour"])', value: 60 },
+                            { displayText: '@Html.Raw(SharedLocalizer["OneDay"])', value: 1440 },
+                            { displayText: '@Html.Raw(SharedLocalizer["Permanent"])', value: 0 }
+                        ];
+                    }
+                },
+                reason: {
+                    title: '@Html.Raw(SharedLocalizer["SelectReason"])',
+                    items: function () {
+                        return [
+                            { displayText: '@Html.Raw(SharedLocalizer["None"])' },
+                            '@Html.Raw(SharedLocalizer["ToxicBehavior"])',
+                            '@Html.Raw(SharedLocalizer["Griefing"])',
+                            '@Html.Raw(SharedLocalizer["Cheating"])',
+                            '@Html.Raw(SharedLocalizer["MicSpam"])',
+                            '@Html.Raw(SharedLocalizer["AFK"])',
+                            '@Html.Raw(SharedLocalizer["Harassment"])',
+                            '@Html.Raw(SharedLocalizer["TeamKill"])',
+                            '@Html.Raw(SharedLocalizer["RuleViolation"])',
+                            '@Html.Raw(SharedLocalizer["Other"])'
+                        ];
+                    }
+                }
+            },
+            show: function() {
+                this.path = [];
+                this.build();
+                $('#terminal').modal();
+            },
+            close: function() {
+                $('#terminal').modal('hide');
+            },
+            previous: function() {
+                if (!this.path.length) {
+                    this.close();
+                    return;
+                }
+
+                this.path.pop();
+                this.build();
+            },
+            next: function(value) {
+                this.path.push(value);
+                this.build();
+            },
+            build: function() {
+                var options = [];
+
+                this.clearOptions();
+
+                if (this.path.length == 0) {
+                    this.addOption({ displayText: '@Html.Raw(SharedLocalizer["SelectCommand"])', header: true });
+
+                    var commands = this.commands;
+                    var keys = Object.keys(commands);
+
+                    options = $.map(keys, function(command) {
+                        return { value: command, description: commands[command].description };
+                    });
+                } else {
+                    var command = this.commands[this.path[0]];
+
+                    if (this.path.length == command.args.length + 1) {
+                        this.flush();
+                        return;
+                    }
+
+                    var arg = command.args[this.path.length - 1];
+                    var dataSource = this.dataSources[arg];
+                    var items = dataSource.items();
+
+                    this.addOption({ displayText: dataSource.title, header: true });
+
+                    options = $.map(items, function(item) {
+                        return isObject(item) ? item : { value: item };
+                    });
+                }
+
+                for (var i = 0; i < options.length; i++) {
+                    this.addOption(options[i], function (e) {
+                        e.preventDefault();
+                        terminal.next($(this).data('value'));
+                    });
+                }
+
+                if (this.path.length) {
+                    this.addOption({ displayText: '← @Html.Raw(SharedLocalizer["Back"])' }, function (e) {
+                        e.preventDefault();
+                        terminal.previous();
+                    });
+                }
+
+                var command = this.command();
+
+                if (command) {
+                    $("#command-container").show();
+                    $("#command").text(this.command());
+                } else {
+                    $("#command-container").hide();
+                }
+
+                $("#commands").scrollTop(0);
+            },
+            clearOptions: function() {
+                $('#commands').empty();
+            },
+            addOption: function(option, onClick) {
+
+                var $item = onClick ? $('<a>', { href: '#' }) : $('<div>');
+
+                $item.addClass('list-group-item');
+
+                if (option.header) {
+                    $item.addClass('active');
+                }
+
+                if (option.value)
+                    $item.data('value', option.value);
+
+                if (onClick)
+                    $item.on('click', onClick);
+
+                var $title = $('<h5>', {
+                    class: 'list-group-item-heading',
+                    text: option.displayText || option.value
+                });
+
+                $item.append($title);
+
+                if (option.description) {
+                    var $description = $('<p>', {
+                        class: 'list-group-item-text',
+                        text: option.description
+                    });
+
+                    $item.append($description);
+                }
+
+                $('#commands').append($item);
+            },
+            command: function() {
+                var values = this.path || [];
+
+                values = $.grep(values, function(value) {
+                    return value != null;
+                });
+
+                values = $.map(values, function(value) {
+                    return String(value).trim();
+                });
+
+                values = $.grep(values, function(value) {
+                    return value != '';
+                });
+
+                values = $.map(values, function(value) {
+                    if (value.includes(' '))
+                        return '"' + value + '"';
+
+                    return value;
+                });
+
+                return values.join(' ');
+            },
+            flush: function() {
+                var command = this.command();
+                if (!command)
+                    return;
+
+                $('#message').val(command);
+                $('button[type="submit"]').prop('disabled', false);
+
+                if (!confirm('@Html.Raw(SharedLocalizer["ConfirmExecuteCommand"])' + '\n\n' + command)) {
+                    this.close();
+                    return;
+                }
+
+                $("#chatForm").submit();
+                this.close();
+            }
+        };
 
         $(document).ready(function () {
             refreshHeader();
@@ -258,33 +496,6 @@
             $('#message').on('input', function() {
                 var message = $('#message').val().trim();
                 $('button[type="submit"]').prop('disabled', message.length === 0);
-            });
-
-            isAdmin && $("#message").autocomplete({
-                source: function (request, response) {
-                    var term = request.term;
-                    var parts = term.split(' ');
-
-                    if (parts.length === 1)
-                        response($.ui.autocomplete.filter(commands, parts[0]));
-                    else
-                        response($.ui.autocomplete.filter(players, parts[1]));
-                },
-                focus: function (event, ui) {
-                    event.preventDefault();
-                },
-                select: function (event, ui) {
-                    var parts = this.value.split(' ');
-
-                    if (parts.length === 1)
-                        this.value = ui.item.value + ' ';
-                    else {
-                        parts[1] = ui.item.value;
-                        this.value = parts.join(' ');
-                    }
-
-                    return false;
-                }
             });
         });
     </script>
@@ -314,12 +525,20 @@
                 {
                     <form id="chatForm" class="form-inline" onsubmit="return false;">
                         <div class="input-group" style="width: 100%">
-                            <input type="text" id="message" name="message" class="form-control" placeholder="@SharedLocalizer["TypeYourMessage"]"/>
-                            <span class="input-group-btn">
+                            <input type="text" id="message" name="message" class="form-control" placeholder="@SharedLocalizer["TypeYourMessage"]" />
+                            @if (CurrentUser.IsAdmin)
+                            {
+                                <div class="input-group-btn">
+                                    <button type="button" class="btn btn-info btn-block" onclick="terminal.show()">
+                                        <img src="~/imgs/icons/terminal.png" alt="@SharedLocalizer["Terminal"]" class="icon" data-toggle="tooltip" data-placement="top" title="@SharedLocalizer["Terminal"]" />
+                                    </button>
+                                </div>
+                            }
+                            <div class="input-group-btn">
                                 <button type="submit" class="btn btn-primary btn-block" disabled>
                                     @SharedLocalizer["Send"]
                                 </button>
-                            </span>
+                            </div>
                         </div>
                     </form>
                 }
@@ -340,5 +559,19 @@
         <a href="@Url.Action("Index", "Connect")" class="btn btn-sm btn-primary" style="margin: 10px">
             connect @Model.ServerIp
         </a>
+    </div>
+</div>
+
+<div id="terminal" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-body" style="padding: 0">
+                <div id="command-container">
+                    <small>@SharedLocalizer["Preview"]:</small>
+                    <code id="command"></code>
+                </div>
+                <div id="commands" class="list-group" style="margin: 0"></div>
+            </div>
+        </div>
     </div>
 </div>
