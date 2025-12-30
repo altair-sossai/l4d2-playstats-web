@@ -241,6 +241,38 @@
                 sm_ban: {
                     description: '@Html.Raw(SharedLocalizer["BansPlayers"])',
                     args: ['players', 'minutes', 'reason']
+                },
+                sm_swapto: {
+                    description: '@Html.Raw(SharedLocalizer["SwapsPlayers"])',
+                    args: ['team', 'players']
+                },
+                sm_silence: {
+                    description: '@Html.Raw(SharedLocalizer["SilencesPlayer"])',
+                    args: ['players']
+                },
+                sm_unsilence: {
+                    description: '@Html.Raw(SharedLocalizer["UnsilencesPlayer"])',
+                    args: ['players']
+                },
+                sm_gag: {
+                    description: '@Html.Raw(SharedLocalizer["GagsPlayer"])',
+                    args: ['players']
+                },
+                sm_ungag: {
+                    description: '@Html.Raw(SharedLocalizer["UngagsPlayer"])',
+                    args: ['players']
+                },
+                sm_mute: {
+                    description: '@Html.Raw(SharedLocalizer["MutesPlayer"])',
+                    args: ['players']
+                },
+                sm_unmute: {
+                    description: '@Html.Raw(SharedLocalizer["UnmutesPlayer"])',
+                    args: ['players']
+                },
+                sm_slay: {
+                    description: '@Html.Raw(SharedLocalizer["SlaysPlayer"])',
+                    args: ['players']
                 }
             },
             dataSources: {
@@ -288,6 +320,16 @@
                             .concat(terminal.dataSources.infecteds.items())
                             .concat(terminal.dataSources.spectators.items())
                             .concat(terminal.dataSources.wildcards.items());
+                    }
+                },
+                team: {
+                    title: '@Html.Raw(SharedLocalizer["SelectTeam"])',
+                    items: function() {
+                        return [
+                            { displayText: '@Html.Raw(SharedLocalizer["Spectators"])', value: 1 },
+                            { displayText: '@Html.Raw(SharedLocalizer["Survivors"])', value: 2 },
+                            { displayText: '@Html.Raw(SharedLocalizer["Infected"])', value: 3 }
+                        ];
                     }
                 },
                 minutes: {
@@ -427,7 +469,7 @@
                 $item.append($title);
 
                 if (option.description) {
-                    var $description = $('<p>', {
+                    var $description = $('<small>', {
                         class: 'list-group-item-text',
                         text: option.description
                     });

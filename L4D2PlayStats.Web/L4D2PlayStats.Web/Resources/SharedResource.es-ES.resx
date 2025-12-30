@@ -874,6 +874,30 @@
   <data name="BansPlayers" xml:space="preserve">
     <value>Prohíbe a jugadores por un período de tiempo determinado</value>
   </data>
+  <data name="GagsPlayer" xml:space="preserve">
+    <value>Silencia el chat de un jugador</value>
+  </data>
+  <data name="UngagsPlayer" xml:space="preserve">
+    <value>Quita el gag de un jugador</value>
+  </data>
+  <data name="MutesPlayer" xml:space="preserve">
+    <value>Silencia a un jugador</value>
+  </data>
+  <data name="UnmutesPlayer" xml:space="preserve">
+    <value>Quita el silencio de un jugador</value>
+  </data>
+  <data name="SilencesPlayer" xml:space="preserve">
+    <value>Silencia completamente a un jugador</value>
+  </data>
+  <data name="UnsilencesPlayer" xml:space="preserve">
+    <value>Quita el silencio completo de un jugador</value>
+  </data>
+  <data name="SlaysPlayer" xml:space="preserve">
+    <value>Mata a un jugador</value>
+  </data>
+  <data name="SwapsPlayers" xml:space="preserve">
+    <value>Cambia a los jugadores de equipo</value>
+  </data>
   <data name="SelectWildcard" xml:space="preserve">
     <value>Seleccionar comodín</value>
   </data>
@@ -888,6 +912,9 @@
   </data>
   <data name="SelectPlayer" xml:space="preserve">
     <value>Seleccionar jugador</value>
+  </data>
+  <data name="SelectTeam" xml:space="preserve">
+    <value>Seleccionar un equipo</value>
   </data>
   <data name="SelectDurationMinutes" xml:space="preserve">
     <value>Seleccionar duración en minutos</value>
