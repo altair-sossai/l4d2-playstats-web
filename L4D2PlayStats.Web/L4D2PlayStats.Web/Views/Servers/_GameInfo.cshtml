@@ -234,51 +234,51 @@
 
         var terminal = {
             commands: {
-                sm_kick: {
+                '!kick': {
                     description: '@Html.Raw(SharedLocalizer["KicksPlayer"])',
                     args: ['players', 'reason']
                 },
-                sm_votekick: {
+                '!votekick': {
                     description: '@Html.Raw(SharedLocalizer["InitiatesVoteKick"])',
                     args: ['players', 'reason']
                 },
-                sm_ban: {
+                '!ban': {
                     description: '@Html.Raw(SharedLocalizer["BansPlayers"])',
                     args: ['players', 'minutes', 'reason']
                 },
-                sm_voteban: {
+                '!voteban': {
                     description: '@Html.Raw(SharedLocalizer["InitiatesVoteBan"])',
                     args: ['players', 'reason']
                 },
-                sm_swapto: {
+                '!swapto': {
                     description: '@Html.Raw(SharedLocalizer["SwapsPlayers"])',
                     args: ['team', 'players']
                 },
-                sm_silence: {
+                '!silence': {
                     description: '@Html.Raw(SharedLocalizer["SilencesPlayer"])',
                     args: ['players']
                 },
-                sm_unsilence: {
+                '!unsilence': {
                     description: '@Html.Raw(SharedLocalizer["UnsilencesPlayer"])',
                     args: ['players']
                 },
-                sm_gag: {
+                '!gag': {
                     description: '@Html.Raw(SharedLocalizer["GagsPlayer"])',
                     args: ['players']
                 },
-                sm_ungag: {
+                '!ungag': {
                     description: '@Html.Raw(SharedLocalizer["UngagsPlayer"])',
                     args: ['players']
                 },
-                sm_mute: {
+                '!mute': {
                     description: '@Html.Raw(SharedLocalizer["MutesPlayer"])',
                     args: ['players']
                 },
-                sm_unmute: {
+                '!unmute': {
                     description: '@Html.Raw(SharedLocalizer["UnmutesPlayer"])',
                     args: ['players']
                 },
-                sm_slay: {
+                '!slay': {
                     description: '@Html.Raw(SharedLocalizer["SlaysPlayer"])',
                     args: ['players']
                 }

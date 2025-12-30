@@ -27,17 +27,14 @@ public class ExternalChatController(ICurrentUser currentUser, IUserAvatar userAv
     [Authorize]
     public IActionResult PostAsync([FromBody] ExternalChatMessageCommand command)
     {
+        var user = new User(currentUser);
+
         if (command.IsCommandMessage
             && currentUser.IsAdmin
             && ServerCommand.TryParse(command.Message, out var serverCommand)
             && serverCommand != null)
-        {
             _gameInfo.ServerCommands.Enqueue(serverCommand);
 
-            return NoContent();
-        }
-
-        var user = new User(currentUser);
         var message = _gameInfo.AddExternalMessage(user, command);
 
         return Ok(message);
