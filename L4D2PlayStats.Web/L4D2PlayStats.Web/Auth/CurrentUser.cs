@@ -47,7 +47,7 @@ public class CurrentUser : ICurrentUser
         if (string.IsNullOrEmpty(CommunityId))
             return;
 
-        _user = GetUserAsync().Result;
+        _user = GetUser();
     }
 
     private Lazy<string> SteamApiKey { get; }
@@ -79,6 +79,14 @@ public class CurrentUser : ICurrentUser
             return false;
 
         return CommunityId.Equals(communityId, StringComparison.CurrentCultureIgnoreCase);
+    }
+
+    private User? GetUser()
+    {
+        return GetUserAsync()
+            .ConfigureAwait(false)
+            .GetAwaiter()
+            .GetResult();
     }
 
     private async Task<User?> GetUserAsync()

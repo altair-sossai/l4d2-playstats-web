@@ -29,31 +29,34 @@ public static class AppInjection
         Options.Converters.Add(new DateTimeConverter());
     }
 
-    public static void AddPlayStatsSdk(this IServiceCollection serviceCollection, IConfiguration configuration)
+    extension(IServiceCollection serviceCollection)
     {
-        var apiUrl = configuration.GetValue<string>("PlayStatsApiUrl")!;
-        var serverId = configuration.GetValue<string>("ServerId")!;
-        var secret = configuration.GetValue<string>("PlayStatsSecret")!;
+        public void AddPlayStatsSdk(IConfiguration configuration)
+        {
+            var apiUrl = configuration.GetValue<string>("PlayStatsApiUrl")!;
+            var serverId = configuration.GetValue<string>("ServerId")!;
+            var secret = configuration.GetValue<string>("PlayStatsSecret")!;
 
-        var apiUri = new Uri(apiUrl);
+            var apiUri = new Uri(apiUrl);
 
-        serviceCollection.AddTransient(_ => new AuthHeaderHandler(serverId, secret));
+            serviceCollection.AddTransient(_ => new AuthHeaderHandler(serverId, secret));
 
-        serviceCollection
-            .AddApi<IRankingService>(apiUri)
-            .AddApi<IMatchesService>(apiUri)
-            .AddApi<IStatisticsService>(apiUri)
-            .AddApi<IPunishmentsService>(apiUri);
-    }
+            serviceCollection
+                .AddApi<IRankingService>(apiUri)
+                .AddApi<IMatchesService>(apiUri)
+                .AddApi<IStatisticsService>(apiUri)
+                .AddApi<IPunishmentsService>(apiUri);
+        }
 
-    private static IServiceCollection AddApi<T>(this IServiceCollection serviceCollection, Uri baseAddress)
-        where T : class
-    {
-        serviceCollection
-            .AddRefitClient<T>(Settings)
-            .ConfigureHttpClient(c => c.BaseAddress = baseAddress)
-            .AddHttpMessageHandler<AuthHeaderHandler>();
+        private IServiceCollection AddApi<T>(Uri baseAddress)
+            where T : class
+        {
+            serviceCollection
+                .AddRefitClient<T>(Settings)
+                .ConfigureHttpClient(c => c.BaseAddress = baseAddress)
+                .AddHttpMessageHandler<AuthHeaderHandler>();
 
-        return serviceCollection;
+            return serviceCollection;
+        }
     }
 }
