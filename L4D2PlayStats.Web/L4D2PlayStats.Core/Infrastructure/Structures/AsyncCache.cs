@@ -31,7 +31,9 @@ public class AsyncCache<T>(TimeSpan refreshInterval)
             return _cachedValue;
         }
 
-        if (_isRefreshing || refreshInterval < DateTime.UtcNow - _lastUpdate)
+        var elapsed = DateTime.UtcNow - _lastUpdate;
+
+        if (_isRefreshing || elapsed < refreshInterval)
             return _cachedValue;
 
         await _semaphoreSlim.WaitAsync();

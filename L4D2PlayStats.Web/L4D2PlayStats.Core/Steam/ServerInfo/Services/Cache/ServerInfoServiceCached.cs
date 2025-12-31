@@ -9,7 +9,7 @@ namespace L4D2PlayStats.Core.Steam.ServerInfo.Services.Cache;
 public class ServerInfoServiceCached(IServerInfoService serverInfoService) : IServerInfoServiceCached
 {
     private static readonly ConcurrentDictionary<string, AsyncCache<GetServerListResponse>> ServerInfoCache = new();
-    private static readonly TimeSpan RefreshInterval = TimeSpan.FromSeconds(10);
+    private static readonly TimeSpan RefreshInterval = TimeSpan.FromSeconds(5);
 
     private readonly AsyncRetryPolicy _retryPolicy = Policy
         .Handle<Exception>()

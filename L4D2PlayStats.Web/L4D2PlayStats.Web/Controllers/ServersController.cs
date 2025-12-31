@@ -23,7 +23,7 @@ public class ServersController(
     {
         ViewBag.Servers = "active";
 
-        var model = await GetServerInfoCachedAsync(config.PrimaryServerIp);
+        var model = await GetServerInfoAsync(config.PrimaryServerIp);
         var viewName = model.GameInfo.AnyPlayerConnected ? "_GameInfo" : "_ServersInfo";
 
         return View(viewName, model);
@@ -32,7 +32,7 @@ public class ServersController(
     [Route("servers/header")]
     public async Task<IActionResult> Header()
     {
-        var model = await GetServerInfoCachedAsync(config.PrimaryServerIp);
+        var model = await GetServerInfoAsync(config.PrimaryServerIp);
 
         return PartialView("_Header", model);
     }
@@ -40,7 +40,7 @@ public class ServersController(
     [Route("servers/players")]
     public async Task<IActionResult> Players()
     {
-        var model = await GetServerInfoCachedAsync(config.PrimaryServerIp);
+        var model = await GetServerInfoAsync(config.PrimaryServerIp);
 
         return PartialView("_Players", model);
     }
@@ -48,23 +48,13 @@ public class ServersController(
     [Route("servers/messages")]
     public async Task<IActionResult> Messages([FromQuery] long after = 0)
     {
-        var model = await GetServerInfoCachedAsync(config.PrimaryServerIp);
+        var model = await GetServerInfoAsync(config.PrimaryServerIp);
 
         var messages = model.GameInfo.AllMessages
             .After(after)
             .ToList();
 
         return PartialView("_Messages", messages);
-    }
-
-    private Task<ServerInfoModel> GetServerInfoCachedAsync(string serverIp)
-    {
-        return memoryCache.GetOrCreateAsync($"Server:{serverIp}", entry =>
-        {
-            entry.AbsoluteExpirationRelativeToNow = TimeSpan.FromSeconds(5);
-
-            return GetServerInfoAsync(serverIp);
-        })!;
     }
 
     private async Task<ServerInfoModel> GetServerInfoAsync(string serverIp)
