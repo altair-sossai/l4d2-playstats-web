@@ -410,6 +410,7 @@
                     var command = this.commands[this.path[0]];
 
                     if (this.path.length == command.args.length + 1) {
+                        this.updatePreview();
                         this.flush();
                         return;
                     }
@@ -439,14 +440,7 @@
                     });
                 }
 
-                var command = this.command();
-
-                if (command) {
-                    $("#command-container").show();
-                    $("#command").text(this.command());
-                } else {
-                    $("#command-container").hide();
-                }
+                this.updatePreview();
 
                 $("#commands").scrollTop(0);
             },
@@ -511,6 +505,16 @@
 
                 return values.join(' ');
             },
+            updatePreview: function() {
+                var command = this.command();
+
+                if (command) {
+                    $("#command-container").show();
+                    $("#command").text(this.command());
+                } else {
+                    $("#command-container").hide();
+                }
+            },
             flush: function() {
                 var command = this.command();
                 if (!command)
@@ -520,7 +524,7 @@
                 $('button[type="submit"]').prop('disabled', false);
 
                 if (!confirm('@Html.Raw(SharedLocalizer["ConfirmExecuteCommand"])' + '\n\n' + command)) {
-                    this.close();
+                    this.previous();
                     return;
                 }
 
