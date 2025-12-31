@@ -164,8 +164,8 @@
                 url: 'servers/messages?after=' + after,
                 type: 'GET',
                 timeout: 2000,
-                success: function (html) {
-                    if (!html)
+                success: function (html, status) {
+                    if (!html || status == "nocontent")
                         return;
 
                     var chatMessages = $('#chat-messages');

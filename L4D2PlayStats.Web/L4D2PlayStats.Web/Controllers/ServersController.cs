@@ -54,6 +54,9 @@ public class ServersController(
             .After(after)
             .ToList();
 
+        if (messages.Count == 0)
+            return NoContent();
+
         return PartialView("_Messages", messages);
     }
 
