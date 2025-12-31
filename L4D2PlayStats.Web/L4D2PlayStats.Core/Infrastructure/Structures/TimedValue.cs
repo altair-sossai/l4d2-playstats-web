@@ -5,9 +5,7 @@ public class TimedValue<T>(T defaultValue = default!, TimeSpan? expireIn = null,
 #if DEBUG
     private const int DefaultDelaySeconds = 1;
     private const int DefaultExpireInMinutes = 99999;
-#endif
-
-#if !DEBUG
+#else
     private const int DefaultDelaySeconds = 45;
     private const int DefaultExpireInMinutes = 10;
 #endif

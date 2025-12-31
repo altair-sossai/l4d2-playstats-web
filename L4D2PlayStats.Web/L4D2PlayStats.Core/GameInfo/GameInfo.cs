@@ -8,8 +8,14 @@ namespace L4D2PlayStats.Core.GameInfo;
 
 public class GameInfo
 {
+#if DEBUG
+    private static readonly TimeSpan GlobalMessageCooldown = TimeSpan.FromMilliseconds(300);
+    private static readonly TimeSpan UserMessageCooldown = TimeSpan.FromMilliseconds(300);
+#else
     private static readonly TimeSpan GlobalMessageCooldown = TimeSpan.FromSeconds(15);
     private static readonly TimeSpan UserMessageCooldown = TimeSpan.FromSeconds(30);
+#endif
+
     private static readonly TimeSpan MessageRetention = TimeSpan.FromHours(1);
 
     private static readonly Lock Lock = new();

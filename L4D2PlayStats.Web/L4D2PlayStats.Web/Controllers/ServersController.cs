@@ -1,6 +1,7 @@
 using L4D2PlayStats.Core.GameInfo;
 using L4D2PlayStats.Core.GameInfo.Extensions;
 using L4D2PlayStats.Core.Infrastructure.Options;
+using L4D2PlayStats.Core.Infrastructure.Structures;
 using L4D2PlayStats.Core.Steam.Players.Services;
 using L4D2PlayStats.Core.Steam.ServerInfo.Responses;
 using L4D2PlayStats.Core.Steam.ServerInfo.Services;
@@ -19,6 +20,9 @@ public class ServersController(
     IPlayerService playerService)
     : Controller
 {
+    private static readonly AsyncCache<List<Core.Steam.Players.Player>?> PlayersCache = new(TimeSpan.FromSeconds(10));
+    private static readonly AsyncCache<GetServerListResponse?> ServerInfoCache = new(TimeSpan.FromSeconds(10));
+
     [Route("servers")]
     public async Task<IActionResult> Index()
     {
@@ -60,9 +64,9 @@ public class ServersController(
 
     private Task<ServerInfoModel> GetServerInfoCachedAsync(string serverIp)
     {
-        return memoryCache.GetOrCreateAsync("Server", entry =>
+        return memoryCache.GetOrCreateAsync($"Server:{serverIp}", entry =>
         {
-            entry.AbsoluteExpirationRelativeToNow = TimeSpan.FromSeconds(1);
+            entry.AbsoluteExpirationRelativeToNow = TimeSpan.FromSeconds(5);
 
             return GetServerInfoAsync(serverIp);
         })!;
@@ -80,35 +84,19 @@ public class ServersController(
 
         var ip = segments[0];
         var gameInfo = GameInfo.GetOrInitializeInstance(userAvatar);
-        var serverInfo = await GetServerInfo(ip, port);
-        var players = await GetPlayersAsync(ip, port);
+        var serverInfo = await GetServerInfoCacheAsync(ip, port);
+        var players = await GetPlayersCacheAsync(ip, port);
 
         return new ServerInfoModel(serverIp, gameInfo, serverInfo, players);
     }
 
-    private async Task<GetServerListResponse?> GetServerInfo(string ip, int port)
+    private Task<GetServerListResponse?> GetServerInfoCacheAsync(string ip, int port)
     {
-        try
-        {
-            return await serverInfoService.GetServerInfo(config.SteamApiKey, $"addr\\{ip}:{port}");
-        }
-        catch (Exception exception)
-        {
-            Console.WriteLine(exception);
-            return await Task.FromResult<GetServerListResponse?>(null);
-        }
+        return ServerInfoCache.GetAsync(() => serverInfoService.GetServerInfo(config.SteamApiKey, $"addr\\{ip}:{port}")!);
     }
 
-    private async Task<List<Core.Steam.Players.Player>?> GetPlayersAsync(string ip, int port)
+    private Task<List<Core.Steam.Players.Player>?> GetPlayersCacheAsync(string ip, int port)
     {
-        try
-        {
-            return await playerService.GetPlayersAsync(ip, port).ToListAsync();
-        }
-        catch (Exception exception)
-        {
-            Console.WriteLine(exception);
-            return await Task.FromResult<List<Core.Steam.Players.Player>?>(null);
-        }
+        return PlayersCache.GetAsync(async () => await playerService.GetPlayersAsync(ip, port).ToListAsync());
     }
 }

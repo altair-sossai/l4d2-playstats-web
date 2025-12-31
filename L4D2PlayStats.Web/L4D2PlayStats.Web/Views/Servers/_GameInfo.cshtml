@@ -136,15 +136,8 @@
                     sync(target, html);
 
                 },
-                error: function (xhr, textStatus) {
-                    if (textStatus === 'timeout') {
-                        refreshHeader();
-                    }
-                },
-                complete: function (xhr, textStatus) {
-                    if (textStatus !== 'timeout') {
-                        setTimeout(refreshHeader, refreshInterval);
-                    }
+                complete: function () {
+                    setTimeout(refreshHeader, refreshInterval);
                 }
             });
         }
@@ -158,15 +151,8 @@
                     var target = document.getElementById('game-info-players');
                     sync(target, html);
                 },
-                error: function (xhr, textStatus) {
-                    if (textStatus === 'timeout') {
-                        refreshPlayers();
-                    }
-                },
-                complete: function (xhr, textStatus) {
-                    if (textStatus !== 'timeout') {
-                        setTimeout(refreshPlayers, refreshInterval);
-                    }
+                complete: function () {
+                    setTimeout(refreshPlayers, refreshInterval);
                 }
             });
         }
@@ -198,15 +184,8 @@
                     if (scrollDown)
                         chatMessages.scrollTop(chatMessages[0].scrollHeight);
                 },
-                error: function (xhr, textStatus) {
-                    if (textStatus === 'timeout') {
-                        refreshMessages();
-                    }
-                },
-                complete: function (xhr, textStatus) {
-                    if (textStatus !== 'timeout') {
-                        setTimeout(refreshMessages, refreshInterval / 2);
-                    }
+                complete: function () {
+                    setTimeout(refreshMessages, refreshInterval / 2);
                 }
             });
         }
@@ -225,6 +204,7 @@
                     if (statusCode == 'success' || statusCode == 'nocontent') {
                         refreshMessages();
                         $('#message').val('');
+                        $('button[type="submit"]').prop('disabled', true);
                     } else {
                         alert(result?.errorMessage ?? statusCode);
                     }
