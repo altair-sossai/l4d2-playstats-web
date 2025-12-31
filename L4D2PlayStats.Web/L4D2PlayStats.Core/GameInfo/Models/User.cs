@@ -15,7 +15,6 @@ public class User
         Steam3 = currentUser.Steam3;
         ProfileUrl = currentUser.ProfileUrl;
         Name = currentUser.Name;
-        AvatarUrl = currentUser.AvatarUrl;
     }
 
     public string? SteamId { get; set; }
@@ -23,5 +22,4 @@ public class User
     public string? Steam3 { get; set; }
     public string? ProfileUrl { get; set; }
     public string? Name { get; set; }
-    public string? AvatarUrl { get; set; }
 }

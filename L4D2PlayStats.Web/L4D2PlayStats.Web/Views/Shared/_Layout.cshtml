@@ -1,6 +1,7 @@
 ﻿@using System.Globalization
 @using L4D2PlayStats.Core.Auth
 @using L4D2PlayStats.Core.Infrastructure.Options
+@using L4D2PlayStats.Core.UserAvatar
 @using L4D2PlayStats.Web
 @using Microsoft.AspNetCore.Localization
 @using Microsoft.AspNetCore.Mvc.Localization
@@ -11,6 +12,7 @@
 @inject IStringLocalizer<SharedResource> SharedLocalizer
 @inject IOptions<AppOptions> Config
 @inject ICurrentUser CurrentUser
+@inject IUserAvatar UserAvatar
 @{
     var light = Context.Request.Cookies["theme"] == "light";
     var requestCultureFeature = Context.Features.Get<IRequestCultureFeature>();
@@ -296,7 +298,7 @@
                 {
                     <li>
                         <a href="@Url.Action("Details", "Players", new { communityId = CurrentUser.CommunityId })">
-                            <img src="@CurrentUser.AvatarUrl" alt="@CurrentUser.Name" title="@CurrentUser.Name" class="img-responsive img-header-icon" data-toggle="tooltip" data-placement="bottom">
+                            <img src="@UserAvatar[CurrentUser.CommunityId]" alt="@CurrentUser.Name" title="@CurrentUser.Name" class="img-responsive img-header-icon" data-toggle="tooltip" data-placement="bottom">
                             <span class="show-mobile" style="margin-left: 5px">
                                 @CurrentUser.Name
                             </span>

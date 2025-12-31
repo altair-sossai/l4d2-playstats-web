@@ -1,12 +1,13 @@
-﻿using L4D2PlayStats.Core.Auth;
+﻿using System.Text.RegularExpressions;
+using L4D2PlayStats.Core.Auth;
 using L4D2PlayStats.Core.Infrastructure.Options;
 using L4D2PlayStats.Core.Infrastructure.Structures;
 using L4D2PlayStats.Core.Steam.SteamUser.Responses;
 using L4D2PlayStats.Core.Steam.SteamUser.Services;
+using L4D2PlayStats.Core.UserAvatar;
 using Microsoft.Extensions.Caching.Memory;
 using Polly;
 using Polly.Retry;
-using System.Text.RegularExpressions;
 
 namespace L4D2PlayStats.Web.Auth;
 
@@ -23,14 +24,17 @@ public class CurrentUser : ICurrentUser
     private readonly SteamIdentifiers _steamIdentifiers;
     private readonly ISteamUserService _steamUserService;
     private readonly User? _user;
+    private readonly IUserAvatar _userAvatar;
 
     public CurrentUser(IAppOptionsWraper config,
         IHttpContextAccessor httpContextAccessor,
         IMemoryCache memoryCache,
-        ISteamUserService steamUserService)
+        ISteamUserService steamUserService,
+        IUserAvatar userAvatar)
     {
-        _steamUserService = steamUserService;
         _memoryCache = memoryCache;
+        _steamUserService = steamUserService;
+        _userAvatar = userAvatar;
 
         SteamApiKey = new Lazy<string>(() => config.SteamApiKey);
         ServerAdmins = new Lazy<string[]>(() => config.ServerAdmins);
@@ -63,7 +67,6 @@ public class CurrentUser : ICurrentUser
     public string? Steam3 => _steamIdentifiers.Steam3;
     public string? ProfileUrl => _steamIdentifiers.ProfileUrl;
     public string? Name => _user?.Name;
-    public string? AvatarUrl => _user?.AvatarUrl;
 
     public bool ItIsMe(long? communityId)
     {
@@ -78,12 +81,14 @@ public class CurrentUser : ICurrentUser
         return CommunityId.Equals(communityId, StringComparison.CurrentCultureIgnoreCase);
     }
 
-    private Task<User?> GetUserAsync()
+    private async Task<User?> GetUserAsync()
     {
         if (string.IsNullOrEmpty(CommunityId))
-            return Task.FromResult(null as User);
+            return null;
 
-        return _memoryCache.GetOrCreateAsync($"CurrentUser_{CommunityId}", async entry =>
+        await _userAvatar.LoadAsync(CommunityId);
+
+        return await _memoryCache.GetOrCreateAsync($"CurrentUser_{CommunityId}", async entry =>
         {
             entry.AbsoluteExpirationRelativeToNow = TimeSpan.FromHours(4);
 
@@ -115,6 +120,5 @@ public class CurrentUser : ICurrentUser
     private class User(GetPlayerSummariesResponse.PlayerInfo playerInfo)
     {
         public string? Name { get; } = playerInfo.PersonaName;
-        public string? AvatarUrl { get; } = playerInfo.AvatarFull?.Replace("https://", "http://");
     }
 }

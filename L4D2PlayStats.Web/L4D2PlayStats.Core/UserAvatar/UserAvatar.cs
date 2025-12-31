@@ -27,6 +27,11 @@ public class UserAvatar(ISteamUserService steamUserService, IAppOptionsWraper co
 
     public Task LoadAsync(long communityId, bool fireAndForget = true)
     {
+        return LoadAsync(communityId.ToString(), fireAndForget);
+    }
+
+    public Task LoadAsync(string communityId, bool fireAndForget = true)
+    {
         return LoadAsync([communityId], fireAndForget);
     }
 
