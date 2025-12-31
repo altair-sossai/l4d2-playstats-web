@@ -1,4 +1,6 @@
-﻿namespace L4D2PlayStats.Core.Campaign;
+﻿using L4D2PlayStats.Core.Campaign.Contracts;
+
+namespace L4D2PlayStats.Core.Campaign;
 
 public class CampaignName : ICampaignName
 {
