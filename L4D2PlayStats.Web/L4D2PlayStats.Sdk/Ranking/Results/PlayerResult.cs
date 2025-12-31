@@ -2,8 +2,6 @@
 
 public class PlayerResult
 {
-    private string? _name;
-
     public long CommunityId { get; set; }
     public string? SteamId { get; set; }
     public string? Steam3 { get; set; }
@@ -12,8 +10,8 @@ public class PlayerResult
 
     public string? Name
     {
-        get => string.IsNullOrEmpty(MainName) ? _name : MainName;
-        set => _name = value;
+        get => string.IsNullOrEmpty(MainName) ? field : MainName;
+        set;
     }
 
     public string? MainName { get; set; }

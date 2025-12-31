@@ -10,7 +10,6 @@ public class TimedValue<T>(T defaultValue = default!, TimeSpan? expireIn = null,
     private const int DefaultExpireInMinutes = 10;
 #endif
 
-    private readonly T _defaultValue = defaultValue;
     private readonly TimeSpan _delay = delay ?? TimeSpan.FromSeconds(DefaultDelaySeconds);
     private readonly TimeSpan _expireIn = expireIn ?? TimeSpan.FromMinutes(DefaultExpireInMinutes);
 
@@ -24,7 +23,7 @@ public class TimedValue<T>(T defaultValue = default!, TimeSpan? expireIn = null,
         get
         {
             if (Expired)
-                UpdateValue(_defaultValue);
+                UpdateValue(field);
 
             return _value;
         }
@@ -38,7 +37,7 @@ public class TimedValue<T>(T defaultValue = default!, TimeSpan? expireIn = null,
 
             Task.Delay(_delay).ContinueWith(_ => UpdateValue(value));
         }
-    }
+    } = defaultValue;
 
     public event EventHandler<T>? ValueUpdated;
 

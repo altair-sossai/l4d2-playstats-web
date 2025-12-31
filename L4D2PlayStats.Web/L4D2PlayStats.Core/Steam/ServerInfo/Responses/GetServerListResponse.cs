@@ -15,8 +15,6 @@ public class GetServerListResponse
 
     public class ServerInfo
     {
-        private string? _gametype;
-
         [JsonPropertyName("addr")]
         public string? Addr { get; set; }
 
@@ -68,8 +66,8 @@ public class GetServerListResponse
         [JsonPropertyName("gametype")]
         public string? Gametype
         {
-            get => _gametype;
-            set => _gametype = string.IsNullOrEmpty(value) ? value : string.Join(", ", value.Split(','));
+            get;
+            set => field = string.IsNullOrEmpty(value) ? value : string.Join(", ", value.Split(','));
         }
     }
 }
