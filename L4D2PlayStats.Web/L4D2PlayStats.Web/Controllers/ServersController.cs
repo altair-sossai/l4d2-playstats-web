@@ -1,10 +1,8 @@
 using L4D2PlayStats.Core.GameInfo;
 using L4D2PlayStats.Core.GameInfo.Extensions;
 using L4D2PlayStats.Core.Infrastructure.Options;
-using L4D2PlayStats.Core.Infrastructure.Structures;
-using L4D2PlayStats.Core.Steam.Players.Services;
-using L4D2PlayStats.Core.Steam.ServerInfo.Responses;
-using L4D2PlayStats.Core.Steam.ServerInfo.Services;
+using L4D2PlayStats.Core.Steam.Players.Services.Cache;
+using L4D2PlayStats.Core.Steam.ServerInfo.Services.Cache;
 using L4D2PlayStats.Core.UserAvatar;
 using L4D2PlayStats.Web.Models;
 using Microsoft.AspNetCore.Mvc;
@@ -16,13 +14,10 @@ public class ServersController(
     IAppOptionsWraper config,
     IMemoryCache memoryCache,
     IUserAvatar userAvatar,
-    IServerInfoService serverInfoService,
-    IPlayerService playerService)
+    IServerInfoServiceCached serverInfoService,
+    IPlayerServiceCached playerService)
     : Controller
 {
-    private static readonly AsyncCache<List<Core.Steam.Players.Player>?> PlayersCache = new(TimeSpan.FromSeconds(10));
-    private static readonly AsyncCache<GetServerListResponse?> ServerInfoCache = new(TimeSpan.FromSeconds(10));
-
     [Route("servers")]
     public async Task<IActionResult> Index()
     {
@@ -84,19 +79,9 @@ public class ServersController(
 
         var ip = segments[0];
         var gameInfo = GameInfo.GetOrInitializeInstance(userAvatar);
-        var serverInfo = await GetServerInfoCacheAsync(ip, port);
-        var players = await GetPlayersCacheAsync(ip, port);
+        var serverInfo = await serverInfoService.GetServerInfoAsync(config.SteamApiKey, $"addr\\{ip}:{port}");
+        var players = await playerService.GetPlayersAsync(ip, port);
 
         return new ServerInfoModel(serverIp, gameInfo, serverInfo, players);
-    }
-
-    private Task<GetServerListResponse?> GetServerInfoCacheAsync(string ip, int port)
-    {
-        return ServerInfoCache.GetAsync(() => serverInfoService.GetServerInfo(config.SteamApiKey, $"addr\\{ip}:{port}")!);
-    }
-
-    private Task<List<Core.Steam.Players.Player>?> GetPlayersCacheAsync(string ip, int port)
-    {
-        return PlayersCache.GetAsync(async () => await playerService.GetPlayersAsync(ip, port).ToListAsync());
     }
 }

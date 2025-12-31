@@ -30,21 +30,24 @@ public static class SteamInjection
         BackoffType = DelayBackoffType.Exponential
     };
 
-    public static void AddSteamServices(this IServiceCollection serviceCollection)
+    extension(IServiceCollection serviceCollection)
     {
-        serviceCollection
-            .AddSteamService<ISteamUserService>(nameof(ISteamUserService))
-            .AddSteamService<IServerInfoService>(nameof(IServerInfoService));
-    }
+        public void AddSteamServices()
+        {
+            serviceCollection
+                .AddSteamService<ISteamUserService>(nameof(ISteamUserService))
+                .AddSteamService<IServerInfoService>(nameof(IServerInfoService));
+        }
 
-    private static IServiceCollection AddSteamService<T>(this IServiceCollection serviceCollection, string name)
-        where T : class
-    {
-        serviceCollection
-            .AddRefitClient<T>(Settings)
-            .ConfigureHttpClient(c => c.BaseAddress = new Uri(BaseUrl))
-            .AddResilienceHandler(name, c => c.AddRetry(RetryStrategyOptions));
+        private IServiceCollection AddSteamService<T>(string name)
+            where T : class
+        {
+            serviceCollection
+                .AddRefitClient<T>(Settings)
+                .ConfigureHttpClient(c => c.BaseAddress = new Uri(BaseUrl))
+                .AddResilienceHandler(name, c => c.AddRetry(RetryStrategyOptions));
 
-        return serviceCollection;
+            return serviceCollection;
+        }
     }
 }
