@@ -4,35 +4,38 @@ namespace L4D2PlayStats.Core.Infrastructure.Extensions;
 
 public static class StringExtensions
 {
-    public static string TruncatePlayerName(this string name)
+    extension(string name)
     {
-        if (string.IsNullOrEmpty(name))
-            return name;
+        public string TruncatePlayerName()
+        {
+            if (string.IsNullOrEmpty(name))
+                return name;
 
-        if (name.Length >= 15 && !name.Contains(' '))
-            return name.Truncate(10).Trim();
+            if (name.Length >= 15 && !name.Contains(' '))
+                return name.Truncate(10).Trim();
 
-        return name.Truncate(30).Trim();
-    }
+            return name.Truncate(30).Trim();
+        }
 
-    public static string Truncate(this string value, int max)
-    {
-        return value.Length <= max ? value : value[..max];
-    }
+        public string Truncate(int max)
+        {
+            return name.Length <= max ? name : name[..max];
+        }
 
-    public static string? MatchValue(this string input, IEnumerable<string> patterns)
-    {
-        if (string.IsNullOrEmpty(input))
-            return null;
+        public string? MatchValue(IEnumerable<string> patterns)
+        {
+            if (string.IsNullOrEmpty(name))
+                return null;
 
-        var pattern = patterns.FirstOrDefault(pattern => Regex.IsMatch(input, pattern));
+            var pattern = patterns.FirstOrDefault(pattern => Regex.IsMatch(name, pattern));
 
-        if (string.IsNullOrEmpty(pattern))
-            return null;
+            if (string.IsNullOrEmpty(pattern))
+                return null;
 
-        var match = Regex.Match(input, pattern);
-        var group = match.Groups[1];
+            var match = Regex.Match(name, pattern);
+            var group = match.Groups[1];
 
-        return group.Value;
+            return group.Value;
+        }
     }
 }
