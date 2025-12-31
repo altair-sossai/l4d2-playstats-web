@@ -3,8 +3,6 @@ using L4D2PlayStats.Core.Steam.ServerInfo.Responses;
 using L4D2PlayStats.Core.Steam.ServerInfo.Services.Cache;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Memory;
-using Polly;
-using Polly.Retry;
 using static L4D2PlayStats.Core.Steam.ServerInfo.Responses.GetServerListResponse;
 
 namespace L4D2PlayStats.Web.Controllers.Api;
@@ -16,10 +14,6 @@ public class ServersController(
     IMemoryCache memoryCache,
     IServerInfoServiceCached serverInfoService) : ControllerBase
 {
-    private readonly AsyncRetryPolicy _retryPolicy = Policy
-        .Handle<Exception>()
-        .WaitAndRetryAsync(3, attempt => TimeSpan.FromSeconds(Math.Pow(3, attempt)), (exception, _, retryCount, _) => { Console.WriteLine($"Retry {retryCount} due to: {exception.Message}"); });
-
     [HttpGet]
     public async Task<IActionResult> Get()
     {
@@ -41,7 +35,7 @@ public class ServersController(
         {
             var serverInfo = await GetServerInfo(serverIp);
 
-            if (serverInfo.Response?.Servers == null)
+            if (serverInfo?.Response?.Servers == null)
                 continue;
 
             servers.AddRange(serverInfo.Response.Servers!);
@@ -50,7 +44,7 @@ public class ServersController(
         return servers;
     }
 
-    private Task<GetServerListResponse> GetServerInfo(string serverIp)
+    private Task<GetServerListResponse?> GetServerInfo(string serverIp)
     {
         var segments = serverIp.Split(':');
 
@@ -62,6 +56,6 @@ public class ServersController(
 
         var ip = segments[0];
 
-        return _retryPolicy.ExecuteAsync(() => serverInfoService.GetServerInfoAsync(config.SteamApiKey, $"addr\\{ip}:{port}"));
+        return serverInfoService.GetServerInfoAsync(config.SteamApiKey, $"addr\\{ip}:{port}");
     }
 }

@@ -8,7 +8,7 @@ public class PlayerServiceCached(IPlayerService playerService) : IPlayerServiceC
     private static readonly ConcurrentDictionary<string, AsyncCache<List<Player>>> PlayersCache = new();
     private static readonly TimeSpan RefreshInterval = TimeSpan.FromSeconds(10);
 
-    public Task<List<Player>> GetPlayersAsync(string ip, int port)
+    public async Task<List<Player>> GetPlayersAsync(string ip, int port)
     {
         var key = $"{ip}:{port}";
 
@@ -17,6 +17,19 @@ public class PlayerServiceCached(IPlayerService playerService) : IPlayerServiceC
 
         var playersCache = PlayersCache[key];
 
-        return playersCache.GetAsync(async () => await playerService.GetPlayersAsync(ip, port).ToListAsync());
+        var players = await playersCache.GetAsync(async () =>
+        {
+            try
+            {
+                return await playerService.GetPlayersAsync(ip, port).ToListAsync();
+            }
+            catch (Exception exception)
+            {
+                Console.WriteLine(exception);
+                return null;
+            }
+        });
+
+        return players ?? [];
     }
 }

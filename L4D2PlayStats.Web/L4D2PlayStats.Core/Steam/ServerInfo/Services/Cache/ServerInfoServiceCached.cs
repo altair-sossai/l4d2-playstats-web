@@ -9,13 +9,24 @@ public class ServerInfoServiceCached(IServerInfoService serverInfoService) : ISe
     private static readonly ConcurrentDictionary<string, AsyncCache<GetServerListResponse>> ServerInfoCache = new();
     private static readonly TimeSpan RefreshInterval = TimeSpan.FromSeconds(10);
 
-    public Task<GetServerListResponse> GetServerInfoAsync(string key, string filter)
+    public Task<GetServerListResponse?> GetServerInfoAsync(string key, string filter)
     {
         if (!ServerInfoCache.ContainsKey(filter))
             ServerInfoCache.TryAdd(filter, new AsyncCache<GetServerListResponse>(RefreshInterval));
 
         var serverInfoCache = ServerInfoCache[filter];
 
-        return serverInfoCache.GetAsync(() => serverInfoService.GetServerInfoAsync(key, filter));
+        return serverInfoCache.GetAsync(async () =>
+        {
+            try
+            {
+                return await serverInfoService.GetServerInfoAsync(key, filter);
+            }
+            catch (Exception exception)
+            {
+                Console.WriteLine(exception);
+                return null;
+            }
+        });
     }
 }

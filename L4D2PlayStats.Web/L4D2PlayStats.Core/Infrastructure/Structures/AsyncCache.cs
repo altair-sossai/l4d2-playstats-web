@@ -3,12 +3,12 @@
 public class AsyncCache<T>(TimeSpan refreshInterval)
 {
     private readonly SemaphoreSlim _semaphoreSlim = new(1, 1);
-    private T _cachedValue = default!;
+    private T? _cachedValue;
     private bool _firstCall = true;
     private bool _isRefreshing;
     private DateTime _lastUpdate = DateTime.MinValue;
 
-    public async Task<T> GetAsync(Func<Task<T>> factory)
+    public async Task<T?> GetAsync(Func<Task<T?>> handler)
     {
         if (_firstCall)
         {
@@ -18,7 +18,7 @@ public class AsyncCache<T>(TimeSpan refreshInterval)
             {
                 if (_firstCall)
                 {
-                    _cachedValue = await factory();
+                    _cachedValue = await handler();
                     _lastUpdate = DateTime.UtcNow;
                     _firstCall = false;
                 }
@@ -47,7 +47,7 @@ public class AsyncCache<T>(TimeSpan refreshInterval)
             {
                 try
                 {
-                    _cachedValue = await factory();
+                    _cachedValue = await handler();
                     _lastUpdate = DateTime.UtcNow;
                 }
                 catch (Exception exception)
