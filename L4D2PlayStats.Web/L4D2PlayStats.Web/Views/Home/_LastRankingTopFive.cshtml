@@ -1,0 +1,128 @@
+@using L4D2PlayStats.Core.Auth
+@using L4D2PlayStats.Core.Infrastructure.Extensions
+@using L4D2PlayStats.Core.UserAvatar
+@using L4D2PlayStats.Web
+@model L4D2PlayStats.Core.Ranking.Results.LastHistoryResult
+@inject IViewLocalizer Localizer
+@inject IStringLocalizer<SharedResource> SharedLocalizer
+@inject IUserAvatar UserAvatar
+@inject ICurrentUser CurrentUser
+
+@{
+    var history = Model.History;
+    var historyLabel = string.Empty;
+
+    if (history != null)
+    {
+        if (history.IsBimonthly)
+        {
+            historyLabel = string.Format(SharedLocalizer["PeriodRange"], history.StartYear, history.StartMonth, history.EndYear, history.EndMonth);
+        }
+        else if (history.IsAnnual)
+        {
+            historyLabel = string.Format(SharedLocalizer["YearOf"], history.StartYear);
+        }
+        else
+        {
+            historyLabel = history.Id;
+        }
+    }
+}
+
+<h4 class="text-center">@Localizer["LastRankingTopFiveHeader"]</h4>
+
+@if (!string.IsNullOrEmpty(historyLabel))
+{
+    <small class="text-right" style="display: block; font-style: italic; margin-bottom: 3px">
+        @string.Format(Localizer["LastRankingReference"].Value, historyLabel)
+    </small>
+}
+
+<table class="table table-striped table-hover table-bordered table-condensed" id="table-ranking">
+    <thead>
+    <tr>
+        <th class="text-center">#</th>
+        <th colspan="2">@SharedLocalizer["Player"]</th>
+        <th class="text-center">@SharedLocalizer["Wins"]</th>
+        <th class="text-center hide-mobile">@SharedLocalizer["Loss"]</th>
+        <th class="text-center hide-mobile">@SharedLocalizer["Games"]</th>
+        <th class="text-center hide-mobile">@SharedLocalizer["MvpSiDamage"]</th>
+        <th class="text-center hide-mobile">@SharedLocalizer["MvpCommon"]</th>
+        <th class="text-center hide-mobile">@SharedLocalizer["WinRate"]</th>
+        <th class="text-center hide-mobile">@SharedLocalizer["RageQuit"]</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var player in Model.Players)
+    {
+        <tr class="hover @(CurrentUser.ItIsMe(player.CommunityId) ? "it-is-me" : string.Empty)">
+            <td class="text-center vertical-align-middle">
+                @switch (player.Position)
+                {
+                    case 1:
+                        <img src="~/imgs/first-place.png" alt="@SharedLocalizer["FirstPlace"]" title="@SharedLocalizer["FirstPlace"]" class="place" data-toggle="tooltip" data-placement="top"/>
+                        break;
+                    case 2:
+                        <img src="~/imgs/second-place.png" alt="@SharedLocalizer["SecondPlace"]" title="@SharedLocalizer["SecondPlace"]" class="place" data-toggle="tooltip" data-placement="top"/>
+                        break;
+                    case 3:
+                        <img src="~/imgs/third-place.png" alt="@SharedLocalizer["ThirdPlace"]" title="@SharedLocalizer["ThirdPlace"]" class="place" data-toggle="tooltip" data-placement="top"/>
+                        break;
+                    default:
+                        @($"#{player.Position:N0}")
+                        break;
+                }
+            </td>
+            <td class="text-center vertical-align-middle slim" style="margin: 0; padding: 0">
+                <a href="@player.ProfileUrl" title="@player.Name">
+                    <img src="@UserAvatar[player.CommunityId]" alt="@player.Name" title="@player.Name" style="width: 40px; border-radius: 5px" onerror="imgOnError(this)"/>
+                </a>
+            </td>
+            <td class="vertical-align-middle">
+                <a href="@player.ProfileUrl" title="@player.Name">
+                    @player.Name?.TruncatePlayerName()
+                </a>
+            </td>
+            <td class="text-center vertical-align-middle">
+                <p data-toggle="tooltip" data-placement="top" title="@SharedLocalizer["Wins"] - @player.WinRate.ToString("P0") @SharedLocalizer["WinRate"]">
+                    @player.Wins.ToString("N0")
+                </p>
+            </td>
+            <td class="text-center vertical-align-middle hide-mobile">
+                <p data-toggle="tooltip" data-placement="top" title="@SharedLocalizer["Loss"]">
+                    @player.Loss.ToString("N0")
+                </p>
+            </td>
+            <td class="text-center vertical-align-middle hide-mobile">
+                <p data-toggle="tooltip" data-placement="top" title="@SharedLocalizer["Games"]">
+                    @player.Games.ToString("N0")
+                </p>
+            </td>
+            <td class="text-center vertical-align-middle hide-mobile">
+                <p data-toggle="tooltip" data-placement="top" title="@SharedLocalizer["MvpSiDamage"]">
+                    @player.MvpSiDamage.ToString("N0")
+                </p>
+            </td>
+            <td class="text-center vertical-align-middle hide-mobile">
+                <p data-toggle="tooltip" data-placement="top" title="@SharedLocalizer["MvpCommon"]">
+                    @player.MvpCommon.ToString("N0")
+                </p>
+            </td>
+            <td class="text-center vertical-align-middle hide-mobile">
+                <p data-toggle="tooltip" data-placement="top" title="@SharedLocalizer["WinRate"]">
+                    @player.WinRate.ToString("P0")
+                </p>
+            </td>
+            <td class="text-center vertical-align-middle hide-mobile">
+                <p data-toggle="tooltip" data-placement="top" title="@SharedLocalizer["RageQuit"]">
+                    @player.RageQuit.ToString("N0")
+                </p>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
+
+<div class="text-right" style="margin-top: 8px">
+    @Html.ActionLink(Localizer["ViewFullRanking"].Value, "Index", "History", null, new { @class = "btn btn-primary btn-sm" })
+</div>

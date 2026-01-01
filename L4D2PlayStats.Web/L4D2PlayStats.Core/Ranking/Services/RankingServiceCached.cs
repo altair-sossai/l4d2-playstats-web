@@ -48,13 +48,13 @@ public class RankingServiceCached(IAppOptionsWraper config, IMemoryCache memoryC
         }))!;
     }
 
-    public async Task<LastHistoryResult> LastHistoryAsync()
+    public async Task<LastHistoryResult?> LastHistoryAsync()
     {
         var allHistory = await AllHistoryAsync();
         var history = allHistory.LastOrDefault();
 
         if (history == null)
-            return new LastHistoryResult(null, new List<PlayerResult>());
+            return null;
 
         var players = (await HistoryAsync(history.Id))
             .Take(5)

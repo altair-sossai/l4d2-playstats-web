@@ -143,4 +143,7 @@
   <data name="LastRankingReference" xml:space="preserve">
     <value>Período exibido: {0}</value>
   </data>
+  <data name="ViewFullRanking" xml:space="preserve">
+    <value>Veja o ranking completo</value>
+  </data>
 </root>
