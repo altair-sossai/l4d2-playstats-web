@@ -134,4 +134,13 @@
   <data name="NoRankingMessage" xml:space="preserve">
     <value>No existen datos en este momento. Cuando haya una partida se contará aquí.</value>
   </data>
+  <data name="NoRankingWithHistoryMessage" xml:space="preserve">
+    <value>Aún no hay datos de ranking. A continuación el top 5 del último ranking antes del reinicio.</value>
+  </data>
+  <data name="LastRankingTopFiveHeader" xml:space="preserve">
+    <value>Top 5 del último ranking</value>
+  </data>
+  <data name="LastRankingReference" xml:space="preserve">
+    <value>Período mostrado: {0}</value>
+  </data>
 </root>

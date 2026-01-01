@@ -2,6 +2,7 @@ using L4D2PlayStats.Core.Patents.Services;
 using L4D2PlayStats.Core.Ranking.Services;
 using L4D2PlayStats.Core.UserAvatar;
 using L4D2PlayStats.Web.Models;
+using L4D2PlayStats.Sdk.Ranking.Results;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Localization;
 
@@ -18,8 +19,28 @@ public class HomeController(
         ViewBag.Home = "active";
 
         var players = await rankingService.GetAsync();
-        var communityIds = players.Select(p => p.CommunityId);
-        await userAvatar.LoadAsync(communityIds);
+        var communityIds = players.Select(p => p.CommunityId).ToList();
+
+        HistoryResult? lastHistory = null;
+        List<PlayerResult>? lastRankingTopFive = null;
+
+        if (players.Count == 0)
+        {
+            var allHistory = await rankingService.AllHistoryAsync();
+            lastHistory = allHistory.LastOrDefault();
+
+            if (lastHistory != null)
+            {
+                lastRankingTopFive = (await rankingService.HistoryAsync(lastHistory.Id))
+                    .Take(5)
+                    .ToList();
+
+                communityIds = lastRankingTopFive.Select(p => p.CommunityId).ToList();
+            }
+        }
+
+        if (communityIds.Count > 0)
+            await userAvatar.LoadAsync(communityIds);
 
         var ranking = players.Select(player =>
         {
@@ -29,7 +50,7 @@ public class HomeController(
             return model;
         }).ToList();
 
-        var model = new HomeModel(ranking);
+        var model = new HomeModel(ranking, lastRankingTopFive, lastHistory);
 
         return View(model);
     }
