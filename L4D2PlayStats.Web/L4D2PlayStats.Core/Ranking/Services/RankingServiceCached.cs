@@ -1,4 +1,5 @@
-﻿using L4D2PlayStats.Core.Infrastructure.Options;
+using L4D2PlayStats.Core.Infrastructure.Options;
+using L4D2PlayStats.Core.Ranking.Results;
 using L4D2PlayStats.Sdk.Ranking;
 using L4D2PlayStats.Sdk.Ranking.Results;
 using Microsoft.Extensions.Caching.Memory;
@@ -45,5 +46,18 @@ public class RankingServiceCached(IAppOptionsWraper config, IMemoryCache memoryC
 
             return await rankingService.HistoryAsync(config.ServerId, historyId);
         }))!;
+    }
+
+    public async Task<RankingHistoryResult?> LastHistoryAsync()
+    {
+        var allHistory = await AllHistoryAsync();
+        var lastHistory = allHistory.LastOrDefault();
+
+        if (lastHistory == null)
+            return null;
+
+        var players = await HistoryAsync(lastHistory.Id);
+
+        return new RankingHistoryResult(lastHistory, players);
     }
 }

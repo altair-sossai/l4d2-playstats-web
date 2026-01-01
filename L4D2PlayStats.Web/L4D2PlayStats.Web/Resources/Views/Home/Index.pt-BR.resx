@@ -134,4 +134,7 @@
   <data name="NoRankingMessage" xml:space="preserve">
     <value>Não existem dados no momento. Assim que houver uma partida ela será contabilizada aqui.</value>
   </data>
+  <data name="NoRankingWithHistoryMessage" xml:space="preserve">
+    <value>Não há dados de ranking ainda. Abaixo segue o top 5 do último ranking antes do reset.</value>
+  </data>
 </root>

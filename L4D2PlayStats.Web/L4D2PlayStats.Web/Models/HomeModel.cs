@@ -1,9 +1,12 @@
-﻿namespace L4D2PlayStats.Web.Models;
+using L4D2PlayStats.Core.Ranking.Results;
 
-public class HomeModel(List<RankingModel> ranking)
+namespace L4D2PlayStats.Web.Models;
+
+public class HomeModel(List<RankingModel> ranking, RankingHistoryResult? lastHistory = null)
 {
     private readonly RankingPeriodModel _period = new();
 
     public int NextResetIn => _period.NextResetIn;
     public List<RankingModel> Ranking { get; } = ranking;
+    public RankingHistoryResult? LastHistory { get; } = lastHistory;
 }

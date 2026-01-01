@@ -18,7 +18,8 @@ public class HomeController(
         ViewBag.Home = "active";
 
         var players = await rankingService.GetAsync();
-        var communityIds = players.Select(p => p.CommunityId);
+        var communityIds = players.Select(p => p.CommunityId).ToList();
+
         await userAvatar.LoadAsync(communityIds);
 
         var ranking = players.Select(player =>
@@ -29,9 +30,18 @@ public class HomeController(
             return model;
         }).ToList();
 
-        var model = new HomeModel(ranking);
+        if (ranking.Any())
+            return View(new HomeModel(ranking));
 
-        return View(model);
+        var lastHistory = await rankingService.LastHistoryAsync();
+        if (lastHistory == null)
+            return View(new HomeModel(ranking));
+
+        communityIds = lastHistory.Players.Select(p => p.CommunityId).ToList();
+
+        await userAvatar.LoadAsync(communityIds);
+
+        return View(new HomeModel(ranking, lastHistory));
     }
 
     public IActionResult SetTheme(string theme)
