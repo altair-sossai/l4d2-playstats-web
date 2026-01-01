@@ -26,17 +26,12 @@ public class HomeController(
 
         if (players.Count == 0)
         {
-            var allHistory = await rankingService.AllHistoryAsync();
-            lastHistory = allHistory.LastOrDefault();
+            var lastHistoryResult = await rankingService.LastHistoryAsync();
 
-            if (lastHistory != null)
-            {
-                lastRankingTopFive = (await rankingService.HistoryAsync(lastHistory.Id))
-                    .Take(5)
-                    .ToList();
+            lastHistory = lastHistoryResult.History;
+            lastRankingTopFive = lastHistoryResult.Players;
 
-                communityIds = lastRankingTopFive.Select(p => p.CommunityId).ToList();
-            }
+            communityIds = lastRankingTopFive.Select(p => p.CommunityId).ToList();
         }
 
         if (communityIds.Count > 0)
