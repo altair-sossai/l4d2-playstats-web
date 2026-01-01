@@ -117,13 +117,13 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="LastRankingTopFiveHeader" xml:space="preserve">
-    <value>Top 5 from last ranking</value>
+  <data name="LastRankingTopSixHeader" xml:space="preserve">
+    <value>Top 6 del último ranking</value>
   </data>
   <data name="LastRankingReference" xml:space="preserve">
-    <value>Displayed period: {0}</value>
+    <value>Período mostrado: {0}</value>
   </data>
   <data name="ViewFullRanking" xml:space="preserve">
-    <value>View full ranking</value>
+    <value>Ver ranking completo</value>
   </data>
 </root>

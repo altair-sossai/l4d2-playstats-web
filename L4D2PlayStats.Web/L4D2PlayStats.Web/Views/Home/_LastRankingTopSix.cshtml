@@ -1,0 +1,115 @@
+﻿@using L4D2PlayStats.Core.Auth
+@using L4D2PlayStats.Core.Infrastructure.Extensions
+@using L4D2PlayStats.Core.UserAvatar
+@using L4D2PlayStats.Web
+@using Microsoft.AspNetCore.Mvc.Localization
+@using Microsoft.Extensions.Localization
+@model L4D2PlayStats.Core.Ranking.Results.RankingHistoryResult
+@inject IViewLocalizer Localizer
+@inject IStringLocalizer<SharedResource> SharedLocalizer
+@inject IUserAvatar UserAvatar
+@inject ICurrentUser CurrentUser
+
+@{
+    var history = Model.History;
+    var players = Model.Players;
+}
+
+<style>
+    .last-ranking-header {
+        margin-top: 15px;
+        margin-bottom: 15px;
+    }
+
+    .last-ranking-avatar {
+        width: 70px;
+        height: 70px;
+        border-radius: 50%;
+        object-fit: cover;
+    }
+
+    .trophy {
+        margin: 0 16px;
+    }
+</style>
+
+<div class="well well-sm last-ranking-header">
+    <div class="media">
+        <div class="media-left media-middle">
+            <img src="~/imgs/icons/trophy.png" alt="@SharedLocalizer["Trophy"]" class="trophy" data-toggle="tooltip" data-placement="top" title="@SharedLocalizer["Trophy"]" />
+        </div>
+        <div class="media-body">
+            <h4 class="media-heading" style="margin-top:0">
+                @Localizer["LastRankingTopSixHeader"]
+            </h4>
+            <p class="text-muted" style="margin-bottom:0">
+                @if (history.IsBimonthly)
+                {
+                    @string.Format(Localizer["LastRankingReference"].Value, string.Format(SharedLocalizer["PeriodRange"], history.StartYear, history.StartMonth, history.EndYear, history.EndMonth))
+                }
+                else if (history.IsAnnual)
+                {
+                    @string.Format(Localizer["LastRankingReference"].Value, string.Format(SharedLocalizer["YearOf"], history.StartYear))
+                }
+                else
+                {
+                    @string.Format(Localizer["LastRankingReference"].Value, history.Id)
+                }
+            </p>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    @foreach (var player in players.Take(6))
+    {
+        var panelClass = CurrentUser.ItIsMe(player.CommunityId) ? "panel-primary" : "panel-default";
+        var placeLabel = player.Position switch
+        {
+            1 => "label-warning",
+            2 => "label-default",
+            3 => "label-success",
+            _ => "label-info"
+        };
+
+        <div class="col-xs-12 col-sm-6 col-md-4">
+            <div class="panel @panelClass">
+                <div class="panel-heading">
+                    <span class="label @placeLabel" title="@SharedLocalizer["Player"] #@player.Position">#@player.Position</span>
+                    <strong style="margin-left:6px">
+                        <a href="@player.ProfileUrl" title="@player.Name">
+                            @player.Name?.TruncatePlayerName()
+                        </a>
+                    </strong>
+                </div>
+                <div class="panel-body text-center">
+                    <div class="media">
+                        <div class="media-left">
+                            <a href="@player.ProfileUrl" title="@player.Name">
+                                <img src="@UserAvatar[player.CommunityId]" alt="@player.Name" class="last-ranking-avatar" onerror="imgOnError(this)"/>
+                            </a>
+                        </div>
+                        <div class="media-body">
+                            <p style="margin-bottom: 8px !important">
+                                @SharedLocalizer["Wins"]: <strong class="text-success">@player.Wins.ToString("N0")</strong>
+                                ·
+                                @SharedLocalizer["Loss"]: <strong class="text-danger">@player.Loss.ToString("N0")</strong>
+                            </p>
+                            <div class="label-group">
+                                <span class="label label-success" title="@SharedLocalizer["WinRate"]">@SharedLocalizer["WinRate"]: @player.WinRate.ToString("P0")</span>
+                                <span class="label label-info" title="@SharedLocalizer["MvpSiDamage"]">@SharedLocalizer["MvpSiDamage"]: @player.MvpSiDamage.ToString("N0")</span>
+                                <span class="label label-primary" title="@SharedLocalizer["MvpCommon"]">@SharedLocalizer["MvpCommon"]: @player.MvpCommon.ToString("N0")</span>
+                                <span class="label label-default" title="@SharedLocalizer["Games"]">@SharedLocalizer["Games"]: @player.Games.ToString("N0")</span>
+                                <span class="label label-warning" title="@SharedLocalizer["RageQuit"]">@SharedLocalizer["RageQuit"]: @player.RageQuit.ToString("N0")</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+<div class="text-center" style="margin-top: 12px">
+    @Html.ActionLink(Localizer["ViewFullRanking"].Value, "Index", "History", null, new { @class = "btn btn-primary btn-sm" })
+</div>

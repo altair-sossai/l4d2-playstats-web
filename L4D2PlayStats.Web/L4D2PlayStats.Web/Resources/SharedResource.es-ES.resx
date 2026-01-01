@@ -991,4 +991,7 @@
   <data name="Terminal" xml:space="preserve">
     <value>Terminal</value>
   </data>
+  <data name="Trophy" xml:space="preserve">
+    <value>Trofeo</value>
+  </data>
 </root>

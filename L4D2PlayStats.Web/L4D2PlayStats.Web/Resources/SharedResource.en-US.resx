@@ -993,4 +993,7 @@
   <data name="Terminal" xml:space="preserve">
     <value>Terminal</value>
   </data>
+  <data name="Trophy" xml:space="preserve">
+    <value>Trophy</value>
+  </data>
 </root>
