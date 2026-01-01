@@ -2,7 +2,7 @@
 @using L4D2PlayStats.Core.Infrastructure.Extensions
 @using L4D2PlayStats.Core.UserAvatar
 @using L4D2PlayStats.Web
-@model L4D2PlayStats.Core.Ranking.Results.LastHistoryResult
+@model L4D2PlayStats.Core.Ranking.Results.HistoryResult
 @inject IViewLocalizer Localizer
 @inject IStringLocalizer<SharedResource> SharedLocalizer
 @inject IUserAvatar UserAvatar
@@ -53,7 +53,7 @@
     </tr>
     </thead>
     <tbody>
-    @foreach (var player in Model.Players)
+    @foreach (var player in Model.TopFivePlayers)
     {
         <tr class="hover @(CurrentUser.ItIsMe(player.CommunityId) ? "it-is-me" : string.Empty)">
             <td class="text-center vertical-align-middle">

@@ -21,7 +21,7 @@ public class HomeController(
         var players = await rankingService.GetAsync();
         var communityIds = players.Select(p => p.CommunityId).ToList();
 
-        var lastHistoryResult = default(LastHistoryResult?);
+        var lastHistoryResult = default(HistoryResult?);
 
         if (players.Count == 0)
         {
