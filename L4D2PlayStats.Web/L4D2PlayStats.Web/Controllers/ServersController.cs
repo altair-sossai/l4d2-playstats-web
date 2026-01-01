@@ -6,13 +6,11 @@ using L4D2PlayStats.Core.Steam.ServerInfo.Services.Cache;
 using L4D2PlayStats.Core.UserAvatar;
 using L4D2PlayStats.Web.Models;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Caching.Memory;
 
 namespace L4D2PlayStats.Web.Controllers;
 
 public class ServersController(
     IAppOptionsWraper config,
-    IMemoryCache memoryCache,
     IUserAvatar userAvatar,
     IServerInfoServiceCached serverInfoService,
     IPlayerServiceCached playerService)

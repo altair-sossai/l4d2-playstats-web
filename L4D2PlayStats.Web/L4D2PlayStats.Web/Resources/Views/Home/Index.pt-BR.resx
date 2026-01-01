@@ -137,13 +137,4 @@
   <data name="NoRankingWithHistoryMessage" xml:space="preserve">
     <value>Não há dados de ranking ainda. Abaixo segue o top 5 do último ranking antes do reset.</value>
   </data>
-  <data name="LastRankingTopFiveHeader" xml:space="preserve">
-    <value>Top 5 do último ranking</value>
-  </data>
-  <data name="LastRankingReference" xml:space="preserve">
-    <value>Período exibido: {0}</value>
-  </data>
-  <data name="ViewFullRanking" xml:space="preserve">
-    <value>Veja o ranking completo</value>
-  </data>
 </root>

@@ -1,5 +1,4 @@
 using L4D2PlayStats.Core.Patents.Services;
-using L4D2PlayStats.Core.Ranking.Results;
 using L4D2PlayStats.Core.Ranking.Services;
 using L4D2PlayStats.Core.UserAvatar;
 using L4D2PlayStats.Web.Models;
@@ -19,6 +18,10 @@ public class HomeController(
         ViewBag.Home = "active";
 
         var players = await rankingService.GetAsync();
+        var communityIds = players.Select(p => p.CommunityId).ToList();
+
+        await userAvatar.LoadAsync(communityIds);
+
         var ranking = players.Select(player =>
         {
             var patentProgress = patentService.GetPatentProgress(player);
@@ -27,24 +30,18 @@ public class HomeController(
             return model;
         }).ToList();
 
-        var communityIds = players.Select(p => p.CommunityId).ToList();
-
-        if (communityIds.Count > 0)
-        {
-            await userAvatar.LoadAsync(communityIds);
-
+        if (ranking.Any())
             return View(new HomeModel(ranking));
-        }
 
-        var lastHistoryResult = await rankingService.LastHistoryAsync();
-        var historyCommunityIds = lastHistoryResult?.Players.Select(p => p.CommunityId).ToList() ?? new List<string>();
+        var lastHistory = await rankingService.LastHistoryAsync();
+        if (lastHistory == null)
+            return View(new HomeModel(ranking));
 
-        if (historyCommunityIds.Count > 0)
-            await userAvatar.LoadAsync(historyCommunityIds);
+        communityIds = lastHistory.Players.Select(p => p.CommunityId).ToList();
 
-        var model = new HomeModel(ranking, lastHistoryResult);
+        await userAvatar.LoadAsync(communityIds);
 
-        return View(model);
+        return View(new HomeModel(ranking, lastHistory));
     }
 
     public IActionResult SetTheme(string theme)

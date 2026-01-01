@@ -54,12 +54,12 @@
 
 @if (Model.Ranking.Count == 0)
 {
-    if (Model.HasLastRanking)
+    if (Model.LastHistory != null)
     {
         <div class="jumbotron text-center" style="margin-top: 20px">
             <p>@Localizer["NoRankingWithHistoryMessage"]</p>
         </div>
-        @await Html.PartialAsync("_LastRankingTopFive", Model.LastHistoryResult)
+        @await Html.PartialAsync("_LastRankingTopFive", Model.LastHistory)
     }
     else
     {
