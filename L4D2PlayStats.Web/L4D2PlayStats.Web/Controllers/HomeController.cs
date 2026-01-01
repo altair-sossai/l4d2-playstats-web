@@ -19,21 +19,6 @@ public class HomeController(
         ViewBag.Home = "active";
 
         var players = await rankingService.GetAsync();
-        var communityIds = players.Select(p => p.CommunityId).ToList();
-
-        var lastHistoryResult = default(HistoryResult?);
-
-        if (players.Count == 0)
-        {
-            lastHistoryResult = await rankingService.LastHistoryAsync();
-
-            if (lastHistoryResult != null)
-                communityIds = lastHistoryResult.Players.Select(p => p.CommunityId).ToList();
-        }
-
-        if (communityIds.Count > 0)
-            await userAvatar.LoadAsync(communityIds);
-
         var ranking = players.Select(player =>
         {
             var patentProgress = patentService.GetPatentProgress(player);
@@ -41,6 +26,21 @@ public class HomeController(
 
             return model;
         }).ToList();
+
+        var communityIds = players.Select(p => p.CommunityId).ToList();
+
+        if (communityIds.Count > 0)
+        {
+            await userAvatar.LoadAsync(communityIds);
+
+            return View(new HomeModel(ranking));
+        }
+
+        var lastHistoryResult = await rankingService.LastHistoryAsync();
+        var historyCommunityIds = lastHistoryResult?.Players.Select(p => p.CommunityId).ToList() ?? new List<string>();
+
+        if (historyCommunityIds.Count > 0)
+            await userAvatar.LoadAsync(historyCommunityIds);
 
         var model = new HomeModel(ranking, lastHistoryResult);
 

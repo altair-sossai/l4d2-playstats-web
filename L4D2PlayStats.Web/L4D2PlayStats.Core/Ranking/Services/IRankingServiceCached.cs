@@ -10,5 +10,5 @@ public interface IRankingServiceCached
     Task<ExperienceConfigResult> ExperienceConfigAsync();
     Task<List<SdkHistoryResult>> AllHistoryAsync();
     Task<List<PlayerResult>> HistoryAsync(string historyId);
-    Task<HistoryResult?> LastHistoryAsync();
+    Task<RankingHistoryResult?> LastHistoryAsync();
 }

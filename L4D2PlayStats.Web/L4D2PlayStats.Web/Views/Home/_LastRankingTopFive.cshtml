@@ -2,7 +2,8 @@
 @using L4D2PlayStats.Core.Infrastructure.Extensions
 @using L4D2PlayStats.Core.UserAvatar
 @using L4D2PlayStats.Web
-@model L4D2PlayStats.Core.Ranking.Results.HistoryResult
+@using System.Linq
+@model L4D2PlayStats.Core.Ranking.Results.RankingHistoryResult
 @inject IViewLocalizer Localizer
 @inject IStringLocalizer<SharedResource> SharedLocalizer
 @inject IUserAvatar UserAvatar
@@ -11,6 +12,7 @@
 @{
     var history = Model.History;
     var historyLabel = string.Empty;
+    var players = Model.Players.Take(5).ToList();
 
     if (history != null)
     {
@@ -53,7 +55,7 @@
     </tr>
     </thead>
     <tbody>
-    @foreach (var player in Model.TopFivePlayers)
+    @foreach (var player in players)
     {
         <tr class="hover @(CurrentUser.ItIsMe(player.CommunityId) ? "it-is-me" : string.Empty)">
             <td class="text-center vertical-align-middle">

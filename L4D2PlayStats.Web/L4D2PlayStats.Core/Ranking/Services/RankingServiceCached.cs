@@ -49,7 +49,7 @@ public class RankingServiceCached(IAppOptionsWraper config, IMemoryCache memoryC
         }))!;
     }
 
-    public async Task<HistoryResult?> LastHistoryAsync()
+    public async Task<RankingHistoryResult?> LastHistoryAsync()
     {
         var allHistory = await AllHistoryAsync();
         var history = allHistory.LastOrDefault();
@@ -57,8 +57,9 @@ public class RankingServiceCached(IAppOptionsWraper config, IMemoryCache memoryC
         if (history == null)
             return null;
 
-        var players = (await HistoryAsync(history.Id)).ToList();
+        var historyPlayers = await HistoryAsync(history.Id);
+        var players = historyPlayers.ToList();
 
-        return new HistoryResult(history, players);
+        return new RankingHistoryResult(history, players);
     }
 }
