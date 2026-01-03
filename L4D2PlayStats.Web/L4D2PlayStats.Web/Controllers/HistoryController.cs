@@ -13,6 +13,11 @@ public class HistoryController(IRankingServiceCached rankingService, IUserAvatar
         ViewBag.History = "active";
 
         var allHistory = await rankingService.AllHistoryAsync();
+
+        allHistory = allHistory
+            .Where(h => h.IsAnnual || h.StartYear == DateTime.Now.Year)
+            .ToList();
+
         if (allHistory.Count == 0)
             return View("NoHistory");
 
