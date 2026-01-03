@@ -70,7 +70,7 @@
                             {
                                 var survivor = survivors[i];
                                 <tr id="tr0-survivor-@i">
-                                    <td rowspan="3" style="width: 70px">
+                                    <td rowspan="3" style="width: 75px; padding-right: 4px;">
                                         <img src="imgs/survivor-character/@(survivor.Character.ToString().ToLower()).png" alt="@survivor.Character"
                                              data-toggle="tooltip" data-placement="top" title="@survivor.Character"
                                              class="img-responsive img-character @(survivor.Dead ? "img-gray" : string.Empty)"/>
@@ -251,10 +251,10 @@
                                 var infectedIcon = infected.Type == null ? "none" : infected.Type.Value.ToString().ToLower();
                                 var infectedTitle = infected.Type?.Description() ?? "None";
                                 <tr id="tr0-infected-@i">
-                                    <td style="width: 75px" rowspan="2">
+                                    <td style="width: 80px; padding-right: 8px; padding-bottom: 5px;" rowspan="2">
                                         <img src="imgs/infected-type/@(infectedIcon).jpg" alt="@infectedTitle"
                                              data-toggle="tooltip" data-placement="top" title="@infectedTitle"
-                                             class="img-responsive img-infected"/>
+                                             class="img-responsive img-infected @(infected.IsInfectedGhost ? "img-ghost" : string.Empty)"/>
                                     </td>
                                     <td style="width: 40px">
                                         <a href="@infected.ProfileUrl" target="_blank">
@@ -277,7 +277,7 @@
 
                                         @if (infected.IsInfectedGhost)
                                         {
-                                            <span class="label label-default" data-toggle="tooltip" data-placement="top" title="@SharedLocalizer["Spawning"]">
+                                            <span class="label label-info" data-toggle="tooltip" data-placement="top" title="@SharedLocalizer["Spawning"]">
                                                 @SharedLocalizer["Spawning"]
                                             </span>
                                         }

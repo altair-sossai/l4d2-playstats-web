@@ -15,8 +15,8 @@
 
             .table-survivors .img-character,
             .table-infecteds .img-infected {
-                margin-bottom: 5px;
-                padding-right: 5px;
+                margin: 0;
+                padding: 0;
             }
 
             .table-survivors .img-avatar,
@@ -75,6 +75,12 @@
         .img-gray {
             -webkit-filter: grayscale(100%);
             filter: grayscale(100%);
+        }
+
+        .img-ghost {
+            filter: grayscale(75%) brightness(1.1) contrast(0.95);
+            opacity: 0.75;
+            box-shadow: 0 0 8px rgba(255, 255, 255, 0.25);
         }
 
         .td-latency {
