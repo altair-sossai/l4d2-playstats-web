@@ -3,4 +3,5 @@
 public interface ICampaignName
 {
     string? this[string? map] { get; }
+    List<Models.Campaign> Campaigns { get; }
 }
