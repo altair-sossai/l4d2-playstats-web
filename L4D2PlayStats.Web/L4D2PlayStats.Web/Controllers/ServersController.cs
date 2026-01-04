@@ -22,9 +22,8 @@ public class ServersController(
         ViewBag.Servers = "active";
 
         var model = await GetServerInfoAsync(config.PrimaryServerIp);
-        var viewName = model.GameInfo.AnyPlayerConnected ? "_GameInfo" : "_ServersInfo";
 
-        return View(viewName, model);
+        return View(model);
     }
 
     [Route("servers/header")]
