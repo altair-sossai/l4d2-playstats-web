@@ -214,6 +214,10 @@
 
         var terminal = {
             commands: {
+                '!forcematch': {
+                    description: '@Html.Raw(SharedLocalizer["ForcesMatch"])',
+                    args: ['matchMode']
+                },
                 '!kick': {
                     description: '@Html.Raw(SharedLocalizer["KicksPlayer"])',
                     args: ['players', 'reason']
@@ -347,6 +351,45 @@
                             '@Html.Raw(SharedLocalizer["TeamKill"])',
                             '@Html.Raw(SharedLocalizer["RuleViolation"])',
                             '@Html.Raw(SharedLocalizer["Other"])'
+                        ];
+                    }
+                },
+                matchMode: {
+                    title: '@Html.Raw(SharedLocalizer["SelectMatchMode"])',
+                    items: function() {
+                        return [
+                            { displayText: 'ZoneMod 2.9', value: 'zonemod' },
+                            { displayText: 'ZoneMod Retro 2.9', value: 'zoneretro' },
+                            { displayText: '3v3 ZoneMod', value: 'zm3v3' },
+                            { displayText: '2v2 ZoneMod', value: 'zm2v2' },
+                            { displayText: '1v1 ZoneMod', value: 'zm1v1' },
+
+                            { displayText: 'NeoMod Tourney 0.4a', value: 'neomod' },
+
+                            { displayText: 'NextMod 1.0.5', value: 'nextmod' },
+                            { displayText: '3v3 NextMod', value: 'nextmod3v3' },
+                            { displayText: '2v2 NextMod', value: 'nextmod2v2' },
+                            { displayText: '1v1 NextMod', value: 'nextmod1v1' },
+
+                            { displayText: 'Promod Elite 1.1', value: 'pmelite' },
+                            { displayText: 'Deadman 5.0.3', value: 'deadman' },
+
+                            { displayText: 'Acemod RV 1.3', value: 'acemodrv' },
+                            { displayText: '3v3 Acemod RV', value: 'amrv3v3' },
+                            { displayText: '2v2 Acemod RV', value: 'amrv2v2' },
+                            { displayText: '1v1 Acemod RV', value: 'amrv1v1' },
+
+                            { displayText: 'Equilibrium 3.0c', value: 'eq' },
+                            { displayText: '3v3 EQ', value: 'eq3v3' },
+                            { displayText: '2v2 EQ', value: 'eq2v2' },
+                            { displayText: '1v1 EQ', value: 'eq1v1' },
+
+                            { displayText: 'Apex 1.1.2', value: 'apex' },
+
+                            { displayText: 'ZoneHunters 2.9', value: 'zonehunters' },
+                            { displayText: '3v3 ZoneHunters', value: 'zh3v3' },
+                            { displayText: '2v2 ZoneHunters', value: 'zh2v2' },
+                            { displayText: '1v1 ZoneHunters', value: 'zh1v1' },
                         ];
                     }
                 }

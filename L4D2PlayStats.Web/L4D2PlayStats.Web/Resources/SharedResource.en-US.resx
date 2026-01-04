@@ -870,6 +870,12 @@
   <data name="CopyFailedMessage" xml:space="preserve">
     <value>It was not possible to copy the text automatically. Please copy it manually.</value>
   </data>
+  <data name="ForcesMatch" xml:space="preserve">
+    <value>Forces the selection of a match mode</value>
+  </data>
+  <data name="SelectMatchMode" xml:space="preserve">
+    <value>Select the match mode</value>
+  </data>
   <data name="KicksPlayer" xml:space="preserve">
     <value>Kicks a player from the server</value>
   </data>
