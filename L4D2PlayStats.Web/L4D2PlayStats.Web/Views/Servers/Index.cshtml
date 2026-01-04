@@ -126,9 +126,24 @@
             dd.apply(current, diffs);
         }
 
+        function loadCampaigns() {
+            $.ajax({
+                url: '/api/campaigns',
+                method: 'GET',
+                dataType: 'json',
+                success: function (campaigns) {
+                    terminal.dataSources.campaign.items = function() {
+                        return $.map(campaigns, function(campaign) {
+                            return { displayText: campaign.name, value: campaign.maps[0] };
+                        });
+                    };
+                }
+            });
+        }
+
         function refreshHeader() {
             $.ajax({
-                url: 'servers/header',
+                url: '/servers/header',
                 type: 'GET',
                 timeout: 2000,
                 success: function (html) {
@@ -144,7 +159,7 @@
 
         function refreshPlayers() {
             $.ajax({
-                url: 'servers/players',
+                url: '/servers/players',
                 type: 'GET',
                 timeout: 2000,
                 success: function (html) {
@@ -161,7 +176,7 @@
             var after = $('#chat-messages p[data-message-when]').last().data('message-when') || 0;
 
             $.ajax({
-                url: 'servers/messages?after=' + after,
+                url: '/servers/messages?after=' + after,
                 type: 'GET',
                 timeout: 2000,
                 success: function (html, status) {
@@ -221,6 +236,10 @@
                 '!crash': {
                     description: '@Html.Raw(SharedLocalizer["CrashesServer"])',
                     args: []
+                },
+                '!changelevel': {
+                    description: '@Html.Raw(SharedLocalizer["ChangesCampaign"])',
+                    args: ['campaign']
                 },
                 '!kick': {
                     description: '@Html.Raw(SharedLocalizer["KicksPlayer"])',
@@ -396,6 +415,65 @@
                             { displayText: '1v1 ZoneHunters', value: 'zh1v1' },
                         ];
                     }
+                },
+                campaign: {
+                    title: '@Html.Raw(SharedLocalizer["SelectCampaign"])',
+                    items: function() {
+                        return [
+                            {
+                                displayText: 'Dead Center',
+                                value: 'c1m1_hotel'
+                            },
+                            {
+                                displayText: 'Dark Carnival',
+                                value: 'c2m1_highway'
+                            },
+                            {
+                                displayText: 'Swamp Fever',
+                                value: 'c3m1_plankcountry'
+                            },
+                            {
+                                displayText: 'Hard Rain',
+                                value: 'c4m1_milltown_a'
+                            },
+                            {
+                                displayText: 'The Parish',
+                                value: 'c5m1_waterfront'
+                            },
+                            {
+                                displayText: 'The Passing',
+                                value: 'c6m1_riverbank'
+                            },
+                            {
+                                displayText: 'The Sacrifice',
+                                value: 'c7m3_port'
+                            },
+                            {
+                                displayText: 'No Mercy',
+                                value: 'c8m1_apartment'
+                            },
+                            {
+                                displayText: 'Crash Course',
+                                value: 'c9m1_alleys'
+                            },
+                            {
+                                displayText: 'Death Toll',
+                                value: 'c10m1_caves'
+                            },
+                            {
+                                displayText: 'Dead Air',
+                                value: 'c11m1_greenhouse'
+                            },
+                            {
+                                displayText: 'Blood Harvest',
+                                value: 'c12m1_hilltop'
+                            },
+                            {
+                                displayText: 'Cold Stream',
+                                value: 'c13m1_alpinecreek'
+                            }
+                        ];
+                    }
                 }
             },
             show: function() {
@@ -564,6 +642,7 @@
             refreshHeader();
             refreshPlayers();
             refreshMessages();
+            loadCampaigns();
 
             $('#chat-messages').scrollTop($('#chat-messages')[0].scrollHeight);
 

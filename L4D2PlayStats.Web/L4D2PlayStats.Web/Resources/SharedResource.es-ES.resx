@@ -877,6 +877,12 @@
   <data name="CrashesServer" xml:space="preserve">
     <value>Hace que el servidor se bloquee y se reinicie a su estado inicial</value>
   </data>
+  <data name="ChangesCampaign" xml:space="preserve">
+    <value>Cambia la campaña actual</value>
+  </data>
+  <data name="SelectCampaign" xml:space="preserve">
+    <value>Seleccione una campaña</value>
+  </data>
   <data name="KicksPlayer" xml:space="preserve">
     <value>Expulsa a jugadores del servidor</value>
   </data>

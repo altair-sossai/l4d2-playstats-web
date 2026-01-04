@@ -879,6 +879,12 @@
   <data name="CrashesServer" xml:space="preserve">
     <value>Causes the server to crash and restart to its initial state</value>
   </data>
+  <data name="ChangesCampaign" xml:space="preserve">
+    <value>Changes the current campaign</value>
+  </data>
+  <data name="SelectCampaign" xml:space="preserve">
+    <value>Select a campaign</value>
+  </data>
   <data name="KicksPlayer" xml:space="preserve">
     <value>Kicks a player from the server</value>
   </data>
