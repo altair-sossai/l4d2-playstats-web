@@ -473,6 +473,7 @@
                 success: function (data) {
                     if (!data || data.length == 0) {
                         $('#server-info').hide();
+                        $('#game-info-chat').hide();
                         return;
                     }
 
@@ -488,8 +489,8 @@
                     $('#server-info').show();
                     $('#game-info-chat').show();
                 },
-                error: function () {
-                    $('#server-info').hide();
+                complete: function () {
+                    setTimeout(updateServerInfo, 4000);
                 }
             });
         }
@@ -558,7 +559,6 @@
             });
 
             updateServerInfo();
-            setInterval(updateServerInfo, 10000);
 
             lazyLoadCharts();
         });
