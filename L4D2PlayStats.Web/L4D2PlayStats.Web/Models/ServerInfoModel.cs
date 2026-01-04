@@ -14,4 +14,5 @@ public class ServerInfoModel(
     public GameInfo GameInfo { get; } = gameInfo;
     public ServerInfo? ServerInfo { get; } = serverListResponse?.Response?.Servers?.FirstOrDefault();
     public List<Core.Steam.Players.Player>? Players { get; } = players;
+    public bool AnyPlayerConnected => ServerInfo?.Players > 0;
 }

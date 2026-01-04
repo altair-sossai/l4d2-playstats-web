@@ -480,11 +480,13 @@
 
                     if (serverInfo.players == 0) {
                         $('#server-info').hide();
+                        $('#game-info-chat').hide();
                         return;
                     }
 
                     $('#server-status').text('● ' + serverInfo.players + '/' + serverInfo.max_players);
                     $('#server-info').show();
+                    $('#game-info-chat').show();
                 },
                 error: function () {
                     $('#server-info').hide();

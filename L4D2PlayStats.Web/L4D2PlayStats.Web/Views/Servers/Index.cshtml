@@ -216,7 +216,7 @@
                 contentType: 'application/json',
                 data: JSON.stringify({ message: message }),
                 success: function (result, statusCode) {
-                    if (statusCode == 'success' || statusCode == 'nocontent') {
+                    if (result?.success || statusCode == 'nocontent') {
                         refreshMessages();
                         $('#message').val('');
                         $('button[type="submit"]').prop('disabled', true);
@@ -675,7 +675,7 @@
     @await Html.PartialAsync("_Players", Model)
 </div>
 
-<div class="row" style="margin-top: 20px">
+<div id="game-info-chat" class="row" style="margin-top: 20px; @(Model.AnyPlayerConnected ? string.Empty : "display: none")">
     <div class="col-md-6 col-sm-12">
         <div class="panel panel-default">
             <div class="panel-heading">
