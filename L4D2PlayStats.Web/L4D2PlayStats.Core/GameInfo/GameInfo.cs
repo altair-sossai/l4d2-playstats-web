@@ -141,11 +141,11 @@ public class GameInfo
             _externalMessages.RemoveAll(m => m.Age >= MessageRetention);
 
             var lastMessage = _externalMessages.LastOrDefault();
-            if (lastMessage != null && lastMessage.Age < GlobalMessageCooldown)
+            if (lastMessage != null && lastMessage.Age < GlobalMessageCooldown && !user.IsAdmin)
                 return SendExternalMessageResult.FailureResult("Max message rate exceeded. Please wait.");
 
             var lastUserMessage = _externalMessages.LastOrDefault(m => m.SteamId == user.SteamId);
-            if (lastUserMessage != null && lastUserMessage.Age < UserMessageCooldown)
+            if (lastUserMessage != null && lastUserMessage.Age < UserMessageCooldown && !user.IsAdmin)
                 return SendExternalMessageResult.FailureResult("Max message rate exceeded. Please wait.");
 
             var message = new ExternalChatMessage(user, command);
