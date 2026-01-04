@@ -876,6 +876,9 @@
   <data name="SelectMatchMode" xml:space="preserve">
     <value>Selecionar o modo de partida</value>
   </data>
+  <data name="CrashesServer" xml:space="preserve">
+    <value>Faz o servidor travar e reiniciar para o estado inicial</value>
+  </data>
   <data name="KicksPlayer" xml:space="preserve">
     <value>Remove um jogador do servidor</value>
   </data>
