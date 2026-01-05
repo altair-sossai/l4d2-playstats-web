@@ -28,7 +28,7 @@
         type = "line",
         data = new
         {
-            labels = Model.Maps?.Select(m => m.MapName),
+            labels = Model.Maps?.Select(m => m.MapName?.Truncate(16)),
             datasets = Model.Teams?.Select(team => new
             {
                 label = $"{SharedLocalizer["Team"].Value} {team.Code}",
@@ -83,7 +83,7 @@
         type = "bar",
         data = new
         {
-            labels = Model.Maps?.Select(m => m.MapName),
+            labels = Model.Maps?.Select(m => m.MapName?.Truncate(16)),
             datasets = new List<object>()
         },
         options = new
