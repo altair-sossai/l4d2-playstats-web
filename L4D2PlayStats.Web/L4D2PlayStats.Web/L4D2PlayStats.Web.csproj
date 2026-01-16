@@ -9,7 +9,7 @@
 
     <ItemGroup>
         <PackageReference Include="AspNet.Security.OpenId.Steam" Version="10.0.0" />
-        <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="10.0.1" />
+        <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="10.0.2" />
         <PackageReference Include="System.Linq.Async" Version="7.0.0" />
         <PackageReference Include="WebMarkupMin.AspNetCoreLatest" Version="2.20.0" />
     </ItemGroup>
