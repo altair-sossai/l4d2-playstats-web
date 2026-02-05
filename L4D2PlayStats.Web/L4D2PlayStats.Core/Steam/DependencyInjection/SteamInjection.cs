@@ -44,7 +44,11 @@ public static class SteamInjection
         {
             serviceCollection
                 .AddRefitClient<T>(Settings)
-                .ConfigureHttpClient(c => c.BaseAddress = new Uri(BaseUrl))
+                .ConfigureHttpClient(c =>
+                {
+                    c.BaseAddress = new Uri(BaseUrl);
+                    c.Timeout = TimeSpan.FromSeconds(5);
+                })
                 .AddResilienceHandler(name, c => c.AddRetry(RetryStrategyOptions));
 
             return serviceCollection;
