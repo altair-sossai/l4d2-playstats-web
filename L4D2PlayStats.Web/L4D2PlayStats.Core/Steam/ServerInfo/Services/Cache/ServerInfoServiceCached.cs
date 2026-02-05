@@ -1,5 +1,4 @@
 ﻿using System.Collections.Concurrent;
-using L4D2PlayStats.Core.Infrastructure.Structures;
 using L4D2PlayStats.Core.Steam.ServerInfo.Responses;
 using Serilog;
 
@@ -7,27 +6,54 @@ namespace L4D2PlayStats.Core.Steam.ServerInfo.Services.Cache;
 
 public class ServerInfoServiceCached(IServerInfoService serverInfoService) : IServerInfoServiceCached
 {
-    private static readonly ConcurrentDictionary<string, AsyncCache<GetServerListResponse>> ServerInfoCache = new();
-    private static readonly TimeSpan RefreshInterval = TimeSpan.FromSeconds(15);
+    private static readonly ConcurrentDictionary<string, CacheEntry> Cache = new();
+    private static readonly ConcurrentDictionary<string, SemaphoreSlim> Locks = new();
+
+    private static readonly TimeSpan RefreshInterval = TimeSpan.FromSeconds(10);
 
     public Task<GetServerListResponse?> GetServerInfoAsync(string key, string filter, CancellationToken cancellationToken)
     {
-        if (!ServerInfoCache.ContainsKey(filter))
-            ServerInfoCache.TryAdd(filter, new AsyncCache<GetServerListResponse>(RefreshInterval));
+        Cache.TryGetValue(filter, out var entry);
 
-        var serverInfoCache = ServerInfoCache[filter];
+        TryRefreshAsync(key, filter, entry, cancellationToken);
 
-        return serverInfoCache.GetAsync(async () =>
+        return Task.FromResult(entry?.Value);
+    }
+
+    private void TryRefreshAsync(string key, string filter, CacheEntry? entry, CancellationToken cancellationToken)
+    {
+        var now = DateTimeOffset.UtcNow;
+
+        if (entry != null && now - entry.LastUpdate < RefreshInterval)
+            return;
+
+        var semaphoreSlim = Locks.GetOrAdd(filter, _ => new SemaphoreSlim(1, 1));
+
+        _ = Task.Run(async () =>
         {
+            if (!await semaphoreSlim.WaitAsync(0, cancellationToken))
+                return;
+
             try
             {
-                return await serverInfoService.GetServerInfoAsync(key, filter, cancellationToken);
+                if (Cache.TryGetValue(filter, out var current) && now - current.LastUpdate < RefreshInterval)
+                    return;
+
+                var response = await serverInfoService.GetServerInfoAsync(key, filter, cancellationToken);
+
+                if (response != null)
+                    Cache[filter] = new CacheEntry(response, DateTimeOffset.UtcNow);
             }
             catch (Exception exception)
             {
-                Log.Error(exception, "Error getting server info");
-                return null;
+                Log.Error(exception, "Failed to refresh cache for {Filter}", filter);
             }
-        }, cancellationToken);
+            finally
+            {
+                semaphoreSlim.Release();
+            }
+        }, CancellationToken.None);
     }
+
+    private record CacheEntry(GetServerListResponse Value, DateTimeOffset LastUpdate);
 }
