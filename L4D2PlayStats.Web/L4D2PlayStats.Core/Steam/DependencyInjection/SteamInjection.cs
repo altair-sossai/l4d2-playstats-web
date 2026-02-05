@@ -47,7 +47,7 @@ public static class SteamInjection
                 .ConfigureHttpClient(c =>
                 {
                     c.BaseAddress = new Uri(BaseUrl);
-                    c.Timeout = TimeSpan.FromSeconds(5);
+                    c.Timeout = TimeSpan.FromSeconds(2.5);
                 })
                 .AddResilienceHandler(name, c => c.AddRetry(RetryStrategyOptions));
 

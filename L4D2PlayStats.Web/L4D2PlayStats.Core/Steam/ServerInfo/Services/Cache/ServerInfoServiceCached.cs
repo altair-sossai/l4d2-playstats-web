@@ -8,7 +8,7 @@ namespace L4D2PlayStats.Core.Steam.ServerInfo.Services.Cache;
 public class ServerInfoServiceCached(IServerInfoService serverInfoService) : IServerInfoServiceCached
 {
     private static readonly ConcurrentDictionary<string, AsyncCache<GetServerListResponse>> ServerInfoCache = new();
-    private static readonly TimeSpan RefreshInterval = TimeSpan.FromSeconds(5);
+    private static readonly TimeSpan RefreshInterval = TimeSpan.FromSeconds(15);
 
     public Task<GetServerListResponse?> GetServerInfoAsync(string key, string filter, CancellationToken cancellationToken)
     {
