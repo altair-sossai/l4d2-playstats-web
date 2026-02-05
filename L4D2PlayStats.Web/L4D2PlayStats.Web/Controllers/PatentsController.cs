@@ -8,11 +8,11 @@ namespace L4D2PlayStats.Web.Controllers;
 public class PatentsController(IRankingServiceCached rankingServiceCached, IPatentService patentService) : Controller
 {
     [Route("patents")]
-    public async Task<IActionResult> Index()
+    public async Task<IActionResult> Index(CancellationToken cancellationToken)
     {
         ViewBag.Patent = "active";
 
-        var config = await rankingServiceCached.ExperienceConfigAsync();
+        var config = await rankingServiceCached.ExperienceConfigAsync(cancellationToken);
         var patents = patentService.GetAllPatents();
 
         var model = new PatentModel(config, patents);

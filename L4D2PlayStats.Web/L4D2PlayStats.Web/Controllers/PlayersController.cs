@@ -18,11 +18,11 @@ public class PlayersController(
     IPatentService patentService) : Controller
 {
     [Route("players")]
-    public async Task<IActionResult> Index(PlayerResultProperty orderBy = PlayerResultProperty.Experience, bool asc = false)
+    public async Task<IActionResult> Index(PlayerResultProperty orderBy = PlayerResultProperty.Experience, bool asc = false, CancellationToken cancellationToken = default)
     {
         ViewBag.Players = "active";
 
-        var playersResult = await rankingService.GetAsync();
+        var playersResult = await rankingService.GetAsync(cancellationToken);
         var communityIds = playersResult.Select(p => p.CommunityId);
         await userAvatar.LoadAsync(communityIds);
 
@@ -33,9 +33,9 @@ public class PlayersController(
     }
 
     [Route("player/{communityId}/{compareWith:long?}")]
-    public async Task<IActionResult> Details(long communityId, long? compareWith = null)
+    public async Task<IActionResult> Details(long communityId, long? compareWith = null, CancellationToken cancellationToken = default)
     {
-        var players = await rankingService.GetAsync();
+        var players = await rankingService.GetAsync(cancellationToken);
         var firstPlayer = players.FirstOrDefault(p => p.CommunityId == communityId);
         var secondPlayer = compareWith == null ? null : players.FirstOrDefault(p => p.CommunityId == compareWith);
 
@@ -53,7 +53,7 @@ public class PlayersController(
         var firstPlayerRanking = new RankingModel(sharedLocalizer, firstPlayer, firstPlayerPatentProgress);
         var secondPlayerRanking = secondPlayer == null || secondPlayerPatentProgress == null ? null : new RankingModel(sharedLocalizer, secondPlayer, secondPlayerPatentProgress);
 
-        var matches = await matchesServiceCached.GetAsync();
+        var matches = await matchesServiceCached.GetAsync(cancellationToken);
 
         var communityIds = matches
             .SelectMany(m => m.Teams ?? [])

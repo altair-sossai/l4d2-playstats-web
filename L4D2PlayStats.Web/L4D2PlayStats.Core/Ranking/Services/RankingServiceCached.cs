@@ -8,55 +8,55 @@ namespace L4D2PlayStats.Core.Ranking.Services;
 
 public class RankingServiceCached(IAppOptionsWraper config, IMemoryCache memoryCache, IRankingService rankingService) : IRankingServiceCached
 {
-    public async Task<List<PlayerResult>> GetAsync()
+    public async Task<List<PlayerResult>> GetAsync(CancellationToken cancellationToken)
     {
         return (await memoryCache.GetOrCreateAsync("Ranking", async entry =>
         {
             entry.AbsoluteExpirationRelativeToNow = TimeSpan.FromHours(1);
 
-            return await rankingService.GetAsync(config.ServerId);
+            return await rankingService.GetAsync(config.ServerId, cancellationToken);
         }))!;
     }
 
-    public async Task<ExperienceConfigResult> ExperienceConfigAsync()
+    public async Task<ExperienceConfigResult> ExperienceConfigAsync(CancellationToken cancellationToken)
     {
         return (await memoryCache.GetOrCreateAsync("ExperienceConfig", async entry =>
         {
             entry.AbsoluteExpirationRelativeToNow = TimeSpan.FromDays(1);
 
-            return await rankingService.ExperienceConfigAsync();
+            return await rankingService.ExperienceConfigAsync(cancellationToken);
         }))!;
     }
 
-    public async Task<List<HistoryResult>> AllHistoryAsync()
+    public async Task<List<HistoryResult>> AllHistoryAsync(CancellationToken cancellationToken)
     {
         return (await memoryCache.GetOrCreateAsync("AllHistory", async entry =>
         {
             entry.AbsoluteExpirationRelativeToNow = TimeSpan.FromHours(8);
 
-            return await rankingService.AllHistoryAsync(config.ServerId);
+            return await rankingService.AllHistoryAsync(config.ServerId, cancellationToken);
         }))!;
     }
 
-    public async Task<List<PlayerResult>> HistoryAsync(string historyId)
+    public async Task<List<PlayerResult>> HistoryAsync(string historyId, CancellationToken cancellationToken)
     {
         return (await memoryCache.GetOrCreateAsync($"History_{historyId}", async entry =>
         {
             entry.AbsoluteExpirationRelativeToNow = TimeSpan.FromHours(8);
 
-            return await rankingService.HistoryAsync(config.ServerId, historyId);
+            return await rankingService.HistoryAsync(config.ServerId, historyId, cancellationToken);
         }))!;
     }
 
-    public async Task<RankingHistoryResult?> LastHistoryAsync()
+    public async Task<RankingHistoryResult?> LastHistoryAsync(CancellationToken cancellationToken)
     {
-        var allHistory = await AllHistoryAsync();
+        var allHistory = await AllHistoryAsync(cancellationToken);
         var lastHistory = allHistory.LastOrDefault();
 
         if (lastHistory == null)
             return null;
 
-        var players = await HistoryAsync(lastHistory.Id);
+        var players = await HistoryAsync(lastHistory.Id, cancellationToken);
 
         return new RankingHistoryResult(lastHistory, players);
     }

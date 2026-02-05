@@ -8,12 +8,11 @@ namespace L4D2PlayStats.Web.Controllers;
 public class HistoryController(IRankingServiceCached rankingService, IUserAvatar userAvatar) : Controller
 {
     [Route("history/{historyId?}")]
-    public async Task<IActionResult> Index(string? historyId = null)
+    public async Task<IActionResult> Index(string? historyId = null, CancellationToken cancellationToken = default)
     {
         ViewBag.History = "active";
 
-        var allHistory = await rankingService.AllHistoryAsync();
-
+        var allHistory = await rankingService.AllHistoryAsync(cancellationToken);
         allHistory = allHistory
             .Where(h => h.IsAnnual || h.StartYear == DateTime.Now.Year)
             .ToList();
@@ -29,7 +28,7 @@ public class HistoryController(IRankingServiceCached rankingService, IUserAvatar
         if (history == null)
             return View("NoHistory");
 
-        var players = await rankingService.HistoryAsync(history.Id);
+        var players = await rankingService.HistoryAsync(history.Id, cancellationToken);
         var communityIds = players.Select(p => p.CommunityId);
         await userAvatar.LoadAsync(communityIds);
 

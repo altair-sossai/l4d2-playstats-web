@@ -14,9 +14,9 @@ public class PunishmentsController(IPunishmentsService punishmentsService, ICach
 {
     [HttpPost]
     [AdminAuthorize]
-    public async Task<IActionResult> PostAsync([FromBody] PunishmentCommand command)
+    public async Task<IActionResult> PostAsync([FromBody] PunishmentCommand command, CancellationToken cancellationToken)
     {
-        var result = await punishmentsService.PostAsync(command);
+        var result = await punishmentsService.PostAsync(command, cancellationToken);
 
         cacheService.ClearCache();
 
@@ -25,9 +25,9 @@ public class PunishmentsController(IPunishmentsService punishmentsService, ICach
 
     [HttpDelete("{communityId}")]
     [AdminAuthorize]
-    public async Task<IActionResult> DeleteAsync(string communityId)
+    public async Task<IActionResult> DeleteAsync(string communityId, CancellationToken cancellationToken)
     {
-        await punishmentsService.DeleteAsync(communityId);
+        await punishmentsService.DeleteAsync(communityId, cancellationToken);
 
         cacheService.ClearCache();
 

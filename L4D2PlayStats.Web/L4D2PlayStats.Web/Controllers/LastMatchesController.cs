@@ -18,25 +18,24 @@ public class LastMatchesController(
     IMatchesServiceCached matchesServiceCached,
     IUserAvatar userAvatar) : Controller
 {
-    public async Task<IActionResult> Index()
+    public async Task<IActionResult> Index(CancellationToken cancellationToken)
     {
         ViewBag.LastMatches = "active";
 
-        var matches = await matchesServiceCached.GetAsync();
-
+        var matches = await matchesServiceCached.GetAsync(cancellationToken);
         await LoadAvatarsAsync(matches);
 
         return View(matches);
     }
 
     [Route("details/{start}/{end}")]
-    public async Task<IActionResult> Details(string start, string end)
+    public async Task<IActionResult> Details(string start, string end, CancellationToken cancellationToken)
     {
-        var matches = await matchesService.BetweenAsync(config.ServerId, start, end);
+        var matches = await matchesService.BetweenAsync(config.ServerId, start, end, cancellationToken);
         var match = matches.FirstOrDefault();
         if (match == null)
             return NotFound();
-        var statistics = await statisticsService.BetweenAsync(config.ServerId, start, end);
+        var statistics = await statisticsService.BetweenAsync(config.ServerId, start, end, cancellationToken);
 
         await LoadAvatarsAsync(matches);
 
@@ -46,13 +45,13 @@ public class LastMatchesController(
     }
 
     [Route("details/{start}/{end}/statistics/{statisticId}")]
-    public async Task<IActionResult> Statistics(string start, string end, string statisticId)
+    public async Task<IActionResult> Statistics(string start, string end, string statisticId, CancellationToken cancellationToken)
     {
-        var matches = await matchesService.BetweenAsync(config.ServerId, start, end);
+        var matches = await matchesService.BetweenAsync(config.ServerId, start, end, cancellationToken);
         var match = matches.FirstOrDefault();
         if (match == null)
             return NotFound();
-        var statistics = await statisticsService.BetweenAsync(config.ServerId, start, end);
+        var statistics = await statisticsService.BetweenAsync(config.ServerId, start, end, cancellationToken);
         var statistic = statistics.FirstOrDefault(f => f.StatisticId == statisticId);
 
         if (statistic == null)

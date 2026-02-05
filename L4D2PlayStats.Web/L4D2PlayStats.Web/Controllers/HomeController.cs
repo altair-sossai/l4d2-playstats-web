@@ -13,11 +13,11 @@ public class HomeController(
     IUserAvatar userAvatar,
     IPatentService patentService) : Controller
 {
-    public async Task<IActionResult> Index()
+    public async Task<IActionResult> Index(CancellationToken cancellationToken)
     {
         ViewBag.Home = "active";
 
-        var players = await rankingService.GetAsync();
+        var players = await rankingService.GetAsync(cancellationToken);
         var communityIds = players.Select(p => p.CommunityId).ToList();
 
         await userAvatar.LoadAsync(communityIds);
@@ -33,7 +33,7 @@ public class HomeController(
         if (ranking.Any())
             return View(new HomeModel(ranking));
 
-        var lastHistory = await rankingService.LastHistoryAsync();
+        var lastHistory = await rankingService.LastHistoryAsync(cancellationToken);
         if (lastHistory == null)
             return View(new HomeModel(ranking));
 

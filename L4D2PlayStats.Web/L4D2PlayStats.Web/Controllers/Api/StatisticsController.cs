@@ -16,9 +16,9 @@ public class StatisticsController(IAppOptionsWraper config, IStatisticsService s
 {
     [HttpPut("{statisticId}/update-score")]
     [AdminAuthorize]
-    public async Task<IActionResult> UpdateScoreAsync(string statisticId, [FromBody] UpdateTeamScoreCommand command)
+    public async Task<IActionResult> UpdateScoreAsync(string statisticId, [FromBody] UpdateTeamScoreCommand command, CancellationToken cancellationToken)
     {
-        var statistics = await statisticsService.GetStatisticAsync(config.ServerId, statisticId);
+        var statistics = await statisticsService.GetStatisticAsync(config.ServerId, statisticId, cancellationToken);
 
         if (statistics == null)
             return NotFound($"Statistic with ID {statisticId} not found.");
@@ -38,7 +38,7 @@ public class StatisticsController(IAppOptionsWraper config, IStatisticsService s
             TeamBScore = teamBScore
         };
 
-        var result = await statisticsService.UpdateScoreAsync(statisticId, updateScoreCommand);
+        var result = await statisticsService.UpdateScoreAsync(statisticId, updateScoreCommand, cancellationToken);
 
         cacheService.ClearCache();
 

@@ -10,9 +10,9 @@ namespace L4D2PlayStats.Web.Controllers.Api;
 public class PlayersController(IRankingServiceCached rankingService, IPatentService patentService) : ControllerBase
 {
     [HttpGet("patents")]
-    public async Task<IActionResult> Patents()
+    public async Task<IActionResult> Patents(CancellationToken cancellationToken)
     {
-        var players = await rankingService.GetAsync();
+        var players = await rankingService.GetAsync(cancellationToken);
 
         var models = players
             .Take(50)

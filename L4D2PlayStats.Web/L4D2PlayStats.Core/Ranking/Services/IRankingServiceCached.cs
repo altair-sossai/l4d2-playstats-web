@@ -5,9 +5,9 @@ namespace L4D2PlayStats.Core.Ranking.Services;
 
 public interface IRankingServiceCached
 {
-    Task<List<PlayerResult>> GetAsync();
-    Task<ExperienceConfigResult> ExperienceConfigAsync();
-    Task<List<HistoryResult>> AllHistoryAsync();
-    Task<List<PlayerResult>> HistoryAsync(string historyId);
-    Task<RankingHistoryResult?> LastHistoryAsync();
+    Task<List<PlayerResult>> GetAsync(CancellationToken cancellationToken);
+    Task<ExperienceConfigResult> ExperienceConfigAsync(CancellationToken cancellationToken);
+    Task<List<HistoryResult>> AllHistoryAsync(CancellationToken cancellationToken);
+    Task<List<PlayerResult>> HistoryAsync(string historyId, CancellationToken cancellationToken);
+    Task<RankingHistoryResult?> LastHistoryAsync(CancellationToken cancellationToken);
 }

@@ -4,5 +4,5 @@ namespace L4D2PlayStats.Core.Matches;
 
 public interface IMatchesServiceCached
 {
-    Task<List<MatchResult>> GetAsync();
+    Task<List<MatchResult>> GetAsync(CancellationToken cancellationToken);
 }

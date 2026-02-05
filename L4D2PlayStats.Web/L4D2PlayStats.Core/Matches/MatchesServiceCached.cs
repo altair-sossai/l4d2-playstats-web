@@ -10,13 +10,13 @@ public class MatchesServiceCached(
     IMatchesService matchesService,
     IMemoryCache memoryCache) : IMatchesServiceCached
 {
-    public async Task<List<MatchResult>> GetAsync()
+    public async Task<List<MatchResult>> GetAsync(CancellationToken cancellationToken)
     {
         return (await memoryCache.GetOrCreateAsync("Matches", async entry =>
         {
             entry.AbsoluteExpirationRelativeToNow = TimeSpan.FromHours(1);
 
-            return await matchesService.GetAsync(config.ServerId);
+            return await matchesService.GetAsync(config.ServerId, 50, cancellationToken);
         }))!;
     }
 }
