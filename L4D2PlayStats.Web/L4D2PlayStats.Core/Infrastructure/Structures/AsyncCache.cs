@@ -1,4 +1,6 @@
-﻿namespace L4D2PlayStats.Core.Infrastructure.Structures;
+﻿using Serilog;
+
+namespace L4D2PlayStats.Core.Infrastructure.Structures;
 
 public class AsyncCache<T>(TimeSpan refreshInterval)
 {
@@ -8,11 +10,11 @@ public class AsyncCache<T>(TimeSpan refreshInterval)
     private bool _isRefreshing;
     private DateTime _lastUpdate = DateTime.MinValue;
 
-    public async Task<T?> GetAsync(Func<Task<T?>> handler)
+    public async Task<T?> GetAsync(Func<Task<T?>> handler, CancellationToken cancellationToken)
     {
         if (_firstCall)
         {
-            await _semaphoreSlim.WaitAsync();
+            await _semaphoreSlim.WaitAsync(cancellationToken);
 
             try
             {
@@ -36,7 +38,7 @@ public class AsyncCache<T>(TimeSpan refreshInterval)
         if (_isRefreshing || elapsed < refreshInterval)
             return _cachedValue;
 
-        await _semaphoreSlim.WaitAsync();
+        await _semaphoreSlim.WaitAsync(cancellationToken);
 
         try
         {
@@ -54,13 +56,13 @@ public class AsyncCache<T>(TimeSpan refreshInterval)
                 }
                 catch (Exception exception)
                 {
-                    Console.WriteLine(exception);
+                    Log.Error(exception, "Error refreshing cache");
                 }
                 finally
                 {
                     _isRefreshing = false;
                 }
-            });
+            }, cancellationToken);
         }
         finally
         {

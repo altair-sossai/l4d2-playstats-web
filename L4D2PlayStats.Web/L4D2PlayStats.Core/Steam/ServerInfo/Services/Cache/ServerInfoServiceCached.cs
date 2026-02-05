@@ -1,6 +1,7 @@
 ﻿using System.Collections.Concurrent;
 using L4D2PlayStats.Core.Infrastructure.Structures;
 using L4D2PlayStats.Core.Steam.ServerInfo.Responses;
+using Serilog;
 
 namespace L4D2PlayStats.Core.Steam.ServerInfo.Services.Cache;
 
@@ -24,9 +25,9 @@ public class ServerInfoServiceCached(IServerInfoService serverInfoService) : ISe
             }
             catch (Exception exception)
             {
-                Console.WriteLine(exception);
+                Log.Error(exception, "Error getting server info");
                 return null;
             }
-        });
+        }, cancellationToken);
     }
 }
