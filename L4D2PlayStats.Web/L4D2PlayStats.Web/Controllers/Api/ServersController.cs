@@ -15,25 +15,25 @@ public class ServersController(
     IServerInfoServiceCached serverInfoService) : ControllerBase
 {
     [HttpGet]
-    public async Task<IActionResult> Get()
+    public async Task<IActionResult> Get(CancellationToken cancellationToken)
     {
         var servers = await memoryCache.GetOrCreateAsync("Api.Servers", entry =>
         {
             entry.AbsoluteExpirationRelativeToNow = TimeSpan.FromSeconds(10);
 
-            return GetServersInfo();
+            return GetServersInfo(cancellationToken);
         });
 
         return Ok(servers);
     }
 
-    private async Task<List<ServerInfo>> GetServersInfo()
+    private async Task<List<ServerInfo>> GetServersInfo(CancellationToken cancellationToken)
     {
         var servers = new List<ServerInfo>();
 
         foreach (var serverIp in config.ServerIps)
         {
-            var serverInfo = await GetServerInfo(serverIp);
+            var serverInfo = await GetServerInfo(serverIp, cancellationToken);
 
             if (serverInfo?.Response?.Servers == null)
                 continue;
@@ -44,7 +44,7 @@ public class ServersController(
         return servers;
     }
 
-    private Task<GetServerListResponse?> GetServerInfo(string serverIp)
+    private Task<GetServerListResponse?> GetServerInfo(string serverIp, CancellationToken cancellationToken)
     {
         var segments = serverIp.Split(':');
 
@@ -56,6 +56,6 @@ public class ServersController(
 
         var ip = segments[0];
 
-        return serverInfoService.GetServerInfoAsync(config.SteamApiKey, $"addr\\{ip}:{port}");
+        return serverInfoService.GetServerInfoAsync(config.SteamApiKey, $"addr\\{ip}:{port}", cancellationToken);
     }
 }

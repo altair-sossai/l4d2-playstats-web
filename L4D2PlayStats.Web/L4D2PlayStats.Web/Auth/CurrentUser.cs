@@ -6,8 +6,6 @@ using L4D2PlayStats.Core.Steam.SteamUser.Responses;
 using L4D2PlayStats.Core.Steam.SteamUser.Services;
 using L4D2PlayStats.Core.UserAvatar;
 using Microsoft.Extensions.Caching.Memory;
-using Polly;
-using Polly.Retry;
 
 namespace L4D2PlayStats.Web.Auth;
 
@@ -16,10 +14,6 @@ public class CurrentUser : ICurrentUser
     private const string Pattern = @"https:\/\/steamcommunity\.com\/openid\/id\/(\d+)";
     private static readonly Regex Regex = new(Pattern);
     private readonly IMemoryCache _memoryCache;
-
-    private readonly AsyncRetryPolicy _retryPolicy = Policy
-        .Handle<Exception>()
-        .WaitAndRetryAsync(3, attempt => TimeSpan.FromSeconds(Math.Pow(3, attempt)), (exception, _, retryCount, _) => { Console.WriteLine($"Retry {retryCount} due to: {exception.Message}"); });
 
     private readonly SteamIdentifiers _steamIdentifiers;
     private readonly ISteamUserService _steamUserService;
@@ -47,7 +41,7 @@ public class CurrentUser : ICurrentUser
         if (string.IsNullOrEmpty(CommunityId))
             return;
 
-        _user = GetUser();
+        _user = GetUser(CancellationToken.None);
     }
 
     private Lazy<string> SteamApiKey { get; }
@@ -81,26 +75,26 @@ public class CurrentUser : ICurrentUser
         return CommunityId.Equals(communityId, StringComparison.CurrentCultureIgnoreCase);
     }
 
-    private User? GetUser()
+    private User? GetUser(CancellationToken cancellationToken)
     {
-        return GetUserAsync()
+        return GetUserAsync(cancellationToken)
             .ConfigureAwait(false)
             .GetAwaiter()
             .GetResult();
     }
 
-    private async Task<User?> GetUserAsync()
+    private async Task<User?> GetUserAsync(CancellationToken cancellationToken)
     {
         if (string.IsNullOrEmpty(CommunityId))
             return null;
 
-        await _userAvatar.LoadAsync(CommunityId);
+        await _userAvatar.LoadAsync(CommunityId, cancellationToken: cancellationToken);
 
         return await _memoryCache.GetOrCreateAsync($"CurrentUser_{CommunityId}", async entry =>
         {
             entry.AbsoluteExpirationRelativeToNow = TimeSpan.FromHours(4);
 
-            var response = await _retryPolicy.ExecuteAsync(() => _steamUserService.GetPlayerSummariesAsync(SteamApiKey.Value, CommunityId));
+            var response = await _steamUserService.GetPlayerSummariesAsync(SteamApiKey.Value, CommunityId, cancellationToken);
 
             var responsePlayers = response?.Response?.Players;
             if (responsePlayers == null || responsePlayers.Count == 0)

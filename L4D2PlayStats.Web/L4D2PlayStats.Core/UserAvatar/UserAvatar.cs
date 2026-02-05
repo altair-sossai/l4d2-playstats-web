@@ -25,22 +25,22 @@ public class UserAvatar(ISteamUserService steamUserService, IAppOptionsWraper co
         }
     }
 
-    public Task LoadAsync(long communityId, bool fireAndForget = true)
+    public Task LoadAsync(long communityId, bool fireAndForget = true, CancellationToken cancellationToken = default)
     {
-        return LoadAsync(communityId.ToString(), fireAndForget);
+        return LoadAsync(communityId.ToString(), fireAndForget, cancellationToken);
     }
 
-    public Task LoadAsync(string communityId, bool fireAndForget = true)
+    public Task LoadAsync(string communityId, bool fireAndForget = true, CancellationToken cancellationToken = default)
     {
-        return LoadAsync([communityId], fireAndForget);
+        return LoadAsync([communityId], fireAndForget, cancellationToken);
     }
 
-    public async Task LoadAsync(IEnumerable<long> communityIds, bool fireAndForget = true)
+    public async Task LoadAsync(IEnumerable<long> communityIds, bool fireAndForget = true, CancellationToken cancellationToken = default)
     {
-        await LoadAsync(communityIds.Select(communityId => communityId.ToString()), fireAndForget);
+        await LoadAsync(communityIds.Select(communityId => communityId.ToString()), fireAndForget, cancellationToken);
     }
 
-    public async Task LoadAsync(IEnumerable<string?> communityIds, bool fireAndForget = true)
+    public async Task LoadAsync(IEnumerable<string?> communityIds, bool fireAndForget = true, CancellationToken cancellationToken = default)
     {
         var steamIds = communityIds
             .Where(NeedToDownload)
@@ -52,20 +52,20 @@ public class UserAvatar(ISteamUserService steamUserService, IAppOptionsWraper co
 
         var tasks = new List<Task>
         {
-            DownloadSteamPlayerAvatarsAsync(steamIds)
+            DownloadSteamPlayerAvatarsAsync(steamIds, cancellationToken)
         };
 
         if (fireAndForget)
-            tasks.Add(Task.Delay(TimeSpan.FromSeconds(1)));
+            tasks.Add(Task.Delay(TimeSpan.FromSeconds(1), cancellationToken));
 
         await Task.WhenAny(tasks);
     }
 
-    private async Task DownloadSteamPlayerAvatarsAsync(IEnumerable<string> steamIds)
+    private async Task DownloadSteamPlayerAvatarsAsync(IEnumerable<string> steamIds, CancellationToken cancellationToken)
     {
         foreach (var steamIdsChunked in steamIds.Chunk(99))
         {
-            var response = await steamUserService.GetPlayerSummariesAsync(config.SteamApiKey, string.Join(',', steamIdsChunked));
+            var response = await steamUserService.GetPlayerSummariesAsync(config.SteamApiKey, string.Join(',', steamIdsChunked), cancellationToken);
 
             if (response?.Response?.Players == null)
                 continue;
@@ -76,7 +76,7 @@ public class UserAvatar(ISteamUserService steamUserService, IAppOptionsWraper co
                     if (string.IsNullOrEmpty(player.SteamId) || string.IsNullOrEmpty(player.AvatarFull))
                         return;
 
-                    await SemaphoreSlim.WaitAsync();
+                    await SemaphoreSlim.WaitAsync(cancellationToken);
 
                     try
                     {
@@ -85,10 +85,10 @@ public class UserAvatar(ISteamUserService steamUserService, IAppOptionsWraper co
                         if (fileInfo.Directory is { Exists: false })
                             fileInfo.Directory.Create();
 
-                        await using var stream = await HttpClient.GetStreamAsync(player.AvatarFull);
+                        await using var stream = await HttpClient.GetStreamAsync(player.AvatarFull, cancellationToken);
                         await using var fileStream = new FileStream(fileInfo.FullName, FileMode.Create, FileAccess.Write, FileShare.None, 4096, true);
 
-                        await stream.CopyToAsync(fileStream);
+                        await stream.CopyToAsync(fileStream, cancellationToken);
                     }
                     finally
                     {
