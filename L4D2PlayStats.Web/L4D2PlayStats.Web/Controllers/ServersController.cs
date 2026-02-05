@@ -1,7 +1,7 @@
 using L4D2PlayStats.Core.GameInfo;
 using L4D2PlayStats.Core.GameInfo.Extensions;
 using L4D2PlayStats.Core.Infrastructure.Options;
-using L4D2PlayStats.Core.Steam.ServerInfo.Services.Cache;
+using L4D2PlayStats.Core.Steam.ServerInfo.Services;
 using L4D2PlayStats.Core.UserAvatar;
 using L4D2PlayStats.Web.Models;
 using Microsoft.AspNetCore.Mvc;
@@ -11,7 +11,7 @@ namespace L4D2PlayStats.Web.Controllers;
 public class ServersController(
     IAppOptionsWraper config,
     IUserAvatar userAvatar,
-    IServerInfoServiceCached serverInfoService)
+    IServerInfoService serverInfoService)
     : Controller
 {
     [Route("servers")]

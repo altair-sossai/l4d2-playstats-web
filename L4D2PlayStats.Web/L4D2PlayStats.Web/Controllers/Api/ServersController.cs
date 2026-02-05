@@ -1,6 +1,6 @@
 ﻿using L4D2PlayStats.Core.Infrastructure.Options;
 using L4D2PlayStats.Core.Steam.ServerInfo.Responses;
-using L4D2PlayStats.Core.Steam.ServerInfo.Services.Cache;
+using L4D2PlayStats.Core.Steam.ServerInfo.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Memory;
 using static L4D2PlayStats.Core.Steam.ServerInfo.Responses.GetServerListResponse;
@@ -12,7 +12,7 @@ namespace L4D2PlayStats.Web.Controllers.Api;
 public class ServersController(
     IAppOptionsWraper config,
     IMemoryCache memoryCache,
-    IServerInfoServiceCached serverInfoService) : ControllerBase
+    IServerInfoService serverInfoService) : ControllerBase
 {
     [HttpGet]
     public async Task<IActionResult> Get(CancellationToken cancellationToken)
