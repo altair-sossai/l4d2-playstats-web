@@ -7,12 +7,10 @@ namespace L4D2PlayStats.Web.Models;
 public class ServerInfoModel(
     string serverIp,
     GameInfo gameInfo,
-    GetServerListResponse? serverListResponse,
-    List<Core.Steam.Players.Player>? players)
+    GetServerListResponse? serverListResponse)
 {
     public string ServerIp { get; } = serverIp;
     public GameInfo GameInfo { get; } = gameInfo;
     public ServerInfo? ServerInfo { get; } = serverListResponse?.Response?.Servers?.FirstOrDefault();
-    public List<Core.Steam.Players.Player>? Players { get; } = players;
     public bool AnyPlayerConnected => ServerInfo?.Players > 0;
 }

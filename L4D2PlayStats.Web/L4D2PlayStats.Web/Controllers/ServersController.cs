@@ -1,7 +1,6 @@
 using L4D2PlayStats.Core.GameInfo;
 using L4D2PlayStats.Core.GameInfo.Extensions;
 using L4D2PlayStats.Core.Infrastructure.Options;
-using L4D2PlayStats.Core.Steam.Players.Services.Cache;
 using L4D2PlayStats.Core.Steam.ServerInfo.Services.Cache;
 using L4D2PlayStats.Core.UserAvatar;
 using L4D2PlayStats.Web.Models;
@@ -12,8 +11,7 @@ namespace L4D2PlayStats.Web.Controllers;
 public class ServersController(
     IAppOptionsWraper config,
     IUserAvatar userAvatar,
-    IServerInfoServiceCached serverInfoService,
-    IPlayerServiceCached playerService)
+    IServerInfoServiceCached serverInfoService)
     : Controller
 {
     [Route("servers")]
@@ -70,8 +68,7 @@ public class ServersController(
         var ip = segments[0];
         var gameInfo = GameInfo.GetOrInitializeInstance(userAvatar);
         var serverInfo = await serverInfoService.GetServerInfoAsync(config.SteamApiKey, $"addr\\{ip}:{port}");
-        var players = await playerService.GetPlayersAsync(ip, port);
 
-        return new ServerInfoModel(serverIp, gameInfo, serverInfo, players);
+        return new ServerInfoModel(serverIp, gameInfo, serverInfo);
     }
 }
