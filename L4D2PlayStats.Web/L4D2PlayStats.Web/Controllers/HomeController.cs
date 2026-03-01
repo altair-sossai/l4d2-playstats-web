@@ -20,7 +20,7 @@ public class HomeController(
         var players = await rankingService.GetAsync(cancellationToken);
         var communityIds = players.Select(p => p.CommunityId).ToList();
 
-        await userAvatar.LoadAsync(communityIds);
+        await userAvatar.LoadAsync(communityIds, cancellationToken: cancellationToken);
 
         var ranking = players.Select(player =>
         {
@@ -39,7 +39,7 @@ public class HomeController(
 
         communityIds = lastHistory.Players.Select(p => p.CommunityId).ToList();
 
-        await userAvatar.LoadAsync(communityIds);
+        await userAvatar.LoadAsync(communityIds, cancellationToken: cancellationToken);
 
         return View(new HomeModel(ranking, lastHistory));
     }

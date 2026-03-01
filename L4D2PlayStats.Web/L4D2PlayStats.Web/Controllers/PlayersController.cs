@@ -24,7 +24,7 @@ public class PlayersController(
 
         var playersResult = await rankingService.GetAsync(cancellationToken);
         var communityIds = playersResult.Select(p => p.CommunityId);
-        await userAvatar.LoadAsync(communityIds);
+        await userAvatar.LoadAsync(communityIds, cancellationToken: cancellationToken);
 
         var players = playersResult.SortPlayers(orderBy, asc).ToList();
         var model = new PlayersModel(players, orderBy, asc);
@@ -42,10 +42,10 @@ public class PlayersController(
         if (firstPlayer == null)
             return View("PlayerNotFound");
 
-        await userAvatar.LoadAsync(firstPlayer.CommunityId);
+        await userAvatar.LoadAsync(firstPlayer.CommunityId, cancellationToken: cancellationToken);
 
         if (secondPlayer != null)
-            await userAvatar.LoadAsync(secondPlayer.CommunityId);
+            await userAvatar.LoadAsync(secondPlayer.CommunityId, cancellationToken: cancellationToken);
 
         var firstPlayerPatentProgress = patentService.GetPatentProgress(firstPlayer);
         var secondPlayerPatentProgress = secondPlayer == null ? null : patentService.GetPatentProgress(secondPlayer);
@@ -60,7 +60,7 @@ public class PlayersController(
             .SelectMany(t => t.Players ?? [])
             .Select(p => p.CommunityId);
 
-        await userAvatar.LoadAsync(communityIds);
+        await userAvatar.LoadAsync(communityIds, cancellationToken: cancellationToken);
 
         var model = new PlayerDetailsModel(firstPlayerRanking, secondPlayerRanking, players, matches);
 

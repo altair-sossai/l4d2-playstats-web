@@ -30,7 +30,7 @@ public class HistoryController(IRankingServiceCached rankingService, IUserAvatar
 
         var players = await rankingService.HistoryAsync(history.Id, cancellationToken);
         var communityIds = players.Select(p => p.CommunityId);
-        await userAvatar.LoadAsync(communityIds);
+        await userAvatar.LoadAsync(communityIds, cancellationToken: cancellationToken);
 
         var model = new HistoryModel(history, players, allHistory);
 
