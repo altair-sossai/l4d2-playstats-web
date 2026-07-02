@@ -40,10 +40,10 @@
             <th class="slim text-right">@SharedLocalizer["ServerIP"]:</th>
             <td data-label="@SharedLocalizer["ServerIP"]:">
                 @Model.ServerIp
-                
-                <img src="~/imgs/icons/@copyIcon" alt="@SharedLocalizer["CopyText"]" class="icon-copy" 
-                     data-toggle="popover" data-placement="top" data-content="@SharedLocalizer["TextCopied"]" 
-                     onclick="copyTextToClipboard('@Model.ServerIp', this)" />
+
+                <img src="~/imgs/icons/@copyIcon" alt="@SharedLocalizer["CopyText"]" class="icon-copy"
+                     data-toggle="popover" data-placement="top" data-content="@SharedLocalizer["TextCopied"]"
+                     onclick="copyTextToClipboard('@Model.ServerIp', this)"/>
             </td>
 
             <th class="slim text-right">@SharedLocalizer["Players"]:</th>

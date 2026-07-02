@@ -689,12 +689,12 @@
                 {
                     <form id="chatForm" class="form-inline" onsubmit="return false;">
                         <div class="input-group" style="width: 100%">
-                            <input type="text" id="message" name="message" class="form-control" placeholder="@SharedLocalizer["TypeYourMessage"]" />
+                            <input type="text" id="message" name="message" class="form-control" placeholder="@SharedLocalizer["TypeYourMessage"]"/>
                             @if (CurrentUser.IsAdmin)
                             {
                                 <div class="input-group-btn">
                                     <button type="button" class="btn btn-info btn-block" onclick="terminal.show()">
-                                        <img src="~/imgs/icons/terminal.png" alt="@SharedLocalizer["Terminal"]" class="icon" data-toggle="tooltip" data-placement="top" title="@SharedLocalizer["Terminal"]" />
+                                        <img src="~/imgs/icons/terminal.png" alt="@SharedLocalizer["Terminal"]" class="icon" data-toggle="tooltip" data-placement="top" title="@SharedLocalizer["Terminal"]"/>
                                     </button>
                                 </div>
                             }

@@ -39,11 +39,11 @@
 }
 
 <div class="@(Model.AnyPlayerConnected ? string.Empty : "hidden")">
-    
+
     <script id="survivors" type="application/json">
         @Html.Raw(Json.Serialize(survivors))
     </script>
-    
+
     <script id="infecteds" type="application/json">
         @Html.Raw(Json.Serialize(infecteds))
     </script>
