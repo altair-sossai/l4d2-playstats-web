@@ -286,13 +286,13 @@
     <value>Compare...</value>
   </data>
   <data name="PlayerNotFoundTitle" xml:space="preserve">
-    <value>Player Not Found</value>
+    <value>Player not ranked</value>
   </data>
   <data name="PlayerNotFoundMessage" xml:space="preserve">
-    <value>The player you are looking for is not present in the ranking.</value>
+    <value>This player is not currently present in the ranking.</value>
   </data>
   <data name="PlayerNotFoundDetails" xml:space="preserve">
-    <value>Unfortunately, we cannot display the details of the requested player.</value>
+    <value>Therefore, complete statistics are unavailable. The known account information is shown below.</value>
   </data>
   <data name="ReturnToRanking" xml:space="preserve">
     <value>Return to ranking page</value>
@@ -1022,5 +1022,11 @@
   </data>
   <data name="AccessAccount" xml:space="preserve">
     <value>Access account</value>
+  </data>
+  <data name="AvailableInformation" xml:space="preserve">
+    <value>Available information</value>
+  </data>
+  <data name="CommunityId" xml:space="preserve">
+    <value>Community ID</value>
   </data>
 </root>

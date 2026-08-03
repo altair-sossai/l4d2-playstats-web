@@ -12,6 +12,66 @@ public class PlayerConnectionInfoService(IPlayerConnectionInfoRepository playerC
 {
     private const int CleanupBatchSize = 100;
 
+    public async Task<PlayerConnectionInfoDetailsResult> PlayerConnectionInfoDetailsAsync(long communityId, CancellationToken cancellationToken = default)
+    {
+        if (communityId <= 0)
+            throw new ArgumentException("Community ID must be provided.", nameof(communityId));
+
+        var rowKey = communityId.ToString(CultureInfo.InvariantCulture);
+        var playerConnections = await playerConnectionInfoRepository.GetAllByCommunityIdAsync(communityId, cancellationToken);
+
+        if (playerConnections.Count == 0)
+        {
+            return new PlayerConnectionInfoDetailsResult
+            {
+                Player = null,
+                RelatedPlayers = []
+            };
+        }
+
+        var ipAddresses = playerConnections.Select(connection => connection.PartitionKey).Distinct(StringComparer.Ordinal);
+        var relatedPlayers = await playerConnectionInfoRepository.GetAllByIpAddressesAsync(ipAddresses, cancellationToken);
+        var currentPlayer = playerConnections.OrderByDescending(connection => connection.LastConnectedAtUtc).First();
+
+        return new PlayerConnectionInfoDetailsResult
+        {
+            Player = new PlayerConnectionInfoResult
+            {
+                CommunityId = rowKey,
+                Name = currentPlayer.LastName,
+                SteamId = currentPlayer.SteamId,
+                Steam3 = currentPlayer.Steam3,
+                ProfileUrl = currentPlayer.ProfileUrl,
+                FirstConnectedAtUtc = playerConnections.Min(connection => connection.FirstConnectedAtUtc).DateTime.ToLocalTime(),
+                LastConnectedAtUtc = currentPlayer.LastConnectedAtUtc.DateTime.ToLocalTime(),
+                ConnectionCount = playerConnections.Sum(connection => connection.ConnectionCount)
+            },
+            RelatedPlayers =
+            [
+                .. relatedPlayers
+                .Where(player => !string.Equals(player.RowKey, rowKey, StringComparison.Ordinal))
+                .GroupBy(player => player.RowKey, StringComparer.Ordinal)
+                .Select(group =>
+                {
+                    var relatedPlayer = group.OrderByDescending(player => player.LastConnectedAtUtc).First();
+
+                    return new PlayerConnectionInfoResult
+                    {
+                        CommunityId = relatedPlayer.RowKey,
+                        Name = relatedPlayer.LastName,
+                        SteamId = relatedPlayer.SteamId,
+                        Steam3 = relatedPlayer.Steam3,
+                        ProfileUrl = relatedPlayer.ProfileUrl,
+                        FirstConnectedAtUtc = group.Min(connection => connection.FirstConnectedAtUtc).DateTime.ToLocalTime(),
+                        LastConnectedAtUtc = relatedPlayer.LastConnectedAtUtc.DateTime.ToLocalTime(),
+                        ConnectionCount = group.Sum(connection => connection.ConnectionCount)
+                    };
+                })
+                .OrderByDescending(player => player.LastConnectedAtUtc)
+            ]
+        };
+    }
+
     public async Task<List<PlayerConnectionInfoResult>> RelatedPlayerConnectionInfoAsync(long communityId, CancellationToken cancellationToken = default)
     {
         if (communityId <= 0)
@@ -116,4 +176,5 @@ public class PlayerConnectionInfoService(IPlayerConnectionInfoRepository playerC
                 await playerConnectionInfoRepository.DeleteAsync(expiredConnection, cancellationToken);
         }
     }
+
 }

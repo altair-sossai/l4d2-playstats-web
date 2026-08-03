@@ -286,13 +286,13 @@
     <value>Comparar...</value>
   </data>
   <data name="PlayerNotFoundTitle" xml:space="preserve">
-    <value>Jugador no encontrado</value>
+    <value>Jugador fuera de la clasificación</value>
   </data>
   <data name="PlayerNotFoundMessage" xml:space="preserve">
-    <value>El jugador que buscas no está presente en la clasificación.</value>
+    <value>Este jugador no está presente actualmente en la clasificación.</value>
   </data>
   <data name="PlayerNotFoundDetails" xml:space="preserve">
-    <value>Desafortunadamente, no podemos mostrar los detalles del jugador solicitado.</value>
+    <value>Por eso, las estadísticas completas no están disponibles. La información conocida de la cuenta se muestra a continuación.</value>
   </data>
   <data name="ReturnToRanking" xml:space="preserve">
     <value>Volver a la página de clasificación</value>
@@ -1020,5 +1020,11 @@
   </data>
   <data name="AccessAccount" xml:space="preserve">
     <value>Acceder a la cuenta</value>
+  </data>
+  <data name="AvailableInformation" xml:space="preserve">
+    <value>Información disponible</value>
+  </data>
+  <data name="CommunityId" xml:space="preserve">
+    <value>Community ID</value>
   </data>
 </root>

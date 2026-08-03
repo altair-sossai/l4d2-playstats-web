@@ -40,12 +40,22 @@ public class PlayersController(
         long? compareWith = null,
         CancellationToken cancellationToken = default)
     {
+        if (communityId <= 0)
+            return View("PlayerNotFound", new PlayerNotFoundModel(communityId, null, []));
+
         var players = await rankingService.GetAsync(cancellationToken);
         var firstPlayer = players.FirstOrDefault(p => p.CommunityId == communityId);
         var secondPlayer = compareWith == null ? null : players.FirstOrDefault(p => p.CommunityId == compareWith);
 
         if (firstPlayer == null)
-            return View("PlayerNotFound");
+        {
+            var connectionInfo = await playerConnectionInfoService.PlayerConnectionInfoDetailsAsync(communityId, cancellationToken);
+            var unrankedPlayerCommunityIds = connectionInfo.RelatedPlayers.Select(player => player.CommunityId).Append(communityId.ToString());
+
+            await userAvatar.LoadAsync(unrankedPlayerCommunityIds, cancellationToken: cancellationToken);
+
+            return View("PlayerNotFound", new PlayerNotFoundModel(communityId, connectionInfo.Player, connectionInfo.RelatedPlayers));
+        }
 
         await userAvatar.LoadAsync(firstPlayer.CommunityId, cancellationToken: cancellationToken);
 

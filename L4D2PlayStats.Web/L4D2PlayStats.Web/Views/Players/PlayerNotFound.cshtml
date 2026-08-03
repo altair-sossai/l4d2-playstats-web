@@ -1,18 +1,143 @@
-﻿@using L4D2PlayStats.Web
+@using L4D2PlayStats.Core.UserAvatar
+@using L4D2PlayStats.Web
 @using Microsoft.Extensions.Localization
+@model L4D2PlayStats.Web.Models.PlayerNotFoundModel
+@inject IUserAvatar UserAvatar
 @inject IStringLocalizer<SharedResource> SharedLocalizer
 
-<div class="jumbotron text-center" style="margin-top: 20px">
-    <h2>@SharedLocalizer["PlayerNotFoundTitle"]</h2>
+@{
+    var playerName = Model.Name ?? Model.CommunityId.ToString();
+}
 
-    <p>
-        @SharedLocalizer["PlayerNotFoundMessage"]
-    </p>
-    <p>
-        @SharedLocalizer["PlayerNotFoundDetails"]
-    </p>
+@section Styles {
+    <style>
+        .player-summary-avatar {
+            max-width: 184px;
+            width: 100%;
+        }
 
-    <a href="@Url.Action("Index", "Home")" class="btn btn-primary">
-        @SharedLocalizer["ReturnToRanking"]
-    </a>
+        th {
+            width: 1%;
+            white-space: nowrap;
+            padding-right: 24px !important;
+        }
+
+        @@media screen and (max-width: 767px) {
+            .player-summary-avatar-container {
+                margin-bottom: 15px;
+            }
+        }
+    </style>
+}
+
+<h4 class="text-center">@SharedLocalizer["PlayerDetails"]</h4>
+
+<div class="alert alert-warning text-center" role="alert">
+    <h4>@SharedLocalizer["PlayerNotFoundTitle"]</h4>
+    <p>@SharedLocalizer["PlayerNotFoundMessage"]</p>
+    <p>@SharedLocalizer["PlayerNotFoundDetails"]</p>
+</div>
+
+<div class="row">
+    <div class="col-sm-3 text-center player-summary-avatar-container">
+        <img src="@UserAvatar[Model.CommunityId]" alt="@playerName" title="@playerName" class="img-responsive img-thumbnail center-block player-summary-avatar" onerror="imgOnError(this)" data-lity/>
+    </div>
+    <div class="col-sm-9">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                @SharedLocalizer["AvailableInformation"]
+            </div>
+
+            <table class="table table-hover table-condensed table-responsive">
+                <tbody>
+                @if (!string.IsNullOrWhiteSpace(Model.Name))
+                {
+                    <tr>
+                        <th>@SharedLocalizer["Name"]:</th>
+                        <td data-label="@SharedLocalizer["Name"]:">@Model.Name</td>
+                    </tr>
+                }
+                <tr>
+                    <th>@SharedLocalizer["CommunityId"]:</th>
+                    <td data-label="@SharedLocalizer["CommunityId"]:">@Model.CommunityId</td>
+                </tr>
+                @if (!string.IsNullOrWhiteSpace(Model.SteamId))
+                {
+                    <tr>
+                        <th>@SharedLocalizer["SteamId"]:</th>
+                        <td data-label="@SharedLocalizer["SteamId"]:">@Model.SteamId</td>
+                    </tr>
+                }
+                @if (Model.LastConnectedAtUtc.HasValue)
+                {
+                    <tr>
+                        <th>@SharedLocalizer["LastLogin"]:</th>
+                        <td data-label="@SharedLocalizer["LastLogin"]:">@Model.LastConnectedAtUtc.Value.ToString("g")</td>
+                    </tr>
+                }
+                @if (Model.ConnectionCount.HasValue)
+                {
+                    <tr>
+                        <th>@SharedLocalizer["Connections"]:</th>
+                        <td data-label="@SharedLocalizer["Connections"]:">@Model.ConnectionCount.Value.ToString("N0")</td>
+                    </tr>
+                }
+                @if (!string.IsNullOrWhiteSpace(Model.ProfileUrl))
+                {
+                    <tr>
+                        <th>@SharedLocalizer["ProfileUrl"]:</th>
+                        <td data-label="@SharedLocalizer["ProfileUrl"]:">
+                            <a href="@Model.ProfileUrl" target="_blank" rel="noopener noreferrer">@SharedLocalizer["AccessAccount"]</a>
+                        </td>
+                    </tr>
+                }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+@if (Model.RelatedPlayers.Any())
+{
+    <div class="panel panel-warning">
+        <div class="panel-heading">
+            @SharedLocalizer["RelatedAccounts"]
+        </div>
+
+        <table class="table table-hover table-condensed table-responsive">
+            <thead>
+            <tr>
+                <th>@SharedLocalizer["Name"]</th>
+                <th>@SharedLocalizer["SteamId"]</th>
+                <th>@SharedLocalizer["LastLogin"]</th>
+                <th>@SharedLocalizer["Connections"]</th>
+                <th>@SharedLocalizer["ProfileUrl"]</th>
+            </tr>
+            </thead>
+            <tbody>
+            @foreach (var relatedPlayer in Model.RelatedPlayers)
+            {
+                <tr>
+                    <td data-label="@SharedLocalizer["Name"]:">
+                        <img src="@UserAvatar[relatedPlayer.CommunityId]" alt="@relatedPlayer.Name" title="@relatedPlayer.Name" class="img-thumbnail" style="width: 32px; margin-right: 5px" onerror="imgOnError(this)"/>
+                        <a href="@Url.Action("Details", "Players", new { communityId = relatedPlayer.CommunityId })">@relatedPlayer.Name</a>
+                    </td>
+                    <td data-label="@SharedLocalizer["SteamId"]:">@relatedPlayer.SteamId</td>
+                    <td data-label="@SharedLocalizer["LastLogin"]:">@relatedPlayer.LastConnectedAtUtc.ToString("g")</td>
+                    <td data-label="@SharedLocalizer["Connections"]:">@relatedPlayer.ConnectionCount.ToString("N0")</td>
+                    <td data-label="@SharedLocalizer["ProfileUrl"]:">
+                        @if (!string.IsNullOrWhiteSpace(relatedPlayer.ProfileUrl))
+                        {
+                            <a href="@relatedPlayer.ProfileUrl" target="_blank" rel="noopener noreferrer">@SharedLocalizer["AccessAccount"]</a>
+                        }
+                    </td>
+                </tr>
+            }
+            </tbody>
+        </table>
+    </div>
+}
+
+<div class="text-center">
+    <a href="@Url.Action("Index", "Home")" class="btn btn-primary">@SharedLocalizer["ReturnToRanking"]</a>
 </div>
