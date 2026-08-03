@@ -1011,4 +1011,16 @@
   <data name="Trophy" xml:space="preserve">
     <value>Troféu</value>
   </data>
+  <data name="RelatedAccounts" xml:space="preserve">
+    <value>Contas relacionadas</value>
+  </data>
+  <data name="LastLogin" xml:space="preserve">
+    <value>Último login</value>
+  </data>
+  <data name="Connections" xml:space="preserve">
+    <value>Conexões</value>
+  </data>
+  <data name="AccessAccount" xml:space="preserve">
+    <value>Acessar conta</value>
+  </data>
 </root>

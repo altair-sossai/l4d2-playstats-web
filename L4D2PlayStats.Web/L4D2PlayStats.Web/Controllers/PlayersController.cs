@@ -1,3 +1,4 @@
+using L4D2PlayStats.Core.GameInfo.Services;
 using L4D2PlayStats.Core.Matches;
 using L4D2PlayStats.Core.Patents.Services;
 using L4D2PlayStats.Core.Players.Enums;
@@ -33,7 +34,11 @@ public class PlayersController(
     }
 
     [Route("player/{communityId}/{compareWith:long?}")]
-    public async Task<IActionResult> Details(long communityId, long? compareWith = null, CancellationToken cancellationToken = default)
+    public async Task<IActionResult> Details(
+        [FromServices] IPlayerConnectionInfoService playerConnectionInfoService,
+        long communityId,
+        long? compareWith = null,
+        CancellationToken cancellationToken = default)
     {
         var players = await rankingService.GetAsync(cancellationToken);
         var firstPlayer = players.FirstOrDefault(p => p.CommunityId == communityId);
@@ -54,15 +59,17 @@ public class PlayersController(
         var secondPlayerRanking = secondPlayer == null || secondPlayerPatentProgress == null ? null : new RankingModel(sharedLocalizer, secondPlayer, secondPlayerPatentProgress);
 
         var matches = await matchesServiceCached.GetAsync(cancellationToken);
+        var relatedPlayers = await playerConnectionInfoService.GetRelatedPlayersAsync(communityId, cancellationToken);
 
         var communityIds = matches
             .SelectMany(m => m.Teams ?? [])
             .SelectMany(t => t.Players ?? [])
-            .Select(p => p.CommunityId);
+            .Select(p => p.CommunityId)
+            .Concat(relatedPlayers.Select(player => player.CommunityId));
 
         await userAvatar.LoadAsync(communityIds, cancellationToken: cancellationToken);
 
-        var model = new PlayerDetailsModel(firstPlayerRanking, secondPlayerRanking, players, matches);
+        var model = new PlayerDetailsModel(firstPlayerRanking, secondPlayerRanking, players, matches, relatedPlayers);
 
         return View(model);
     }

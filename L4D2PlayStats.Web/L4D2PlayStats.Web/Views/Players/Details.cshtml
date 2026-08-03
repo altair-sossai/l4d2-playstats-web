@@ -341,6 +341,49 @@
     </table>
 </div>
 
+@if (Model.RelatedPlayers.Any())
+{
+    <div class="panel panel-warning">
+        <div class="panel-heading">
+            @SharedLocalizer["RelatedAccounts"]
+        </div>
+
+        <table class="table table-hover table-condensed table-responsive">
+            <thead>
+            <tr>
+                <th>@SharedLocalizer["Name"]</th>
+                <th>@SharedLocalizer["SteamId"]</th>
+                <th>@SharedLocalizer["LastLogin"]</th>
+                <th>@SharedLocalizer["Connections"]</th>
+                <th>@SharedLocalizer["ProfileUrl"]</th>
+            </tr>
+            </thead>
+            <tbody>
+            @foreach (var relatedPlayer in Model.RelatedPlayers)
+            {
+                <tr>
+                    <td data-label="@SharedLocalizer["Name"]:">
+                        <img src="@UserAvatar[relatedPlayer.CommunityId]" alt="@relatedPlayer.Name" title="@relatedPlayer.Name" class="img-thumbnail" style="width: 32px; margin-right: 5px" onerror="imgOnError(this)"/>
+                        <a href="@Url.Action("Details", "Players", new { communityId = relatedPlayer.CommunityId })">@relatedPlayer.Name</a>
+                    </td>
+                    <td data-label="@SharedLocalizer["SteamId"]:">@relatedPlayer.SteamId</td>
+                    <td data-label="@SharedLocalizer["LastLogin"]:">@relatedPlayer.LastConnectedAtUtc.ToString("g")</td>
+                    <td data-label="@SharedLocalizer["Connections"]:">@relatedPlayer.ConnectionCount.ToString("N0")</td>
+                    <td data-label="@SharedLocalizer["ProfileUrl"]:">
+                        @if (!string.IsNullOrWhiteSpace(relatedPlayer.ProfileUrl))
+                        {
+                            <a href="@relatedPlayer.ProfileUrl" target="_blank" rel="noopener noreferrer">
+                                @SharedLocalizer["AccessAccount"]
+                            </a>
+                        }
+                    </td>
+                </tr>
+            }
+            </tbody>
+        </table>
+    </div>
+}
+
 <hr/>
 
 <div class="panel panel-default">
