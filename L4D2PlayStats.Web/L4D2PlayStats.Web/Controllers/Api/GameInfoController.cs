@@ -2,6 +2,7 @@
 using L4D2PlayStats.Core.GameInfo.Commands;
 using L4D2PlayStats.Core.GameInfo.Extensions;
 using L4D2PlayStats.Core.GameInfo.Models;
+using L4D2PlayStats.Core.GameInfo.Services;
 using L4D2PlayStats.Core.UserAvatar;
 using L4D2PlayStats.Web.Attributes;
 using Microsoft.AspNetCore.Mvc;
@@ -107,6 +108,18 @@ public class GameInfoController(IUserAvatar userAvatar) : ControllerBase
         _gameInfo.AddMessage(command);
 
         return Ok();
+    }
+
+    [HttpPost("player-connection-info")]
+    [RequiredSecretKey]
+    public async Task<IActionResult> AddOrUpdatePlayerConnectionInfoAsync(
+        [FromBody] PlayerConnectionInfoCommand command,
+        [FromServices] IPlayerConnectionInfoService playerConnectionInfoService,
+        CancellationToken cancellationToken)
+    {
+        await playerConnectionInfoService.AddOrUpdateAsync(command, cancellationToken);
+
+        return NoContent();
     }
 
     [HttpGet]
