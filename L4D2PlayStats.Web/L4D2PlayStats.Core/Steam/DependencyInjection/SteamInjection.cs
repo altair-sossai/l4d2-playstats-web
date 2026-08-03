@@ -43,7 +43,7 @@ public static class SteamInjection
             where T : class
         {
             serviceCollection
-                .AddRefitClient<T>(Settings)
+                .AddRefitGeneratedClient<T>(Settings)
                 .ConfigureHttpClient(c =>
                 {
                     c.BaseAddress = new Uri(BaseUrl);

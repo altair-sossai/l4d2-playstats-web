@@ -52,7 +52,7 @@ public static class AppInjection
             where T : class
         {
             serviceCollection
-                .AddRefitClient<T>(Settings)
+                .AddRefitGeneratedClient<T>(Settings)
                 .ConfigureHttpClient(c => c.BaseAddress = baseAddress)
                 .AddHttpMessageHandler<AuthHeaderHandler>();
 
