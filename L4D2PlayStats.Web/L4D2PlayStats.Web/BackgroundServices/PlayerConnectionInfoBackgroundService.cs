@@ -14,7 +14,7 @@ public class PlayerConnectionInfoBackgroundService(IPlayerConnectionInfoService 
 
                 await Task.Delay(nextExecution - now, stoppingToken);
 
-                var expirationDate = DateTimeOffset.UtcNow.AddMonths(-6);
+                var expirationDate = DateTimeOffset.UtcNow.AddMonths(-3);
                 await playerConnectionInfoService.DeleteExpiredAsync(expirationDate, stoppingToken);
             }
             catch (OperationCanceledException) when (stoppingToken.IsCancellationRequested)
