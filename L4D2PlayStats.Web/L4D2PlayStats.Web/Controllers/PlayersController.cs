@@ -59,7 +59,7 @@ public class PlayersController(
         var secondPlayerRanking = secondPlayer == null || secondPlayerPatentProgress == null ? null : new RankingModel(sharedLocalizer, secondPlayer, secondPlayerPatentProgress);
 
         var matches = await matchesServiceCached.GetAsync(cancellationToken);
-        var relatedPlayers = await playerConnectionInfoService.GetRelatedPlayersAsync(communityId, cancellationToken);
+        var relatedPlayers = await playerConnectionInfoService.RelatedPlayerConnectionInfoAsync(communityId, cancellationToken);
 
         var communityIds = matches
             .SelectMany(m => m.Teams ?? [])

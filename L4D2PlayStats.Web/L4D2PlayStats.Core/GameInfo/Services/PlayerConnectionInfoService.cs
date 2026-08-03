@@ -12,7 +12,7 @@ public class PlayerConnectionInfoService(IPlayerConnectionInfoRepository playerC
 {
     private const int CleanupBatchSize = 100;
 
-    public async Task<List<PlayerConnectionInfoResult>> GetRelatedPlayersAsync(long communityId, CancellationToken cancellationToken = default)
+    public async Task<List<PlayerConnectionInfoResult>> RelatedPlayerConnectionInfoAsync(long communityId, CancellationToken cancellationToken = default)
     {
         if (communityId <= 0)
             throw new ArgumentException("Community ID must be provided.", nameof(communityId));
@@ -38,8 +38,8 @@ public class PlayerConnectionInfoService(IPlayerConnectionInfoRepository playerC
                         SteamId = player.SteamId,
                         Steam3 = player.Steam3,
                         ProfileUrl = player.ProfileUrl,
-                        FirstConnectedAtUtc = group.Min(connection => connection.FirstConnectedAtUtc),
-                        LastConnectedAtUtc = player.LastConnectedAtUtc,
+                        FirstConnectedAtUtc = group.Min(connection => connection.FirstConnectedAtUtc).DateTime.ToLocalTime(),
+                        LastConnectedAtUtc = player.LastConnectedAtUtc.DateTime.ToLocalTime(),
                         ConnectionCount = group.Sum(connection => connection.ConnectionCount)
                     };
                 })
@@ -47,7 +47,7 @@ public class PlayerConnectionInfoService(IPlayerConnectionInfoRepository playerC
         ];
     }
 
-    public async Task AddOrUpdateAsync(PlayerConnectionInfoCommand command, CancellationToken cancellationToken = default)
+    public async Task<List<PlayerConnectionInfoResult>> AddOrUpdateAsync(PlayerConnectionInfoCommand command, CancellationToken cancellationToken = default)
     {
         if (string.IsNullOrWhiteSpace(command.CommunityId))
             throw new ArgumentException("Community ID must be provided.", nameof(command.CommunityId));
@@ -87,17 +87,20 @@ public class PlayerConnectionInfoService(IPlayerConnectionInfoRepository playerC
             };
 
             await playerConnectionInfoRepository.AddAsync(entity, cancellationToken);
-            return;
+        }
+        else
+        {
+            entity.LastName = command.Name;
+            entity.SteamId = steamIdentifiers.SteamId;
+            entity.Steam3 = steamIdentifiers.Steam3;
+            entity.ProfileUrl = steamIdentifiers.ProfileUrl;
+            entity.LastConnectedAtUtc = connectedAtUtc;
+            entity.ConnectionCount++;
+
+            await playerConnectionInfoRepository.UpdateAsync(entity, entity.ETag, cancellationToken);
         }
 
-        entity.LastName = command.Name;
-        entity.SteamId = steamIdentifiers.SteamId;
-        entity.Steam3 = steamIdentifiers.Steam3;
-        entity.ProfileUrl = steamIdentifiers.ProfileUrl;
-        entity.LastConnectedAtUtc = connectedAtUtc;
-        entity.ConnectionCount++;
-
-        await playerConnectionInfoRepository.UpdateAsync(entity, entity.ETag, cancellationToken);
+        return await RelatedPlayerConnectionInfoAsync(communityId, cancellationToken);
     }
 
     public async Task DeleteExpiredAsync(DateTimeOffset lastConnectedAtUtc, CancellationToken cancellationToken = default)

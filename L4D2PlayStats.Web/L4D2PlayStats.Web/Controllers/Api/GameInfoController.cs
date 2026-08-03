@@ -117,9 +117,9 @@ public class GameInfoController(IUserAvatar userAvatar) : ControllerBase
         [FromServices] IPlayerConnectionInfoService playerConnectionInfoService,
         CancellationToken cancellationToken)
     {
-        await playerConnectionInfoService.AddOrUpdateAsync(command, cancellationToken);
+        var relatedPlayers = await playerConnectionInfoService.AddOrUpdateAsync(command, cancellationToken);
 
-        return NoContent();
+        return Ok(relatedPlayers);
     }
 
     [HttpGet]

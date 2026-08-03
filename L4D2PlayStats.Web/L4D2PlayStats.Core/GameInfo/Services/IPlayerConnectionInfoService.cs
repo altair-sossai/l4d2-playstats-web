@@ -5,7 +5,7 @@ namespace L4D2PlayStats.Core.GameInfo.Services;
 
 public interface IPlayerConnectionInfoService
 {
-    Task<List<PlayerConnectionInfoResult>> GetRelatedPlayersAsync(long communityId, CancellationToken cancellationToken = default);
-    Task AddOrUpdateAsync(PlayerConnectionInfoCommand command, CancellationToken cancellationToken = default);
+    Task<List<PlayerConnectionInfoResult>> RelatedPlayerConnectionInfoAsync(long communityId, CancellationToken cancellationToken = default);
+    Task<List<PlayerConnectionInfoResult>> AddOrUpdateAsync(PlayerConnectionInfoCommand command, CancellationToken cancellationToken = default);
     Task DeleteExpiredAsync(DateTimeOffset lastConnectedAtUtc, CancellationToken cancellationToken = default);
 }
