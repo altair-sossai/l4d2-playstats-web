@@ -49,25 +49,25 @@ public class PlayerConnectionInfoService(IPlayerConnectionInfoRepository playerC
             RelatedPlayers =
             [
                 .. relatedPlayers
-                .Where(player => !string.Equals(player.RowKey, rowKey, StringComparison.Ordinal))
-                .GroupBy(player => player.RowKey, StringComparer.Ordinal)
-                .Select(group =>
-                {
-                    var relatedPlayer = group.OrderByDescending(player => player.LastConnectedAtUtc).First();
-
-                    return new PlayerConnectionInfoResult
+                    .Where(player => !string.Equals(player.RowKey, rowKey, StringComparison.Ordinal))
+                    .GroupBy(player => player.RowKey, StringComparer.Ordinal)
+                    .Select(group =>
                     {
-                        CommunityId = relatedPlayer.RowKey,
-                        Name = relatedPlayer.LastName,
-                        SteamId = relatedPlayer.SteamId,
-                        Steam3 = relatedPlayer.Steam3,
-                        ProfileUrl = relatedPlayer.ProfileUrl,
-                        FirstConnectedAtUtc = group.Min(connection => connection.FirstConnectedAtUtc).DateTime.ToLocalTime(),
-                        LastConnectedAtUtc = relatedPlayer.LastConnectedAtUtc.DateTime.ToLocalTime(),
-                        ConnectionCount = group.Sum(connection => connection.ConnectionCount)
-                    };
-                })
-                .OrderByDescending(player => player.LastConnectedAtUtc)
+                        var relatedPlayer = group.OrderByDescending(player => player.LastConnectedAtUtc).First();
+
+                        return new PlayerConnectionInfoResult
+                        {
+                            CommunityId = relatedPlayer.RowKey,
+                            Name = relatedPlayer.LastName,
+                            SteamId = relatedPlayer.SteamId,
+                            Steam3 = relatedPlayer.Steam3,
+                            ProfileUrl = relatedPlayer.ProfileUrl,
+                            FirstConnectedAtUtc = group.Min(connection => connection.FirstConnectedAtUtc).DateTime.ToLocalTime(),
+                            LastConnectedAtUtc = relatedPlayer.LastConnectedAtUtc.DateTime.ToLocalTime(),
+                            ConnectionCount = group.Sum(connection => connection.ConnectionCount)
+                        };
+                    })
+                    .OrderByDescending(player => player.LastConnectedAtUtc)
             ]
         };
     }
@@ -176,5 +176,4 @@ public class PlayerConnectionInfoService(IPlayerConnectionInfoRepository playerC
                 await playerConnectionInfoRepository.DeleteAsync(expiredConnection, cancellationToken);
         }
     }
-
 }
