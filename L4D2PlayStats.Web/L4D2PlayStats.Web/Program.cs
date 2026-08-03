@@ -5,6 +5,7 @@ using L4D2PlayStats.Core.Auth;
 using L4D2PlayStats.Core.DependencyInjection;
 using L4D2PlayStats.Sdk.DependencyInjection;
 using L4D2PlayStats.Web.Auth;
+using L4D2PlayStats.Web.BackgroundServices;
 using L4D2PlayStats.Web.Middlewares;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Localization;
@@ -56,6 +57,7 @@ builder.Services.AddAuthentication(options =>
 
 builder.Services.AddApp(builder.Configuration);
 builder.Services.AddPlayStatsSdk(builder.Configuration);
+builder.Services.AddHostedService<PlayerConnectionInfoBackgroundService>();
 
 builder.Services.AddScoped<ICurrentUser, CurrentUser>();
 

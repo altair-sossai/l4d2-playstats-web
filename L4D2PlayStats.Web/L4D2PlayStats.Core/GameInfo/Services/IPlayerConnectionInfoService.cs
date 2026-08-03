@@ -7,4 +7,5 @@ public interface IPlayerConnectionInfoService
 {
     Task<List<PlayerConnectionInfoResult>> GetRelatedPlayersAsync(long communityId, CancellationToken cancellationToken = default);
     Task AddOrUpdateAsync(PlayerConnectionInfoCommand command, CancellationToken cancellationToken = default);
+    Task DeleteExpiredAsync(DateTimeOffset lastConnectedAtUtc, CancellationToken cancellationToken = default);
 }

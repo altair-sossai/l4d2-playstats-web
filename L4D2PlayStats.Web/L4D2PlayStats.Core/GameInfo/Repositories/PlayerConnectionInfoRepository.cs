@@ -22,7 +22,7 @@ public class PlayerConnectionInfoRepository(IAzureTableStorageContext tableConte
         var rowKey = communityId.ToString(CultureInfo.InvariantCulture);
         var filter = TableClient.CreateQueryFilter($"RowKey eq {rowKey}");
 
-        return GetAllAsync(filter, cancellationToken);
+        return GetAllAsync(filter, cancellationToken: cancellationToken);
     }
 
     public async Task<List<PlayerConnectionInfoEntity>> GetAllByIpAddressesAsync(IEnumerable<string> ipAddresses, CancellationToken cancellationToken = default)
@@ -32,11 +32,18 @@ public class PlayerConnectionInfoRepository(IAzureTableStorageContext tableConte
         foreach (var ipAddressBatch in ipAddresses.Distinct(StringComparer.Ordinal).Chunk(MaxFilterComparisons))
         {
             var filter = string.Join(" or ", ipAddressBatch.Select(ipAddress => TableClient.CreateQueryFilter($"PartitionKey eq {ipAddress}")));
-            var result = await GetAllAsync(filter, cancellationToken);
+            var result = await GetAllAsync(filter, cancellationToken: cancellationToken);
 
             entities.AddRange(result);
         }
 
         return entities;
+    }
+
+    public Task<List<PlayerConnectionInfoEntity>> GetAllBeforeAsync(DateTimeOffset lastConnectedAtUtc, int count, CancellationToken cancellationToken = default)
+    {
+        var filter = TableClient.CreateQueryFilter($"LastConnectedAtUtc lt {lastConnectedAtUtc}");
+
+        return GetAllAsync(filter, count, cancellationToken);
     }
 }

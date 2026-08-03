@@ -10,6 +10,8 @@ namespace L4D2PlayStats.Core.GameInfo.Services;
 
 public class PlayerConnectionInfoService(IPlayerConnectionInfoRepository playerConnectionInfoRepository) : IPlayerConnectionInfoService
 {
+    private const int CleanupBatchSize = 100;
+
     public async Task<List<PlayerConnectionInfoResult>> GetRelatedPlayersAsync(long communityId, CancellationToken cancellationToken = default)
     {
         if (communityId <= 0)
@@ -96,5 +98,19 @@ public class PlayerConnectionInfoService(IPlayerConnectionInfoRepository playerC
         entity.ConnectionCount++;
 
         await playerConnectionInfoRepository.UpdateAsync(entity, entity.ETag, cancellationToken);
+    }
+
+    public async Task DeleteExpiredAsync(DateTimeOffset lastConnectedAtUtc, CancellationToken cancellationToken = default)
+    {
+        while (true)
+        {
+            var expiredConnections = await playerConnectionInfoRepository.GetAllBeforeAsync(lastConnectedAtUtc, CleanupBatchSize, cancellationToken);
+
+            if (expiredConnections.Count == 0)
+                return;
+
+            foreach (var expiredConnection in expiredConnections)
+                await playerConnectionInfoRepository.DeleteAsync(expiredConnection, cancellationToken);
+        }
     }
 }
