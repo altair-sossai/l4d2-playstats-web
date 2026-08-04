@@ -52,8 +52,17 @@
         _ => null
     };
 
+    bool HasPlayerStats(List<Player> players, PlayerStats playerStats) =>
+        players.Any(player => player[playerStats] != 0);
+
+    bool HasInfectedStats(List<InfectedPlayer> infectedPlayers, InfectedStats infectedStats) =>
+        infectedPlayers.Any(player => player[infectedStats] != 0);
+
     void RenderPlayerStats(List<Player> players, PlayerStats playerStats)
     {
+        if (!HasPlayerStats(players, playerStats))
+            return;
+
         var helpKey = PlayerStatsHelpKey(playerStats);
 
         <tr>
@@ -84,7 +93,7 @@
     {
         var any = false;
 
-        @foreach (var ps in playerStats)
+        @foreach (var ps in playerStats.Where(ps => HasPlayerStats(players, ps)))
         {
             RenderPlayerStats(players, ps);
             any = true;
@@ -110,6 +119,9 @@
 
     void RenderInfectedStats(List<InfectedPlayer> infectedPlayers, InfectedStats infectedStats)
     {
+        if (!HasInfectedStats(infectedPlayers, infectedStats))
+            return;
+
         var helpKey = InfectedStatsHelpKey(infectedStats);
 
         <tr>
@@ -133,7 +145,7 @@
     {
         var any = false;
 
-        @foreach (var ps in infectedStats)
+        @foreach (var ps in infectedStats.Where(ps => HasInfectedStats(infectedPlayers, ps)))
         {
             RenderInfectedStats(infectedPlayers, ps);
             any = true;
@@ -509,115 +521,101 @@
                                 || !Enum.TryParse($"HitsTank{weapon}", out PlayerStats hitsTank))
                                 continue;
 
-                            <tr>
-                                <th>@SharedLocalizer[shots.ToString()]:</th>
-                                @foreach (var player in players)
-                                {
-                                    <td class="slim text-center">
-                                        @player[shots].ToString("N0")
-                                    </td>
-                                }
-                            </tr>
-                            <tr>
-                                <th>@SharedLocalizer[hits.ToString()]:</th>
-                                @foreach (var player in players)
-                                {
-                                    <td class="slim text-center">
-                                        @player[hits].ToString("N0")
-                                    </td>
-                                }
-                            </tr>
-                            <tr>
-                                <th>@SharedLocalizer[$"Hits{weapon}Percent"]:</th>
-                                @foreach (var player in players)
-                                {
-                                    var percent = player[shots] != 0 ? player[hits] / (decimal)player[shots] : 0;
-                                    <td class="slim text-center">
-                                        @percent.ToString("P0")
-                                    </td>
-                                }
-                            </tr>
-                            <tr>
-                                <th>@SharedLocalizer[hitsSi.ToString()]:</th>
-                                @foreach (var player in players)
-                                {
-                                    <td class="slim text-center">
-                                        @player[hitsSi].ToString("N0")
-                                    </td>
-                                }
-                            </tr>
-                            <tr>
-                                <th>@SharedLocalizer[$"HitsSi{weapon}Percent"]:</th>
-                                @foreach (var player in players)
-                                {
-                                    var percent = player[shots] != 0 ? player[hitsSi] / (decimal)player[shots] : 0;
-                                    <td class="slim text-center">
-                                        @percent.ToString("P0")
-                                    </td>
-                                }
-                            </tr>
-                            <tr>
-                                <th>@SharedLocalizer[hitsTank.ToString()]:</th>
-                                @foreach (var player in players)
-                                {
-                                    <td class="slim text-center">
-                                        @player[hitsTank].ToString("N0")
-                                    </td>
-                                }
-                            </tr>
-                            <tr>
-                                <th>@SharedLocalizer[$"HitsTank{weapon}Percent"]:</th>
-                                @foreach (var player in players)
-                                {
-                                    var percent = player[shots] != 0 ? player[hitsTank] / (decimal)player[shots] : 0;
-                                    <td class="slim text-center">
-                                        @percent.ToString("P0")
-                                    </td>
-                                }
-                            </tr>
+                            var supportsHeadshots = Enum.TryParse($"Headshots{weapon}", out PlayerStats headshots)
+                                                    & Enum.TryParse($"HeadshotsSi{weapon}", out PlayerStats headshotsSi);
+                            var hasShots = HasPlayerStats(players, shots);
+                            var hasHits = HasPlayerStats(players, hits);
+                            var hasHitsSi = HasPlayerStats(players, hitsSi);
+                            var hasHitsTank = HasPlayerStats(players, hitsTank);
+                            var hasHeadshots = supportsHeadshots && HasPlayerStats(players, headshots);
+                            var hasHeadshotsSi = supportsHeadshots && HasPlayerStats(players, headshotsSi);
 
-                            @if (Enum.TryParse($"Headshots{weapon}", out PlayerStats headshots)
-                                 && Enum.TryParse($"HeadshotsSi{weapon}", out PlayerStats headshotsSi))
+                            if (!hasShots && !hasHits && !hasHitsSi && !hasHitsTank && !hasHeadshots && !hasHeadshotsSi)
+                                continue;
+
+                            RenderPlayerStats(players, shots);
+                            RenderPlayerStats(players, hits);
+
+                            @if (hasHits)
                             {
                                 <tr>
-                                    <th>@SharedLocalizer[headshots.ToString()]:</th>
+                                    <th>@SharedLocalizer[$"Hits{weapon}Percent"]:</th>
                                     @foreach (var player in players)
                                     {
-                                        <td class="slim text-center">
-                                            @player[headshots].ToString("N0")
-                                        </td>
-                                    }
-                                </tr>
-                                <tr>
-                                    <th>@SharedLocalizer[$"Headshots{weapon}Percent"]:</th>
-                                    @foreach (var player in players)
-                                    {
-                                        var eligibleHits = player[hits] - player[hitsTank];
-                                        var percent = eligibleHits > 0 ? player[headshots] / (decimal)eligibleHits : 0;
+                                        var percent = player[shots] != 0 ? player[hits] / (decimal)player[shots] : 0;
                                         <td class="slim text-center">
                                             @percent.ToString("P0")
                                         </td>
                                     }
                                 </tr>
+                            }
+
+                            RenderPlayerStats(players, hitsSi);
+
+                            @if (hasHitsSi)
+                            {
                                 <tr>
-                                    <th>@SharedLocalizer[headshotsSi.ToString()]:</th>
+                                    <th>@SharedLocalizer[$"HitsSi{weapon}Percent"]:</th>
                                     @foreach (var player in players)
                                     {
-                                        <td class="slim text-center">
-                                            @player[headshotsSi].ToString("N0")
-                                        </td>
-                                    }
-                                </tr>
-                                <tr>
-                                    <th>@SharedLocalizer[$"HeadshotsSi{weapon}Percent"]:</th>
-                                    @foreach (var player in players)
-                                    {
-                                        var percent = player[hitsSi] > 0 ? player[headshotsSi] / (decimal)player[hitsSi] : 0;
+                                        var percent = player[shots] != 0 ? player[hitsSi] / (decimal)player[shots] : 0;
                                         <td class="slim text-center">
                                             @percent.ToString("P0")
                                         </td>
                                     }
                                 </tr>
+                            }
+
+                            RenderPlayerStats(players, hitsTank);
+
+                            @if (hasHitsTank)
+                            {
+                                <tr>
+                                    <th>@SharedLocalizer[$"HitsTank{weapon}Percent"]:</th>
+                                    @foreach (var player in players)
+                                    {
+                                        var percent = player[shots] != 0 ? player[hitsTank] / (decimal)player[shots] : 0;
+                                        <td class="slim text-center">
+                                            @percent.ToString("P0")
+                                        </td>
+                                    }
+                                </tr>
+                            }
+
+                            @if (supportsHeadshots)
+                            {
+                                RenderPlayerStats(players, headshots);
+
+                                @if (hasHeadshots)
+                                {
+                                    <tr>
+                                        <th>@SharedLocalizer[$"Headshots{weapon}Percent"]:</th>
+                                        @foreach (var player in players)
+                                        {
+                                            var eligibleHits = player[hits] - player[hitsTank];
+                                            var percent = eligibleHits > 0 ? player[headshots] / (decimal)eligibleHits : 0;
+                                            <td class="slim text-center">
+                                                @percent.ToString("P0")
+                                            </td>
+                                        }
+                                    </tr>
+                                }
+
+                                RenderPlayerStats(players, headshotsSi);
+
+                                @if (hasHeadshotsSi)
+                                {
+                                    <tr>
+                                        <th>@SharedLocalizer[$"HeadshotsSi{weapon}Percent"]:</th>
+                                        @foreach (var player in players)
+                                        {
+                                            var percent = player[hitsSi] > 0 ? player[headshotsSi] / (decimal)player[hitsSi] : 0;
+                                            <td class="slim text-center">
+                                                @percent.ToString("P0")
+                                            </td>
+                                        }
+                                    </tr>
+                                }
                             }
 
                             <tr>
@@ -633,34 +631,33 @@
                         }
 
                         @{
-                            RenderPlayerStats(players, PlayerStats.FfGiven);
-                            RenderPlayerStatsCollection(players, [
+                            var ffGivenStats = new[]
+                            {
+                                PlayerStats.FfGiven,
                                 PlayerStats.FfGivenPellet,
                                 PlayerStats.FfGivenBullet,
                                 PlayerStats.FfGivenMelee,
                                 PlayerStats.FfGivenFire,
                                 PlayerStats.FfGivenIncap,
                                 PlayerStats.FfGivenOther,
-                                PlayerStats.FfGivenSelf
-                            ], false);
-                            RenderPlayerStats(players, PlayerStats.FfGivenTotal);
-                        }
-
-                        <tr>
-                            <td colspan="@(players.Count + 1)"></td>
-                        </tr>
-
-                        @{
-                            RenderPlayerStats(players, PlayerStats.FfTaken);
-                            RenderPlayerStatsCollection(players, [
+                                PlayerStats.FfGivenSelf,
+                                PlayerStats.FfGivenTotal
+                            };
+                            var ffTakenStats = new[]
+                            {
+                                PlayerStats.FfTaken,
                                 PlayerStats.FfTakenPellet,
                                 PlayerStats.FfTakenBullet,
                                 PlayerStats.FfTakenMelee,
                                 PlayerStats.FfTakenFire,
                                 PlayerStats.FfTakenIncap,
-                                PlayerStats.FfTakenOther
-                            ], false);
-                            RenderPlayerStats(players, PlayerStats.FfTakenTotal);
+                                PlayerStats.FfTakenOther,
+                                PlayerStats.FfTakenTotal
+                            };
+                            var hasFfTaken = ffTakenStats.Any(ps => HasPlayerStats(players, ps));
+
+                            RenderPlayerStatsCollection(players, ffGivenStats, hasFfTaken);
+                            RenderPlayerStatsCollection(players, ffTakenStats, false);
                         }
                         </tbody>
                     </table>
