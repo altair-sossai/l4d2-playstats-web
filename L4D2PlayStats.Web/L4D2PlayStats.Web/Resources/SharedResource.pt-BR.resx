@@ -324,6 +324,9 @@
   <data name="TeamShare" xml:space="preserve">
     <value>% da equipe</value>
   </data>
+  <data name="MoreInfo" xml:space="preserve">
+    <value>Mais informações</value>
+  </data>
   <data name="DmgTakenHelp" xml:space="preserve">
     <value>Dano de infectados jogadores e de comuns atribuídos ao Boomer; não inclui dano comum normal.</value>
   </data>
@@ -604,7 +607,7 @@
     <value>Shotgun - Acertos em SI</value>
   </data>
   <data name="HitsSiShotgunPercent" xml:space="preserve">
-    <value>Shotgun - Acertos em IE (%)</value>
+    <value>Shotgun - Acertos em SI (%)</value>
   </data>
   <data name="HitsTankShotgun" xml:space="preserve">
     <value>Shotgun - Acertos no Tank</value>
@@ -658,7 +661,7 @@
     <value>Sniper - Acertos em SI</value>
   </data>
   <data name="HitsSiSniperPercent" xml:space="preserve">
-    <value>Sniper - Acertos em IE (%)</value>
+    <value>Sniper - Acertos em SI (%)</value>
   </data>
   <data name="HitsTankSniper" xml:space="preserve">
     <value>Sniper - Acertos no Tank</value>
@@ -691,7 +694,7 @@
     <value>Pistol - Acertos em SI</value>
   </data>
   <data name="HitsSiPistolPercent" xml:space="preserve">
-    <value>Pistol - Acertos em IE (%)</value>
+    <value>Pistol - Acertos em SI (%)</value>
   </data>
   <data name="HitsTankPistol" xml:space="preserve">
     <value>Pistol - Acertos no Tank</value>

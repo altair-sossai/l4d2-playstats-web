@@ -475,7 +475,8 @@
                 }
             </td>
             <th>
-                <span data-toggle="tooltip" data-placement="top" title="@SharedLocalizer["DmgTakenHelp"]">@SharedLocalizer["DmgTaken"]:</span>
+                @SharedLocalizer["DmgTaken"]:
+                <span class="glyphicon glyphicon-info-sign text-muted" tabindex="0" role="button" data-toggle="tooltip" data-trigger="hover focus" data-placement="top" title="@SharedLocalizer["DmgTakenHelp"]" aria-label="@SharedLocalizer["MoreInfo"]"></span>
             </th>
             <td data-label="@SharedLocalizer["DmgTaken"]:">
                 @firstPlayer.DmgTaken.ToString("N0")
@@ -561,7 +562,8 @@
         <tbody>
         <tr>
             <th>
-                <span data-toggle="tooltip" data-placement="top" title="@SharedLocalizer["DmgTotalHelp"]">@SharedLocalizer["DmgTotal"]:</span>
+                @SharedLocalizer["DmgTotal"]:
+                <span class="glyphicon glyphicon-info-sign text-muted" tabindex="0" role="button" data-toggle="tooltip" data-trigger="hover focus" data-placement="top" title="@SharedLocalizer["DmgTotalHelp"]" aria-label="@SharedLocalizer["MoreInfo"]"></span>
             </th>
             <td data-label="@SharedLocalizer["DmgTotal"]:">
                 @firstPlayer.DmgTotal.ToString("N0")
@@ -595,7 +597,8 @@
             </td>
 
             <th>
-                <span data-toggle="tooltip" data-placement="top" title="@SharedLocalizer["HunterDpDmgHelp"]">@SharedLocalizer["HunterDpDmg"]:</span>
+                @SharedLocalizer["HunterDpDmg"]:
+                <span class="glyphicon glyphicon-info-sign text-muted" tabindex="0" role="button" data-toggle="tooltip" data-trigger="hover focus" data-placement="top" title="@SharedLocalizer["HunterDpDmgHelp"]" aria-label="@SharedLocalizer["MoreInfo"]"></span>
             </th>
             <td data-label="@SharedLocalizer["HunterDpDmg"]:">
                 @firstPlayer.HunterDpDmg.ToString("N0")

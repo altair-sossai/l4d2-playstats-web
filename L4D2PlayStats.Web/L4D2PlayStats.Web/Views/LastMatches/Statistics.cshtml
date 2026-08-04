@@ -38,25 +38,31 @@
 }
 
 @{
-    string PlayerStatsTitle(PlayerStats playerStats) => playerStats switch
+    string? PlayerStatsHelpKey(PlayerStats playerStats) => playerStats switch
     {
-        PlayerStats.DmgTaken => SharedLocalizer["DmgTakenHelp"],
-        _ => SharedLocalizer[playerStats.ToString()]
+        PlayerStats.DmgTaken => "DmgTakenHelp",
+        _ => null
     };
 
-    string InfectedStatsTitle(InfectedStats infectedStats) => infectedStats switch
+    string? InfectedStatsHelpKey(InfectedStats infectedStats) => infectedStats switch
     {
-        InfectedStats.DmgTotal => SharedLocalizer["DmgTotalHelp"],
-        InfectedStats.DmgBoom => SharedLocalizer["DmgBoomHelp"],
-        InfectedStats.HunterDpDmg => SharedLocalizer["HunterDpDmgHelp"],
-        _ => SharedLocalizer[infectedStats.ToString()]
+        InfectedStats.DmgTotal => "DmgTotalHelp",
+        InfectedStats.DmgBoom => "DmgBoomHelp",
+        InfectedStats.HunterDpDmg => "HunterDpDmgHelp",
+        _ => null
     };
 
     void RenderPlayerStats(List<Player> players, PlayerStats playerStats)
     {
+        var helpKey = PlayerStatsHelpKey(playerStats);
+
         <tr>
             <th>
-                <span data-toggle="tooltip" data-placement="top" title="@PlayerStatsTitle(playerStats)">@SharedLocalizer[playerStats.ToString()]:</span>
+                @SharedLocalizer[playerStats.ToString()]:
+                @if (helpKey != null)
+                {
+                    <span class="glyphicon glyphicon-info-sign text-muted" tabindex="0" role="button" data-toggle="tooltip" data-trigger="hover focus" data-placement="top" title="@SharedLocalizer[helpKey]" aria-label="@SharedLocalizer["MoreInfo"]"></span>
+                }
             </th>
             @foreach (var player in players)
             {
@@ -104,9 +110,15 @@
 
     void RenderInfectedStats(List<InfectedPlayer> infectedPlayers, InfectedStats infectedStats)
     {
+        var helpKey = InfectedStatsHelpKey(infectedStats);
+
         <tr>
             <th>
-                <span data-toggle="tooltip" data-placement="top" title="@InfectedStatsTitle(infectedStats)">@SharedLocalizer[infectedStats.ToString()]:</span>
+                @SharedLocalizer[infectedStats.ToString()]:
+                @if (helpKey != null)
+                {
+                    <span class="glyphicon glyphicon-info-sign text-muted" tabindex="0" role="button" data-toggle="tooltip" data-trigger="hover focus" data-placement="top" title="@SharedLocalizer[helpKey]" aria-label="@SharedLocalizer["MoreInfo"]"></span>
+                }
             </th>
             @foreach (var infectedPlayer in infectedPlayers)
             {

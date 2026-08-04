@@ -269,7 +269,8 @@
 
             <tr>
                 <td>
-                    <span data-toggle="tooltip" data-placement="top" title="@SharedLocalizer["DmgTakenHelp"]">@SharedLocalizer["DmgTaken"]</span>
+                    @SharedLocalizer["DmgTaken"]
+                    <span class="glyphicon glyphicon-info-sign text-muted" tabindex="0" role="button" data-toggle="tooltip" data-trigger="hover focus" data-placement="top" title="@SharedLocalizer["DmgTakenHelp"]" aria-label="@SharedLocalizer["MoreInfo"]"></span>
                 </td>
                 @foreach (var player in team.Players ?? MatchResult.PlayerResult.EmptyCollection)
                 {
@@ -340,6 +341,20 @@
             </tr>
 
             <tr>
+                <td>@SharedLocalizer["WitchDamage"]</td>
+                @foreach (var player in team.Players ?? MatchResult.PlayerResult.EmptyCollection)
+                {
+                    <td class="text-right" data-label="@player.Name?.TruncatePlayerName()">
+                        @player.WitchDamage.ToString("N0")
+                    </td>
+                    <td class="text-left hide-mobile">
+                        @player.WitchDamagePercentage.ToString("P0")
+                    </td>
+                }
+                <td class="text-center" data-label="@SharedLocalizer["Total"]">@team.WitchDamage.ToString("N0")</td>
+            </tr>
+
+            <tr>
                 <td>@SharedLocalizer["RockEats"]</td>
                 @foreach (var player in team.Players ?? MatchResult.PlayerResult.EmptyCollection)
                 {
@@ -396,6 +411,20 @@
             </tr>
 
             <tr>
+                <td>@SharedLocalizer["Crowns"]</td>
+                @foreach (var player in team.Players ?? MatchResult.PlayerResult.EmptyCollection)
+                {
+                    <td class="text-right" data-label="@player.Name?.TruncatePlayerName()">
+                        @player.Crowns.ToString("N0")
+                    </td>
+                    <td class="text-left hide-mobile">
+                        @player.CrownsPercentage.ToString("P0")
+                    </td>
+                }
+                <td class="text-center" data-label="@SharedLocalizer["Total"]">@team.Crowns.ToString("N0")</td>
+            </tr>
+
+            <tr>
                 <td>@SharedLocalizer["FfGiven"]</td>
                 @foreach (var player in team.Players ?? MatchResult.PlayerResult.EmptyCollection)
                 {
@@ -447,7 +476,8 @@
             <tbody>
             <tr>
                 <td>
-                    <span data-toggle="tooltip" data-placement="top" title="@SharedLocalizer["DmgTotalHelp"]">@SharedLocalizer["DmgTotal"]</span>
+                    @SharedLocalizer["DmgTotal"]
+                    <span class="glyphicon glyphicon-info-sign text-muted" tabindex="0" role="button" data-toggle="tooltip" data-trigger="hover focus" data-placement="top" title="@SharedLocalizer["DmgTotalHelp"]" aria-label="@SharedLocalizer["MoreInfo"]"></span>
                 </td>
                 @foreach (var player in team.Players ?? MatchResult.PlayerResult.EmptyCollection)
                 {
@@ -491,7 +521,8 @@
 
             <tr>
                 <td>
-                    <span data-toggle="tooltip" data-placement="top" title="@SharedLocalizer["HunterDpDmgHelp"]">@SharedLocalizer["HunterDpDmg"]</span>
+                    @SharedLocalizer["HunterDpDmg"]
+                    <span class="glyphicon glyphicon-info-sign text-muted" tabindex="0" role="button" data-toggle="tooltip" data-trigger="hover focus" data-placement="top" title="@SharedLocalizer["HunterDpDmgHelp"]" aria-label="@SharedLocalizer["MoreInfo"]"></span>
                 </td>
                 @foreach (var player in team.Players ?? MatchResult.PlayerResult.EmptyCollection)
                 {

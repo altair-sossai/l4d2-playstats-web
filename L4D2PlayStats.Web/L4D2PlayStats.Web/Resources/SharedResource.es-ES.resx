@@ -190,7 +190,7 @@
     <value>Veces incapacitado</value>
   </data>
   <data name="DmgTaken" xml:space="preserve">
-    <value>Daño recibido de IE</value>
+    <value>Daño recibido de SI</value>
   </data>
   <data name="Common" xml:space="preserve">
     <value>Comunes muertos</value>
@@ -217,7 +217,7 @@
     <value>Levels totales</value>
   </data>
   <data name="DmgTotal" xml:space="preserve">
-    <value>Daño de IE (sin Tank)</value>
+    <value>Daño de SI (sin Tank)</value>
   </data>
   <data name="DmgSpit" xml:space="preserve">
     <value>Daño de ácido (en pie)</value>
@@ -326,6 +326,9 @@
   </data>
   <data name="TeamShare" xml:space="preserve">
     <value>% del equipo</value>
+  </data>
+  <data name="MoreInfo" xml:space="preserve">
+    <value>Más información</value>
   </data>
   <data name="DmgTakenHelp" xml:space="preserve">
     <value>Daño de infectados jugadores y comunes atribuidos al Boomer; no incluye daño común normal.</value>
@@ -604,7 +607,7 @@
     <value>Shotgun - Impactos a SI</value>
   </data>
   <data name="HitsSiShotgunPercent" xml:space="preserve">
-    <value>Shotgun - Impactos a IE (%)</value>
+    <value>Shotgun - Impactos a SI (%)</value>
   </data>
   <data name="HitsTankShotgun" xml:space="preserve">
     <value>Shotgun - Impactos al Tank</value>
@@ -622,10 +625,10 @@
     <value>SMG / Rifle - Impactos (%)</value>
   </data>
   <data name="HitsSiSmg" xml:space="preserve">
-    <value>SMG / Rifle - Impactos a IE</value>
+    <value>SMG / Rifle - Impactos a SI</value>
   </data>
   <data name="HitsSiSmgPercent" xml:space="preserve">
-    <value>SMG/Rifle - Impacto IE (%)</value>
+    <value>SMG/Rifle - Impacto SI (%)</value>
   </data>
   <data name="HitsTankSmg" xml:space="preserve">
     <value>SMG / Rifle - Impactos al Tank</value>
@@ -640,10 +643,10 @@
     <value>SMG / Rifle - HS/impactos (%)</value>
   </data>
   <data name="HeadshotsSiSmg" xml:space="preserve">
-    <value>SMG / Rifle - Headshots a IE</value>
+    <value>SMG / Rifle - Headshots a SI</value>
   </data>
   <data name="HeadshotsSiSmgPercent" xml:space="preserve">
-    <value>SMG/Rifle - HS/impacto IE (%)</value>
+    <value>SMG/Rifle - HS/impacto SI (%)</value>
   </data>
     <data name="ShotsSniper" xml:space="preserve"><value>Sniper - Disparos</value></data>
   <data name="HitsSniper" xml:space="preserve">
@@ -656,7 +659,7 @@
     <value>Sniper - Impactos a SI</value>
   </data>
   <data name="HitsSiSniperPercent" xml:space="preserve">
-    <value>Sniper - Impactos a IE (%)</value>
+    <value>Sniper - Impactos a SI (%)</value>
   </data>
   <data name="HitsTankSniper" xml:space="preserve">
     <value>Sniper - Impactos al Tank</value>
@@ -674,7 +677,7 @@
     <value>Sniper - Headshots a SI</value>
   </data>
   <data name="HeadshotsSiSniperPercent" xml:space="preserve">
-    <value>Sniper - HS/impactos a IE (%)</value>
+    <value>Sniper - HS/impactos a SI (%)</value>
   </data>
   <data name="ShotsPistol" xml:space="preserve">
     <value>Pistol - Disparos</value>
@@ -689,7 +692,7 @@
     <value>Pistol - Impactos a SI</value>
   </data>
   <data name="HitsSiPistolPercent" xml:space="preserve">
-    <value>Pistol - Impactos a IE (%)</value>
+    <value>Pistol - Impactos a SI (%)</value>
   </data>
   <data name="HitsTankPistol" xml:space="preserve">
     <value>Pistol - Impactos al Tank</value>
@@ -707,7 +710,7 @@
     <value>Pistol - Headshots a SI</value>
   </data>
   <data name="HeadshotsSiPistolPercent" xml:space="preserve">
-    <value>Pistol - HS/impactos a IE (%)</value>
+    <value>Pistol - HS/impactos a SI (%)</value>
   </data>
   <data name="CommonTankUp" xml:space="preserve">
     <value>Commons muertos durante Tank</value>
@@ -716,7 +719,7 @@
     <value>SI muertos durante Tank</value>
   </data>
   <data name="SiDamageTankUp" xml:space="preserve">
-    <value>Daño a IE durante Tank</value>
+    <value>Daño a SI durante Tank</value>
   </data>
   <data name="MeleesOnTank" xml:space="preserve">
     <value>Tank - Golpes cuerpo a cuerpo</value>
@@ -821,7 +824,7 @@
     <value>FFT - Total</value>
   </data>
   <data name="DmgUpright" xml:space="preserve">
-    <value>Daño de IE (en pie)</value>
+    <value>Daño de SI (en pie)</value>
   </data>
   <data name="DmgTank" xml:space="preserve">
     <value>Daño de Tank (en pie)</value>
@@ -836,7 +839,7 @@
     <value>Arañazos (en pie)</value>
   </data>
   <data name="DmgTankUp" xml:space="preserve">
-    <value>Daño de IE durante Tank</value>
+    <value>Daño de SI durante Tank</value>
   </data>
   <data name="DmgBoom" xml:space="preserve">
     <value>Daño de comunes post-boom</value>

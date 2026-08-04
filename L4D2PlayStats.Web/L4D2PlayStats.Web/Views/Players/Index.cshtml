@@ -21,12 +21,12 @@
         _ => property.ToString()
     };
 
-    private static string PlayerPropertyTitleResourceKey(PlayerResultProperty property) => property switch
+    private static string? PlayerPropertyHelpResourceKey(PlayerResultProperty property) => property switch
     {
         PlayerResultProperty.DmgTaken => "DmgTakenHelp",
         PlayerResultProperty.DmgTotal => "DmgTotalHelp",
         PlayerResultProperty.HunterDpDmg => "HunterDpDmgHelp",
-        _ => PlayerPropertyResourceKey(property)
+        _ => null
     };
 }
 
@@ -93,6 +93,8 @@
     }
     @foreach (var player in Model.Players)
     {
+        var helpKey = PlayerPropertyHelpResourceKey(Model.OrderBy);
+
         <tr class="hover @(CurrentUser.ItIsMe(player.CommunityId) ? "it-is-me" : string.Empty)">
             <td class="text-center vertical-align-middle slim">#@position.ToString("N0")</td>
             <td class="text-center vertical-align-middle slim" style="margin: 0; padding: 0">
@@ -104,8 +106,12 @@
                 @Html.ActionLink(player.Name?.TruncatePlayerName() ?? "-", "Details", "Players", new { communityId = player.CommunityId })
             </td>
             <td class="text-center vertical-align-middle">
-                <p data-toggle="tooltip" data-placement="top" title="@SharedLocalizer[PlayerPropertyTitleResourceKey(Model.OrderBy)]">
+                <p>
                     @player.Value.ToString("N0")
+                    @if (helpKey != null)
+                    {
+                        <span class="glyphicon glyphicon-info-sign text-muted" tabindex="0" role="button" data-toggle="tooltip" data-trigger="hover focus" data-placement="top" title="@SharedLocalizer[helpKey]" aria-label="@SharedLocalizer["MoreInfo"]"></span>
+                    }
                 </p>
             </td>
         </tr>

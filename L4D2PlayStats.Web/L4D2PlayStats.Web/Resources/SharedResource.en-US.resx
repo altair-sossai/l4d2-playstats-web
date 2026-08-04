@@ -327,6 +327,9 @@
   <data name="TeamShare" xml:space="preserve">
     <value>Team %</value>
   </data>
+  <data name="MoreInfo" xml:space="preserve">
+    <value>More information</value>
+  </data>
   <data name="DmgTakenHelp" xml:space="preserve">
     <value>Damage from player infected and commons attributed to a Boomer; regular common damage is excluded.</value>
   </data>
