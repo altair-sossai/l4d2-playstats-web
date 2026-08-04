@@ -313,7 +313,7 @@
             </tr>
 
             <tr>
-                <td>@SharedLocalizer["DmgTank"]</td>
+                <td>@SharedLocalizer["TankDamage"]</td>
                 @foreach (var player in team.Players ?? MatchResult.PlayerResult.EmptyCollection)
                 {
                     <td class="text-right" data-label="@player.Name?.TruncatePlayerName()">
@@ -341,7 +341,7 @@
             </tr>
 
             <tr>
-                <td>@SharedLocalizer["Skeets"]</td>
+                <td>@SharedLocalizer["SkeetsTotal"]</td>
                 @foreach (var player in team.Players ?? MatchResult.PlayerResult.EmptyCollection)
                 {
                     <td class="text-right" data-label="@player.Name?.TruncatePlayerName()">
@@ -369,7 +369,7 @@
             </tr>
 
             <tr>
-                <td>@SharedLocalizer["Levels"]</td>
+                <td>@SharedLocalizer["LevelsTotal"]</td>
                 @foreach (var player in team.Players ?? MatchResult.PlayerResult.EmptyCollection)
                 {
                     <td class="text-right" data-label="@player.Name?.TruncatePlayerName()">

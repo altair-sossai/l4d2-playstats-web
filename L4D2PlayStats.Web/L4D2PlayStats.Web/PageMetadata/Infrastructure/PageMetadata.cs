@@ -10,7 +10,7 @@ public abstract class PageMetadata
     public static string SiteName => "L4D2 Competitive";
     public string Title { get; private set; } = string.Empty;
     public string Description { get; private set; } = string.Empty;
-    public string Image { get; private set; } = DefaultImageUrl;
+    public string ImageUrl { get; private set; } = DefaultImageUrl;
     public string ImageAlt { get; private set; } = string.Empty;
     public string OpenGraphType { get; private set; } = "website";
     public bool NoIndex { get; private set; }
@@ -30,7 +30,7 @@ public abstract class PageMetadata
 
         Title = title == SiteName ? SiteName : $"{title} | {SiteName}";
         Description = description;
-        Image = ResolveImage(image);
+        ImageUrl = ResolveImageUrl(image);
         ImageAlt = imageAlt ?? title;
         OpenGraphType = openGraphType;
         NoIndex = noIndex;
@@ -54,7 +54,7 @@ public abstract class PageMetadata
         return string.Join(" - ", parts.Where(part => !string.IsNullOrWhiteSpace(part)));
     }
 
-    private static string ResolveImage(string? image)
+    private static string ResolveImageUrl(string? image)
     {
         if (string.IsNullOrWhiteSpace(image))
             return DefaultImageUrl;

@@ -45,7 +45,14 @@
             @foreach (var player in players)
             {
                 <td class="slim text-center">
-                    @player[playerStats].ToString("N0")
+                    @if (playerStats == PlayerStats.AvgClearTime)
+                    {
+                        @((player[playerStats] / 1000m).ToString("N2"))
+                    }
+                    else
+                    {
+                        @player[playerStats].ToString("N0")
+                    }
                 </td>
             }
         </tr>
@@ -233,9 +240,9 @@
     var survivorWinning = round == 1 ? scoring?.TeamAWon : scoring?.TeamBWon;
     var infectedWinning = round == 1 ? scoring?.TeamBWon : scoring?.TeamAWon;
 
-    var mvpSiDamage = half.Players.OrderByDescending(p => p.SiDamage).FirstOrDefault();
-    var mvpCommon = half.Players.OrderByDescending(p => p.Common).FirstOrDefault();
-    var lvpFfGiven = half.Players.OrderByDescending(p => p.FfGiven).FirstOrDefault();
+    var mvpSiDamage = half.Players.Where(p => p.SiDamage > 0).OrderByDescending(p => p.SiDamage).FirstOrDefault();
+    var mvpCommon = half.Players.Where(p => p.Common > 0).OrderByDescending(p => p.Common).FirstOrDefault();
+    var lvpFfGiven = half.Players.Where(p => p.FfGiven > 0).OrderByDescending(p => p.FfGiven).FirstOrDefault();
 
     var players = half.Players
         .OrderByDescending(p => p == mvpSiDamage)
@@ -555,7 +562,8 @@
                                     <th>@SharedLocalizer[$"Headshots{weapon}Percent"]:</th>
                                     @foreach (var player in players)
                                     {
-                                        var percent = player[shots] != 0 ? player[headshots] / (decimal)player[shots] : 0;
+                                        var eligibleHits = player[hits] - player[hitsTank];
+                                        var percent = eligibleHits > 0 ? player[headshots] / (decimal)eligibleHits : 0;
                                         <td class="slim text-center">
                                             @percent.ToString("P0")
                                         </td>
@@ -574,7 +582,7 @@
                                     <th>@SharedLocalizer[$"HeadshotsSi{weapon}Percent"]:</th>
                                     @foreach (var player in players)
                                     {
-                                        var percent = player[shots] != 0 ? player[headshotsSi] / (decimal)player[shots] : 0;
+                                        var percent = player[hitsSi] > 0 ? player[headshotsSi] / (decimal)player[hitsSi] : 0;
                                         <td class="slim text-center">
                                             @percent.ToString("P0")
                                         </td>
@@ -595,8 +603,16 @@
                         }
 
                         @{
-                            RenderPlayerStatsCollection(players, [PlayerStats.FfHits, PlayerStats.FfGiven], false);
-                            RenderPlayerStatsBetween(players, PlayerStats.FfGivenPellet, PlayerStats.FfGivenSelf, false);
+                            RenderPlayerStats(players, PlayerStats.FfGiven);
+                            RenderPlayerStatsCollection(players, [
+                                PlayerStats.FfGivenPellet,
+                                PlayerStats.FfGivenBullet,
+                                PlayerStats.FfGivenMelee,
+                                PlayerStats.FfGivenFire,
+                                PlayerStats.FfGivenIncap,
+                                PlayerStats.FfGivenOther,
+                                PlayerStats.FfGivenSelf
+                            ], false);
                             RenderPlayerStats(players, PlayerStats.FfGivenTotal);
                         }
 
@@ -604,13 +620,16 @@
                             <td colspan="@(players.Count + 1)"></td>
                         </tr>
 
-                        <tr>
-                            <th>@SharedLocalizer["FfTaken"]:</th>
-                            <td colspan="@players.Count"></td>
-                        </tr>
-
                         @{
-                            RenderPlayerStatsBetween(players, PlayerStats.FfTakenPellet, PlayerStats.FfTakenOther, false);
+                            RenderPlayerStats(players, PlayerStats.FfTaken);
+                            RenderPlayerStatsCollection(players, [
+                                PlayerStats.FfTakenPellet,
+                                PlayerStats.FfTakenBullet,
+                                PlayerStats.FfTakenMelee,
+                                PlayerStats.FfTakenFire,
+                                PlayerStats.FfTakenIncap,
+                                PlayerStats.FfTakenOther
+                            ], false);
                             RenderPlayerStats(players, PlayerStats.FfTakenTotal);
                         }
                         </tbody>

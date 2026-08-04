@@ -39,8 +39,8 @@
     <meta property="og:description" content="@pageMetadata.Description">
     <meta property="og:url" content="@pageMetadata.GetCanonicalUrl(Context.Request.Path)">
     <meta property="og:type" content="@pageMetadata.OpenGraphType">
-    <meta property="og:image" content="@pageMetadata.Image">
-    <meta property="og:image:secure_url" content="@pageMetadata.Image">
+    <meta property="og:image" content="@pageMetadata.ImageUrl">
+    <meta property="og:image:secure_url" content="@pageMetadata.ImageUrl">
     <meta property="og:image:alt" content="@pageMetadata.ImageAlt">
     <meta property="og:site_name" content="@PageMetadata.SiteName">
     <meta property="og:locale" content="@cultureInfo.Name.Replace('-', '_')">
@@ -48,7 +48,7 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="@pageMetadata.Title">
     <meta name="twitter:description" content="@pageMetadata.Description">
-    <meta name="twitter:image" content="@pageMetadata.Image">
+    <meta name="twitter:image" content="@pageMetadata.ImageUrl">
     <meta name="twitter:image:alt" content="@pageMetadata.ImageAlt">
 
     <title>@pageMetadata.Title</title>

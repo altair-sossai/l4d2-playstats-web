@@ -10,6 +10,15 @@
 @inject IUserAvatar UserAvatar
 @inject ICurrentUser CurrentUser
 
+@functions {
+    private static string PlayerPropertyResourceKey(PlayerResultProperty property) => property switch
+    {
+        PlayerResultProperty.Skeets => "SkeetsTotal",
+        PlayerResultProperty.Levels => "LevelsTotal",
+        _ => property.ToString()
+    };
+}
+
 @{
     ViewData["PageMetadata"] = new PlayersPageMetadata(Model, SharedLocalizer, UserAvatar);
 }
@@ -36,7 +45,7 @@
     <div class="col-md-12">
         <div class="dropdown">
             <button class="btn btn-default btn-sm dropdown-toggle" type="button" data-toggle="dropdown">
-                @SharedLocalizer["OrderBy"]: <b>@SharedLocalizer[Model.OrderBy.ToString()]</b>
+                @SharedLocalizer["OrderBy"]: <b>@SharedLocalizer[PlayerPropertyResourceKey(Model.OrderBy)]</b>
                 <span class="caret"></span>
             </button>
             <ul class="dropdown-menu">
@@ -44,7 +53,7 @@
                 {
                     <li>
                         <a href="@Url.Action("Index", "Players", new { orderBy = property, asc = false })">
-                            @SharedLocalizer[property.ToString()]
+                            @SharedLocalizer[PlayerPropertyResourceKey(property)]
                         </a>
                     </li>
                 }
@@ -60,7 +69,7 @@
         <th colspan="2">@SharedLocalizer["Player"]</th>
         <th class="text-center">
             <a href="@Url.Action("Index", "Players", new { orderBy = Model.OrderBy, asc = !Model.Asc })">
-                @SharedLocalizer[Model.OrderBy.ToString()]
+                @SharedLocalizer[PlayerPropertyResourceKey(Model.OrderBy)]
                 &nbsp;
                 @(Model.Asc ? "\u2191" : "\u2193")
             </a>
@@ -84,7 +93,7 @@
                 @Html.ActionLink(player.Name?.TruncatePlayerName() ?? "-", "Details", "Players", new { communityId = player.CommunityId })
             </td>
             <td class="text-center vertical-align-middle">
-                <p data-toggle="tooltip" data-placement="top" title="@SharedLocalizer[Model.OrderBy.ToString()]">
+                <p data-toggle="tooltip" data-placement="top" title="@SharedLocalizer[PlayerPropertyResourceKey(Model.OrderBy)]">
                     @player.Value.ToString("N0")
                 </p>
             </td>
