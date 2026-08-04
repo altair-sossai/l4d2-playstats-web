@@ -223,7 +223,7 @@
     <value>Spit damage (upright)</value>
   </data>
   <data name="HunterDpDmg" xml:space="preserve">
-    <value>Hunter - Pounce damage</value>
+    <value>Total pounce damage</value>
   </data>
   <data name="Total" xml:space="preserve">
     <value>Total</value>
@@ -277,13 +277,13 @@
     <value>LVP</value>
   </data>
   <data name="SiDamage" xml:space="preserve">
-    <value>SI - Damage taken</value>
+    <value>Damage to SI</value>
   </data>
   <data name="TankDamage" xml:space="preserve">
     <value>Damage to Tank</value>
   </data>
   <data name="RockEats" xml:space="preserve">
-    <value>Rocks eats</value>
+    <value>Rock hits taken</value>
   </data>
   <data name="FfDamageTotal" xml:space="preserve">
     <value>FF</value>
@@ -311,6 +311,33 @@
   </data>
   <data name="MvpSiDamage" xml:space="preserve">
     <value>MVP (SI)</value>
+  </data>
+  <data name="MvpSiDamageCount" xml:space="preserve">
+    <value>SI MVP awards</value>
+  </data>
+  <data name="MvpCommonCount" xml:space="preserve">
+    <value>CI MVP awards</value>
+  </data>
+  <data name="LvpFfCount" xml:space="preserve">
+    <value>FF LVP awards</value>
+  </data>
+  <data name="StatValue" xml:space="preserve">
+    <value>Value</value>
+  </data>
+  <data name="TeamShare" xml:space="preserve">
+    <value>Team %</value>
+  </data>
+  <data name="DmgTakenHelp" xml:space="preserve">
+    <value>Damage from player infected and commons attributed to a Boomer; regular common damage is excluded.</value>
+  </data>
+  <data name="DmgTotalHelp" xml:space="preserve">
+    <value>SI damage, including incapacitated and post-boom damage; Tank damage is excluded.</value>
+  </data>
+  <data name="DmgBoomHelp" xml:space="preserve">
+    <value>Common damage to upright survivors after a Boomer bile.</value>
+  </data>
+  <data name="HunterDpDmgHelp" xml:space="preserve">
+    <value>Sum of damage from all recorded high pounces.</value>
   </data>
   <data name="LevelUp" xml:space="preserve">
     <value>Level Up!</value>
@@ -574,7 +601,7 @@
     <value>Shotgun - Hits (%)</value>
   </data>
   <data name="HitsSiShotgun" xml:space="preserve">
-    <value>Shotgun - Hits on Special Infected</value>
+    <value>Shotgun - SI hits</value>
   </data>
   <data name="HitsSiShotgunPercent" xml:space="preserve">
     <value>Shotgun - Hits on SI (%)</value>
@@ -628,7 +655,7 @@
     <value>Sniper - Hits (%)</value>
   </data>
   <data name="HitsSiSniper" xml:space="preserve">
-    <value>Sniper - Hits on Special Infected</value>
+    <value>Sniper - SI hits</value>
   </data>
   <data name="HitsSiSniperPercent" xml:space="preserve">
     <value>Sniper - Hits on SI (%)</value>
@@ -646,7 +673,7 @@
     <value>Sniper - HS per hit (%)</value>
   </data>
   <data name="HeadshotsSiSniper" xml:space="preserve">
-    <value>Sniper - Headshots on Special Infected</value>
+    <value>Sniper - SI headshots</value>
   </data>
   <data name="HeadshotsSiSniperPercent" xml:space="preserve">
     <value>Sniper - SI HS per hit (%)</value>
@@ -661,7 +688,7 @@
     <value>Pistol - Hits (%)</value>
   </data>
   <data name="HitsSiPistol" xml:space="preserve">
-    <value>Pistol - Hits on Special Infected</value>
+    <value>Pistol - SI hits</value>
   </data>
   <data name="HitsSiPistolPercent" xml:space="preserve">
     <value>Pistol - Hits on SI (%)</value>
@@ -679,7 +706,7 @@
     <value>Pistol - HS per hit (%)</value>
   </data>
   <data name="HeadshotsSiPistol" xml:space="preserve">
-    <value>Pistol - Headshots on Special Infected</value>
+    <value>Pistol - SI headshots</value>
   </data>
   <data name="HeadshotsSiPistolPercent" xml:space="preserve">
     <value>Pistol - SI HS per hit (%)</value>
@@ -688,7 +715,7 @@
     <value>Commons - Killed during Tank</value>
   </data>
   <data name="SiKilledTankUp" xml:space="preserve">
-    <value>Special Infected - Killed during Tank</value>
+    <value>SI killed during Tank</value>
   </data>
   <data name="SiDamageTankUp" xml:space="preserve">
     <value>Damage to SI during Tank</value>

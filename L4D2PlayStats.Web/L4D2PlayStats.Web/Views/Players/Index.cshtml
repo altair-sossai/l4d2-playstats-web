@@ -13,9 +13,20 @@
 @functions {
     private static string PlayerPropertyResourceKey(PlayerResultProperty property) => property switch
     {
+        PlayerResultProperty.MvpSiDamage => "MvpSiDamageCount",
+        PlayerResultProperty.MvpCommon => "MvpCommonCount",
+        PlayerResultProperty.LvpFfGiven => "LvpFfCount",
         PlayerResultProperty.Skeets => "SkeetsTotal",
         PlayerResultProperty.Levels => "LevelsTotal",
         _ => property.ToString()
+    };
+
+    private static string PlayerPropertyTitleResourceKey(PlayerResultProperty property) => property switch
+    {
+        PlayerResultProperty.DmgTaken => "DmgTakenHelp",
+        PlayerResultProperty.DmgTotal => "DmgTotalHelp",
+        PlayerResultProperty.HunterDpDmg => "HunterDpDmgHelp",
+        _ => PlayerPropertyResourceKey(property)
     };
 }
 
@@ -93,7 +104,7 @@
                 @Html.ActionLink(player.Name?.TruncatePlayerName() ?? "-", "Details", "Players", new { communityId = player.CommunityId })
             </td>
             <td class="text-center vertical-align-middle">
-                <p data-toggle="tooltip" data-placement="top" title="@SharedLocalizer[PlayerPropertyResourceKey(Model.OrderBy)]">
+                <p data-toggle="tooltip" data-placement="top" title="@SharedLocalizer[PlayerPropertyTitleResourceKey(Model.OrderBy)]">
                     @player.Value.ToString("N0")
                 </p>
             </td>

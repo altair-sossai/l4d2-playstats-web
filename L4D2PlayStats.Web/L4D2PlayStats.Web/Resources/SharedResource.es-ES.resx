@@ -223,7 +223,7 @@
     <value>Daño de ácido (en pie)</value>
   </data>
   <data name="HunterDpDmg" xml:space="preserve">
-    <value>Hunter - Daño por pounce</value>
+    <value>Daño total de pounce</value>
   </data>
   <data name="Total" xml:space="preserve">
     <value>Total</value>
@@ -277,7 +277,7 @@
     <value>LVP</value>
   </data>
   <data name="SiDamage" xml:space="preserve">
-    <value>SI - Daño recebido</value>
+    <value>Daño a SI</value>
   </data>
   <data name="TankDamage" xml:space="preserve">
     <value>Daño al Tank</value>
@@ -311,6 +311,33 @@
   </data>
   <data name="MvpSiDamage" xml:space="preserve">
     <value>MVP (SI)</value>
+  </data>
+  <data name="MvpSiDamageCount" xml:space="preserve">
+    <value>MVP de SI (veces)</value>
+  </data>
+  <data name="MvpCommonCount" xml:space="preserve">
+    <value>MVP de CI (veces)</value>
+  </data>
+  <data name="LvpFfCount" xml:space="preserve">
+    <value>LVP de FF (veces)</value>
+  </data>
+  <data name="StatValue" xml:space="preserve">
+    <value>Valor</value>
+  </data>
+  <data name="TeamShare" xml:space="preserve">
+    <value>% del equipo</value>
+  </data>
+  <data name="DmgTakenHelp" xml:space="preserve">
+    <value>Daño de infectados jugadores y comunes atribuidos al Boomer; no incluye daño común normal.</value>
+  </data>
+  <data name="DmgTotalHelp" xml:space="preserve">
+    <value>Daño de SI, incluso a incapacitados y post-boom; no incluye daño de Tank.</value>
+  </data>
+  <data name="DmgBoomHelp" xml:space="preserve">
+    <value>Daño de comunes a supervivientes en pie tras la bilis del Boomer.</value>
+  </data>
+  <data name="HunterDpDmgHelp" xml:space="preserve">
+    <value>Suma del daño de todos los high pounces registrados.</value>
   </data>
   <data name="LevelUp" xml:space="preserve">
     <value>¡Subir de nivel!</value>
@@ -574,7 +601,7 @@
     <value>Shotgun - Impactos (%)</value>
   </data>
   <data name="HitsSiShotgun" xml:space="preserve">
-    <value>Shotgun - Impactos a Infectados Especiales</value>
+    <value>Shotgun - Impactos a SI</value>
   </data>
   <data name="HitsSiShotgunPercent" xml:space="preserve">
     <value>Shotgun - Impactos a IE (%)</value>
@@ -626,7 +653,7 @@
     <value>Sniper - Impactos (%)</value>
   </data>
   <data name="HitsSiSniper" xml:space="preserve">
-    <value>Sniper - Impactos a Infectados Especiales</value>
+    <value>Sniper - Impactos a SI</value>
   </data>
   <data name="HitsSiSniperPercent" xml:space="preserve">
     <value>Sniper - Impactos a IE (%)</value>
@@ -644,7 +671,7 @@
     <value>Sniper - HS/impactos (%)</value>
   </data>
   <data name="HeadshotsSiSniper" xml:space="preserve">
-    <value>Sniper - Headshots a Infectados Especiales</value>
+    <value>Sniper - Headshots a SI</value>
   </data>
   <data name="HeadshotsSiSniperPercent" xml:space="preserve">
     <value>Sniper - HS/impactos a IE (%)</value>
@@ -659,7 +686,7 @@
     <value>Pistol - Impactos (%)</value>
   </data>
   <data name="HitsSiPistol" xml:space="preserve">
-    <value>Pistol - Impactos a Infectados Especiales</value>
+    <value>Pistol - Impactos a SI</value>
   </data>
   <data name="HitsSiPistolPercent" xml:space="preserve">
     <value>Pistol - Impactos a IE (%)</value>
@@ -677,16 +704,16 @@
     <value>Pistol - HS/impactos (%)</value>
   </data>
   <data name="HeadshotsSiPistol" xml:space="preserve">
-    <value>Pistol - Headshots a Infectados Especiales</value>
+    <value>Pistol - Headshots a SI</value>
   </data>
   <data name="HeadshotsSiPistolPercent" xml:space="preserve">
     <value>Pistol - HS/impactos a IE (%)</value>
   </data>
   <data name="CommonTankUp" xml:space="preserve">
-    <value>Commons - Muertos durante el Tank</value>
+    <value>Commons muertos durante Tank</value>
   </data>
   <data name="SiKilledTankUp" xml:space="preserve">
-    <value>Infectados Especiales - Muertos durante el Tank</value>
+    <value>SI muertos durante Tank</value>
   </data>
   <data name="SiDamageTankUp" xml:space="preserve">
     <value>Daño a IE durante Tank</value>
@@ -704,7 +731,7 @@
     <value>Levels incompletos</value>
   </data>
   <data name="Crowns" xml:space="preserve">
-    <value>Crowns (Matar a la Witch de un disparo)</value>
+    <value>Crowns</value>
   </data>
   <data name="CrownsHurt" xml:space="preserve">
     <value>Draw crowns</value>
@@ -803,7 +830,7 @@
     <value>Daño de Tank (incap.)</value>
   </data>
   <data name="TankPasses" xml:space="preserve">
-    <value>Tank - Control losses</value>
+    <value>Tank - Pérdidas de control</value>
   </data>
   <data name="DmgScratch" xml:space="preserve">
     <value>Arañazos (en pie)</value>
@@ -821,13 +848,13 @@
     <value>Jockey - High pounces</value>
   </data>
   <data name="DeathCharges" xml:space="preserve">
-    <value>Charges - Instant kills</value>
+    <value>Charges mortales</value>
   </data>
   <data name="Booms" xml:space="preserve">
-    <value>Boomed</value>
+    <value>Supervivientes vomitados</value>
   </data>
   <data name="Ledged" xml:space="preserve">
-    <value>Ledged</value>
+    <value>Supervivientes colgados</value>
   </data>
   <data name="Spawns" xml:space="preserve">
     <value>Apariciones</value>

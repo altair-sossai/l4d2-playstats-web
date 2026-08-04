@@ -174,6 +174,7 @@
         </div>
         <table class="table table-striped table-hover table-condensed table-responsive">
             <thead>
+            <tr>
             <th class="text-center"></th>
             @foreach (var player in team.Players ?? MatchResult.PlayerResult.EmptyCollection)
             {
@@ -184,10 +185,20 @@
                 </th>
             }
             <th class="text-center">@SharedLocalizer["Total"]</th>
+            </tr>
+            <tr>
+                <th></th>
+                @foreach (var player in team.Players ?? MatchResult.PlayerResult.EmptyCollection)
+                {
+                    <th class="text-right"><small>@SharedLocalizer["StatValue"]</small></th>
+                    <th class="text-left"><small>@SharedLocalizer["TeamShare"]</small></th>
+                }
+                <th></th>
+            </tr>
             </thead>
             <tbody>
             <tr>
-                <td>@SharedLocalizer["MvpSiDamage"]</td>
+                <td>@SharedLocalizer["MvpSiDamageCount"]</td>
                 @foreach (var player in team.Players ?? MatchResult.PlayerResult.EmptyCollection)
                 {
                     <td class="text-right" data-label="@player.Name?.TruncatePlayerName()">
@@ -201,7 +212,7 @@
             </tr>
 
             <tr>
-                <td>@SharedLocalizer["MvpCommon"]</td>
+                <td>@SharedLocalizer["MvpCommonCount"]</td>
                 @foreach (var player in team.Players ?? MatchResult.PlayerResult.EmptyCollection)
                 {
                     <td class="text-right" data-label="@player.Name?.TruncatePlayerName()">
@@ -215,7 +226,7 @@
             </tr>
 
             <tr>
-                <td>@SharedLocalizer["LvpFf"]</td>
+                <td>@SharedLocalizer["LvpFfCount"]</td>
                 @foreach (var player in team.Players ?? MatchResult.PlayerResult.EmptyCollection)
                 {
                     <td class="text-right" data-label="@player.Name?.TruncatePlayerName()">
@@ -257,7 +268,9 @@
             </tr>
 
             <tr>
-                <td>@SharedLocalizer["DmgTaken"]</td>
+                <td>
+                    <span data-toggle="tooltip" data-placement="top" title="@SharedLocalizer["DmgTakenHelp"]">@SharedLocalizer["DmgTaken"]</span>
+                </td>
                 @foreach (var player in team.Players ?? MatchResult.PlayerResult.EmptyCollection)
                 {
                     <td class="text-right" data-label="@player.Name?.TruncatePlayerName()">
@@ -409,6 +422,7 @@
         </div>
         <table class="table table-striped table-hover table-condensed table-responsive">
             <thead>
+            <tr>
             <th class="text-center"></th>
             @foreach (var player in team.Players ?? MatchResult.PlayerResult.EmptyCollection)
             {
@@ -419,10 +433,22 @@
                 </th>
             }
             <th class="text-center">@SharedLocalizer["Total"]</th>
+            </tr>
+            <tr>
+                <th></th>
+                @foreach (var player in team.Players ?? MatchResult.PlayerResult.EmptyCollection)
+                {
+                    <th class="text-right"><small>@SharedLocalizer["StatValue"]</small></th>
+                    <th class="text-left"><small>@SharedLocalizer["TeamShare"]</small></th>
+                }
+                <th></th>
+            </tr>
             </thead>
             <tbody>
             <tr>
-                <td>@SharedLocalizer["DmgTotal"]</td>
+                <td>
+                    <span data-toggle="tooltip" data-placement="top" title="@SharedLocalizer["DmgTotalHelp"]">@SharedLocalizer["DmgTotal"]</span>
+                </td>
                 @foreach (var player in team.Players ?? MatchResult.PlayerResult.EmptyCollection)
                 {
                     <td class="text-right" data-label="@player.Name?.TruncatePlayerName()">
@@ -464,7 +490,9 @@
             </tr>
 
             <tr>
-                <td>@SharedLocalizer["HunterDpDmg"]</td>
+                <td>
+                    <span data-toggle="tooltip" data-placement="top" title="@SharedLocalizer["HunterDpDmgHelp"]">@SharedLocalizer["HunterDpDmg"]</span>
+                </td>
                 @foreach (var player in team.Players ?? MatchResult.PlayerResult.EmptyCollection)
                 {
                     <td class="text-right" data-label="@player.Name?.TruncatePlayerName()">

@@ -38,10 +38,26 @@
 }
 
 @{
+    string PlayerStatsTitle(PlayerStats playerStats) => playerStats switch
+    {
+        PlayerStats.DmgTaken => SharedLocalizer["DmgTakenHelp"],
+        _ => SharedLocalizer[playerStats.ToString()]
+    };
+
+    string InfectedStatsTitle(InfectedStats infectedStats) => infectedStats switch
+    {
+        InfectedStats.DmgTotal => SharedLocalizer["DmgTotalHelp"],
+        InfectedStats.DmgBoom => SharedLocalizer["DmgBoomHelp"],
+        InfectedStats.HunterDpDmg => SharedLocalizer["HunterDpDmgHelp"],
+        _ => SharedLocalizer[infectedStats.ToString()]
+    };
+
     void RenderPlayerStats(List<Player> players, PlayerStats playerStats)
     {
         <tr>
-            <th>@SharedLocalizer[playerStats.ToString()]:</th>
+            <th>
+                <span data-toggle="tooltip" data-placement="top" title="@PlayerStatsTitle(playerStats)">@SharedLocalizer[playerStats.ToString()]:</span>
+            </th>
             @foreach (var player in players)
             {
                 <td class="slim text-center">
@@ -89,7 +105,9 @@
     void RenderInfectedStats(List<InfectedPlayer> infectedPlayers, InfectedStats infectedStats)
     {
         <tr>
-            <th>@SharedLocalizer[infectedStats.ToString()]:</th>
+            <th>
+                <span data-toggle="tooltip" data-placement="top" title="@InfectedStatsTitle(infectedStats)">@SharedLocalizer[infectedStats.ToString()]:</span>
+            </th>
             @foreach (var infectedPlayer in infectedPlayers)
             {
                 <td class="slim text-center">

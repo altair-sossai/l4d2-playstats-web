@@ -396,8 +396,8 @@
     <table class="table table-hover table-condensed table-responsive">
         <tbody>
         <tr>
-            <th>@SharedLocalizer["MvpSiDamage"]:</th>
-            <td data-label="@SharedLocalizer["MvpSiDamage"]:">
+            <th>@SharedLocalizer["MvpSiDamageCount"]:</th>
+            <td data-label="@SharedLocalizer["MvpSiDamageCount"]:">
                 @firstPlayer.MvpSiDamage.ToString("N0")
                 @if (secondPlayer != null)
                 {
@@ -405,8 +405,8 @@
                     <span class="second">@secondPlayer.MvpSiDamage.ToString("N0")</span>
                 }
             </td>
-            <th>@SharedLocalizer["MvpCommon"]:</th>
-            <td data-label="@SharedLocalizer["MvpCommon"]:">
+            <th>@SharedLocalizer["MvpCommonCount"]:</th>
+            <td data-label="@SharedLocalizer["MvpCommonCount"]:">
                 @firstPlayer.MvpCommon.ToString("N0")
                 @if (secondPlayer != null)
                 {
@@ -414,8 +414,8 @@
                     <span class="second">@secondPlayer.MvpCommon.ToString("N0")</span>
                 }
             </td>
-            <th>@SharedLocalizer["LvpFfGiven"]:</th>
-            <td data-label="@SharedLocalizer["LvpFfGiven"]:">
+            <th>@SharedLocalizer["LvpFfCount"]:</th>
+            <td data-label="@SharedLocalizer["LvpFfCount"]:">
                 @firstPlayer.LvpFfGiven.ToString("N0")
                 @if (secondPlayer != null)
                 {
@@ -474,7 +474,9 @@
                     <span class="second">@secondPlayer.Incaps.ToString("N0")</span>
                 }
             </td>
-            <th>@SharedLocalizer["DmgTaken"]:</th>
+            <th>
+                <span data-toggle="tooltip" data-placement="top" title="@SharedLocalizer["DmgTakenHelp"]">@SharedLocalizer["DmgTaken"]:</span>
+            </th>
             <td data-label="@SharedLocalizer["DmgTaken"]:">
                 @firstPlayer.DmgTaken.ToString("N0")
                 @if (secondPlayer != null)
@@ -558,7 +560,9 @@
     <table class="table table-hover table-condensed table-responsive">
         <tbody>
         <tr>
-            <th>@SharedLocalizer["DmgTotal"]:</th>
+            <th>
+                <span data-toggle="tooltip" data-placement="top" title="@SharedLocalizer["DmgTotalHelp"]">@SharedLocalizer["DmgTotal"]:</span>
+            </th>
             <td data-label="@SharedLocalizer["DmgTotal"]:">
                 @firstPlayer.DmgTotal.ToString("N0")
                 @if (secondPlayer != null)
@@ -590,7 +594,9 @@
                 }
             </td>
 
-            <th>@SharedLocalizer["HunterDpDmg"]:</th>
+            <th>
+                <span data-toggle="tooltip" data-placement="top" title="@SharedLocalizer["HunterDpDmgHelp"]">@SharedLocalizer["HunterDpDmg"]:</span>
+            </th>
             <td data-label="@SharedLocalizer["HunterDpDmg"]:">
                 @firstPlayer.HunterDpDmg.ToString("N0")
                 @if (secondPlayer != null)
