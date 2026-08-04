@@ -1027,4 +1027,40 @@
   <data name="CommunityId" xml:space="preserve">
     <value>Community ID</value>
   </data>
+  <data name="DefaultMetaDescription" xml:space="preserve">
+    <value>Estadísticas, clasificaciones, jugadores y partidos del servidor L4D2 Competitive de Left 4 Dead 2.</value>
+  </data>
+  <data name="RankingMetaDescription" xml:space="preserve">
+    <value>Sigue la clasificación competitiva, el rendimiento y las estadísticas de los jugadores de Left 4 Dead 2.</value>
+  </data>
+  <data name="PlayersMetaDescription" xml:space="preserve">
+    <value>Consulta las estadísticas de {0} jugadores del servidor L4D2 Competitive.</value>
+  </data>
+  <data name="LastMatchesMetaDescription" xml:space="preserve">
+    <value>Consulta los últimos partidos de L4D2 Competitive, sus marcadores, campañas y jugadores.</value>
+  </data>
+  <data name="PlayerMetaDescription" xml:space="preserve">
+    <value>Consulta las estadísticas de {0}: posición #{1}, {2} partidos y {3} victorias.</value>
+  </data>
+  <data name="PlayerComparisonMetaDescription" xml:space="preserve">
+    <value>Compara el rendimiento y las estadísticas de {0} y {1} en L4D2 Competitive.</value>
+  </data>
+  <data name="PlayerNotFoundMetaDescription" xml:space="preserve">
+    <value>Consulta la información disponible sobre el jugador {0} en L4D2 Competitive.</value>
+  </data>
+  <data name="MatchMetaDescription" xml:space="preserve">
+    <value>Consulta los detalles del partido en {0}, jugado el {1}, con marcador {2}–{3}.</value>
+  </data>
+  <data name="MapStatisticsMetaDescription" xml:space="preserve">
+    <value>Consulta las estadísticas del mapa {0}, del partido en {1}, con marcador {2}–{3}.</value>
+  </data>
+  <data name="HistoryMetaDescription" xml:space="preserve">
+    <value>Consulta la clasificación histórica de {0} y el rendimiento de los mejores jugadores del período.</value>
+  </data>
+  <data name="ServersMetaDescription" xml:space="preserve">
+    <value>Sigue el servidor L4D2 Competitive, el mapa {0} y sus {1} jugadores conectados.</value>
+  </data>
+  <data name="PatentsMetaDescription" xml:space="preserve">
+    <value>Conoce los rangos, niveles y requisitos de experiencia de L4D2 Competitive.</value>
+  </data>
 </root>

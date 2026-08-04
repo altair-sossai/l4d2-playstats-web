@@ -1,6 +1,11 @@
 ﻿@using L4D2PlayStats.Web
+@using L4D2PlayStats.Web.PageMetadata
 @using Microsoft.Extensions.Localization
 @inject IStringLocalizer<SharedResource> SharedLocalizer
+
+@{
+    ViewData["PageMetadata"] = new HistoryNotFoundPageMetadata(SharedLocalizer);
+}
 
 <div class="jumbotron text-center" style="margin-top: 20px">
     <h2>@SharedLocalizer["HistoryNotFoundTitle"]</h2>

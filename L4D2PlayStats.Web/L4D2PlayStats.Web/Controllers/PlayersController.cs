@@ -52,6 +52,7 @@ public class PlayersController(
             var connectionInfo = await playerConnectionInfoService.PlayerConnectionInfoDetailsAsync(communityId, cancellationToken);
             var unrankedPlayerCommunityIds = connectionInfo.RelatedPlayers.Select(player => player.CommunityId).Append(communityId.ToString());
 
+            await userAvatar.LoadAsync(communityId, cancellationToken: cancellationToken);
             await userAvatar.LoadAsync(unrankedPlayerCommunityIds, cancellationToken: cancellationToken);
 
             return View("PlayerNotFound", new PlayerNotFoundModel(communityId, connectionInfo.Player, connectionInfo.RelatedPlayers));

@@ -1,9 +1,14 @@
 ﻿@using L4D2PlayStats.Web
+@using L4D2PlayStats.Web.PageMetadata
 @using Microsoft.AspNetCore.Mvc.Localization
 @using Microsoft.Extensions.Localization
 @model L4D2PlayStats.Web.Models.PatentModel
 @inject IViewLocalizer Localizer
 @inject IStringLocalizer<SharedResource> SharedLocalizer
+
+@{
+    ViewData["PageMetadata"] = new PatentsPageMetadata(Model, SharedLocalizer);
+}
 
 <h4 class="text-center">@SharedLocalizer["Patents"]</h4>
 

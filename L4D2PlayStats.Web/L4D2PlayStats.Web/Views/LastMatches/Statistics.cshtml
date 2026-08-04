@@ -1,15 +1,22 @@
 ﻿@using L4D2PlayStats
 @using L4D2PlayStats.Core.Auth
+@using L4D2PlayStats.Core.Campaign.Contracts
 @using L4D2PlayStats.Core.Infrastructure.Extensions
 @using L4D2PlayStats.Core.UserAvatar
 @using L4D2PlayStats.Enums
 @using L4D2PlayStats.Extensions
 @using L4D2PlayStats.Web
+@using L4D2PlayStats.Web.PageMetadata
 @using Microsoft.Extensions.Localization
 @model L4D2PlayStats.Web.Models.StatisticsDetailsModel
 @inject IStringLocalizer<SharedResource> SharedLocalizer
 @inject IUserAvatar UserAvatar
 @inject ICurrentUser CurrentUser
+@inject ICampaignThumb CampaignThumb
+
+@{
+    ViewData["PageMetadata"] = new MatchStatisticsPageMetadata(Model, SharedLocalizer, CampaignThumb);
+}
 
 @section Styles {
     <style>

@@ -1,5 +1,6 @@
 @using L4D2PlayStats.Core.UserAvatar
 @using L4D2PlayStats.Web
+@using L4D2PlayStats.Web.PageMetadata
 @using Microsoft.Extensions.Localization
 @model L4D2PlayStats.Web.Models.PlayerNotFoundModel
 @inject IUserAvatar UserAvatar
@@ -7,6 +8,8 @@
 
 @{
     var playerName = Model.Name ?? Model.CommunityId.ToString();
+
+    ViewData["PageMetadata"] = new PlayerNotFoundPageMetadata(Model, SharedLocalizer, UserAvatar);
 }
 
 @section Styles {

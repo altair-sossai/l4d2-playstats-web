@@ -1029,4 +1029,40 @@
   <data name="CommunityId" xml:space="preserve">
     <value>Community ID</value>
   </data>
+  <data name="DefaultMetaDescription" xml:space="preserve">
+    <value>Statistics, rankings, players, and matches from the L4D2 Competitive Left 4 Dead 2 server.</value>
+  </data>
+  <data name="RankingMetaDescription" xml:space="preserve">
+    <value>Follow the competitive ranking, performance, and statistics of Left 4 Dead 2 players.</value>
+  </data>
+  <data name="PlayersMetaDescription" xml:space="preserve">
+    <value>Browse statistics for {0} players from the L4D2 Competitive server.</value>
+  </data>
+  <data name="LastMatchesMetaDescription" xml:space="preserve">
+    <value>See the latest L4D2 Competitive matches, including scores, campaigns, and players.</value>
+  </data>
+  <data name="PlayerMetaDescription" xml:space="preserve">
+    <value>See {0}'s statistics: rank #{1}, {2} matches, and {3} wins.</value>
+  </data>
+  <data name="PlayerComparisonMetaDescription" xml:space="preserve">
+    <value>Compare {0} and {1}'s performance and statistics on L4D2 Competitive.</value>
+  </data>
+  <data name="PlayerNotFoundMetaDescription" xml:space="preserve">
+    <value>See the available information about player {0} on L4D2 Competitive.</value>
+  </data>
+  <data name="MatchMetaDescription" xml:space="preserve">
+    <value>See details of the match on {0}, played on {1}, with a {2}–{3} score.</value>
+  </data>
+  <data name="MapStatisticsMetaDescription" xml:space="preserve">
+    <value>See statistics for map {0} from the match on {1}, with a {2}–{3} score.</value>
+  </data>
+  <data name="HistoryMetaDescription" xml:space="preserve">
+    <value>See the {0} historical ranking and the top players' performance for the period.</value>
+  </data>
+  <data name="ServersMetaDescription" xml:space="preserve">
+    <value>Follow the L4D2 Competitive server, map {0}, and its {1} connected players.</value>
+  </data>
+  <data name="PatentsMetaDescription" xml:space="preserve">
+    <value>Learn about L4D2 Competitive ranks, levels, and experience requirements.</value>
+  </data>
 </root>

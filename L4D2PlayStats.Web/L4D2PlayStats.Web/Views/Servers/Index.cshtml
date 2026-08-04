@@ -1,10 +1,18 @@
 ﻿@using L4D2PlayStats.Core.Auth
+@using L4D2PlayStats.Core.Campaign.Contracts
 @using L4D2PlayStats.Web
+@using L4D2PlayStats.Web.PageMetadata
 @using Microsoft.Extensions.Localization
 @model L4D2PlayStats.Web.Models.ServerInfoModel
 
 @inject IStringLocalizer<SharedResource> SharedLocalizer
 @inject ICurrentUser CurrentUser
+@inject ICampaignName CampaignName
+@inject ICampaignThumb CampaignThumb
+
+@{
+    ViewData["PageMetadata"] = new ServersPageMetadata(Model, SharedLocalizer, CampaignName, CampaignThumb);
+}
 
 @section Styles {
     <style>

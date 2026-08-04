@@ -1,7 +1,14 @@
-﻿@using L4D2PlayStats.Web
+﻿@using L4D2PlayStats.Core.Campaign.Contracts
+@using L4D2PlayStats.Web
+@using L4D2PlayStats.Web.PageMetadata
 @using Microsoft.Extensions.Localization
 @model List<L4D2PlayStats.Sdk.Matches.Results.MatchResult>
 @inject IStringLocalizer<SharedResource> SharedLocalizer
+@inject ICampaignThumb CampaignThumb
+
+@{
+    ViewData["PageMetadata"] = new LastMatchesPageMetadata(Model, SharedLocalizer, CampaignThumb);
+}
 
 <h4 class="text-center">@SharedLocalizer["LastMatches"]</h4>
 
