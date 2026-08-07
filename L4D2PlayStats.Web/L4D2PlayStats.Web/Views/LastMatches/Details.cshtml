@@ -188,10 +188,14 @@
             </tr>
             <tr>
                 <th></th>
-                @foreach (var player in team.Players ?? MatchResult.PlayerResult.EmptyCollection)
+                @for (var i = 0; i < (team.Players ?? MatchResult.PlayerResult.EmptyCollection).Count; i++)
                 {
-                    <th class="text-right"><small>@SharedLocalizer["StatValue"]</small></th>
-                    <th class="text-left"><small>@SharedLocalizer["TeamShare"]</small></th>
+                    <th class="text-right">
+                        <small>@SharedLocalizer["StatValue"]</small>
+                    </th>
+                    <th class="text-left">
+                        <small>@SharedLocalizer["TeamShare"]</small>
+                    </th>
                 }
                 <th></th>
             </tr>
@@ -465,10 +469,14 @@
             </tr>
             <tr>
                 <th></th>
-                @foreach (var player in team.Players ?? MatchResult.PlayerResult.EmptyCollection)
+                @for (var i = 0; i < (team.Players ?? MatchResult.PlayerResult.EmptyCollection).Count; i++)
                 {
-                    <th class="text-right"><small>@SharedLocalizer["StatValue"]</small></th>
-                    <th class="text-left"><small>@SharedLocalizer["TeamShare"]</small></th>
+                    <th class="text-right">
+                        <small>@SharedLocalizer["StatValue"]</small>
+                    </th>
+                    <th class="text-left">
+                        <small>@SharedLocalizer["TeamShare"]</small>
+                    </th>
                 }
                 <th></th>
             </tr>
