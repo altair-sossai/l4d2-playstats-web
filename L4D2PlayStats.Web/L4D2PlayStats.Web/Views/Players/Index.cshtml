@@ -11,23 +11,31 @@
 @inject ICurrentUser CurrentUser
 
 @functions {
-    private static string PlayerPropertyResourceKey(PlayerResultProperty property) => property switch
-    {
-        PlayerResultProperty.MvpSiDamage => "MvpSiDamageCount",
-        PlayerResultProperty.MvpCommon => "MvpCommonCount",
-        PlayerResultProperty.LvpFfGiven => "LvpFfCount",
-        PlayerResultProperty.Skeets => "SkeetsTotal",
-        PlayerResultProperty.Levels => "LevelsTotal",
-        _ => property.ToString()
-    };
 
-    private static string? PlayerPropertyHelpResourceKey(PlayerResultProperty property) => property switch
+    private static string PlayerPropertyResourceKey(PlayerResultProperty property)
     {
-        PlayerResultProperty.DmgTaken => "DmgTakenHelp",
-        PlayerResultProperty.DmgTotal => "DmgTotalHelp",
-        PlayerResultProperty.HunterDpDmg => "HunterDpDmgHelp",
-        _ => null
-    };
+        return property switch
+        {
+            PlayerResultProperty.MvpSiDamage => "MvpSiDamageCount",
+            PlayerResultProperty.MvpCommon => "MvpCommonCount",
+            PlayerResultProperty.LvpFfGiven => "LvpFfCount",
+            PlayerResultProperty.Skeets => "SkeetsTotal",
+            PlayerResultProperty.Levels => "LevelsTotal",
+            _ => property.ToString()
+        };
+    }
+
+    private static string? PlayerPropertyHelpResourceKey(PlayerResultProperty property)
+    {
+        return property switch
+        {
+            PlayerResultProperty.DmgTaken => "DmgTakenHelp",
+            PlayerResultProperty.DmgTotal => "DmgTotalHelp",
+            PlayerResultProperty.HunterDpDmg => "HunterDpDmgHelp",
+            _ => null
+        };
+    }
+
 }
 
 @{

@@ -751,6 +751,7 @@
         {
             <p>@Html.Raw(string.Format(SharedLocalizer["RelationHelpTogether"].Value, Bold(relation.TogetherGames), Bold(relation.TogetherWins), BoldPercentage(relation.TogetherWinRate), Bold(relation.TogetherLosses), BoldPercentage(relation.TogetherLossRate)))</p>
         }
+
         @if (relation.AgainstGames > 0)
         {
             <p>@Html.Raw(string.Format(SharedLocalizer["RelationHelpAgainst"].Value, Bold(relation.AgainstGames), subject, Bold(relation.AgainstWins), BoldPercentage(relation.AgainstWinRate), Bold(relation.AgainstLosses), BoldPercentage(relation.AgainstLossRate)))</p>
@@ -845,7 +846,9 @@
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal" aria-label="@SharedLocalizer["Close"]"><span aria-hidden="true">&times;</span></button>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="@SharedLocalizer["Close"]">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
                                 <h4 class="modal-title">@SharedLocalizer["RelationHelpTitle"]</h4>
                             </div>
                             <div class="modal-body">

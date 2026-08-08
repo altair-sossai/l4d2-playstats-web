@@ -38,25 +38,35 @@
 }
 
 @{
-    string? PlayerStatsHelpKey(PlayerStats playerStats) => playerStats switch
+    string? PlayerStatsHelpKey(PlayerStats playerStats)
     {
-        PlayerStats.DmgTaken => "DmgTakenHelp",
-        _ => null
-    };
+        return playerStats switch
+        {
+            PlayerStats.DmgTaken => "DmgTakenHelp",
+            _ => null
+        };
+    }
 
-    string? InfectedStatsHelpKey(InfectedStats infectedStats) => infectedStats switch
+    string? InfectedStatsHelpKey(InfectedStats infectedStats)
     {
-        InfectedStats.DmgTotal => "DmgTotalHelp",
-        InfectedStats.DmgBoom => "DmgBoomHelp",
-        InfectedStats.HunterDpDmg => "HunterDpDmgHelp",
-        _ => null
-    };
+        return infectedStats switch
+        {
+            InfectedStats.DmgTotal => "DmgTotalHelp",
+            InfectedStats.DmgBoom => "DmgBoomHelp",
+            InfectedStats.HunterDpDmg => "HunterDpDmgHelp",
+            _ => null
+        };
+    }
 
-    bool HasPlayerStats(List<Player> players, PlayerStats playerStats) =>
-        players.Any(player => player[playerStats] != 0);
+    bool HasPlayerStats(List<Player> players, PlayerStats playerStats)
+    {
+        return players.Any(player => player[playerStats] != 0);
+    }
 
-    bool HasInfectedStats(List<InfectedPlayer> infectedPlayers, InfectedStats infectedStats) =>
-        infectedPlayers.Any(player => player[infectedStats] != 0);
+    bool HasInfectedStats(List<InfectedPlayer> infectedPlayers, InfectedStats infectedStats)
+    {
+        return infectedPlayers.Any(player => player[infectedStats] != 0);
+    }
 
     void RenderPlayerStats(List<Player> players, PlayerStats playerStats)
     {
