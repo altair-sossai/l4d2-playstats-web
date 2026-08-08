@@ -294,6 +294,9 @@
   <data name="Compare" xml:space="preserve">
     <value>Compare...</value>
   </data>
+  <data name="RemoveComparison" xml:space="preserve">
+    <value>Remove comparison</value>
+  </data>
   <data name="PlayerNotFoundTitle" xml:space="preserve">
     <value>Player not ranked</value>
   </data>
@@ -404,6 +407,30 @@
   </data>
   <data name="ShowMore" xml:space="preserve">
     <value>Show more...</value>
+  </data>
+  <data name="ShowMorePlayers" xml:space="preserve">
+    <value>Show more players</value>
+  </data>
+  <data name="Hide" xml:space="preserve">
+    <value>Hide</value>
+  </data>
+  <data name="ExplainBetter" xml:space="preserve">
+    <value>I don't get it, explain it to me</value>
+  </data>
+  <data name="RelationHelpTitle" xml:space="preserve">
+    <value>Understanding the numbers</value>
+  </data>
+  <data name="RelationHelpTotal" xml:space="preserve">
+    <value>{0} and {1} have crossed paths in {2} games in total.</value>
+  </data>
+  <data name="RelationHelpTogether" xml:space="preserve">
+    <value>Playing together, on the same team, there were {0} games: {1} wins ({2}) and {3} losses ({4}).</value>
+  </data>
+  <data name="RelationHelpAgainst" xml:space="preserve">
+    <value>Playing against each other, there were {0} games: {1} won {2} ({3}) and lost {4} ({5}).</value>
+  </data>
+  <data name="Close" xml:space="preserve">
+    <value>Close</value>
   </data>
   <data name="Experience" xml:space="preserve">
     <value>Experience</value>
@@ -1052,6 +1079,18 @@
   </data>
   <data name="RelatedAccounts" xml:space="preserve">
     <value>Related accounts</value>
+  </data>
+  <data name="PlayingTogether" xml:space="preserve">
+    <value>Playing together</value>
+  </data>
+  <data name="PlayingAgainst" xml:space="preserve">
+    <value>Playing against</value>
+  </data>
+  <data name="PlayerRelations" xml:space="preserve">
+    <value>Player relationships</value>
+  </data>
+  <data name="LossRate" xml:space="preserve">
+    <value>Loss rate</value>
   </data>
   <data name="LastLogin" xml:space="preserve">
     <value>Last login</value>

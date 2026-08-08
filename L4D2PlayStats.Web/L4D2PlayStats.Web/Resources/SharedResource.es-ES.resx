@@ -294,6 +294,9 @@
   <data name="Compare" xml:space="preserve">
     <value>Comparar...</value>
   </data>
+  <data name="RemoveComparison" xml:space="preserve">
+    <value>Quitar comparación</value>
+  </data>
   <data name="PlayerNotFoundTitle" xml:space="preserve">
     <value>Jugador fuera de la clasificación</value>
   </data>
@@ -404,6 +407,30 @@
   </data>
   <data name="ShowMore" xml:space="preserve">
     <value>Mostrar más...</value>
+  </data>
+  <data name="ShowMorePlayers" xml:space="preserve">
+    <value>Ver más jugadores</value>
+  </data>
+  <data name="Hide" xml:space="preserve">
+    <value>Ocultar</value>
+  </data>
+  <data name="ExplainBetter" xml:space="preserve">
+    <value>No entiendo, explícamelo</value>
+  </data>
+  <data name="RelationHelpTitle" xml:space="preserve">
+    <value>Entendiendo los números</value>
+  </data>
+  <data name="RelationHelpTotal" xml:space="preserve">
+    <value>{0} y {1} se han cruzado en {2} partidas en total.</value>
+  </data>
+  <data name="RelationHelpTogether" xml:space="preserve">
+    <value>Jugando juntos, en el mismo equipo, fueron {0} partidas: {1} victorias ({2}) y {3} derrotas ({4}).</value>
+  </data>
+  <data name="RelationHelpAgainst" xml:space="preserve">
+    <value>Jugando uno contra el otro, fueron {0} partidas: {1} ganó {2} ({3}) y perdió {4} ({5}).</value>
+  </data>
+  <data name="Close" xml:space="preserve">
+    <value>Cerrar</value>
   </data>
   <data name="Experience" xml:space="preserve">
     <value>Experiencia</value>
@@ -1050,6 +1077,18 @@
   </data>
   <data name="RelatedAccounts" xml:space="preserve">
     <value>Cuentas relacionadas</value>
+  </data>
+  <data name="PlayingTogether" xml:space="preserve">
+    <value>Jugando juntos</value>
+  </data>
+  <data name="PlayingAgainst" xml:space="preserve">
+    <value>Jugando en contra</value>
+  </data>
+  <data name="PlayerRelations" xml:space="preserve">
+    <value>Relaciones con jugadores</value>
+  </data>
+  <data name="LossRate" xml:space="preserve">
+    <value>Tasa de derrotas</value>
   </data>
   <data name="LastLogin" xml:space="preserve">
     <value>Último acceso</value>

@@ -76,7 +76,8 @@ public class PlayersController(
             .SelectMany(m => m.Teams ?? [])
             .SelectMany(t => t.Players ?? [])
             .Select(p => p.CommunityId)
-            .Concat(relatedPlayers.Select(player => player.CommunityId));
+            .Concat(relatedPlayers.Select(player => player.CommunityId))
+            .Concat(firstPlayer.Relations?.Keys ?? Enumerable.Empty<string>());
 
         await userAvatar.LoadAsync(communityIds, cancellationToken: cancellationToken);
 

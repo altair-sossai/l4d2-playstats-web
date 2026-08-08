@@ -2,6 +2,7 @@
 @using L4D2PlayStats.Core.Infrastructure.Extensions
 @using L4D2PlayStats.Core.UserAvatar
 @using L4D2PlayStats.Web
+@using L4D2PlayStats.Web.Models
 @using L4D2PlayStats.Web.PageMetadata
 @using Microsoft.Extensions.Localization
 @model L4D2PlayStats.Web.Models.PlayerDetailsModel
@@ -114,6 +115,25 @@
             else if (lostExperiencePoints === 0)
                 deletePunishments(communityId);
         }
+
+        $(function () {
+            $('#btn-show-more-relations').click(function () {
+                var $button = $(this);
+                var $cards = $('.relation-card-item');
+
+                if ($cards.hasClass('hidden')) {
+                    $cards.removeClass('hidden');
+                    $button.text($button.data('less'));
+                } else {
+                    $cards.each(function (index) {
+                        if (index >= 4) {
+                            $(this).addClass('hidden');
+                        }
+                    });
+                    $button.text($button.data('more'));
+                }
+            });
+        });
     </script>
 }
 
@@ -146,6 +166,15 @@
             <span class="caret"></span>
         </button>
         <ul class="dropdown-menu players-dropdown-menu">
+            @if (secondPlayer != null)
+            {
+                <li>
+                    <a href="@Url.Action("Details", "Players", new { communityId = firstPlayer.CommunityId })">
+                        <span class="glyphicon glyphicon-remove"></span> @SharedLocalizer["RemoveComparison"]
+                    </a>
+                </li>
+                <li class="divider"></li>
+            }
             @foreach (var player in Model.Players.Where(player => player.CommunityId != firstPlayer.CommunityId && player.CommunityId != secondPlayer?.CommunityId))
             {
                 <li>
@@ -340,6 +369,56 @@
                 }
             </td>
         </tr>
+        @if (secondPlayer != null && Model.HeadToHead != null)
+        {
+            var headToHead = Model.HeadToHead;
+
+            @if (headToHead.TogetherGames > 0)
+            {
+                <tr>
+                    <th>@SharedLocalizer["PlayingTogether"]:</th>
+                    <td data-label="@SharedLocalizer["Games"]:">@headToHead.TogetherGames.ToString("N0") @SharedLocalizer["Games"]</td>
+                    <th>@SharedLocalizer["Wins"]:</th>
+                    <td data-label="@SharedLocalizer["Wins"]:">
+                        @headToHead.TogetherWins.ToString("N0")
+                        <small class="text-muted" data-toggle="tooltip" data-placement="top" title="@SharedLocalizer["WinRate"]"> (@headToHead.TogetherWinRate.ToString("P0"))</small>
+                    </td>
+                    <th>@SharedLocalizer["Loss"]:</th>
+                    <td data-label="@SharedLocalizer["Loss"]:">
+                        @headToHead.TogetherLosses.ToString("N0")
+                        <small class="text-muted" data-toggle="tooltip" data-placement="top" title="@SharedLocalizer["LossRate"]"> (@headToHead.TogetherLossRate.ToString("P0"))</small>
+                    </td>
+                </tr>
+            }
+
+            @if (headToHead.AgainstGames > 0)
+            {
+                <tr>
+                    <th>@SharedLocalizer["PlayingAgainst"]:</th>
+                    <td data-label="@SharedLocalizer["Games"]:">@headToHead.AgainstGames.ToString("N0") @SharedLocalizer["Games"]</td>
+                    <th>@SharedLocalizer["Wins"]:</th>
+                    <td data-label="@SharedLocalizer["Wins"]:">
+                        @headToHead.AgainstWins.ToString("N0")
+                        <small class="text-muted" data-toggle="tooltip" data-placement="top" title="@SharedLocalizer["WinRate"]"> (@headToHead.AgainstWinRate.ToString("P0"))</small>
+                        <span class="separator"> | </span>
+                        <span class="second">
+                            @headToHead.AgainstLosses.ToString("N0")
+                            <small data-toggle="tooltip" data-placement="top" title="@SharedLocalizer["WinRate"]"> (@headToHead.AgainstLossRate.ToString("P0"))</small>
+                        </span>
+                    </td>
+                    <th>@SharedLocalizer["Loss"]:</th>
+                    <td data-label="@SharedLocalizer["Loss"]:">
+                        @headToHead.AgainstLosses.ToString("N0")
+                        <small class="text-muted" data-toggle="tooltip" data-placement="top" title="@SharedLocalizer["LossRate"]"> (@headToHead.AgainstLossRate.ToString("P0"))</small>
+                        <span class="separator"> | </span>
+                        <span class="second">
+                            @headToHead.AgainstWins.ToString("N0")
+                            <small data-toggle="tooltip" data-placement="top" title="@SharedLocalizer["LossRate"]"> (@headToHead.AgainstWinRate.ToString("P0"))</small>
+                        </span>
+                    </td>
+                </tr>
+            }
+        }
         </tbody>
     </table>
 </div>
@@ -615,6 +694,201 @@
 
 </div>
 </div>
+
+@{
+    void RenderCell(PlayerRelationModel? side, Func<PlayerRelationModel, int> count, Func<PlayerRelationModel, decimal>? rate, string? rateTooltip, Func<PlayerRelationModel, int> groupGames, bool second)
+    {
+        <td class="text-right @(second ? "second" : null)">@(side == null ? "0" : count(side).ToString("N0"))</td>
+        <td class="text-left @(second ? "second" : null)">
+            @if (side != null && rate != null && groupGames(side) > 0)
+            {
+                <small data-toggle="tooltip" data-placement="top" data-container="body" title="@rateTooltip">(@rate(side).ToString("P0"))</small>
+            }
+            else
+            {
+                <small>@Html.Raw("&nbsp;")</small>
+            }
+        </td>
+    }
+
+    void RenderGroup(PlayerRelationRowModel row, Func<PlayerRelationModel, int> count, Func<PlayerRelationModel, decimal>? rate, string? rateTooltip, Func<PlayerRelationModel, int> groupGames)
+    {
+        RenderCell(row.First, count, rate, rateTooltip, groupGames, false);
+        @if (secondPlayer != null)
+        {
+            RenderCell(row.Second, count, rate, rateTooltip, groupGames, true);
+        }
+    }
+
+    string Bold(int value)
+    {
+        return $"<strong>{value:N0}</strong>";
+    }
+
+    string BoldPercentage(decimal value)
+    {
+        return $"<strong>{value:P0}</strong>";
+    }
+
+    string ColoredPlayerName(long communityId, string? name)
+    {
+        var encoded = Html.Encode(name ?? communityId.ToString());
+        var cssClass = secondPlayer != null && communityId == secondPlayer.CommunityId ? "second"
+            : communityId == firstPlayer.CommunityId ? null
+            : "text-muted";
+
+        return cssClass == null ? $"<strong>{encoded}</strong>" : $"<strong class=\"{cssClass}\">{encoded}</strong>";
+    }
+
+    void RenderRelationExplanation(long subjectId, string? subjectName, long otherId, string? otherName, PlayerRelationModel relation)
+    {
+        var subject = ColoredPlayerName(subjectId, subjectName);
+        var other = ColoredPlayerName(otherId, otherName);
+        var total = relation.TogetherGames + relation.AgainstGames;
+
+        <p>@Html.Raw(string.Format(SharedLocalizer["RelationHelpTotal"].Value, subject, other, Bold(total)))</p>
+        @if (relation.TogetherGames > 0)
+        {
+            <p>@Html.Raw(string.Format(SharedLocalizer["RelationHelpTogether"].Value, Bold(relation.TogetherGames), Bold(relation.TogetherWins), BoldPercentage(relation.TogetherWinRate), Bold(relation.TogetherLosses), BoldPercentage(relation.TogetherLossRate)))</p>
+        }
+        @if (relation.AgainstGames > 0)
+        {
+            <p>@Html.Raw(string.Format(SharedLocalizer["RelationHelpAgainst"].Value, Bold(relation.AgainstGames), subject, Bold(relation.AgainstWins), BoldPercentage(relation.AgainstWinRate), Bold(relation.AgainstLosses), BoldPercentage(relation.AgainstLossRate)))</p>
+        }
+    }
+}
+
+@{
+    var relations = Model.Relations;
+}
+
+@if (relations.Any())
+{
+    <h4 class="text-center">
+        @SharedLocalizer["PlayerRelations"]
+        <small class="text-muted">
+            (@firstPlayer.Name
+            @if (secondPlayer != null)
+            {
+                <span class="separator"> | </span>
+                <span class="second">@secondPlayer.Name</span>
+            }
+            )
+        </small>
+    </h4>
+
+    var relationColspan = secondPlayer != null ? 4 : 2;
+    var relationCount = 0;
+
+    <div class="row">
+        @foreach (var row in relations)
+        {
+            <div class="col-md-6 col-xs-12 relation-card-item @(++relationCount > 4 ? "hidden" : null)">
+                <div class="panel @(secondPlayer != null && row.CommunityId == secondPlayer.CommunityId ? "panel-warning" : "panel-default")">
+                    <div class="panel-heading">
+                        <button type="button" class="btn btn-link btn-xs pull-right" style="padding: 0" data-toggle="tooltip" data-placement="left" title="@SharedLocalizer["ExplainBetter"]" onclick="$('#relation-help-@row.CommunityId').modal('show')">
+                            <span class="glyphicon glyphicon-question-sign"></span>
+                        </button>
+                        @if (row.Player != null)
+                        {
+                            <a href="@Url.Action("Details", "Players", new { communityId = row.CommunityId, compareWith = secondPlayer?.CommunityId })">@row.Name</a>
+                        }
+                        else
+                        {
+                            @row.Name
+                        }
+                        <small class="text-muted">| @row.TotalGames.ToString("N0") @SharedLocalizer["Games"]</small>
+                    </div>
+                    <div class="panel-body" style="padding: 5px">
+                        <div class="row">
+                            <div class="col-md-3 text-center">
+                                <img src="@UserAvatar[row.CommunityId]" alt="@row.Name" title="@row.Name" class="img-thumbnail" onerror="imgOnError(this)" style="margin-bottom: 15px"/>
+                            </div>
+                            <div class="col-md-9">
+                                <table class="table table-condensed" style="margin-bottom: 5px">
+                                    <thead>
+                                    <tr>
+                                        <th></th>
+                                        <th class="text-center" colspan="@relationColspan">@SharedLocalizer["PlayingTogether"]</th>
+                                        <th class="text-center" colspan="@relationColspan">@SharedLocalizer["PlayingAgainst"]</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <th>@SharedLocalizer["Games"]</th>
+                                        @{
+                                            RenderGroup(row, r => r.TogetherGames, null, null, r => r.TogetherGames);
+                                            RenderGroup(row, r => r.AgainstGames, null, null, r => r.AgainstGames);
+                                        }
+                                    </tr>
+                                    <tr>
+                                        <th>@SharedLocalizer["Wins"]</th>
+                                        @{
+                                            RenderGroup(row, r => r.TogetherWins, r => r.TogetherWinRate, SharedLocalizer["WinRate"], r => r.TogetherGames);
+                                            RenderGroup(row, r => r.AgainstWins, r => r.AgainstWinRate, SharedLocalizer["WinRate"], r => r.AgainstGames);
+                                        }
+                                    </tr>
+                                    <tr>
+                                        <th>@SharedLocalizer["Loss"]</th>
+                                        @{
+                                            RenderGroup(row, r => r.TogetherLosses, r => r.TogetherLossRate, SharedLocalizer["LossRate"], r => r.TogetherGames);
+                                            RenderGroup(row, r => r.AgainstLosses, r => r.AgainstLossRate, SharedLocalizer["LossRate"], r => r.AgainstGames);
+                                        }
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal fade" id="relation-help-@row.CommunityId" tabindex="-1" role="dialog">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="@SharedLocalizer["Close"]"><span aria-hidden="true">&times;</span></button>
+                                <h4 class="modal-title">@SharedLocalizer["RelationHelpTitle"]</h4>
+                            </div>
+                            <div class="modal-body">
+                                @if (row.First != null)
+                                {
+                                    RenderRelationExplanation(firstPlayer.CommunityId, firstPlayer.Name, row.CommunityId, row.Name, row.First);
+                                }
+                                @if (row.Second != null && secondPlayer != null)
+                                {
+                                    var otherIsSecond = row.CommunityId == secondPlayer.CommunityId;
+                                    var otherId = otherIsSecond ? firstPlayer.CommunityId : row.CommunityId;
+                                    var otherName = otherIsSecond ? firstPlayer.Name : row.Name;
+
+                                    if (row.First != null)
+                                    {
+                                        <hr/>
+                                    }
+
+                                    RenderRelationExplanation(secondPlayer.CommunityId, secondPlayer.Name, otherId, otherName, row.Second);
+                                }
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">@SharedLocalizer["Close"]</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+
+    @if (relations.Count > 4)
+    {
+        <div class="row text-center" style="margin: 10px; margin-bottom: 25px">
+            <div class="col-md-12">
+                <button class="btn btn-sm btn-primary" id="btn-show-more-relations" data-more="@SharedLocalizer["ShowMorePlayers"]" data-less="@SharedLocalizer["Hide"]">
+                    @SharedLocalizer["ShowMorePlayers"]
+                </button>
+            </div>
+        </div>
+        <hr/>
+    }
+}
 
 @if (Model.LastMatches.Any())
 {

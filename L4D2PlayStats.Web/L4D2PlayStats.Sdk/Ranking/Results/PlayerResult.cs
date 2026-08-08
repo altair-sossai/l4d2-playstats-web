@@ -16,6 +16,7 @@ public class PlayerResult
 
     public string? MainName { get; set; }
     public List<PreviousNameResult>? PreviousNames { get; set; }
+    public Dictionary<string, PlayerRelationResult>? Relations { get; set; }
     public decimal Experience { get; set; }
     public decimal? PreviousExperience { get; set; }
     public decimal? ExperienceDifference { get; set; }
