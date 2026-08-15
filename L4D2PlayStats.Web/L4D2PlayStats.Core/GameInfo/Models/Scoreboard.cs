@@ -11,6 +11,9 @@ public class Scoreboard
     public bool IsTankInPlay { get; set; }
     public bool TankIsDead { get; set; }
     public decimal BonusPercentage => MaxBonus == 0 ? 0 : Bonus / (decimal)MaxBonus;
+    public int TotalScore => SurvivorScore + InfectedScore;
+    public decimal SurvivorPercentage => TotalScore == 0 ? 0.5m : SurvivorScore / (decimal)TotalScore;
+    public decimal InfectedPercentage => TotalScore == 0 ? 0.5m : InfectedScore / (decimal)TotalScore;
     public int Difference => SurvivorScore - InfectedScore;
     public int Comeback => Math.Abs(Difference);
     public bool IsSurvivorsWinning => SurvivorScore > InfectedScore;
