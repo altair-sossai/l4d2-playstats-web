@@ -1,4 +1,4 @@
-﻿using L4D2PlayStats.Core.Infrastructure.Options;
+using L4D2PlayStats.Core.Infrastructure.Options;
 using L4D2PlayStats.Core.Steam.ServerInfo.Responses;
 using L4D2PlayStats.Core.Steam.ServerInfo.Services.Cache;
 using Microsoft.AspNetCore.Mvc;
@@ -7,44 +7,39 @@ using static L4D2PlayStats.Core.Steam.ServerInfo.Responses.GetServerListResponse
 
 namespace L4D2PlayStats.Web.Controllers.Api;
 
-[Route("api/servers")]
 [ApiController]
-public class ServersController(
+public class ServerController(
     IAppOptionsWraper config,
     IMemoryCache memoryCache,
     IServerInfoServiceCached serverInfoService) : ControllerBase
 {
-    [HttpGet]
+    [HttpGet("api/server")]
     public async Task<IActionResult> Get(CancellationToken cancellationToken)
     {
-        var servers = await memoryCache.GetOrCreateAsync("Api.Servers", entry =>
+        var server = await memoryCache.GetOrCreateAsync("Api.Server", entry =>
         {
             entry.AbsoluteExpirationRelativeToNow = TimeSpan.FromSeconds(10);
 
-            return GetServersInfo(cancellationToken);
+            return GetServerInfo(cancellationToken);
         });
 
-        return Ok(servers);
+        return Ok(server);
     }
 
-    private async Task<List<ServerInfo>> GetServersInfo(CancellationToken cancellationToken)
+    [HttpGet("api/servers")]
+    public IActionResult GetLegacy()
     {
-        var servers = new List<ServerInfo>();
-
-        foreach (var serverIp in config.ServerIps)
-        {
-            var serverInfo = await GetServerInfo(serverIp, cancellationToken);
-
-            if (serverInfo?.Response?.Servers == null)
-                continue;
-
-            servers.AddRange(serverInfo.Response.Servers!);
-        }
-
-        return servers;
+        return RedirectPermanent("/api/server");
     }
 
-    private Task<GetServerListResponse?> GetServerInfo(string serverIp, CancellationToken cancellationToken)
+    private async Task<ServerInfo?> GetServerInfo(CancellationToken cancellationToken)
+    {
+        var serverList = await GetServerList(config.ServerIp, cancellationToken);
+
+        return serverList?.Response?.Servers?.OfType<ServerInfo>().FirstOrDefault();
+    }
+
+    private Task<GetServerListResponse?> GetServerList(string serverIp, CancellationToken cancellationToken)
     {
         var segments = serverIp.Split(':');
 

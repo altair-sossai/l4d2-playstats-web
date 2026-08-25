@@ -351,8 +351,8 @@
   <data name="LevelDrop" xml:space="preserve">
     <value>Level Drop!</value>
   </data>
-  <data name="Servers" xml:space="preserve">
-    <value>Servers</value>
+  <data name="Server" xml:space="preserve">
+    <value>Server</value>
   </data>
   <data name="ServerIP" xml:space="preserve">
     <value>Server IP</value>
@@ -1137,7 +1137,7 @@
   <data name="HistoryMetaDescription" xml:space="preserve">
     <value>See the {0} historical ranking and the top players' performance for the period.</value>
   </data>
-  <data name="ServersMetaDescription" xml:space="preserve">
+  <data name="ServerMetaDescription" xml:space="preserve">
     <value>Follow the L4D2 Competitive server, map {0}, and its {1} connected players.</value>
   </data>
   <data name="PatentsMetaDescription" xml:space="preserve">

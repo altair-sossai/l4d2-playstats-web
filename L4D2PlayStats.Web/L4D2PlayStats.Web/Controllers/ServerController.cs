@@ -8,42 +8,48 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace L4D2PlayStats.Web.Controllers;
 
-public class ServersController(
+public class ServerController(
     IAppOptionsWraper config,
     IUserAvatar userAvatar,
     IServerInfoServiceCached serverInfoService)
     : Controller
 {
-    [Route("servers")]
+    [Route("server")]
     public async Task<IActionResult> Index(CancellationToken cancellationToken)
     {
-        ViewBag.Servers = "active";
+        ViewBag.Server = "active";
 
-        var model = await GetServerInfoAsync(config.PrimaryServerIp, cancellationToken);
+        var model = await GetServerInfoAsync(config.ServerIp, cancellationToken);
 
         return View(model);
     }
 
-    [Route("servers/header")]
+    [Route("servers")]
+    public IActionResult IndexLegacy()
+    {
+        return RedirectToActionPermanent(nameof(Index));
+    }
+
+    [Route("server/header")]
     public async Task<IActionResult> Header(CancellationToken cancellationToken)
     {
-        var model = await GetServerInfoAsync(config.PrimaryServerIp, cancellationToken);
+        var model = await GetServerInfoAsync(config.ServerIp, cancellationToken);
 
         return PartialView("_Header", model);
     }
 
-    [Route("servers/players")]
+    [Route("server/players")]
     public async Task<IActionResult> Players(CancellationToken cancellationToken)
     {
-        var model = await GetServerInfoAsync(config.PrimaryServerIp, cancellationToken);
+        var model = await GetServerInfoAsync(config.ServerIp, cancellationToken);
 
         return PartialView("_Players", model);
     }
 
-    [Route("servers/messages")]
+    [Route("server/messages")]
     public async Task<IActionResult> Messages([FromQuery] long after = 0, CancellationToken cancellationToken = default)
     {
-        var model = await GetServerInfoAsync(config.PrimaryServerIp, cancellationToken);
+        var model = await GetServerInfoAsync(config.ServerIp, cancellationToken);
 
         var messages = model.GameInfo.AllMessages
             .After(after)
@@ -69,6 +75,6 @@ public class ServersController(
         var gameInfo = GameInfo.GetOrInitializeInstance(userAvatar);
         var serverInfo = await serverInfoService.GetServerInfoAsync(config.SteamApiKey, $"addr\\{ip}:{port}", cancellationToken);
 
-        return new ServerInfoModel(serverIp, gameInfo, serverInfo);
+        return new ServerInfoModel(serverIp, config.ServerDns, gameInfo, serverInfo);
     }
 }

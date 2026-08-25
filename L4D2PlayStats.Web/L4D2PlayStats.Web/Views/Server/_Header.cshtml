@@ -43,7 +43,7 @@
 
                 <img src="~/imgs/icons/@copyIcon" alt="@SharedLocalizer["CopyText"]" class="icon-copy"
                      data-toggle="popover" data-placement="top" data-content="@SharedLocalizer["TextCopied"]"
-                     onclick="copyTextToClipboard('@Model.ServerIp', this)"/>
+                     onclick="copyTextToClipboard('connect @Model.ServerDns', this)"/>
             </td>
 
             <th class="slim text-right">@SharedLocalizer["Players"]:</th>

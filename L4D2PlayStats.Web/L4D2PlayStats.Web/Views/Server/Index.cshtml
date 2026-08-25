@@ -11,7 +11,7 @@
 @inject ICampaignThumb CampaignThumb
 
 @{
-    ViewData["PageMetadata"] = new ServersPageMetadata(Model, SharedLocalizer, CampaignName, CampaignThumb);
+    ViewData["PageMetadata"] = new ServerPageMetadata(Model, SharedLocalizer, CampaignName, CampaignThumb);
 }
 
 @section Styles {
@@ -151,7 +151,7 @@
 
         function refreshHeader() {
             $.ajax({
-                url: '/servers/header',
+                url: '/server/header',
                 type: 'GET',
                 timeout: 2000,
                 success: function (html) {
@@ -167,7 +167,7 @@
 
         function refreshPlayers() {
             $.ajax({
-                url: '/servers/players',
+                url: '/server/players',
                 type: 'GET',
                 timeout: 2000,
                 success: function (html) {
@@ -184,7 +184,7 @@
             var after = $('#chat-messages p[data-message-when]').last().data('message-when') || 0;
 
             $.ajax({
-                url: '/servers/messages?after=' + after,
+                url: '/server/messages?after=' + after,
                 type: 'GET',
                 timeout: 2000,
                 success: function (html, status) {
@@ -673,7 +673,7 @@
     </script>
 }
 
-<h4 class="text-center">@SharedLocalizer["Servers"]</h4>
+<h4 class="text-center">@SharedLocalizer["Server"]</h4>
 
 <div id="game-info-header">
     @await Html.PartialAsync("_Header", Model)
@@ -729,7 +729,7 @@
 <div class="row hide-mobile">
     <div class="col-md-12 text-center">
         <a href="@Url.Action("Index", "Connect")" class="btn btn-sm btn-primary" style="margin: 10px">
-            connect @Model.ServerIp
+            connect @Model.ServerDns
         </a>
     </div>
 </div>

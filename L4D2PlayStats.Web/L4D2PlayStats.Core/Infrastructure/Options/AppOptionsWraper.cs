@@ -1,12 +1,12 @@
-﻿using Microsoft.Extensions.Options;
+﻿using L4D2PlayStats.Core.Infrastructure.Networking;
+using Microsoft.Extensions.Options;
 
 namespace L4D2PlayStats.Core.Infrastructure.Options;
 
-public class AppOptionsWraper(IOptions<AppOptions> config) : IAppOptionsWraper
+public class AppOptionsWraper(IOptions<AppOptions> config, IDnsResolver dnsResolver) : IAppOptionsWraper
 {
     private static string[]? _steamApiKeys;
     private static int _steamApiKeysIndex;
-    private static string[]? _serverIPs;
     private static string[]? _serverAdmins;
 
     public string ServerId
@@ -39,23 +39,9 @@ public class AppOptionsWraper(IOptions<AppOptions> config) : IAppOptionsWraper
         }
     }
 
-    public string[] ServerIps
-    {
-        get
-        {
-            if (string.IsNullOrEmpty(config.Value.ServerIPs))
-                throw new InvalidOperationException("ServerIPs is not configured in AppOptions.");
+    public string ServerDns => config.Value.ServerDns!.Trim();
 
-            _serverIPs ??= Split(config.Value.ServerIPs);
-
-            if (_serverIPs.Length == 0)
-                throw new InvalidOperationException("No valid ServerIPs found in AppOptions.");
-
-            return _serverIPs;
-        }
-    }
-
-    public string PrimaryServerIp => ServerIps.First();
+    public string ServerIp => dnsResolver.Resolve(ServerDns);
 
     public string[] ServerAdmins
     {

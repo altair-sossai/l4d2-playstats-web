@@ -18,8 +18,7 @@
     var light = Context.Request.Cookies["theme"] == "light";
     var requestCultureFeature = Context.Features.Get<IRequestCultureFeature>();
     var cultureInfo = requestCultureFeature?.RequestCulture.Culture ?? new CultureInfo("en-US");
-    var serverIPs = Config.Value.ServerIPs?.Split(';', StringSplitOptions.RemoveEmptyEntries);
-    var serverIp = serverIPs?.FirstOrDefault();
+    var serverDns = Config.Value.ServerDns?.Trim();
     var pageMetadata = ViewData["PageMetadata"] as PageMetadata
                        ?? new DefaultPageMetadata(SharedLocalizer);
 }
@@ -283,7 +282,7 @@
             <a class="navbar-brand" href="/">
                 <img src="~/imgs/logo.png" alt="@Localizer["ServerName"]" class="logo img-responsive">
             </a>
-            <a id="server-info" class="navbar-brand server-info pulsate" href="@Url.Action("Index", "Servers")" title="@SharedLocalizer["Servers"]" style="display:none;">
+            <a id="server-info" class="navbar-brand server-info pulsate" href="@Url.Action("Index", "Server")" title="@SharedLocalizer["Server"]" style="display:none;">
                 <span id="server-status" class="label label-success"></span>
             </a>
         </div>
@@ -302,8 +301,8 @@
                 <li class="@ViewBag.History">
                     @Html.ActionLink(SharedLocalizer["History"].Value, "Index", "History")
                 </li>
-                <li class="@ViewBag.Servers">
-                    @Html.ActionLink(SharedLocalizer["Servers"].Value, "Index", "Servers")
+                <li class="@ViewBag.Server">
+                    @Html.ActionLink(SharedLocalizer["Server"].Value, "Index", "Server")
                 </li>
                 <li class="@ViewBag.Patent">
                     @Html.ActionLink(SharedLocalizer["Patents"].Value, "Index", "Patents")
@@ -424,10 +423,10 @@
     </div>
 </div>
 
-@if (!string.IsNullOrEmpty(serverIp))
+@if (!string.IsNullOrEmpty(serverDns))
 {
     <a href="@Url.Action("Index", "Connect")" class="float-icon hide-mobile">
-        <img src="~/imgs/icons/l4d2.png" alt="connect @serverIp" data-toggle="tooltip" data-placement="top" title="connect @serverIp"/>
+        <img src="~/imgs/icons/l4d2.png" alt="connect @serverDns" data-toggle="tooltip" data-placement="top" title="connect @serverDns"/>
     </a>
 }
 
@@ -481,18 +480,10 @@
 
         function updateServerInfo() {
             $.ajax({
-                url: '/api/servers',
+                url: '/api/server',
                 method: 'GET',
-                success: function (data) {
-                    if (!data || data.length == 0) {
-                        $('#server-info').hide();
-                        $('#game-info-chat').hide();
-                        return;
-                    }
-
-                    var serverInfo = data[0];
-
-                    if (serverInfo.players == 0) {
+                success: function (serverInfo) {
+                    if (!serverInfo || serverInfo.players == 0) {
                         $('#server-info').hide();
                         $('#game-info-chat').hide();
                         return;

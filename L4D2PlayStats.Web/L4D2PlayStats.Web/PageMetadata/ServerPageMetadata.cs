@@ -4,9 +4,9 @@ using Microsoft.Extensions.Localization;
 
 namespace L4D2PlayStats.Web.PageMetadata;
 
-public sealed class ServersPageMetadata : Infrastructure.PageMetadata
+public sealed class ServerPageMetadata : Infrastructure.PageMetadata
 {
-    public ServersPageMetadata(
+    public ServerPageMetadata(
         ServerInfoModel model,
         IStringLocalizer<SharedResource> localizer,
         ICampaignName campaignName,
@@ -17,8 +17,8 @@ public sealed class ServersPageMetadata : Infrastructure.PageMetadata
         var mapDescription = campaign ?? map ?? localizer["Map"].Value;
 
         Initialize(
-            localizer["Servers"].Value,
-            Format(localizer, "ServersMetaDescription", mapDescription, model.ServerInfo?.Players ?? 0),
+            localizer["Server"].Value,
+            Format(localizer, "ServerMetaDescription", mapDescription, model.ServerInfo?.Players ?? 0),
             campaignThumb[campaign],
             mapDescription);
     }

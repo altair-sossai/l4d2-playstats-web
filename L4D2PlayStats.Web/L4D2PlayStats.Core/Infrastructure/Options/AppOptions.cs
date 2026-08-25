@@ -4,6 +4,6 @@ public class AppOptions
 {
     public string? ServerId { get; set; }
     public string? SteamApiKey { get; set; }
-    public string? ServerIPs { get; set; }
+    public string? ServerDns { get; set; }
     public string? ServerAdmins { get; set; }
 }

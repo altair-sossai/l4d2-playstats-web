@@ -4,7 +4,7 @@ public interface IAppOptionsWraper
 {
     string ServerId { get; }
     string SteamApiKey { get; }
-    string[] ServerIps { get; }
-    string PrimaryServerIp { get; }
+    string ServerDns { get; }
+    string ServerIp { get; }
     string[] ServerAdmins { get; }
 }
