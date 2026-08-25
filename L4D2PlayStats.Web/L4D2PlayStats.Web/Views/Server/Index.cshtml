@@ -729,7 +729,7 @@
 <div class="row hide-mobile">
     <div class="col-md-12 text-center">
         <a href="@Url.Action("Index", "Connect")" class="btn btn-sm btn-primary" style="margin: 10px">
-            connect @Model.ServerDns
+            connect @Model.ServerIp
         </a>
     </div>
 </div>
@@ -767,23 +767,26 @@
                     <tbody>
                     <tr>
                         <th class="text-nowrap">
-                            DNS
+                            IP
                             <span class="label label-success" style="margin-left: 5px">@SharedLocalizer["Recommended"]</span>
+                        </th>
+                        <td class="line-break-anywhere">
+                            <code>connect @Model.ServerIp</code>
+                            <img src="~/imgs/icons/@copyIcon" alt="@SharedLocalizer["CopyText"]" class="icon-copy"
+                                 data-toggle="popover" data-placement="top" data-content="@SharedLocalizer["TextCopied"]"
+                                 onclick="copyTextToClipboard('connect @Model.ServerIp', this)"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="text-nowrap">
+                            DNS
+                            <span class="label label-default" style="margin-left: 5px">@SharedLocalizer["Alternative"]</span>
                         </th>
                         <td class="line-break-anywhere">
                             <code>connect @Model.ServerDns</code>
                             <img src="~/imgs/icons/@copyIcon" alt="@SharedLocalizer["CopyText"]" class="icon-copy"
                                  data-toggle="popover" data-placement="top" data-content="@SharedLocalizer["TextCopied"]"
                                  onclick="copyTextToClipboard('connect @Model.ServerDns', this)"/>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th class="text-nowrap">IP</th>
-                        <td class="line-break-anywhere">
-                            <code>connect @Model.ServerIp</code>
-                            <img src="~/imgs/icons/@copyIcon" alt="@SharedLocalizer["CopyText"]" class="icon-copy"
-                                 data-toggle="popover" data-placement="top" data-content="@SharedLocalizer["TextCopied"]"
-                                 onclick="copyTextToClipboard('connect @Model.ServerIp', this)"/>
                         </td>
                     </tr>
                     </tbody>

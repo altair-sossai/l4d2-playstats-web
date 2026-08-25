@@ -8,17 +8,16 @@
 @using Microsoft.AspNetCore.Localization
 @using Microsoft.AspNetCore.Mvc.Localization
 @using Microsoft.Extensions.Localization
-@using Microsoft.Extensions.Options
 @inject IViewLocalizer Localizer
 @inject IStringLocalizer<SharedResource> SharedLocalizer
-@inject IOptions<AppOptions> Config
+@inject IAppOptionsWraper Options
 @inject ICurrentUser CurrentUser
 @inject IUserAvatar UserAvatar
 @{
     var light = Context.Request.Cookies["theme"] == "light";
     var requestCultureFeature = Context.Features.Get<IRequestCultureFeature>();
     var cultureInfo = requestCultureFeature?.RequestCulture.Culture ?? new CultureInfo("en-US");
-    var serverDns = Config.Value.ServerDns?.Trim();
+    var serverIp = Options.ServerIp;
     var pageMetadata = ViewData["PageMetadata"] as PageMetadata
                        ?? new DefaultPageMetadata(SharedLocalizer);
 }
@@ -423,10 +422,10 @@
     </div>
 </div>
 
-@if (!string.IsNullOrEmpty(serverDns))
+@if (!string.IsNullOrEmpty(serverIp))
 {
     <a href="@Url.Action("Index", "Connect")" class="float-icon hide-mobile">
-        <img src="~/imgs/icons/l4d2.png" alt="connect @serverDns" data-toggle="tooltip" data-placement="top" title="connect @serverDns"/>
+        <img src="~/imgs/icons/l4d2.png" alt="connect @serverIp" data-toggle="tooltip" data-placement="top" title="connect @serverIp"/>
     </a>
 }
 

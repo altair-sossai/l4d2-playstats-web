@@ -354,14 +354,20 @@
   <data name="Server" xml:space="preserve">
     <value>Servidor</value>
   </data>
+  <data name="ServerIP" xml:space="preserve">
+    <value>IP do Servidor</value>
+  </data>
   <data name="ServerInfo" xml:space="preserve">
     <value>Info. do servidor</value>
   </data>
   <data name="Recommended" xml:space="preserve">
     <value>Recomendado</value>
   </data>
+  <data name="Alternative" xml:space="preserve">
+    <value>Alternativo</value>
+  </data>
   <data name="WhyUseDns" xml:space="preserve">
-    <value>Prefira o DNS: ele continua o mesmo mesmo que o IP do servidor mude, e é mais fácil de lembrar. Use o IP apenas se o DNS não funcionar para você.</value>
+    <value>Prefira o IP: alguns chats (como o da Steam) podem transformar o DNS em link e quebrar o comando de conexão. O DNS é uma alternativa — ele continua o mesmo mesmo que o IP do servidor mude.</value>
   </data>
   <data name="Players" xml:space="preserve">
     <value>Jogadores</value>
