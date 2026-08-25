@@ -162,9 +162,11 @@ public class CampaignName : ICampaignName
         { "versus_5", "Firetower Trail" }
     };
 
-    private static readonly List<Models.Campaign> AllCampaigns = Maps.GroupBy(m => m.Value)
-        .Select(g => new Models.Campaign(g.Key, g.Select(m => m.Key).ToList()))
-        .ToList();
+    private static readonly List<Models.Campaign> AllCampaigns =
+    [
+        .. Maps.GroupBy(m => m.Value)
+            .Select(g => new Models.Campaign(g.Key, [.. g.Select(m => m.Key)]))
+    ];
 
     public string? this[string? map]
     {

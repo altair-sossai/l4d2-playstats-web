@@ -195,8 +195,8 @@
 @{
     var match = Model.Match;
     var gameRound = Model.Statistic?.Statistic?.GameRound;
-    var halves = Model.Statistic?.Statistic?.Halves ?? new List<Statistics.Half>();
-    var allPlayers = Model.Statistic?.Statistic?.PlayerNames ?? new List<PlayerName>();
+    var halves = Model.Statistic?.Statistic?.Halves ?? [];
+    var allPlayers = Model.Statistic?.Statistic?.PlayerNames ?? [];
 }
 
 <h4 class="text-center">@SharedLocalizer["MatchDetails"]</h4>

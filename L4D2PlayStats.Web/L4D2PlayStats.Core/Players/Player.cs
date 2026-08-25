@@ -6,10 +6,12 @@ namespace L4D2PlayStats.Core.Players;
 
 public class Player(PlayerResult playerResult, PlayerResultProperty property)
 {
-    private static readonly HashSet<string> Properties = Enum
-        .GetValues<PlayerResultProperty>()
-        .Select(e => e.ToString())
-        .ToHashSet();
+    private static readonly HashSet<string> Properties =
+    [
+        .. Enum
+            .GetValues<PlayerResultProperty>()
+            .Select(e => e.ToString())
+    ];
 
     private static readonly Dictionary<string, PropertyInfo> PropertiesInfo = typeof(PlayerResult)
         .GetProperties()

@@ -37,7 +37,7 @@ public class HomeController(
         if (lastHistory == null)
             return View(new HomeModel(ranking));
 
-        communityIds = lastHistory.Players.Select(p => p.CommunityId).ToList();
+        communityIds = [.. lastHistory.Players.Select(p => p.CommunityId)];
 
         await userAvatar.LoadAsync(communityIds, cancellationToken: cancellationToken);
 

@@ -78,10 +78,12 @@ public class AppOptionsWraper(IOptions<AppOptions> config) : IAppOptionsWraper
         if (string.IsNullOrEmpty(value))
             return [];
 
-        return value
-            .Split([',', ';', '|'], StringSplitOptions.RemoveEmptyEntries)
-            .Select(v => v.Trim())
-            .Where(v => !string.IsNullOrEmpty(v))
-            .ToArray();
+        return
+        [
+            .. value
+                .Split([',', ';', '|'], StringSplitOptions.RemoveEmptyEntries)
+                .Select(v => v.Trim())
+                .Where(v => !string.IsNullOrEmpty(v))
+        ];
     }
 }

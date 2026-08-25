@@ -83,12 +83,14 @@ public class GameInfo
     public bool AnyPlayerConnected => Survivors.Length > 0 || Infecteds.Length > 0 || Spectators.Length > 0;
 
     public IReadOnlyCollection<ChatMessage> Messages => _messages.Items;
-    public IReadOnlyCollection<ExternalChatMessage> ExternalMessages => _externalMessages.Where(w => w.Age < MessageRetention).ToList();
+    public IReadOnlyCollection<ExternalChatMessage> ExternalMessages => [.. _externalMessages.Where(w => w.Age < MessageRetention)];
 
-    public IReadOnlyCollection<ChatMessage> AllMessages => Messages
-        .Concat(ExternalMessages.Select(em => (ChatMessage)em))
-        .OrderBy(m => m.When)
-        .ToList();
+    public IReadOnlyCollection<ChatMessage> AllMessages =>
+    [
+        .. Messages
+            .Concat(ExternalMessages.Select(em => (ChatMessage)em))
+            .OrderBy(m => m.When)
+    ];
 
     public static GameInfo GetOrInitializeInstance(IUserAvatar userAvatar)
     {
