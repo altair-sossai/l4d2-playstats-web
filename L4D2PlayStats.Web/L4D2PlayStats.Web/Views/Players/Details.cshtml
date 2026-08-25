@@ -629,6 +629,22 @@
                 }
             </td>
         </tr>
+
+        <tr>
+            <th>@SharedLocalizer["CrownsTotal"]:</th>
+            <td data-label="@SharedLocalizer["CrownsTotal"]:">
+                @firstPlayer.Crowns.ToString("N0")
+                @if (secondPlayer != null)
+                {
+                    <span class="separator"> | </span>
+                    <span class="second">@secondPlayer.Crowns.ToString("N0")</span>
+                }
+            </td>
+            <th></th>
+            <td></td>
+            <th></th>
+            <td></td>
+        </tr>
         </tbody>
     </table>
 </div>

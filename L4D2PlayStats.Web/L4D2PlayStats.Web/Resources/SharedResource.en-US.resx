@@ -196,7 +196,7 @@
     <value>Commons killed</value>
   </data>
   <data name="SiKilled" xml:space="preserve">
-    <value>SI - Killed</value>
+    <value>SI killed</value>
   </data>
   <data name="SiDamageDealt" xml:space="preserve">
     <value>SI - Damage dealt</value>
@@ -215,6 +215,9 @@
   </data>
   <data name="LevelsTotal" xml:space="preserve">
     <value>Total levels</value>
+  </data>
+  <data name="CrownsTotal" xml:space="preserve">
+    <value>Total crowns</value>
   </data>
   <data name="DmgTotal" xml:space="preserve">
     <value>SI damage (excl. Tank)</value>
@@ -589,7 +592,7 @@
     <value>Defibrillators used</value>
   </data>
   <data name="SiSpawned" xml:space="preserve">
-    <value>SI - spawned</value>
+    <value>SI spawned</value>
   </data>
   <data name="TankKilled" xml:space="preserve">
     <value>Tanks killed</value>
@@ -748,7 +751,7 @@
     <value>Pistol - SI HS per hit (%)</value>
   </data>
   <data name="CommonTankUp" xml:space="preserve">
-    <value>Commons - Killed during Tank</value>
+    <value>Commons killed during Tank</value>
   </data>
   <data name="SiKilledTankUp" xml:space="preserve">
     <value>SI killed during Tank</value>
@@ -772,7 +775,7 @@
     <value>Crowns (Witch one-shot)</value>
   </data>
   <data name="CrownsHurt" xml:space="preserve">
-    <value>Draw crowns</value>
+    <value>Hurt crowns</value>
   </data>
   <data name="RockSkeets" xml:space="preserve">
     <value>Rock skeets</value>
@@ -799,76 +802,76 @@
     <value>Shoves</value>
   </data>
   <data name="FfHits" xml:space="preserve">
-    <value>Fire-friend Hits</value>
+    <value>Friendly fire hits</value>
   </data>
   <data name="FfGiven" xml:space="preserve">
     <value>FF dealt (non-incap.)</value>
   </data>
   <data name="FfGivenPellet" xml:space="preserve">
-    <value>FFG - Pellet</value>
+    <value>FF dealt - Pellets</value>
   </data>
   <data name="FfGivenBullet" xml:space="preserve">
     <value>FF dealt - Bullets</value>
   </data>
   <data name="FfGivenSniper" xml:space="preserve">
-    <value>FFG - Sniper</value>
+    <value>FF dealt - Sniper</value>
   </data>
   <data name="FfGivenMelee" xml:space="preserve">
-    <value>FFG - Melee</value>
+    <value>FF dealt - Melee</value>
   </data>
   <data name="FfGivenFire" xml:space="preserve">
-    <value>FFG - Fire</value>
+    <value>FF dealt - Fire</value>
   </data>
   <data name="FfGivenIncap" xml:space="preserve">
     <value>FF dealt to incapped</value>
   </data>
   <data name="FfGivenSelf" xml:space="preserve">
-    <value>FFG - Self</value>
+    <value>FF dealt - Self</value>
   </data>
   <data name="FfGivenOther" xml:space="preserve">
-    <value>FFG - Other</value>
+    <value>FF dealt - Other</value>
   </data>
   <data name="FfGivenTotal" xml:space="preserve">
-    <value>FFG - Total</value>
+    <value>FF dealt - Total</value>
   </data>
   <data name="FfTaken" xml:space="preserve">
     <value>FF taken (non-incap.)</value>
   </data>
   <data name="FfTakenPellet" xml:space="preserve">
-    <value>FFT - Pellet</value>
+    <value>FF taken - Pellets</value>
   </data>
   <data name="FfTakenBullet" xml:space="preserve">
     <value>FF taken - Bullets</value>
   </data>
   <data name="FfTakenSniper" xml:space="preserve">
-    <value>FFT - Sniper</value>
+    <value>FF taken - Sniper</value>
   </data>
   <data name="FfTakenMelee" xml:space="preserve">
-    <value>FFT - Melee</value>
+    <value>FF taken - Melee</value>
   </data>
   <data name="FfTakenFire" xml:space="preserve">
-    <value>FFT - Fire</value>
+    <value>FF taken - Fire</value>
   </data>
   <data name="FfTakenIncap" xml:space="preserve">
     <value>FF taken while incapped</value>
   </data>
   <data name="FfTakenOther" xml:space="preserve">
-    <value>FFT - Other</value>
+    <value>FF taken - Other</value>
   </data>
   <data name="FfTakenTotal" xml:space="preserve">
-    <value>FFT - Total</value>
+    <value>FF taken - Total</value>
   </data>
   <data name="DmgUpright" xml:space="preserve">
     <value>SI damage (upright)</value>
   </data>
   <data name="DmgTank" xml:space="preserve">
-    <value>Tank damage (upright)</value>
+    <value>Damage as Tank (upright)</value>
   </data>
   <data name="DmgTankIncap" xml:space="preserve">
-    <value>Tank damage (incapped)</value>
+    <value>Damage as Tank (incapped)</value>
   </data>
   <data name="TankPasses" xml:space="preserve">
-    <value>Tank - Control losses</value>
+    <value>Tank passes</value>
   </data>
   <data name="DmgScratch" xml:space="preserve">
     <value>Scratch damage (upright)</value>

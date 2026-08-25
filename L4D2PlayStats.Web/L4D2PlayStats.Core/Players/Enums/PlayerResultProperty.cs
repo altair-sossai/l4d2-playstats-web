@@ -21,6 +21,7 @@ public enum PlayerResultProperty
     Skeets,
     SkeetsMelee,
     Levels,
+    Crowns,
     FfGiven,
     DmgTotal,
     DmgTank,

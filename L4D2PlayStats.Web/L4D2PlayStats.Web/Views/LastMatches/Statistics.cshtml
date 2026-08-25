@@ -568,7 +568,7 @@
                                     <th>@SharedLocalizer[$"HitsSi{weapon}Percent"]:</th>
                                     @foreach (var player in players)
                                     {
-                                        var percent = player[shots] != 0 ? player[hitsSi] / (decimal)player[shots] : 0;
+                                        var percent = player[hits] != 0 ? player[hitsSi] / (decimal)player[hits] : 0;
                                         <td class="slim text-center">
                                             @percent.ToString("P0")
                                         </td>
@@ -584,7 +584,7 @@
                                     <th>@SharedLocalizer[$"HitsTank{weapon}Percent"]:</th>
                                     @foreach (var player in players)
                                     {
-                                        var percent = player[shots] != 0 ? player[hitsTank] / (decimal)player[shots] : 0;
+                                        var percent = player[hits] != 0 ? player[hitsTank] / (decimal)player[hits] : 0;
                                         <td class="slim text-center">
                                             @percent.ToString("P0")
                                         </td>

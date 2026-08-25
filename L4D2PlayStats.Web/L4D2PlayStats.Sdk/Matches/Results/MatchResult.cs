@@ -3,6 +3,7 @@
 public class MatchResult
 {
     public string? ConfigurationName { get; set; }
+    public bool Competitive { get; set; }
     public int TeamSize { get; set; }
     public DateTime MatchStart { get; set; }
     public DateTime? MatchEnd { get; set; }

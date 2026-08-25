@@ -165,6 +165,14 @@
                     @Model.Campaign
                 </h4>
                 <small style="font-style: italic"> - @Model.ConfigurationName</small>
+                @if (Model.Competitive)
+                {
+                    <span class="label label-success" style="margin-left: 5px;">@Localizer["Competitive"]</span>
+                }
+                else
+                {
+                    <span class="label label-default" style="margin-left: 5px;">@Localizer["Casual"]</span>
+                }
                 <p>
                     @string.Format(Localizer["TeamWonByPoints"].Value, Model.Winner?.Code, Model.Diff)
                 </p>
