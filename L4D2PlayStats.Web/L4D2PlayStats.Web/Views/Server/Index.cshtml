@@ -747,3 +747,51 @@
         </div>
     </div>
 </div>
+
+@{
+    var light = Context.Request.Cookies["theme"] == "light";
+    var copyIcon = light ? "copy-light.png" : "copy-dark.png";
+}
+
+<div id="server-info-modal" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title">@SharedLocalizer["ServerInfo"]</h4>
+            </div>
+            <div class="modal-body">
+                <table class="table table-condensed">
+                    <tbody>
+                    <tr>
+                        <th class="text-nowrap">
+                            DNS
+                            <span class="label label-success" style="margin-left: 5px">@SharedLocalizer["Recommended"]</span>
+                        </th>
+                        <td class="line-break-anywhere">
+                            <code>connect @Model.ServerDns</code>
+                            <img src="~/imgs/icons/@copyIcon" alt="@SharedLocalizer["CopyText"]" class="icon-copy"
+                                 data-toggle="popover" data-placement="top" data-content="@SharedLocalizer["TextCopied"]"
+                                 onclick="copyTextToClipboard('connect @Model.ServerDns', this)"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="text-nowrap">IP</th>
+                        <td class="line-break-anywhere">
+                            <code>connect @Model.ServerIp</code>
+                            <img src="~/imgs/icons/@copyIcon" alt="@SharedLocalizer["CopyText"]" class="icon-copy"
+                                 data-toggle="popover" data-placement="top" data-content="@SharedLocalizer["TextCopied"]"
+                                 onclick="copyTextToClipboard('connect @Model.ServerIp', this)"/>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+                <p class="text-muted" style="margin-bottom: 0">
+                    <small>@SharedLocalizer["WhyUseDns"]</small>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>

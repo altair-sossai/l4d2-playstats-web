@@ -354,8 +354,14 @@
   <data name="Server" xml:space="preserve">
     <value>Server</value>
   </data>
-  <data name="ServerIP" xml:space="preserve">
-    <value>Server IP</value>
+  <data name="ServerInfo" xml:space="preserve">
+    <value>Server info</value>
+  </data>
+  <data name="Recommended" xml:space="preserve">
+    <value>Recommended</value>
+  </data>
+  <data name="WhyUseDns" xml:space="preserve">
+    <value>Prefer the DNS: it stays the same even if the server's IP changes, and it's easier to remember. Use the IP only if the DNS doesn't work for you.</value>
   </data>
   <data name="Players" xml:space="preserve">
     <value>Players</value>

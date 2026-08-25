@@ -37,9 +37,15 @@
     <table class="table table-condensed table-responsive">
         <tbody>
         <tr>
-            <th class="slim text-right">@SharedLocalizer["ServerIP"]:</th>
-            <td data-label="@SharedLocalizer["ServerIP"]:">
-                @Model.ServerIp
+            <th class="slim text-right text-nowrap" style="padding-left: 8px">
+                @SharedLocalizer["ServerInfo"]
+                <button type="button" class="btn btn-link btn-xs" style="padding: 0" data-toggle="tooltip" data-placement="top"
+                        title="@SharedLocalizer["ServerInfo"]" onclick="$('#server-info-modal').modal('show')">
+                    <span class="glyphicon glyphicon-question-sign"></span>
+                </button>:
+            </th>
+            <td data-label="@SharedLocalizer["ServerInfo"]:">
+                @Model.ServerDns
 
                 <img src="~/imgs/icons/@copyIcon" alt="@SharedLocalizer["CopyText"]" class="icon-copy"
                      data-toggle="popover" data-placement="top" data-content="@SharedLocalizer["TextCopied"]"
