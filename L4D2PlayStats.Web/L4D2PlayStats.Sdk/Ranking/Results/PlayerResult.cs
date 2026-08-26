@@ -28,6 +28,9 @@ public class PlayerResult
     public int Draws { get; set; }
     public int RageQuit { get; set; }
     public List<MatchResult>? Results { get; set; }
+    public int MaxWinStreak { get; set; }
+    public int MaxLossStreak { get; set; }
+    public int MaxDrawStreak { get; set; }
     public int Punishment { get; set; }
     public decimal WinRate { get; set; }
 

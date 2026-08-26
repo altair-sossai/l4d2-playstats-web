@@ -273,6 +273,12 @@
   <data name="MatchHistory" xml:space="preserve">
     <value>Historial de partidas</value>
   </data>
+  <data name="MaxWinStreak" xml:space="preserve">
+    <value>Racha de victorias más larga</value>
+  </data>
+  <data name="MaxLossStreak" xml:space="preserve">
+    <value>Racha de derrotas más larga</value>
+  </data>
   <data name="Win" xml:space="preserve">
     <value>Victoria</value>
   </data>

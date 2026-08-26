@@ -457,6 +457,26 @@
             </td>
         </tr>
         <tr>
+            <th>@SharedLocalizer["MaxWinStreak"]:</th>
+            <td data-label="@SharedLocalizer["MaxWinStreak"]:">
+                @firstPlayer.MaxWinStreak.ToString("N0")
+                @if (secondPlayer != null)
+                {
+                    <span class="separator"> | </span>
+                    <span class="second">@secondPlayer.MaxWinStreak.ToString("N0")</span>
+                }
+            </td>
+            <th>@SharedLocalizer["MaxLossStreak"]:</th>
+            <td data-label="@SharedLocalizer["MaxLossStreak"]:" colspan="3">
+                @firstPlayer.MaxLossStreak.ToString("N0")
+                @if (secondPlayer != null)
+                {
+                    <span class="separator"> | </span>
+                    <span class="second">@secondPlayer.MaxLossStreak.ToString("N0")</span>
+                }
+            </td>
+        </tr>
+        <tr>
             <th class="vertical-align-middle">@SharedLocalizer["MatchHistory"]:</th>
             <td data-label="@SharedLocalizer["MatchHistory"]:" colspan="5">
                 @{ RenderStreak(firstPlayer, false, secondPlayer != null); }

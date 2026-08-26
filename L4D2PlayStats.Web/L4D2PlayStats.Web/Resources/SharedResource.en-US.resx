@@ -273,6 +273,12 @@
   <data name="MatchHistory" xml:space="preserve">
     <value>Match history</value>
   </data>
+  <data name="MaxWinStreak" xml:space="preserve">
+    <value>Longest win streak</value>
+  </data>
+  <data name="MaxLossStreak" xml:space="preserve">
+    <value>Longest loss streak</value>
+  </data>
   <data name="Win" xml:space="preserve">
     <value>Win</value>
   </data>
