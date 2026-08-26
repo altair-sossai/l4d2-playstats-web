@@ -270,6 +270,15 @@
   <data name="Loss" xml:space="preserve">
     <value>Loss</value>
   </data>
+  <data name="MatchHistory" xml:space="preserve">
+    <value>Match history</value>
+  </data>
+  <data name="Win" xml:space="preserve">
+    <value>Win</value>
+  </data>
+  <data name="Draw" xml:space="preserve">
+    <value>Draw</value>
+  </data>
   <data name="StatisticsAsSurvivor" xml:space="preserve">
     <value>Statistics as survivor</value>
   </data>

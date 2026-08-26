@@ -1,4 +1,6 @@
-﻿namespace L4D2PlayStats.Sdk.Ranking.Results;
+﻿using L4D2PlayStats.Sdk.Ranking.Enums;
+
+namespace L4D2PlayStats.Sdk.Ranking.Results;
 
 public class PlayerResult
 {
@@ -23,7 +25,9 @@ public class PlayerResult
     public int Games { get; set; }
     public int Wins { get; set; }
     public int Loss { get; set; }
+    public int Draws { get; set; }
     public int RageQuit { get; set; }
+    public List<MatchResult>? Results { get; set; }
     public int Punishment { get; set; }
     public decimal WinRate { get; set; }
 
