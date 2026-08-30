@@ -1,0 +1,15 @@
+@using L4D2PlayStats.Web
+@using L4D2PlayStats.Web.Extensions
+@using Microsoft.Extensions.Localization
+@model L4D2PlayStats.Core.GameInfo.Models.Events.JockeyHighPounceEvent
+@inject IStringLocalizer<SharedResource> Localizer
+
+@{
+    var height = (int)Math.Round(Model.Height);
+}
+
+<span class="game-event-stars">@Model.StarsText</span>
+@(Html.EventPlayer(Model.Actor, Localizer["GameEventJockey"]))
+<span class="game-event-danger">@Localizer["GameEventHighPounced"]</span>
+@(Html.EventPlayer(Model.Victim, Localizer["GameEventSurvivor"]))
+<span class="game-event-highlight">(@Localizer["GameEventHeight", height])</span>.

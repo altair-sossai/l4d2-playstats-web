@@ -93,11 +93,32 @@
             padding: 5px;
         }
 
-        #chat-messages {
+        #feed {
             height: 400px;
             overflow-x: hidden;
             overflow-y: auto;
             padding-right: 10px;
+        }
+
+        .game-event-stars,
+        .game-event-highlight {
+            color: #5cb85c;
+            font-weight: bold;
+        }
+
+        .game-event-player {
+            color: #9b873c;
+            font-weight: bold;
+        }
+
+        .game-event-action {
+            color: #5bc0de;
+            font-weight: bold;
+        }
+
+        .game-event-danger {
+            color: #d9534f;
+            font-weight: bold;
         }
 
         .spectators a {
@@ -180,35 +201,35 @@
             });
         }
 
-        function refreshMessages() {
-            var after = $('#chat-messages p[data-message-when]').last().data('message-when') || 0;
+        function refreshFeed() {
+            var after = $('#feed p[data-feed-when]').last().data('feed-when') || 0;
 
             $.ajax({
-                url: '/server/messages?after=' + after,
+                url: '/server/feed?after=' + after,
                 type: 'GET',
                 timeout: 2000,
                 success: function (html, status) {
                     if (!html || status == "nocontent")
                         return;
 
-                    var chatMessages = $('#chat-messages');
-                    var scrollDown = chatMessages[0].scrollHeight - chatMessages.scrollTop() === chatMessages.outerHeight();
+                    var feed = $('#feed');
+                    var scrollDown = feed[0].scrollHeight - feed.scrollTop() === feed.outerHeight();
 
-                    $('#chat-messages').append(html);
+                    feed.append(html);
 
-                    $('#chat-messages p[data-message-when]').each(function () {
-                        var messageWhen = $(this).data('message-when');
-                        if (messageWhen) {
-                            var $duplicates = $('#chat-messages p[data-message-when="' + messageWhen + '"]').slice(1);
+                    $('#feed p[data-feed-when]').each(function () {
+                        var feedWhen = $(this).data('feed-when');
+                        if (feedWhen) {
+                            var $duplicates = $('#feed p[data-feed-when="' + feedWhen + '"]').slice(1);
                             $duplicates.remove();
                         }
                     });
 
                     if (scrollDown)
-                        chatMessages.scrollTop(chatMessages[0].scrollHeight);
+                        feed.scrollTop(feed[0].scrollHeight);
                 },
                 complete: function () {
-                    setTimeout(refreshMessages, refreshInterval / 2);
+                    setTimeout(refreshFeed, refreshInterval / 2);
                 }
             });
         }
@@ -225,7 +246,7 @@
                 data: JSON.stringify({ message: message }),
                 success: function (result, statusCode) {
                     if (result?.success || statusCode == 'nocontent') {
-                        refreshMessages();
+                        refreshFeed();
                         $('#message').val('');
                         $('button[type="submit"]').prop('disabled', true);
                     } else {
@@ -649,10 +670,10 @@
         $(document).ready(function () {
             refreshHeader();
             refreshPlayers();
-            refreshMessages();
+            refreshFeed();
             loadCampaigns();
 
-            $('#chat-messages').scrollTop($('#chat-messages')[0].scrollHeight);
+            $('#feed').scrollTop($('#feed')[0].scrollHeight);
 
              $('#chatForm').on('submit', function () {
                 sendMessage();
@@ -690,8 +711,8 @@
                 @SharedLocalizer["ChatMessages"]
             </div>
             <div class="panel-body">
-                <div id="chat-messages" style="margin-bottom: 20px">
-                    @await Html.PartialAsync("_Messages", Model.GameInfo.AllMessages)
+                <div id="feed" style="margin-bottom: 20px">
+                    @await Html.PartialAsync("_Feed", Model.GameInfo.Feed)
                 </div>
                 @if (CurrentUser.IsAuthenticated)
                 {

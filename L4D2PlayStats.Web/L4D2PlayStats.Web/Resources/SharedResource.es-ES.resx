@@ -1171,4 +1171,166 @@
   <data name="PatentsMetaDescription" xml:space="preserve">
     <value>Conoce los rangos, niveles y requisitos de experiencia de L4D2 Competitive.</value>
   </data>
+  <data name="GameEventUnknown" xml:space="preserve">
+    <value>Evento desconocido.</value>
+  </data>
+  <data name="GameEventUnknownPlayer" xml:space="preserve">
+    <value>Jugador desconocido</value>
+  </data>
+  <data name="GameEventSurvivor" xml:space="preserve">
+    <value>un superviviente</value>
+  </data>
+  <data name="GameEventTeammate" xml:space="preserve">
+    <value>un compañero</value>
+  </data>
+  <data name="GameEventSpecialInfected" xml:space="preserve">
+    <value>un infectado especial</value>
+  </data>
+  <data name="GameEventCommon" xml:space="preserve">
+    <value>un infectado común</value>
+  </data>
+  <data name="GameEventSmoker" xml:space="preserve">
+    <value>un smoker</value>
+  </data>
+  <data name="GameEventBoomer" xml:space="preserve">
+    <value>un boomer</value>
+  </data>
+  <data name="GameEventHunter" xml:space="preserve">
+    <value>un hunter</value>
+  </data>
+  <data name="GameEventSpitter" xml:space="preserve">
+    <value>una spitter</value>
+  </data>
+  <data name="GameEventJockey" xml:space="preserve">
+    <value>un jockey</value>
+  </data>
+  <data name="GameEventCharger" xml:space="preserve">
+    <value>un charger</value>
+  </data>
+  <data name="GameEventWitch" xml:space="preserve">
+    <value>una witch</value>
+  </data>
+  <data name="GameEventTank" xml:space="preserve">
+    <value>un tank</value>
+  </data>
+  <data name="GameEventCarAlarmUnknown" xml:space="preserve">
+    <value>motivo desconocido</value>
+  </data>
+  <data name="GameEventCarAlarmHit" xml:space="preserve">
+    <value>disparo o golpe</value>
+  </data>
+  <data name="GameEventCarAlarmTouched" xml:space="preserve">
+    <value>contacto</value>
+  </data>
+  <data name="GameEventCarAlarmExplosion" xml:space="preserve">
+    <value>explosión</value>
+  </data>
+  <data name="GameEventCarAlarmBoomer" xml:space="preserve">
+    <value>boomer</value>
+  </data>
+  <data name="GameEventSkeeted" xml:space="preserve">
+    <value>hizo skeet a</value>
+  </data>
+  <data name="GameEventSkeetedMelee" xml:space="preserve">
+    <value>hizo melee-skeet a</value>
+  </data>
+  <data name="GameEventSkeetedSniper" xml:space="preserve">
+    <value>hizo headshot-skeet a</value>
+  </data>
+  <data name="GameEventSkeetedGrenade" xml:space="preserve">
+    <value>hizo granada-skeet a</value>
+  </data>
+  <data name="GameEventWasTeamSkeeted" xml:space="preserve">
+    <value>recibió un team-skeet</value>
+  </data>
+  <data name="GameEventWasNotSkeeted" xml:space="preserve">
+    <value>no recibió skeet</value>
+  </data>
+  <data name="GameEventWouldHaveSkeeted" xml:space="preserve">
+    <value>¡Habría sido skeet si el hunter no estuviera dañado!</value>
+  </data>
+  <data name="GameEventDeadstopped" xml:space="preserve">
+    <value>hizo deadstop a</value>
+  </data>
+  <data name="GameEventPopped" xml:space="preserve">
+    <value>reventó a</value>
+  </data>
+  <data name="GameEventFullyLeveled" xml:space="preserve">
+    <value>hizo level completo a</value>
+  </data>
+  <data name="GameEventChipLeveled" xml:space="preserve">
+    <value>hizo chip-level a</value>
+  </data>
+  <data name="GameEventCrownedWitch" xml:space="preserve">
+    <value>hizo crown a una witch</value>
+  </data>
+  <data name="GameEventDrawCrownedWitch" xml:space="preserve">
+    <value>hizo draw-crown a una witch</value>
+  </data>
+  <data name="GameEventCutTongue" xml:space="preserve">
+    <value>cortó la lengua de</value>
+  </data>
+  <data name="GameEventSelfCleared" xml:space="preserve">
+    <value>se liberó de la lengua de</value>
+  </data>
+  <data name="GameEventByShoving" xml:space="preserve">
+    <value>con un empujón</value>
+  </data>
+  <data name="GameEventSkeetedRock" xml:space="preserve">
+    <value>destruyó la roca de</value>
+  </data>
+  <data name="GameEventHitWithRock" xml:space="preserve">
+    <value>golpeó con una roca a</value>
+  </data>
+  <data name="GameEventHighPounced" xml:space="preserve">
+    <value>hizo high-pounce a</value>
+  </data>
+  <data name="GameEventDeathCharged" xml:space="preserve">
+    <value>hizo death-charge a</value>
+  </data>
+  <data name="GameEventByBowling" xml:space="preserve">
+    <value>con bowling</value>
+  </data>
+  <data name="GameEventInstaCleared" xml:space="preserve">
+    <value>hizo insta-clear a</value>
+  </data>
+  <data name="GameEventFrom" xml:space="preserve">
+    <value>de</value>
+  </data>
+  <data name="GameEventVomitedOn" xml:space="preserve">
+    <value>vomitó sobre</value>
+  </data>
+  <data name="GameEventShoved" xml:space="preserve">
+    <value>empujó a</value>
+  </data>
+  <data name="GameEventLanded" xml:space="preserve">
+    <value>logró</value>
+  </data>
+  <data name="GameEventTriggeredCarAlarm" xml:space="preserve">
+    <value>activó la alarma de un coche</value>
+  </data>
+  <data name="GameEventAssistedBy" xml:space="preserve">
+    <value>con ayuda de</value>
+  </data>
+  <data name="GameEventDamage" xml:space="preserve">
+    <value>{0} de daño</value>
+  </data>
+  <data name="GameEventDamageAndChip" xml:space="preserve">
+    <value>{0} de daño, {1} previo</value>
+  </data>
+  <data name="GameEventHeight" xml:space="preserve">
+    <value>altura: {0}</value>
+  </data>
+  <data name="GameEventSeconds" xml:space="preserve">
+    <value>{0:N2} segundos</value>
+  </data>
+  <data name="GameEventSurvivorCount" xml:space="preserve">
+    <value>{0} superviviente(s)</value>
+  </data>
+  <data name="GameEventBunnyHops" xml:space="preserve">
+    <value>{0} bunny hop(s)</value>
+  </data>
+  <data name="GameEventMaxVelocity" xml:space="preserve">
+    <value>velocidad máxima: {0}</value>
+  </data>
 </root>

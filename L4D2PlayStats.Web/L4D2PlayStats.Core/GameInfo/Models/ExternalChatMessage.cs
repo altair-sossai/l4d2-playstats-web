@@ -1,4 +1,4 @@
-﻿using L4D2PlayStats.Core.GameInfo.Commands;
+using L4D2PlayStats.Core.GameInfo.Commands;
 using L4D2PlayStats.Core.GameInfo.Enums;
 
 namespace L4D2PlayStats.Core.GameInfo.Models;
@@ -16,13 +16,15 @@ public class ExternalChatMessage(User user, ExternalChatMessageCommand command)
 
     public static implicit operator ChatMessage(ExternalChatMessage externalChatMessage)
     {
-        return new ChatMessage(new ChatMessageCommand
+        var command = new ChatMessageCommand
         {
             Public = false,
             Team = Team.External,
             CommunityId = externalChatMessage.CommunityId,
             Name = externalChatMessage.Name,
             Message = externalChatMessage.Text
-        }, externalChatMessage.When);
+        };
+
+        return new ChatMessage(command, externalChatMessage.When);
     }
 }

@@ -1,0 +1,18 @@
+@using L4D2PlayStats.Core.GameInfo.Enums
+@using L4D2PlayStats.Web
+@using L4D2PlayStats.Web.Extensions
+@using Microsoft.Extensions.Localization
+@model L4D2PlayStats.Core.GameInfo.Models.Events.SpecialClearEvent
+@inject IStringLocalizer<SharedResource> Localizer
+
+@{
+    var clearTime = Model.ZombieClass is InfectedType.Charger or InfectedType.Smoker ? Model.TimeB : Model.TimeA;
+}
+
+<span class="game-event-stars">@Model.StarsText</span>
+@(Html.EventPlayer(Model.Actor, Localizer["GameEventUnknownPlayer"]))
+<span class="game-event-action">@Localizer["GameEventInstaCleared"]</span>
+@(Html.EventPlayer(Model.PinVictim, Localizer["GameEventTeammate"]))
+<span class="game-event-action">@Localizer["GameEventFrom"]</span>
+@(Html.EventPlayer(Model.Pinner, Localizer[$"GameEvent{Model.ZombieClass}"]))
+<span class="game-event-highlight">(@Localizer["GameEventSeconds", clearTime])</span>.

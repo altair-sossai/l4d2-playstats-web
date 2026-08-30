@@ -1,0 +1,8 @@
+@model IReadOnlyCollection<L4D2PlayStats.Core.GameInfo.Models.Infrastructure.FeedItem>
+
+@foreach (var item in Model)
+{
+    <p data-feed-when="@item.Ticks">
+        @await Html.PartialAsync(item.PartialName, item)
+    </p>
+}

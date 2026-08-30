@@ -1,22 +1,11 @@
-﻿namespace L4D2PlayStats.Core.Infrastructure.Structures;
+namespace L4D2PlayStats.Core.Infrastructure.Structures;
 
-public class TimedValue<T>(T defaultValue = default!, TimeSpan? expireIn = null, TimeSpan? delay = null)
+public class TimedValue<T>(TimeSpan delay, TimeSpan expireIn, T initialValue = default!)
 {
-#if DEBUG
-    private const int DefaultDelaySeconds = 1;
-    private const int DefaultExpireInMinutes = 99999;
-#else
-    private const int DefaultDelaySeconds = 45;
-    private const int DefaultExpireInMinutes = 10;
-#endif
-
-    private readonly TimeSpan _delay = delay ?? TimeSpan.FromSeconds(DefaultDelaySeconds);
-    private readonly TimeSpan _expireIn = expireIn ?? TimeSpan.FromMinutes(DefaultExpireInMinutes);
-
     private DateTime _lastUpdate = DateTime.MinValue;
-    private T _value = defaultValue;
+    private T _value = initialValue;
 
-    private bool Expired => DateTime.UtcNow >= _lastUpdate + _expireIn;
+    private bool Expired => DateTime.UtcNow >= _lastUpdate + expireIn;
 
     public T Value
     {
@@ -29,15 +18,15 @@ public class TimedValue<T>(T defaultValue = default!, TimeSpan? expireIn = null,
         }
         set
         {
-            if (_delay == TimeSpan.Zero)
+            if (delay == TimeSpan.Zero)
             {
                 UpdateValue(value);
                 return;
             }
 
-            Task.Delay(_delay).ContinueWith(_ => UpdateValue(value));
+            Task.Delay(delay).ContinueWith(_ => UpdateValue(value));
         }
-    } = defaultValue;
+    } = initialValue;
 
     public event EventHandler<T>? ValueUpdated;
 

@@ -2,6 +2,7 @@
 using L4D2PlayStats.Core.GameInfo.Commands;
 using L4D2PlayStats.Core.GameInfo.Extensions;
 using L4D2PlayStats.Core.GameInfo.Models;
+using L4D2PlayStats.Core.GameInfo.Models.Events;
 using L4D2PlayStats.Core.GameInfo.Services;
 using L4D2PlayStats.Core.UserAvatar;
 using L4D2PlayStats.Web.Attributes;
@@ -96,7 +97,7 @@ public class GameInfoController(IUserAvatar userAvatar) : ControllerBase
     [Route("messages")]
     public IActionResult Messages(long after = 0)
     {
-        var messages = _gameInfo.AllMessages.After(after);
+        var messages = _gameInfo.Messages.After(after);
 
         return Ok(messages);
     }
@@ -106,6 +107,24 @@ public class GameInfoController(IUserAvatar userAvatar) : ControllerBase
     public IActionResult AddMessage([FromBody] ChatMessageCommand command)
     {
         _gameInfo.AddMessage(command);
+
+        return Ok();
+    }
+
+    [HttpGet]
+    [Route("events")]
+    public IActionResult Events(long after = 0)
+    {
+        var events = _gameInfo.Events.After(after);
+
+        return Ok(events);
+    }
+
+    [HttpPost("events")]
+    [RequiredSecretKey]
+    public IActionResult AddEvent([FromBody] GameEvent gameEvent)
+    {
+        _gameInfo.AddEvent(gameEvent);
 
         return Ok();
     }

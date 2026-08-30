@@ -1,0 +1,29 @@
+@using L4D2PlayStats.Core.GameInfo.Enums
+@using L4D2PlayStats.Web
+@using Microsoft.Extensions.Localization
+@model L4D2PlayStats.Core.GameInfo.Models.ChatMessage
+@inject IStringLocalizer<SharedResource> SharedLocalizer
+
+@{
+    var cssClass = Model.Team switch
+    {
+        Team.Survivor => "text-info",
+        Team.Infected => "text-danger",
+        Team.External => "text-warning",
+        _ => "text-muted"
+    };
+}
+
+@if (!Model.Public)
+{
+    <small>@($"({SharedLocalizer[Model.Team.ToString()]})")</small>
+}
+<span class="@cssClass" style="font-weight: bold">
+    <a href="@Model.Player?.ProfileUrl" target="_blank">@Model.Player?.Name</a>
+</span>
+@if (Model.IsAdmin)
+{
+    <span class="text-muted">(Admin)</span>
+}
+<span>:</span>
+<span>@Model.Message</span>

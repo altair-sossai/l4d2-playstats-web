@@ -1,0 +1,15 @@
+@using L4D2PlayStats.Web
+@using L4D2PlayStats.Web.Extensions
+@using Microsoft.Extensions.Localization
+@model L4D2PlayStats.Core.GameInfo.Models.Events.SkeetHurtEvent
+@inject IStringLocalizer<SharedResource> Localizer
+
+<span class="game-event-stars">@Model.StarsText</span>
+@(Html.EventPlayer(Model.Hunter, Localizer["GameEventHunter"]))
+<span class="game-event-action">@Localizer["GameEventWasNotSkeeted"]</span>
+<span class="game-event-highlight">(@Localizer["GameEventDamage", Model.Damage])</span>.
+
+@if (Model.IsOverkill)
+{
+    <span class="game-event-highlight">@Localizer["GameEventWouldHaveSkeeted"]</span>
+}

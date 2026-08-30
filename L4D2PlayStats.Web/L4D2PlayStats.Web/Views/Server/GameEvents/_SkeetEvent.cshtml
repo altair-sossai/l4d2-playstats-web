@@ -1,0 +1,31 @@
+@using L4D2PlayStats.Core.GameInfo.Enums
+@using L4D2PlayStats.Web
+@using L4D2PlayStats.Web.Extensions
+@using Microsoft.Extensions.Localization
+@model L4D2PlayStats.Core.GameInfo.Models.Events.SkeetEvent
+@inject IStringLocalizer<SharedResource> Localizer
+
+@{
+    var verb = Model.SkeetType switch
+    {
+        SkeetType.Melee => Localizer["GameEventSkeetedMelee"],
+        SkeetType.Sniper => Localizer["GameEventSkeetedSniper"],
+        SkeetType.Grenade => Localizer["GameEventSkeetedGrenade"],
+        _ => Localizer["GameEventSkeeted"]
+    };
+}
+
+<span class="game-event-stars">@Model.StarsText</span>
+
+@if (Model.IsTeamSkeet)
+{
+    @(Html.EventPlayer(Model.Hunter, Localizer["GameEventHunter"]))
+    <span class="game-event-action">@Localizer["GameEventWasTeamSkeeted"]</span>
+    <text>.</text>
+}
+else
+{
+    @(Html.EventPlayer(Model.Actor, Localizer["GameEventUnknownPlayer"]))
+    <span class="game-event-action">@verb</span>
+    @(Html.EventPlayer(Model.Hunter, Localizer["GameEventHunter"]))<text>.</text>
+}

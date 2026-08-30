@@ -1,5 +1,4 @@
 using L4D2PlayStats.Core.GameInfo;
-using L4D2PlayStats.Core.GameInfo.Extensions;
 using L4D2PlayStats.Core.Infrastructure.Options;
 using L4D2PlayStats.Core.Steam.ServerInfo.Services.Cache;
 using L4D2PlayStats.Core.UserAvatar;
@@ -46,19 +45,16 @@ public class ServerController(
         return PartialView("_Players", model);
     }
 
-    [Route("server/messages")]
-    public async Task<IActionResult> Messages([FromQuery] long after = 0, CancellationToken cancellationToken = default)
+    [Route("server/feed")]
+    public IActionResult Feed([FromQuery] long after = 0)
     {
-        var model = await GetServerInfoAsync(config.ServerIp, cancellationToken);
+        var gameInfo = GameInfo.GetOrInitializeInstance(userAvatar);
+        var feed = gameInfo.After(after);
 
-        var messages = model.GameInfo.AllMessages
-            .After(after)
-            .ToList();
-
-        if (messages.Count == 0)
+        if (feed.Count == 0)
             return NoContent();
 
-        return PartialView("_Messages", messages);
+        return PartialView("_Feed", feed);
     }
 
     private async Task<ServerInfoModel> GetServerInfoAsync(string serverIp, CancellationToken cancellationToken)

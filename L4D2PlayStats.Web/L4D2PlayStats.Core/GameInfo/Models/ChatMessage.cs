@@ -1,20 +1,29 @@
-﻿using L4D2PlayStats.Core.GameInfo.Commands;
+using L4D2PlayStats.Core.GameInfo.Commands;
 using L4D2PlayStats.Core.GameInfo.Enums;
+using L4D2PlayStats.Core.GameInfo.Models.Infrastructure;
 
 namespace L4D2PlayStats.Core.GameInfo.Models;
 
-public class ChatMessage(ChatMessageCommand command, DateTime? when = null)
+[FeedPartial("_Message")]
+public class ChatMessage : FeedItem
 {
-    public DateTime When { get; } = when ?? DateTime.UtcNow;
-    public bool Public { get; } = command.Public;
-    public Team Team { get; } = command.Team;
-
-    public Player? Player { get; } = new()
+    public ChatMessage(ChatMessageCommand command, DateTime? when = null)
     {
-        CommunityId = command.CommunityId,
-        Name = command.Name
-    };
+        When = when ?? DateTime.UtcNow;
+        Public = command.Public;
+        Team = command.Team;
+        Player = new Player
+        {
+            CommunityId = command.CommunityId,
+            Name = command.Name
+        };
+        IsAdmin = command.IsAdmin;
+        Message = command.Message;
+    }
 
-    public bool IsAdmin { get; } = command.IsAdmin;
-    public string? Message { get; } = command.Message;
+    public bool Public { get; }
+    public Team Team { get; }
+    public Player? Player { get; }
+    public bool IsAdmin { get; }
+    public string? Message { get; }
 }

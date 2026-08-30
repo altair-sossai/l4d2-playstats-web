@@ -1,8 +1,13 @@
-﻿using L4D2PlayStats.Core.GameInfo.Commands;
+using System.Collections.Concurrent;
+using L4D2PlayStats.Core.GameInfo.Commands;
 using L4D2PlayStats.Core.GameInfo.Models;
+using L4D2PlayStats.Core.GameInfo.Models.Events;
+using L4D2PlayStats.Core.GameInfo.Models.Infrastructure;
 using L4D2PlayStats.Core.GameInfo.Results;
+using L4D2PlayStats.Core.GameInfo.Structures;
 using L4D2PlayStats.Core.Infrastructure.Structures;
 using L4D2PlayStats.Core.UserAvatar;
+using Serilog;
 
 namespace L4D2PlayStats.Core.GameInfo;
 
@@ -17,18 +22,21 @@ public class GameInfo
 #endif
 
     private static readonly TimeSpan MessageRetention = TimeSpan.FromHours(1);
+    private static readonly TimeSpan FeedRetention = TimeSpan.FromHours(1);
+    private static readonly TimeSpan Delay = TimeSpan.FromSeconds(15);
 
     private static readonly Lock Lock = new();
+
     private static GameInfo? _gameInfo;
-    private readonly TimedValue<Configuration?> _configuration = new(expireIn: TimeSpan.FromDays(1));
+    private readonly TimedValue<Configuration?> _configuration = new(Delay, TimeSpan.FromHours(2));
     private readonly List<ExternalChatMessage> _externalMessages = [];
-    private readonly TimedValue<Infected[]> _infecteds = new([], TimeSpan.FromHours(2));
-    private readonly Dictionary<string, string> _lastMessage = new();
-    private readonly TimedList<ChatMessage> _messages = new(delay: TimeSpan.FromSeconds(10));
-    private readonly TimedValue<Round?> _round = new(expireIn: TimeSpan.FromHours(2));
-    private readonly TimedValue<Scoreboard?> _scoreboard = new();
-    private readonly TimedValue<Models.Player[]> _spectators = new([], TimeSpan.FromHours(2));
-    private readonly TimedValue<Survivor[]> _survivors = new([], TimeSpan.FromHours(2));
+    private readonly TimedFeed _feed = new(Delay, FeedRetention);
+    private readonly TimedValue<Infected[]> _infecteds = new(Delay, TimeSpan.FromHours(2), []);
+    private readonly ConcurrentDictionary<string, string> _lastMessage = new();
+    private readonly TimedValue<Round?> _round = new(Delay, TimeSpan.FromHours(2));
+    private readonly TimedValue<Scoreboard?> _scoreboard = new(Delay, TimeSpan.FromMinutes(10));
+    private readonly TimedValue<Models.Player[]> _spectators = new(Delay, TimeSpan.FromHours(2), []);
+    private readonly TimedValue<Survivor[]> _survivors = new(Delay, TimeSpan.FromHours(2), []);
     private readonly IUserAvatar _userAvatar;
 
     public readonly Queue<ServerCommand> ServerCommands = new();
@@ -40,8 +48,6 @@ public class GameInfo
         _survivors.ValueUpdated += SurvivorsValueUpdated;
         _infecteds.ValueUpdated += InfectedsValueUpdated;
         _spectators.ValueUpdated += SpectatorsValueUpdated;
-
-        _messages.ItemAdded += MessagesItemAdded;
     }
 
     public Configuration? Configuration
@@ -82,15 +88,15 @@ public class GameInfo
 
     public bool AnyPlayerConnected => Survivors.Length > 0 || Infecteds.Length > 0 || Spectators.Length > 0;
 
-    public IReadOnlyCollection<ChatMessage> Messages => _messages.Items;
+    public IReadOnlyCollection<FeedItem> Feed => _feed.Items;
+    public IReadOnlyCollection<ChatMessage> Messages => [.. _feed.Items.OfType<ChatMessage>()];
+    public IReadOnlyCollection<GameEvent> Events => [.. _feed.Items.OfType<GameEvent>()];
     public IReadOnlyCollection<ExternalChatMessage> ExternalMessages => [.. _externalMessages.Where(w => w.Age < MessageRetention)];
 
-    public IReadOnlyCollection<ChatMessage> AllMessages =>
-    [
-        .. Messages
-            .Concat(ExternalMessages.Select(em => (ChatMessage)em))
-            .OrderBy(m => m.When)
-    ];
+    public IReadOnlyCollection<FeedItem> After(long after)
+    {
+        return [.. Feed.Where(item => item.Ticks > after)];
+    }
 
     public static GameInfo GetOrInitializeInstance(IUserAvatar userAvatar)
     {
@@ -108,14 +114,19 @@ public class GameInfo
         if (string.IsNullOrEmpty(command.CommunityId) || string.IsNullOrEmpty(command.Message))
             return;
 
-        if (_lastMessage.ContainsKey(command.CommunityId) && _lastMessage[command.CommunityId].Equals(command.Message, StringComparison.CurrentCultureIgnoreCase))
+        if (_lastMessage.TryGetValue(command.CommunityId, out var last) && last.Equals(command.Message, StringComparison.CurrentCultureIgnoreCase))
             return;
 
         _lastMessage[command.CommunityId] = command.Message;
 
-        var message = new ChatMessage(command);
+        _feed.Add(new ChatMessage(command));
+    }
 
-        _messages.Add(message);
+    public void AddEvent(GameEvent gameEvent)
+    {
+        gameEvent.When = DateTime.UtcNow;
+
+        _feed.Add(gameEvent);
     }
 
     public SendExternalMessageResult AddExternalMessage(User? user, ExternalChatMessageCommand? command)
@@ -156,6 +167,7 @@ public class GameInfo
             var message = new ExternalChatMessage(user, command);
 
             _externalMessages.Add(message);
+            _feed.Add((ChatMessage)message);
         }
 
         return SendExternalMessageResult.SuccessResult();
@@ -165,14 +177,14 @@ public class GameInfo
     {
         Array.Sort(survivors, (a, b) => a.Character.CompareTo(b.Character));
 
-        LoadAvatarAsync(survivors).Wait();
+        _ = LoadAvatarAsync(survivors);
     }
 
     private void InfectedsValueUpdated(object? sender, Infected[] infecteds)
     {
         Array.Sort(infecteds, (a, b) => a.Damage.CompareTo(b.Damage));
 
-        LoadAvatarAsync(infecteds).Wait();
+        _ = LoadAvatarAsync(infecteds);
     }
 
     private static void SpectatorsValueUpdated(object? sender, Models.Player[] players)
@@ -180,18 +192,20 @@ public class GameInfo
         Array.Sort(players, (a, b) => a.Name?.CompareTo(b.Name) ?? 0);
     }
 
-    private void MessagesItemAdded(object? sender, ChatMessage chatMessage)
-    {
-        _messages.Items.Sort((a, b) => a.When.CompareTo(b.When));
-    }
-
     private async Task LoadAvatarAsync(IReadOnlyCollection<Models.Player> players)
     {
-        var communityIds = players.Select(p => p.CommunityId);
+        try
+        {
+            var communityIds = players.Select(p => p.CommunityId);
 
-        await _userAvatar.LoadAsync(communityIds);
+            await _userAvatar.LoadAsync(communityIds);
 
-        foreach (var player in players)
-            player.UpdateAvatarUrl(_userAvatar);
+            foreach (var player in players)
+                player.UpdateAvatarUrl(_userAvatar);
+        }
+        catch (Exception exception)
+        {
+            Log.Error(exception, "An error occurred while loading avatars.");
+        }
     }
 }

@@ -1,0 +1,16 @@
+@using L4D2PlayStats.Web
+@using L4D2PlayStats.Web.Extensions
+@using Microsoft.Extensions.Localization
+@model L4D2PlayStats.Core.GameInfo.Models.Events.CarAlarmTriggeredEvent
+@inject IStringLocalizer<SharedResource> Localizer
+
+<span class="game-event-stars">@Model.StarsText</span>
+@(Html.EventPlayer(Model.Actor, Localizer["GameEventUnknownPlayer"]))
+<span class="game-event-action">@Localizer["GameEventTriggeredCarAlarm"]</span>
+<span class="game-event-highlight">(@Localizer[$"GameEventCarAlarm{Model.Reason}"])</span>
+@if (Model.Infected != null)
+{
+    <span class="game-event-action"> @Localizer["GameEventAssistedBy"]</span>
+    @(Html.EventPlayer(Model.Infected, Localizer["GameEventSpecialInfected"]))
+}
+<text>.</text>

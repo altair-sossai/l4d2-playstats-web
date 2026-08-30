@@ -1,0 +1,6 @@
+@using L4D2PlayStats.Web
+@using Microsoft.Extensions.Localization
+@model L4D2PlayStats.Core.GameInfo.Models.Events.GameEvent
+@inject IStringLocalizer<SharedResource> Localizer
+
+<span>@Localizer["GameEventUnknown"]</span>

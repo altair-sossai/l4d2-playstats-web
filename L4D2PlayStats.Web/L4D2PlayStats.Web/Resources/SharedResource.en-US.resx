@@ -1173,4 +1173,166 @@
   <data name="PatentsMetaDescription" xml:space="preserve">
     <value>Learn about L4D2 Competitive ranks, levels, and experience requirements.</value>
   </data>
+  <data name="GameEventUnknown" xml:space="preserve">
+    <value>Unknown game event.</value>
+  </data>
+  <data name="GameEventUnknownPlayer" xml:space="preserve">
+    <value>Unknown player</value>
+  </data>
+  <data name="GameEventSurvivor" xml:space="preserve">
+    <value>a survivor</value>
+  </data>
+  <data name="GameEventTeammate" xml:space="preserve">
+    <value>a teammate</value>
+  </data>
+  <data name="GameEventSpecialInfected" xml:space="preserve">
+    <value>a special infected</value>
+  </data>
+  <data name="GameEventCommon" xml:space="preserve">
+    <value>a common infected</value>
+  </data>
+  <data name="GameEventSmoker" xml:space="preserve">
+    <value>a smoker</value>
+  </data>
+  <data name="GameEventBoomer" xml:space="preserve">
+    <value>a boomer</value>
+  </data>
+  <data name="GameEventHunter" xml:space="preserve">
+    <value>a hunter</value>
+  </data>
+  <data name="GameEventSpitter" xml:space="preserve">
+    <value>a spitter</value>
+  </data>
+  <data name="GameEventJockey" xml:space="preserve">
+    <value>a jockey</value>
+  </data>
+  <data name="GameEventCharger" xml:space="preserve">
+    <value>a charger</value>
+  </data>
+  <data name="GameEventWitch" xml:space="preserve">
+    <value>a witch</value>
+  </data>
+  <data name="GameEventTank" xml:space="preserve">
+    <value>a tank</value>
+  </data>
+  <data name="GameEventCarAlarmUnknown" xml:space="preserve">
+    <value>unknown reason</value>
+  </data>
+  <data name="GameEventCarAlarmHit" xml:space="preserve">
+    <value>hit</value>
+  </data>
+  <data name="GameEventCarAlarmTouched" xml:space="preserve">
+    <value>touched</value>
+  </data>
+  <data name="GameEventCarAlarmExplosion" xml:space="preserve">
+    <value>explosion</value>
+  </data>
+  <data name="GameEventCarAlarmBoomer" xml:space="preserve">
+    <value>boomer</value>
+  </data>
+  <data name="GameEventSkeeted" xml:space="preserve">
+    <value>skeeted</value>
+  </data>
+  <data name="GameEventSkeetedMelee" xml:space="preserve">
+    <value>melee-skeeted</value>
+  </data>
+  <data name="GameEventSkeetedSniper" xml:space="preserve">
+    <value>headshot-skeeted</value>
+  </data>
+  <data name="GameEventSkeetedGrenade" xml:space="preserve">
+    <value>grenade-skeeted</value>
+  </data>
+  <data name="GameEventWasTeamSkeeted" xml:space="preserve">
+    <value>was team-skeeted</value>
+  </data>
+  <data name="GameEventWasNotSkeeted" xml:space="preserve">
+    <value>was not skeeted</value>
+  </data>
+  <data name="GameEventWouldHaveSkeeted" xml:space="preserve">
+    <value>Would have skeeted if the hunter were unchipped!</value>
+  </data>
+  <data name="GameEventDeadstopped" xml:space="preserve">
+    <value>deadstopped</value>
+  </data>
+  <data name="GameEventPopped" xml:space="preserve">
+    <value>popped</value>
+  </data>
+  <data name="GameEventFullyLeveled" xml:space="preserve">
+    <value>fully leveled</value>
+  </data>
+  <data name="GameEventChipLeveled" xml:space="preserve">
+    <value>chip-leveled</value>
+  </data>
+  <data name="GameEventCrownedWitch" xml:space="preserve">
+    <value>crowned a witch</value>
+  </data>
+  <data name="GameEventDrawCrownedWitch" xml:space="preserve">
+    <value>draw-crowned a witch</value>
+  </data>
+  <data name="GameEventCutTongue" xml:space="preserve">
+    <value>cut the tongue of</value>
+  </data>
+  <data name="GameEventSelfCleared" xml:space="preserve">
+    <value>self-cleared from the tongue of</value>
+  </data>
+  <data name="GameEventByShoving" xml:space="preserve">
+    <value>by shoving</value>
+  </data>
+  <data name="GameEventSkeetedRock" xml:space="preserve">
+    <value>skeeted the rock of</value>
+  </data>
+  <data name="GameEventHitWithRock" xml:space="preserve">
+    <value>hit with a rock</value>
+  </data>
+  <data name="GameEventHighPounced" xml:space="preserve">
+    <value>high-pounced</value>
+  </data>
+  <data name="GameEventDeathCharged" xml:space="preserve">
+    <value>death-charged</value>
+  </data>
+  <data name="GameEventByBowling" xml:space="preserve">
+    <value>by bowling</value>
+  </data>
+  <data name="GameEventInstaCleared" xml:space="preserve">
+    <value>insta-cleared</value>
+  </data>
+  <data name="GameEventFrom" xml:space="preserve">
+    <value>from</value>
+  </data>
+  <data name="GameEventVomitedOn" xml:space="preserve">
+    <value>vomited on</value>
+  </data>
+  <data name="GameEventShoved" xml:space="preserve">
+    <value>shoved</value>
+  </data>
+  <data name="GameEventLanded" xml:space="preserve">
+    <value>landed</value>
+  </data>
+  <data name="GameEventTriggeredCarAlarm" xml:space="preserve">
+    <value>triggered a car alarm</value>
+  </data>
+  <data name="GameEventAssistedBy" xml:space="preserve">
+    <value>assisted by</value>
+  </data>
+  <data name="GameEventDamage" xml:space="preserve">
+    <value>{0} damage</value>
+  </data>
+  <data name="GameEventDamageAndChip" xml:space="preserve">
+    <value>{0} damage, {1} chip</value>
+  </data>
+  <data name="GameEventHeight" xml:space="preserve">
+    <value>height: {0}</value>
+  </data>
+  <data name="GameEventSeconds" xml:space="preserve">
+    <value>{0:N2} seconds</value>
+  </data>
+  <data name="GameEventSurvivorCount" xml:space="preserve">
+    <value>{0} survivor(s)</value>
+  </data>
+  <data name="GameEventBunnyHops" xml:space="preserve">
+    <value>{0} bunny hop(s)</value>
+  </data>
+  <data name="GameEventMaxVelocity" xml:space="preserve">
+    <value>maximum velocity: {0}</value>
+  </data>
 </root>
