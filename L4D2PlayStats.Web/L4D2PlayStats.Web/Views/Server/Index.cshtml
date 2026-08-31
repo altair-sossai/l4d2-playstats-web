@@ -135,6 +135,76 @@
             font-weight: bold;
         }
 
+        .live-event-carousel {
+            display: none;
+        }
+
+        .live-event-carousel.is-visible {
+            display: flex;
+            align-items: center;
+            min-height: 44px;
+            margin: -10px 0 20px;
+            padding: 9px 12px;
+            overflow: hidden;
+            background-color: rgba(92, 184, 92, 0.1);
+            border-left: 3px solid #5cb85c;
+            border-radius: 2px;
+        }
+
+        .live-event-indicator {
+            flex: 0 0 auto;
+            width: 8px;
+            height: 8px;
+            margin-right: 10px;
+            background-color: #5cb85c;
+            border-radius: 50%;
+            box-shadow: 0 0 0 rgba(92, 184, 92, 0.45);
+            animation: live-event-pulse 2s infinite;
+        }
+
+        .live-event-content {
+            min-width: 0;
+            line-height: 1.45;
+            opacity: 1;
+            transform: translateY(0);
+            transition: opacity 250ms ease, transform 250ms ease;
+        }
+
+        .live-event-content.is-leaving {
+            opacity: 0;
+            transform: translateY(-7px);
+        }
+
+        .live-event-content.is-entering {
+            opacity: 0;
+            transform: translateY(7px);
+            transition: none;
+        }
+
+        @@keyframes live-event-pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(92, 184, 92, 0.45);
+            }
+
+            70% {
+                box-shadow: 0 0 0 7px rgba(92, 184, 92, 0);
+            }
+
+            100% {
+                box-shadow: 0 0 0 0 rgba(92, 184, 92, 0);
+            }
+        }
+
+        @@media (prefers-reduced-motion: reduce) {
+            .live-event-indicator {
+                animation: none;
+            }
+
+            .live-event-content {
+                transition: none;
+            }
+        }
+
         .spectators a {
             margin-left: 8px;
         }
@@ -159,6 +229,140 @@
     <script>
         var refreshInterval = 2600;
         var dd = new diffDOM.DiffDOM();
+        var liveEventCarousel = {
+            selector: '#live-event-carousel',
+            queue: [],
+            seen: {},
+            displayTimer: null,
+            hideTimer: null,
+            transitioning: false,
+            displayDuration: 4500,
+            idleDuration: 10000,
+            transitionDuration: 250,
+
+            preserveDuring: function (callback) {
+                var carousel = $(this.selector).detach();
+                callback();
+
+                if (carousel.length)
+                    $(this.selector).replaceWith(carousel);
+            },
+
+            initialize: function () {
+                var latestEvent = this.read($('#feed p[data-feed-kind="event"]').last());
+
+                if (!latestEvent)
+                    return;
+
+                this.seen[latestEvent.when] = true;
+                this.show(latestEvent, false);
+            },
+
+            enqueue: function (events) {
+                var carousel = this;
+                var added = false;
+
+                events.each(function () {
+                    var event = carousel.read(this);
+
+                    if (!event || carousel.seen[event.when])
+                        return;
+
+                    carousel.seen[event.when] = true;
+                    carousel.queue.push(event);
+                    added = true;
+                });
+
+                if (!added)
+                    return;
+
+                clearTimeout(this.hideTimer);
+                this.hideTimer = null;
+
+                if (this.queue.length && !this.displayTimer && !this.transitioning)
+                    this.next();
+            },
+
+            read: function (element) {
+                var event = $(element);
+                var when = event.attr('data-feed-when');
+
+                if (!when)
+                    return null;
+
+                return {
+                    when: String(when),
+                    html: event.html()
+                };
+            },
+
+            next: function () {
+                this.displayTimer = null;
+
+                if (this.queue.length)
+                    this.show(this.queue.shift(), true);
+            },
+
+            scheduleHide: function () {
+                clearTimeout(this.hideTimer);
+                this.hideTimer = setTimeout(this.hide.bind(this), this.idleDuration);
+            },
+
+            hide: function () {
+                var carousel = this;
+                var container = $(this.selector);
+                var content = container.find('.live-event-content');
+                this.hideTimer = null;
+
+                if (!container.hasClass('is-visible'))
+                    return;
+
+                this.transitioning = true;
+                content.addClass('is-leaving');
+
+                setTimeout(function () {
+                    container.removeClass('is-visible');
+                    content.empty().removeClass('is-leaving');
+                    carousel.transitioning = false;
+
+                    if (carousel.queue.length)
+                        carousel.next();
+                }, this.transitionDuration);
+            },
+
+            show: function (event, animate) {
+                var carousel = this;
+                var container = $(this.selector);
+                var content = container.find('.live-event-content');
+                this.transitioning = true;
+
+                function replaceContent() {
+                    content.html(event.html).removeClass('is-leaving is-entering');
+
+                    if (animate) {
+                        content.addClass('is-entering');
+                        content[0].offsetHeight;
+                        content.removeClass('is-entering');
+                    }
+
+                    container.addClass('is-visible');
+                    carousel.transitioning = false;
+
+                    if (carousel.queue.length) {
+                        carousel.displayTimer = setTimeout(carousel.next.bind(carousel), carousel.displayDuration);
+                    } else {
+                        carousel.scheduleHide();
+                    }
+                }
+
+                if (animate && container.hasClass('is-visible')) {
+                    content.addClass('is-leaving');
+                    setTimeout(replaceContent, this.transitionDuration);
+                } else {
+                    replaceContent();
+                }
+            }
+        };
 
         function sync(current, html) {
             var source = document.createElement('div');
@@ -207,7 +411,9 @@
                 timeout: 2000,
                 success: function (html) {
                     var target = document.getElementById('game-info-players');
-                    sync(target, html);
+                    liveEventCarousel.preserveDuring(function () {
+                        sync(target, html);
+                    });
                 },
                 complete: function () {
                     setTimeout(refreshPlayers, refreshInterval);
@@ -245,6 +451,7 @@
                         return;
 
                     var feed = $('#feed');
+                    var newEvents = $('<div>').html(html).find('p[data-feed-kind="event"]');
                     var scrollDown = feed[0].scrollHeight - feed.scrollTop() === feed.outerHeight();
 
                     feed.append(html);
@@ -258,6 +465,7 @@
                     });
 
                     applyFeedFilter();
+                    liveEventCarousel.enqueue(newEvents);
 
                     if (scrollDown)
                         feed.scrollTop(feed[0].scrollHeight);
@@ -719,6 +927,7 @@
             $('#feed-filter-label').text($('#feed-filter-menu a[data-filter="' + savedFilter + '"]').text());
 
             applyFeedFilter();
+            liveEventCarousel.initialize();
 
             $('#feed').scrollTop($('#feed')[0].scrollHeight);
 
