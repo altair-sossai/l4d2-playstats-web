@@ -128,10 +128,10 @@
   <data name="NextResetIn" xml:space="preserve">
     <value>Próximo reset em {0} dia(s)</value>
   </data>
-  <data name="ViewPreviousRankings" xml:space="preserve">
-    <value>Ver rankings anteriores</value>
-  </data>
   <data name="NoRankingMessage" xml:space="preserve">
     <value>Não existem dados no momento. Assim que houver uma partida ela será contabilizada aqui.</value>
+  </data>
+  <data name="ViewPreviousRankings" xml:space="preserve">
+    <value>Ver rankings anteriores</value>
   </data>
 </root>

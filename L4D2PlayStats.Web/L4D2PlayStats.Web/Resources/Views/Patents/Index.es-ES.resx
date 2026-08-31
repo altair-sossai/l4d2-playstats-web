@@ -122,17 +122,8 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0,
       Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="UnderstandingPatentSystem" xml:space="preserve">
-    <value>Entendiendo el sistema de patentes</value>
-  </data>
-  <data name="PatentSystemDescription1" xml:space="preserve">
-    <value>El sistema de patentes en nuestro servicio tiene en cuenta la cantidad de XP que el jugador ha ganado durante los juegos en el período actual de dos meses. El sistema se reinicia al final de cada bimestre, es decir, en los períodos de enero-febrero, marzo-abril, y así sucesivamente.</value>
-  </data>
-  <data name="PatentSystemDescription2" xml:space="preserve">
-    <value>Cada victoria otorga al jugador &lt;b&gt;{0:N0}&lt;/b&gt; puntos de XP, mientras que las derrotas hacen que el jugador pierda &lt;b&gt;{1:N0}&lt;/b&gt; puntos de XP. Un título de MVP SI otorga al jugador &lt;b&gt;{2:N0}&lt;/b&gt; puntos de XP adicionales, y un título de MVP CI otorga &lt;b&gt;{3:N0}&lt;/b&gt; puntos de XP adicionales. Un rage quit resulta en una pérdida de &lt;b&gt;{4:N0}&lt;/b&gt; puntos de XP.</value>
-  </data>
-  <data name="Level" xml:space="preserve">
-    <value>Nivel</value>
+  <data name="DefeatXPPoints" xml:space="preserve">
+    <value>Derrota: {0:N0} puntos de XP</value>
   </data>
   <data name="Description" xml:space="preserve">
     <value>Descripción</value>
@@ -140,22 +131,31 @@
   <data name="ExperienceRequired" xml:space="preserve">
     <value>Experiencia requerida</value>
   </data>
-  <data name="XPBreakdownTitle" xml:space="preserve">
-    <value>Desglose de puntos de XP</value>
-  </data>
-  <data name="VictoryXPPoints" xml:space="preserve">
-    <value>Victoria: +{0:N0} puntos de XP</value>
-  </data>
-  <data name="DefeatXPPoints" xml:space="preserve">
-    <value>Derrota: {0:N0} puntos de XP</value>
-  </data>
-  <data name="MVPSIPoints" xml:space="preserve">
-    <value>MVP SI: +{0:N0} puntos de XP</value>
+  <data name="Level" xml:space="preserve">
+    <value>Nivel</value>
   </data>
   <data name="MVPCIPoints" xml:space="preserve">
     <value>MVP CI: +{0:N0} puntos de XP</value>
   </data>
+  <data name="MVPSIPoints" xml:space="preserve">
+    <value>MVP SI: +{0:N0} puntos de XP</value>
+  </data>
+  <data name="PatentSystemDescription1" xml:space="preserve">
+    <value>El sistema de patentes en nuestro servicio tiene en cuenta la cantidad de XP que el jugador ha ganado durante los juegos en el período actual de dos meses. El sistema se reinicia al final de cada bimestre, es decir, en los períodos de enero-febrero, marzo-abril, y así sucesivamente.</value>
+  </data>
+  <data name="PatentSystemDescription2" xml:space="preserve">
+    <value>Cada victoria otorga al jugador &lt;b&gt;{0:N0}&lt;/b&gt; puntos de XP, mientras que las derrotas hacen que el jugador pierda &lt;b&gt;{1:N0}&lt;/b&gt; puntos de XP. Un título de MVP SI otorga al jugador &lt;b&gt;{2:N0}&lt;/b&gt; puntos de XP adicionales, y un título de MVP CI otorga &lt;b&gt;{3:N0}&lt;/b&gt; puntos de XP adicionales. Un rage quit resulta en una pérdida de &lt;b&gt;{4:N0}&lt;/b&gt; puntos de XP.</value>
+  </data>
   <data name="RageQuitXPPoints" xml:space="preserve">
     <value>Rage quit: {0:N0} puntos de XP</value>
+  </data>
+  <data name="UnderstandingPatentSystem" xml:space="preserve">
+    <value>Entendiendo el sistema de patentes</value>
+  </data>
+  <data name="VictoryXPPoints" xml:space="preserve">
+    <value>Victoria: +{0:N0} puntos de XP</value>
+  </data>
+  <data name="XPBreakdownTitle" xml:space="preserve">
+    <value>Desglose de puntos de XP</value>
   </data>
 </root>
