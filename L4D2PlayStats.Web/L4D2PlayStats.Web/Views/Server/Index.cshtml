@@ -228,16 +228,23 @@
 @section Scripts {
     <script>
         var refreshInterval = 2600;
+        var feedRefreshTimer = null;
+        var feedRefreshRequest = null;
+        var feedRefreshPending = false;
         var dd = new diffDOM.DiffDOM();
         var liveEventCarousel = {
             selector: '#live-event-carousel',
             queue: [],
             seen: {},
+            seenOrder: [],
             displayTimer: null,
             hideTimer: null,
             transitioning: false,
             displayDuration: 4500,
             idleDuration: 10000,
+            initialEventMaxAge: 30000,
+            maxSeen: 500,
+            serverNowTicks: Number('@DateTime.UtcNow.Ticks'),
             transitionDuration: 250,
 
             preserveDuring: function (callback) {
@@ -254,7 +261,11 @@
                 if (!latestEvent)
                     return;
 
-                this.seen[latestEvent.when] = true;
+                this.remember(latestEvent.when);
+
+                if (!this.isRecent(latestEvent))
+                    return;
+
                 this.show(latestEvent, false);
             },
 
@@ -265,10 +276,9 @@
                 events.each(function () {
                     var event = carousel.read(this);
 
-                    if (!event || carousel.seen[event.when])
+                    if (!event || !carousel.remember(event.when))
                         return;
 
-                    carousel.seen[event.when] = true;
                     carousel.queue.push(event);
                     added = true;
                 });
@@ -294,6 +304,24 @@
                     when: String(when),
                     html: event.html()
                 };
+            },
+
+            isRecent: function (event) {
+                var ageTicks = this.serverNowTicks - Number(event.when);
+                return ageTicks >= 0 && ageTicks <= this.initialEventMaxAge * 10000;
+            },
+
+            remember: function (when) {
+                if (this.seen[when])
+                    return false;
+
+                this.seen[when] = true;
+                this.seenOrder.push(when);
+
+                if (this.seenOrder.length > this.maxSeen)
+                    delete this.seen[this.seenOrder.shift()];
+
+                return true;
             },
 
             next: function () {
@@ -440,9 +468,18 @@
         }
 
         function refreshFeed() {
+            clearTimeout(feedRefreshTimer);
+            feedRefreshTimer = null;
+
+            if (feedRefreshRequest) {
+                feedRefreshPending = true;
+                return;
+            }
+
+            feedRefreshPending = false;
             var after = $('#feed p[data-feed-when]').last().data('feed-when') || 0;
 
-            $.ajax({
+            feedRefreshRequest = $.ajax({
                 url: '/server/feed?after=' + after,
                 type: 'GET',
                 timeout: 2000,
@@ -471,7 +508,8 @@
                         feed.scrollTop(feed[0].scrollHeight);
                 },
                 complete: function () {
-                    setTimeout(refreshFeed, refreshInterval / 2);
+                    feedRefreshRequest = null;
+                    feedRefreshTimer = setTimeout(refreshFeed, feedRefreshPending ? 0 : refreshInterval / 2);
                 }
             });
         }
