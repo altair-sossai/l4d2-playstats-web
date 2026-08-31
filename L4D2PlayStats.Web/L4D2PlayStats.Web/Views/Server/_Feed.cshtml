@@ -1,8 +1,9 @@
+@using L4D2PlayStats.Core.GameInfo.Models
 @model IReadOnlyCollection<L4D2PlayStats.Core.GameInfo.Models.Infrastructure.FeedItem>
 
 @foreach (var item in Model)
 {
-    <p data-feed-when="@item.Ticks">
+    <p data-feed-when="@item.Ticks" data-feed-kind="@(item is ChatMessage ? "message" : "event")">
         @await Html.PartialAsync(item.PartialName, item)
     </p>
 }

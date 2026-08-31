@@ -7,4 +7,4 @@
 <span class="game-event-stars">@Model.StarsText</span>
 @(Html.EventPlayer(Model.Actor, Localizer["GameEventUnknownPlayer"]))
 <span class="game-event-action">@Localizer["GameEventCrownedWitch"]</span>
-<span class="game-event-highlight">(@Localizer["GameEventDamage", Model.Damage])</span>.
+(<span class="game-event-danger">@Localizer["GameEventDamage", Model.Damage]</span>).

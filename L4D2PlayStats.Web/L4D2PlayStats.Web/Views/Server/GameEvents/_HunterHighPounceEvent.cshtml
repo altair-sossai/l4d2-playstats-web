@@ -1,19 +1,29 @@
 @using L4D2PlayStats.Web
 @using L4D2PlayStats.Web.Extensions
+@using Microsoft.AspNetCore.Html
 @using Microsoft.Extensions.Localization
 @model L4D2PlayStats.Core.GameInfo.Models.Events.HunterHighPounceEvent
 @inject IStringLocalizer<SharedResource> Localizer
 
 @{
-    var damage = (int)Math.Round(Model.CalculatedDamage);
     var height = (int)Math.Round(Model.Height);
-    var details = damage > 0
-        ? $"{Localizer["GameEventDamage", damage].Value}, {Localizer["GameEventHeight", height].Value}"
-        : Localizer["GameEventHeight", height].Value;
+    var damage = (int)Math.Round(Model.CalculatedDamage);
+
+    var details = new HtmlContentBuilder();
+    details.Append("(");
+
+    if (damage > 0)
+    {
+        details.AppendHtml(Html.EventSpan("game-event-danger", Localizer["GameEventDamage", damage].Value));
+        details.Append(", ");
+    }
+
+    details.AppendHtml(Html.EventStat(Localizer["GameEventHeight"].Value, height));
+    details.Append(").");
 }
 
 <span class="game-event-stars">@Model.StarsText</span>
 @(Html.EventPlayer(Model.Actor, Localizer["GameEventHunter"]))
 <span class="game-event-danger">@Localizer["GameEventHighPounced"]</span>
 @(Html.EventPlayer(Model.Victim, Localizer["GameEventSurvivor"]))
-<span class="game-event-highlight">(@details)</span>.
+@details

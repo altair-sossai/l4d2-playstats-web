@@ -7,10 +7,10 @@
 <span class="game-event-stars">@Model.StarsText</span>
 @(Html.EventPlayer(Model.Actor, Localizer["GameEventUnknownPlayer"]))
 <span class="game-event-action">@Localizer["GameEventTriggeredCarAlarm"]</span>
-<span class="game-event-highlight">(@Localizer[$"GameEventCarAlarm{Model.Reason}"])</span>
+(@Localizer[$"GameEventCarAlarm{Model.Reason}"])
 @if (Model.Infected != null)
 {
-    <span class="game-event-action"> @Localizer["GameEventAssistedBy"]</span>
+    <text> @Localizer["GameEventAssistedBy"]</text>
     @(Html.EventPlayer(Model.Infected, Localizer["GameEventSpecialInfected"]))
 }
 <text>.</text>

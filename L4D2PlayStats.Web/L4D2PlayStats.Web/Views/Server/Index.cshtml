@@ -100,6 +100,20 @@
             padding-right: 10px;
         }
 
+        .feed-heading {
+            display: table;
+            width: 100%;
+        }
+
+            .feed-heading > * {
+                display: table-cell;
+                vertical-align: middle;
+            }
+
+            .feed-heading > .dropdown {
+                text-align: right;
+            }
+
         .game-event-stars,
         .game-event-highlight {
             color: #5cb85c;
@@ -118,11 +132,6 @@
 
         .game-event-danger {
             color: #d9534f;
-            font-weight: bold;
-        }
-
-        .game-event-info {
-            color: #999;
             font-weight: bold;
         }
 
@@ -206,6 +215,24 @@
             });
         }
 
+        function applyFeedFilter() {
+            var mode = 'all';
+
+            try { 
+                mode = localStorage.getItem('feedFilter') || 'all'; 
+            } catch (err) {
+                console.warn('Unable to access localStorage:', err);
+            }
+
+            $('#feed p[data-feed-kind]').each(function () {
+                var kind = $(this).attr('data-feed-kind');
+                var show = mode === 'all'
+                    || (mode === 'events' && kind === 'event')
+                    || (mode === 'messages' && kind === 'message');
+                $(this).toggle(show);
+            });
+        }
+
         function refreshFeed() {
             var after = $('#feed p[data-feed-when]').last().data('feed-when') || 0;
 
@@ -229,6 +256,8 @@
                             $duplicates.remove();
                         }
                     });
+
+                    applyFeedFilter();
 
                     if (scrollDown)
                         feed.scrollTop(feed[0].scrollHeight);
@@ -678,7 +707,36 @@
             refreshFeed();
             loadCampaigns();
 
+            var savedFilter = 'all';
+
+            try { 
+                savedFilter = localStorage.getItem('feedFilter') || 'all'; 
+            } 
+            catch (err) {
+                console.warn('Unable to access localStorage:', err);
+            }
+
+            $('#feed-filter-label').text($('#feed-filter-menu a[data-filter="' + savedFilter + '"]').text());
+
+            applyFeedFilter();
+
             $('#feed').scrollTop($('#feed')[0].scrollHeight);
+
+            $('#feed-filter-menu a').on('click', function (e) {
+                e.preventDefault();
+
+                var mode = $(this).data('filter');
+
+                try {
+                    localStorage.setItem('feedFilter', mode);
+                } catch (err) {
+                    console.warn('Unable to access localStorage:', err);
+                }
+
+                $('#feed-filter-label').text($(this).text());
+                applyFeedFilter();
+                $('#feed').scrollTop($('#feed')[0].scrollHeight);
+            });
 
              $('#chatForm').on('submit', function () {
                 sendMessage();
@@ -712,8 +770,25 @@
 <div id="game-info-chat" class="row" style="margin-top: 20px; @(Model.AnyPlayerConnected ? string.Empty : "display: none")">
     <div class="col-md-6 col-sm-12">
         <div class="panel panel-default">
-            <div class="panel-heading">
-                @SharedLocalizer["ChatMessages"]
+            <div class="panel-heading feed-heading">
+                <span>@SharedLocalizer["ChatMessages"]</span>
+                <div class="dropdown">
+                    <button class="btn btn-default btn-sm dropdown-toggle" type="button" data-toggle="dropdown">
+                        <span id="feed-filter-label">@SharedLocalizer["FeedFilterAll"]</span>
+                        <span class="caret"></span>
+                    </button>
+                    <ul id="feed-filter-menu" class="dropdown-menu dropdown-menu-right">
+                        <li>
+                            <a href="#" data-filter="all">@SharedLocalizer["FeedFilterAll"]</a>
+                        </li>
+                        <li>
+                            <a href="#" data-filter="events">@SharedLocalizer["FeedFilterEvents"]</a>
+                        </li>
+                        <li>
+                            <a href="#" data-filter="messages">@SharedLocalizer["FeedFilterMessages"]</a>
+                        </li>
+                    </ul>
+                </div>
             </div>
             <div class="panel-body">
                 <div id="feed" style="margin-bottom: 20px">

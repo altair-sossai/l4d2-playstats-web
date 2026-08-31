@@ -3,4 +3,4 @@
 @model L4D2PlayStats.Core.GameInfo.Models.Events.PauseEvent
 @inject IStringLocalizer<SharedResource> Localizer
 
-<span class="game-event-info">@Localizer[Model.Paused ? "GameEventGamePaused" : "GameEventGameUnpaused"]</span>
+<span class="game-event-action">@Localizer[Model.Paused ? "GameEventGamePaused" : "GameEventGameUnpaused"]</span>

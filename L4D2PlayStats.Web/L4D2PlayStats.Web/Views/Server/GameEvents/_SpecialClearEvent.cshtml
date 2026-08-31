@@ -8,6 +8,6 @@
 @(Html.EventPlayer(Model.Actor, Localizer["GameEventUnknownPlayer"]))
 <span class="game-event-action">@Localizer["GameEventInstaCleared"]</span>
 @(Html.EventPlayer(Model.PinVictim, Localizer["GameEventTeammate"]))
-<span class="game-event-action">@Localizer["GameEventFrom"]</span>
+@Localizer["GameEventFrom"]
 @(Html.EventPlayer(Model.Pinner, Localizer[$"GameEvent{Model.ZombieClass}"]))
-<span class="game-event-highlight">(@Localizer["GameEventSeconds", Model.ClearTime])</span>.
+(@Html.EventStat(Localizer["GameEventSeconds"].Value, Model.ClearTime.ToString("N2"))).

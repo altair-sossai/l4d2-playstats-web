@@ -14,6 +14,6 @@
 @(Html.EventPlayer(Model.Victim, Localizer["GameEventSurvivor"]))
 @if (!Model.WasCarried)
 {
-    <span class="game-event-danger">@Localizer["GameEventByBowling"]</span>
+    <text>@Localizer["GameEventByBowling"]</text>
 }
-<span class="game-event-highlight">(@Localizer["GameEventHeight", height])</span>.
+(@Html.EventStat(Localizer["GameEventHeight"].Value, height)).

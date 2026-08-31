@@ -1,7 +1,8 @@
 @using L4D2PlayStats.Web
+@using L4D2PlayStats.Web.Extensions
 @using Microsoft.Extensions.Localization
 @model L4D2PlayStats.Core.GameInfo.Models.Events.RoundEndedEvent
 @inject IStringLocalizer<SharedResource> Localizer
 
-<span class="game-event-info">@Localizer["GameEventRoundEnded"]</span>
-<span class="game-event-highlight">(@Localizer["GameEventScore", Model.SurvivorScore, Model.InfectedScore])</span>.
+@Localizer["GameEventRoundEnded"]
+(@Html.EventStat(Localizer["GameEventScore"].Value, Model.SurvivorScore, Model.InfectedScore)).

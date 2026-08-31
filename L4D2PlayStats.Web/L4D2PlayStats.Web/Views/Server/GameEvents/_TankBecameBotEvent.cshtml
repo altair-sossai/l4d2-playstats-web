@@ -7,11 +7,9 @@
 @if (Model.Actor != null)
 {
     @(Html.EventPlayer(Model.Actor, Localizer["GameEventTank"]))
-    <span class="game-event-info">@Localizer["GameEventLostTankToAi"]</span>
-    <text>.</text>
+    <text>@Localizer["GameEventLostTankToAi"].</text>
 }
 else
 {
-    <span class="game-event-info">@Localizer["GameEventTankBecameBot"]</span>
-    <text>.</text>
+    <text>@Localizer["GameEventTankBecameBot"].</text>
 }

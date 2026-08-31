@@ -318,6 +318,15 @@
   <data name="FallDamage" xml:space="preserve">
     <value>Daño por caída</value>
   </data>
+  <data name="FeedFilterAll" xml:space="preserve">
+    <value>Todo</value>
+  </data>
+  <data name="FeedFilterEvents" xml:space="preserve">
+    <value>Eventos</value>
+  </data>
+  <data name="FeedFilterMessages" xml:space="preserve">
+    <value>Mensajes</value>
+  </data>
   <data name="FfDamageTotal" xml:space="preserve">
     <value>FF</value>
   </data>
@@ -459,8 +468,8 @@
   <data name="GameEventDrawCrownedWitch" xml:space="preserve">
     <value>hizo draw-crown a una witch</value>
   </data>
-  <data name="GameEventFirstRoundIsLive" xml:space="preserve">
-    <value>La primera ronda está en juego.</value>
+  <data name="GameEventFirstRound" xml:space="preserve">
+    <value>primera ronda</value>
   </data>
   <data name="GameEventFrom" xml:space="preserve">
     <value>de</value>
@@ -492,20 +501,26 @@
   <data name="GameEventJockey" xml:space="preserve">
     <value>un jockey</value>
   </data>
+  <data name="GameEventLive" xml:space="preserve">
+    <value>en juego</value>
+  </data>
   <data name="GameEventLostTankToAi" xml:space="preserve">
     <value>perdió el tank ante la IA</value>
   </data>
   <data name="GameEventRoundEnded" xml:space="preserve">
     <value>Fin de la ronda</value>
   </data>
+  <data name="GameEventRoundIsLive" xml:space="preserve">
+    <value>La {0} está {1}.</value>
+  </data>
   <data name="GameEventScore" xml:space="preserve">
     <value>{0} - {1}</value>
   </data>
-  <data name="GameEventSecondRoundIsLive" xml:space="preserve">
-    <value>La segunda ronda está en juego.</value>
+  <data name="GameEventSecondRound" xml:space="preserve">
+    <value>segunda ronda</value>
   </data>
   <data name="GameEventSeconds" xml:space="preserve">
-    <value>{0:N2} segundos</value>
+    <value>{0} segundos</value>
   </data>
   <data name="GameEventSelfCleared" xml:space="preserve">
     <value>se liberó de la lengua de</value>

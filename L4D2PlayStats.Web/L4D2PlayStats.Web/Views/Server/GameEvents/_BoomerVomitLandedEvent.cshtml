@@ -6,4 +6,4 @@
 
 @(Html.EventPlayer(Model.Actor, Localizer["GameEventBoomer"]))
 <span class="game-event-danger">@Localizer["GameEventVomitedOn"]</span>
-<span class="game-event-highlight">@Localizer["GameEventSurvivorCount", Model.Amount]</span>.
+@Html.EventStat(Localizer["GameEventSurvivorCount"].Value, Model.Amount).
