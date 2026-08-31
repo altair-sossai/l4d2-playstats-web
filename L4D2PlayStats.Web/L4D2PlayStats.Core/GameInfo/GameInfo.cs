@@ -167,7 +167,7 @@ public class GameInfo
             var message = new ExternalChatMessage(user, command);
 
             _externalMessages.Add(message);
-            _feed.Add((ChatMessage)message);
+            _feed.Add((ChatMessage)message, false);
         }
 
         return SendExternalMessageResult.SuccessResult();

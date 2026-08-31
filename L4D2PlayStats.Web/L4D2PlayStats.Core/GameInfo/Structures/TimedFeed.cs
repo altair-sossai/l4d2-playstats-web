@@ -18,9 +18,9 @@ public class TimedFeed(TimeSpan delay, TimeSpan expireIn, int maxItems = 250)
         }
     }
 
-    public void Add(FeedItem item)
+    public void Add(FeedItem item, bool delayed = true)
     {
-        if (delay <= TimeSpan.Zero)
+        if (!delayed || delay <= TimeSpan.Zero)
         {
             Insert(item);
             return;
