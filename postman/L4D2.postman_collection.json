@@ -445,75 +445,7 @@
                     ],
                     "body": {
                       "mode": "raw",
-                      "raw": "{\n    \"type\": \"skeetHurt\",\n    \"actor\": {\n        \"name\": \"fear\",\n        \"communityId\": \"76561198135872483\",\n        \"isBot\": false\n    },\n    \"hunter\": {\n        \"name\": \"Rael\",\n        \"communityId\": \"76561197960287930\",\n        \"isBot\": false\n    },\n    \"skeetType\": \"Shotgun\",\n    \"damage\": 250,\n    \"isOverkill\": true\n}",
-                      "options": {
-                        "raw": {
-                          "language": "json"
-                        }
-                      }
-                    },
-                    "url": {
-                      "raw": "{{baseURL}}/api/game-info/events",
-                      "host": [
-                        "{{baseURL}}"
-                      ],
-                      "path": [
-                        "api",
-                        "game-info",
-                        "events"
-                      ]
-                    }
-                  },
-                  "response": []
-                },
-                {
-                  "name": "hunterDeadstop",
-                  "request": {
-                    "method": "POST",
-                    "header": [
-                      {
-                        "key": "Authorization",
-                        "value": "SecretKey",
-                        "type": "text"
-                      }
-                    ],
-                    "body": {
-                      "mode": "raw",
-                      "raw": "{\n    \"type\": \"hunterDeadstop\",\n    \"actor\": {\n        \"name\": \"fear\",\n        \"communityId\": \"76561198135872483\",\n        \"isBot\": false\n    },\n    \"hunter\": {\n        \"name\": \"Rael\",\n        \"communityId\": \"76561197960287930\",\n        \"isBot\": false\n    }\n}",
-                      "options": {
-                        "raw": {
-                          "language": "json"
-                        }
-                      }
-                    },
-                    "url": {
-                      "raw": "{{baseURL}}/api/game-info/events",
-                      "host": [
-                        "{{baseURL}}"
-                      ],
-                      "path": [
-                        "api",
-                        "game-info",
-                        "events"
-                      ]
-                    }
-                  },
-                  "response": []
-                },
-                {
-                  "name": "boomerPop",
-                  "request": {
-                    "method": "POST",
-                    "header": [
-                      {
-                        "key": "Authorization",
-                        "value": "SecretKey",
-                        "type": "text"
-                      }
-                    ],
-                    "body": {
-                      "mode": "raw",
-                      "raw": "{\n    \"type\": \"boomerPop\",\n    \"actor\": {\n        \"name\": \"fear\",\n        \"communityId\": \"76561198135872483\",\n        \"isBot\": false\n    },\n    \"boomer\": {\n        \"name\": \"Rael\",\n        \"communityId\": \"76561197960287930\",\n        \"isBot\": false\n    },\n    \"shoveCount\": 2,\n    \"timeAlive\": 4.2\n}",
+                      "raw": "{\n    \"type\": \"skeetHurt\",\n    \"actor\": {\n        \"name\": \"fear\",\n        \"communityId\": \"76561198135872483\",\n        \"isBot\": false\n    },\n    \"hunter\": {\n        \"name\": \"Rael\",\n        \"communityId\": \"76561197960287930\",\n        \"isBot\": false\n    },\n    \"skeetType\": \"Shotgun\",\n    \"damage\": 150,\n    \"isOverkill\": true\n}",
                       "options": {
                         "raw": {
                           "language": "json"
@@ -819,41 +751,7 @@
                     ],
                     "body": {
                       "mode": "raw",
-                      "raw": "{\n    \"type\": \"hunterHighPounce\",\n    \"actor\": {\n        \"name\": \"Rael\",\n        \"communityId\": \"76561197960287930\",\n        \"isBot\": false\n    },\n    \"victim\": {\n        \"name\": \"fear\",\n        \"communityId\": \"76561198135872483\",\n        \"isBot\": false\n    },\n    \"damage\": 35,\n    \"calculatedDamage\": 42,\n    \"height\": 512,\n    \"reportedHigh\": true\n}",
-                      "options": {
-                        "raw": {
-                          "language": "json"
-                        }
-                      }
-                    },
-                    "url": {
-                      "raw": "{{baseURL}}/api/game-info/events",
-                      "host": [
-                        "{{baseURL}}"
-                      ],
-                      "path": [
-                        "api",
-                        "game-info",
-                        "events"
-                      ]
-                    }
-                  },
-                  "response": []
-                },
-                {
-                  "name": "jockeyHighPounce",
-                  "request": {
-                    "method": "POST",
-                    "header": [
-                      {
-                        "key": "Authorization",
-                        "value": "SecretKey",
-                        "type": "text"
-                      }
-                    ],
-                    "body": {
-                      "mode": "raw",
-                      "raw": "{\n    \"type\": \"jockeyHighPounce\",\n    \"actor\": {\n        \"name\": \"Rael\",\n        \"communityId\": \"76561197960287930\",\n        \"isBot\": false\n    },\n    \"victim\": {\n        \"name\": \"fear\",\n        \"communityId\": \"76561198135872483\",\n        \"isBot\": false\n    },\n    \"height\": 380,\n    \"reportedHigh\": true\n}",
+                      "raw": "{\n    \"type\": \"hunterHighPounce\",\n    \"actor\": {\n        \"name\": \"Rael\",\n        \"communityId\": \"76561197960287930\",\n        \"isBot\": false\n    },\n    \"victim\": {\n        \"name\": \"fear\",\n        \"communityId\": \"76561198135872483\",\n        \"isBot\": false\n    },\n    \"calculatedDamage\": 42,\n    \"height\": 512\n}",
                       "options": {
                         "raw": {
                           "language": "json"
@@ -921,7 +819,7 @@
                     ],
                     "body": {
                       "mode": "raw",
-                      "raw": "{\n    \"type\": \"specialClear\",\n    \"actor\": {\n        \"name\": \"fear\",\n        \"communityId\": \"76561198135872483\",\n        \"isBot\": false\n    },\n    \"pinner\": {\n        \"name\": \"Rael\",\n        \"communityId\": \"76561197960287930\",\n        \"isBot\": false\n    },\n    \"pinVictim\": {\n        \"name\": \"coelho\",\n        \"communityId\": \"76561198024965450\",\n        \"isBot\": false\n    },\n    \"zombieClass\": \"Smoker\",\n    \"timeA\": 1.25,\n    \"timeB\": 0.75,\n    \"withShove\": false\n}",
+                      "raw": "{\n    \"type\": \"specialClear\",\n    \"actor\": {\n        \"name\": \"fear\",\n        \"communityId\": \"76561198135872483\",\n        \"isBot\": false\n    },\n    \"pinner\": {\n        \"name\": \"Rael\",\n        \"communityId\": \"76561197960287930\",\n        \"isBot\": false\n    },\n    \"pinVictim\": {\n        \"name\": \"coelho\",\n        \"communityId\": \"76561198024965450\",\n        \"isBot\": false\n    },\n    \"zombieClass\": \"Smoker\",\n    \"clearTime\": 0.8,\n    \"withShove\": false\n}",
                       "options": {
                         "raw": {
                           "language": "json"
@@ -977,74 +875,6 @@
                   "response": []
                 },
                 {
-                  "name": "specialShoved",
-                  "request": {
-                    "method": "POST",
-                    "header": [
-                      {
-                        "key": "Authorization",
-                        "value": "SecretKey",
-                        "type": "text"
-                      }
-                    ],
-                    "body": {
-                      "mode": "raw",
-                      "raw": "{\n    \"type\": \"specialShoved\",\n    \"actor\": {\n        \"name\": \"fear\",\n        \"communityId\": \"76561198135872483\",\n        \"isBot\": false\n    },\n    \"infected\": {\n        \"name\": \"Rael\",\n        \"communityId\": \"76561197960287930\",\n        \"isBot\": false\n    },\n    \"zombieClass\": \"Hunter\"\n}",
-                      "options": {
-                        "raw": {
-                          "language": "json"
-                        }
-                      }
-                    },
-                    "url": {
-                      "raw": "{{baseURL}}/api/game-info/events",
-                      "host": [
-                        "{{baseURL}}"
-                      ],
-                      "path": [
-                        "api",
-                        "game-info",
-                        "events"
-                      ]
-                    }
-                  },
-                  "response": []
-                },
-                {
-                  "name": "bunnyHopStreak",
-                  "request": {
-                    "method": "POST",
-                    "header": [
-                      {
-                        "key": "Authorization",
-                        "value": "SecretKey",
-                        "type": "text"
-                      }
-                    ],
-                    "body": {
-                      "mode": "raw",
-                      "raw": "{\n    \"type\": \"bunnyHopStreak\",\n    \"actor\": {\n        \"name\": \"fear\",\n        \"communityId\": \"76561198135872483\",\n        \"isBot\": false\n    },\n    \"streak\": 5,\n    \"maxVelocity\": 320\n}",
-                      "options": {
-                        "raw": {
-                          "language": "json"
-                        }
-                      }
-                    },
-                    "url": {
-                      "raw": "{{baseURL}}/api/game-info/events",
-                      "host": [
-                        "{{baseURL}}"
-                      ],
-                      "path": [
-                        "api",
-                        "game-info",
-                        "events"
-                      ]
-                    }
-                  },
-                  "response": []
-                },
-                {
                   "name": "carAlarmTriggered",
                   "request": {
                     "method": "POST",
@@ -1058,6 +888,244 @@
                     "body": {
                       "mode": "raw",
                       "raw": "{\n    \"type\": \"carAlarmTriggered\",\n    \"actor\": {\n        \"name\": \"fear\",\n        \"communityId\": \"76561198135872483\",\n        \"isBot\": false\n    },\n    \"infected\": {\n        \"name\": \"Rael\",\n        \"communityId\": \"76561197960287930\",\n        \"isBot\": false\n    },\n    \"reason\": \"Boomer\"\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseURL}}/api/game-info/events",
+                      "host": [
+                        "{{baseURL}}"
+                      ],
+                      "path": [
+                        "api",
+                        "game-info",
+                        "events"
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "roundLive",
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Authorization",
+                        "value": "SecretKey",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n    \"type\": \"roundLive\",\n    \"secondHalf\": false\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseURL}}/api/game-info/events",
+                      "host": [
+                        "{{baseURL}}"
+                      ],
+                      "path": [
+                        "api",
+                        "game-info",
+                        "events"
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "roundEnded",
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Authorization",
+                        "value": "SecretKey",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n    \"type\": \"roundEnded\",\n    \"survivorScore\": 450,\n    \"infectedScore\": 375\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseURL}}/api/game-info/events",
+                      "host": [
+                        "{{baseURL}}"
+                      ],
+                      "path": [
+                        "api",
+                        "game-info",
+                        "events"
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "pause",
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Authorization",
+                        "value": "SecretKey",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n    \"type\": \"pause\",\n    \"paused\": true\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseURL}}/api/game-info/events",
+                      "host": [
+                        "{{baseURL}}"
+                      ],
+                      "path": [
+                        "api",
+                        "game-info",
+                        "events"
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "tankSpawned",
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Authorization",
+                        "value": "SecretKey",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n    \"type\": \"tankSpawned\",\n    \"actor\": {\n        \"name\": \"Rael\",\n        \"communityId\": \"76561197960287930\",\n        \"isBot\": false\n    }\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseURL}}/api/game-info/events",
+                      "host": [
+                        "{{baseURL}}"
+                      ],
+                      "path": [
+                        "api",
+                        "game-info",
+                        "events"
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "tankDied",
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Authorization",
+                        "value": "SecretKey",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n    \"type\": \"tankDied\",\n    \"actor\": {\n        \"name\": \"Rael\",\n        \"communityId\": \"76561197960287930\",\n        \"isBot\": false\n    }\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseURL}}/api/game-info/events",
+                      "host": [
+                        "{{baseURL}}"
+                      ],
+                      "path": [
+                        "api",
+                        "game-info",
+                        "events"
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "tankBecameBot",
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Authorization",
+                        "value": "SecretKey",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n    \"type\": \"tankBecameBot\",\n    \"actor\": {\n        \"name\": \"Rael\",\n        \"communityId\": \"76561197960287930\",\n        \"isBot\": false\n    }\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseURL}}/api/game-info/events",
+                      "host": [
+                        "{{baseURL}}"
+                      ],
+                      "path": [
+                        "api",
+                        "game-info",
+                        "events"
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "playerDeath",
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Authorization",
+                        "value": "SecretKey",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n    \"type\": \"playerDeath\",\n    \"actor\": {\n        \"name\": \"fear\",\n        \"communityId\": \"76561198135872483\",\n        \"isBot\": false\n    }\n}",
                       "options": {
                         "raw": {
                           "language": "json"

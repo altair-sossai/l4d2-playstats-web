@@ -5,9 +5,10 @@
 @inject IStringLocalizer<SharedResource> Localizer
 
 <span class="game-event-stars">@Model.StarsText</span>
+@(Html.EventPlayer(Model.Actor, Localizer["GameEventUnknownPlayer"]))
+<span class="game-event-action">@Localizer["GameEventSkeeted"]</span>
 @(Html.EventPlayer(Model.Hunter, Localizer["GameEventHunter"]))
-<span class="game-event-action">@Localizer["GameEventWasNotSkeeted"]</span>
-<span class="game-event-highlight">(@Localizer["GameEventDamage", Model.Damage])</span>.
+<span class="game-event-highlight">(@Localizer["GameEventChippedHunter"], @Localizer["GameEventDamage", Model.Damage])</span>.
 
 @if (Model.IsOverkill)
 {

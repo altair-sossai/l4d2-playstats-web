@@ -7,10 +7,13 @@
 @{
     var damage = (int)Math.Round(Model.CalculatedDamage);
     var height = (int)Math.Round(Model.Height);
+    var details = damage > 0
+        ? $"{Localizer["GameEventDamage", damage].Value}, {Localizer["GameEventHeight", height].Value}"
+        : Localizer["GameEventHeight", height].Value;
 }
 
 <span class="game-event-stars">@Model.StarsText</span>
 @(Html.EventPlayer(Model.Actor, Localizer["GameEventHunter"]))
 <span class="game-event-danger">@Localizer["GameEventHighPounced"]</span>
 @(Html.EventPlayer(Model.Victim, Localizer["GameEventSurvivor"]))
-<span class="game-event-highlight">(@Localizer["GameEventDamage", damage], @Localizer["GameEventHeight", height])</span>.
+<span class="game-event-highlight">(@details)</span>.

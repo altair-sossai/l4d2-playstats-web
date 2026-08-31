@@ -1,0 +1,15 @@
+@using L4D2PlayStats.Web
+@using L4D2PlayStats.Web.Extensions
+@using Microsoft.Extensions.Localization
+@model L4D2PlayStats.Core.GameInfo.Models.Events.TankBecameBotEvent
+@inject IStringLocalizer<SharedResource> Localizer
+
+@if (Model.Actor != null)
+{
+    @(Html.EventPlayer(Model.Actor, Localizer["GameEventTank"]))
+    <span class="game-event-info">@Localizer["GameEventLostTankToAi"]</span><text>.</text>
+}
+else
+{
+    <span class="game-event-info">@Localizer["GameEventTankBecameBot"]</span><text>.</text>
+}

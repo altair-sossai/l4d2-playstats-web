@@ -1243,18 +1243,6 @@
   <data name="GameEventWasTeamSkeeted" xml:space="preserve">
     <value>recibió un team-skeet</value>
   </data>
-  <data name="GameEventWasNotSkeeted" xml:space="preserve">
-    <value>no recibió skeet</value>
-  </data>
-  <data name="GameEventWouldHaveSkeeted" xml:space="preserve">
-    <value>¡Habría sido skeet si el hunter no estuviera dañado!</value>
-  </data>
-  <data name="GameEventDeadstopped" xml:space="preserve">
-    <value>hizo deadstop a</value>
-  </data>
-  <data name="GameEventPopped" xml:space="preserve">
-    <value>reventó a</value>
-  </data>
   <data name="GameEventFullyLeveled" xml:space="preserve">
     <value>hizo level completo a</value>
   </data>
@@ -1279,9 +1267,6 @@
   <data name="GameEventSkeetedRock" xml:space="preserve">
     <value>destruyó la roca de</value>
   </data>
-  <data name="GameEventHitWithRock" xml:space="preserve">
-    <value>golpeó con una roca a</value>
-  </data>
   <data name="GameEventHighPounced" xml:space="preserve">
     <value>hizo high-pounce a</value>
   </data>
@@ -1299,12 +1284,6 @@
   </data>
   <data name="GameEventVomitedOn" xml:space="preserve">
     <value>vomitó sobre</value>
-  </data>
-  <data name="GameEventShoved" xml:space="preserve">
-    <value>empujó a</value>
-  </data>
-  <data name="GameEventLanded" xml:space="preserve">
-    <value>logró</value>
   </data>
   <data name="GameEventTriggeredCarAlarm" xml:space="preserve">
     <value>activó la alarma de un coche</value>
@@ -1327,10 +1306,46 @@
   <data name="GameEventSurvivorCount" xml:space="preserve">
     <value>{0} superviviente(s)</value>
   </data>
-  <data name="GameEventBunnyHops" xml:space="preserve">
-    <value>{0} bunny hop(s)</value>
+  <data name="GameEventRoundEnded" xml:space="preserve">
+    <value>Fin de la ronda</value>
   </data>
-  <data name="GameEventMaxVelocity" xml:space="preserve">
-    <value>velocidad máxima: {0}</value>
+  <data name="GameEventScore" xml:space="preserve">
+    <value>{0} - {1}</value>
+  </data>
+  <data name="GameEventGamePaused" xml:space="preserve">
+    <value>El juego fue pausado.</value>
+  </data>
+  <data name="GameEventGameUnpaused" xml:space="preserve">
+    <value>El juego fue reanudado.</value>
+  </data>
+  <data name="GameEventDied" xml:space="preserve">
+    <value>murió</value>
+  </data>
+  <data name="GameEventHitWithRock" xml:space="preserve">
+    <value>golpeó con una roca a</value>
+  </data>
+  <data name="GameEventChippedHunter" xml:space="preserve">
+    <value>ya dañado</value>
+  </data>
+  <data name="GameEventWouldHaveSkeeted" xml:space="preserve">
+    <value>Habría hecho skeet con vida completa.</value>
+  </data>
+  <data name="GameEventFirstRoundIsLive" xml:space="preserve">
+    <value>La primera ronda está en juego.</value>
+  </data>
+  <data name="GameEventSecondRoundIsLive" xml:space="preserve">
+    <value>La segunda ronda está en juego.</value>
+  </data>
+  <data name="GameEventSpawnedAsTank" xml:space="preserve">
+    <value>apareció como tank</value>
+  </data>
+  <data name="GameEventDiedAsTank" xml:space="preserve">
+    <value>murió como tank</value>
+  </data>
+  <data name="GameEventLostTankToAi" xml:space="preserve">
+    <value>perdió el tank ante la IA</value>
+  </data>
+  <data name="GameEventTankBecameBot" xml:space="preserve">
+    <value>La IA tomó el control del tank</value>
   </data>
 </root>

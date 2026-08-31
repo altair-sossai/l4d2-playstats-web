@@ -1,0 +1,8 @@
+@using L4D2PlayStats.Web
+@using L4D2PlayStats.Web.Extensions
+@using Microsoft.Extensions.Localization
+@model L4D2PlayStats.Core.GameInfo.Models.Events.PlayerDeathEvent
+@inject IStringLocalizer<SharedResource> Localizer
+
+@(Html.EventPlayer(Model.Actor, Localizer["GameEventSurvivor"]))
+<span class="game-event-danger">@Localizer["GameEventDied"]</span>.

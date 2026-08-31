@@ -11,7 +11,6 @@ public class SpecialClearEvent : GameEvent
     public Player? Pinner { get; set; }
     public Player? PinVictim { get; set; }
     public InfectedType ZombieClass { get; set; }
-    public double TimeA { get; set; }
-    public double TimeB { get; set; }
+    public double ClearTime { get; set; }
     public bool WithShove { get; set; }
 }

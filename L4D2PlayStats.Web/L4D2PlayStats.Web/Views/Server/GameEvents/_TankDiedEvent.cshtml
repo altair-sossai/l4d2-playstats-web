@@ -1,9 +1,8 @@
 @using L4D2PlayStats.Web
 @using L4D2PlayStats.Web.Extensions
 @using Microsoft.Extensions.Localization
-@model L4D2PlayStats.Core.GameInfo.Models.Events.TankRockEatenEvent
+@model L4D2PlayStats.Core.GameInfo.Models.Events.TankDiedEvent
 @inject IStringLocalizer<SharedResource> Localizer
 
 @(Html.EventPlayer(Model.Actor, Localizer["GameEventTank"]))
-<span class="game-event-danger">@Localizer["GameEventHitWithRock"]</span>
-@(Html.EventPlayer(Model.Victim, Localizer["GameEventSurvivor"])).
+<span class="game-event-highlight">@Localizer["GameEventDiedAsTank"]</span>.
