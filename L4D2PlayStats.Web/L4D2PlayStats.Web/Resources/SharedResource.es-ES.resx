@@ -120,9 +120,6 @@
   <data name="AFK" xml:space="preserve">
     <value>Ausente (AFK)</value>
   </data>
-  <data name="AccessAccount" xml:space="preserve">
-    <value>Acceder a la cuenta</value>
-  </data>
   <data name="Alive" xml:space="preserve">
     <value>Vivo</value>
   </data>

@@ -120,9 +120,6 @@
   <data name="AFK" xml:space="preserve">
     <value>AFK</value>
   </data>
-  <data name="AccessAccount" xml:space="preserve">
-    <value>Access account</value>
-  </data>
   <data name="Alive" xml:space="preserve">
     <value>Alive</value>
   </data>

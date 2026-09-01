@@ -90,7 +90,9 @@
                     <tr>
                         <th>@SharedLocalizer["ProfileUrl"]:</th>
                         <td data-label="@SharedLocalizer["ProfileUrl"]:">
-                            <a href="@Model.ProfileUrl" target="_blank" rel="noopener noreferrer">@SharedLocalizer["AccessAccount"]</a>
+                            <a href="@Model.ProfileUrl" target="_blank" rel="noopener noreferrer">
+                                @Model.ProfileUrl
+                            </a>
                         </td>
                     </tr>
                 }
@@ -131,7 +133,9 @@
                     <td data-label="@SharedLocalizer["ProfileUrl"]:">
                         @if (!string.IsNullOrWhiteSpace(relatedPlayer.ProfileUrl))
                         {
-                            <a href="@relatedPlayer.ProfileUrl" target="_blank" rel="noopener noreferrer">@SharedLocalizer["AccessAccount"]</a>
+                            <a href="@relatedPlayer.ProfileUrl" target="_blank" rel="noopener noreferrer">
+                                @relatedPlayer.ProfileUrl
+                            </a>
                         }
                     </td>
                 </tr>
