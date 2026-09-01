@@ -1045,40 +1045,6 @@
                   "response": []
                 },
                 {
-                  "name": "mixStopped",
-                  "request": {
-                    "method": "POST",
-                    "header": [
-                      {
-                        "key": "Authorization",
-                        "value": "SecretKey",
-                        "type": "text"
-                      }
-                    ],
-                    "body": {
-                      "mode": "raw",
-                      "raw": "{\n    \"type\": \"mixStopped\"\n}",
-                      "options": {
-                        "raw": {
-                          "language": "json"
-                        }
-                      }
-                    },
-                    "url": {
-                      "raw": "{{baseURL}}/api/game-info/events",
-                      "host": [
-                        "{{baseURL}}"
-                      ],
-                      "path": [
-                        "api",
-                        "game-info",
-                        "events"
-                      ]
-                    }
-                  },
-                  "response": []
-                },
-                {
                   "name": "tankSpawned",
                   "request": {
                     "method": "POST",

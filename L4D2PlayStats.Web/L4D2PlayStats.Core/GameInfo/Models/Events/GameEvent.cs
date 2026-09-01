@@ -17,7 +17,6 @@ namespace L4D2PlayStats.Core.GameInfo.Models.Events;
 [JsonDerivedType(typeof(DeathChargeEvent), "deathCharge")]
 [JsonDerivedType(typeof(HunterHighPounceEvent), "hunterHighPounce")]
 [JsonDerivedType(typeof(MixStartedEvent), "mixStarted")]
-[JsonDerivedType(typeof(MixStoppedEvent), "mixStopped")]
 [JsonDerivedType(typeof(PauseEvent), "pause")]
 [JsonDerivedType(typeof(PlayerDeathEvent), "playerDeath")]
 [JsonDerivedType(typeof(RoundEndedEvent), "roundEnded")]

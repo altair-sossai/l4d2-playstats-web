@@ -513,9 +513,6 @@
   <data name="GameEventMixStarted" xml:space="preserve">
     <value>Um mix começou.</value>
   </data>
-  <data name="GameEventMixStopped" xml:space="preserve">
-    <value>O mix terminou.</value>
-  </data>
   <data name="GameEventRoundEnded" xml:space="preserve">
     <value>Fim do round</value>
   </data>

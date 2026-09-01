@@ -10,7 +10,6 @@ public enum GameEventType
     DeathCharge,
     HunterHighPounce,
     MixStarted,
-    MixStopped,
     Pause,
     PlayerDeath,
     RoundEnded,
