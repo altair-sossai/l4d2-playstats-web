@@ -228,6 +228,7 @@
 @section Scripts {
     <script>
         var refreshInterval = 2600;
+        var maxFeedItems = 300;
         var feedRefreshTimer = null;
         var feedRefreshRequest = null;
         var feedRefreshPending = false;
@@ -241,7 +242,7 @@
             hideTimer: null,
             transitioning: false,
             displayDuration: 4500,
-            idleDuration: 10000,
+            idleDuration: 15000,
             initialEventMaxAge: 30000,
             maxSeen: 500,
             serverNowTicks: Number('@DateTime.UtcNow.Ticks'),
@@ -500,6 +501,10 @@
                             $duplicates.remove();
                         }
                     });
+
+                    var $items = $('#feed p[data-feed-when]');
+                    if ($items.length > maxFeedItems)
+                        $items.slice(0, $items.length - maxFeedItems).remove();
 
                     applyFeedFilter();
                     liveEventCarousel.enqueue(newEvents);
