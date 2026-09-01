@@ -1,0 +1,6 @@
+@using L4D2PlayStats.Web
+@using Microsoft.Extensions.Localization
+@model L4D2PlayStats.Core.GameInfo.Models.Events.MixStartedEvent
+@inject IStringLocalizer<SharedResource> Localizer
+
+<span class="game-event-action">@Localizer["GameEventMixStarted"]</span>

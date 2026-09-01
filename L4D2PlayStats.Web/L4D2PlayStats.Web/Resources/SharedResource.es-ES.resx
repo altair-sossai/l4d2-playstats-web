@@ -507,6 +507,12 @@
   <data name="GameEventLostTankToAi" xml:space="preserve">
     <value>perdió el tank ante la IA</value>
   </data>
+  <data name="GameEventMixStarted" xml:space="preserve">
+    <value>Un mix comenzó.</value>
+  </data>
+  <data name="GameEventMixStopped" xml:space="preserve">
+    <value>El mix terminó.</value>
+  </data>
   <data name="GameEventRoundEnded" xml:space="preserve">
     <value>Fin de la ronda</value>
   </data>
