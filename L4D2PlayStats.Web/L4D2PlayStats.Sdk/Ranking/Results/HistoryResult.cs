@@ -9,4 +9,5 @@ public class HistoryResult
     public int EndMonth { get; set; }
     public bool IsBimonthly { get; set; }
     public bool IsAnnual { get; set; }
+    public bool IsAllTime { get; set; }
 }

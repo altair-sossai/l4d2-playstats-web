@@ -17,7 +17,7 @@ public class HistoryController(IRankingServiceCached rankingService, IUserAvatar
         allHistory =
         [
             .. allHistory
-                .Where(h => h.IsAnnual || h.StartYear == DateTime.Now.Year)
+                .Where(h => h.IsAllTime || h.IsAnnual || h.StartYear == DateTime.Now.Year)
         ];
 
         if (allHistory.Count == 0)

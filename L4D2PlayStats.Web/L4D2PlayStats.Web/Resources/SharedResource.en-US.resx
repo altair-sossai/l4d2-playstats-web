@@ -126,6 +126,9 @@
   <data name="Alive" xml:space="preserve">
     <value>Alive</value>
   </data>
+  <data name="AllTime" xml:space="preserve">
+    <value>All time</value>
+  </data>
   <data name="Alternative" xml:space="preserve">
     <value>Alternative</value>
   </data>

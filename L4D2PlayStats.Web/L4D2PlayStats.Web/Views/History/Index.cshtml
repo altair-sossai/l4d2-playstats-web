@@ -49,6 +49,10 @@
                     {
                         @string.Format(SharedLocalizer["YearOf"], Model.History.StartYear)
                     }
+                    else if (Model.History.IsAllTime)
+                    {
+                        @SharedLocalizer["AllTime"]
+                    }
                     else
                     {
                         @Model.History.Id
@@ -68,6 +72,10 @@
                             else if (history.IsAnnual)
                             {
                                 @string.Format(SharedLocalizer["YearOf"], history.StartYear)
+                            }
+                            else if (history.IsAllTime)
+                            {
+                                @SharedLocalizer["AllTime"]
                             }
                             else
                             {
