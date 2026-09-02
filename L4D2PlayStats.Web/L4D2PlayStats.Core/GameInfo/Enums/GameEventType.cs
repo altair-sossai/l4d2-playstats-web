@@ -16,8 +16,6 @@ public enum GameEventType
     RoundLive,
     Skeet,
     SkeetHurt,
-    SmokerSelfClear,
-    SpecialClear,
     TankBecameBot,
     TankDied,
     TankRockEaten,

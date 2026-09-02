@@ -495,9 +495,6 @@
   <data name="GameEventHunter" xml:space="preserve">
     <value>a hunter</value>
   </data>
-  <data name="GameEventInstaCleared" xml:space="preserve">
-    <value>insta-cleared</value>
-  </data>
   <data name="GameEventJockey" xml:space="preserve">
     <value>a jockey</value>
   </data>
@@ -524,9 +521,6 @@
   </data>
   <data name="GameEventSeconds" xml:space="preserve">
     <value>{0} seconds</value>
-  </data>
-  <data name="GameEventSelfCleared" xml:space="preserve">
-    <value>self-cleared from the tongue of</value>
   </data>
   <data name="GameEventSkeeted" xml:space="preserve">
     <value>skeeted</value>

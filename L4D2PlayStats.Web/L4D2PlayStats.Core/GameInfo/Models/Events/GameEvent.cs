@@ -23,8 +23,6 @@ namespace L4D2PlayStats.Core.GameInfo.Models.Events;
 [JsonDerivedType(typeof(RoundLiveEvent), "roundLive")]
 [JsonDerivedType(typeof(SkeetEvent), "skeet")]
 [JsonDerivedType(typeof(SkeetHurtEvent), "skeetHurt")]
-[JsonDerivedType(typeof(SmokerSelfClearEvent), "smokerSelfClear")]
-[JsonDerivedType(typeof(SpecialClearEvent), "specialClear")]
 [JsonDerivedType(typeof(TankBecameBotEvent), "tankBecameBot")]
 [JsonDerivedType(typeof(TankDiedEvent), "tankDied")]
 [JsonDerivedType(typeof(TankRockEatenEvent), "tankRockEaten")]

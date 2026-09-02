@@ -15,8 +15,6 @@ public static class GameEventTypeExtensions
             GameEventType.HunterHighPounce => 2,
             GameEventType.Skeet => 2,
             GameEventType.SkeetHurt => 1,
-            GameEventType.SmokerSelfClear => 2,
-            GameEventType.SpecialClear => 1,
             GameEventType.TankRockSkeeted => 1,
             GameEventType.TongueCut => 3,
             GameEventType.WitchCrown => 2,
