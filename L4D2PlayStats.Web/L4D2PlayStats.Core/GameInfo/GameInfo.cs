@@ -1,5 +1,6 @@
 using System.Collections.Concurrent;
 using L4D2PlayStats.Core.GameInfo.Commands;
+using L4D2PlayStats.Core.GameInfo.Filters;
 using L4D2PlayStats.Core.GameInfo.Models;
 using L4D2PlayStats.Core.GameInfo.Models.Events;
 using L4D2PlayStats.Core.GameInfo.Models.Infrastructure;
@@ -112,6 +113,9 @@ public class GameInfo
     public void AddMessage(ChatMessageCommand command)
     {
         if (string.IsNullOrEmpty(command.CommunityId) || string.IsNullOrEmpty(command.Message))
+            return;
+
+        if (ChatBindBlacklist.IsBind(command.Message))
             return;
 
         if (_lastMessage.TryGetValue(command.CommunityId, out var last) && last.Equals(command.Message, StringComparison.CurrentCultureIgnoreCase))
