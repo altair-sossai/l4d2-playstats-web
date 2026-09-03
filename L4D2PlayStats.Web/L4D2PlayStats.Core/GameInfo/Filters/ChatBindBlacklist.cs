@@ -5,13 +5,13 @@ namespace L4D2PlayStats.Core.GameInfo.Filters;
 public static class ChatBindBlacklist
 {
     private static readonly string[] Phrases =
-    {
+    [
         "go go go",
         "back back back",
         "tank tank tank",
         "hit hit hit",
         "r"
-    };
+    ];
 
     private static readonly HashSet<string> Normalized = BuildNormalizedSet();
 
