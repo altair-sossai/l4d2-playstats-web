@@ -1,3 +1,4 @@
+@using L4D2PlayStats.Core.GameInfo.Enums
 @using L4D2PlayStats.Web
 @using L4D2PlayStats.Web.Extensions
 @using Microsoft.Extensions.Localization
@@ -5,9 +6,12 @@
 @inject IStringLocalizer<SharedResource> Localizer
 
 <span class="game-event-stars">@Model.StarsText</span>
-@(Html.EventPlayer(Model.Actor, Localizer["GameEventUnknownPlayer"]))
+@(Html.EventPlayer(Model.Actor!))
 <span class="game-event-action">@Localizer["GameEventTriggeredCarAlarm"]</span>
-(@Localizer[$"GameEventCarAlarm{Model.Reason}"])
+@if (Model.Reason != CarAlarmReason.Unknown)
+{
+    <text>(@Localizer[$"GameEventCarAlarm{Model.Reason}"])</text>
+}
 @if (Model.Infected != null)
 {
     <text> @Localizer["GameEventAssistedBy"]</text>

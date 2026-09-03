@@ -25,7 +25,7 @@
 }
 else
 {
-    @(Html.EventPlayer(Model.Actor, Localizer["GameEventUnknownPlayer"]))
+    @(Html.EventPlayer(Model.Actor!))
     <span class="game-event-action">@verb</span>
     @(Html.EventPlayer(Model.Hunter, Localizer["GameEventHunter"]))<text>.</text>
 }

@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
-  <!-- 
+    <!-- 
     Microsoft ResX Schema 
     
     Version 2.0
@@ -59,1307 +59,1301 @@
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
-  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
-    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
-    <xsd:element name="root" msdata:IsDataSet="true">
-      <xsd:complexType>
-        <xsd:choice maxOccurs="unbounded">
-          <xsd:element name="metadata">
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+        <xsd:element name="root" msdata:IsDataSet="true">
             <xsd:complexType>
-              <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" />
-              </xsd:sequence>
-              <xsd:attribute name="name" use="required" type="xsd:string" />
-              <xsd:attribute name="type" type="xsd:string" />
-              <xsd:attribute name="mimetype" type="xsd:string" />
-              <xsd:attribute ref="xml:space" />
+                <xsd:choice maxOccurs="unbounded">
+                    <xsd:element name="metadata">
+                        <xsd:complexType>
+                            <xsd:sequence>
+                                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+                            </xsd:sequence>
+                            <xsd:attribute name="name" use="required" type="xsd:string" />
+                            <xsd:attribute name="type" type="xsd:string" />
+                            <xsd:attribute name="mimetype" type="xsd:string" />
+                            <xsd:attribute ref="xml:space" />
+                        </xsd:complexType>
+                    </xsd:element>
+                    <xsd:element name="assembly">
+                        <xsd:complexType>
+                            <xsd:attribute name="alias" type="xsd:string" />
+                            <xsd:attribute name="name" type="xsd:string" />
+                        </xsd:complexType>
+                    </xsd:element>
+                    <xsd:element name="data">
+                        <xsd:complexType>
+                            <xsd:sequence>
+                                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+                            </xsd:sequence>
+                            <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+                            <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+                            <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+                            <xsd:attribute ref="xml:space" />
+                        </xsd:complexType>
+                    </xsd:element>
+                    <xsd:element name="resheader">
+                        <xsd:complexType>
+                            <xsd:sequence>
+                                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                            </xsd:sequence>
+                            <xsd:attribute name="name" type="xsd:string" use="required" />
+                        </xsd:complexType>
+                    </xsd:element>
+                </xsd:choice>
             </xsd:complexType>
-          </xsd:element>
-          <xsd:element name="assembly">
-            <xsd:complexType>
-              <xsd:attribute name="alias" type="xsd:string" />
-              <xsd:attribute name="name" type="xsd:string" />
-            </xsd:complexType>
-          </xsd:element>
-          <xsd:element name="data">
-            <xsd:complexType>
-              <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
-              </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
-              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
-              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
-              <xsd:attribute ref="xml:space" />
-            </xsd:complexType>
-          </xsd:element>
-          <xsd:element name="resheader">
-            <xsd:complexType>
-              <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-              </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" />
-            </xsd:complexType>
-          </xsd:element>
-        </xsd:choice>
-      </xsd:complexType>
-    </xsd:element>
-  </xsd:schema>
-  <resheader name="resmimetype">
-    <value>text/microsoft-resx</value>
-  </resheader>
-  <resheader name="version">
-    <value>2.0</value>
-  </resheader>
-  <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </resheader>
-  <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </resheader>
-  <data name="AFK" xml:space="preserve">
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>2.0</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <data name="AFK" xml:space="preserve">
     <value>Ausente (AFK)</value>
   </data>
-  <data name="Alive" xml:space="preserve">
+    <data name="Alive" xml:space="preserve">
     <value>Vivo</value>
   </data>
-  <data name="AllTime" xml:space="preserve">
+    <data name="AllTime" xml:space="preserve">
     <value>Todo o período</value>
   </data>
-  <data name="Alternative" xml:space="preserve">
+    <data name="Alternative" xml:space="preserve">
     <value>Alternativo</value>
   </data>
-  <data name="AvailableInformation" xml:space="preserve">
+    <data name="AvailableInformation" xml:space="preserve">
     <value>Informações disponíveis</value>
   </data>
-  <data name="AvgClearTime" xml:space="preserve">
+    <data name="AvgClearTime" xml:space="preserve">
     <value>Tempo médio de clear (s)</value>
   </data>
-  <data name="Back" xml:space="preserve">
+    <data name="Back" xml:space="preserve">
     <value>Voltar</value>
   </data>
-  <data name="BansPlayers" xml:space="preserve">
+    <data name="BansPlayers" xml:space="preserve">
     <value>Bane jogadores por um período determinado</value>
   </data>
-  <data name="BlackAndWhite" xml:space="preserve">
+    <data name="BlackAndWhite" xml:space="preserve">
     <value>Preto e branco</value>
   </data>
-  <data name="Bonus" xml:space="preserve">
+    <data name="Bonus" xml:space="preserve">
     <value>Bônus</value>
   </data>
-  <data name="Booms" xml:space="preserve">
+    <data name="Booms" xml:space="preserve">
     <value>Boomados</value>
   </data>
-  <data name="Calendar" xml:space="preserve">
+    <data name="Calendar" xml:space="preserve">
     <value>Calendário</value>
   </data>
-  <data name="Campaign" xml:space="preserve">
+    <data name="Campaign" xml:space="preserve">
     <value>Campanha</value>
   </data>
-  <data name="ChangesCampaign" xml:space="preserve">
+    <data name="ChangesCampaign" xml:space="preserve">
     <value>Altera a campanha atual</value>
   </data>
-  <data name="ChatLoginRequiredMessage" xml:space="preserve">
+    <data name="ChatLoginRequiredMessage" xml:space="preserve">
     <value>Entre com a Steam para usar o chat.</value>
   </data>
-  <data name="ChatMessages" xml:space="preserve">
+    <data name="ChatMessages" xml:space="preserve">
     <value>Mensagens do chat</value>
   </data>
-  <data name="Cheating" xml:space="preserve">
+    <data name="Cheating" xml:space="preserve">
     <value>Trapaça</value>
   </data>
-  <data name="Clears" xml:space="preserve">
+    <data name="Clears" xml:space="preserve">
     <value>Clears</value>
   </data>
-  <data name="ClickHereToLogout" xml:space="preserve">
+    <data name="ClickHereToLogout" xml:space="preserve">
     <value>Clique aqui para sair</value>
   </data>
-  <data name="Clock" xml:space="preserve">
+    <data name="Clock" xml:space="preserve">
     <value>Relógio</value>
   </data>
-  <data name="Close" xml:space="preserve">
+    <data name="Close" xml:space="preserve">
     <value>Fechar</value>
   </data>
-  <data name="Common" xml:space="preserve">
+    <data name="Common" xml:space="preserve">
     <value>Commons mortos</value>
   </data>
-  <data name="CommonTankUp" xml:space="preserve">
+    <data name="CommonTankUp" xml:space="preserve">
     <value>Commons mortos durante Tank</value>
   </data>
-  <data name="CommunityId" xml:space="preserve">
+    <data name="CommunityId" xml:space="preserve">
     <value>Community ID</value>
   </data>
-  <data name="Compare" xml:space="preserve">
+    <data name="Compare" xml:space="preserve">
     <value>Comparar...</value>
   </data>
-  <data name="ConfirmExecuteCommand" xml:space="preserve">
+    <data name="ConfirmExecuteCommand" xml:space="preserve">
     <value>Tem certeza de que deseja executar o seguinte comando?</value>
   </data>
-  <data name="ConnectedPlayers" xml:space="preserve">
+    <data name="ConnectedPlayers" xml:space="preserve">
     <value>Jogadores Conectados</value>
   </data>
-  <data name="Connections" xml:space="preserve">
+    <data name="Connections" xml:space="preserve">
     <value>Conexões</value>
   </data>
-  <data name="CopyFailedMessage" xml:space="preserve">
+    <data name="CopyFailedMessage" xml:space="preserve">
     <value>Não foi possível copiar o texto automaticamente. Por favor, copie manualmente.</value>
   </data>
-  <data name="CopyText" xml:space="preserve">
+    <data name="CopyText" xml:space="preserve">
     <value>Copiar</value>
   </data>
-  <data name="CrashesServer" xml:space="preserve">
+    <data name="CrashesServer" xml:space="preserve">
     <value>Faz o servidor travar e reiniciar para o estado inicial</value>
   </data>
-  <data name="Crowns" xml:space="preserve">
+    <data name="Crowns" xml:space="preserve">
     <value>Crowns</value>
   </data>
-  <data name="CrownsHurt" xml:space="preserve">
+    <data name="CrownsHurt" xml:space="preserve">
     <value>Crowns incompletas</value>
   </data>
-  <data name="CrownsTotal" xml:space="preserve">
+    <data name="CrownsTotal" xml:space="preserve">
     <value>Crowns totais</value>
   </data>
-  <data name="Damage" xml:space="preserve">
+    <data name="Damage" xml:space="preserve">
     <value>Dano</value>
   </data>
-  <data name="Dead" xml:space="preserve">
+    <data name="Dead" xml:space="preserve">
     <value>Morto</value>
   </data>
-  <data name="DeadStops" xml:space="preserve">
+    <data name="DeadStops" xml:space="preserve">
     <value>Dead stops</value>
   </data>
-  <data name="DeathCharges" xml:space="preserve">
+    <data name="DeathCharges" xml:space="preserve">
     <value>Charges - Instant kills</value>
   </data>
-  <data name="Deaths" xml:space="preserve">
+    <data name="Deaths" xml:space="preserve">
     <value>Mortes</value>
   </data>
-  <data name="DefaultMetaDescription" xml:space="preserve">
+    <data name="DefaultMetaDescription" xml:space="preserve">
     <value>Estatísticas, rankings, jogadores e partidas do servidor L4D2 Competitive de Left 4 Dead 2.</value>
   </data>
-  <data name="DefibsUsed" xml:space="preserve">
+    <data name="DefibsUsed" xml:space="preserve">
     <value>Desfibriladores utilizados</value>
   </data>
-  <data name="Details" xml:space="preserve">
+    <data name="Details" xml:space="preserve">
     <value>Detalhes</value>
   </data>
-  <data name="Died" xml:space="preserve">
+    <data name="Died" xml:space="preserve">
     <value>Mortes</value>
   </data>
-  <data name="Difference" xml:space="preserve">
+    <data name="Difference" xml:space="preserve">
     <value>Diferença</value>
   </data>
-  <data name="Disabled" xml:space="preserve">
+    <data name="Disabled" xml:space="preserve">
     <value>Desabilitado</value>
   </data>
-  <data name="DisplayedPeriod" xml:space="preserve">
+    <data name="DisplayedPeriod" xml:space="preserve">
     <value>Período exibido</value>
   </data>
-  <data name="DmgBoom" xml:space="preserve">
+    <data name="DmgBoom" xml:space="preserve">
     <value>Dano de comuns pós-boom</value>
   </data>
-  <data name="DmgBoomHelp" xml:space="preserve">
+    <data name="DmgBoomHelp" xml:space="preserve">
     <value>Dano de comuns em sobreviventes em pé após o vômito do Boomer.</value>
   </data>
-  <data name="DmgScratch" xml:space="preserve">
+    <data name="DmgScratch" xml:space="preserve">
     <value>Arranhões (em pé)</value>
   </data>
-  <data name="DmgSpit" xml:space="preserve">
+    <data name="DmgSpit" xml:space="preserve">
     <value>Dano de ácido (em pé)</value>
   </data>
-  <data name="DmgTaken" xml:space="preserve">
+    <data name="DmgTaken" xml:space="preserve">
     <value>Dano recebido de SI</value>
   </data>
-  <data name="DmgTakenHelp" xml:space="preserve">
+    <data name="DmgTakenHelp" xml:space="preserve">
     <value>Dano de infectados jogadores e de comuns atribuídos ao Boomer; não inclui dano comum normal.</value>
   </data>
-  <data name="DmgTank" xml:space="preserve">
+    <data name="DmgTank" xml:space="preserve">
     <value>Dano como Tank (em pé)</value>
   </data>
-  <data name="DmgTankIncap" xml:space="preserve">
+    <data name="DmgTankIncap" xml:space="preserve">
     <value>Dano como Tank (incap.)</value>
   </data>
-  <data name="DmgTankUp" xml:space="preserve">
+    <data name="DmgTankUp" xml:space="preserve">
     <value>Dano de SI durante Tank</value>
   </data>
-  <data name="DmgTotal" xml:space="preserve">
+    <data name="DmgTotal" xml:space="preserve">
     <value>Dano de SI (sem Tank)</value>
   </data>
-  <data name="DmgTotalHelp" xml:space="preserve">
+    <data name="DmgTotalHelp" xml:space="preserve">
     <value>Dano de SI, inclusive em incapacitados e pós-boom; não inclui dano de Tank.</value>
   </data>
-  <data name="DmgUpright" xml:space="preserve">
+    <data name="DmgUpright" xml:space="preserve">
     <value>Dano de SI (em pé)</value>
   </data>
-  <data name="Draw" xml:space="preserve">
+    <data name="Draw" xml:space="preserve">
     <value>Empate</value>
   </data>
-  <data name="Edit" xml:space="preserve">
+    <data name="Edit" xml:space="preserve">
     <value>Editar</value>
   </data>
-  <data name="Elapsed" xml:space="preserve">
+    <data name="Elapsed" xml:space="preserve">
     <value>Decorrido</value>
   </data>
-  <data name="End" xml:space="preserve">
+    <data name="End" xml:space="preserve">
     <value>Fim</value>
   </data>
-  <data name="EndTime" xml:space="preserve">
+    <data name="EndTime" xml:space="preserve">
     <value>Fim do round</value>
   </data>
-  <data name="Experience" xml:space="preserve">
+    <data name="Experience" xml:space="preserve">
     <value>Experiência</value>
   </data>
-  <data name="ExplainBetter" xml:space="preserve">
+    <data name="ExplainBetter" xml:space="preserve">
     <value>Não entendi, me explique melhor</value>
   </data>
-  <data name="External" xml:space="preserve">
+    <data name="External" xml:space="preserve">
     <value>Externo</value>
   </data>
-  <data name="FallDamage" xml:space="preserve">
+    <data name="FallDamage" xml:space="preserve">
     <value>Dano por queda</value>
   </data>
-  <data name="FeedFilterAll" xml:space="preserve">
+    <data name="FeedFilterAll" xml:space="preserve">
     <value>Tudo</value>
   </data>
-  <data name="FeedFilterEvents" xml:space="preserve">
+    <data name="FeedFilterEvents" xml:space="preserve">
     <value>Eventos</value>
   </data>
-  <data name="FeedFilterMessages" xml:space="preserve">
+    <data name="FeedFilterMessages" xml:space="preserve">
     <value>Mensagens</value>
   </data>
-  <data name="FfDamageTotal" xml:space="preserve">
+    <data name="FfDamageTotal" xml:space="preserve">
     <value>FF</value>
   </data>
-  <data name="FfGiven" xml:space="preserve">
+    <data name="FfGiven" xml:space="preserve">
     <value>FF causado (sem incap.)</value>
   </data>
-  <data name="FfGivenBullet" xml:space="preserve">
+    <data name="FfGivenBullet" xml:space="preserve">
     <value>FF causado - Balas</value>
   </data>
-  <data name="FfGivenFire" xml:space="preserve">
+    <data name="FfGivenFire" xml:space="preserve">
     <value>FF causado - Fogo</value>
   </data>
-  <data name="FfGivenIncap" xml:space="preserve">
+    <data name="FfGivenIncap" xml:space="preserve">
     <value>FF causado em incap.</value>
   </data>
-  <data name="FfGivenMelee" xml:space="preserve">
+    <data name="FfGivenMelee" xml:space="preserve">
     <value>FF causado - Melees</value>
   </data>
-  <data name="FfGivenOther" xml:space="preserve">
+    <data name="FfGivenOther" xml:space="preserve">
     <value>FF causado - Outros</value>
   </data>
-  <data name="FfGivenPellet" xml:space="preserve">
+    <data name="FfGivenPellet" xml:space="preserve">
     <value>FF causado - Pellets</value>
   </data>
-  <data name="FfGivenSelf" xml:space="preserve">
+    <data name="FfGivenSelf" xml:space="preserve">
     <value>FF causado - A si mesmo</value>
   </data>
-  <data name="FfGivenSniper" xml:space="preserve">
+    <data name="FfGivenSniper" xml:space="preserve">
     <value>FF causado - Sniper</value>
   </data>
-  <data name="FfGivenTotal" xml:space="preserve">
+    <data name="FfGivenTotal" xml:space="preserve">
     <value>FF causado - Total</value>
   </data>
-  <data name="FfHits" xml:space="preserve">
+    <data name="FfHits" xml:space="preserve">
     <value>Acertos de fogo amigo</value>
   </data>
-  <data name="FfTaken" xml:space="preserve">
+    <data name="FfTaken" xml:space="preserve">
     <value>FF recebido (sem incap.)</value>
   </data>
-  <data name="FfTakenBullet" xml:space="preserve">
+    <data name="FfTakenBullet" xml:space="preserve">
     <value>FF recebido - Balas</value>
   </data>
-  <data name="FfTakenFire" xml:space="preserve">
+    <data name="FfTakenFire" xml:space="preserve">
     <value>FF recebido - Fogo</value>
   </data>
-  <data name="FfTakenIncap" xml:space="preserve">
+    <data name="FfTakenIncap" xml:space="preserve">
     <value>FF recebido em incap.</value>
   </data>
-  <data name="FfTakenMelee" xml:space="preserve">
+    <data name="FfTakenMelee" xml:space="preserve">
     <value>FF recebido - Melees</value>
   </data>
-  <data name="FfTakenOther" xml:space="preserve">
+    <data name="FfTakenOther" xml:space="preserve">
     <value>FF recebido - Outros</value>
   </data>
-  <data name="FfTakenPellet" xml:space="preserve">
+    <data name="FfTakenPellet" xml:space="preserve">
     <value>FF recebido - Pellets</value>
   </data>
-  <data name="FfTakenSniper" xml:space="preserve">
+    <data name="FfTakenSniper" xml:space="preserve">
     <value>FF recebido - Sniper</value>
   </data>
-  <data name="FfTakenTotal" xml:space="preserve">
+    <data name="FfTakenTotal" xml:space="preserve">
     <value>FF recebido - Total</value>
   </data>
-  <data name="FirstPlace" xml:space="preserve">
+    <data name="FirstPlace" xml:space="preserve">
     <value>Primeiro lugar</value>
   </data>
-  <data name="FirstRound" xml:space="preserve">
+    <data name="FirstRound" xml:space="preserve">
     <value>1º round</value>
   </data>
-  <data name="FiveMinutes" xml:space="preserve">
+    <data name="FiveMinutes" xml:space="preserve">
     <value>5 minutos</value>
   </data>
-  <data name="ForcesMatch" xml:space="preserve">
+    <data name="ForcesMatch" xml:space="preserve">
     <value>Força a seleção de um modo de partida</value>
   </data>
-  <data name="GagsPlayer" xml:space="preserve">
+    <data name="GagsPlayer" xml:space="preserve">
     <value>Silencia o chat de um jogador</value>
   </data>
-  <data name="GameEventAssistedBy" xml:space="preserve">
+    <data name="GameEventAssistedBy" xml:space="preserve">
     <value>com assistência de</value>
   </data>
-  <data name="GameEventBoomer" xml:space="preserve">
+    <data name="GameEventBoomer" xml:space="preserve">
     <value>um boomer</value>
   </data>
-  <data name="GameEventByBowling" xml:space="preserve">
+    <data name="GameEventByBowling" xml:space="preserve">
     <value>com bowling</value>
   </data>
-  <data name="GameEventByShoving" xml:space="preserve">
+    <data name="GameEventByShoving" xml:space="preserve">
     <value>com um shove</value>
   </data>
-  <data name="GameEventCarAlarmBoomer" xml:space="preserve">
+    <data name="GameEventCarAlarmBoomer" xml:space="preserve">
     <value>boomer</value>
   </data>
-  <data name="GameEventCarAlarmExplosion" xml:space="preserve">
+    <data name="GameEventCarAlarmExplosion" xml:space="preserve">
     <value>explosão</value>
   </data>
-  <data name="GameEventCarAlarmHit" xml:space="preserve">
+    <data name="GameEventCarAlarmHit" xml:space="preserve">
     <value>tiro ou golpe</value>
   </data>
-  <data name="GameEventCarAlarmTouched" xml:space="preserve">
+    <data name="GameEventCarAlarmTouched" xml:space="preserve">
     <value>toque</value>
-  </data>
-  <data name="GameEventCarAlarmUnknown" xml:space="preserve">
-    <value>motivo desconhecido</value>
   </data>
   <data name="GameEventCharger" xml:space="preserve">
     <value>um charger</value>
   </data>
-  <data name="GameEventChipLeveled" xml:space="preserve">
+    <data name="GameEventChipLeveled" xml:space="preserve">
     <value>deu chip-level em</value>
   </data>
-  <data name="GameEventChippedHunter" xml:space="preserve">
+    <data name="GameEventChippedHunter" xml:space="preserve">
     <value>já machucado</value>
   </data>
-  <data name="GameEventCommon" xml:space="preserve">
+    <data name="GameEventCommon" xml:space="preserve">
     <value>um infectado comum</value>
   </data>
-  <data name="GameEventCrownedWitch" xml:space="preserve">
+    <data name="GameEventCrownedWitch" xml:space="preserve">
     <value>deu crown em uma witch</value>
   </data>
-  <data name="GameEventCutTongue" xml:space="preserve">
+    <data name="GameEventCutTongue" xml:space="preserve">
     <value>cortou a língua de</value>
   </data>
-  <data name="GameEventDamage" xml:space="preserve">
+    <data name="GameEventDamage" xml:space="preserve">
     <value>{0} de dano</value>
   </data>
-  <data name="GameEventDamageAndChip" xml:space="preserve">
+    <data name="GameEventDamageAndChip" xml:space="preserve">
     <value>{0} de dano, {1} de chip</value>
   </data>
-  <data name="GameEventDeathCharged" xml:space="preserve">
+    <data name="GameEventDeathCharged" xml:space="preserve">
     <value>deu death-charge em</value>
   </data>
-  <data name="GameEventDied" xml:space="preserve">
+    <data name="GameEventDied" xml:space="preserve">
     <value>morreu</value>
   </data>
-  <data name="GameEventDiedAsTank" xml:space="preserve">
+    <data name="GameEventDiedAsTank" xml:space="preserve">
     <value>morreu como tank</value>
   </data>
-  <data name="GameEventDrawCrownedWitch" xml:space="preserve">
+    <data name="GameEventDrawCrownedWitch" xml:space="preserve">
     <value>deu draw-crown em uma witch</value>
   </data>
-  <data name="GameEventFirstRound" xml:space="preserve">
+    <data name="GameEventFirstRound" xml:space="preserve">
     <value>primeiro round</value>
   </data>
-  <data name="GameEventFrom" xml:space="preserve">
+    <data name="GameEventFrom" xml:space="preserve">
     <value>de</value>
   </data>
-  <data name="GameEventFullyLeveled" xml:space="preserve">
+    <data name="GameEventFullyLeveled" xml:space="preserve">
     <value>deu level completo em</value>
   </data>
-  <data name="GameEventGamePaused" xml:space="preserve">
+    <data name="GameEventGamePaused" xml:space="preserve">
     <value>O jogo foi pausado.</value>
   </data>
-  <data name="GameEventGameUnpaused" xml:space="preserve">
+    <data name="GameEventGameUnpaused" xml:space="preserve">
     <value>O jogo foi despausado.</value>
   </data>
-  <data name="GameEventHeight" xml:space="preserve">
+    <data name="GameEventHeight" xml:space="preserve">
     <value>altura: {0}</value>
   </data>
-  <data name="GameEventHighPounced" xml:space="preserve">
+    <data name="GameEventHighPounced" xml:space="preserve">
     <value>deu high-pounce em</value>
   </data>
-  <data name="GameEventHitWithRock" xml:space="preserve">
+    <data name="GameEventHitWithRock" xml:space="preserve">
     <value>acertou uma pedra em</value>
   </data>
-  <data name="GameEventHunter" xml:space="preserve">
+    <data name="GameEventHunter" xml:space="preserve">
     <value>um hunter</value>
   </data>
-  <data name="GameEventJockey" xml:space="preserve">
+    <data name="GameEventJockey" xml:space="preserve">
     <value>um jockey</value>
   </data>
-  <data name="GameEventLive" xml:space="preserve">
+    <data name="GameEventLive" xml:space="preserve">
     <value>valendo</value>
   </data>
-  <data name="GameEventLostTankToAi" xml:space="preserve">
+    <data name="GameEventLostTankToAi" xml:space="preserve">
     <value>perdeu o tank para a IA</value>
   </data>
-  <data name="GameEventMixStarted" xml:space="preserve">
+    <data name="GameEventMixStarted" xml:space="preserve">
     <value>Um mix começou.</value>
   </data>
-  <data name="GameEventRoundEnded" xml:space="preserve">
+    <data name="GameEventRoundEnded" xml:space="preserve">
     <value>Fim do round</value>
   </data>
-  <data name="GameEventRoundIsLive" xml:space="preserve">
+    <data name="GameEventRoundIsLive" xml:space="preserve">
     <value>O {0} está {1}.</value>
   </data>
-  <data name="GameEventScore" xml:space="preserve">
+    <data name="GameEventScore" xml:space="preserve">
     <value>{0} - {1}</value>
   </data>
-  <data name="GameEventSecondRound" xml:space="preserve">
+    <data name="GameEventSecondRound" xml:space="preserve">
     <value>segundo round</value>
   </data>
-  <data name="GameEventSeconds" xml:space="preserve">
+    <data name="GameEventSeconds" xml:space="preserve">
     <value>{0} segundos</value>
   </data>
-  <data name="GameEventSkeeted" xml:space="preserve">
+    <data name="GameEventSkeeted" xml:space="preserve">
     <value>skeetou</value>
   </data>
-  <data name="GameEventSkeetedGrenade" xml:space="preserve">
+    <data name="GameEventSkeetedGrenade" xml:space="preserve">
     <value>deu granada-skeet em</value>
   </data>
-  <data name="GameEventSkeetedMelee" xml:space="preserve">
+    <data name="GameEventSkeetedMelee" xml:space="preserve">
     <value>deu melee-skeet em</value>
   </data>
-  <data name="GameEventSkeetedRock" xml:space="preserve">
+    <data name="GameEventSkeetedRock" xml:space="preserve">
     <value>skeetou a pedra de</value>
   </data>
-  <data name="GameEventSkeetedSniper" xml:space="preserve">
+    <data name="GameEventSkeetedSniper" xml:space="preserve">
     <value>deu headshot-skeet em</value>
   </data>
-  <data name="GameEventSmoker" xml:space="preserve">
+    <data name="GameEventSmoker" xml:space="preserve">
     <value>um smoker</value>
   </data>
-  <data name="GameEventSpawnedAsTank" xml:space="preserve">
+    <data name="GameEventSpawnedAsTank" xml:space="preserve">
     <value>apareceu como tank</value>
   </data>
-  <data name="GameEventSpecialInfected" xml:space="preserve">
+    <data name="GameEventSpecialInfected" xml:space="preserve">
     <value>um infectado especial</value>
   </data>
-  <data name="GameEventSpitter" xml:space="preserve">
+    <data name="GameEventSpitter" xml:space="preserve">
     <value>uma spitter</value>
   </data>
-  <data name="GameEventSurvivor" xml:space="preserve">
+    <data name="GameEventSurvivor" xml:space="preserve">
     <value>um sobrevivente</value>
   </data>
-  <data name="GameEventSurvivorCount" xml:space="preserve">
+    <data name="GameEventSurvivorCount" xml:space="preserve">
     <value>{0} sobrevivente(s)</value>
   </data>
-  <data name="GameEventTank" xml:space="preserve">
+    <data name="GameEventTank" xml:space="preserve">
     <value>um tank</value>
   </data>
-  <data name="GameEventTankBecameBot" xml:space="preserve">
+    <data name="GameEventTankBecameBot" xml:space="preserve">
     <value>A IA assumiu o tank</value>
   </data>
-  <data name="GameEventTeammate" xml:space="preserve">
+    <data name="GameEventTeammate" xml:space="preserve">
     <value>um companheiro</value>
   </data>
-  <data name="GameEventTriggeredCarAlarm" xml:space="preserve">
+    <data name="GameEventTriggeredCarAlarm" xml:space="preserve">
     <value>disparou o alarme de um carro</value>
   </data>
-  <data name="GameEventUnknown" xml:space="preserve">
+    <data name="GameEventUnknown" xml:space="preserve">
     <value>Evento desconhecido.</value>
   </data>
-  <data name="GameEventUnknownPlayer" xml:space="preserve">
-    <value>Jogador desconhecido</value>
-  </data>
-  <data name="GameEventVomitedOn" xml:space="preserve">
+    <data name="GameEventVomitedOn" xml:space="preserve">
     <value>vomitou em</value>
   </data>
-  <data name="GameEventWasTeamSkeeted" xml:space="preserve">
+    <data name="GameEventWasTeamSkeeted" xml:space="preserve">
     <value>tomou team-skeet</value>
   </data>
-  <data name="GameEventWitch" xml:space="preserve">
+    <data name="GameEventWitch" xml:space="preserve">
     <value>uma witch</value>
   </data>
-  <data name="GameEventWouldHaveSkeeted" xml:space="preserve">
+    <data name="GameEventWouldHaveSkeeted" xml:space="preserve">
     <value>Teria skeetado com vida cheia.</value>
   </data>
-  <data name="Games" xml:space="preserve">
+    <data name="Games" xml:space="preserve">
     <value>Jogos</value>
   </data>
-  <data name="GeneralStatistics" xml:space="preserve">
+    <data name="GeneralStatistics" xml:space="preserve">
     <value>Estatísticas gerais</value>
   </data>
-  <data name="Griefing" xml:space="preserve">
+    <data name="Griefing" xml:space="preserve">
     <value>Griefing</value>
   </data>
-  <data name="Harassment" xml:space="preserve">
+    <data name="Harassment" xml:space="preserve">
     <value>Assédio</value>
   </data>
-  <data name="HeadshotsPistol" xml:space="preserve">
+    <data name="HeadshotsPistol" xml:space="preserve">
     <value>Pistol - Headshots</value>
   </data>
-  <data name="HeadshotsPistolPercent" xml:space="preserve">
+    <data name="HeadshotsPistolPercent" xml:space="preserve">
     <value>Pistol - HS/acertos (%)</value>
   </data>
-  <data name="HeadshotsSiPistol" xml:space="preserve">
+    <data name="HeadshotsSiPistol" xml:space="preserve">
     <value>Pistol - Headshots em SI</value>
   </data>
-  <data name="HeadshotsSiPistolPercent" xml:space="preserve">
+    <data name="HeadshotsSiPistolPercent" xml:space="preserve">
     <value>Pistol - HS/acertos em SI (%)</value>
   </data>
-  <data name="HeadshotsSiSmg" xml:space="preserve">
+    <data name="HeadshotsSiSmg" xml:space="preserve">
     <value>SMG / Rifle - Headshots em SI</value>
   </data>
-  <data name="HeadshotsSiSmgPercent" xml:space="preserve">
+    <data name="HeadshotsSiSmgPercent" xml:space="preserve">
     <value>SMG/Rifle - HS/acerto SI (%)</value>
   </data>
-  <data name="HeadshotsSiSniper" xml:space="preserve">
+    <data name="HeadshotsSiSniper" xml:space="preserve">
     <value>Sniper - Headshots em SI</value>
   </data>
-  <data name="HeadshotsSiSniperPercent" xml:space="preserve">
+    <data name="HeadshotsSiSniperPercent" xml:space="preserve">
     <value>Sniper - HS/acertos em SI (%)</value>
   </data>
-  <data name="HeadshotsSmg" xml:space="preserve">
+    <data name="HeadshotsSmg" xml:space="preserve">
     <value>SMG / Rifle - Headshots</value>
   </data>
-  <data name="HeadshotsSmgPercent" xml:space="preserve">
+    <data name="HeadshotsSmgPercent" xml:space="preserve">
     <value>SMG / Rifle - HS/acertos (%)</value>
   </data>
-  <data name="HeadshotsSniper" xml:space="preserve">
+    <data name="HeadshotsSniper" xml:space="preserve">
     <value>Sniper - Headshots</value>
   </data>
-  <data name="HeadshotsSniperPercent" xml:space="preserve">
+    <data name="HeadshotsSniperPercent" xml:space="preserve">
     <value>Sniper - HS/acertos (%)</value>
   </data>
-  <data name="Health" xml:space="preserve">
+    <data name="Health" xml:space="preserve">
     <value>Saúde</value>
   </data>
-  <data name="Hide" xml:space="preserve">
+    <data name="Hide" xml:space="preserve">
     <value>Ocultar</value>
   </data>
-  <data name="History" xml:space="preserve">
+    <data name="History" xml:space="preserve">
     <value>Histórico</value>
   </data>
-  <data name="HistoryMetaDescription" xml:space="preserve">
+    <data name="HistoryMetaDescription" xml:space="preserve">
     <value>Veja o ranking histórico de {0} e o desempenho dos melhores jogadores do período.</value>
   </data>
-  <data name="HistoryNotFoundMessage" xml:space="preserve">
+    <data name="HistoryNotFoundMessage" xml:space="preserve">
     <value>O histórico solicitado não foi localizado. Por favor, verifique as informações e tente novamente</value>
   </data>
-  <data name="HistoryNotFoundTitle" xml:space="preserve">
+    <data name="HistoryNotFoundTitle" xml:space="preserve">
     <value>Histórico não encontrado</value>
   </data>
-  <data name="HitsPistol" xml:space="preserve">
+    <data name="HitsPistol" xml:space="preserve">
     <value>Pistol - Acertos</value>
   </data>
-  <data name="HitsPistolPercent" xml:space="preserve">
+    <data name="HitsPistolPercent" xml:space="preserve">
     <value>Pistol - Acertos (%)</value>
   </data>
-  <data name="HitsShotgun" xml:space="preserve">
+    <data name="HitsShotgun" xml:space="preserve">
     <value>Shotgun - Acertos</value>
   </data>
-  <data name="HitsShotgunPercent" xml:space="preserve">
+    <data name="HitsShotgunPercent" xml:space="preserve">
     <value>Shotgun - Acertos (%)</value>
   </data>
-  <data name="HitsSiPistol" xml:space="preserve">
+    <data name="HitsSiPistol" xml:space="preserve">
     <value>Pistol - Acertos em SI</value>
   </data>
-  <data name="HitsSiPistolPercent" xml:space="preserve">
+    <data name="HitsSiPistolPercent" xml:space="preserve">
     <value>Pistol - Acertos em SI (%)</value>
   </data>
-  <data name="HitsSiShotgun" xml:space="preserve">
+    <data name="HitsSiShotgun" xml:space="preserve">
     <value>Shotgun - Acertos em SI</value>
   </data>
-  <data name="HitsSiShotgunPercent" xml:space="preserve">
+    <data name="HitsSiShotgunPercent" xml:space="preserve">
     <value>Shotgun - Acertos em SI (%)</value>
   </data>
-  <data name="HitsSiSmg" xml:space="preserve">
+    <data name="HitsSiSmg" xml:space="preserve">
     <value>SMG / Rifle - Acertos em SI</value>
   </data>
-  <data name="HitsSiSmgPercent" xml:space="preserve">
+    <data name="HitsSiSmgPercent" xml:space="preserve">
     <value>SMG/Rifle - Acerto SI (%)</value>
   </data>
-  <data name="HitsSiSniper" xml:space="preserve">
+    <data name="HitsSiSniper" xml:space="preserve">
     <value>Sniper - Acertos em SI</value>
   </data>
-  <data name="HitsSiSniperPercent" xml:space="preserve">
+    <data name="HitsSiSniperPercent" xml:space="preserve">
     <value>Sniper - Acertos em SI (%)</value>
   </data>
-  <data name="HitsSmg" xml:space="preserve">
+    <data name="HitsSmg" xml:space="preserve">
     <value>SMG / Rifle - Acertos</value>
   </data>
-  <data name="HitsSmgPercent" xml:space="preserve">
+    <data name="HitsSmgPercent" xml:space="preserve">
     <value>SMG / Rifle - Acertos (%)</value>
   </data>
-  <data name="HitsSniper" xml:space="preserve">
+    <data name="HitsSniper" xml:space="preserve">
     <value>Sniper - Acertos</value>
   </data>
-  <data name="HitsSniperPercent" xml:space="preserve">
+    <data name="HitsSniperPercent" xml:space="preserve">
     <value>Sniper - Acertos (%)</value>
   </data>
-  <data name="HitsTankPistol" xml:space="preserve">
+    <data name="HitsTankPistol" xml:space="preserve">
     <value>Pistol - Acertos no Tank</value>
   </data>
-  <data name="HitsTankPistolPercent" xml:space="preserve">
+    <data name="HitsTankPistolPercent" xml:space="preserve">
     <value>Pistol - Acertos no Tank (%)</value>
   </data>
-  <data name="HitsTankShotgun" xml:space="preserve">
+    <data name="HitsTankShotgun" xml:space="preserve">
     <value>Shotgun - Acertos no Tank</value>
   </data>
-  <data name="HitsTankShotgunPercent" xml:space="preserve">
+    <data name="HitsTankShotgunPercent" xml:space="preserve">
     <value>Shotgun - Acertos no Tank (%)</value>
   </data>
-  <data name="HitsTankSmg" xml:space="preserve">
+    <data name="HitsTankSmg" xml:space="preserve">
     <value>SMG / Rifle - Acertos no Tank</value>
   </data>
-  <data name="HitsTankSmgPercent" xml:space="preserve">
+    <data name="HitsTankSmgPercent" xml:space="preserve">
     <value>SMG/Rifle - Acerto Tank (%)</value>
   </data>
-  <data name="HitsTankSniper" xml:space="preserve">
+    <data name="HitsTankSniper" xml:space="preserve">
     <value>Sniper - Acertos no Tank</value>
   </data>
-  <data name="HitsTankSniperPercent" xml:space="preserve">
+    <data name="HitsTankSniperPercent" xml:space="preserve">
     <value>Sniper - Acertos no Tank (%)</value>
   </data>
-  <data name="HowManyExperiencePointsShouldTheUserLose" xml:space="preserve">
+    <data name="HowManyExperiencePointsShouldTheUserLose" xml:space="preserve">
     <value>Quantos pontos de experiência o usuário deve perder?</value>
   </data>
-  <data name="HunterDPs" xml:space="preserve">
+    <data name="HunterDPs" xml:space="preserve">
     <value>Hunter - High pounces</value>
   </data>
-  <data name="HunterDpDmg" xml:space="preserve">
+    <data name="HunterDpDmg" xml:space="preserve">
     <value>Dano total de pounce</value>
   </data>
-  <data name="HunterDpDmgHelp" xml:space="preserve">
+    <data name="HunterDpDmgHelp" xml:space="preserve">
     <value>Soma do dano de todos os high pounces registrados.</value>
   </data>
-  <data name="Incapacitated" xml:space="preserve">
+    <data name="Incapacitated" xml:space="preserve">
     <value>Incapacitado</value>
   </data>
-  <data name="Incaps" xml:space="preserve">
+    <data name="Incaps" xml:space="preserve">
     <value>Vezes incapacitado</value>
   </data>
-  <data name="Infected" xml:space="preserve">
+    <data name="Infected" xml:space="preserve">
     <value>Infectado</value>
   </data>
-  <data name="Infecteds" xml:space="preserve">
+    <data name="Infecteds" xml:space="preserve">
     <value>Infectados</value>
   </data>
-  <data name="InitiatesVoteBan" xml:space="preserve">
+    <data name="InitiatesVoteBan" xml:space="preserve">
     <value>Inicia uma votação para banir um jogador</value>
   </data>
-  <data name="InitiatesVoteKick" xml:space="preserve">
+    <data name="InitiatesVoteKick" xml:space="preserve">
     <value>Inicia uma votação para expulsar um jogador</value>
   </data>
-  <data name="InvalidScoreRange" xml:space="preserve">
+    <data name="InvalidScoreRange" xml:space="preserve">
     <value>Intervalo de score inválido</value>
   </data>
-  <data name="JockeyDPs" xml:space="preserve">
+    <data name="JockeyDPs" xml:space="preserve">
     <value>Jockey - High pounces</value>
   </data>
-  <data name="KicksPlayer" xml:space="preserve">
+    <data name="KicksPlayer" xml:space="preserve">
     <value>Remove um jogador do servidor</value>
   </data>
-  <data name="KitsUsed" xml:space="preserve">
+    <data name="KitsUsed" xml:space="preserve">
     <value>Kits utilizados</value>
   </data>
-  <data name="LastGameNegativeXp" xml:space="preserve">
+    <data name="LastGameNegativeXp" xml:space="preserve">
     <value>Último jogo: {0:N0} XP</value>
   </data>
-  <data name="LastGamePositiveXp" xml:space="preserve">
+    <data name="LastGamePositiveXp" xml:space="preserve">
     <value>Último jogo: +{0:N0} XP</value>
   </data>
-  <data name="LastLogin" xml:space="preserve">
+    <data name="LastLogin" xml:space="preserve">
     <value>Último login</value>
   </data>
-  <data name="LastMatches" xml:space="preserve">
+    <data name="LastMatches" xml:space="preserve">
     <value>Últimos jogos</value>
   </data>
-  <data name="LastMatchesMetaDescription" xml:space="preserve">
+    <data name="LastMatchesMetaDescription" xml:space="preserve">
     <value>Confira as partidas mais recentes do L4D2 Competitive, seus placares, campanhas e jogadores.</value>
   </data>
-  <data name="LatencyHigh" xml:space="preserve">
+    <data name="LatencyHigh" xml:space="preserve">
     <value>Alto</value>
   </data>
-  <data name="LatencyLow" xml:space="preserve">
+    <data name="LatencyLow" xml:space="preserve">
     <value>Baixo</value>
   </data>
-  <data name="LatencyMedium" xml:space="preserve">
+    <data name="LatencyMedium" xml:space="preserve">
     <value>Médio</value>
   </data>
-  <data name="Ledged" xml:space="preserve">
+    <data name="Ledged" xml:space="preserve">
     <value>Pendurados</value>
   </data>
-  <data name="LevelDrop" xml:space="preserve">
+    <data name="LevelDrop" xml:space="preserve">
     <value>Caiu de Nível!</value>
   </data>
-  <data name="LevelUp" xml:space="preserve">
+    <data name="LevelUp" xml:space="preserve">
     <value>Subiu de Nível!</value>
   </data>
-  <data name="Levels" xml:space="preserve">
+    <data name="Levels" xml:space="preserve">
     <value>Levels</value>
   </data>
-  <data name="LevelsHurt" xml:space="preserve">
+    <data name="LevelsHurt" xml:space="preserve">
     <value>Levels incompletos</value>
   </data>
-  <data name="LevelsTotal" xml:space="preserve">
+    <data name="LevelsTotal" xml:space="preserve">
     <value>Levels totais</value>
   </data>
-  <data name="LoginWithSteam" xml:space="preserve">
+    <data name="LoginWithSteam" xml:space="preserve">
     <value>Login com Steam</value>
   </data>
-  <data name="Loss" xml:space="preserve">
+    <data name="Loss" xml:space="preserve">
     <value>Derrotas</value>
   </data>
-  <data name="LossRate" xml:space="preserve">
+    <data name="LossRate" xml:space="preserve">
     <value>Taxa de derrotas</value>
   </data>
-  <data name="LvpFf" xml:space="preserve">
+    <data name="LvpFf" xml:space="preserve">
     <value>LVP (FF)</value>
   </data>
-  <data name="LvpFfCount" xml:space="preserve">
+    <data name="LvpFfCount" xml:space="preserve">
     <value>LVP de FF (vezes)</value>
   </data>
-  <data name="LvpFfGiven" xml:space="preserve">
+    <data name="LvpFfGiven" xml:space="preserve">
     <value>LVP</value>
   </data>
-  <data name="Map" xml:space="preserve">
+    <data name="Map" xml:space="preserve">
     <value>Mapa</value>
   </data>
-  <data name="MapStatisticsMetaDescription" xml:space="preserve">
+    <data name="MapStatisticsMetaDescription" xml:space="preserve">
     <value>Veja as estatísticas do mapa {0}, da partida em {1}, com placar {2} x {3}.</value>
   </data>
-  <data name="Maps" xml:space="preserve">
+    <data name="Maps" xml:space="preserve">
     <value>Mapas</value>
   </data>
-  <data name="MatchDetails" xml:space="preserve">
+    <data name="MatchDetails" xml:space="preserve">
     <value>Detalhes da partida</value>
   </data>
-  <data name="MatchHistory" xml:space="preserve">
+    <data name="MatchHistory" xml:space="preserve">
     <value>Histórico de partidas</value>
   </data>
-  <data name="MatchMetaDescription" xml:space="preserve">
+    <data name="MatchMetaDescription" xml:space="preserve">
     <value>Veja os detalhes da partida em {0}, disputada em {1}, com placar {2} x {3}.</value>
   </data>
-  <data name="MatchStatsTitle" xml:space="preserve">
+    <data name="MatchStatsTitle" xml:space="preserve">
     <value>Resultados por mapa</value>
   </data>
-  <data name="MaxLossStreak" xml:space="preserve">
+    <data name="MaxLossStreak" xml:space="preserve">
     <value>Maior sequência de derrotas</value>
   </data>
-  <data name="MaxPatentReached" xml:space="preserve">
+    <data name="MaxPatentReached" xml:space="preserve">
     <value>Patente máxima atingida</value>
   </data>
-  <data name="MaxWinStreak" xml:space="preserve">
+    <data name="MaxWinStreak" xml:space="preserve">
     <value>Maior sequência de vitórias</value>
   </data>
-  <data name="MeleesOnTank" xml:space="preserve">
+    <data name="MeleesOnTank" xml:space="preserve">
     <value>Tank - Melees acertadas</value>
   </data>
-  <data name="MicSpam" xml:space="preserve">
+    <data name="MicSpam" xml:space="preserve">
     <value>Spam de microfone</value>
   </data>
-  <data name="MoreInfo" xml:space="preserve">
+    <data name="MoreInfo" xml:space="preserve">
     <value>Mais informações</value>
   </data>
-  <data name="MutesPlayer" xml:space="preserve">
+    <data name="MutesPlayer" xml:space="preserve">
     <value>Muta um jogador</value>
   </data>
-  <data name="MvpCommon" xml:space="preserve">
+    <data name="MvpCommon" xml:space="preserve">
     <value>MVP (CI)</value>
   </data>
-  <data name="MvpCommonCount" xml:space="preserve">
+    <data name="MvpCommonCount" xml:space="preserve">
     <value>MVP de CI (vezes)</value>
   </data>
-  <data name="MvpSiDamage" xml:space="preserve">
+    <data name="MvpSiDamage" xml:space="preserve">
     <value>MVP (SI)</value>
   </data>
-  <data name="MvpSiDamageCount" xml:space="preserve">
+    <data name="MvpSiDamageCount" xml:space="preserve">
     <value>MVP de SI (vezes)</value>
   </data>
-  <data name="Name" xml:space="preserve">
+    <data name="Name" xml:space="preserve">
     <value>Nome</value>
   </data>
-  <data name="NextLevel" xml:space="preserve">
+    <data name="NextLevel" xml:space="preserve">
     <value>Próximo Nível: {0:N0}</value>
   </data>
-  <data name="NoMatchFound" xml:space="preserve">
+    <data name="NoMatchFound" xml:space="preserve">
     <value>Nenhuma partida encontrada</value>
   </data>
-  <data name="NoPlayersConnected" xml:space="preserve">
+    <data name="NoPlayersConnected" xml:space="preserve">
     <value>Nenhum jogador conectado</value>
   </data>
-  <data name="None" xml:space="preserve">
+    <data name="None" xml:space="preserve">
     <value>Nenhum</value>
   </data>
-  <data name="OneDay" xml:space="preserve">
+    <data name="OneDay" xml:space="preserve">
     <value>1 dia</value>
   </data>
-  <data name="OneHour" xml:space="preserve">
+    <data name="OneHour" xml:space="preserve">
     <value>1 hora</value>
   </data>
-  <data name="OrderBy" xml:space="preserve">
+    <data name="OrderBy" xml:space="preserve">
     <value>Ordenar por</value>
   </data>
-  <data name="Other" xml:space="preserve">
+    <data name="Other" xml:space="preserve">
     <value>Outro</value>
   </data>
-  <data name="Patent" xml:space="preserve">
+    <data name="Patent" xml:space="preserve">
     <value>Patente</value>
   </data>
-  <data name="Patents" xml:space="preserve">
+    <data name="Patents" xml:space="preserve">
     <value>Patentes</value>
   </data>
-  <data name="PatentsMetaDescription" xml:space="preserve">
+    <data name="PatentsMetaDescription" xml:space="preserve">
     <value>Conheça as patentes, níveis e requisitos de experiência do L4D2 Competitive.</value>
   </data>
-  <data name="PauseElapsed" xml:space="preserve">
+    <data name="PauseElapsed" xml:space="preserve">
     <value>Duração do pause</value>
   </data>
-  <data name="Paused" xml:space="preserve">
+    <data name="Paused" xml:space="preserve">
     <value>Pausado</value>
   </data>
-  <data name="PeriodRange" xml:space="preserve">
+    <data name="PeriodRange" xml:space="preserve">
     <value>De {1:00}/{0:0000} até {3:00}/{2:0000}</value>
   </data>
-  <data name="Permanent" xml:space="preserve">
+    <data name="Permanent" xml:space="preserve">
     <value>Permanente</value>
   </data>
-  <data name="PillsUsed" xml:space="preserve">
+    <data name="PillsUsed" xml:space="preserve">
     <value>Pílulas/adrenalinas usadas</value>
   </data>
-  <data name="Player" xml:space="preserve">
+    <data name="Player" xml:space="preserve">
     <value>Jogador</value>
   </data>
-  <data name="PlayerComparisonMetaDescription" xml:space="preserve">
+    <data name="PlayerComparisonMetaDescription" xml:space="preserve">
     <value>Compare o desempenho e as estatísticas de {0} e {1} no L4D2 Competitive.</value>
   </data>
-  <data name="PlayerDetails" xml:space="preserve">
+    <data name="PlayerDetails" xml:space="preserve">
     <value>Detalhes do jogador</value>
   </data>
-  <data name="PlayerMetaDescription" xml:space="preserve">
+    <data name="PlayerMetaDescription" xml:space="preserve">
     <value>Veja as estatísticas de {0}: posição #{1}, {2} jogos e {3} vitórias.</value>
   </data>
-  <data name="PlayerName" xml:space="preserve">
+    <data name="PlayerName" xml:space="preserve">
     <value>Nome do Jogador</value>
   </data>
-  <data name="PlayerNotFoundDetails" xml:space="preserve">
+    <data name="PlayerNotFoundDetails" xml:space="preserve">
     <value>Por isso, as estatísticas completas não estão disponíveis. As informações conhecidas sobre a conta são exibidas abaixo.</value>
   </data>
-  <data name="PlayerNotFoundMessage" xml:space="preserve">
+    <data name="PlayerNotFoundMessage" xml:space="preserve">
     <value>Este jogador ainda não está presente no ranking.</value>
   </data>
-  <data name="PlayerNotFoundMetaDescription" xml:space="preserve">
+    <data name="PlayerNotFoundMetaDescription" xml:space="preserve">
     <value>Veja as informações disponíveis sobre o jogador {0} no L4D2 Competitive.</value>
   </data>
-  <data name="PlayerNotFoundTitle" xml:space="preserve">
+    <data name="PlayerNotFoundTitle" xml:space="preserve">
     <value>Jogador fora do ranking</value>
   </data>
-  <data name="PlayerRelations" xml:space="preserve">
+    <data name="PlayerRelations" xml:space="preserve">
     <value>Relações com jogadores</value>
   </data>
-  <data name="Players" xml:space="preserve">
+    <data name="Players" xml:space="preserve">
     <value>Jogadores</value>
   </data>
-  <data name="PlayersMetaDescription" xml:space="preserve">
+    <data name="PlayersMetaDescription" xml:space="preserve">
     <value>Consulte as estatísticas de {0} jogadores do servidor L4D2 Competitive.</value>
   </data>
-  <data name="PlayingAgainst" xml:space="preserve">
+    <data name="PlayingAgainst" xml:space="preserve">
     <value>Jogando contra</value>
   </data>
-  <data name="PlayingTogether" xml:space="preserve">
+    <data name="PlayingTogether" xml:space="preserve">
     <value>Jogando junto</value>
   </data>
-  <data name="PointsEarnedOnMap" xml:space="preserve">
+    <data name="PointsEarnedOnMap" xml:space="preserve">
     <value>Pontos ganhos por mapa</value>
   </data>
-  <data name="Pops" xml:space="preserve">
+    <data name="Pops" xml:space="preserve">
     <value>Boomers estourados</value>
   </data>
-  <data name="Preview" xml:space="preserve">
+    <data name="Preview" xml:space="preserve">
     <value>Pré-visualização</value>
   </data>
-  <data name="PreviousNames" xml:space="preserve">
+    <data name="PreviousNames" xml:space="preserve">
     <value>Nomes anteriores</value>
   </data>
-  <data name="ProfileUrl" xml:space="preserve">
+    <data name="ProfileUrl" xml:space="preserve">
     <value>Perfil</value>
   </data>
-  <data name="Progress" xml:space="preserve">
+    <data name="Progress" xml:space="preserve">
     <value>Progresso</value>
   </data>
-  <data name="ProgressPercentage" xml:space="preserve">
+    <data name="ProgressPercentage" xml:space="preserve">
     <value>Progresso: {0:P0}</value>
   </data>
-  <data name="ProgressPoints" xml:space="preserve">
+    <data name="ProgressPoints" xml:space="preserve">
     <value>Pontos de progresso</value>
   </data>
-  <data name="Punishment" xml:space="preserve">
+    <data name="Punishment" xml:space="preserve">
     <value>Punição</value>
   </data>
-  <data name="RageQuit" xml:space="preserve">
+    <data name="RageQuit" xml:space="preserve">
     <value>Rage quit</value>
   </data>
-  <data name="Ranking" xml:space="preserve">
+    <data name="Ranking" xml:space="preserve">
     <value>Ranking</value>
   </data>
-  <data name="RankingMetaDescription" xml:space="preserve">
+    <data name="RankingMetaDescription" xml:space="preserve">
     <value>Acompanhe o ranking competitivo, o desempenho e as estatísticas dos jogadores de Left 4 Dead 2.</value>
   </data>
-  <data name="Recommended" xml:space="preserve">
+    <data name="Recommended" xml:space="preserve">
     <value>Recomendado</value>
   </data>
-  <data name="RelatedAccounts" xml:space="preserve">
+    <data name="RelatedAccounts" xml:space="preserve">
     <value>Contas relacionadas</value>
   </data>
-  <data name="RelationHelpAgainst" xml:space="preserve">
+    <data name="RelationHelpAgainst" xml:space="preserve">
     <value>Jogando um contra o outro, foram {0} partidas: {1} venceu {2} ({3}) e perdeu {4} ({5}).</value>
   </data>
-  <data name="RelationHelpTitle" xml:space="preserve">
+    <data name="RelationHelpTitle" xml:space="preserve">
     <value>Entendendo os números</value>
   </data>
-  <data name="RelationHelpTogether" xml:space="preserve">
+    <data name="RelationHelpTogether" xml:space="preserve">
     <value>Jogando juntos, no mesmo time, foram {0} partidas: {1} vitórias ({2}) e {3} derrotas ({4}).</value>
   </data>
-  <data name="RelationHelpTotal" xml:space="preserve">
+    <data name="RelationHelpTotal" xml:space="preserve">
     <value>{0} e {1} se cruzaram em {2} partidas no total.</value>
   </data>
-  <data name="RemoveComparison" xml:space="preserve">
+    <data name="RemoveComparison" xml:space="preserve">
     <value>Remover comparação</value>
   </data>
-  <data name="Restarts" xml:space="preserve">
+    <data name="Restarts" xml:space="preserve">
     <value>Reinícios</value>
   </data>
-  <data name="ReturnToRanking" xml:space="preserve">
+    <data name="ReturnToRanking" xml:space="preserve">
     <value>Retornar à página de ranking</value>
   </data>
-  <data name="RockEats" xml:space="preserve">
+    <data name="RockEats" xml:space="preserve">
     <value>Pedras recebidas</value>
   </data>
-  <data name="RockSkeets" xml:space="preserve">
+    <data name="RockSkeets" xml:space="preserve">
     <value>Rock skeets</value>
   </data>
-  <data name="RoundElapsed" xml:space="preserve">
+    <data name="RoundElapsed" xml:space="preserve">
     <value>Duração do round</value>
   </data>
-  <data name="RuleViolation" xml:space="preserve">
+    <data name="RuleViolation" xml:space="preserve">
     <value>Violação de regras</value>
   </data>
-  <data name="ScoreDifference" xml:space="preserve">
+    <data name="ScoreDifference" xml:space="preserve">
     <value>Diferença de pontos</value>
   </data>
-  <data name="Scoreboard" xml:space="preserve">
+    <data name="Scoreboard" xml:space="preserve">
     <value>Placar</value>
   </data>
-  <data name="SecondPlace" xml:space="preserve">
+    <data name="SecondPlace" xml:space="preserve">
     <value>Segundo lugar</value>
   </data>
-  <data name="SecondRound" xml:space="preserve">
+    <data name="SecondRound" xml:space="preserve">
     <value>2º round</value>
   </data>
-  <data name="SelectCampaign" xml:space="preserve">
+    <data name="SelectCampaign" xml:space="preserve">
     <value>Selecione uma campanha</value>
   </data>
-  <data name="SelectCommand" xml:space="preserve">
+    <data name="SelectCommand" xml:space="preserve">
     <value>Selecionar comando</value>
   </data>
-  <data name="SelectDurationMinutes" xml:space="preserve">
+    <data name="SelectDurationMinutes" xml:space="preserve">
     <value>Selecionar duração em minutos</value>
   </data>
-  <data name="SelectInfected" xml:space="preserve">
+    <data name="SelectInfected" xml:space="preserve">
     <value>Selecionar infectado</value>
   </data>
-  <data name="SelectMatchMode" xml:space="preserve">
+    <data name="SelectMatchMode" xml:space="preserve">
     <value>Selecionar o modo de partida</value>
   </data>
-  <data name="SelectPlayer" xml:space="preserve">
+    <data name="SelectPlayer" xml:space="preserve">
     <value>Selecionar jogador</value>
   </data>
-  <data name="SelectReason" xml:space="preserve">
+    <data name="SelectReason" xml:space="preserve">
     <value>Selecionar motivo</value>
   </data>
-  <data name="SelectSpectator" xml:space="preserve">
+    <data name="SelectSpectator" xml:space="preserve">
     <value>Selecionar espectador</value>
   </data>
-  <data name="SelectSurvivor" xml:space="preserve">
+    <data name="SelectSurvivor" xml:space="preserve">
     <value>Selecionar sobrevivente</value>
   </data>
-  <data name="SelectTeam" xml:space="preserve">
+    <data name="SelectTeam" xml:space="preserve">
     <value>Selecionar uma equipe</value>
   </data>
-  <data name="SelectWildcard" xml:space="preserve">
+    <data name="SelectWildcard" xml:space="preserve">
     <value>Selecionar curinga</value>
   </data>
-  <data name="SelfClears" xml:space="preserve">
+    <data name="SelfClears" xml:space="preserve">
     <value>Self clears</value>
   </data>
-  <data name="Send" xml:space="preserve">
+    <data name="Send" xml:space="preserve">
     <value>Enviar</value>
   </data>
-  <data name="Server" xml:space="preserve">
+    <data name="Server" xml:space="preserve">
     <value>Servidor</value>
   </data>
-  <data name="ServerIP" xml:space="preserve">
+    <data name="ServerIP" xml:space="preserve">
     <value>IP do Servidor</value>
   </data>
-  <data name="ServerInfo" xml:space="preserve">
+    <data name="ServerInfo" xml:space="preserve">
     <value>Info. do servidor</value>
   </data>
-  <data name="ServerMetaDescription" xml:space="preserve">
+    <data name="ServerMetaDescription" xml:space="preserve">
     <value>Acompanhe o servidor L4D2 Competitive, o mapa {0} e seus {1} jogadores conectados.</value>
   </data>
-  <data name="Settings" xml:space="preserve">
+    <data name="Settings" xml:space="preserve">
     <value>Configurações</value>
   </data>
-  <data name="ShotsPistol" xml:space="preserve">
+    <data name="ShotsPistol" xml:space="preserve">
     <value>Pistol - Disparos</value>
   </data>
-  <data name="ShotsShotgun" xml:space="preserve">
+    <data name="ShotsShotgun" xml:space="preserve">
     <value>Shotgun - Disparos (Pellets)</value>
   </data>
-  <data name="ShotsSmg" xml:space="preserve">
+    <data name="ShotsSmg" xml:space="preserve">
     <value>SMG / Rifle - Disparos</value>
   </data>
-  <data name="ShotsSniper" xml:space="preserve">
+    <data name="ShotsSniper" xml:space="preserve">
     <value>Sniper - Disparos</value>
   </data>
-  <data name="Shoves" xml:space="preserve">
+    <data name="Shoves" xml:space="preserve">
     <value>Empurrões</value>
   </data>
-  <data name="ShowMore" xml:space="preserve">
+    <data name="ShowMore" xml:space="preserve">
     <value>Mostrar mais...</value>
   </data>
-  <data name="ShowMorePlayers" xml:space="preserve">
+    <data name="ShowMorePlayers" xml:space="preserve">
     <value>Ver mais jogadores</value>
   </data>
-  <data name="SiDamage" xml:space="preserve">
+    <data name="SiDamage" xml:space="preserve">
     <value>Dano aos SI</value>
   </data>
-  <data name="SiDamageDealt" xml:space="preserve">
+    <data name="SiDamageDealt" xml:space="preserve">
     <value>SI - Dano causado</value>
   </data>
-  <data name="SiDamageTankUp" xml:space="preserve">
+    <data name="SiDamageTankUp" xml:space="preserve">
     <value>Dano em SI durante Tank</value>
   </data>
-  <data name="SiKilled" xml:space="preserve">
+    <data name="SiKilled" xml:space="preserve">
     <value>SI mortos</value>
   </data>
-  <data name="SiKilledTankUp" xml:space="preserve">
+    <data name="SiKilledTankUp" xml:space="preserve">
     <value>SI mortos durante Tank</value>
   </data>
-  <data name="SiSpawned" xml:space="preserve">
+    <data name="SiSpawned" xml:space="preserve">
     <value>SI spawnados</value>
   </data>
-  <data name="SilencesPlayer" xml:space="preserve">
+    <data name="SilencesPlayer" xml:space="preserve">
     <value>Silencia um jogador</value>
   </data>
-  <data name="Skeets" xml:space="preserve">
+    <data name="Skeets" xml:space="preserve">
     <value>Skeets</value>
   </data>
-  <data name="SkeetsHurt" xml:space="preserve">
+    <data name="SkeetsHurt" xml:space="preserve">
     <value>Skeets incompletos</value>
   </data>
-  <data name="SkeetsMelee" xml:space="preserve">
+    <data name="SkeetsMelee" xml:space="preserve">
     <value>Melee skeets</value>
   </data>
-  <data name="SkeetsTotal" xml:space="preserve">
+    <data name="SkeetsTotal" xml:space="preserve">
     <value>Skeets totais</value>
   </data>
-  <data name="SlaysPlayer" xml:space="preserve">
+    <data name="SlaysPlayer" xml:space="preserve">
     <value>Mata um jogador</value>
   </data>
-  <data name="SpawnBoomer" xml:space="preserve">
+    <data name="SpawnBoomer" xml:space="preserve">
     <value>Spawns - Boomer</value>
   </data>
-  <data name="SpawnCharger" xml:space="preserve">
+    <data name="SpawnCharger" xml:space="preserve">
     <value>Spawns - Charger</value>
   </data>
-  <data name="SpawnHunter" xml:space="preserve">
+    <data name="SpawnHunter" xml:space="preserve">
     <value>Spawns - Hunter</value>
   </data>
-  <data name="SpawnJockey" xml:space="preserve">
+    <data name="SpawnJockey" xml:space="preserve">
     <value>Spawns - Jockey</value>
   </data>
-  <data name="SpawnSmoker" xml:space="preserve">
+    <data name="SpawnSmoker" xml:space="preserve">
     <value>Spawns - Smoker</value>
   </data>
-  <data name="SpawnSpitter" xml:space="preserve">
+    <data name="SpawnSpitter" xml:space="preserve">
     <value>Spawns - Spitter</value>
   </data>
-  <data name="Spawning" xml:space="preserve">
+    <data name="Spawning" xml:space="preserve">
     <value>Spawning</value>
   </data>
-  <data name="Spawns" xml:space="preserve">
+    <data name="Spawns" xml:space="preserve">
     <value>Spawns</value>
   </data>
-  <data name="Spectator" xml:space="preserve">
+    <data name="Spectator" xml:space="preserve">
     <value>Espectador</value>
   </data>
-  <data name="Spectators" xml:space="preserve">
+    <data name="Spectators" xml:space="preserve">
     <value>Espectadores</value>
   </data>
-  <data name="Star" xml:space="preserve">
+    <data name="Star" xml:space="preserve">
     <value>Estrela</value>
   </data>
-  <data name="Start" xml:space="preserve">
+    <data name="Start" xml:space="preserve">
     <value>Início</value>
   </data>
-  <data name="StartTime" xml:space="preserve">
+    <data name="StartTime" xml:space="preserve">
     <value>Início do round</value>
   </data>
-  <data name="StartTimePause" xml:space="preserve">
+    <data name="StartTimePause" xml:space="preserve">
     <value>Início do pause</value>
   </data>
-  <data name="StartTimeTank" xml:space="preserve">
+    <data name="StartTimeTank" xml:space="preserve">
     <value>Início do Tank</value>
   </data>
-  <data name="Started" xml:space="preserve">
+    <data name="Started" xml:space="preserve">
     <value>Iniciado</value>
   </data>
-  <data name="Starting" xml:space="preserve">
+    <data name="Starting" xml:space="preserve">
     <value>Iniciando</value>
   </data>
-  <data name="StatValue" xml:space="preserve">
+    <data name="StatValue" xml:space="preserve">
     <value>Valor</value>
   </data>
-  <data name="StatisticsAsInfected" xml:space="preserve">
+    <data name="StatisticsAsInfected" xml:space="preserve">
     <value>Estatísticas como infectado</value>
   </data>
-  <data name="StatisticsAsSurvivor" xml:space="preserve">
+    <data name="StatisticsAsSurvivor" xml:space="preserve">
     <value>Estatísticas como sobrevivente</value>
   </data>
-  <data name="SteamId" xml:space="preserve">
+    <data name="SteamId" xml:space="preserve">
     <value>ID da Steam</value>
   </data>
-  <data name="StopTimePause" xml:space="preserve">
+    <data name="StopTimePause" xml:space="preserve">
     <value>Fim do pause</value>
   </data>
-  <data name="StopTimeTank" xml:space="preserve">
+    <data name="StopTimeTank" xml:space="preserve">
     <value>Fim do Tank</value>
   </data>
-  <data name="Survivor" xml:space="preserve">
+    <data name="Survivor" xml:space="preserve">
     <value>Sobrevivente</value>
   </data>
-  <data name="Survivors" xml:space="preserve">
+    <data name="Survivors" xml:space="preserve">
     <value>Sobreviventes</value>
   </data>
-  <data name="SwapsPlayers" xml:space="preserve">
+    <data name="SwapsPlayers" xml:space="preserve">
     <value>Troca os jogadores de equipe</value>
   </data>
-  <data name="SwitchDarkTheme" xml:space="preserve">
+    <data name="SwitchDarkTheme" xml:space="preserve">
     <value>Mudar para o tema escuro</value>
   </data>
-  <data name="SwitchLightTheme" xml:space="preserve">
+    <data name="SwitchLightTheme" xml:space="preserve">
     <value>Mudar para o tema claro</value>
   </data>
-  <data name="Tank" xml:space="preserve">
+    <data name="Tank" xml:space="preserve">
     <value>Tank</value>
   </data>
-  <data name="TankDamage" xml:space="preserve">
+    <data name="TankDamage" xml:space="preserve">
     <value>Dano ao Tank</value>
   </data>
-  <data name="TankElapsed" xml:space="preserve">
+    <data name="TankElapsed" xml:space="preserve">
     <value>Duração do Tank</value>
   </data>
-  <data name="TankKilled" xml:space="preserve">
+    <data name="TankKilled" xml:space="preserve">
     <value>Tanks mortos</value>
   </data>
-  <data name="TankPasses" xml:space="preserve">
+    <data name="TankPasses" xml:space="preserve">
     <value>Passes de Tank</value>
   </data>
-  <data name="Team" xml:space="preserve">
+    <data name="Team" xml:space="preserve">
     <value>Equipe</value>
   </data>
-  <data name="TeamAScore" xml:space="preserve">
+    <data name="TeamAScore" xml:space="preserve">
     <value>Pontuação da equipe A</value>
   </data>
-  <data name="TeamBScore" xml:space="preserve">
+    <data name="TeamBScore" xml:space="preserve">
     <value>Pontuação da equipe B</value>
   </data>
-  <data name="TeamKill" xml:space="preserve">
+    <data name="TeamKill" xml:space="preserve">
     <value>Fogo amigo</value>
   </data>
-  <data name="TeamShare" xml:space="preserve">
+    <data name="TeamShare" xml:space="preserve">
     <value>% da equipe</value>
   </data>
-  <data name="TeamStatisticsAsInfected" xml:space="preserve">
+    <data name="TeamStatisticsAsInfected" xml:space="preserve">
     <value>Estatísticas da equipe {0} jogando como infectados</value>
   </data>
-  <data name="TeamStatisticsAsSurvivor" xml:space="preserve">
+    <data name="TeamStatisticsAsSurvivor" xml:space="preserve">
     <value>Estatísticas da equipe {0} jogando como sobreviventes</value>
   </data>
-  <data name="TeamXScore" xml:space="preserve">
+    <data name="TeamXScore" xml:space="preserve">
     <value>Score da equipe {0}</value>
   </data>
-  <data name="TenMinutes" xml:space="preserve">
+    <data name="TenMinutes" xml:space="preserve">
     <value>10 minutos</value>
   </data>
-  <data name="Terminal" xml:space="preserve">
+    <data name="Terminal" xml:space="preserve">
     <value>Terminal</value>
   </data>
-  <data name="TextCopied" xml:space="preserve">
+    <data name="TextCopied" xml:space="preserve">
     <value>Texto copiado!</value>
   </data>
-  <data name="ThirdPlace" xml:space="preserve">
+    <data name="ThirdPlace" xml:space="preserve">
     <value>Terceiro lugar</value>
   </data>
-  <data name="ThirtyMinutes" xml:space="preserve">
+    <data name="ThirtyMinutes" xml:space="preserve">
     <value>30 minutos</value>
   </data>
-  <data name="Time" xml:space="preserve">
+    <data name="Time" xml:space="preserve">
     <value>Tempo</value>
   </data>
-  <data name="TongueCuts" xml:space="preserve">
+    <data name="TongueCuts" xml:space="preserve">
     <value>Línguas cortadas</value>
   </data>
-  <data name="Total" xml:space="preserve">
+    <data name="Total" xml:space="preserve">
     <value>Total</value>
   </data>
-  <data name="ToxicBehavior" xml:space="preserve">
+    <data name="ToxicBehavior" xml:space="preserve">
     <value>Comportamento tóxico</value>
   </data>
-  <data name="Trophy" xml:space="preserve">
+    <data name="Trophy" xml:space="preserve">
     <value>Troféu</value>
   </data>
-  <data name="TypeYourMessage" xml:space="preserve">
+    <data name="TypeYourMessage" xml:space="preserve">
     <value>Digite sua mensagem</value>
   </data>
-  <data name="UngagsPlayer" xml:space="preserve">
+    <data name="UngagsPlayer" xml:space="preserve">
     <value>Remove o gag de um jogador</value>
   </data>
-  <data name="UnmutesPlayer" xml:space="preserve">
+    <data name="UnmutesPlayer" xml:space="preserve">
     <value>Desmuta um jogador</value>
   </data>
-  <data name="UnsilencesPlayer" xml:space="preserve">
+    <data name="UnsilencesPlayer" xml:space="preserve">
     <value>Remove o silêncio de um jogador</value>
   </data>
-  <data name="WhyUseDns" xml:space="preserve">
+    <data name="WhyUseDns" xml:space="preserve">
     <value>Prefira o IP: alguns chats (como o da Steam) podem transformar o DNS em link e quebrar o comando de conexão. O DNS é uma alternativa — ele continua o mesmo mesmo que o IP do servidor mude.</value>
   </data>
-  <data name="Win" xml:space="preserve">
+    <data name="Win" xml:space="preserve">
     <value>Vitória</value>
   </data>
-  <data name="WinRate" xml:space="preserve">
+    <data name="WinRate" xml:space="preserve">
     <value>Taxa de vitória</value>
   </data>
-  <data name="Wins" xml:space="preserve">
+    <data name="Wins" xml:space="preserve">
     <value>Vitórias</value>
   </data>
-  <data name="Witch" xml:space="preserve">
+    <data name="Witch" xml:space="preserve">
     <value>Bruxa</value>
   </data>
-  <data name="WitchDamage" xml:space="preserve">
+    <data name="WitchDamage" xml:space="preserve">
     <value>Dano à Witch</value>
   </data>
-  <data name="WitchKilled" xml:space="preserve">
+    <data name="WitchKilled" xml:space="preserve">
     <value>Witches mortas</value>
   </data>
-  <data name="XpProgress" xml:space="preserve">
+    <data name="XpProgress" xml:space="preserve">
     <value>XP: {0:N0} / {1:N0}</value>
   </data>
-  <data name="YearOf" xml:space="preserve">
+    <data name="YearOf" xml:space="preserve">
     <value>Ano de {0}</value>
   </data>
 </root>

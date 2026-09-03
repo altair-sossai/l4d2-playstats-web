@@ -12,6 +12,11 @@ public static partial class GameEventHtmlExtensions
 
     extension(IHtmlHelper html)
     {
+        public IHtmlContent EventPlayer(Core.GameInfo.Models.Player player)
+        {
+            return html.EventPlayer(player, string.Empty);
+        }
+
         public IHtmlContent EventPlayer(Core.GameInfo.Models.Player? player, string fallback)
         {
             var name = player?.Name ?? fallback;
