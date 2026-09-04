@@ -10,4 +10,6 @@ public class RoundEndedEvent : GameEvent
 
     public int SurvivorScore { get; set; }
     public int InfectedScore { get; set; }
+
+    public int Difference => Math.Abs(SurvivorScore - InfectedScore);
 }

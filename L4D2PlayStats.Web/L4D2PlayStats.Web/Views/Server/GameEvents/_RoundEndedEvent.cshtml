@@ -4,5 +4,10 @@
 @model L4D2PlayStats.Core.GameInfo.Models.Events.RoundEndedEvent
 @inject IStringLocalizer<SharedResource> Localizer
 
-@Localizer["GameEventRoundEnded"]
-(@Html.EventStat(Localizer["GameEventScore"].Value, Model.SurvivorScore, Model.InfectedScore)).
+@{
+    var survivor = Html.EventSpan("game-event-highlight", Model.SurvivorScore.ToString());
+    var infected = Html.EventSpan("game-event-highlight", Model.InfectedScore.ToString());
+    var difference = Html.EventSpan("game-event-action", Model.Difference.ToString());
+}
+
+@Localizer["GameEventRoundEnded"] (@Html.EventFormat(Localizer["GameEventScore"].Value, survivor, infected)) - @Html.EventFormat(Localizer["GameEventScoreDifference"].Value, difference).
