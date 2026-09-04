@@ -6,10 +6,18 @@ public static class ChatBindBlacklist
 {
     private static readonly string[] Phrases =
     [
+        "gogogo",
         "go go go",
+
+        "back back",
         "back back back",
+
+        "tank tank",
         "tank tank tank",
+
+        "hit hit",
         "hit hit hit",
+
         "r"
     ];
 
