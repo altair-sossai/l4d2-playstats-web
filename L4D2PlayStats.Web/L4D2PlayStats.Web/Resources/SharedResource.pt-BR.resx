@@ -514,7 +514,7 @@
     <value>{0} x {1}</value>
   </data>
     <data name="GameEventScoreDifference" xml:space="preserve">
-    <value>diferença de {0}pts</value>
+    <value>diferença de {0}</value>
   </data>
     <data name="GameEventSecondRound" xml:space="preserve">
     <value>segundo round</value>
