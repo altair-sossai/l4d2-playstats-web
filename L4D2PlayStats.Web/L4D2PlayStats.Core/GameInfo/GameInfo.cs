@@ -24,7 +24,7 @@ public class GameInfo
 
     private static readonly TimeSpan MessageRetention = TimeSpan.FromHours(1);
     private static readonly TimeSpan FeedRetention = TimeSpan.FromHours(1);
-    private static readonly TimeSpan Delay = TimeSpan.FromSeconds(15);
+    private static readonly TimeSpan Delay = TimeSpan.FromSeconds(60);
 
     private static readonly Lock Lock = new();
 
@@ -152,6 +152,9 @@ public class GameInfo
 
         if (command.Message.Length > 200)
             return SendExternalMessageResult.FailureResult("Message cannot be longer than 200 characters.");
+
+        if (!user.IsAdmin)
+            return SendExternalMessageResult.FailureResult("Today only administrators can send messages to the server.");
 
         lock (Lock)
         {
