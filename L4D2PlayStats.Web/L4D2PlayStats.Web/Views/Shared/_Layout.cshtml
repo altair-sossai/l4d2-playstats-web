@@ -437,6 +437,12 @@
 @await RenderSectionAsync("Scripts", false)
 
 <script>
+        var titlePlayersRegex = /^🟢\s*\d+\/\d+\s*\|\s*/;
+
+        function getBaseTitle() {
+            return document.title.replace(titlePlayersRegex, '');
+        }
+
         function setLanguage(culture) {
             $.ajax({
                 url: '@Url.Action("Change", "Language")',
@@ -482,15 +488,19 @@
                 url: '/api/server',
                 method: 'GET',
                 success: function (serverInfo) {
+                    var baseTitle = getBaseTitle();
+
                     if (!serverInfo || serverInfo.players == 0) {
                         $('#server-info').hide();
                         $('#game-info-chat').hide();
+                        document.title = baseTitle;
                         return;
                     }
 
                     $('#server-status').text('● ' + serverInfo.players + '/' + serverInfo.max_players);
                     $('#server-info').show();
                     $('#game-info-chat').show();
+                    document.title = '🟢 ' + serverInfo.players + '/' + serverInfo.max_players + ' | ' + baseTitle;
                 },
                 complete: function () {
                     setTimeout(updateServerInfo, 4000);
