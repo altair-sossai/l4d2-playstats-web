@@ -1,5 +1,6 @@
 ﻿@using L4D2PlayStats.Core.Auth
 @using L4D2PlayStats.Core.Campaign.Contracts
+@using L4D2PlayStats.Core.ChatBans.Services
 @using L4D2PlayStats.Web
 @using L4D2PlayStats.Web.PageMetadata
 @using Microsoft.Extensions.Localization
@@ -9,9 +10,12 @@
 @inject ICurrentUser CurrentUser
 @inject ICampaignName CampaignName
 @inject ICampaignThumb CampaignThumb
+@inject IChatBanService ChatBanService
 
 @{
     ViewData["PageMetadata"] = new ServerPageMetadata(Model, SharedLocalizer, CampaignName, CampaignThumb);
+
+    var chatBan = CurrentUser.IsAuthenticated ? await ChatBanService.FindAsync(CurrentUser.CommunityId) : null;
 }
 
 @section Styles {
@@ -303,6 +307,14 @@
                         $('button[type="submit"]').prop('disabled', true);
                     } else {
                         alert(result?.errorMessage ?? statusCode);
+                    }
+                },
+                error: function (jqXHR) {
+                    if (jqXHR.status === 403) {
+                        alert(jqXHR.responseJSON?.errorMessage ?? '@Html.Raw(SharedLocalizer["YouAreBanned"])');
+                        location.reload();
+                    } else {
+                        alert(jqXHR.responseJSON?.errorMessage ?? jqXHR.statusText);
                     }
                 }
             });
@@ -812,7 +824,17 @@
                 <div id="feed" style="margin-bottom: 20px">
                     @await Html.PartialAsync("_Feed", Model.GameInfo.Feed)
                 </div>
-                @if (CurrentUser.IsAuthenticated)
+                @if (chatBan != null)
+                {
+                    <p class="text-danger" style="margin: 0">
+                        <strong>@SharedLocalizer["YouAreBanned"]</strong>
+                        @if (!string.IsNullOrWhiteSpace(chatBan.Reason))
+                        {
+                            <text> @SharedLocalizer["Reason"]: @chatBan.Reason</text>
+                        }
+                    </p>
+                }
+                else if (CurrentUser.IsAuthenticated)
                 {
                     <form id="chatForm" class="form-inline" onsubmit="return false;">
                         <div class="input-group" style="width: 100%">

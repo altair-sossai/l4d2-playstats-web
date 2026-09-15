@@ -1359,4 +1359,46 @@
     <data name="YearOf" xml:space="preserve">
     <value>Year of {0}</value>
   </data>
+    <data name="ChatBans" xml:space="preserve">
+    <value>Chat Bans</value>
+  </data>
+    <data name="YouAreBanned" xml:space="preserve">
+    <value>You have been banned from the chat.</value>
+  </data>
+    <data name="Reason" xml:space="preserve">
+    <value>Reason</value>
+  </data>
+    <data name="Search" xml:space="preserve">
+    <value>Search</value>
+  </data>
+    <data name="Delete" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+    <data name="Save" xml:space="preserve">
+    <value>Save</value>
+  </data>
+    <data name="Cancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+    <data name="AddBan" xml:space="preserve">
+    <value>Add ban</value>
+  </data>
+    <data name="BanDate" xml:space="preserve">
+    <value>Ban date</value>
+  </data>
+    <data name="CreatedBy" xml:space="preserve">
+    <value>Banned by</value>
+  </data>
+    <data name="RecentSenders" xml:space="preserve">
+    <value>Recent chat senders</value>
+  </data>
+    <data name="NoChatBansFound" xml:space="preserve">
+    <value>No chat bans found.</value>
+  </data>
+    <data name="ConfirmDeleteChatBan" xml:space="preserve">
+    <value>Are you sure you want to remove this chat ban?</value>
+  </data>
+    <data name="SteamIdOrProfileUrl" xml:space="preserve">
+    <value>Steam ID or profile URL</value>
+  </data>
 </root>

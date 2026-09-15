@@ -1,0 +1,318 @@
+@using L4D2PlayStats.Web
+@using Microsoft.Extensions.Localization
+@inject IStringLocalizer<SharedResource> SharedLocalizer
+
+@{
+    ViewData["Title"] = SharedLocalizer["ChatBans"].Value;
+}
+
+<h4 class="text-center">@SharedLocalizer["ChatBans"]</h4>
+
+<div class="row" style="margin-bottom: 10px">
+    <div class="col-sm-6" style="margin-bottom: 10px">
+        <div class="input-group">
+            <input type="text" id="search" class="form-control" placeholder="@SharedLocalizer["Search"]"/>
+            <span class="input-group-btn">
+                <button class="btn btn-default" type="button" disabled>
+                    <span class="glyphicon glyphicon-search"></span>
+                </button>
+            </span>
+        </div>
+    </div>
+    <div class="col-sm-6 text-right">
+        <button type="button" class="btn btn-primary" onclick="openAddBanModal()">
+            <span class="glyphicon glyphicon-plus"></span>
+            @SharedLocalizer["AddBan"]
+        </button>
+    </div>
+</div>
+
+<div class="table-responsive">
+    <table class="table table-striped table-hover table-bordered table-condensed">
+        <thead>
+        <tr>
+            <th colspan="2">
+                <a href="#" data-order-by="name">@SharedLocalizer["Player"]</a>
+            </th>
+            <th class="text-center" style="width: 160px">
+                <a href="#" data-order-by="date">@SharedLocalizer["BanDate"]</a>
+            </th>
+            <th class="hidden-xs">@SharedLocalizer["Reason"]</th>
+            <th class="text-center" style="width: 90px"></th>
+        </tr>
+        </thead>
+        <tbody id="chatBansBody">
+        <tr>
+            <td colspan="4" class="text-center text-muted">@SharedLocalizer["NoChatBansFound"]</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<div id="chatBanModal" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="chatBanModalTitle">@SharedLocalizer["AddBan"]</h4>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" id="banName"/>
+                <div class="form-group">
+                    <label for="communityId">@SharedLocalizer["SteamIdOrProfileUrl"]</label>
+                    <input type="text" id="communityId" class="form-control" placeholder="76561198000000000">
+                </div>
+                <div class="form-group">
+                    <label for="reason">@SharedLocalizer["Reason"]</label>
+                    <textarea id="reason" class="form-control" rows="2"></textarea>
+                </div>
+                <div id="recentSendersPanel">
+                    <label>@SharedLocalizer["RecentSenders"]</label>
+                    <div id="recentSendersList" class="list-group" style="max-height: 220px; overflow-y: auto"></div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">@SharedLocalizer["Cancel"]</button>
+                <button type="button" class="btn btn-primary" id="saveBanButton" onclick="saveBan()">@SharedLocalizer["Save"]</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts
+{
+    <script>
+        var chatBans = {
+            all: [],
+            search: '',
+            orderBy: 'date',
+            asc: false
+        };
+
+        var reasonLabel = '@Html.Raw(SharedLocalizer["Reason"])';
+
+        function formatDate(value) {
+            if (!value)
+                return '-';
+
+            return new Date(value).toLocaleString();
+        }
+
+        function loadChatBans() {
+            $.ajax({
+                url: '/api/chat-bans',
+                type: 'GET',
+                success: function (result) {
+                    chatBans.all = result || [];
+                    renderChatBans();
+                }
+            });
+        }
+
+        function renderChatBans() {
+            var search = chatBans.search.toLowerCase();
+
+            var items = chatBans.all.filter(function (item) {
+                if (!search)
+                    return true;
+
+                return (item.name || '').toLowerCase().indexOf(search) !== -1 ||
+                    (item.communityId || '').toLowerCase().indexOf(search) !== -1 ||
+                    (item.steamId || '').toLowerCase().indexOf(search) !== -1 ||
+                    (item.steam3 || '').toLowerCase().indexOf(search) !== -1;
+            });
+
+            items.sort(function (a, b) {
+                var result;
+
+                if (chatBans.orderBy === 'name')
+                    result = (a.name || a.communityId).localeCompare(b.name || b.communityId);
+                else
+                    result = new Date(a.createdAtUtc) - new Date(b.createdAtUtc);
+
+                return chatBans.asc ? result : -result;
+            });
+
+            var body = $('#chatBansBody');
+            body.empty();
+
+            if (items.length === 0) {
+                body.append('<tr><td colspan="4" class="text-center text-muted">@Html.Raw(SharedLocalizer["NoChatBansFound"])</td></tr>');
+                return;
+            }
+
+            items.forEach(function (item) {
+                var row = $('<tr></tr>');
+
+                row.append(
+                    '<td class="text-center vertical-align-middle slim" style="width: 50px">' +
+                    '<img src="' + item.avatarUrl + '" alt="" style="width: 40px; border-radius: 5px" onerror="imgOnError(this)"/>' +
+                    '</td>'
+                );
+
+                var nameCell = $('<td class="vertical-align-middle"></td>').append(
+                    $('<div></div>').text(item.name || item.communityId),
+                    $('<small class="text-muted"></small>').text(item.communityId)
+                );
+
+                if (item.reason) {
+                    nameCell.append(
+                        $('<div class="visible-xs-block text-muted small"></div>').text(reasonLabel + ': ' + item.reason)
+                    );
+                }
+
+                row.append(nameCell);
+
+                row.append($('<td class="text-center vertical-align-middle"></td>').text(formatDate(item.createdAtUtc)));
+
+                row.append($('<td class="vertical-align-middle hidden-xs"></td>').text(item.reason || '-'));
+
+                var actions = $('<td class="text-center vertical-align-middle"></td>');
+
+                var editButton = $('<button type="button" class="btn btn-default btn-xs"><span class="glyphicon glyphicon-pencil"></span></button>');
+                editButton.on('click', function () {
+                    openEditBanModal(item);
+                });
+
+                var deleteButton = $('<button type="button" class="btn btn-danger btn-xs" style="margin-left: 5px"><span class="glyphicon glyphicon-trash"></span></button>');
+                deleteButton.on('click', function () {
+                    deleteBan(item.communityId);
+                });
+
+                actions.append(editButton, deleteButton);
+                row.append(actions);
+
+                body.append(row);
+            });
+        }
+
+        function openAddBanModal() {
+            $('#chatBanModalTitle').text('@Html.Raw(SharedLocalizer["AddBan"])');
+            $('#communityId').val('').prop('disabled', false);
+            $('#banName').val('');
+            $('#reason').val('');
+            $('#recentSendersPanel').show();
+
+            loadRecentSenders();
+
+            $('#chatBanModal').modal();
+        }
+
+        function openEditBanModal(item) {
+            $('#chatBanModalTitle').text(item.name || item.communityId);
+            $('#communityId').val(item.communityId).prop('disabled', true);
+            $('#banName').val('');
+            $('#reason').val(item.reason || '');
+            $('#recentSendersPanel').hide();
+
+            $('#chatBanModal').modal();
+        }
+
+        function loadRecentSenders() {
+            var list = $('#recentSendersList');
+            list.empty();
+
+            $.ajax({
+                url: '/api/chat-bans/recent-senders',
+                type: 'GET',
+                success: function (senders) {
+                    if (!senders || senders.length === 0) {
+                        list.append('<div class="list-group-item text-muted">-</div>');
+                        return;
+                    }
+
+                    senders.forEach(function (sender) {
+                        var item = $('<a href="#" class="list-group-item"></a>');
+
+                        if (sender.alreadyBanned)
+                            item.addClass('disabled');
+
+                        item.append('<img src="' + sender.avatarUrl + '" alt="" style="width: 24px; border-radius: 3px; margin-right: 8px" onerror="imgOnError(this)"/>');
+                        item.append($('<strong></strong>').text(sender.name || sender.communityId));
+                        item.append($('<div class="text-muted small"></div>').text(sender.message));
+
+                        if (!sender.alreadyBanned) {
+                            item.on('click', function (event) {
+                                event.preventDefault();
+
+                                $('#communityId').val(sender.communityId);
+                                $('#banName').val(sender.name || '');
+
+                                if (!$('#reason').val())
+                                    $('#reason').focus();
+                            });
+                        }
+
+                        list.append(item);
+                    });
+                }
+            });
+        }
+
+        function saveBan() {
+            var communityId = $('#communityId').val().trim();
+
+            if (!communityId) {
+                alert('@Html.Raw(SharedLocalizer["SteamIdOrProfileUrl"])');
+                return;
+            }
+
+            $.ajax({
+                url: '/api/chat-bans',
+                type: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify({
+                    communityId: communityId,
+                    name: $('#banName').val() || null,
+                    reason: $('#reason').val().trim() || null
+                }),
+                success: function () {
+                    $('#chatBanModal').modal('hide');
+                    loadChatBans();
+                },
+                error: function (jqXHR) {
+                    alert(jqXHR.responseJSON?.errorMessage ?? jqXHR.statusText);
+                }
+            });
+        }
+
+        function deleteBan(communityId) {
+            if (!confirm('@Html.Raw(SharedLocalizer["ConfirmDeleteChatBan"])'))
+                return;
+
+            $.ajax({
+                url: '/api/chat-bans/' + communityId,
+                type: 'DELETE',
+                success: function () {
+                    loadChatBans();
+                }
+            });
+        }
+
+        $(function () {
+            $('#search').on('input', function () {
+                chatBans.search = $(this).val().trim();
+                renderChatBans();
+            });
+
+            $('a[data-order-by]').on('click', function (event) {
+                event.preventDefault();
+
+                var orderBy = $(this).data('order-by');
+
+                if (chatBans.orderBy === orderBy)
+                    chatBans.asc = !chatBans.asc;
+                else {
+                    chatBans.orderBy = orderBy;
+                    chatBans.asc = false;
+                }
+
+                renderChatBans();
+            });
+
+            loadChatBans();
+        });
+    </script>
+}

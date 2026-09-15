@@ -306,6 +306,12 @@
                 <li class="@ViewBag.Patent">
                     @Html.ActionLink(SharedLocalizer["Patents"].Value, "Index", "Patents")
                 </li>
+                @if (CurrentUser.IsAdmin)
+                {
+                    <li class="@ViewBag.ChatBans">
+                        @Html.ActionLink(SharedLocalizer["ChatBans"].Value, "Index", "ChatBans")
+                    </li>
+                }
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 @if (CurrentUser.IsAuthenticated)
