@@ -23,6 +23,9 @@
     var secondPlayerPatentProgress = secondPlayerRanking?.PatentProgress;
     var secondPlayerPatent = secondPlayerPatentProgress?.Patent;
 
+    var light = Context.Request.Cookies["theme"] == "light";
+    var copyIcon = light ? "copy-light.png" : "copy-dark.png";
+
     ViewData["PageMetadata"] = new PlayerDetailsPageMetadata(Model, SharedLocalizer, UserAvatar);
 
     string FormatPunishment(int punishment)
@@ -300,10 +303,18 @@
             <th>@SharedLocalizer["SteamId"]:</th>
             <td data-label="@SharedLocalizer["SteamId"]:" colspan="3">
                 @firstPlayer.SteamId
+                <img src="~/imgs/icons/@copyIcon" alt="@SharedLocalizer["CopyText"]" class="icon-copy"
+                     data-toggle="popover" data-placement="top" data-content="@SharedLocalizer["TextCopied"]"
+                     onclick="copyTextToClipboard('@firstPlayer.SteamId', this)"/>
                 @if (secondPlayer != null)
                 {
                     <span class="separator"> | </span>
-                    <span class="second">@secondPlayer.SteamId</span>
+                    <span class="second">
+                        @secondPlayer.SteamId
+                        <img src="~/imgs/icons/@copyIcon" alt="@SharedLocalizer["CopyText"]" class="icon-copy"
+                             data-toggle="popover" data-placement="top" data-content="@SharedLocalizer["TextCopied"]"
+                             onclick="copyTextToClipboard('@secondPlayer.SteamId', this)"/>
+                    </span>
                 }
             </td>
         </tr>
