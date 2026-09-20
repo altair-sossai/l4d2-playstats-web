@@ -129,6 +129,12 @@
     <data name="Alternative" xml:space="preserve">
     <value>Alternative</value>
   </data>
+  <data name="AntiCheat" xml:space="preserve">
+    <value>Anti-Cheat</value>
+  </data>
+  <data name="AntiCheatMetaDescription" xml:space="preserve">
+    <value>Download the L4D2 Competitive Anti-Cheat and learn how it works.</value>
+  </data>
     <data name="AvailableInformation" xml:space="preserve">
     <value>Available information</value>
   </data>

@@ -1,0 +1,64 @@
+@using L4D2PlayStats.Web
+@using L4D2PlayStats.Web.PageMetadata
+@using Microsoft.AspNetCore.Mvc.Localization
+@using Microsoft.Extensions.Localization
+@model L4D2PlayStats.Web.Models.AntiCheatModel
+@inject IViewLocalizer Localizer
+@inject IStringLocalizer<SharedResource> SharedLocalizer
+
+@{
+    ViewData["PageMetadata"] = new AntiCheatPageMetadata(SharedLocalizer);
+}
+
+<h4 class="text-center">@SharedLocalizer["AntiCheat"]</h4>
+
+<div class="text-center" style="margin: 20px 0">
+    <a class="btn btn-primary btn-lg" href="@Model.DownloadUrl">
+        <span class="glyphicon glyphicon-download-alt"></span>
+        @Localizer["DownloadButton"]
+        @if (!string.IsNullOrWhiteSpace(Model.Version))
+        {
+            <span>v@(Model.Version)</span>
+        }
+    </a>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">@Localizer["HowItWorksTitle"]</h3>
+    </div>
+    <div class="panel-body">
+        <ul>
+            <li>@Localizer["HowItWorks1"]</li>
+            <li>@Localizer["HowItWorks2"]</li>
+            <li>@Localizer["HowItWorks3"]</li>
+        </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">@Localizer["HowToUseTitle"]</h3>
+    </div>
+    <div class="panel-body">
+        <ol>
+            <li>@Localizer["HowToUse1"]</li>
+            <li>@Localizer["HowToUse2"]</li>
+            <li>@Localizer["HowToUse3"]</li>
+        </ol>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">@Localizer["GoodToKnowTitle"]</h3>
+    </div>
+    <div class="panel-body">
+        <ul>
+            <li>@Localizer["GoodToKnow1"]</li>
+            <li>@Localizer["GoodToKnow2"]</li>
+            <li>@Localizer["GoodToKnow3"]</li>
+            <li>@Localizer["GoodToKnow4"]</li>
+        </ul>
+    </div>
+</div>

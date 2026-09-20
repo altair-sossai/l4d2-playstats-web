@@ -1,3 +1,4 @@
+using L4D2PlayStats.Core.AntiCheat.DependencyInjection;
 using L4D2PlayStats.Core.Infrastructure.Options;
 using L4D2PlayStats.Core.Steam.DependencyInjection;
 using Microsoft.Extensions.Configuration;
@@ -22,6 +23,7 @@ public static class AppInjection
             .AsImplementedInterfaces(type => assemblies.Contains(type.Assembly)));
 
         serviceCollection.AddSteamServices();
+        serviceCollection.AddAntiCheatServices();
 
         serviceCollection.Configure<AppOptions>(configuration);
     }

@@ -306,6 +306,9 @@
                 <li class="@ViewBag.Patent">
                     @Html.ActionLink(SharedLocalizer["Patents"].Value, "Index", "Patents")
                 </li>
+                <li class="@ViewBag.AntiCheat">
+                    @Html.ActionLink(SharedLocalizer["AntiCheat"].Value, "Index", "AntiCheat")
+                </li>
                 @if (CurrentUser.IsAdmin)
                 {
                     <li class="@ViewBag.ChatBans">
