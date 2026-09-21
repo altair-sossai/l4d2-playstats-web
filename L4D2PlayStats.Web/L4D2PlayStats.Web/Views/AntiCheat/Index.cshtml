@@ -10,9 +10,87 @@
     ViewData["PageMetadata"] = new AntiCheatPageMetadata(SharedLocalizer);
 }
 
-<h4 class="text-center">@SharedLocalizer["AntiCheat"]</h4>
+@section Styles {
+    <style>
+        .aac-hero {
+            padding: 10px 0 25px;
+        }
 
-<div class="text-center" style="margin: 20px 0">
+            .aac-hero .lead {
+                max-width: 720px;
+                margin: 10px auto 20px;
+            }
+
+        .aac-steps {
+            list-style: none;
+            margin: 0 0 20px;
+            padding: 0;
+        }
+
+            .aac-steps li {
+                position: relative;
+                margin-bottom: 10px;
+                padding: 12px 12px 12px 60px;
+                border: 1px solid rgba(128, 128, 128, .35);
+                border-radius: 4px;
+            }
+
+        .aac-step-number {
+            position: absolute;
+            top: 12px;
+            left: 14px;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: #1b6ec2;
+            color: #fff;
+            font-weight: bold;
+            line-height: 32px;
+            text-align: center;
+        }
+
+        .aac-steps strong {
+            display: block;
+            margin-bottom: 2px;
+        }
+
+        .aac-equal {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+            .aac-equal:before,
+            .aac-equal:after {
+                display: none;
+            }
+
+            .aac-equal > [class*="col-"] {
+                display: flex;
+            }
+
+            .aac-equal .panel {
+                width: 100%;
+            }
+
+        .aac-status .label {
+            display: inline-block;
+            margin-bottom: 8px;
+            font-size: 90%;
+        }
+
+        .aac-faq dt {
+            margin-top: 18px;
+        }
+
+        .aac-faq dd {
+            margin-top: 4px;
+        }
+    </style>
+}
+
+<div class="text-center aac-hero">
+    <h3>@SharedLocalizer["AntiCheat"]</h3>
+    <p class="lead">@Localizer["Subtitle"]</p>
     <a class="btn btn-primary btn-lg" href="@Model.DownloadUrl">
         <span class="glyphicon glyphicon-download-alt"></span>
         @Localizer["DownloadButton"]
@@ -21,44 +99,94 @@
             <span>v@(Model.Version)</span>
         }
     </a>
+    <p class="text-muted small" style="margin-top: 12px">@Localizer["Requirements"]</p>
+</div>
+
+<h4>@Localizer["StepsTitle"]</h4>
+<ol class="aac-steps">
+    @for (var step = 1; step <= 3; step++)
+    {
+        <li>
+            <span class="aac-step-number">@step</span>
+            <strong>@Localizer[$"Step{step}Title"]</strong>
+            @Localizer[$"Step{step}Text"]
+        </li>
+    }
+</ol>
+
+<h4>@Localizer["StatusTitle"]</h4>
+<div class="row aac-equal aac-status">
+    <div class="col-md-4">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <span class="label label-warning">@Localizer["StatusStartingLabel"]</span>
+                <div>@Localizer["StatusStartingText"]</div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <span class="label label-success">@Localizer["StatusReadyLabel"]</span>
+                <div>@Localizer["StatusReadyText"]</div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <span class="label label-danger">@Localizer["StatusFailedLabel"]</span>
+                <div>@Localizer["StatusFailedText"]</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<h4>@Localizer["FaqTitle"]</h4>
+<dl class="aac-faq">
+    @for (var item = 1; item <= 5; item++)
+    {
+        <dt>@Localizer[$"Faq{item}Q"]</dt>
+        <dd>@Localizer[$"Faq{item}A"]</dd>
+    }
+</dl>
+
+<div class="panel panel-default" style="margin-top: 25px">
+    <div class="panel-heading">
+        <h3 class="panel-title">@Localizer["InsecureTitle"]</h3>
+    </div>
+    <div class="panel-body">
+        <p>@Localizer["InsecureText1"]</p>
+        <p style="margin-bottom: 0">@Localizer["InsecureText2"]</p>
+    </div>
 </div>
 
 <div class="panel panel-default">
     <div class="panel-heading">
-        <h3 class="panel-title">@Localizer["HowItWorksTitle"]</h3>
+        <h3 class="panel-title">@Localizer["PrivacyTitle"]</h3>
     </div>
     <div class="panel-body">
-        <ul>
-            <li>@Localizer["HowItWorks1"]</li>
-            <li>@Localizer["HowItWorks2"]</li>
-            <li>@Localizer["HowItWorks3"]</li>
-        </ul>
+        <div class="row">
+            <div class="col-md-6">
+                <h5><strong>@Localizer["PrivacySendsTitle"]</strong></h5>
+                <ul>
+                    @for (var item = 1; item <= 3; item++)
+                    {
+                        <li>@Localizer[$"PrivacySends{item}"]</li>
+                    }
+                </ul>
+            </div>
+            <div class="col-md-6">
+                <h5><strong>@Localizer["PrivacyNeverTitle"]</strong></h5>
+                <ul>
+                    @for (var item = 1; item <= 3; item++)
+                    {
+                        <li>@Localizer[$"PrivacyNever{item}"]</li>
+                    }
+                </ul>
+            </div>
+        </div>
     </div>
 </div>
 
-<div class="panel panel-default">
-    <div class="panel-heading">
-        <h3 class="panel-title">@Localizer["HowToUseTitle"]</h3>
-    </div>
-    <div class="panel-body">
-        <ol>
-            <li>@Localizer["HowToUse1"]</li>
-            <li>@Localizer["HowToUse2"]</li>
-            <li>@Localizer["HowToUse3"]</li>
-        </ol>
-    </div>
-</div>
-
-<div class="panel panel-default">
-    <div class="panel-heading">
-        <h3 class="panel-title">@Localizer["GoodToKnowTitle"]</h3>
-    </div>
-    <div class="panel-body">
-        <ul>
-            <li>@Localizer["GoodToKnow1"]</li>
-            <li>@Localizer["GoodToKnow2"]</li>
-            <li>@Localizer["GoodToKnow3"]</li>
-            <li>@Localizer["GoodToKnow4"]</li>
-        </ul>
-    </div>
-</div>
+<div class="alert alert-info">@Localizer["HelpText"]</div>

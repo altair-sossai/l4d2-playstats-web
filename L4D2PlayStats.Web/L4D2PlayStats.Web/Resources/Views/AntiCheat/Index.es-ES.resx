@@ -125,43 +125,124 @@
   <data name="DownloadButton" xml:space="preserve">
     <value>Descargar Anti-Cheat</value>
   </data>
-  <data name="GoodToKnow1" xml:space="preserve">
-    <value>No toma capturas de pantalla.</value>
+  <data name="Faq1A" xml:space="preserve">
+    <value>Comprueba que el panel esté verde. Justo después de entrar al servidor tarda unos segundos en habilitarte. Si está rojo, lee el motivo, cierra y abre de nuevo.</value>
   </data>
-  <data name="GoodToKnow2" xml:space="preserve">
-    <value>Solo envía datos básicos de diagnóstico (Steam ID, versión y eventos de seguridad) para ayudar a investigar problemas.</value>
+  <data name="Faq1Q" xml:space="preserve">
+    <value>Me movieron a espectadores</value>
   </data>
-  <data name="GoodToKnow3" xml:space="preserve">
-    <value>El juego se abre con VAC desactivado (-insecure), por lo que durante la sesión solo puedes entrar en servidores que también funcionan sin VAC.</value>
+  <data name="Faq2A" xml:space="preserve">
+    <value>Quita skins, mods y archivos añadidos al juego y cierra programas de overlay, captura u optimización. Si continúa, verifica los archivos del juego en Steam y avisa a la administración con el mensaje mostrado.</value>
   </data>
-  <data name="GoodToKnow4" xml:space="preserve">
-    <value>Solo Windows. Pide permisos de administrador para proteger los archivos y el proceso del juego.</value>
+  <data name="Faq2Q" xml:space="preserve">
+    <value>Apareció un error de archivo alterado o de programa incompatible</value>
   </data>
-  <data name="GoodToKnowTitle" xml:space="preserve">
-    <value>Conviene saber</value>
+  <data name="Faq3A" xml:space="preserve">
+    <value>Haz clic en Continue para que el juego se abra. Lo ideal es desmarcar "Ejecutar como administrador" y el modo de compatibilidad en las propiedades de steam.exe.</value>
   </data>
-  <data name="HowItWorks1" xml:space="preserve">
-    <value>El Anti-Cheat abre Left 4 Dead 2 por ti y te conecta al servidor.</value>
+  <data name="Faq3Q" xml:space="preserve">
+    <value>Steam mostró un aviso de compatibilidad</value>
   </data>
-  <data name="HowItWorks2" xml:space="preserve">
-    <value>Mientras juegas, comprueba que los archivos del juego no se hayan modificado y que ningún programa no aprobado lea o modifique la memoria del juego.</value>
+  <data name="Faq4A" xml:space="preserve">
+    <value>Descarga el archivo otra vez en esta página.</value>
   </data>
-  <data name="HowItWorks3" xml:space="preserve">
-    <value>Avisa al servidor de que todo está bien. Sin un aviso válido, el servidor te mantiene como espectador.</value>
+  <data name="Faq4Q" xml:space="preserve">
+    <value>Apareció "Nueva versión disponible"</value>
   </data>
-  <data name="HowItWorksTitle" xml:space="preserve">
-    <value>Cómo funciona</value>
+  <data name="Faq5A" xml:space="preserve">
+    <value>No. El juego se abre con el VAC desactivado en esa sesión (ver abajo). Nada cambia en tu cuenta.</value>
   </data>
-  <data name="HowToUse1" xml:space="preserve">
-    <value>Descarga y ejecuta el Anti-Cheat (Windows).</value>
+  <data name="Faq5Q" xml:space="preserve">
+    <value>¿El Anti-Cheat puede causarme un ban de VAC?</value>
   </data>
-  <data name="HowToUse2" xml:space="preserve">
-    <value>Elige tu cuenta de Steam. El juego se abre y se conecta al servidor solo.</value>
+  <data name="FaqTitle" xml:space="preserve">
+    <value>Problemas comunes</value>
   </data>
-  <data name="HowToUse3" xml:space="preserve">
-    <value>Mantén el Anti-Cheat abierto mientras juegas.</value>
+  <data name="HelpText" xml:space="preserve">
+    <value>¿Sigues con problemas? Avisa a la administración con el texto del mensaje y la hora.</value>
   </data>
-  <data name="HowToUseTitle" xml:space="preserve">
-    <value>Cómo usar</value>
+  <data name="InsecureText1" xml:space="preserve">
+    <value>El Anti-Cheat abre el juego con la opción -insecure, que lo inicia sin el VAC. Así se evita cualquier riesgo de ban de VAC causado por el Anti-Cheat, y el servidor l4d2.com.br también funciona sin VAC.</value>
+  </data>
+  <data name="InsecureText2" xml:space="preserve">
+    <value>Con el Anti-Cheat, solo puedes entrar a servidores sin VAC, como el nuestro. Para jugar en un servidor con VAC, cierra el Anti-Cheat y abre el juego normalmente desde Steam.</value>
+  </data>
+  <data name="InsecureTitle" xml:space="preserve">
+    <value>Sobre -insecure (sin VAC)</value>
+  </data>
+  <data name="PrivacyNever1" xml:space="preserve">
+    <value>No toma capturas de pantalla</value>
+  </data>
+  <data name="PrivacyNever2" xml:space="preserve">
+    <value>No lee tus documentos ni archivos fuera del juego</value>
+  </data>
+  <data name="PrivacyNever3" xml:space="preserve">
+    <value>No guarda tu IP ni escribe registros en tu equipo</value>
+  </data>
+  <data name="PrivacyNeverTitle" xml:space="preserve">
+    <value>Qué no hace</value>
+  </data>
+  <data name="PrivacySends1" xml:space="preserve">
+    <value>Tu Steam ID y el nombre del perfil</value>
+  </data>
+  <data name="PrivacySends2" xml:space="preserve">
+    <value>Las versiones del Anti-Cheat y de Windows</value>
+  </data>
+  <data name="PrivacySends3" xml:space="preserve">
+    <value>Eventos de seguridad y de diagnóstico</value>
+  </data>
+  <data name="PrivacySendsTitle" xml:space="preserve">
+    <value>Qué envía</value>
+  </data>
+  <data name="PrivacyTitle" xml:space="preserve">
+    <value>Privacidad</value>
+  </data>
+  <data name="Requirements" xml:space="preserve">
+    <value>Solo Windows · Left 4 Dead 2 desde Steam · Pide permiso de administrador</value>
+  </data>
+  <data name="StatusFailedLabel" xml:space="preserve">
+    <value>Falló</value>
+  </data>
+  <data name="StatusFailedText" xml:space="preserve">
+    <value>Lee el motivo, cierra y abre el Anti-Cheat de nuevo.</value>
+  </data>
+  <data name="StatusReadyLabel" xml:space="preserve">
+    <value>Activo</value>
+  </data>
+  <data name="StatusReadyText" xml:space="preserve">
+    <value>Estás habilitado para jugar.</value>
+  </data>
+  <data name="StatusStartingLabel" xml:space="preserve">
+    <value>Iniciando / Esperando</value>
+  </data>
+  <data name="StatusStartingText" xml:space="preserve">
+    <value>Trabajando o esperando tu respuesta. No la cierres.</value>
+  </data>
+  <data name="StatusTitle" xml:space="preserve">
+    <value>Qué muestra la ventana</value>
+  </data>
+  <data name="Step1Text" xml:space="preserve">
+    <value>Acepta el permiso de administrador. Si SmartScreen avisa, haz clic en "Más información" y "Ejecutar de todas formas".</value>
+  </data>
+  <data name="Step1Title" xml:space="preserve">
+    <value>Descarga y ejecuta</value>
+  </data>
+  <data name="Step2Text" xml:space="preserve">
+    <value>Elige tu cuenta de Steam y, si pide cerrar Steam o L4D2, escribe S y Enter. El juego se abre y conecta solo.</value>
+  </data>
+  <data name="Step2Title" xml:space="preserve">
+    <value>Responde y espera</value>
+  </data>
+  <data name="Step3Text" xml:space="preserve">
+    <value>Cuando aparezca el panel verde ANTI-CHEAT ACTIVO, puedes jugar. Cerrar el Anti-Cheat te quita la habilitación.</value>
+  </data>
+  <data name="Step3Title" xml:space="preserve">
+    <value>Juega con la ventana abierta</value>
+  </data>
+  <data name="StepsTitle" xml:space="preserve">
+    <value>Cómo usarlo</value>
+  </data>
+  <data name="Subtitle" xml:space="preserve">
+    <value>Obligatorio para jugar en el servidor competitivo. Abre el juego, comprueba que todo esté en orden y te habilita para jugar.</value>
   </data>
 </root>
