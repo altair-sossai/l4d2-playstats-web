@@ -408,6 +408,9 @@
     <data name="ForcesMatch" xml:space="preserve">
     <value>Fuerza la selección de un modo de partida</value>
   </data>
+    <data name="TogglesAntiCheat" xml:space="preserve">
+    <value>Activa o desactiva el anti-cheat</value>
+  </data>
     <data name="GagsPlayer" xml:space="preserve">
     <value>Silencia el chat de un jugador</value>
   </data>

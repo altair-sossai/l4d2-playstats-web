@@ -408,6 +408,9 @@
     <data name="ForcesMatch" xml:space="preserve">
     <value>Forces the selection of a match mode</value>
   </data>
+    <data name="TogglesAntiCheat" xml:space="preserve">
+    <value>Turns anti-cheat on or off</value>
+  </data>
     <data name="GagsPlayer" xml:space="preserve">
     <value>Gags a player</value>
   </data>
