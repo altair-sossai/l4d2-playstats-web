@@ -10,8 +10,6 @@ namespace L4D2PlayStats.Core.Steam.DependencyInjection;
 
 public static class SteamInjection
 {
-    private const string BaseUrl = "https://api.steampowered.com";
-
     private static readonly JsonSerializerOptions Options = new()
     {
         PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
@@ -46,7 +44,7 @@ public static class SteamInjection
                 .AddRefitGeneratedClient<T>(Settings)
                 .ConfigureHttpClient(c =>
                 {
-                    c.BaseAddress = new Uri(BaseUrl);
+                    c.BaseAddress = new Uri(AppConsts.SteamApiBaseUrl);
                     c.Timeout = TimeSpan.FromSeconds(2.5);
                 })
                 .AddResilienceHandler(name, c => c.AddRetry(RetryStrategyOptions));

@@ -1,26 +1,32 @@
-﻿using System.Collections.Concurrent;
+using System.Collections.Concurrent;
+using L4D2PlayStats.Core.Infrastructure.Options;
 using L4D2PlayStats.Core.Steam.ServerInfo.Responses;
 using Serilog;
 
 namespace L4D2PlayStats.Core.Steam.ServerInfo.Services.Cache;
 
-public class ServerInfoServiceCached(IServerInfoService serverInfoService) : IServerInfoServiceCached
+public class ServerInfoServiceCached(
+    IAppOptionsWraper config,
+    IServerInfoService serverInfoService
+) : IServerInfoServiceCached
 {
     private static readonly ConcurrentDictionary<string, CacheEntry> Cache = new();
     private static readonly ConcurrentDictionary<string, SemaphoreSlim> Locks = new();
 
     private static readonly TimeSpan RefreshInterval = TimeSpan.FromSeconds(10);
 
-    public Task<GetServerListResponse?> GetServerInfoAsync(string key, string filter, CancellationToken cancellationToken)
+    public Task<GetServerListResponse.ServerInfo?> GetServerInfoAsync(CancellationToken cancellationToken)
     {
+        var filter = $@"appid\{AppConsts.Left4Dead2AppId}\addr\{config.ServerIp}";
+
         Cache.TryGetValue(filter, out var entry);
 
-        TryRefreshAsync(key, filter, entry, cancellationToken);
+        TryRefreshAsync(filter, entry, cancellationToken);
 
-        return Task.FromResult(entry?.Value);
+        return Task.FromResult(entry?.Value.Response?.Servers?.OfType<GetServerListResponse.ServerInfo>().FirstOrDefault());
     }
 
-    private void TryRefreshAsync(string key, string filter, CacheEntry? entry, CancellationToken cancellationToken)
+    private void TryRefreshAsync(string filter, CacheEntry? entry, CancellationToken cancellationToken)
     {
         var now = DateTimeOffset.UtcNow;
 
@@ -39,7 +45,7 @@ public class ServerInfoServiceCached(IServerInfoService serverInfoService) : ISe
                 if (Cache.TryGetValue(filter, out var current) && now - current.LastUpdate < RefreshInterval)
                     return;
 
-                var response = await serverInfoService.GetServerInfoAsync(key, filter, cancellationToken);
+                var response = await serverInfoService.GetServerInfoAsync(config.SteamApiKey, filter, cancellationToken);
 
                 if (response != null)
                     Cache[filter] = new CacheEntry(response, DateTimeOffset.UtcNow);

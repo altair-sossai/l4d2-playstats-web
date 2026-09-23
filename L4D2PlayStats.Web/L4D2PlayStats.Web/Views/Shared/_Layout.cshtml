@@ -1,4 +1,5 @@
 ﻿@using System.Globalization
+@using L4D2PlayStats.Core
 @using L4D2PlayStats.Core.Auth
 @using L4D2PlayStats.Core.Infrastructure.Options
 @using L4D2PlayStats.Core.UserAvatar
@@ -246,7 +247,7 @@
 
         function imgOnError(img) {
             img.onerror = null;
-            img.src = '/imgs/avatar-empty.png';
+            img.src = '@AppConsts.EmptyAvatarPath';
         }
 
         function copyTextToClipboard(text, sender) {

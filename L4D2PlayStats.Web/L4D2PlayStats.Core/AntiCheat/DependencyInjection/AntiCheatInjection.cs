@@ -23,7 +23,7 @@ public static class AntiCheatInjection
                 .AddRefitGeneratedClient<IAntiCheatService>(Settings)
                 .ConfigureHttpClient(c =>
                 {
-                    c.BaseAddress = new Uri(AntiCheatUrls.Api);
+                    c.BaseAddress = new Uri(AppConsts.AntiCheatApiUrl);
                     c.Timeout = TimeSpan.FromSeconds(3);
                 });
         }

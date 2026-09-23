@@ -18,7 +18,7 @@ public class ServerController(
     {
         ViewBag.Server = "active";
 
-        var model = await GetServerInfoAsync(config.ServerIp, cancellationToken);
+        var model = await GetServerInfoAsync(cancellationToken);
 
         return View(model);
     }
@@ -32,7 +32,7 @@ public class ServerController(
     [Route("server/header")]
     public async Task<IActionResult> Header(CancellationToken cancellationToken)
     {
-        var model = await GetServerInfoAsync(config.ServerIp, cancellationToken);
+        var model = await GetServerInfoAsync(cancellationToken);
 
         return PartialView("_Header", model);
     }
@@ -40,7 +40,7 @@ public class ServerController(
     [Route("server/players")]
     public async Task<IActionResult> Players(CancellationToken cancellationToken)
     {
-        var model = await GetServerInfoAsync(config.ServerIp, cancellationToken);
+        var model = await GetServerInfoAsync(cancellationToken);
 
         return PartialView("_Players", model);
     }
@@ -57,20 +57,11 @@ public class ServerController(
         return PartialView("_Feed", feed);
     }
 
-    private async Task<ServerInfoModel> GetServerInfoAsync(string serverIp, CancellationToken cancellationToken)
+    private async Task<ServerInfoModel> GetServerInfoAsync(CancellationToken cancellationToken)
     {
-        var segments = serverIp.Split(':');
-
-        if (segments.Length != 2)
-            throw new ArgumentException("Invalid server IP format");
-
-        if (!int.TryParse(segments[1], out var port))
-            throw new ArgumentException("Invalid server port");
-
-        var ip = segments[0];
         var gameInfo = GameInfo.GetOrInitializeInstance(userAvatar);
-        var serverInfo = await serverInfoService.GetServerInfoAsync(config.SteamApiKey, $"addr\\{ip}:{port}", cancellationToken);
+        var serverInfo = await serverInfoService.GetServerInfoAsync(cancellationToken);
 
-        return new ServerInfoModel(serverIp, config.ServerDns, gameInfo, serverInfo);
+        return new ServerInfoModel(config.ServerIp, config.ServerDns, gameInfo, serverInfo);
     }
 }

@@ -1,16 +1,14 @@
+using L4D2PlayStats.Core;
 using Microsoft.Extensions.Localization;
 
 namespace L4D2PlayStats.Web.PageMetadata.Infrastructure;
 
 public abstract class PageMetadata
 {
-    private const string DefaultImageUrl = "https://l4d2playstats.blob.core.windows.net/assets/motd.jpeg";
-    private const string SiteUrl = "https://l4d2.com.br";
-
     public static string SiteName => "L4D2 Competitive";
     public string Title { get; private set; } = string.Empty;
     public string Description { get; private set; } = string.Empty;
-    public string ImageUrl { get; private set; } = DefaultImageUrl;
+    public string ImageUrl { get; private set; } = AppConsts.DefaultImageUrl;
     public string ImageAlt { get; private set; } = string.Empty;
     public string OpenGraphType { get; private set; } = "website";
     public bool NoIndex { get; private set; }
@@ -38,7 +36,7 @@ public abstract class PageMetadata
 
     public string GetCanonicalUrl(PathString path)
     {
-        return $"{SiteUrl}{path}";
+        return $"{AppConsts.SiteUrl}{path}";
     }
 
     protected static string Format(
@@ -57,10 +55,10 @@ public abstract class PageMetadata
     private static string ResolveImageUrl(string? image)
     {
         if (string.IsNullOrWhiteSpace(image))
-            return DefaultImageUrl;
+            return AppConsts.DefaultImageUrl;
 
         return Uri.TryCreate(image, UriKind.Absolute, out _)
             ? image
-            : $"{SiteUrl}/{image.TrimStart('/')}";
+            : $"{AppConsts.SiteUrl}/{image.TrimStart('/')}";
     }
 }

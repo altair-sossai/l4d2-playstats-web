@@ -6,8 +6,6 @@ namespace L4D2PlayStats.Core.Infrastructure.Networking;
 
 public class DnsResolver : IDnsResolver
 {
-    private const int DefaultServerPort = 27015;
-
     private static readonly ConcurrentDictionary<string, string> ResolvedAddresses = new();
 
     public string Resolve(string address)
@@ -31,7 +29,7 @@ public class DnsResolver : IDnsResolver
     {
         var segments = value.Split(':', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries);
         var host = segments[0];
-        var port = segments.Length > 1 && int.TryParse(segments[1], out var parsedPort) ? parsedPort : DefaultServerPort;
+        var port = segments.Length > 1 && int.TryParse(segments[1], out var parsedPort) ? parsedPort : AppConsts.DefaultServerPort;
 
         return (host, port);
     }

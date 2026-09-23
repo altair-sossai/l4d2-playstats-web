@@ -1,4 +1,4 @@
-using L4D2PlayStats.Core.AntiCheat;
+using L4D2PlayStats.Core;
 using L4D2PlayStats.Core.AntiCheat.Services.Cache;
 using L4D2PlayStats.Web.Models;
 using Microsoft.AspNetCore.Mvc;
@@ -14,7 +14,7 @@ public class AntiCheatController(IAntiCheatServiceCached antiCheatServiceCached)
 
         var version = await antiCheatServiceCached.GetLatestVersionAsync(cancellationToken);
 
-        var model = new AntiCheatModel(version, AntiCheatUrls.Download);
+        var model = new AntiCheatModel(version, AppConsts.AntiCheatDownloadUrl);
 
         return View(model);
     }

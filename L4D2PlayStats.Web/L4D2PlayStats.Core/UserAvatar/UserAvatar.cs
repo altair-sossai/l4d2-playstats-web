@@ -6,7 +6,6 @@ namespace L4D2PlayStats.Core.UserAvatar;
 
 public class UserAvatar(ISteamUserService steamUserService, IAppOptionsWraper config, IWebHostEnvironment env) : IUserAvatar
 {
-    private const string EmptyAvatarPath = "/imgs/avatar-empty.png";
     private static readonly SemaphoreSlim SemaphoreSlim = new(5);
     private static readonly HttpClient HttpClient = new();
 
@@ -17,11 +16,11 @@ public class UserAvatar(ISteamUserService steamUserService, IAppOptionsWraper co
         get
         {
             if (string.IsNullOrEmpty(communityId))
-                return EmptyAvatarPath;
+                return AppConsts.EmptyAvatarPath;
 
             var fileInfo = FileInfo(communityId);
 
-            return fileInfo.Exists ? RelativeUrl(communityId) : EmptyAvatarPath;
+            return fileInfo.Exists ? RelativeUrl(communityId) : AppConsts.EmptyAvatarPath;
         }
     }
 
