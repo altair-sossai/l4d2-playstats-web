@@ -1,0 +1,7 @@
+# Runtime dependencies for the self-contained .NET publish and the deploy scripts.
+apt_packages:
+  - screen
+  - dos2unix
+  - libicu-dev
+  - ca-certificates
+  - rsync

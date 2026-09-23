@@ -400,3 +400,6 @@ appsettings.json
 
 # Application Files
 /L4D2PlayStats.Web/L4D2PlayStats.Web/wwwroot/imgs/players
+
+# Ansible secrets
+ansible/group_vars/vault.yml

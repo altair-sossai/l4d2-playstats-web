@@ -1,0 +1,99 @@
+- name: Install runtime and deploy dependencies
+  become: true
+  ansible.builtin.apt:
+    name: "{{ apt_packages }}"
+    state: present
+    update_cache: true
+
+- name: Allow SSH and the web port through UFW
+  become: true
+  community.general.ufw:
+    rule: allow
+    port: "{{ item }}"
+    proto: tcp
+  loop:
+    - "22"
+    - "{{ http_port }}"
+  when: manage_ufw | bool
+
+- name: Ensure application directory exists
+  become: true
+  ansible.builtin.file:
+    path: "{{ app_dir }}"
+    state: directory
+    owner: "{{ app_user }}"
+    group: "{{ app_user }}"
+    mode: "0755"
+
+- name: Ensure bash scripts directory exists
+  become: true
+  ansible.builtin.file:
+    path: "{{ app_dir }}/bash"
+    state: directory
+    owner: "{{ app_user }}"
+    group: "{{ app_user }}"
+    mode: "0755"
+
+- name: Publish the .NET project on the control node
+  delegate_to: localhost
+  run_once: true
+  ansible.builtin.command:
+    cmd: >-
+      dotnet publish {{ web_project_path }}
+      -c Release --self-contained true
+      -o {{ web_publish_dir }}
+  changed_when: true
+  when: web_build_locally | bool
+
+- name: Ship published binaries to the server
+  ansible.posix.synchronize:
+    src: "{{ web_publish_dir }}/"
+    dest: "{{ app_dir }}/"
+    delete: false
+    recursive: true
+  notify: Restart l4d2 playstats web
+
+- name: Ship deploy bash scripts to the server
+  ansible.posix.synchronize:
+    src: "{{ web_bash_dir }}/"
+    dest: "{{ app_dir }}/bash/"
+    delete: false
+    recursive: true
+  notify: Restart l4d2 playstats web
+
+- name: Normalize line endings on bash scripts
+  ansible.builtin.command:
+    cmd: dos2unix {{ app_dir }}/bash/bootstrap.sh
+  changed_when: false
+
+- name: Render appsettings.json
+  ansible.builtin.template:
+    src: appsettings.json.j2
+    dest: "{{ app_dir }}/appsettings.json"
+    owner: "{{ app_user }}"
+    group: "{{ app_user }}"
+    mode: "0640"
+  notify: Restart l4d2 playstats web
+
+- name: Make the web binary and scripts executable
+  ansible.builtin.file:
+    path: "{{ item }}"
+    mode: "0755"
+  loop:
+    - "{{ app_dir }}/L4D2PlayStats.Web"
+    - "{{ app_dir }}/bash/bootstrap.sh"
+
+- name: Start the app on boot via screen
+  ansible.builtin.cron:
+    name: l4d2-playstats-web-boot
+    special_time: reboot
+    user: "{{ app_user }}"
+    job: "cd {{ app_dir }} && /usr/bin/screen -d -m -S {{ screen_session }} sh -c './L4D2PlayStats.Web'"
+
+- name: Ensure the app is running now
+  ansible.builtin.shell:
+    cmd: >-
+      screen -list | grep -q "{{ screen_session }}" ||
+      screen -d -m -S {{ screen_session }} sh -c 'cd {{ app_dir }} && ./L4D2PlayStats.Web'
+  register: ensure_running
+  changed_when: "'No screen session found' not in ensure_running.stdout"

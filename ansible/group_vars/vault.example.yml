@@ -1,0 +1,10 @@
+# Copy this file to vault.yml, fill in the real values and encrypt it:
+#   cp group_vars/vault.example.yml group_vars/vault.yml
+#   ansible-vault encrypt group_vars/vault.yml
+#
+# These map to the secret entries of appsettings.json.
+
+vault_playstats_secret: "REPLACE_ME"
+vault_steam_api_key: "REPLACE_ME;REPLACE_ME"
+vault_secret_key: "REPLACE_ME"
+vault_azure_webjobs_storage: "DefaultEndpointsProtocol=https;AccountName=...;AccountKey=...;EndpointSuffix=core.windows.net"

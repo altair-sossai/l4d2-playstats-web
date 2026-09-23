@@ -1,0 +1,30 @@
+# Non-sensitive configuration for the L4D2 PlayStats Web deployment.
+# Secrets live in vault.yml (copy from vault.example.yml and encrypt with ansible-vault).
+
+# --- Deployment target ---
+app_user: devops
+app_dir: /home/l4d2-playstats-web
+staging_dir: /home/devops
+screen_session: l4d2-playstats-web
+http_port: 5000
+
+# --- Build / artifact source ---
+# When true, the playbook runs `dotnet publish` on the Ansible control node
+# before shipping the binaries. When false, it ships an already-published folder
+# pointed at by web_publish_dir.
+web_build_locally: true
+web_project_path: "{{ playbook_dir }}/../L4D2PlayStats.Web/L4D2PlayStats.Web/L4D2PlayStats.Web.csproj"
+web_bash_dir: "{{ playbook_dir }}/../bash"
+# Used only when web_build_locally is false:
+web_publish_dir: "{{ playbook_dir }}/../publish"
+
+# --- Firewall ---
+manage_ufw: false
+
+# --- appsettings.json (non-secret values) ---
+app_settings:
+  ServerId: "l4d2-zone-server"
+  PlayStatsApiUrl: "https://l4d2-playstats-api.azurewebsites.net"
+  ServerDns: "server.l4d2.com.br"
+  ServerAdmins: "76561198141521946;76561198135872482"
+  AllowedHosts: "*"

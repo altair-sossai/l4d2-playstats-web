@@ -1,0 +1,24 @@
+{
+  "Logging": {
+    "LogLevel": {
+      "Default": "Information",
+      "Microsoft.AspNetCore": "Warning"
+    }
+  },
+  "Kestrel": {
+    "Endpoints": {
+      "Http": {
+        "Url": "http://*:{{ http_port }}"
+      }
+    }
+  },
+  "ServerId": "{{ app_settings.ServerId }}",
+  "PlayStatsApiUrl": "{{ app_settings.PlayStatsApiUrl }}",
+  "PlayStatsSecret": "{{ vault_playstats_secret }}",
+  "SteamApiKey": "{{ vault_steam_api_key }}",
+  "ServerDns": "{{ app_settings.ServerDns }}",
+  "ServerAdmins": "{{ app_settings.ServerAdmins }}",
+  "SecretKey": "{{ vault_secret_key }}",
+  "AzureWebJobsStorage": "{{ vault_azure_webjobs_storage }}",
+  "AllowedHosts": "{{ app_settings.AllowedHosts }}"
+}

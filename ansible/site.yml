@@ -1,0 +1,7 @@
+- name: Provision and deploy the L4D2 PlayStats web site
+  hosts: web
+  gather_facts: true
+  vars_files:
+    - group_vars/vault.yml
+  roles:
+    - l4d2_playstats_web

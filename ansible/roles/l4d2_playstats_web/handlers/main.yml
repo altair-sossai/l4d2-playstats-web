@@ -1,0 +1,8 @@
+- name: Restart l4d2 playstats web
+  ansible.builtin.shell:
+    cmd: |
+      if screen -list | grep -q "{{ screen_session }}"; then
+        screen -S {{ screen_session }} -X quit
+      fi
+      screen -d -m -S {{ screen_session }} sh -c 'cd {{ app_dir }} && ./L4D2PlayStats.Web'
+  changed_when: true
