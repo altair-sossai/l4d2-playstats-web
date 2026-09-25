@@ -12,9 +12,9 @@ public class AntiCheatController(IAntiCheatServiceCached antiCheatServiceCached)
     {
         ViewBag.AntiCheat = "active";
 
-        var version = await antiCheatServiceCached.GetLatestVersionAsync(cancellationToken);
+        var latest = await antiCheatServiceCached.GetLatestVersionAsync(cancellationToken);
 
-        var model = new AntiCheatModel(version, AppConsts.AntiCheatDownloadUrl);
+        var model = new AntiCheatModel(latest, AppConsts.AntiCheatDownloadUrl);
 
         return View(model);
     }

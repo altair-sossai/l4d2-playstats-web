@@ -144,7 +144,7 @@
     <value>A Steam mostrou um aviso de compatibilidade</value>
   </data>
   <data name="Faq4A" xml:space="preserve">
-    <value>Baixe o arquivo de novo nesta página.</value>
+    <value>Normalmente o Anti-Cheat se atualiza sozinho. Essa mensagem aparece quando a atualização automática não conseguiu terminar (por exemplo, bloqueada pelo antivírus). Feche e abra de novo; se continuar, baixe o arquivo outra vez nesta página.</value>
   </data>
   <data name="Faq4Q" xml:space="preserve">
     <value>Apareceu "Nova versão disponível"</value>
@@ -157,9 +157,6 @@
   </data>
   <data name="FaqTitle" xml:space="preserve">
     <value>Problemas comuns</value>
-  </data>
-  <data name="HelpText" xml:space="preserve">
-    <value>Ainda com problema? Avise a administração com o texto da mensagem e o horário.</value>
   </data>
   <data name="InsecureText1" xml:space="preserve">
     <value>O Anti-Cheat abre o jogo com a opção -insecure, que o inicia sem o VAC. Isso evita qualquer risco de ban VAC causado pelo Anti-Cheat, e o servidor l4d2.com.br também roda sem VAC.</value>
@@ -243,6 +240,48 @@
     <value>Como usar</value>
   </data>
   <data name="Subtitle" xml:space="preserve">
-    <value>Obrigatório para jogar no servidor competitivo. Ele abre o jogo, confere se está tudo em ordem e libera você para jogar.</value>
+    <value>Para jogar no servidor competitivo, abra o jogo pelo Anti-Cheat.</value>
+  </data>
+  <data name="Kicker" xml:space="preserve">
+    <value>Servidor competitivo L4D2.com.br</value>
+  </data>
+  <data name="PublishedOn" xml:space="preserve">
+    <value>publicada em {0}</value>
+  </data>
+  <data name="VerifyLink" xml:space="preserve">
+    <value>Verificar o arquivo</value>
+  </data>
+  <data name="VerifyText1" xml:space="preserve">
+    <value>Para conferir se o arquivo baixado é o original, abra o PowerShell na pasta do download e rode:</value>
+  </data>
+  <data name="VerifyText2" xml:space="preserve">
+    <value>O valor em Hash (SHA-256) deve ser exatamente este:</value>
+  </data>
+  <data name="Highlight1" xml:space="preserve">
+    <value>Sem risco de ban VAC</value>
+  </data>
+  <data name="Highlight2" xml:space="preserve">
+    <value>Não tira screenshots nem lê seus arquivos</value>
+  </data>
+  <data name="WindowLog1" xml:space="preserve">
+    <value>[1/3] Verificando os arquivos do jogo...</value>
+  </data>
+  <data name="WindowLog2" xml:space="preserve">
+    <value>[2/3] Abrindo o jogo pela Steam...</value>
+  </data>
+  <data name="WindowLog3" xml:space="preserve">
+    <value>[3/3] Conectando ao servidor do Anti-Cheat...</value>
+  </data>
+  <data name="WindowReadyTitle" xml:space="preserve">
+    <value>ANTI-CHEAT ATIVO</value>
+  </data>
+  <data name="WindowReadyBody" xml:space="preserve">
+    <value>Você está validado e já pode jogar. Mantenha esta janela aberta enquanto joga.</value>
+  </data>
+  <data name="StatusUpdatingLabel" xml:space="preserve">
+    <value>Atualizando</value>
+  </data>
+  <data name="StatusUpdatingText" xml:space="preserve">
+    <value>Baixando e instalando a versão nova. Ele reinicia sozinho em seguida. Não feche.</value>
   </data>
 </root>

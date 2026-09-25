@@ -144,7 +144,7 @@
     <value>Steam showed a compatibility warning</value>
   </data>
   <data name="Faq4A" xml:space="preserve">
-    <value>Download the file again on this page.</value>
+    <value>The Anti-Cheat normally updates itself. This message shows up when the automatic update could not finish (for example, blocked by the antivirus). Close it and open it again; if it keeps happening, download the file again on this page.</value>
   </data>
   <data name="Faq4Q" xml:space="preserve">
     <value>"New version available" appeared</value>
@@ -157,9 +157,6 @@
   </data>
   <data name="FaqTitle" xml:space="preserve">
     <value>Common problems</value>
-  </data>
-  <data name="HelpText" xml:space="preserve">
-    <value>Still having trouble? Tell the administration the message text and the time.</value>
   </data>
   <data name="InsecureText1" xml:space="preserve">
     <value>The Anti-Cheat opens the game with the -insecure option, which starts it without VAC. That avoids any VAC ban risk caused by the Anti-Cheat, and the l4d2.com.br server also runs without VAC.</value>
@@ -243,6 +240,48 @@
     <value>How to use it</value>
   </data>
   <data name="Subtitle" xml:space="preserve">
-    <value>Required to play on the competitive server. It opens the game, checks that everything is in order and clears you to play.</value>
+    <value>To play on the competitive server, open the game through the Anti-Cheat.</value>
+  </data>
+  <data name="Kicker" xml:space="preserve">
+    <value>L4D2.com.br competitive server</value>
+  </data>
+  <data name="PublishedOn" xml:space="preserve">
+    <value>released on {0}</value>
+  </data>
+  <data name="VerifyLink" xml:space="preserve">
+    <value>Verify the file</value>
+  </data>
+  <data name="VerifyText1" xml:space="preserve">
+    <value>To check that the downloaded file is the original, open PowerShell in the download folder and run:</value>
+  </data>
+  <data name="VerifyText2" xml:space="preserve">
+    <value>The Hash (SHA-256) value must be exactly this:</value>
+  </data>
+  <data name="Highlight1" xml:space="preserve">
+    <value>No VAC ban risk</value>
+  </data>
+  <data name="Highlight2" xml:space="preserve">
+    <value>No screenshots, does not read your files</value>
+  </data>
+  <data name="WindowLog1" xml:space="preserve">
+    <value>[1/3] Checking the game files...</value>
+  </data>
+  <data name="WindowLog2" xml:space="preserve">
+    <value>[2/3] Opening the game through Steam...</value>
+  </data>
+  <data name="WindowLog3" xml:space="preserve">
+    <value>[3/3] Connecting to the Anti-Cheat server...</value>
+  </data>
+  <data name="WindowReadyTitle" xml:space="preserve">
+    <value>ANTI-CHEAT ACTIVE</value>
+  </data>
+  <data name="WindowReadyBody" xml:space="preserve">
+    <value>You are validated and can play now. Keep this window open while you play.</value>
+  </data>
+  <data name="StatusUpdatingLabel" xml:space="preserve">
+    <value>Updating</value>
+  </data>
+  <data name="StatusUpdatingText" xml:space="preserve">
+    <value>Downloading and installing the new version. It restarts by itself right after. Do not close it.</value>
   </data>
 </root>

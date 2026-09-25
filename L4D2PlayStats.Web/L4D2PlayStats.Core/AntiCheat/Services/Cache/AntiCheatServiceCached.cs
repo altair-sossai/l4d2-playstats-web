@@ -1,3 +1,4 @@
+using L4D2PlayStats.Core.AntiCheat.Responses;
 using Microsoft.Extensions.Caching.Memory;
 using Serilog;
 
@@ -8,7 +9,7 @@ public class AntiCheatServiceCached(IAntiCheatService antiCheatService, IMemoryC
     private static readonly TimeSpan CacheDuration = TimeSpan.FromMinutes(5);
     private static readonly TimeSpan FailureCacheDuration = TimeSpan.FromSeconds(30);
 
-    public async Task<string?> GetLatestVersionAsync(CancellationToken cancellationToken)
+    public async Task<ClientVersionResponse?> GetLatestVersionAsync(CancellationToken cancellationToken)
     {
         return await memoryCache.GetOrCreateAsync("AntiCheatVersion", async entry =>
         {
@@ -18,7 +19,7 @@ public class AntiCheatServiceCached(IAntiCheatService antiCheatService, IMemoryC
 
                 entry.AbsoluteExpirationRelativeToNow = string.IsNullOrWhiteSpace(response?.Version) ? FailureCacheDuration : CacheDuration;
 
-                return response?.Version;
+                return string.IsNullOrWhiteSpace(response?.Version) ? null : response;
             }
             catch (Exception exception)
             {

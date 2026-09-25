@@ -8,189 +8,471 @@
 
 @{
     ViewData["PageMetadata"] = new AntiCheatPageMetadata(SharedLocalizer);
+    var light = Context.Request.Cookies["theme"] == "light";
+    var copyIcon = light ? "copy-light.png" : "copy-dark.png";
+    var statuses = new[]
+    {
+        (Key: "Starting", Color: "#f0ad4e"),
+        (Key: "Updating", Color: "#5bc0de"),
+        (Key: "Ready", Color: "#62c462"),
+        (Key: "Failed", Color: "#ee5f5b")
+    };
 }
 
 @section Styles {
     <style>
         .aac-hero {
-            padding: 10px 0 25px;
+            margin: 10px 0 30px;
+            padding: 30px 30px 26px;
+            border: 1px solid rgba(128, 128, 128, .25);
+            border-radius: 6px;
+            background: linear-gradient(135deg, rgba(98, 196, 98, .10), rgba(91, 192, 222, .06) 55%, rgba(128, 128, 128, .03));
         }
 
-            .aac-hero .lead {
-                max-width: 720px;
-                margin: 10px auto 20px;
-            }
-
-        .aac-steps {
-            list-style: none;
-            margin: 0 0 20px;
-            padding: 0;
+        .aac-hero-row {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
         }
 
-            .aac-steps li {
-                position: relative;
-                margin-bottom: 10px;
-                padding: 12px 12px 12px 60px;
-                border: 1px solid rgba(128, 128, 128, .35);
-                border-radius: 4px;
+            .aac-hero-row:before,
+            .aac-hero-row:after {
+                display: none;
             }
 
-        .aac-step-number {
-            position: absolute;
-            top: 12px;
-            left: 14px;
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            background: #1b6ec2;
-            color: #fff;
+        .aac-kicker {
+            display: inline-block;
+            margin-bottom: 10px;
+            font-size: 12px;
             font-weight: bold;
-            line-height: 32px;
-            text-align: center;
+            letter-spacing: .08em;
+            text-transform: uppercase;
+            opacity: .75;
         }
 
-        .aac-steps strong {
-            display: block;
-            margin-bottom: 2px;
+        .aac-hero h1 {
+            margin: 0 0 10px;
+            font-size: 38px;
+            font-weight: bold;
         }
 
-        .aac-equal {
+        .aac-hero .lead {
+            max-width: 560px;
+            margin-bottom: 22px;
+        }
+
+        .aac-download .btn {
+            padding: 12px 28px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+            .aac-download .btn .glyphicon {
+                margin-right: 8px;
+            }
+
+        .aac-meta {
+            margin-top: 10px;
+            font-size: 13px;
+            opacity: .8;
+        }
+
+            .aac-meta .aac-dot {
+                margin: 0 6px;
+                opacity: .6;
+            }
+
+            .aac-meta a {
+                text-decoration: underline;
+                cursor: pointer;
+            }
+
+        .aac-verify {
+            max-width: 560px;
+            margin-top: 12px;
+            padding: 12px 14px;
+            border: 1px solid rgba(128, 128, 128, .3);
+            border-radius: 4px;
+            font-size: 13px;
+        }
+
+            .aac-verify p {
+                margin-bottom: 6px;
+            }
+
+            .aac-verify code {
+                display: block;
+                margin-bottom: 8px;
+                padding: 6px 8px;
+                border: 1px solid rgba(128, 128, 128, .3);
+                background: rgba(128, 128, 128, .12);
+                color: inherit;
+                overflow-wrap: anywhere;
+                white-space: normal;
+            }
+
+            .aac-verify .icon-copy {
+                margin: 0 0 0 6px;
+            }
+
+        .aac-highlights {
+            margin: 22px 0 0;
+            padding: 0;
+            list-style: none;
+        }
+
+            .aac-highlights li {
+                display: inline-block;
+                margin: 0 18px 8px 0;
+                font-size: 14px;
+            }
+
+            .aac-highlights .glyphicon {
+                margin-right: 6px;
+                color: #62c462;
+            }
+
+        .aac-requirements {
+            margin: 6px 0 0;
+            font-size: 12px;
+            opacity: .7;
+        }
+
+        .aac-window {
+            overflow: hidden;
+            border: 1px solid #3a3f44;
+            border-radius: 6px;
+            background: #0c0c0c;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, .35);
+            color: #cccccc;
+            font-family: Consolas, "Courier New", monospace;
+            font-size: 12px;
+        }
+
+        .aac-window-bar {
+            padding: 6px 10px;
+            background: #1f1f1f;
+            color: #d0d0d0;
+            font-family: "Segoe UI", Arial, sans-serif;
+        }
+
+            .aac-window-bar span {
+                float: right;
+                letter-spacing: 10px;
+                opacity: .6;
+            }
+
+        .aac-window-body {
+            padding: 12px 14px 16px;
+        }
+
+            .aac-window-body .aac-step {
+                color: #5bc0de;
+                font-weight: bold;
+            }
+
+        .aac-window-panel {
+            margin-top: 12px;
+            padding: 8px 12px 10px;
+            border: 3px double #62c462;
+            color: #ffffff;
+            font-weight: bold;
+        }
+
+            .aac-window-panel .aac-window-title {
+                display: block;
+                margin-bottom: 4px;
+                color: #62c462;
+            }
+
+        .aac-section-title {
+            margin: 34px 0 14px;
+            font-weight: bold;
+        }
+
+        .aac-cards {
             display: flex;
             flex-wrap: wrap;
         }
 
-            .aac-equal:before,
-            .aac-equal:after {
+            .aac-cards:before,
+            .aac-cards:after {
                 display: none;
             }
 
-            .aac-equal > [class*="col-"] {
+            .aac-cards > [class*="col-"] {
                 display: flex;
+                margin-bottom: 15px;
             }
 
-            .aac-equal .panel {
+        .aac-card {
+            width: 100%;
+            padding: 16px 16px 14px;
+            border: 1px solid rgba(128, 128, 128, .3);
+            border-radius: 6px;
+            background: rgba(128, 128, 128, .06);
+        }
+
+            .aac-card h5 {
+                margin: 0 0 6px;
+                font-size: 15px;
+                font-weight: bold;
+            }
+
+            .aac-card p {
+                margin: 0;
+            }
+
+        .aac-step-number {
+            display: inline-block;
+            width: 34px;
+            height: 34px;
+            margin-bottom: 10px;
+            border-radius: 50%;
+            background: #62c462;
+            color: #ffffff;
+            font-size: 16px;
+            font-weight: bold;
+            line-height: 34px;
+            text-align: center;
+        }
+
+        .aac-status {
+            border-left-width: 4px;
+        }
+
+        .aac-faq .panel {
+            border: 1px solid rgba(128, 128, 128, .3);
+        }
+
+        .aac-faq .panel-heading {
+            padding: 0;
+        }
+
+            .aac-faq .panel-heading a {
+                display: block;
+                padding: 12px 15px;
+                font-weight: bold;
+                text-decoration: none;
+            }
+
+                .aac-faq .panel-heading a:after {
+                    content: "\2212";
+                    float: right;
+                    opacity: .7;
+                }
+
+                .aac-faq .panel-heading a.collapsed:after {
+                    content: "+";
+                }
+
+        .aac-info h5 .glyphicon {
+            margin-right: 8px;
+        }
+
+        .aac-info h6 {
+            margin: 14px 0 6px;
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        .aac-info ul {
+            margin-bottom: 0;
+            padding-left: 20px;
+        }
+
+        @@media screen and (max-width: 767px) {
+            .aac-cards > [class*="col-"] {
                 width: 100%;
             }
-
-        .aac-status .label {
-            display: inline-block;
-            margin-bottom: 8px;
-            font-size: 90%;
         }
 
-        .aac-faq dt {
-            margin-top: 18px;
-        }
+        @@media screen and (max-width: 991px) {
+            .aac-hero {
+                padding: 22px 18px;
+                text-align: center;
+            }
 
-        .aac-faq dd {
-            margin-top: 4px;
+                .aac-hero .lead,
+                .aac-verify {
+                    margin-left: auto;
+                    margin-right: auto;
+                }
+
+                .aac-verify {
+                    text-align: left;
+                }
+
+            .aac-highlights li {
+                margin: 0 9px 8px;
+            }
         }
     </style>
 }
 
-<div class="text-center aac-hero">
-    <h3>@SharedLocalizer["AntiCheat"]</h3>
-    <p class="lead">@Localizer["Subtitle"]</p>
-    <a class="btn btn-primary btn-lg" href="@Model.DownloadUrl">
-        <span class="glyphicon glyphicon-download-alt"></span>
-        @Localizer["DownloadButton"]
-        @if (!string.IsNullOrWhiteSpace(Model.Version))
-        {
-            <span>v@(Model.Version)</span>
-        }
-    </a>
-    <p class="text-muted small" style="margin-top: 12px">@Localizer["Requirements"]</p>
-</div>
+<section class="aac-hero">
+    <div class="row aac-hero-row">
+        <div class="col-md-7">
+            <span class="aac-kicker">@Localizer["Kicker"]</span>
+            <h1>@SharedLocalizer["AntiCheat"]</h1>
+            <p class="lead">@Localizer["Subtitle"]</p>
 
-<h4>@Localizer["StepsTitle"]</h4>
-<ol class="aac-steps">
+            <div class="aac-download">
+                <a class="btn btn-success btn-lg" href="@Model.DownloadUrl">
+                    <span class="glyphicon glyphicon-download-alt"></span>@Localizer["DownloadButton"]
+                </a>
+                <div class="aac-meta">
+                    @if (!string.IsNullOrWhiteSpace(Model.Version))
+                    {
+                        <span>v@(Model.Version)</span>
+                    }
+                    @if (Model.SizeText is not null)
+                    {
+                        <span class="aac-dot">&middot;</span>
+                        <span>@Model.SizeText</span>
+                    }
+                    @if (Model.PublishedAt is not null)
+                    {
+                        <span class="aac-dot">&middot;</span>
+                        <span>@string.Format(Localizer["PublishedOn"].Value, Model.PublishedAt.Value.ToString("d"))</span>
+                    }
+                    @if (!string.IsNullOrWhiteSpace(Model.Sha256))
+                    {
+                        <span class="aac-dot">&middot;</span>
+                        <a data-toggle="collapse" href="#aac-verify" aria-expanded="false" aria-controls="aac-verify">@Localizer["VerifyLink"]</a>
+                    }
+                </div>
+                @if (!string.IsNullOrWhiteSpace(Model.Sha256))
+                {
+                    var sha256 = Model.Sha256.ToUpperInvariant();
+
+                    <div id="aac-verify" class="collapse">
+                        <div class="aac-verify">
+                            <p>@Localizer["VerifyText1"]</p>
+                            <code>Get-FileHash .\L4D2AntiCheat.exe</code>
+                            <p>
+                                @Localizer["VerifyText2"]
+                                <img src="~/imgs/icons/@copyIcon" alt="@SharedLocalizer["CopyText"]" class="icon-copy"
+                                     data-toggle="popover" data-placement="top" data-content="@SharedLocalizer["TextCopied"]"
+                                     onclick="copyTextToClipboard('@sha256', this)"/>
+                            </p>
+                            <code style="margin-bottom: 0">@sha256</code>
+                        </div>
+                    </div>
+                }
+            </div>
+
+            <ul class="aac-highlights">
+                <li>
+                    <span class="glyphicon glyphicon-ok-circle"></span>@Localizer["Highlight1"]
+                </li>
+                <li>
+                    <span class="glyphicon glyphicon-eye-close"></span>@Localizer["Highlight2"]
+                </li>
+            </ul>
+            <p class="aac-requirements">@Localizer["Requirements"]</p>
+        </div>
+
+        <div class="col-md-5 hidden-xs hidden-sm">
+            <div class="aac-window" aria-hidden="true">
+                <div class="aac-window-bar">
+                    L4D2 Anti-Cheat@(string.IsNullOrWhiteSpace(Model.Version) ? "" : $" v{Model.Version}")
+                    <span>&#8211; &#9633; &#10005;</span>
+                </div>
+                <div class="aac-window-body">
+                    @for (var line = 1; line <= 3; line++)
+                    {
+                        <div class="aac-step">@Localizer[$"WindowLog{line}"]</div>
+                    }
+                    <div class="aac-window-panel">
+                        <span class="aac-window-title">@Localizer["WindowReadyTitle"]</span>
+                        @Localizer["WindowReadyBody"]
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<h4 class="aac-section-title">@Localizer["StepsTitle"]</h4>
+<div class="row aac-cards">
     @for (var step = 1; step <= 3; step++)
     {
-        <li>
-            <span class="aac-step-number">@step</span>
-            <strong>@Localizer[$"Step{step}Title"]</strong>
-            @Localizer[$"Step{step}Text"]
-        </li>
+        <div class="col-sm-4">
+            <div class="aac-card">
+                <span class="aac-step-number">@step</span>
+                <h5>@Localizer[$"Step{step}Title"]</h5>
+                <p>@Localizer[$"Step{step}Text"]</p>
+            </div>
+        </div>
     }
-</ol>
-
-<h4>@Localizer["StatusTitle"]</h4>
-<div class="row aac-equal aac-status">
-    <div class="col-md-4">
-        <div class="panel panel-default">
-            <div class="panel-body">
-                <span class="label label-warning">@Localizer["StatusStartingLabel"]</span>
-                <div>@Localizer["StatusStartingText"]</div>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-4">
-        <div class="panel panel-default">
-            <div class="panel-body">
-                <span class="label label-success">@Localizer["StatusReadyLabel"]</span>
-                <div>@Localizer["StatusReadyText"]</div>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-4">
-        <div class="panel panel-default">
-            <div class="panel-body">
-                <span class="label label-danger">@Localizer["StatusFailedLabel"]</span>
-                <div>@Localizer["StatusFailedText"]</div>
-            </div>
-        </div>
-    </div>
 </div>
 
-<h4>@Localizer["FaqTitle"]</h4>
-<dl class="aac-faq">
+<h4 class="aac-section-title">@Localizer["StatusTitle"]</h4>
+<div class="row aac-cards">
+    @foreach (var status in statuses)
+    {
+        <div class="col-sm-6 col-md-3">
+            <div class="aac-card aac-status" style="border-left-color: @status.Color">
+                <h5 style="color: @status.Color">@Localizer[$"Status{status.Key}Label"]</h5>
+                <p>@Localizer[$"Status{status.Key}Text"]</p>
+            </div>
+        </div>
+    }
+</div>
+
+<h4 class="aac-section-title">@Localizer["FaqTitle"]</h4>
+<div class="panel-group aac-faq" id="aac-faq" role="tablist" aria-multiselectable="true">
     @for (var item = 1; item <= 5; item++)
     {
-        <dt>@Localizer[$"Faq{item}Q"]</dt>
-        <dd>@Localizer[$"Faq{item}A"]</dd>
+        <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="aac-faq-heading-@item">
+                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#aac-faq" href="#aac-faq-@item" aria-expanded="false" aria-controls="aac-faq-@item">
+                    @Localizer[$"Faq{item}Q"]
+                </a>
+            </div>
+            <div id="aac-faq-@item" class="panel-collapse collapse" role="tabpanel" aria-labelledby="aac-faq-heading-@item">
+                <div class="panel-body">@Localizer[$"Faq{item}A"]</div>
+            </div>
+        </div>
     }
-</dl>
-
-<div class="panel panel-default" style="margin-top: 25px">
-    <div class="panel-heading">
-        <h3 class="panel-title">@Localizer["InsecureTitle"]</h3>
-    </div>
-    <div class="panel-body">
-        <p>@Localizer["InsecureText1"]</p>
-        <p style="margin-bottom: 0">@Localizer["InsecureText2"]</p>
-    </div>
 </div>
 
-<div class="panel panel-default">
-    <div class="panel-heading">
-        <h3 class="panel-title">@Localizer["PrivacyTitle"]</h3>
+<div class="row aac-cards aac-info" style="margin-top: 20px">
+    <div class="col-md-6">
+        <div class="aac-card">
+            <h5>
+                <span class="glyphicon glyphicon-info-sign"></span>@Localizer["InsecureTitle"]
+            </h5>
+            <p style="margin-bottom: 10px">@Localizer["InsecureText1"]</p>
+            <p>@Localizer["InsecureText2"]</p>
+        </div>
     </div>
-    <div class="panel-body">
-        <div class="row">
-            <div class="col-md-6">
-                <h5>
-                    <strong>@Localizer["PrivacySendsTitle"]</strong>
-                </h5>
-                <ul>
-                    @for (var item = 1; item <= 3; item++)
-                    {
-                        <li>@Localizer[$"PrivacySends{item}"]</li>
-                    }
-                </ul>
-            </div>
-            <div class="col-md-6">
-                <h5>
-                    <strong>@Localizer["PrivacyNeverTitle"]</strong>
-                </h5>
-                <ul>
-                    @for (var item = 1; item <= 3; item++)
-                    {
-                        <li>@Localizer[$"PrivacyNever{item}"]</li>
-                    }
-                </ul>
+    <div class="col-md-6">
+        <div class="aac-card">
+            <h5>
+                <span class="glyphicon glyphicon-lock"></span>@Localizer["PrivacyTitle"]
+            </h5>
+            <div class="row">
+                <div class="col-sm-6">
+                    <h6>@Localizer["PrivacySendsTitle"]</h6>
+                    <ul>
+                        @for (var item = 1; item <= 3; item++)
+                        {
+                            <li>@Localizer[$"PrivacySends{item}"]</li>
+                        }
+                    </ul>
+                </div>
+                <div class="col-sm-6">
+                    <h6>@Localizer["PrivacyNeverTitle"]</h6>
+                    <ul>
+                        @for (var item = 1; item <= 3; item++)
+                        {
+                            <li>@Localizer[$"PrivacyNever{item}"]</li>
+                        }
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
 </div>
-
-<div class="alert alert-info">@Localizer["HelpText"]</div>
