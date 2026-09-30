@@ -1080,6 +1080,15 @@
     <data name="SelectMatchMode" xml:space="preserve">
     <value>Select the match mode</value>
   </data>
+    <data name="SelectAntiCheatState" xml:space="preserve">
+    <value>Turn the anti-cheat on or off</value>
+  </data>
+    <data name="TurnOnAntiCheat" xml:space="preserve">
+    <value>Turn on</value>
+  </data>
+    <data name="TurnOffAntiCheat" xml:space="preserve">
+    <value>Turn off</value>
+  </data>
     <data name="SelectPlayer" xml:space="preserve">
     <value>Select a player</value>
   </data>

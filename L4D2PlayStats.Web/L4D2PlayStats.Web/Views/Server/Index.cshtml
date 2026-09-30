@@ -328,7 +328,7 @@
                 },
                 '!aac': {
                     description: '@Html.Raw(SharedLocalizer["TogglesAntiCheat"])',
-                    args: []
+                    args: ['antiCheatState']
                 },
                 '!crash': {
                     description: '@Html.Raw(SharedLocalizer["CrashesServer"])',
@@ -510,6 +510,15 @@
                             { displayText: '3v3 ZoneHunters', value: 'zh3v3' },
                             { displayText: '2v2 ZoneHunters', value: 'zh2v2' },
                             { displayText: '1v1 ZoneHunters', value: 'zh1v1' },
+                        ];
+                    }
+                },
+                antiCheatState: {
+                    title: '@Html.Raw(SharedLocalizer["SelectAntiCheatState"])',
+                    items: function() {
+                        return [
+                            { displayText: '@Html.Raw(SharedLocalizer["TurnOnAntiCheat"])', value: 'on' },
+                            { displayText: '@Html.Raw(SharedLocalizer["TurnOffAntiCheat"])', value: 'off' }
                         ];
                     }
                 },
