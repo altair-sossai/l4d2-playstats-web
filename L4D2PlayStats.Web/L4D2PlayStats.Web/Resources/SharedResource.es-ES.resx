@@ -411,6 +411,30 @@
     <data name="TogglesAntiCheat" xml:space="preserve">
     <value>Activa o desactiva el anti-cheat</value>
   </data>
+    <data name="ForcesStart" xml:space="preserve">
+    <value>Fuerza el inicio de la ronda sin esperar a que todos estén listos</value>
+  </data>
+    <data name="ForcesPause" xml:space="preserve">
+    <value>Pausa la partida</value>
+  </data>
+    <data name="ForcesUnpause" xml:space="preserve">
+    <value>Reanuda la partida</value>
+  </data>
+    <data name="ResetsMatch" xml:space="preserve">
+    <value>Descarga el modo de partida actual</value>
+  </data>
+    <data name="RestartsMap" xml:space="preserve">
+    <value>Reinicia el mapa actual</value>
+  </data>
+    <data name="SwapsTeams" xml:space="preserve">
+    <value>Intercambia los dos equipos de lado</value>
+  </data>
+    <data name="GivesTank" xml:space="preserve">
+    <value>Define qué jugador será el tank</value>
+  </data>
+    <data name="ShufflesTank" xml:space="preserve">
+    <value>Vuelve a sortear quién será el tank</value>
+  </data>
     <data name="GagsPlayer" xml:space="preserve">
     <value>Silencia el chat de un jugador</value>
   </data>

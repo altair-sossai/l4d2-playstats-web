@@ -330,13 +330,45 @@
                     description: '@Html.Raw(SharedLocalizer["TogglesAntiCheat"])',
                     args: ['antiCheatState']
                 },
-                '!crash': {
-                    description: '@Html.Raw(SharedLocalizer["CrashesServer"])',
+                '!resetmatch': {
+                    description: '@Html.Raw(SharedLocalizer["ResetsMatch"])',
+                    args: []
+                },
+                '!forcestart': {
+                    description: '@Html.Raw(SharedLocalizer["ForcesStart"])',
+                    args: []
+                },
+                '!forcepause': {
+                    description: '@Html.Raw(SharedLocalizer["ForcesPause"])',
+                    args: []
+                },
+                '!forceunpause': {
+                    description: '@Html.Raw(SharedLocalizer["ForcesUnpause"])',
                     args: []
                 },
                 '!changelevel': {
                     description: '@Html.Raw(SharedLocalizer["ChangesCampaign"])',
                     args: ['campaign']
+                },
+                '!restartmap': {
+                    description: '@Html.Raw(SharedLocalizer["RestartsMap"])',
+                    args: []
+                },
+                '!swapto': {
+                    description: '@Html.Raw(SharedLocalizer["SwapsPlayers"])',
+                    args: ['team', 'players']
+                },
+                '!swapteams': {
+                    description: '@Html.Raw(SharedLocalizer["SwapsTeams"])',
+                    args: []
+                },
+                '!givetank': {
+                    description: '@Html.Raw(SharedLocalizer["GivesTank"])',
+                    args: ['infecteds']
+                },
+                '!tankshuffle': {
+                    description: '@Html.Raw(SharedLocalizer["ShufflesTank"])',
+                    args: []
                 },
                 '!kick': {
                     description: '@Html.Raw(SharedLocalizer["KicksPlayer"])',
@@ -353,10 +385,6 @@
                 '!voteban': {
                     description: '@Html.Raw(SharedLocalizer["InitiatesVoteBan"])',
                     args: ['players', 'reason']
-                },
-                '!swapto': {
-                    description: '@Html.Raw(SharedLocalizer["SwapsPlayers"])',
-                    args: ['team', 'players']
                 },
                 '!silence': {
                     description: '@Html.Raw(SharedLocalizer["SilencesPlayer"])',
@@ -385,6 +413,10 @@
                 '!slay': {
                     description: '@Html.Raw(SharedLocalizer["SlaysPlayer"])',
                     args: ['players']
+                },
+                '!crash': {
+                    description: '@Html.Raw(SharedLocalizer["CrashesServer"])',
+                    args: []
                 }
             },
             dataSources: {
