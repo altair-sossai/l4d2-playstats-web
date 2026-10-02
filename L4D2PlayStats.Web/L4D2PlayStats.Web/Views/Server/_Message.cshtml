@@ -19,7 +19,7 @@
     <small>@($"({SharedLocalizer[Model.Team.ToString()]})")</small>
 }
 <span class="@cssClass" style="font-weight: bold">
-    <a href="@Model.Player?.ProfileUrl" target="_blank">@Model.Player?.Name</a>
+    <a href="@Url.Action("Details", "Players", new { communityId = Model.Player?.CommunityId })" target="_blank">@Model.Player?.Name</a>
 </span>
 @if (Model.IsAdmin)
 {

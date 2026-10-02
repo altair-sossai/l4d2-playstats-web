@@ -498,7 +498,7 @@
                             @foreach (var player in players)
                             {
                                 <th class="text-center player-name">
-                                    <a href="@player.ProfileUrl" title="@player.PlayerName">
+                                    <a href="@Url.Action("Details", "Players", new { communityId = player.CommunityId })" title="@player.PlayerName">
                                         @player.PlayerName?.TruncatePlayerName()
                                     </a>
                                 </th>
@@ -687,7 +687,7 @@
                             @foreach (var infectedPlayer in infectedPlayers)
                             {
                                 <th class="text-center player-name">
-                                    <a href="@infectedPlayer.ProfileUrl" title="@infectedPlayer.PlayerName">
+                                    <a href="@Url.Action("Details", "Players", new { communityId = infectedPlayer.CommunityId })" title="@infectedPlayer.PlayerName">
                                         @infectedPlayer.PlayerName?.TruncatePlayerName()
                                     </a>
                                 </th>
@@ -752,10 +752,22 @@
                             var playerName = allPlayers[i];
                             <tr>
                                 <td>@(i + 1)</td>
-                                <td class="line-break-anywhere">@playerName.SteamId</td>
-                                <td class="line-break-anywhere">@playerName.CommunityId</td>
+                                <td class="line-break-anywhere">
+                                    @playerName.SteamId
+                                    @if (!string.IsNullOrWhiteSpace(playerName.SteamId))
+                                    {
+                                        @await Html.PartialAsync("_CopyButton", playerName.SteamId)
+                                    }
+                                </td>
+                                <td class="line-break-anywhere">
+                                    @playerName.CommunityId
+                                    @if (!string.IsNullOrWhiteSpace(playerName.CommunityId))
+                                    {
+                                        @await Html.PartialAsync("_CopyButton", playerName.CommunityId)
+                                    }
+                                </td>
                                 <td>
-                                    <a href="@playerName.ProfileUrl" title="@playerName.Name">
+                                    <a href="@Url.Action("Details", "Players", new { communityId = playerName.CommunityId })" title="@playerName.Name">
                                         @playerName.Name?.TruncatePlayerName()
                                     </a>
                                 </td>

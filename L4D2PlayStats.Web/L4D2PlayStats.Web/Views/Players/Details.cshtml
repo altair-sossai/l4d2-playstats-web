@@ -332,6 +332,10 @@
             <th>@SharedLocalizer["ProfileUrl"]:</th>
             <td data-label="@SharedLocalizer["ProfileUrl"]:" colspan="3">
                 <a href="@firstPlayer.ProfileUrl" target="_blank">@firstPlayer.ProfileUrl</a>
+                @if (!string.IsNullOrWhiteSpace(firstPlayer.ProfileUrl))
+                {
+                    @await Html.PartialAsync("_CopyButton", firstPlayer.ProfileUrl)
+                }
                 @if (secondPlayer != null)
                 {
                     <br/>
@@ -339,6 +343,10 @@
                         <a href="@secondPlayer.ProfileUrl" target="_blank">
                             @secondPlayer.ProfileUrl
                         </a>
+                        @if (!string.IsNullOrWhiteSpace(secondPlayer.ProfileUrl))
+                        {
+                            @await Html.PartialAsync("_CopyButton", secondPlayer.ProfileUrl)
+                        }
                     </span>
                 }
             </td>
@@ -576,7 +584,13 @@
                         <img src="@UserAvatar[relatedPlayer.CommunityId]" alt="@relatedPlayer.Name" title="@relatedPlayer.Name" class="img-thumbnail" style="width: 32px; margin-right: 5px" onerror="imgOnError(this)"/>
                         <a href="@Url.Action("Details", "Players", new { communityId = relatedPlayer.CommunityId })">@relatedPlayer.Name</a>
                     </td>
-                    <td data-label="@SharedLocalizer["SteamId"]:">@relatedPlayer.SteamId</td>
+                    <td data-label="@SharedLocalizer["SteamId"]:">
+                        @relatedPlayer.SteamId
+                        @if (!string.IsNullOrWhiteSpace(relatedPlayer.SteamId))
+                        {
+                            @await Html.PartialAsync("_CopyButton", relatedPlayer.SteamId)
+                        }
+                    </td>
                     <td data-label="@SharedLocalizer["LastLogin"]:">@relatedPlayer.LastConnectedAtUtc.ToString("g")</td>
                     <td data-label="@SharedLocalizer["Connections"]:">@relatedPlayer.ConnectionCount.ToString("N0")</td>
                     <td data-label="@SharedLocalizer["ProfileUrl"]:">
@@ -585,6 +599,7 @@
                             <a href="@relatedPlayer.ProfileUrl" target="_blank" rel="noopener noreferrer">
                                 @relatedPlayer.ProfileUrl
                             </a>
+                            @await Html.PartialAsync("_CopyButton", relatedPlayer.ProfileUrl)
                         }
                     </td>
                 </tr>

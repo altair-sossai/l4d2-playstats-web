@@ -62,13 +62,19 @@
                 }
                 <tr>
                     <th>@SharedLocalizer["CommunityId"]:</th>
-                    <td data-label="@SharedLocalizer["CommunityId"]:">@Model.CommunityId</td>
+                    <td data-label="@SharedLocalizer["CommunityId"]:">
+                        @Model.CommunityId
+                        @await Html.PartialAsync("_CopyButton", Model.CommunityId.ToString())
+                    </td>
                 </tr>
                 @if (!string.IsNullOrWhiteSpace(Model.SteamId))
                 {
                     <tr>
                         <th>@SharedLocalizer["SteamId"]:</th>
-                        <td data-label="@SharedLocalizer["SteamId"]:">@Model.SteamId</td>
+                        <td data-label="@SharedLocalizer["SteamId"]:">
+                            @Model.SteamId
+                            @await Html.PartialAsync("_CopyButton", Model.SteamId)
+                        </td>
                     </tr>
                 }
                 @if (Model.LastConnectedAtUtc.HasValue)
@@ -93,6 +99,7 @@
                             <a href="@Model.ProfileUrl" target="_blank" rel="noopener noreferrer">
                                 @Model.ProfileUrl
                             </a>
+                            @await Html.PartialAsync("_CopyButton", Model.ProfileUrl)
                         </td>
                     </tr>
                 }
@@ -127,7 +134,13 @@
                         <img src="@UserAvatar[relatedPlayer.CommunityId]" alt="@relatedPlayer.Name" title="@relatedPlayer.Name" class="img-thumbnail" style="width: 32px; margin-right: 5px" onerror="imgOnError(this)"/>
                         <a href="@Url.Action("Details", "Players", new { communityId = relatedPlayer.CommunityId })">@relatedPlayer.Name</a>
                     </td>
-                    <td data-label="@SharedLocalizer["SteamId"]:">@relatedPlayer.SteamId</td>
+                    <td data-label="@SharedLocalizer["SteamId"]:">
+                        @relatedPlayer.SteamId
+                        @if (!string.IsNullOrWhiteSpace(relatedPlayer.SteamId))
+                        {
+                            @await Html.PartialAsync("_CopyButton", relatedPlayer.SteamId)
+                        }
+                    </td>
                     <td data-label="@SharedLocalizer["LastLogin"]:">@relatedPlayer.LastConnectedAtUtc.ToString("g")</td>
                     <td data-label="@SharedLocalizer["Connections"]:">@relatedPlayer.ConnectionCount.ToString("N0")</td>
                     <td data-label="@SharedLocalizer["ProfileUrl"]:">
@@ -136,6 +149,7 @@
                             <a href="@relatedPlayer.ProfileUrl" target="_blank" rel="noopener noreferrer">
                                 @relatedPlayer.ProfileUrl
                             </a>
+                            @await Html.PartialAsync("_CopyButton", relatedPlayer.ProfileUrl)
                         }
                     </td>
                 </tr>

@@ -4,6 +4,9 @@
 
 @{
     ViewData["Title"] = SharedLocalizer["ChatBans"].Value;
+
+    var light = Context.Request.Cookies["theme"] == "light";
+    var copyIcon = light ? "copy-light.png" : "copy-dark.png";
 }
 
 <h4 class="text-center">@SharedLocalizer["ChatBans"]</h4>
@@ -92,6 +95,9 @@
         };
 
         var reasonLabel = '@Html.Raw(SharedLocalizer["Reason"])';
+        var copyTextLabel = '@Html.Raw(SharedLocalizer["CopyText"])';
+        var textCopiedLabel = '@Html.Raw(SharedLocalizer["TextCopied"])';
+        var copyIconUrl = '@Url.Content($"~/imgs/icons/{copyIcon}")';
 
         function formatDate(value) {
             if (!value)
@@ -154,7 +160,12 @@
 
                 var nameCell = $('<td class="vertical-align-middle"></td>').append(
                     $('<div></div>').text(item.name || item.communityId),
-                    $('<small class="text-muted"></small>').text(item.communityId)
+                    $('<small class="text-muted"></small>').text(item.communityId),
+                    $('<img class="icon-copy" data-toggle="popover" data-placement="top"/>')
+                        .attr({ src: copyIconUrl, alt: copyTextLabel,'data-content': textCopiedLabel })
+                        .on('click', function () {
+                            copyTextToClipboard(item.communityId, this);
+                        })
                 );
 
                 if (item.reason) {

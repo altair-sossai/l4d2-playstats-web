@@ -104,14 +104,14 @@
                                          class="img-responsive img-character @(survivor.Dead ? "img-gray" : string.Empty)"/>
                                 </td>
                                 <td style="width: 40px" rowspan="2">
-                                    <a href="@survivor.ProfileUrl" target="_blank">
+                                    <a href="@Url.Action("Details", "Players", new { communityId = survivor.CommunityId })" target="_blank">
                                         <img src="@survivor.AvatarUrl" alt="@survivor.Name"
                                              data-toggle="tooltip" data-placement="top" title="@survivor.Name"
                                              class="img-responsive img-avatar @(survivor.Dead ? "img-gray" : string.Empty)"/>
                                     </a>
                                 </td>
                                 <td>
-                                    <a href="@survivor.ProfileUrl" target="_blank">@survivor.Name</a>
+                                    <a href="@Url.Action("Details", "Players", new { communityId = survivor.CommunityId })" target="_blank">@survivor.Name</a>
 
                                     @if (survivor.IsAdmin)
                                     {
@@ -288,14 +288,14 @@
                                          class="img-responsive img-infected"/>
                                 </td>
                                 <td style="width: 40px">
-                                    <a href="@infected.ProfileUrl" target="_blank">
+                                    <a href="@Url.Action("Details", "Players", new { communityId = infected.CommunityId })" target="_blank">
                                         <img src="@infected.AvatarUrl" alt="@infected.Name"
                                              data-toggle="tooltip" data-placement="top" title="@infected.Name"
                                              class="img-responsive img-avatar"/>
                                     </a>
                                 </td>
                                 <td>
-                                    <a href="@infected.ProfileUrl" target="_blank">
+                                    <a href="@Url.Action("Details", "Players", new { communityId = infected.CommunityId })" target="_blank">
                                         @infected.Name
                                     </a>
 
@@ -387,7 +387,7 @@
             <span style="font-weight: bold">@SharedLocalizer["Spectators"] (@spectators.Length): </span>
             @foreach (var spectator in spectators)
             {
-                <a href="@spectator.ProfileUrl" target="_blank" class="label label-default" id="spectator-@spectator.CommunityId">
+                <a href="@Url.Action("Details", "Players", new { communityId = spectator.CommunityId })" target="_blank" class="label label-default" id="spectator-@spectator.CommunityId">
                     @spectator.Name
                 </a>
             }

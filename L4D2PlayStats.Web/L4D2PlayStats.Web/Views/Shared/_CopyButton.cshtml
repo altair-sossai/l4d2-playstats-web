@@ -1,0 +1,13 @@
+@using L4D2PlayStats.Web
+@using Microsoft.Extensions.Localization
+@model string
+@inject IStringLocalizer<SharedResource> SharedLocalizer
+
+@{
+    var light = Context.Request.Cookies["theme"] == "light";
+    var copyIcon = light ? "copy-light.png" : "copy-dark.png";
+}
+
+<img src="~/imgs/icons/@copyIcon" alt="@SharedLocalizer["CopyText"]" class="icon-copy"
+     data-toggle="popover" data-placement="top" data-content="@SharedLocalizer["TextCopied"]"
+     data-copy-text="@Model" onclick="copyTextToClipboard(this.getAttribute('data-copy-text'), this)"/>
