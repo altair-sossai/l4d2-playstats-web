@@ -132,6 +132,24 @@
   <data name="AntiCheat" xml:space="preserve">
     <value>Anti-Cheat</value>
   </data>
+  <data name="AntiCheatApiUnavailable" xml:space="preserve">
+    <value>Anti-Cheat API down</value>
+  </data>
+  <data name="AntiCheatApiUnavailableTooltip" xml:space="preserve">
+    <value>The server cannot reach the anti-cheat API, so nobody is being blocked right now</value>
+  </data>
+  <data name="AntiCheatDisabled" xml:space="preserve">
+    <value>Anti-Cheat off</value>
+  </data>
+  <data name="AntiCheatDisabledTooltip" xml:space="preserve">
+    <value>Anyone can play; the anti-cheat only records who is running it</value>
+  </data>
+  <data name="AntiCheatEnabled" xml:space="preserve">
+    <value>Anti-Cheat on</value>
+  </data>
+  <data name="AntiCheatEnabledTooltip" xml:space="preserve">
+    <value>Only players running a validated anti-cheat client can play</value>
+  </data>
   <data name="AntiCheatMetaDescription" xml:space="preserve">
     <value>Download the L4D2 Competitive Anti-Cheat and learn how it works.</value>
   </data>

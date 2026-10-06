@@ -1,4 +1,6 @@
-﻿namespace L4D2PlayStats.Core.GameInfo.Models;
+﻿using L4D2PlayStats.Core.GameInfo.Enums;
+
+namespace L4D2PlayStats.Core.GameInfo.Models;
 
 public class Round
 {
@@ -8,6 +10,7 @@ public class Round
     public int MaxChapterProgressPoints { get; set; }
     public decimal TankPercent { get; set; }
     public decimal WitchPercent { get; set; }
+    public AntiCheatStatus? AntiCheatStatus { get; set; }
     public bool TankDisabled => TankPercent <= 0;
     public bool WitchDisabled => WitchPercent <= 0;
 }

@@ -1,4 +1,5 @@
 ﻿@using L4D2PlayStats.Core.Campaign.Contracts
+@using L4D2PlayStats.Core.GameInfo.Enums
 @using L4D2PlayStats.Web
 @using Microsoft.Extensions.Localization
 @model L4D2PlayStats.Web.Models.ServerInfoModel
@@ -32,6 +33,23 @@
         }
 
         @string.Join(" - ", header)
+
+        @if (round?.AntiCheatStatus is { } antiCheatStatus)
+        {
+            var (antiCheatLabel, antiCheatText, antiCheatTooltip) = antiCheatStatus switch
+            {
+                AntiCheatStatus.Enabled => ("success", "AntiCheatEnabled", "AntiCheatEnabledTooltip"),
+                AntiCheatStatus.ApiUnavailable => ("warning", "AntiCheatApiUnavailable", "AntiCheatApiUnavailableTooltip"),
+                _ => ("default", "AntiCheatDisabled", "AntiCheatDisabledTooltip")
+            };
+
+            <a href="@Url.Action("Index", "AntiCheat")" style="margin-left: 5px; text-decoration: none">
+                <span class="label label-@antiCheatLabel" data-toggle="tooltip" data-placement="bottom" title="@SharedLocalizer[antiCheatTooltip]">
+                    <span class="glyphicon glyphicon-lock"></span>
+                    @SharedLocalizer[antiCheatText]
+                </span>
+            </a>
+        }
     </div>
 
     <table class="table table-condensed table-responsive">
