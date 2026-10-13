@@ -141,7 +141,7 @@
     <value>Only players at the top patent can use these skins.</value>
   </data>
   <data name="HowToChoose" xml:space="preserve">
-    <value>As a &lt;b&gt;survivor&lt;/b&gt;, during the &lt;b&gt;ready-up&lt;/b&gt; of the &lt;b&gt;first map&lt;/b&gt; (score 0 to 0), type the skin command in the game chat, e.g. &lt;code&gt;!skin hellsing-gold&lt;/code&gt;. Type &lt;code&gt;!skin&lt;/code&gt; to see the help.</value>
+    <value>As a &lt;b&gt;survivor&lt;/b&gt;, during the &lt;b&gt;ready-up&lt;/b&gt;, type the skin command in the game chat, e.g. &lt;code&gt;!skin hellsing-gold&lt;/code&gt;. Type &lt;code&gt;!skin&lt;/code&gt; to see the help.</value>
   </data>
   <data name="HowToChooseTitle" xml:space="preserve">
     <value>Choose a skin</value>
