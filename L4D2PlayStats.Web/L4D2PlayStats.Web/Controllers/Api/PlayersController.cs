@@ -26,4 +26,21 @@ public class PlayersController(IRankingServiceCached rankingService, IPatentServ
 
         return Ok(models);
     }
+
+    [HttpGet("levels")]
+    public async Task<IActionResult> Levels(CancellationToken cancellationToken)
+    {
+        var players = await rankingService.GetAsync(cancellationToken);
+
+        var models = players
+            .Select(player =>
+            {
+                var patentProgress = patentService.GetPatentProgress(player);
+                var model = new PlayerPatentModel(player, patentProgress);
+
+                return model;
+            }).ToList();
+
+        return Ok(models);
+    }
 }

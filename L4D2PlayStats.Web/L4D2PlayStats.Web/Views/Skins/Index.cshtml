@@ -1,0 +1,508 @@
+@using System.Globalization
+@using L4D2PlayStats.Web
+@using L4D2PlayStats.Web.Models
+@using L4D2PlayStats.Web.PageMetadata
+@using Microsoft.AspNetCore.Mvc.Localization
+@using Microsoft.Extensions.Localization
+@model L4D2PlayStats.Web.Models.SkinsModel
+@inject IViewLocalizer Localizer
+@inject IStringLocalizer<SharedResource> SharedLocalizer
+
+@{
+    ViewData["PageMetadata"] = new SkinsPageMetadata(Model, SharedLocalizer);
+    var light = Context.Request.Cookies["theme"] == "light";
+    var copyIcon = light ? "copy-light.png" : "copy-dark.png";
+    var loggedIn = Model.PlayerPatent != null;
+    var culture = CultureInfo.CurrentUICulture;
+    var weaponNames = new Dictionary<string, string>
+    {
+        ["weapon_smg"] = Localizer["WeaponSmg"].Value,
+        ["weapon_smg_silenced"] = Localizer["WeaponSmgSilenced"].Value,
+        ["weapon_pumpshotgun"] = Localizer["WeaponPumpShotgun"].Value,
+        ["weapon_shotgun_chrome"] = Localizer["WeaponShotgunChrome"].Value
+    };
+}
+
+@section Styles {
+    <style>
+        .sk-hero {
+            margin: 10px 0 24px;
+            padding: 28px 30px 24px;
+            border: 1px solid rgba(128, 128, 128, .25);
+            border-radius: 6px;
+            background: linear-gradient(135deg, rgba(240, 173, 78, .12), rgba(91, 192, 222, .06) 55%, rgba(128, 128, 128, .03));
+        }
+
+        .sk-kicker {
+            display: inline-block;
+            margin-bottom: 10px;
+            font-size: 12px;
+            font-weight: bold;
+            letter-spacing: .08em;
+            text-transform: uppercase;
+            opacity: .75;
+        }
+
+        .sk-hero h1 {
+            margin: 0 0 10px;
+            font-size: 38px;
+            font-weight: bold;
+        }
+
+        .sk-hero .lead {
+            max-width: 760px;
+            margin-bottom: 18px;
+        }
+
+        .sk-howto {
+            display: flex;
+            flex-wrap: wrap;
+            margin: 0 -6px 14px;
+        }
+
+            .sk-howto > div {
+                flex: 1 1 220px;
+                margin: 6px;
+                padding: 12px 14px;
+                border: 1px solid rgba(128, 128, 128, .3);
+                border-radius: 4px;
+                background: rgba(128, 128, 128, .06);
+                font-size: 13px;
+            }
+
+            .sk-howto strong {
+                display: block;
+                margin-bottom: 4px;
+            }
+
+            .sk-howto code,
+            .sk-command code {
+                border: 1px solid rgba(128, 128, 128, .3);
+                background: rgba(128, 128, 128, .12);
+                color: inherit;
+            }
+
+        .sk-player {
+            display: flex;
+            align-items: center;
+            padding: 10px 14px;
+            border: 1px solid rgba(98, 196, 98, .45);
+            border-radius: 4px;
+            background: rgba(98, 196, 98, .08);
+        }
+
+            .sk-player img {
+                width: 40px;
+                margin-right: 12px;
+            }
+
+            .sk-player a {
+                text-decoration: underline;
+            }
+
+        .sk-credits {
+            margin: 14px 0 0;
+            font-size: 12px;
+            opacity: .75;
+        }
+
+        .sk-toolbar {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            margin-bottom: 18px;
+        }
+
+            .sk-toolbar .btn-group {
+                margin: 0 14px 8px 0;
+            }
+
+            .sk-toolbar label {
+                margin: 0 0 8px;
+                font-weight: normal;
+                cursor: pointer;
+            }
+
+        .sk-level {
+            margin-bottom: 28px;
+        }
+
+        .sk-level-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 12px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid rgba(128, 128, 128, .3);
+        }
+
+            .sk-level-header img {
+                width: 46px;
+                margin-right: 12px;
+            }
+
+            .sk-level-header h3 {
+                margin: 0;
+                font-size: 20px;
+                font-weight: bold;
+            }
+
+            .sk-level-header p {
+                margin: 2px 0 0;
+                font-size: 12px;
+                opacity: .75;
+            }
+
+        .sk-level-title {
+            flex: 1;
+        }
+
+        .sk-level-count {
+            font-size: 12px;
+            opacity: .75;
+            white-space: nowrap;
+        }
+
+        .sk-level-exclusive .sk-level-header {
+            border-bottom-color: rgba(240, 173, 78, .7);
+        }
+
+        .sk-level-exclusive .sk-card {
+            border-color: rgba(240, 173, 78, .55);
+            box-shadow: 0 0 12px rgba(240, 173, 78, .18);
+        }
+
+        .sk-grid {
+            display: flex;
+            flex-wrap: wrap;
+            margin: 0 -7px;
+        }
+
+        .sk-card {
+            display: flex;
+            flex-direction: column;
+            width: 220px;
+            margin: 0 7px 14px;
+            border: 1px solid rgba(128, 128, 128, .3);
+            border-radius: 6px;
+            overflow: hidden;
+            background: rgba(128, 128, 128, .05);
+            transition: transform .15s ease, box-shadow .15s ease;
+        }
+
+            .sk-card:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 6px 16px rgba(0, 0, 0, .25);
+            }
+
+        .sk-thumb {
+            position: relative;
+            display: block;
+            background: #111;
+        }
+
+            .sk-thumb img {
+                display: block;
+                width: 100%;
+                height: 218px;
+                object-fit: cover;
+            }
+
+        .sk-weapon {
+            position: absolute;
+            top: 8px;
+            left: 8px;
+            background: rgba(0, 0, 0, .7);
+            color: #fff;
+        }
+
+        .sk-status {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+        }
+
+        .sk-locked .sk-thumb img {
+            filter: grayscale(85%);
+            opacity: .55;
+        }
+
+        .sk-unlocked {
+            border-color: rgba(98, 196, 98, .55);
+        }
+
+        .sk-body {
+            display: flex;
+            flex: 1;
+            flex-direction: column;
+            padding: 10px 12px 12px;
+        }
+
+        .sk-title {
+            margin: 0 0 6px;
+            overflow: hidden;
+            font-size: 14px;
+            font-weight: bold;
+            line-height: 1.35;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        }
+
+        .sk-desc {
+            display: -webkit-box;
+            flex: 1;
+            margin: 0 0 10px;
+            overflow: hidden;
+            font-size: 12px;
+            line-height: 1.45;
+            opacity: .8;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+        }
+
+        .sk-original {
+            display: -webkit-box;
+            margin: -4px 0 10px;
+            overflow: hidden;
+            font-size: 10px;
+            line-height: 1.4;
+            opacity: .55;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+        }
+
+        .sk-command {
+            display: flex;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+
+            .sk-command code {
+                flex: 1;
+                overflow: hidden;
+                font-size: 11px;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+            }
+
+            .sk-command code {
+                padding: 5px 7px;
+                font-size: 12px;
+            }
+
+            .sk-command .icon-copy {
+                width: 18px;
+                height: 18px;
+                margin: 0 0 0 8px;
+            }
+
+        .sk-workshop {
+            padding: 8px 10px;
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+            .sk-workshop .glyphicon {
+                margin-right: 4px;
+            }
+
+        .sk-command-label {
+            margin-bottom: 3px;
+            font-size: 11px;
+            font-weight: bold;
+            text-transform: uppercase;
+            opacity: .65;
+        }
+
+        @@media screen and (max-width: 700px) {
+            .sk-hero {
+                padding: 20px 16px;
+            }
+
+                .sk-hero h1 {
+                    font-size: 28px;
+                }
+
+            .sk-card {
+                width: calc(50% - 14px);
+            }
+
+            .sk-thumb img {
+                height: auto;
+            }
+        }
+    </style>
+}
+
+<div class="sk-hero">
+    <span class="sk-kicker">@Localizer["Kicker"]</span>
+    <h1>@SharedLocalizer["Skins"]</h1>
+    <p class="lead">@Localizer["Lead"]</p>
+
+    <div class="sk-howto">
+        <div>
+            <strong>@Localizer["HowToChooseTitle"]</strong>
+            @Html.Raw(Localizer["HowToChoose"].Value)
+        </div>
+        <div>
+            <strong>@Localizer["HowToCycleTitle"]</strong>
+            @Html.Raw(Localizer["HowToCycle"].Value)
+        </div>
+        <div>
+            <strong>@Localizer["HowToDefaultTitle"]</strong>
+            @Html.Raw(Localizer["HowToDefault"].Value)
+        </div>
+    </div>
+
+    @if (loggedIn)
+    {
+        <div class="sk-player">
+            <img src="@Model.PlayerPatent!.Image" alt="@Model.PlayerPatent.FullName"/>
+            <div>
+                @Html.Raw(string.Format(Localizer["YourPatent"].Value, Model.PlayerPatent.Name, Model.PlayerPatent.Level))
+                <br/>
+                @Html.Raw(string.Format(Localizer["UnlockedCount"].Value, Model.UnlockedCount, Model.Skins.Count))
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="sk-player">
+            <div>@Html.Raw(string.Format(Localizer["LoginToSee"].Value, Url.Action("Login", "Account")))</div>
+        </div>
+    }
+
+    <p class="sk-credits">@Localizer["Credits"]</p>
+</div>
+
+<div class="sk-toolbar">
+    <div class="btn-group" role="group">
+        <button type="button" class="btn btn-default btn-sm active" data-filter="all">@Localizer["AllWeapons"]</button>
+        @foreach (var weapon in SkinsModel.Weapons)
+        {
+            <button type="button" class="btn btn-default btn-sm" data-filter="@weapon">@weaponNames[weapon]</button>
+        }
+    </div>
+    @if (loggedIn)
+    {
+        <label>
+            <input type="checkbox" id="sk-only-unlocked"/> @Localizer["OnlyUnlocked"]
+        </label>
+    }
+</div>
+
+@foreach (var patent in Model.Patents)
+{
+    var skins = Model.SkinsOf(patent.Level);
+
+    if (skins.Count == 0)
+    {
+        continue;
+    }
+
+    var exclusive = patent.Level == Model.Patents.Max(p => p.Level);
+
+    <section id="level-@patent.Level" class="sk-level @(exclusive ? "sk-level-exclusive" : "")">
+        <div class="sk-level-header">
+            <img src="@patent.Image" alt="@patent.FullName"/>
+            <div class="sk-level-title">
+                <h3>
+                    @patent.Name
+                    <small>@string.Format(Localizer["LevelNumber"].Value, patent.Level)</small>
+                    @if (exclusive)
+                    {
+                        <span class="label label-warning">@Localizer["Exclusive"]</span>
+                    }
+                </h3>
+                <p>@(exclusive ? Localizer["ExclusiveDescription"].Value : string.Format(Localizer["AvailableFrom"].Value, patent.Name))</p>
+            </div>
+            <span class="sk-level-count">@string.Format(Localizer["SkinsCount"].Value, skins.Count)</span>
+        </div>
+
+        <div class="sk-grid">
+            @foreach (var skin in skins)
+            {
+                var canUse = Model.CanUse(skin);
+                var title = skin.Title.Get(culture);
+                var description = skin.Description.Get(culture);
+                var original = string.Join(" — ", new[] { skin.OriginalTitle, skin.OriginalDescription }.Where(text => !string.IsNullOrWhiteSpace(text)));
+                var stateClass = loggedIn ? canUse ? "sk-unlocked" : "sk-locked" : string.Empty;
+
+                <div class="sk-card @stateClass" data-weapon="@skin.Weapon" data-unlocked="@(canUse ? 1 : 0)">
+                    <a class="sk-thumb" href="@skin.Image" data-lity>
+                        <img src="@skin.Image" alt="@title" loading="lazy"/>
+                        <span class="label sk-weapon">@weaponNames[skin.Weapon]</span>
+                        @if (loggedIn)
+                        {
+                            <span class="label sk-status @(canUse ? "label-success" : "label-default")">
+                                <span class="glyphicon @(canUse ? "glyphicon-ok" : "glyphicon-lock")"></span>
+                                @(canUse ? Localizer["Unlocked"].Value : Localizer["Locked"].Value)
+                            </span>
+                        }
+                    </a>
+                    <div class="sk-body">
+                        <h4 class="sk-title" title="@title">@title</h4>
+                        @if (!string.IsNullOrWhiteSpace(description))
+                        {
+                            <p class="sk-desc" title="@description">@description</p>
+                        }
+                        @if (!string.IsNullOrWhiteSpace(original))
+                        {
+                            <small class="sk-original" title="@original">
+                                <b>@Localizer["Original"]:</b> @original
+                            </small>
+                        }
+                        <div class="sk-command-label">@Localizer["ChatCommand"]</div>
+                        <div class="sk-command">
+                            <code>@skin.Command</code>
+                            <img src="~/imgs/icons/@copyIcon" alt="@SharedLocalizer["CopyText"]" class="icon-copy"
+                                 data-toggle="popover" data-placement="top" data-content="@SharedLocalizer["TextCopied"]"
+                                 onclick="copyTextToClipboard('@skin.Command', this)"/>
+                        </div>
+                        <a class="btn btn-default btn-sm btn-block sk-workshop" href="@skin.WorkshopUrl" target="_blank" rel="noopener">
+                            <span class="glyphicon glyphicon-new-window"></span> @Localizer["ViewOnWorkshop"]
+                        </a>
+                    </div>
+                </div>
+            }
+        </div>
+    </section>
+}
+
+@section Scripts {
+    <script>
+        $(function () {
+            var weapon = 'all';
+            var onlyUnlocked = false;
+
+            function applyFilters() {
+                $('.sk-level').each(function () {
+                    var visible = 0;
+
+                    $(this).find('.sk-card').each(function () {
+                        var $card = $(this);
+                        var show = (weapon === 'all' || $card.data('weapon') === weapon) && (!onlyUnlocked || $card.data('unlocked') === 1);
+
+                        $card.toggle(show);
+
+                        if (show)
+                            visible++;
+                    });
+
+                    $(this).toggle(visible > 0);
+                });
+            }
+
+            $('.sk-toolbar [data-filter]').on('click', function () {
+                $('.sk-toolbar [data-filter]').removeClass('active');
+                $(this).addClass('active');
+                weapon = $(this).data('filter');
+                applyFilters();
+            });
+
+            $('#sk-only-unlocked').on('change', function () {
+                onlyUnlocked = this.checked;
+                applyFilters();
+            });
+        });
+    </script>
+}

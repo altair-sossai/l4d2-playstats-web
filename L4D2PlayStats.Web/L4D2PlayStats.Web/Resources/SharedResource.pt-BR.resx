@@ -1461,4 +1461,10 @@
     <data name="SteamIdOrProfileUrl" xml:space="preserve">
     <value>Steam ID ou URL do perfil</value>
   </data>
+  <data name="Skins" xml:space="preserve">
+    <value>Skins</value>
+  </data>
+  <data name="SkinsMetaDescription" xml:space="preserve">
+    <value>Skins de armas liberadas por nível de patente no servidor L4D2 Competitive, com créditos aos criadores do Steam Workshop.</value>
+  </data>
 </root>

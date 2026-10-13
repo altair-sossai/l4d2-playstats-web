@@ -149,6 +149,18 @@
   <data name="RageQuitXPPoints" xml:space="preserve">
     <value>Rage quit: {0:N0} XP points</value>
   </data>
+  <data name="SeeAllSkins" xml:space="preserve">
+    <value>See all skins</value>
+  </data>
+  <data name="ShowSkins" xml:space="preserve">
+    <value>Skins ({0})</value>
+  </data>
+  <data name="Skins" xml:space="preserve">
+    <value>Skins</value>
+  </data>
+  <data name="SkinsUnlockedAtLevel" xml:space="preserve">
+    <value>Skins unlocked at {0}</value>
+  </data>
   <data name="UnderstandingPatentSystem" xml:space="preserve">
     <value>Understanding the patent system</value>
   </data>

@@ -1,0 +1,1948 @@
+{
+  "skins": [
+    {
+      "id": "hellsing-gold",
+      "weapon": "weapon_smg",
+      "level": 15,
+      "workshopId": "132036649",
+      "title": {
+        "en": "SMG - Hellsing Gold",
+        "pt": "SMG - Hellsing Gold",
+        "es": "SMG - Hellsing Gold"
+      },
+      "description": {
+        "en": "Gold SMG with custom normal and exponent maps. Looks best on very high shader settings; the gold/gloss effect does not work on low-end PCs.",
+        "pt": "SMG dourada com normal map e exponent map próprios. Fica melhor com shaders no máximo; o efeito dourado/brilho não funciona em PCs mais fracos.",
+        "es": "SMG dorada con normal map y exponent map propios. Se ve mejor con los shaders al máximo; el efecto dorado/brillo no funciona en PCs de gama baja."
+      },
+      "originalTitle": "SMG - hellsing gold",
+      "originalDescription": "a gold smg custom normal map custom exponent map mod works best on very high shader settings (gold/gloss fx does not work on lower end pc) please dont redistribute my custom textures/normals....be original and make something on your own. SKIN MODS GOLD MODS CHROME MODS ANIMATED G…"
+    },
+    {
+      "id": "rosmontis",
+      "weapon": "weapon_smg",
+      "level": 15,
+      "workshopId": "2848790132",
+      "title": {
+        "en": "Arknights Rosmontis Dynamic Skin SMG (UZI) (Glow)",
+        "pt": "Arknights Rosmontis Dynamic Skin SMG (UZI) (Glow)",
+        "es": "Arknights Rosmontis Dynamic Skin SMG (UZI) (Glow)"
+      },
+      "description": {
+        "en": "Animated Rosmontis skin from Arknights for the SMG (Uzi), with glow. Replaces textures only.",
+        "pt": "Skin animada da Rosmontis, de Arknights, para a SMG (Uzi), com brilho. Substitui apenas as texturas.",
+        "es": "Skin animada de Rosmontis, de Arknights, para la SMG (Uzi), con brillo. Reemplaza solo las texturas."
+      },
+      "originalTitle": "Arknights Rosmontis Dynamic Skin SMG (UZI)(Glow)",
+      "originalDescription": "我不会忘掉那些人。那些造出了我和其他怪物的人。那些用我们去做坏事的人。在这片大地变得不会伤害别人之前......我还是要让这些人受到惩罚。那要很疼，很疼，让他们也忘不掉才行。 替换了SMG冲锋枪(UZI) Replace SMG 只替换了贴图，可以搭配其他非贴图模组使用 Only the textures are replaced and can be used with other non-textured mods 展示视频/Showcase Video 希望你会喜欢，可以的话留下你的赞吧！谢啦!!☆⌒(*＾-＾)v Hope you like it…"
+    },
+    {
+      "id": "disco-tech",
+      "weapon": "weapon_smg_silenced",
+      "level": 15,
+      "workshopId": "2656086089",
+      "title": {
+        "en": "RGB MAC-10 Disco Tech (Glow)",
+        "pt": "RGB MAC-10 Disco Tech (Glow)",
+        "es": "RGB MAC-10 Disco Tech (Glow)"
+      },
+      "description": {
+        "en": "Inspired by CS:GO's MAC-10 | Disco Tech, with normal map, glow and an animated RGB effect for the Silenced SMG.",
+        "pt": "Inspirada na MAC-10 | Disco Tech do CS:GO, com normal map, brilho e efeito RGB animado para a Silenced SMG.",
+        "es": "Inspirada en la MAC-10 | Disco Tech de CS:GO, con normal map, brillo y efecto RGB animado para la Silenced SMG."
+      },
+      "originalTitle": "RGB MAC-10 Disco Tech (Glow)",
+      "originalDescription": "RGB MAC-10 Disco Tech (Glow) Included: Materials. Replace SMG (Silenced SMG) Description: Now I think the original SMG action is good, so I modified the effect. Inspired from: MAC-10 | Disco Tech ,Added normal and glow, RGB at the same time. Statement: Texture - MAC-10 DISCO TECH…"
+    },
+    {
+      "id": "surtr",
+      "weapon": "weapon_smg_silenced",
+      "level": 15,
+      "workshopId": "2845730284",
+      "title": {
+        "en": "Arknights Surtr Silenced SMG Dynamic Skin (Glow)",
+        "pt": "Arknights Surtr Silenced SMG Dynamic Skin (Glow)",
+        "es": "Arknights Surtr Silenced SMG Dynamic Skin (Glow)"
+      },
+      "description": {
+        "en": "Animated Surtr skin from Arknights for the Silenced SMG, with glow. Version A: lower resolution, longer animation.",
+        "pt": "Skin animada da Surtr, de Arknights, para a Silenced SMG, com brilho. Versão A: resolução menor, animação mais longa.",
+        "es": "Skin animada de Surtr, de Arknights, para la Silenced SMG, con brillo. Versión A: menor resolución, animación más larga."
+      },
+      "originalTitle": "(A Version）Arknights Surtr Silenced SMG Dynamic Skin(Glow)",
+      "originalDescription": "没有什么比一份冰淇淋更能让我从混乱的记忆中冷静下来了，以前在我还是一个人的时候多亏了它们。 替换了消音冲锋枪 Replace Silenced SMG 只替换了材质 Replaced the material 展示视频/Showcase Video A Version:Low resolution, Long animation/B Version: High resolution, short animation B Version 希望你会喜欢，可以的话留下你的赞吧！谢啦!!☆⌒(*＾-＾)v Hope you like it, leave a li…"
+    },
+    {
+      "id": "printstream-glow-pump",
+      "weapon": "weapon_pumpshotgun",
+      "level": 15,
+      "workshopId": "3020518865",
+      "title": {
+        "en": "Pump Shotgun Printstream Theme (Glow)",
+        "pt": "Pump Shotgun Printstream Theme (Glow)",
+        "es": "Pump Shotgun Printstream Theme (Glow)"
+      },
+      "description": {
+        "en": "Printstream theme for the Pump Shotgun, with glow. Contains texture maps only.",
+        "pt": "Tema Printstream para a Pump Shotgun, com brilho. Contém apenas texturas.",
+        "es": "Tema Printstream para la Pump Shotgun, con brillo. Contiene solo texturas."
+      },
+      "originalTitle": "Pump Shotgun Printstream Theme (Glow)",
+      "originalDescription": "Pump Shotgun Printstream Theme (Glow) The file only contains texture maps, and you can choose your favorite actions to use with sound effects. Description: The following text comes from software translation. If there is any error or unclear expression, please check Chinese. I pre…"
+    },
+    {
+      "id": "miku-pump",
+      "weapon": "weapon_pumpshotgun",
+      "level": 15,
+      "workshopId": "3028562598",
+      "title": {
+        "en": "Hatsune Miku 16th Anniversary Default Pumpshotgun Skin (Glow)",
+        "pt": "Hatsune Miku 16th Anniversary Default Pumpshotgun Skin (Glow)",
+        "es": "Hatsune Miku 16th Anniversary Default Pumpshotgun Skin (Glow)"
+      },
+      "description": {
+        "en": "A birthday gift for Hatsune Miku's 16th anniversary: Pump Shotgun texture with glow.",
+        "pt": "Presente de aniversário pelos 16 anos de Hatsune Miku: textura para a Pump Shotgun com brilho.",
+        "es": "Regalo de cumpleaños por los 16 años de Hatsune Miku: textura para la Pump Shotgun con brillo."
+      },
+      "originalTitle": "[初音ミク16周年]Hatsune Miku Default Pumpshotgun Skin(Glow) 初音未来默认木喷皮肤(夜光)",
+      "originalDescription": "初音ミク Happy 16th Birthday!!! I have prepared four birthday presents,this is the last one. I hope Miku and you will like it 公主殿下16周年生日快乐o(*￣▽￣*)o!!! 准备了四个生日礼物,这个是最后一个,希望公主和你们会喜欢 ------------------------------------------------------------------ Only made texture replacement, can be…"
+    },
+    {
+      "id": "printstream-glow-chrome",
+      "weapon": "weapon_shotgun_chrome",
+      "level": 15,
+      "workshopId": "3020518619",
+      "title": {
+        "en": "Chrome Shotgun Printstream Theme (Glow)",
+        "pt": "Chrome Shotgun Printstream Theme (Glow)",
+        "es": "Chrome Shotgun Printstream Theme (Glow)"
+      },
+      "description": {
+        "en": "Printstream theme for the Chrome Shotgun, with glow. Contains texture maps only.",
+        "pt": "Tema Printstream para a Chrome Shotgun, com brilho. Contém apenas texturas.",
+        "es": "Tema Printstream para la Chrome Shotgun, con brillo. Contiene solo texturas."
+      },
+      "originalTitle": "Chrome Shotgun Printstream Theme (Glow)",
+      "originalDescription": "Chrome Shotgun Printstream Theme (Glow) The file only contains texture maps, and you can choose your favorite actions to use with sound effects. Description: The following text comes from software translation. If there is any error or unclear expression, please check Chinese. I p…"
+    },
+    {
+      "id": "miku-corridor",
+      "weapon": "weapon_shotgun_chrome",
+      "level": 15,
+      "workshopId": "3304384199",
+      "title": {
+        "en": "Default Chrome Shotgun: Corridor of Miku",
+        "pt": "Default Chrome Shotgun: Corridor of Miku",
+        "es": "Default Chrome Shotgun: Corridor of Miku"
+      },
+      "description": {
+        "en": "The final work in the author's Hatsune Miku series: a texture for the default Chrome Shotgun.",
+        "pt": "O último trabalho da série Hatsune Miku do autor: textura para a Chrome Shotgun padrão.",
+        "es": "El último trabajo de la serie Hatsune Miku del autor: textura para la Chrome Shotgun predeterminada."
+      },
+      "originalTitle": "[SKIN] Default Chrome Shotgun: Corridor of Miku",
+      "originalDescription": "Replace texture only and can be used with the default weapon reanimated mod. Personally recommended reanimated mod: ------------------------------------------------------------------------------------------------------ The final work in the Hatsune Miku, after which I will work o…"
+    },
+    {
+      "id": "last-cure",
+      "weapon": "weapon_smg_silenced",
+      "level": 14,
+      "workshopId": "2727965845",
+      "title": {
+        "en": "The Last Cure MAC-10",
+        "pt": "The Last Cure MAC-10",
+        "es": "The Last Cure MAC-10"
+      },
+      "description": {
+        "en": "MAC-10 skin with added glow textures. Skin art by Yunhe (Undefined).",
+        "pt": "Skin de MAC-10 com texturas de brilho. Arte da skin por Yunhe (Undefined).",
+        "es": "Skin de MAC-10 con texturas de brillo. Arte de la skin por Yunhe (Undefined)."
+      },
+      "originalTitle": "【最后治疗】MAC-10",
+      "originalDescription": "说明 ·【最后治疗】MAC-10 · 添加了夜光贴图 (Added night light pictures) · 欢迎反馈 (Feedback is welcome) · 祝使用愉快~ (Have fun~) 借物表 · Models:Valve · New skin：【绀海】云鹤.Undefined 截图 其他 · 喜欢/(不喜欢) 就请 点个赞/(给个反馈) 吧，谢谢大家了 禁止任何未经允许的转载"
+    },
+    {
+      "id": "printstream-mac",
+      "weapon": "weapon_smg_silenced",
+      "level": 14,
+      "workshopId": "2926162402",
+      "title": {
+        "en": "Printstream MAC-10",
+        "pt": "Printstream MAC-10",
+        "es": "Printstream MAC-10"
+      },
+      "description": {
+        "en": "Printstream MAC-10 with normal map, self-illumination and the signature pearlescent gradient.",
+        "pt": "MAC-10 Printstream com normal map, autoiluminação e o degradê perolado característico.",
+        "es": "MAC-10 Printstream con normal map, autoiluminación y el característico degradado perlado."
+      },
+      "originalTitle": "印花集 MAC-10",
+      "originalDescription": "替换官模SMG贴图 拥有一下特点 法线贴图 自发光 印花集独有珠光渐变 印花集皮肤最近很多人做，想尝试做一把印花集皮肤 上面四个杠有点不齐是正常现象，SMG上这四个杠V社UV图真布局乱导致的，真的裂开,十分感谢PioneerZ1Z大佬的UV贴图指导 更新日志 2023年5月1日 翻新部分贴图，加上了印花姬，不算完全重做，直接原地更新，不知道你们满意不满意这次小更新 2023年11月8日 将纯黑色换位浅黑色，浅黑色也显示珠光渐变，其他无变动 关于和其他SMG和里希炎热大佬印花集UZI冲突 主要是VMT文件贴图路径一致了，而导致的冲突，但不影响使用 简介预览…"
+    },
+    {
+      "id": "izumi-hiyori",
+      "weapon": "weapon_smg_silenced",
+      "level": 14,
+      "workshopId": "3374437391",
+      "title": {
+        "en": "Izumi Hiyori MAC-10",
+        "pt": "Izumi Hiyori MAC-10",
+        "es": "Izumi Hiyori MAC-10"
+      },
+      "description": {
+        "en": "Izumi Hiyori, heroine of Madosoft's Joukidatsu Creative, on the official MAC-10. A remake of the author's first skin.",
+        "pt": "Izumi Hiyori, heroína de Joukidatsu Creative da Madosoft, na MAC-10 oficial. Um remake da primeira skin do autor.",
+        "es": "Izumi Hiyori, heroína de Joukidatsu Creative de Madosoft, en la MAC-10 oficial. Un remake de la primera skin del autor."
+      },
+      "originalTitle": "[灵感满溢的甜蜜创想]和泉妃爱  mac-10",
+      "originalDescription": "—— 哥哥要当学生会长啊。本妹妹一直相信，哥哥只要努力就做得到哦！ 和泉妃爱是Madosoft旗下美少女游戏《常轨脱离Creative》及其衍生作品的登场角色，女主角之一 男主和泉智宏的妹妹 替换官模贴图 别问我为什么又是mac10 算是对我第一个贴皮的重置，我的第一个贴皮就是妃爱的mac10，断断续续做贴皮到现在已经过去大半年了，感觉自己还是没啥长进qwq 妃爱可爱捏"
+    },
+    {
+      "id": "koyori",
+      "weapon": "weapon_pumpshotgun",
+      "level": 14,
+      "workshopId": "2832294909",
+      "title": {
+        "en": "Vtuber Hakui Koyori Pump Shotgun",
+        "pt": "Vtuber Hakui Koyori Pump Shotgun",
+        "es": "Vtuber Hakui Koyori Pump Shotgun"
+      },
+      "description": {
+        "en": "Hakui Koyori, hololive's holoX researcher, on the Pump Shotgun. A beginner's mod.",
+        "pt": "Hakui Koyori, a pesquisadora da holoX da hololive, na Pump Shotgun. Mod de iniciante.",
+        "es": "Hakui Koyori, la investigadora de holoX de hololive, en la Pump Shotgun. Mod de principiante."
+      },
+      "originalTitle": "Vtuber♪  博衣こより--木喷/Hakui Koyori--pump shotgun",
+      "originalDescription": "替换木喷贴图 ，replace pump 新手做的MOD。有什么做的不好的请见谅 喜欢的话可以去看看隔壁大佬做的人物MOD哦 虽然是新人作品，但转载之前要说一声哦（也没人会转你吧） 未经允许不可转载到其他地方 贴图指导菜花植物园，不好看去找他（心虚） 《秘密结社holoX》的研究家。一面照顾著结社成员、一面进行人类观察。热心研究、好奇心旺盛，有时会为了观察他人反应而恶作剧。自称是「holoX的大脑」，但实际上她的知识是有所偏差的。 视频演示：还没做，鸽了，回头再说 喜欢就点个赞吧"
+    },
+    {
+      "id": "sleep-at-night",
+      "weapon": "weapon_pumpshotgun",
+      "level": 14,
+      "workshopId": "3208967272",
+      "title": {
+        "en": "Pump Shotgun Skin: Sleep at Night",
+        "pt": "Pump Shotgun Skin: Sleep at Night",
+        "es": "Pump Shotgun Skin: Sleep at Night"
+      },
+      "description": {
+        "en": "\"Sleep at night\" glow skin for the Pump Shotgun.",
+        "pt": "Skin \"Sleep at night\" com brilho para a Pump Shotgun.",
+        "es": "Skin \"Sleep at night\" con brillo para la Pump Shotgun."
+      },
+      "originalTitle": "[pumpshotgun skin] Sleep at night",
+      "originalDescription": "Replace wood spray skin The technology is not skilled, may not do very well ~"
+    },
+    {
+      "id": "bianca",
+      "weapon": "weapon_shotgun_chrome",
+      "level": 14,
+      "workshopId": "2765785238",
+      "title": {
+        "en": "Punishing: Gray Raven Bianca: Veritas Chrome Shotgun",
+        "pt": "Punishing: Gray Raven Bianca: Veritas Chrome Shotgun",
+        "es": "Punishing: Gray Raven Bianca: Veritas Chrome Shotgun"
+      },
+      "description": {
+        "en": "Bianca: Veritas from Punishing: Gray Raven on the Chrome Shotgun, with glow. Skin art by Yunhe (Undefined).",
+        "pt": "Bianca: Veritas de Punishing: Gray Raven na Chrome Shotgun, com brilho. Arte da skin por Yunhe (Undefined).",
+        "es": "Bianca: Veritas de Punishing: Gray Raven en la Chrome Shotgun, con brillo. Arte de la skin por Yunhe (Undefined)."
+      },
+      "originalTitle": "【战双帕弥什】比安卡·真理 Chrome Shotgun",
+      "originalDescription": "说明 · 【战双帕弥什】比安卡·真理 Chrome Shotgun · 包含夜光 · 欢迎反馈,祝使用愉快~ 借物表 · New skin：【绀海】云鹤.Undefined 截图 其他 · 喜欢/(不喜欢) 就请 点个赞/(给个反馈) 吧，谢谢大家了 此MOD为定制物品，禁止任何未经允许的转载"
+    },
+    {
+      "id": "printstream-chrome",
+      "weapon": "weapon_shotgun_chrome",
+      "level": 14,
+      "workshopId": "2862073814",
+      "title": {
+        "en": "Chrome Shotgun Printstream Imitation",
+        "pt": "Chrome Shotgun Printstream Imitation",
+        "es": "Chrome Shotgun Printstream Imitation"
+      },
+      "description": {
+        "en": "Printstream-style Chrome Shotgun. Replaces the material only.",
+        "pt": "Chrome Shotgun no estilo Printstream. Substitui apenas o material.",
+        "es": "Chrome Shotgun al estilo Printstream. Reemplaza solo el material."
+      },
+      "originalTitle": "Chrome Shotgun「Printstream Imitation」",
+      "originalDescription": "Notice: Only replaces the material of Chrome Shotgun. Can be used with sound mod and animation mod. Default animation: arby26's animation: ο(=•ω＜=)ρ⌒☆"
+    },
+    {
+      "id": "printstream-uzi",
+      "weapon": "weapon_smg",
+      "level": 13,
+      "workshopId": "2924725708",
+      "title": {
+        "en": "UZI Printstream",
+        "pt": "UZI Printstream",
+        "es": "UZI Printstream"
+      },
+      "description": {
+        "en": "Printstream skin for the Uzi with a pearlescent effect. Replaces textures only.",
+        "pt": "Skin Printstream para a Uzi com efeito perolado. Substitui apenas as texturas.",
+        "es": "Skin Printstream para la Uzi con efecto perlado. Reemplaza solo las texturas."
+      },
+      "originalTitle": "【印花集】印花集 UZI Printstream",
+      "originalDescription": "有生之年懒狗又做枪皮了 大家好啊，我是炎乐，今天来点大家想看的枪皮 帅啊，很帅啊（赞赏） 印花集的珠光效果已经添加了，效果图我就不重新截了，毕竟我是个大懒狗，大家懂的都懂 替换原版的UZI（只替换贴图，动作只是为了演示效果） 演示视频： 效果： 喜欢的话就点赞罢"
+    },
+    {
+      "id": "nekoha-shizuku",
+      "weapon": "weapon_smg_silenced",
+      "level": 13,
+      "workshopId": "2808871797",
+      "title": {
+        "en": "Nekoha Shizuku SMG (MAC-10) Remake (Glow)",
+        "pt": "Nekoha Shizuku SMG (MAC-10) Remake (Glow)",
+        "es": "Nekoha Shizuku SMG (MAC-10) Remake (Glow)"
+      },
+      "description": {
+        "en": "Remake of the Nekoha Shizuku skin for the Silenced SMG (MAC-10), with stronger glow.",
+        "pt": "Remake da skin da Nekoha Shizuku para a Silenced SMG (MAC-10), com brilho mais forte.",
+        "es": "Remake de la skin de Nekoha Shizuku para la Silenced SMG (MAC-10), con brillo más intenso."
+      },
+      "originalTitle": "SMG (MAC-10) 猫羽雫 重置版（发光）replace smg（MAC-10）glow",
+      "originalDescription": "这个订阅比uzi少就很离谱，难道是预览图拍难看了？重拍一下 贴图立绘来自： 立绘1 立绘2 立绘3 预览视频 演示视频里smg持枪动作来自： Silenced SMG - L4D1 SMG Animations 强烈推荐smg动作： mac-10 on arby26 Animations 【动作重置】 渲染图如下： 预览图如下： 如有喜欢别忘点赞——！！感谢 2022/6/21 增加了夜光亮度 关键词：猫羽雫、ねこは しずく、Nekoha Shizuku、甘城なつき"
+    },
+    {
+      "id": "miku-mac",
+      "weapon": "weapon_smg_silenced",
+      "level": 13,
+      "workshopId": "3271509074",
+      "title": {
+        "en": "Default Silenced SMG: Hatsune Miku (Glow)",
+        "pt": "Default Silenced SMG: Hatsune Miku (Glow)",
+        "es": "Default Silenced SMG: Hatsune Miku (Glow)"
+      },
+      "description": {
+        "en": "Hatsune Miku texture for the default Silenced SMG, with glow.",
+        "pt": "Textura da Hatsune Miku para a Silenced SMG padrão, com brilho.",
+        "es": "Textura de Hatsune Miku para la Silenced SMG predeterminada, con brillo."
+      },
+      "originalTitle": "[SKIN] Default Silenced Smg: Hatsune Miku(Glow)",
+      "originalDescription": "Replace texture only and can be used with the default weapon reanimated mod. Personally recommended reanimated mod: ------------------------------------------------------------------------------------------------------ I don't want to do covers, I'm too lazy, and I have a lot of…"
+    },
+    {
+      "id": "arihara-nanami",
+      "weapon": "weapon_smg_silenced",
+      "level": 13,
+      "workshopId": "3351643762",
+      "title": {
+        "en": "Yuzusoft Arihara Nanami MAC-10",
+        "pt": "Yuzusoft Arihara Nanami MAC-10",
+        "es": "Yuzusoft Arihara Nanami MAC-10"
+      },
+      "description": {
+        "en": "Arihara Nanami, heroine of Yuzusoft's Riddle Joker, on the official MAC-10, with glow.",
+        "pt": "Arihara Nanami, heroína de Riddle Joker da Yuzusoft, na MAC-10 oficial, com brilho.",
+        "es": "Arihara Nanami, heroína de Riddle Joker de Yuzusoft, en la MAC-10 oficial, con brillo."
+      },
+      "originalTitle": "[柚子社]在原七海 ありはら ななみ 消音微冲 mac10",
+      "originalDescription": "在原七海，柚子社作品《riddle joker》的女主之一 ，男主的妹妹，对哥哥本身就抱有着非一般的情感。 替换官模贴图，有夜光效果。 Levy6，这里是Levy9"
+    },
+    {
+      "id": "plutia",
+      "weapon": "weapon_pumpshotgun",
+      "level": 13,
+      "workshopId": "2622698544",
+      "title": {
+        "en": "Hyperdimension Neptunia Plutia Pumpshotgun",
+        "pt": "Hyperdimension Neptunia Plutia Pumpshotgun",
+        "es": "Hyperdimension Neptunia Plutia Pumpshotgun"
+      },
+      "description": {
+        "en": "Plutia from Hyperdimension Neptunia on the Pump Shotgun. Replaces materials only.",
+        "pt": "Plutia de Hyperdimension Neptunia na Pump Shotgun. Substitui apenas os materiais.",
+        "es": "Plutia de Hyperdimension Neptunia en la Pump Shotgun. Reemplaza solo los materiales."
+      },
+      "originalTitle": "【Hyperdimension Neptunia】Plutia Pumpshotgun",
+      "originalDescription": "From Hyperdimension Neptunia Replace material only"
+    },
+    {
+      "id": "mcqueen",
+      "weapon": "weapon_pumpshotgun",
+      "level": 13,
+      "workshopId": "2810642280",
+      "title": {
+        "en": "Uma Musume Mejiro McQueen Pump Shotgun",
+        "pt": "Uma Musume Mejiro McQueen Pump Shotgun",
+        "es": "Uma Musume Mejiro McQueen Pump Shotgun"
+      },
+      "description": {
+        "en": "Mejiro McQueen from Uma Musume on the Pump Shotgun, fully glowing.",
+        "pt": "Mejiro McQueen de Uma Musume na Pump Shotgun, com brilho total.",
+        "es": "Mejiro McQueen de Uma Musume en la Pump Shotgun, con brillo total."
+      },
+      "originalTitle": "【赛马娘】目白麦昆 木喷 / [Uma Musume Mejiro McQueen Pump shotgun]",
+      "originalDescription": "胜利就是我的命运。向着盾之荣誉！ 替换原版的木喷（replace Pump shotgun ) 全夜光（glow） 渲染图： 其实做这个木喷的时候其实重做了一遍，因为我忘记第三人称是没有子弹的， 所以只能被迫重新做，可怜下我罢（笑哭） 重新改了点地方，把枪栓的发胖给去掉了，感觉没什么必要，当然还有一个在塞子弹的地方 （但基本看不到） 本人是懒癌患者，做mod一般不会太频繁 求赞 求赞 求赞！————"
+    },
+    {
+      "id": "yamada-ryo",
+      "weapon": "weapon_pumpshotgun",
+      "level": 13,
+      "workshopId": "3382999407",
+      "title": {
+        "en": "Bocchi the Rock! Yamada Ryo Pump Shotgun",
+        "pt": "Bocchi the Rock! Yamada Ryo Pump Shotgun",
+        "es": "Bocchi the Rock! Yamada Ryo Pump Shotgun"
+      },
+      "description": {
+        "en": "Yamada Ryo from Bocchi the Rock! on the official Pump Shotgun, with glow.",
+        "pt": "Yamada Ryo de Bocchi the Rock! na Pump Shotgun oficial, com brilho.",
+        "es": "Yamada Ryo de Bocchi the Rock! en la Pump Shotgun oficial, con brillo."
+      },
+      "originalTitle": "【Bocchi The Rock】孤独摇滚-山田凉 官模木喷(Yamada Ryo Pump Shotgun)",
+      "originalDescription": "孩子们，纯官模木喷来了。 仅替换官模贴图，带夜光，可自配动作音效。"
+    },
+    {
+      "id": "enterprise",
+      "weapon": "weapon_shotgun_chrome",
+      "level": 13,
+      "workshopId": "2621473254",
+      "title": {
+        "en": "Azur Lane USS Enterprise Chrome",
+        "pt": "Azur Lane USS Enterprise Chrome",
+        "es": "Azur Lane USS Enterprise Chrome"
+      },
+      "description": {
+        "en": "USS Enterprise from Azur Lane on the Chrome Shotgun. Replaces materials only.",
+        "pt": "USS Enterprise de Azur Lane na Chrome Shotgun. Substitui apenas os materiais.",
+        "es": "USS Enterprise de Azur Lane en la Chrome Shotgun. Reemplaza solo los materiales."
+      },
+      "originalTitle": "【Azur Lane】USS Enterprise Chrome",
+      "originalDescription": "From Azur Lane Replace materials only"
+    },
+    {
+      "id": "tokai-teio",
+      "weapon": "weapon_shotgun_chrome",
+      "level": 13,
+      "workshopId": "2805481477",
+      "title": {
+        "en": "Uma Musume Tokai Teio Chrome Shotgun",
+        "pt": "Uma Musume Tokai Teio Chrome Shotgun",
+        "es": "Uma Musume Tokai Teio Chrome Shotgun"
+      },
+      "description": {
+        "en": "Tokai Teio from Uma Musume on the Chrome Shotgun, fully glowing.",
+        "pt": "Tokai Teio de Uma Musume na Chrome Shotgun, com brilho total.",
+        "es": "Tokai Teio de Uma Musume en la Chrome Shotgun, con brillo total."
+      },
+      "originalTitle": "【赛马娘】东海帝王铁喷 / [Uma Musume Tokai Teio Chrome shotgun]",
+      "originalDescription": "无败的帝王传说，就从现在开始吧！ 替换铁喷（replace Chrome shotgun ) 全夜光（glow） 相比以前经验跟进一步，枪身虽然有点不对称但也无伤大雅，以后的枪皮质量应该会越来越好的罢（ 当然下次还会做麦昆的木喷（已经做了 传送门 最后记得点赞赞"
+    },
+    {
+      "id": "hiiro-mac",
+      "weapon": "weapon_smg_silenced",
+      "level": 12,
+      "workshopId": "2713502936",
+      "title": {
+        "en": "Hiiro MAC-10",
+        "pt": "Hiiro MAC-10",
+        "es": "Hiiro MAC-10"
+      },
+      "description": {
+        "en": "Hiiro skin for the MAC-10, with parts that glow in dark places.",
+        "pt": "Skin da Hiiro para a MAC-10, com partes que brilham em locais escuros.",
+        "es": "Skin de Hiiro para la MAC-10, con partes que brillan en lugares oscuros."
+      },
+      "originalTitle": "Hiiro MAC-10",
+      "originalDescription": "Hiiro MAC-10 Hiiro skin for MAC-10 New skin ：me 送给王牛奶的礼物—— 后续还会放出uzi的，尽情期待:3 部分夜光效果 It will glow in dark places 图片来源于BILIBILI Picture comes from BILIBILI 感谢你的订阅和赞 Thank you for your subscription and praise"
+    },
+    {
+      "id": "find-my-future",
+      "weapon": "weapon_smg_silenced",
+      "level": 12,
+      "workshopId": "3160988312",
+      "title": {
+        "en": "Find My Future MAC-10",
+        "pt": "Find My Future MAC-10",
+        "es": "Find My Future MAC-10"
+      },
+      "description": {
+        "en": "\"Find My Future\" skin for the MAC-10 on the official model.",
+        "pt": "Skin \"Find My Future\" para a MAC-10 no modelo oficial.",
+        "es": "Skin \"Find My Future\" para la MAC-10 en el modelo oficial."
+      },
+      "originalTitle": "Find My Future-mac",
+      "originalDescription": "『Find My Future』 官模贴皮，假期快乐。"
+    },
+    {
+      "id": "b-sha",
+      "weapon": "weapon_pumpshotgun",
+      "level": 12,
+      "workshopId": "2836847839",
+      "title": {
+        "en": "B-sha (Megadimension Neptunia VII) - Pump Shotgun",
+        "pt": "B-sha (Megadimension Neptunia VII) - Pump Shotgun",
+        "es": "B-sha (Megadimension Neptunia VII) - Pump Shotgun"
+      },
+      "description": {
+        "en": "B-sha from Megadimension Neptunia VII on the Pump Shotgun.",
+        "pt": "B-sha de Megadimension Neptunia VII na Pump Shotgun.",
+        "es": "B-sha de Megadimension Neptunia VII en la Pump Shotgun."
+      },
+      "originalTitle": "B-sha (Megadimension Neptunia VII) - Pump Shotgun",
+      "originalDescription": "Simple B-sha textures on the Pump Shotgun Character: B-sha Game from: Megadimension Neptunia VII Weapon textured on: Pump Wooden Shotgun Gun shot sound effect from: Half-Life: Black Mesa"
+    },
+    {
+      "id": "sayori",
+      "weapon": "weapon_pumpshotgun",
+      "level": 12,
+      "workshopId": "3175242980",
+      "title": {
+        "en": "Doki Doki Literature Club! Sayori",
+        "pt": "Doki Doki Literature Club! Sayori",
+        "es": "Doki Doki Literature Club! Sayori"
+      },
+      "description": {
+        "en": "Sayori from Doki Doki Literature Club! on the Pump Shotgun. Replaces materials only.",
+        "pt": "Sayori de Doki Doki Literature Club! na Pump Shotgun. Substitui apenas os materiais.",
+        "es": "Sayori de Doki Doki Literature Club! en la Pump Shotgun. Reemplaza solo los materiales."
+      },
+      "originalTitle": "Doki Doki Literature Club! Sayori",
+      "originalDescription": "This mod only replaces the materials of pumpshotgun and the model is from the official. Sayori is a character from Doki Doki Literature Club."
+    },
+    {
+      "id": "jean-bart-pump",
+      "weapon": "weapon_pumpshotgun",
+      "level": 12,
+      "workshopId": "3503214599",
+      "title": {
+        "en": "Azur Lane Jean Bart Pump Shotgun",
+        "pt": "Azur Lane Jean Bart Pump Shotgun",
+        "es": "Azur Lane Jean Bart Pump Shotgun"
+      },
+      "description": {
+        "en": "Jean Bart from Azur Lane on the Pump Shotgun.",
+        "pt": "Jean Bart de Azur Lane na Pump Shotgun.",
+        "es": "Jean Bart de Azur Lane en la Pump Shotgun."
+      },
+      "originalTitle": "[Azur Lane]碧蓝航线让巴尔木喷换皮/Jean Bart skin replase pumpgun",
+      "originalDescription": "图片素材均来源于网络，如有侵权请联系我进行mod修改/删除 PS：在网上根本找不到多少让巴尔的图，感觉我都要燃尽了 本来这个皮肤应该有花嫁图的，但是我笨比做的时候忘记加了 这个木喷是真的难做，做这一把我已经绞尽脑汁了 我还有一个通体红色的废稿，因为在那个草稿里我把模型弄错了，我试试能不能完成它 我在做的时候vtf名字没取对，然后去找了别人的换皮看看，我上手一体验发现比我做的好多了！ 不得不承认这个做的没有想象中的那么好 就这样 ----------------------------------------------------------------…"
+    },
+    {
+      "id": "aqua-v2",
+      "weapon": "weapon_shotgun_chrome",
+      "level": 12,
+      "workshopId": "2840154085",
+      "title": {
+        "en": "Minato Aqua Chrome Shotgun II (Glow)",
+        "pt": "Minato Aqua Chrome Shotgun II (Glow)",
+        "es": "Minato Aqua Chrome Shotgun II (Glow)"
+      },
+      "description": {
+        "en": "Second version of the Minato Aqua Chrome Shotgun, with reworked artwork and glow.",
+        "pt": "Segunda versão da Chrome Shotgun da Minato Aqua, com arte refeita e brilho.",
+        "es": "Segunda versión de la Chrome Shotgun de Minato Aqua, con arte rehecho y brillo."
+      },
+      "originalTitle": "Chrome shotgun 凑阿库娅铁喷 Ⅱ版 发光 Replace Chrome Shotgun (glow)",
+      "originalDescription": "立绘重贴了一下……上午发的就几百订阅了，就不替换了 另发在这吧 包含材质贴图、法图法线 预览视频 渲染图如下： 如有喜欢别忘点赞~ 谢谢~ 关键词：凑阿库娅、凑あくあ，Minato Aqua阿夸、铁喷"
+    },
+    {
+      "id": "yarai-miu",
+      "weapon": "weapon_shotgun_chrome",
+      "level": 12,
+      "workshopId": "3539372350",
+      "title": {
+        "en": "Yuzusoft Yarai Miu Chrome Shotgun",
+        "pt": "Yuzusoft Yarai Miu Chrome Shotgun",
+        "es": "Yuzusoft Yarai Miu Chrome Shotgun"
+      },
+      "description": {
+        "en": "Yarai Miu, the vampire girl from Yuzusoft's DRACU-RIOT!, on the Chrome Shotgun. Replaces textures only.",
+        "pt": "Yarai Miu, a garota vampira de DRACU-RIOT! da Yuzusoft, na Chrome Shotgun. Substitui apenas as texturas.",
+        "es": "Yarai Miu, la chica vampiro de DRACU-RIOT! de Yuzusoft, en la Chrome Shotgun. Reemplaza solo las texturas."
+      },
+      "originalTitle": "[柚子社]矢来 美羽（やらい みう）铁喷ChromeShotgun",
+      "originalDescription": "矢来美羽（日语：矢来 美羽（やらい みう））是柚子社旗下游戏《DRACU-RIOT!》及其衍生作品的登场角色。 月长学院学生，特区事务管理局（阴阳局）风纪班所属的吸血鬼少女，能力为念力，在负责维护治安的组织里工作。 阅读更多：矢来美羽（ ） 本文引自萌娘百科( )，文字内容默认使用《知识共享 署名-非商业性使用-相同方式共享 3.0 中国大陆》协议。 仅替换原版贴图"
+    },
+    {
+      "id": "mio",
+      "weapon": "weapon_shotgun_chrome",
+      "level": 12,
+      "workshopId": "3589156415",
+      "title": {
+        "en": "K-ON! Mio Akiyama Chrome Shotgun",
+        "pt": "K-ON! Mio Akiyama Chrome Shotgun",
+        "es": "K-ON! Mio Akiyama Chrome Shotgun"
+      },
+      "description": {
+        "en": "Mio Akiyama from K-ON! on the official Chrome Shotgun.",
+        "pt": "Mio Akiyama de K-ON! na Chrome Shotgun oficial.",
+        "es": "Mio Akiyama de K-ON! en la Chrome Shotgun oficial."
+      },
+      "originalTitle": "【轻音少女】秋山澪mio官模铁喷-【K-ON!】Mio Akiyama ChromeShotgun",
+      "originalDescription": "不知道为什么求生工坊的轻音枪皮mod特别少 索性自己就做了个铁喷的 枪皮主题选择的是mio 希望你能够喜欢 最后祝你找到更多自己心仪的mod~♡ I don’t know why there are so few k-on mods in the Workshop. So I just made one myself. Replace Chrome Shotgun"
+    },
+    {
+      "id": "miku-pearl",
+      "weapon": "weapon_smg",
+      "level": 11,
+      "workshopId": "3299514548",
+      "title": {
+        "en": "Default SMG: Hatsune Miku (Pearlescent)",
+        "pt": "Default SMG: Hatsune Miku (Pearlescent)",
+        "es": "Default SMG: Hatsune Miku (Pearlescent)"
+      },
+      "description": {
+        "en": "Printstream-style Hatsune Miku texture with a pearlescent finish for the default SMG.",
+        "pt": "Textura da Hatsune Miku no estilo Printstream, com acabamento perolado, para a SMG padrão.",
+        "es": "Textura de Hatsune Miku al estilo Printstream, con acabado perlado, para la SMG predeterminada."
+      },
+      "originalTitle": "[SKIN] Default SMG：Hatsune Miku(Pearlescent)",
+      "originalDescription": "Replace texture only and can be used with the default weapon reanimated mod. Personally recommended reanimated mod: ------------------------------------------------------------------------------------------------------ Try the Printstream style(●＾皿＾●)"
+    },
+    {
+      "id": "mulberry",
+      "weapon": "weapon_smg_silenced",
+      "level": 11,
+      "workshopId": "2610503147",
+      "title": {
+        "en": "Arknights Mulberry MAC-10",
+        "pt": "Arknights Mulberry MAC-10",
+        "es": "Arknights Mulberry MAC-10"
+      },
+      "description": {
+        "en": "Mulberry from Arknights on the Silenced SMG (MAC-10).",
+        "pt": "Mulberry, de Arknights, na Silenced SMG (MAC-10).",
+        "es": "Mulberry, de Arknights, en la Silenced SMG (MAC-10)."
+      },
+      "originalTitle": "[mac]Arknights Mulberry mac-10",
+      "originalDescription": "replaces Silended SMG(mac-10)"
+    },
+    {
+      "id": "neon-rider",
+      "weapon": "weapon_smg_silenced",
+      "level": 11,
+      "workshopId": "826430944",
+      "title": {
+        "en": "MAC-10-S | Neon Rider",
+        "pt": "MAC-10-S | Neon Rider",
+        "es": "MAC-10-S | Neon Rider"
+      },
+      "description": {
+        "en": "Neon Rider texture from CS:GO for the MAC-10, slightly altered with the default silencer.",
+        "pt": "Textura Neon Rider do CS:GO para a MAC-10, levemente alterada com o silenciador padrão.",
+        "es": "Textura Neon Rider de CS:GO para la MAC-10, ligeramente modificada con el silenciador predeterminado."
+      },
+      "originalTitle": "MAC-10-S | Neon Rider",
+      "originalDescription": "MAC-10 / Silenced SMG texture from Counter-Strike: Global Offensive. The texture is slightly altered (default silencer added). Enjoy! I still have no idea how the custom skins in CS:GO work for the most part, so I won't make a lot of these. Don't also expect a VTF/VMT editing idi…"
+    },
+    {
+      "id": "volcanic-pump",
+      "weapon": "weapon_pumpshotgun",
+      "level": 11,
+      "workshopId": "1898445622",
+      "title": {
+        "en": "Shotguns | Volcanic",
+        "pt": "Shotguns | Volcanic",
+        "es": "Shotguns | Volcanic"
+      },
+      "description": {
+        "en": "Volcanic-themed Pump and Chrome shotguns, suggested by Dot.",
+        "pt": "Pump e Chrome Shotgun com tema vulcânico, sugestão de Dot.",
+        "es": "Pump y Chrome Shotgun con temática volcánica, sugerencia de Dot."
+      },
+      "originalTitle": "Shotguns | Volcanic",
+      "originalDescription": "yo 0/ suggested by: Dot [?] a volcanic themed pump & chrome shotguns, hope yall enjoy"
+    },
+    {
+      "id": "up-close",
+      "weapon": "weapon_pumpshotgun",
+      "level": 11,
+      "workshopId": "2019982092",
+      "title": {
+        "en": "Up Close and Personal (Glowing)",
+        "pt": "Up Close and Personal (Glowing)",
+        "es": "Up Close and Personal (Glowing)"
+      },
+      "description": {
+        "en": "Glowing Pump Shotgun skin, \"Up Close and Personal\".",
+        "pt": "Skin de Pump Shotgun com brilho, \"Up Close and Personal\".",
+        "es": "Skin de Pump Shotgun con brillo, \"Up Close and Personal\"."
+      },
+      "originalTitle": "Up Close and Personal (Glowing)",
+      "originalDescription": "\"Up Close and Personal\" -SH9"
+    },
+    {
+      "id": "nekomiya",
+      "weapon": "weapon_shotgun_chrome",
+      "level": 11,
+      "workshopId": "2814124024",
+      "title": {
+        "en": "Nekomiya Hinata Chrome Shotgun v2.0 (Glow)",
+        "pt": "Nekomiya Hinata Chrome Shotgun v2.0 (Glow)",
+        "es": "Nekomiya Hinata Chrome Shotgun v2.0 (Glow)"
+      },
+      "description": {
+        "en": "A cleaner striped version of the Nekomiya Hinata Chrome Shotgun, with glow.",
+        "pt": "Versão listrada e mais limpa da Chrome Shotgun da Nekomiya Hinata, com brilho.",
+        "es": "Versión rayada y más limpia de la Chrome Shotgun de Nekomiya Hinata, con brillo."
+      },
+      "originalTitle": "Chrome Shotgun 猫宫日向 香草v2.0（发光）replace chrome shotgun (glow)",
+      "originalDescription": "简单修复了一下乱糟糟的猫宫铁喷，一个比较简洁的条纹版，上手感觉不错 只用小号发一下 高画质下的反光效果还行 猫宫铁喷初版 预览图如下： 如有喜欢点个赞吧 谢谢~"
+    },
+    {
+      "id": "aqua",
+      "weapon": "weapon_shotgun_chrome",
+      "level": 11,
+      "workshopId": "2840087428",
+      "title": {
+        "en": "Minato Aqua Chrome Shotgun (Glow)",
+        "pt": "Minato Aqua Chrome Shotgun (Glow)",
+        "es": "Minato Aqua Chrome Shotgun (Glow)"
+      },
+      "description": {
+        "en": "Minato Aqua Chrome Shotgun on a blue and black base, with texture and normal maps and glow.",
+        "pt": "Chrome Shotgun da Minato Aqua com base azul e preta, texturas, normal map e brilho.",
+        "es": "Chrome Shotgun de Minato Aqua con base azul y negra, texturas, normal map y brillo."
+      },
+      "originalTitle": "Chrome shotgun 凑阿库娅铁喷 发光 Replace Chrome Shotgun (glow)",
+      "originalDescription": "咕咕咕 一份阿夸的铁喷，希望喜欢（不想做浅色的，整体用了蓝黑色的底） 包含材质贴图、法线贴图 还有点瑕疵 等有灵感后修复更新_(:з」∠)_ 中段立绘部分已重置，另行发布在此 Chrome shotgun 凑阿库娅铁喷 Ⅱ版 渲染图如下： 预览图如下： 如有喜欢点个赞吧 谢谢~"
+    },
+    {
+      "id": "pink-black",
+      "weapon": "weapon_smg_silenced",
+      "level": 10,
+      "workshopId": "3384494412",
+      "title": {
+        "en": "Solid Pink & Black Silenced SMG",
+        "pt": "Solid Pink & Black Silenced SMG",
+        "es": "Solid Pink & Black Silenced SMG"
+      },
+      "description": {
+        "en": "A full pink and black recolor of the Silenced SMG.",
+        "pt": "Recoloração completa em rosa e preto da Silenced SMG.",
+        "es": "Recoloración completa en rosa y negro de la Silenced SMG."
+      },
+      "originalTitle": "Solid Pink & Black Silenced SMG",
+      "originalDescription": "This completely recolors the Silenced SMG using Pink & Black! The textures do not display fully but only the solid colors, which completely retextures the whole weapon! No animations nor improvements used in any of the screenshots! This is only a retexture! Let me know anything e…"
+    },
+    {
+      "id": "ritsu",
+      "weapon": "weapon_smg_silenced",
+      "level": 10,
+      "workshopId": "3769476345",
+      "title": {
+        "en": "K-ON! Ritsu Tainaka MAC-10",
+        "pt": "K-ON! Ritsu Tainaka MAC-10",
+        "es": "K-ON! Ritsu Tainaka MAC-10"
+      },
+      "description": {
+        "en": "Ritsu Tainaka from K-ON! on the official MAC-10.",
+        "pt": "Ritsu Tainaka de K-ON! na MAC-10 oficial.",
+        "es": "Ritsu Tainaka de K-ON! en la MAC-10 oficial."
+      },
+      "originalTitle": "【K-ON! / けいおん！】田井中律 MAC-10",
+      "originalDescription": "回游后又做了一把，这次用的是官模，官模，官模（重复三遍） 下次试着整夜光"
+    },
+    {
+      "id": "gumi",
+      "weapon": "weapon_pumpshotgun",
+      "level": 10,
+      "workshopId": "1996782682",
+      "title": {
+        "en": "Pump | Gumi",
+        "pt": "Pump | Gumi",
+        "es": "Pump | Gumi"
+      },
+      "description": {
+        "en": "The author's own take on the famous Gumi shotgun, a simple design for the Pump Shotgun.",
+        "pt": "Versão própria do autor da famosa shotgun da Gumi, um design simples para a Pump Shotgun.",
+        "es": "Versión propia del autor de la famosa escopeta de Gumi, un diseño simple para la Pump Shotgun."
+      },
+      "originalTitle": "Pump | Gumi",
+      "originalDescription": "yo 0/ My game \"The Cult\" its finally out! so if you like my work and want to support me then check it out : So about this skin, i wanted to do something simple since im gonna start working on a bigger project for now, so i made my own version of the famous gumi shotgun, hope yall…"
+    },
+    {
+      "id": "victorian",
+      "weapon": "weapon_pumpshotgun",
+      "level": 10,
+      "workshopId": "2013771916",
+      "title": {
+        "en": "Pump | Victorian",
+        "pt": "Pump | Victorian",
+        "es": "Pump | Victorian"
+      },
+      "description": {
+        "en": "Victorian-style Pump Shotgun skin inspired by Killing Floor 2.",
+        "pt": "Skin de Pump Shotgun em estilo vitoriano, inspirada em Killing Floor 2.",
+        "es": "Skin de Pump Shotgun de estilo victoriano, inspirada en Killing Floor 2."
+      },
+      "originalTitle": "Pump | Victorian",
+      "originalDescription": "kf2 skin thingy"
+    },
+    {
+      "id": "purple-luminous",
+      "weapon": "weapon_shotgun_chrome",
+      "level": 10,
+      "workshopId": "2658483467",
+      "title": {
+        "en": "Shotgun Purple Skin",
+        "pt": "Shotgun Purple Skin",
+        "es": "Shotgun Purple Skin"
+      },
+      "description": {
+        "en": "Purple luminous skin for the Chrome Shotgun.",
+        "pt": "Skin roxa luminosa para a Chrome Shotgun.",
+        "es": "Skin morada luminosa para la Chrome Shotgun."
+      },
+      "originalTitle": "shotgun purple skin",
+      "originalDescription": "shotgun purple skin QQ QUN:282147279 b站： 接MOD定制百元内一个 QQ1145994139"
+    },
+    {
+      "id": "sakura",
+      "weapon": "weapon_shotgun_chrome",
+      "level": 10,
+      "workshopId": "2848781046",
+      "title": {
+        "en": "Cardcaptor Sakura Chrome Shotgun",
+        "pt": "Cardcaptor Sakura Chrome Shotgun",
+        "es": "Cardcaptor Sakura Chrome Shotgun"
+      },
+      "description": {
+        "en": "Cardcaptor Sakura Chrome Shotgun with a pink-white gradient barrel, Clow Cards on the pump and Sakura and Kero on the receiver.",
+        "pt": "Chrome Shotgun de Sakura Card Captors, com cano em degradê rosa e branco, Cartas Clow na bomba e Sakura e Kero no corpo.",
+        "es": "Chrome Shotgun de Sakura Cardcaptor, con cañón en degradado rosa y blanco, Cartas Clow en el pump y Sakura y Kero en el cuerpo."
+      },
+      "originalTitle": "魔卡少女樱主题铁喷 Cardcaptor Sakura Chrome Shotgun",
+      "originalDescription": "标签：百变小樱 カードキャプターさくら 预览 演示视频 工坊好像没人做小樱的铁喷涂装，所以自己尝试做了一个，第一次做，可能有点瑕疵 枪管采用了粉白渐变配色，唧筒是库洛牌图形，机匣是小樱和小可特写，推荐开高画质使用 点击跳转到夜光版 推荐搭配食用 Star staff | Guitar 粉色- 星杖 替换 吉他 Star staff | Crowbar 粉色 - 封印之杖 替换 撬棍 原图(original)侵删 如果你喜欢这个mod，请点个赞吧：） 目标：70个赞 My Goal:70 likes 2022/08/16 修复了一些瑕疵，加深了枪管的渐变色…"
+    },
+    {
+      "id": "hiiro-uzi",
+      "weapon": "weapon_smg",
+      "level": 9,
+      "workshopId": "2809240839",
+      "title": {
+        "en": "Hiiro UZI (Glow)",
+        "pt": "Hiiro UZI (Glow)",
+        "es": "Hiiro UZI (Glow)"
+      },
+      "description": {
+        "en": "Hiiro skin for the Uzi, with glow. Artwork by Koburina Toma.",
+        "pt": "Skin da Hiiro para a Uzi, com brilho. Arte de Koburina Toma.",
+        "es": "Skin de Hiiro para la Uzi, con brillo. Arte de Koburina Toma."
+      },
+      "originalTitle": "UZI Hiiro大粉喵（发光）replace uzi glow",
+      "originalDescription": "贴图立绘来自 绘师：97190304_こぶりな とま 预览视频： 推荐uzi动作mod： 预览图如下： 如有喜欢一定要记得点赞——！！感谢 2022/6/21 增加了夜光亮度"
+    },
+    {
+      "id": "shadowbolt",
+      "weapon": "weapon_smg_silenced",
+      "level": 9,
+      "workshopId": "1891172953",
+      "title": {
+        "en": "S.SMG | ShadowBolt",
+        "pt": "S.SMG | ShadowBolt",
+        "es": "S.SMG | ShadowBolt"
+      },
+      "description": {
+        "en": "Silenced SMG skin inspired by My Little Pony, requested by Warpath-the-drone.",
+        "pt": "Skin de Silenced SMG inspirada em My Little Pony, feita a pedido de Warpath-the-drone.",
+        "es": "Skin de Silenced SMG inspirada en My Little Pony, hecha a pedido de Warpath-the-drone."
+      },
+      "originalTitle": "S.SMG | ShadowBolt",
+      "originalDescription": "yo 0/ Requested by : Warpath-the-drone swe tag : mlp my little pony"
+    },
+    {
+      "id": "rat-a-tat",
+      "weapon": "weapon_smg_silenced",
+      "level": 9,
+      "workshopId": "2020709816",
+      "title": {
+        "en": "Rat A Tat Tat (Glowing)",
+        "pt": "Rat A Tat Tat (Glowing)",
+        "es": "Rat A Tat Tat (Glowing)"
+      },
+      "description": {
+        "en": "Glowing Silenced SMG skin named after the Dan Bull song \"Rat A Tat Tat\".",
+        "pt": "Skin de Silenced SMG com brilho, inspirada na música \"Rat A Tat Tat\" de Dan Bull.",
+        "es": "Skin de Silenced SMG con brillo, inspirada en la canción \"Rat A Tat Tat\" de Dan Bull."
+      },
+      "originalTitle": "Rat A Tat Tat (Glowing)",
+      "originalDescription": "\"Rat A Tat Tat **** A Black Mask When death is entertaining and you better act fast\" -Dan Bull"
+    },
+    {
+      "id": "honey-dragon",
+      "weapon": "weapon_pumpshotgun",
+      "level": 9,
+      "workshopId": "2558200493",
+      "title": {
+        "en": "Tribal Hunter Honey Dragon Pumpshotgun",
+        "pt": "Tribal Hunter Honey Dragon Pumpshotgun",
+        "es": "Tribal Hunter Honey Dragon Pumpshotgun"
+      },
+      "description": {
+        "en": "Pump Shotgun with the honey dragon from Tribal Hunter.",
+        "pt": "Pump Shotgun com o dragão de mel de Tribal Hunter.",
+        "es": "Pump Shotgun con el dragón de miel de Tribal Hunter."
+      },
+      "originalTitle": "Tribal hunter honey dragon pumpshotgun",
+      "originalDescription": "\"Welcome\"~Rawr =============== Well after playing some tribal hunter, this derg has become a fan of the honey dragon so why not commerate the moment with replacing my favorite shotgun with a design embedded with the utmost cuteness"
+    },
+    {
+      "id": "darkdread",
+      "weapon": "weapon_pumpshotgun",
+      "level": 9,
+      "workshopId": "2988115895",
+      "title": {
+        "en": "Lord Darkdread Pumpshotgun",
+        "pt": "Lord Darkdread Pumpshotgun",
+        "es": "Lord Darkdread Pumpshotgun"
+      },
+      "description": {
+        "en": "Lord Darkdread, the final boss of a classic platformer, on the Pump Shotgun.",
+        "pt": "Lord Darkdread, o chefe final de um clássico de plataforma, na Pump Shotgun.",
+        "es": "Lord Darkdread, el jefe final de un clásico de plataformas, en la Pump Shotgun."
+      },
+      "originalTitle": "Lord Darkdread pumpshotgun",
+      "originalDescription": "\"Welcome\"~Rawr =========== Its been a good while since ive made a reskin on one of my favorite weapons, well I digress this derg remembered the final boss of a certain platformer, well here you go ================ All credit goes to there respective owners"
+    },
+    {
+      "id": "dragonite",
+      "weapon": "weapon_pumpshotgun",
+      "level": 9,
+      "workshopId": "3353717701",
+      "title": {
+        "en": "Dragonite Pumpshotgun v2",
+        "pt": "Dragonite Pumpshotgun v2",
+        "es": "Dragonite Pumpshotgun v2"
+      },
+      "description": {
+        "en": "A remake of the author's Dragonite Pump Shotgun, six years after the original.",
+        "pt": "Remake da Pump Shotgun do Dragonite do autor, seis anos depois da original.",
+        "es": "Remake de la Pump Shotgun de Dragonite del autor, seis años después de la original."
+      },
+      "originalTitle": "Dragonite pumpshotgun v2",
+      "originalDescription": "\"GRAWRRRR\"~ Welcome =============== Can you believe it 6 years ago I released the og version of this shotgun and today out of boredom and having major artist block, as a fellow nite I've re-released my favorite tier 1 weapon =============== All credit goes to their respective own…"
+    },
+    {
+      "id": "celeuna",
+      "weapon": "weapon_shotgun_chrome",
+      "level": 9,
+      "workshopId": "1896292547",
+      "title": {
+        "en": "Chrome | Celeuna",
+        "pt": "Chrome | Celeuna",
+        "es": "Chrome | Celeuna"
+      },
+      "description": {
+        "en": "Chrome Shotgun inspired by Celestia and Luna, with self-illumination: the darker the map, the more it glows.",
+        "pt": "Chrome Shotgun inspirada em Celestia e Luna, com autoiluminação: quanto mais escuro o mapa, mais ela brilha.",
+        "es": "Chrome Shotgun inspirada en Celestia y Luna, con autoiluminación: cuanto más oscuro el mapa, más brilla."
+      },
+      "originalTitle": "Chrome | Celeuna",
+      "originalDescription": "yo 0/ hey there people im back again, time has been shorten for me again, but hopefully everything is cool... for now, this time with a bit of testing with the selfinlum command, and with this celeuna skin( celestia + luna), and the darker the ilumination of the game, the more yo…"
+    },
+    {
+      "id": "asiimov-blue",
+      "weapon": "weapon_shotgun_chrome",
+      "level": 9,
+      "workshopId": "2607196353",
+      "title": {
+        "en": "Chrome Shotgun | Asiimov Light Blue",
+        "pt": "Chrome Shotgun | Asiimov Light Blue",
+        "es": "Chrome Shotgun | Asiimov Light Blue"
+      },
+      "description": {
+        "en": "Light blue Asiimov skin for the Chrome Shotgun, based on an addon by Amel.",
+        "pt": "Skin Asiimov azul-claro para a Chrome Shotgun, baseada em um addon de Amel.",
+        "es": "Skin Asiimov azul claro para la Chrome Shotgun, basada en un addon de Amel."
+      },
+      "originalTitle": "Chrome Shotgun | Asiimov Light Blue",
+      "originalDescription": "Light blue asiimov skin for chrome shotgun. The design is based on this addon by Amel."
+    },
+    {
+      "id": "asiimov-purple",
+      "weapon": "weapon_smg_silenced",
+      "level": 8,
+      "workshopId": "1920647346",
+      "title": {
+        "en": "Lexa | SMG - Asiimov Purple",
+        "pt": "Lexa | SMG - Asiimov Purple",
+        "es": "Lexa | SMG - Asiimov Purple"
+      },
+      "description": {
+        "en": "Purple Asiimov skin for the SMG.",
+        "pt": "Skin Asiimov roxa para a SMG.",
+        "es": "Skin Asiimov morada para la SMG."
+      },
+      "originalTitle": "Lexa | SMG - Asiimov Purple",
+      "originalDescription": "Purple asiimov skin for SMG."
+    },
+    {
+      "id": "printstream-mac-lite",
+      "weapon": "weapon_smg_silenced",
+      "level": 8,
+      "workshopId": "2915661033",
+      "title": {
+        "en": "Mac10 - PrintStream",
+        "pt": "Mac10 - PrintStream",
+        "es": "Mac10 - PrintStream"
+      },
+      "description": {
+        "en": "Printstream-style skin for the MAC-10.",
+        "pt": "Skin no estilo Printstream para a MAC-10.",
+        "es": "Skin al estilo Printstream para la MAC-10."
+      },
+      "originalTitle": "Mac10 - PrintStream",
+      "originalDescription": "not that good looking. I Tried but... whatever. Here we go! its pretty wierd to edit mac10"
+    },
+    {
+      "id": "pumpkin-patch",
+      "weapon": "weapon_pumpshotgun",
+      "level": 8,
+      "workshopId": "2247225793",
+      "title": {
+        "en": "Pump | Pumpkin Patch",
+        "pt": "Pump | Pumpkin Patch",
+        "es": "Pump | Pumpkin Patch"
+      },
+      "description": {
+        "en": "A one-off Halloween skin by HKS: a pumpkin patch design for the Pump Shotgun.",
+        "pt": "Skin especial de Halloween do HKS: um design de plantação de abóboras para a Pump Shotgun.",
+        "es": "Skin especial de Halloween de HKS: un diseño de huerto de calabazas para la Pump Shotgun."
+      },
+      "originalTitle": "Pump | Pumpkin Patch",
+      "originalDescription": "Wait HKS making a weapon skin!? that's illegal Jokes aside, oi there folks 0/ been a while eh? NO this is not a comeback, think of this as an one off thing i did for fun, since i recently came back to check out the update & of course its spooktober(my favourite time of the year)…"
+    },
+    {
+      "id": "ghost",
+      "weapon": "weapon_pumpshotgun",
+      "level": 8,
+      "workshopId": "2622374394",
+      "title": {
+        "en": "Halloween Ghost Pump Shotgun",
+        "pt": "Halloween Ghost Pump Shotgun",
+        "es": "Halloween Ghost Pump Shotgun"
+      },
+      "description": {
+        "en": "A spooky, festive Halloween ghost reskin for the Pump Shotgun.",
+        "pt": "Uma reskin festiva e assustadora de fantasma de Halloween para a Pump Shotgun.",
+        "es": "Un reskin festivo y aterrador de fantasma de Halloween para la Pump Shotgun."
+      },
+      "originalTitle": "Halloween Ghost Pump Shotgun",
+      "originalDescription": "\"Welcome\"~Khan ============== This fatherly marsupial continues his modding autumn adventures with a reskin of thepump shotgun's bland skin with a more spooky and festive one during this month of tricks and treats ==============="
+    },
+    {
+      "id": "volcanic-chrome",
+      "weapon": "weapon_shotgun_chrome",
+      "level": 8,
+      "workshopId": "1898445622",
+      "title": {
+        "en": "Shotguns | Volcanic",
+        "pt": "Shotguns | Volcanic",
+        "es": "Shotguns | Volcanic"
+      },
+      "description": {
+        "en": "Volcanic-themed Pump and Chrome shotguns, suggested by Dot.",
+        "pt": "Pump e Chrome Shotgun com tema vulcânico, sugestão de Dot.",
+        "es": "Pump y Chrome Shotgun con temática volcánica, sugerencia de Dot."
+      },
+      "originalTitle": "Shotguns | Volcanic",
+      "originalDescription": "yo 0/ suggested by: Dot [?] a volcanic themed pump & chrome shotguns, hope yall enjoy"
+    },
+    {
+      "id": "anubis",
+      "weapon": "weapon_shotgun_chrome",
+      "level": 8,
+      "workshopId": "1973325659",
+      "title": {
+        "en": "Chrome | Anubis",
+        "pt": "Chrome | Anubis",
+        "es": "Chrome | Anubis"
+      },
+      "description": {
+        "en": "Anubis-themed Chrome Shotgun skin by HKS.",
+        "pt": "Skin de Chrome Shotgun com tema Anubis, feita pelo HKS.",
+        "es": "Skin de Chrome Shotgun con temática Anubis, hecha por HKS."
+      },
+      "originalTitle": "Chrome | Anubis",
+      "originalDescription": "yo 0/ updates today 1/3 hope yall enjoy"
+    },
+    {
+      "id": "marisa",
+      "weapon": "weapon_smg",
+      "level": 7,
+      "workshopId": "3302648369",
+      "title": {
+        "en": "Touhou Project Marisa Kirisame UZI",
+        "pt": "Touhou Project Marisa Kirisame UZI",
+        "es": "Touhou Project Marisa Kirisame UZI"
+      },
+      "description": {
+        "en": "Marisa Kirisame from Touhou Project on the official Uzi, fully glowing with normal maps.",
+        "pt": "Marisa Kirisame de Touhou Project na Uzi oficial, com brilho total e normal map.",
+        "es": "Marisa Kirisame de Touhou Project en la Uzi oficial, con brillo total y normal map."
+      },
+      "originalTitle": "【东方Project】雾雨魔理沙 官模UZI",
+      "originalDescription": "只是在我死之前\"借\"一下而已啦 这位更是主角， 真男主 小偷 虽然看起来吊儿郎当的，但实际上是非常努力的人DA⭐ZE 我记得没错的话工坊里还有一款灵梦的MAC，可以在一起用组成主角cp（ 包含：全夜光，法线贴图 因为只对官模uzi的贴图进行了更改，所以可以搭配任意音效mod和动作mod食用 借物 本mod使用的主要贴图素材来自 ，作品编号为：119196833，120051720，32704959，108217855 Credits Valve - model，sounds，animations 野生带鱼 - texture 未经许可，禁止进行修改、压缩…"
+    },
+    {
+      "id": "dark-matter",
+      "weapon": "weapon_smg_silenced",
+      "level": 7,
+      "workshopId": "3377651383",
+      "title": {
+        "en": "MAC-10 Dark Matter",
+        "pt": "MAC-10 Dark Matter",
+        "es": "MAC-10 Dark Matter"
+      },
+      "description": {
+        "en": "Dark Matter MAC-10. Set light and shadow details to high for the best result.",
+        "pt": "MAC-10 Dark Matter. Coloque os detalhes de luz e sombra no alto para o melhor resultado.",
+        "es": "MAC-10 Dark Matter. Pon los detalles de luz y sombra en alto para el mejor resultado."
+      },
+      "originalTitle": "MAC-10 DARK MATTER",
+      "originalDescription": "请把光影细节调成高获得最好的体验 Please set the light and shadow details to high for the best experience"
+    },
+    {
+      "id": "volcanic-mac",
+      "weapon": "weapon_smg_silenced",
+      "level": 7,
+      "workshopId": "3381870803",
+      "title": {
+        "en": "MAC-10 Volcanic Lava Skin",
+        "pt": "MAC-10 Volcanic Lava Skin",
+        "es": "MAC-10 Volcanic Lava Skin"
+      },
+      "description": {
+        "en": "Volcanic lava MAC-10. Set light and shadow details to high for the best result.",
+        "pt": "MAC-10 de lava vulcânica. Coloque os detalhes de luz e sombra no alto para o melhor resultado.",
+        "es": "MAC-10 de lava volcánica. Pon los detalles de luz y sombra en alto para el mejor resultado."
+      },
+      "originalTitle": "MAC-10 volcanic lava skins",
+      "originalDescription": "please turn up the light and shadow details to high for the best experience 请把光影细节调成高获得最好的体验"
+    },
+    {
+      "id": "pumpkaboo",
+      "weapon": "weapon_pumpshotgun",
+      "level": 7,
+      "workshopId": "2640388420",
+      "title": {
+        "en": "Shiny Pumpkaboo Pump Shotgun",
+        "pt": "Shiny Pumpkaboo Pump Shotgun",
+        "es": "Shiny Pumpkaboo Pump Shotgun"
+      },
+      "description": {
+        "en": "A spooky shiny Pumpkaboo design for the Pump Shotgun, made for Halloween.",
+        "pt": "Design assustador de Pumpkaboo shiny para a Pump Shotgun, feito para o Halloween.",
+        "es": "Diseño aterrador de Pumpkaboo shiny para la Pump Shotgun, hecho para Halloween."
+      },
+      "originalTitle": "Shiny pumpkaboo pump shotgun",
+      "originalDescription": "*Pumpkaboo used trick or treat* \"Welcome\"~Khan ============= Since the spookiest day of the year is fastly approaching this fatherly marsupial decided to make something extra spooky for all your witch killing needs ============== All credit goes to their respective owners"
+    },
+    {
+      "id": "freddy",
+      "weapon": "weapon_pumpshotgun",
+      "level": 7,
+      "workshopId": "2827288336",
+      "title": {
+        "en": "Glamrock Freddy Pumpshotgun",
+        "pt": "Glamrock Freddy Pumpshotgun",
+        "es": "Glamrock Freddy Pumpshotgun"
+      },
+      "description": {
+        "en": "Glamrock Freddy from Five Nights at Freddy's: Security Breach on the Pump Shotgun.",
+        "pt": "Glamrock Freddy de Five Nights at Freddy's: Security Breach na Pump Shotgun.",
+        "es": "Glamrock Freddy de Five Nights at Freddy's: Security Breach en la Pump Shotgun."
+      },
+      "originalTitle": "Glamrock freddy pumpshotgun",
+      "originalDescription": "\"Way to go superstar\"~Glamrock Freddy --------------------------------------------------- \"Welcome\"~Rawr ========================= Looks like everyone's favorite father figure animatronic has left our fellow survivors with a gift and it aint a faz-watch either ===================…"
+    },
+    {
+      "id": "hot-rod",
+      "weapon": "weapon_shotgun_chrome",
+      "level": 7,
+      "workshopId": "2012965052",
+      "title": {
+        "en": "Chrome | Hot Rod",
+        "pt": "Chrome | Hot Rod",
+        "es": "Chrome | Hot Rod"
+      },
+      "description": {
+        "en": "Hot Rod flame design for the Chrome Shotgun, made during the Black Ice experiment.",
+        "pt": "Design de chamas Hot Rod para a Chrome Shotgun, feito durante o experimento Black Ice.",
+        "es": "Diseño de llamas Hot Rod para la Chrome Shotgun, hecho durante el experimento Black Ice."
+      },
+      "originalTitle": "Chrome | Hot Rod",
+      "originalDescription": "thx to the black ice experiment i made this thing, yes i know its out o sync on the end there, but i couldn't care enoght to fix it, so if you are bothered by it fix it yourself"
+    },
+    {
+      "id": "segawa-emi",
+      "weapon": "weapon_shotgun_chrome",
+      "level": 7,
+      "workshopId": "3225009583",
+      "title": {
+        "en": "Segawa Emi Chrome Shotgun",
+        "pt": "Segawa Emi Chrome Shotgun",
+        "es": "Segawa Emi Chrome Shotgun"
+      },
+      "description": {
+        "en": "Segawa Emi from \"Koi, Karichaimashita\" on the Chrome Shotgun, with glow; her expression changes over time.",
+        "pt": "Segawa Emi de \"Koi, Karichaimashita\" na Chrome Shotgun, com brilho; a expressão dela muda com o tempo.",
+        "es": "Segawa Emi de \"Koi, Karichaimashita\" en la Chrome Shotgun, con brillo; su expresión cambia con el tiempo."
+      },
+      "originalTitle": "ASA/颜艺社 濑川绘未 铁喷",
+      "originalDescription": "濑川绘未，颜艺社作品《恋爱，我就借走了》（恋愛、借りちゃいました）女主 替换原版铁喷贴图，有发光效果 枪身立绘表情会定时切换（做这个皮就是因为太喜欢她了而且颜艺太有意思了XD）"
+    },
+    {
+      "id": "purple-marble",
+      "weapon": "weapon_smg_silenced",
+      "level": 6,
+      "workshopId": "3506807539",
+      "title": {
+        "en": "SMG",
+        "pt": "SMG",
+        "es": "SMG"
+      },
+      "description": {
+        "en": "A simple purple skin for the Silenced SMG.",
+        "pt": "Skin roxa simples para a Silenced SMG.",
+        "es": "Skin morada simple para la Silenced SMG."
+      },
+      "originalTitle": "SMG",
+      "originalDescription": "A"
+    },
+    {
+      "id": "vercetti",
+      "weapon": "weapon_smg_silenced",
+      "level": 6,
+      "workshopId": "3791846410",
+      "title": {
+        "en": "\"Vercetti Vintage\" MAC-10 Reskin",
+        "pt": "\"Vercetti Vintage\" MAC-10 Reskin",
+        "es": "\"Vercetti Vintage\" MAC-10 Reskin"
+      },
+      "description": {
+        "en": "A quick MAC-10 retexture inspired by GTA VI.",
+        "pt": "Retextura rápida da MAC-10 inspirada em GTA VI.",
+        "es": "Retextura rápida de la MAC-10 inspirada en GTA VI."
+      },
+      "originalTitle": "\"Vercetti Vintage\" Mac 10 Reskin",
+      "originalDescription": "Just a quick retexture i made inspired by gta 6 mods used: Animation Nick"
+    },
+    {
+      "id": "charizard",
+      "weapon": "weapon_pumpshotgun",
+      "level": 6,
+      "workshopId": "2778467302",
+      "title": {
+        "en": "Shiny Charizard Pumpshotgun",
+        "pt": "Shiny Charizard Pumpshotgun",
+        "es": "Shiny Charizard Pumpshotgun"
+      },
+      "description": {
+        "en": "Shiny Charizard, the favorite gen 1 fire type, on the Pump Shotgun.",
+        "pt": "Charizard shiny, o tipo fogo favorito da 1ª geração, na Pump Shotgun.",
+        "es": "Charizard shiny, el tipo fuego favorito de la 1.ª generación, en la Pump Shotgun."
+      },
+      "originalTitle": "Shiny Charizard Pumpshotgun",
+      "originalDescription": "\"Welcome\"~Khan ============ Well its been awhile since I made a reskin of any sort, but i digress out of sheer boredom, I decided to replace the pump shotgun's bland design with a more stylish one with everyones favorite gen 1 fire type shiny variant ============= All credit goes…"
+    },
+    {
+      "id": "kao",
+      "weapon": "weapon_pumpshotgun",
+      "level": 6,
+      "workshopId": "2815653917",
+      "title": {
+        "en": "Kao the Kangaroo Pumpshotgun",
+        "pt": "Kao the Kangaroo Pumpshotgun",
+        "es": "Kao the Kangaroo Pumpshotgun"
+      },
+      "description": {
+        "en": "Kao the Kangaroo, the boxing roo, on the Pump Shotgun, celebrating his remaster.",
+        "pt": "Kao the Kangaroo, o canguru boxeador, na Pump Shotgun, celebrando o remaster.",
+        "es": "Kao the Kangaroo, el canguro boxeador, en la Pump Shotgun, celebrando su remaster."
+      },
+      "originalTitle": "Kao the kangaroo pumpshotgun",
+      "originalDescription": "\"Wouldn't want that on rootube\"~Kao --------------------------------------------- \"Welcome\"~Rawr =============== Well since a remaster of everyone's favorite roo has come upon us a couple of days ago I decided to retexture my favorite shotgun with everyone's favorite boxing roo (…"
+    },
+    {
+      "id": "black-gold",
+      "weapon": "weapon_shotgun_chrome",
+      "level": 6,
+      "workshopId": "2418491788",
+      "title": {
+        "en": "Chrome Shotgun Black&Gold Skin",
+        "pt": "Chrome Shotgun Black&Gold Skin",
+        "es": "Chrome Shotgun Black&Gold Skin"
+      },
+      "description": {
+        "en": "The author's first skin: a black and gold Chrome Shotgun with a glow-in-the-dark effect.",
+        "pt": "Primeira skin do autor: Chrome Shotgun preta e dourada com efeito que brilha no escuro.",
+        "es": "Primera skin del autor: Chrome Shotgun negra y dorada con efecto que brilla en la oscuridad."
+      },
+      "originalTitle": "Chrome shotgun Black&Gold Skin",
+      "originalDescription": "This is my first time to make a skin mod It has fluorescent effect and some flaws Hope you guys enjoy it！ I will go ahead and do it. 这是我第一次做的皮肤类MOD 具有夜光效果也颇有瑕疵 希望你们喜欢！ 我会继续坚持下去的"
+    },
+    {
+      "id": "scott-the-woz",
+      "weapon": "weapon_shotgun_chrome",
+      "level": 6,
+      "workshopId": "2789609798",
+      "title": {
+        "en": "Scott The Woz Chrome Shotgun",
+        "pt": "Scott The Woz Chrome Shotgun",
+        "es": "Scott The Woz Chrome Shotgun"
+      },
+      "description": {
+        "en": "Scott The Woz themed Chrome Shotgun, made at a friend's request.",
+        "pt": "Chrome Shotgun com tema de Scott The Woz, feita a pedido de um amigo.",
+        "es": "Chrome Shotgun con temática de Scott The Woz, hecha a pedido de un amigo."
+      },
+      "originalTitle": "Scott The Woz Chrome Shotgun",
+      "originalDescription": "I decided to make this shotgun after a friend in a call was like do this i also spent 40 minutes trying to figure out vmt's i gave up"
+    },
+    {
+      "id": "volcanic-uzi",
+      "weapon": "weapon_smg",
+      "level": 5,
+      "workshopId": "2037879288",
+      "title": {
+        "en": "Uzi | Volcanic",
+        "pt": "Uzi | Volcanic",
+        "es": "Uzi | Volcanic"
+      },
+      "description": {
+        "en": "Volcanic lava skin for the Uzi.",
+        "pt": "Skin de lava vulcânica para a Uzi.",
+        "es": "Skin de lava volcánica para la Uzi."
+      },
+      "originalTitle": "uzi | volcanic",
+      "originalDescription": "Ill post the other one later, don't want to spam mcuch :v"
+    },
+    {
+      "id": "urban",
+      "weapon": "weapon_smg_silenced",
+      "level": 5,
+      "workshopId": "1883809532",
+      "title": {
+        "en": "Silenced SMG_Urban",
+        "pt": "Silenced SMG_Urban",
+        "es": "Silenced SMG_Urban"
+      },
+      "description": {
+        "en": "The next release in the Urban series, this time for the Silenced SMG.",
+        "pt": "Mais um lançamento da série Urban, desta vez para a Silenced SMG.",
+        "es": "Nuevo lanzamiento de la serie Urban, esta vez para la Silenced SMG."
+      },
+      "originalTitle": "Silenced SMG_Urban",
+      "originalDescription": "The next release in the Urban series, this time around we have the Silenced SMG. Enjoy!"
+    },
+    {
+      "id": "riolu",
+      "weapon": "weapon_smg_silenced",
+      "level": 5,
+      "workshopId": "3534662352",
+      "title": {
+        "en": "Worn MAC-10 - Shiny Riolu",
+        "pt": "Worn MAC-10 - Shiny Riolu",
+        "es": "Worn MAC-10 - Shiny Riolu"
+      },
+      "description": {
+        "en": "Shiny Riolu design that replaces the worn MAC-10 variant found in The Last Stand.",
+        "pt": "Design de Riolu shiny que substitui a variante desgastada da MAC-10 de The Last Stand.",
+        "es": "Diseño de Riolu shiny que reemplaza la variante desgastada de la MAC-10 de The Last Stand."
+      },
+      "originalTitle": "Worn MAC-10 - Shiny Riolu",
+      "originalDescription": "Replaces the worn Silenced SMG (MAC-10) skin. In vanilla, it may be found on Map 2 of The Last Stand in the watchtower. Credits: Original version The Pokémon Company Tags: Pokemon, lucario"
+    },
+    {
+      "id": "fuecoco",
+      "weapon": "weapon_pumpshotgun",
+      "level": 5,
+      "workshopId": "2893293186",
+      "title": {
+        "en": "Fuecoco Pumpshotgun",
+        "pt": "Fuecoco Pumpshotgun",
+        "es": "Fuecoco Pumpshotgun"
+      },
+      "description": {
+        "en": "Fuecoco, from the newer Pokémon games, on the Pump Shotgun.",
+        "pt": "Fuecoco, dos jogos mais recentes de Pokémon, na Pump Shotgun.",
+        "es": "Fuecoco, de los juegos más recientes de Pokémon, en la Pump Shotgun."
+      },
+      "originalTitle": "Fuecoco pumpshotgun",
+      "originalDescription": "\"Welcome\"~Rawr ============ SInce the new pokemon games have recently released and ive finished violet in three days, im basically done with it and can focus back on other important things like art, But I digress this derg hasnt done reskins in awhile so here my favorite shotgun…"
+    },
+    {
+      "id": "clodsire",
+      "weapon": "weapon_pumpshotgun",
+      "level": 5,
+      "workshopId": "2946973675",
+      "title": {
+        "en": "Clodsire Pumpshotgun",
+        "pt": "Clodsire Pumpshotgun",
+        "es": "Clodsire Pumpshotgun"
+      },
+      "description": {
+        "en": "Clodsire on the Pump Shotgun, inspired by a shiny Paldean Wooper.",
+        "pt": "Clodsire na Pump Shotgun, inspirada em um Wooper de Paldea shiny.",
+        "es": "Clodsire en la Pump Shotgun, inspirada en un Wooper de Paldea shiny."
+      },
+      "originalTitle": "Clodsire Pumpshotgun",
+      "originalDescription": "\"Welcome\"~Rawr ============== After catching a shiny paldian wooper and evolving it to a clodsire an idea has struck and long story short this shotgun was born ============== All credit goes to there respective owners"
+    },
+    {
+      "id": "miltank",
+      "weapon": "weapon_shotgun_chrome",
+      "level": 5,
+      "workshopId": "1743997241",
+      "title": {
+        "en": "Shiny Miltank Chrome Shotgun",
+        "pt": "Shiny Miltank Chrome Shotgun",
+        "es": "Shiny Miltank Chrome Shotgun"
+      },
+      "description": {
+        "en": "Chrome Shotgun themed after a shiny Miltank, the author's Pokémon persona. All credit goes to Nintendo and Pokémon.",
+        "pt": "Chrome Shotgun com tema de um Miltank shiny, o Pokémon que representa o autor. Todos os créditos à Nintendo e Pokémon.",
+        "es": "Chrome Shotgun con temática de un Miltank shiny, el Pokémon que representa al autor. Todo el crédito para Nintendo y Pokémon."
+      },
+      "originalTitle": "Shiny Miltank Chrome Shotgun",
+      "originalDescription": "\"Mil Mil\"~ Manchas (My son gave me that name for my miltank oc :) ) Well since my second Pokesona is a shiny fatherly miltank ive decided to replace a powerful shotgun with a strong normal type (Ill always be a fatherly kangaskhan) All credit goes to Nintendo and Pokemon"
+    },
+    {
+      "id": "dedede",
+      "weapon": "weapon_shotgun_chrome",
+      "level": 5,
+      "workshopId": "3430694346",
+      "title": {
+        "en": "King Dedede Chrome Shotgun",
+        "pt": "King Dedede Chrome Shotgun",
+        "es": "King Dedede Chrome Shotgun"
+      },
+      "description": {
+        "en": "King Dedede, the author's favorite Kirby character, on the Chrome Shotgun.",
+        "pt": "King Dedede, o personagem favorito de Kirby do autor, na Chrome Shotgun.",
+        "es": "King Dedede, el personaje favorito de Kirby del autor, en la Chrome Shotgun."
+      },
+      "originalTitle": "King Dedede chromeshotgun",
+      "originalDescription": "\"Welcome\"~Rawr ============= I was just doodling while listening to some kirby osts, and forgo dedede's theme came up and since dedede himself is my favorite character why not replace the chromes boring design with this handsome devil =============== All credit goes to their resp…"
+    },
+    {
+      "id": "narumi-toa",
+      "weapon": "weapon_smg",
+      "level": 4,
+      "workshopId": "3335472907",
+      "title": {
+        "en": "Wagamama High Spec Narumi Toa UZI",
+        "pt": "Wagamama High Spec Narumi Toa UZI",
+        "es": "Wagamama High Spec Narumi Toa UZI"
+      },
+      "description": {
+        "en": "Narumi Toa, one of the heroines of Madosoft's Wagamama High Spec, on the Uzi, with partial glow.",
+        "pt": "Narumi Toa, uma das heroínas de Wagamama High Spec da Madosoft, na Uzi, com brilho parcial.",
+        "es": "Narumi Toa, una de las heroínas de Wagamama High Spec de Madosoft, en la Uzi, con brillo parcial."
+      },
+      "originalTitle": "[任性highspec/ワガママハイスペック]鸣海兔亚Narumi Toa  uzi",
+      "originalDescription": "madosoft游戏《任性highspec》的女主之一 可爱的兔亚妹妹 随便贴的，替换原版uzi冲锋枪的贴图 有部分夜光"
+    },
+    {
+      "id": "case-hardened",
+      "weapon": "weapon_smg_silenced",
+      "level": 4,
+      "workshopId": "3361646012",
+      "title": {
+        "en": "multoman's RNG Skins Separated: Case Hardened MAC-10",
+        "pt": "multoman's RNG Skins Separated: Case Hardened MAC-10",
+        "es": "multoman's RNG Skins Separated: Case Hardened MAC-10"
+      },
+      "description": {
+        "en": "Case Hardened MAC-10, separated from multoman's MAC-10 Skin RNG pack.",
+        "pt": "MAC-10 Case Hardened, separada do pacote MAC-10 Skin RNG de multoman.",
+        "es": "MAC-10 Case Hardened, separada del pack MAC-10 Skin RNG de multoman."
+      },
+      "originalTitle": "multoman's RNG Skins Seperated: Case Hardened Mac-10",
+      "originalDescription": "Compatible with reanimations; L4D1 Anims as a example. This replaces the default Mac-10 skin from multoman's RNG Mac-10 Skins mod: Case Hardened on the default model, seperated from the TLS location (Last Stand) CREDITS: multoman's mod: MAC 10 Skin RNG"
+    },
+    {
+      "id": "ethereal",
+      "weapon": "weapon_smg_silenced",
+      "level": 4,
+      "workshopId": "3413132036",
+      "title": {
+        "en": "Ethereal MAC-10 Skin",
+        "pt": "Ethereal MAC-10 Skin",
+        "es": "Ethereal MAC-10 Skin"
+      },
+      "description": {
+        "en": "A hellish purple take on the Inferno pattern from multoman's RNG skins.",
+        "pt": "Uma versão roxa e infernal da estampa Inferno das skins RNG de multoman.",
+        "es": "Una versión morada e infernal del patrón Inferno de las skins RNG de multoman."
+      },
+      "originalTitle": "Ethereal Mac-10 Skin",
+      "originalDescription": "Based of multoman's RNG Skins - Inferno pattern but instead it's a hellish-purple-ish inferno. Credits: multoman (MAC-10 - Inferno)"
+    },
+    {
+      "id": "big-the-cat",
+      "weapon": "weapon_pumpshotgun",
+      "level": 4,
+      "workshopId": "3703964121",
+      "title": {
+        "en": "Big the Cat Pumpshotgun",
+        "pt": "Big the Cat Pumpshotgun",
+        "es": "Big the Cat Pumpshotgun"
+      },
+      "description": {
+        "en": "Big the Cat, from Sonic, on the Pump Shotgun.",
+        "pt": "Big the Cat, de Sonic, na Pump Shotgun.",
+        "es": "Big the Cat, de Sonic, en la Pump Shotgun."
+      },
+      "originalTitle": "Big the cat Pumpshotgun",
+      "originalDescription": "\"FROGGY\"~ Big --------------------- \"Welcome\"~Rawr ============== This nite was rather bored today so I replaced my favorite shotgun with the likeness of my favorite sonic character. enjoy ============== All credit goed to their respective artists"
+    },
+    {
+      "id": "yoshi",
+      "weapon": "weapon_pumpshotgun",
+      "level": 4,
+      "workshopId": "3730362238",
+      "title": {
+        "en": "Yoshi Pumpshotgun",
+        "pt": "Yoshi Pumpshotgun",
+        "es": "Yoshi Pumpshotgun"
+      },
+      "description": {
+        "en": "Yoshi on the Pump Shotgun, made for the release of the new Yoshi game. All credit goes to Nintendo.",
+        "pt": "Yoshi na Pump Shotgun, feita para o lançamento do novo jogo do Yoshi. Todos os créditos à Nintendo.",
+        "es": "Yoshi en la Pump Shotgun, hecha para el lanzamiento del nuevo juego de Yoshi. Todo el crédito para Nintendo."
+      },
+      "originalTitle": "Yoshi Pumpshotgun",
+      "originalDescription": "\"YOSHI\"~Yoshi \"Welcome\"~Rawr ================ Since the new yoshi game came out today and streaming it I decided to replace my favorite tier 1 gun with everyone's favorite dino ================ All credit goes to Nintendo"
+    },
+    {
+      "id": "wildfire",
+      "weapon": "weapon_shotgun_chrome",
+      "level": 4,
+      "workshopId": "2123530345",
+      "title": {
+        "en": "Chrome Shotgun_Wildfire",
+        "pt": "Chrome Shotgun_Wildfire",
+        "es": "Chrome Shotgun_Wildfire"
+      },
+      "description": {
+        "en": "Wildfire skin for the Chrome Shotgun. \"Burn them all!\"",
+        "pt": "Skin Wildfire para a Chrome Shotgun. \"Burn them all!\"",
+        "es": "Skin Wildfire para la Chrome Shotgun. \"Burn them all!\""
+      },
+      "originalTitle": "Chrome Shotgun_Wildfire",
+      "originalDescription": "\" Burn them all! \""
+    },
+    {
+      "id": "google-chrome",
+      "weapon": "weapon_shotgun_chrome",
+      "level": 4,
+      "workshopId": "3233682675",
+      "title": {
+        "en": "Google Chrome Shotgun",
+        "pt": "Google Chrome Shotgun",
+        "es": "Google Chrome Shotgun"
+      },
+      "description": {
+        "en": "Google Chrome colors on the Chrome Shotgun. Textures only, no custom sounds.",
+        "pt": "As cores do Google Chrome na Chrome Shotgun. Somente texturas, sem sons.",
+        "es": "Los colores de Google Chrome en la Chrome Shotgun. Solo texturas, sin sonidos."
+      },
+      "originalTitle": "Google Chrome Shotgun (No Sound)",
+      "originalDescription": "This mod replaces Chrome's Shotgun default texture. It does not include custom sounds. Feel free to use your favourite sounds. No Steam users:"
+    },
+    {
+      "id": "patriotic",
+      "weapon": "weapon_smg_silenced",
+      "level": 3,
+      "workshopId": "3361636124",
+      "title": {
+        "en": "multoman's RNG Skins Separated: Patriotic MAC-10",
+        "pt": "multoman's RNG Skins Separated: Patriotic MAC-10",
+        "es": "multoman's RNG Skins Separated: Patriotic MAC-10"
+      },
+      "description": {
+        "en": "Patriotic MAC-10, separated from multoman's MAC-10 Skin RNG pack.",
+        "pt": "MAC-10 Patriotic, separada do pacote MAC-10 Skin RNG de multoman.",
+        "es": "MAC-10 Patriotic, separada del pack MAC-10 Skin RNG de multoman."
+      },
+      "originalTitle": "multoman's RNG Skins Seperated: Patriotic Mac-10",
+      "originalDescription": "Compatible with reanimations; L4D1 Anims as a example. This replaces the default Mac-10 skin from multoman's RNG Mac-10 Skins mod: Patriotic on the default model CREDITS: multoman's mod: MAC 10 Skin RNG"
+    },
+    {
+      "id": "patriotic-tls",
+      "weapon": "weapon_smg_silenced",
+      "level": 3,
+      "workshopId": "3426201673",
+      "title": {
+        "en": "multoman's RNG Skins Separated: Patriotic MAC-10 (TLS Version)",
+        "pt": "multoman's RNG Skins Separated: Patriotic MAC-10 (TLS Version)",
+        "es": "multoman's RNG Skins Separated: Patriotic MAC-10 (TLS Version)"
+      },
+      "description": {
+        "en": "Patriotic MAC-10 from multoman's RNG pack, replacing the worn variant from The Last Stand.",
+        "pt": "MAC-10 Patriotic do pacote RNG de multoman, substituindo a variante desgastada de The Last Stand.",
+        "es": "MAC-10 Patriotic del pack RNG de multoman, reemplazando la variante desgastada de The Last Stand."
+      },
+      "originalTitle": "multoman's RNG Skins Seperated: Patriotic Mac-10 (TLS VERSION)",
+      "originalDescription": "This mod except it replaces the TLS skin instead. Requested by A random guy. Compatible with reanimations; L4D1 Anims as a example. Available in the Last Stand campaign Map 2 at the Tower. CREDITS: multoman's mod: MAC 10 Skin RNG"
+    },
+    {
+      "id": "slowpoke",
+      "weapon": "weapon_pumpshotgun",
+      "level": 3,
+      "workshopId": "2759848284",
+      "title": {
+        "en": "Slowpoke Pumpshotgun",
+        "pt": "Slowpoke Pumpshotgun",
+        "es": "Slowpoke Pumpshotgun"
+      },
+      "description": {
+        "en": "Slowpoke, everyone's favorite derpy water Pokémon, on the Pump Shotgun.",
+        "pt": "Slowpoke, o Pokémon de água mais distraído e querido de todos, na Pump Shotgun.",
+        "es": "Slowpoke, el Pokémon de agua más despistado y querido, en la Pump Shotgun."
+      },
+      "originalTitle": "Slowpoke pumpshotgun",
+      "originalDescription": "Slow.....? \"Welcome\"~Khan ============ Well its been awhile since I made a reskin of any sort, but i digress out of sheer boredom and with a freinds pokemon oc in mind, I decided to replace the pump shotguns bland design with a more stylish one with everyones favorite derpy water…"
+    },
+    {
+      "id": "toxic",
+      "weapon": "weapon_pumpshotgun",
+      "level": 3,
+      "workshopId": "3232260090",
+      "title": {
+        "en": "Toxic Hazard Pump Shotgun",
+        "pt": "Toxic Hazard Pump Shotgun",
+        "es": "Toxic Hazard Pump Shotgun"
+      },
+      "description": {
+        "en": "Toxic hazard design for the Pump Shotgun. Textures only, no custom sounds.",
+        "pt": "Design de risco tóxico para a Pump Shotgun. Somente texturas, sem sons.",
+        "es": "Diseño de peligro tóxico para la Pump Shotgun. Solo texturas, sin sonidos."
+      },
+      "originalTitle": "Toxic Hazard Pump Shotgun (No Sound)",
+      "originalDescription": "This addon replaces default Wood Shotgun's texture. Feel free to use your favourite sounds along with this mod. No Steam users:"
+    },
+    {
+      "id": "caution",
+      "weapon": "weapon_shotgun_chrome",
+      "level": 3,
+      "workshopId": "3353441204",
+      "title": {
+        "en": "PORT: Caution Chrome Shotgun Skin",
+        "pt": "PORT: Caution Chrome Shotgun Skin",
+        "es": "PORT: Caution Chrome Shotgun Skin"
+      },
+      "description": {
+        "en": "Caution tape cover for the Chrome Shotgun, ported from Rev_deaddiet's Caution weapon camo pack.",
+        "pt": "Fita de advertência para a Chrome Shotgun, portada do pacote Caution de Rev_deaddiet.",
+        "es": "Cinta de precaución para la Chrome Shotgun, portada del pack Caution de Rev_deaddiet."
+      },
+      "originalTitle": "PORT: Caution Chrome Shotgun Skin",
+      "originalDescription": "WARNING! Usage of this weapon is deadly! This replaces the default Chrome Shotgun with caution tape cover by Rev_deaddiet. Compatible with reanimations and remodels. Credits: Rev_deaddiet (Caution weapon camo pack)"
+    },
+    {
+      "id": "cerakote-blue",
+      "weapon": "weapon_shotgun_chrome",
+      "level": 3,
+      "workshopId": "3380608963",
+      "title": {
+        "en": "multoman's RNG Skins Separated: Cerakote Blue Chrome Shotgun",
+        "pt": "multoman's RNG Skins Separated: Cerakote Blue Chrome Shotgun",
+        "es": "multoman's RNG Skins Separated: Cerakote Blue Chrome Shotgun"
+      },
+      "description": {
+        "en": "Cerakote Blue Chrome Shotgun, separated from multoman's Chrome Shotgun 10 Skin RNG pack.",
+        "pt": "Chrome Shotgun Cerakote Blue, separada do pacote Chrome Shotgun 10 Skin RNG de multoman.",
+        "es": "Chrome Shotgun Cerakote Blue, separada del pack Chrome Shotgun 10 Skin RNG de multoman."
+      },
+      "originalTitle": "multoman's RNG Skins Seperated: Cerakote Blue Chrome Shotgun",
+      "originalDescription": "Compatible with reanimations; L4D1 Anims as a example. This replaces the default Pumpshotgun skin from multoman's Chromeshotgun 10 Skin RNG mod: Cerakote Blue on the default model. CREDITS: multoman's mod: Chrome Shotgun 10 Skin RNG"
+    },
+    {
+      "id": "jean-bart-uzi",
+      "weapon": "weapon_smg",
+      "level": 2,
+      "workshopId": "3510709531",
+      "title": {
+        "en": "Azur Lane Jean Bart (Première Neige) UZI",
+        "pt": "Azur Lane Jean Bart (Première Neige) UZI",
+        "es": "Azur Lane Jean Bart (Première Neige) UZI"
+      },
+      "description": {
+        "en": "Jean Bart's Lunar New Year outfit \"Première neige\" from Azur Lane on the Uzi.",
+        "pt": "A roupa de Ano Novo Lunar \"Première neige\" da Jean Bart, de Azur Lane, na Uzi.",
+        "es": "El atuendo de Año Nuevo Lunar \"Première neige\" de Jean Bart, de Azur Lane, en la Uzi."
+      },
+      "originalTitle": "[Azur Lane]碧蓝航线让巴尔JeanBart[舶刀Première neige] repalce uzi",
+      "originalDescription": "图片来自碧蓝航线wiki与网络，若有侵权，请联系我进行mod修改/删除 这次的mod是82的春节皮替换uzi 我现在想对其他人做好的枪械mod进行贴图，但是我不知道社区里关于这方面的规则是怎么样的 为什么画出来很好看，拿到游戏里就什么也看不清了:\\ 如果你有解决枪身部分突出部件对贴图的干扰的话，请告知我，我会及时对该mod进行修改 ------------------------------------------------------ The images are sourced from the Azur Lane Wiki and the int…"
+    },
+    {
+      "id": "desert-camo",
+      "weapon": "weapon_smg_silenced",
+      "level": 2,
+      "workshopId": "3361641020",
+      "title": {
+        "en": "multoman's RNG Skins Separated: DDPAT Desert MAC-10",
+        "pt": "multoman's RNG Skins Separated: DDPAT Desert MAC-10",
+        "es": "multoman's RNG Skins Separated: DDPAT Desert MAC-10"
+      },
+      "description": {
+        "en": "DDPAT Desert MAC-10, separated from multoman's MAC-10 Skin RNG pack.",
+        "pt": "MAC-10 DDPAT Desert, separada do pacote MAC-10 Skin RNG de multoman.",
+        "es": "MAC-10 DDPAT Desert, separada del pack MAC-10 Skin RNG de multoman."
+      },
+      "originalTitle": "multoman's RNG Skins Seperated: DDPAT Desert Mac-10",
+      "originalDescription": "Compatible with reanimations; L4D1 Anims as a example. This replaces the default Mac-10 skin from multoman's RNG Mac-10 Skins mod: DDPAT Desert on the default model CREDITS: multoman's mod: MAC 10 Skin"
+    },
+    {
+      "id": "two-tone",
+      "weapon": "weapon_smg_silenced",
+      "level": 2,
+      "workshopId": "3361643179",
+      "title": {
+        "en": "multoman's RNG Skins Separated: Two Tone DBDU MAC-10",
+        "pt": "multoman's RNG Skins Separated: Two Tone DBDU MAC-10",
+        "es": "multoman's RNG Skins Separated: Two Tone DBDU MAC-10"
+      },
+      "description": {
+        "en": "Two Tone DBDU MAC-10, separated from multoman's MAC-10 Skin RNG pack.",
+        "pt": "MAC-10 Two Tone DBDU, separada do pacote MAC-10 Skin RNG de multoman.",
+        "es": "MAC-10 Two Tone DBDU, separada del pack MAC-10 Skin RNG de multoman."
+      },
+      "originalTitle": "multoman's RNG Skins Seperated: Two Tone DBDU Mac-10",
+      "originalDescription": "Compatible with reanimations; L4D1 Anims as a example. This replaces the default Mac-10 skin from multoman's RNG Mac-10 Skins mod: Two Tone DBDU on the default model CREDITS: multoman's mod: MAC 10 Skin RNG"
+    },
+    {
+      "id": "sprigatito",
+      "weapon": "weapon_pumpshotgun",
+      "level": 2,
+      "workshopId": "3279582587",
+      "title": {
+        "en": "Sprigatito Wooden Shotgun",
+        "pt": "Sprigatito Wooden Shotgun",
+        "es": "Sprigatito Wooden Shotgun"
+      },
+      "description": {
+        "en": "Pokémon Sprigatito on the Pump Shotgun.",
+        "pt": "O Pokémon Sprigatito na Pump Shotgun.",
+        "es": "El Pokémon Sprigatito en la Pump Shotgun."
+      },
+      "originalTitle": "Sprigatito Wooden Shotgun",
+      "originalDescription": "Replaces Pump Shotgun textures with Pokemon Sprigatito"
+    },
+    {
+      "id": "tiger",
+      "weapon": "weapon_pumpshotgun",
+      "level": 2,
+      "workshopId": "3353440278",
+      "title": {
+        "en": "PORT: Tiger Striped Pump Shotgun Skin",
+        "pt": "PORT: Tiger Striped Pump Shotgun Skin",
+        "es": "PORT: Tiger Striped Pump Shotgun Skin"
+      },
+      "description": {
+        "en": "Tiger stripe cover for the Pump Shotgun, ported from Rev_deaddiet's Tiger weapon camo pack.",
+        "pt": "Camuflagem listrada de tigre para a Pump Shotgun, portada do pacote Tiger de Rev_deaddiet.",
+        "es": "Camuflaje de rayas de tigre para la Pump Shotgun, portado del pack Tiger de Rev_deaddiet."
+      },
+      "originalTitle": "PORT: Tiger Striped Pump Shotgun Skin",
+      "originalDescription": "Beast inside. This replaces the default Pump Shotgun with tiger striped cover by Rev_deaddiet. Compatible with reanimations and remodels. Credits: Rev_deaddiet (Tiger weapon camo skinpack)"
+    },
+    {
+      "id": "kunzite-chrome",
+      "weapon": "weapon_shotgun_chrome",
+      "level": 2,
+      "workshopId": "2979010150",
+      "title": {
+        "en": "Chrome Shotgun: Kunzite",
+        "pt": "Chrome Shotgun: Kunzite",
+        "es": "Chrome Shotgun: Kunzite"
+      },
+      "description": {
+        "en": "Pink texture for the Chrome Shotgun.",
+        "pt": "Textura rosa para a Chrome Shotgun.",
+        "es": "Textura rosa para la Chrome Shotgun."
+      },
+      "originalTitle": "Chrome Shotgun: Kunzite",
+      "originalDescription": "Pink texture for Chrome Shotgun. Compatible with re-animations! Enjoy!"
+    },
+    {
+      "id": "plastic-orange",
+      "weapon": "weapon_shotgun_chrome",
+      "level": 2,
+      "workshopId": "3380605774",
+      "title": {
+        "en": "multoman's RNG Skins Separated: Plastic Orange Chrome Shotgun",
+        "pt": "multoman's RNG Skins Separated: Plastic Orange Chrome Shotgun",
+        "es": "multoman's RNG Skins Separated: Plastic Orange Chrome Shotgun"
+      },
+      "description": {
+        "en": "Plastic Orange Chrome Shotgun, separated from multoman's Chrome Shotgun 10 Skin RNG pack.",
+        "pt": "Chrome Shotgun Plastic Orange, separada do pacote Chrome Shotgun 10 Skin RNG de multoman.",
+        "es": "Chrome Shotgun Plastic Orange, separada del pack Chrome Shotgun 10 Skin RNG de multoman."
+      },
+      "originalTitle": "multoman's RNG Skins Seperated: Plastic Orange Chrome Shotgun",
+      "originalDescription": "Compatible with reanimations; L4D1 Anims as a example. This replaces the default Pumpshotgun skin from multoman's Chromeshotgun 10 Skin RNG mod: Plastic Orange on the default model. CREDITS: multoman's mod: Chrome Shotgun 10 Skin RNG"
+    },
+    {
+      "id": "miku-uzi",
+      "weapon": "weapon_smg",
+      "level": 1,
+      "workshopId": "772143939",
+      "title": {
+        "en": "Miku UZI",
+        "pt": "Miku UZI",
+        "es": "Miku UZI"
+      },
+      "description": {
+        "en": "Hatsune Miku texture for the Uzi that glows in the dark.",
+        "pt": "Textura da Hatsune Miku para a Uzi que brilha no escuro.",
+        "es": "Textura de Hatsune Miku para la Uzi que brilla en la oscuridad."
+      },
+      "originalTitle": "MIKU UZI",
+      "originalDescription": "简单改了下贴图啦，暗处发光，喜欢的可以去试下，，替换UZI Changed the simple map, and like to try, that glows in the dark, and replace the UZI didn't sound attenuation"
+    },
+    {
+      "id": "red-finish",
+      "weapon": "weapon_smg_silenced",
+      "level": 1,
+      "workshopId": "3361634998",
+      "title": {
+        "en": "multoman's RNG Skins Separated: Red Finish MAC-10",
+        "pt": "multoman's RNG Skins Separated: Red Finish MAC-10",
+        "es": "multoman's RNG Skins Separated: Red Finish MAC-10"
+      },
+      "description": {
+        "en": "Red Finish MAC-10, separated from multoman's MAC-10 Skin RNG pack.",
+        "pt": "MAC-10 Red Finish, separada do pacote MAC-10 Skin RNG de multoman.",
+        "es": "MAC-10 Red Finish, separada del pack MAC-10 Skin RNG de multoman."
+      },
+      "originalTitle": "multoman's RNG Skins Seperated:\nRed Finish Mac-10",
+      "originalDescription": "Compatible with reanimations; L4D1 Anims as a example. This replaces the default Mac-10 skin from multoman's RNG Mac-10 Skins mod: Red Finish on the default model CREDITS: multoman's mod: MAC 10 Skin RNG"
+    },
+    {
+      "id": "olive",
+      "weapon": "weapon_smg_silenced",
+      "level": 1,
+      "workshopId": "3361637405",
+      "title": {
+        "en": "multoman's RNG Skins Separated: Olive Finish MAC-10",
+        "pt": "multoman's RNG Skins Separated: Olive Finish MAC-10",
+        "es": "multoman's RNG Skins Separated: Olive Finish MAC-10"
+      },
+      "description": {
+        "en": "Olive Finish MAC-10, separated from multoman's MAC-10 Skin RNG pack.",
+        "pt": "MAC-10 Olive Finish, separada do pacote MAC-10 Skin RNG de multoman.",
+        "es": "MAC-10 Olive Finish, separada del pack MAC-10 Skin RNG de multoman."
+      },
+      "originalTitle": "multoman's RNG Skins Seperated: Olive Finish Mac-10",
+      "originalDescription": "Compatible with reanimations; L4D1 Anims as a example. This replaces the default Mac-10 skin from multoman's RNG Mac-10 Skins mod: Olive Finish on the default model CREDITS: multoman's mod: MAC 10 Skin RNG"
+    },
+    {
+      "id": "kunzite-pump",
+      "weapon": "weapon_pumpshotgun",
+      "level": 1,
+      "workshopId": "2979000170",
+      "title": {
+        "en": "Pump Shotgun: Kunzite",
+        "pt": "Pump Shotgun: Kunzite",
+        "es": "Pump Shotgun: Kunzite"
+      },
+      "description": {
+        "en": "Pink texture for the Pump Shotgun.",
+        "pt": "Textura rosa para a Pump Shotgun.",
+        "es": "Textura rosa para la Pump Shotgun."
+      },
+      "originalTitle": "Pump Shotgun: Kunzite",
+      "originalDescription": "Pink texture for Pump Shotgun. Compatible with re-animations! Enjoy!"
+    },
+    {
+      "id": "soviet",
+      "weapon": "weapon_pumpshotgun",
+      "level": 1,
+      "workshopId": "3235542431",
+      "title": {
+        "en": "Soviet Pump Shotgun",
+        "pt": "Soviet Pump Shotgun",
+        "es": "Soviet Pump Shotgun"
+      },
+      "description": {
+        "en": "Soviet-themed Pump Shotgun. Textures only, no custom sounds.",
+        "pt": "Pump Shotgun com tema soviético. Somente texturas, sem sons.",
+        "es": "Pump Shotgun con temática soviética. Solo texturas, sin sonidos."
+      },
+      "originalTitle": "Soviet Pump Shotgun (No Sound)",
+      "originalDescription": "This mod replaces pumpshotgun's default texture. It does not include custom sounds. Feel free to use your favourite sounds."
+    },
+    {
+      "id": "boykisser",
+      "weapon": "weapon_pumpshotgun",
+      "level": 1,
+      "workshopId": "3567209245",
+      "title": {
+        "en": "Boykisser Pump Shotgun",
+        "pt": "Boykisser Pump Shotgun",
+        "es": "Boykisser Pump Shotgun"
+      },
+      "description": {
+        "en": "Boykisser images on the Pump Shotgun.",
+        "pt": "Imagens do boykisser na Pump Shotgun.",
+        "es": "Imágenes del boykisser en la Pump Shotgun."
+      },
+      "originalTitle": "Boykisser Pump Shotgun",
+      "originalDescription": "Just a bunch of images of boykisser on the pump shotgun. ___________________________________________________ I DO NOT OWN ANY OF THE IMAGES USED IN THIS TEXTURE. ___________________________________________________ Tags pump shotgun, boykisser"
+    },
+    {
+      "id": "sapphire",
+      "weapon": "weapon_shotgun_chrome",
+      "level": 1,
+      "workshopId": "3020820801",
+      "title": {
+        "en": "Chrome Shotgun: Sapphire",
+        "pt": "Chrome Shotgun: Sapphire",
+        "es": "Chrome Shotgun: Sapphire"
+      },
+      "description": {
+        "en": "Blue texture for the Chrome Shotgun.",
+        "pt": "Textura azul para a Chrome Shotgun.",
+        "es": "Textura azul para la Chrome Shotgun."
+      },
+      "originalTitle": "Chrome Shotgun: Sapphire",
+      "originalDescription": "Blue texture for Chrome Shotgun. Compatible with re-animations! Enjoy!"
+    },
+    {
+      "id": "ruby",
+      "weapon": "weapon_shotgun_chrome",
+      "level": 1,
+      "workshopId": "3023845538",
+      "title": {
+        "en": "Chrome Shotgun: Ruby",
+        "pt": "Chrome Shotgun: Ruby",
+        "es": "Chrome Shotgun: Ruby"
+      },
+      "description": {
+        "en": "Red texture for the Chrome Shotgun.",
+        "pt": "Textura vermelha para a Chrome Shotgun.",
+        "es": "Textura roja para la Chrome Shotgun."
+      },
+      "originalTitle": "Chrome Shotgun: Ruby",
+      "originalDescription": "Red texture for Chrome Shotgun. Compatible with re-animations! Enjoy!"
+    },
+    {
+      "id": "star-ruby",
+      "weapon": "weapon_shotgun_chrome",
+      "level": 1,
+      "workshopId": "3031900671",
+      "title": {
+        "en": "Chrome Shotgun: Star Ruby",
+        "pt": "Chrome Shotgun: Star Ruby",
+        "es": "Chrome Shotgun: Star Ruby"
+      },
+      "description": {
+        "en": "Maroon texture for the Chrome Shotgun.",
+        "pt": "Textura bordô para a Chrome Shotgun.",
+        "es": "Textura granate para la Chrome Shotgun."
+      },
+      "originalTitle": "Chrome Shotgun: Star Ruby",
+      "originalDescription": "Maroon texture for Chrome Shotgun. Compatible with re-animations! Enjoy!"
+    }
+  ]
+}
