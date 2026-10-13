@@ -183,7 +183,7 @@
     {
       "id": "izumi-hiyori",
       "weapon": "weapon_smg_silenced",
-      "level": 14,
+      "level": 13,
       "workshopId": "3374437391",
       "title": {
         "en": "Izumi Hiyori MAC-10",
@@ -291,7 +291,7 @@
     {
       "id": "nekoha-shizuku",
       "weapon": "weapon_smg_silenced",
-      "level": 13,
+      "level": 12,
       "workshopId": "2808871797",
       "title": {
         "en": "Nekoha Shizuku SMG (MAC-10) Remake (Glow)",
@@ -327,7 +327,7 @@
     {
       "id": "arihara-nanami",
       "weapon": "weapon_smg_silenced",
-      "level": 13,
+      "level": 11,
       "workshopId": "3351643762",
       "title": {
         "en": "Yuzusoft Arihara Nanami MAC-10",
@@ -453,7 +453,7 @@
     {
       "id": "find-my-future",
       "weapon": "weapon_smg_silenced",
-      "level": 12,
+      "level": 11,
       "workshopId": "3160988312",
       "title": {
         "en": "Find My Future MAC-10",
@@ -489,7 +489,7 @@
     {
       "id": "sayori",
       "weapon": "weapon_pumpshotgun",
-      "level": 12,
+      "level": 10,
       "workshopId": "3175242980",
       "title": {
         "en": "Doki Doki Literature Club! Sayori",
@@ -561,7 +561,7 @@
     {
       "id": "mio",
       "weapon": "weapon_shotgun_chrome",
-      "level": 12,
+      "level": 10,
       "workshopId": "3589156415",
       "title": {
         "en": "K-ON! Mio Akiyama Chrome Shotgun",
@@ -597,7 +597,7 @@
     {
       "id": "mulberry",
       "weapon": "weapon_smg_silenced",
-      "level": 11,
+      "level": 10,
       "workshopId": "2610503147",
       "title": {
         "en": "Arknights Mulberry MAC-10",
@@ -615,7 +615,7 @@
     {
       "id": "neon-rider",
       "weapon": "weapon_smg_silenced",
-      "level": 11,
+      "level": 10,
       "workshopId": "826430944",
       "title": {
         "en": "MAC-10-S | Neon Rider",
@@ -705,7 +705,7 @@
     {
       "id": "pink-black",
       "weapon": "weapon_smg_silenced",
-      "level": 10,
+      "level": 4,
       "workshopId": "3384494412",
       "title": {
         "en": "Solid Pink & Black Silenced SMG",
@@ -723,7 +723,7 @@
     {
       "id": "ritsu",
       "weapon": "weapon_smg_silenced",
-      "level": 10,
+      "level": 9,
       "workshopId": "3769476345",
       "title": {
         "en": "K-ON! Ritsu Tainaka MAC-10",
@@ -813,7 +813,7 @@
     {
       "id": "shadowbolt",
       "weapon": "weapon_smg_silenced",
-      "level": 9,
+      "level": 8,
       "workshopId": "1891172953",
       "title": {
         "en": "S.SMG | ShadowBolt",
@@ -831,7 +831,7 @@
     {
       "id": "rat-a-tat",
       "weapon": "weapon_smg_silenced",
-      "level": 9,
+      "level": 7,
       "workshopId": "2020709816",
       "title": {
         "en": "Rat A Tat Tat (Glowing)",
@@ -1047,7 +1047,7 @@
     {
       "id": "dark-matter",
       "weapon": "weapon_smg_silenced",
-      "level": 7,
+      "level": 15,
       "workshopId": "3377651383",
       "title": {
         "en": "MAC-10 Dark Matter",
@@ -1065,7 +1065,7 @@
     {
       "id": "volcanic-mac",
       "weapon": "weapon_smg_silenced",
-      "level": 7,
+      "level": 9,
       "workshopId": "3381870803",
       "title": {
         "en": "MAC-10 Volcanic Lava Skin",
@@ -1173,7 +1173,7 @@
     {
       "id": "vercetti",
       "weapon": "weapon_smg_silenced",
-      "level": 6,
+      "level": 7,
       "workshopId": "3791846410",
       "title": {
         "en": "\"Vercetti Vintage\" MAC-10 Reskin",
@@ -1425,7 +1425,7 @@
     {
       "id": "ethereal",
       "weapon": "weapon_smg_silenced",
-      "level": 4,
+      "level": 6,
       "workshopId": "3413132036",
       "title": {
         "en": "Ethereal MAC-10 Skin",
@@ -1569,7 +1569,7 @@
     {
       "id": "toxic",
       "weapon": "weapon_pumpshotgun",
-      "level": 3,
+      "level": 2,
       "workshopId": "3232260090",
       "title": {
         "en": "Toxic Hazard Pump Shotgun",
@@ -1677,7 +1677,7 @@
     {
       "id": "sprigatito",
       "weapon": "weapon_pumpshotgun",
-      "level": 2,
+      "level": 3,
       "workshopId": "3279582587",
       "title": {
         "en": "Sprigatito Wooden Shotgun",
