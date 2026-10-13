@@ -775,24 +775,6 @@
       "originalDescription": "kf2 skin thingy"
     },
     {
-      "id": "purple-luminous",
-      "weapon": "weapon_shotgun_chrome",
-      "level": 10,
-      "workshopId": "2658483467",
-      "title": {
-        "en": "Shotgun Purple Skin",
-        "pt": "Shotgun Purple Skin",
-        "es": "Shotgun Purple Skin"
-      },
-      "description": {
-        "en": "Purple luminous skin for the Chrome Shotgun.",
-        "pt": "Skin roxa luminosa para a Chrome Shotgun.",
-        "es": "Skin morada luminosa para la Chrome Shotgun."
-      },
-      "originalTitle": "shotgun purple skin",
-      "originalDescription": "shotgun purple skin QQ QUN:282147279 b站： 接MOD定制百元内一个 QQ1145994139"
-    },
-    {
       "id": "sakura",
       "weapon": "weapon_shotgun_chrome",
       "level": 10,
@@ -953,24 +935,6 @@
       },
       "originalTitle": "Chrome Shotgun | Asiimov Light Blue",
       "originalDescription": "Light blue asiimov skin for chrome shotgun. The design is based on this addon by Amel."
-    },
-    {
-      "id": "asiimov-purple",
-      "weapon": "weapon_smg_silenced",
-      "level": 8,
-      "workshopId": "1920647346",
-      "title": {
-        "en": "Lexa | SMG - Asiimov Purple",
-        "pt": "Lexa | SMG - Asiimov Purple",
-        "es": "Lexa | SMG - Asiimov Purple"
-      },
-      "description": {
-        "en": "Purple Asiimov skin for the SMG.",
-        "pt": "Skin Asiimov roxa para a SMG.",
-        "es": "Skin Asiimov morada para la SMG."
-      },
-      "originalTitle": "Lexa | SMG - Asiimov Purple",
-      "originalDescription": "Purple asiimov skin for SMG."
     },
     {
       "id": "printstream-mac-lite",
