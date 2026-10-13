@@ -141,7 +141,7 @@
     <value>Solo los jugadores en la patente máxima pueden usar estas skins.</value>
   </data>
   <data name="HowToChoose" xml:space="preserve">
-    <value>Durante el &lt;b&gt;ready-up&lt;/b&gt;, escribe el comando de la skin en el chat del juego, por ejemplo &lt;code&gt;!skin hellsing-gold&lt;/code&gt;. Escribe &lt;code&gt;!skin&lt;/code&gt; para ver la ayuda.</value>
+    <value>Como &lt;b&gt;sobreviviente&lt;/b&gt;, durante el &lt;b&gt;ready-up&lt;/b&gt; del &lt;b&gt;primer mapa&lt;/b&gt; (marcador 0 a 0), escribe el comando de la skin en el chat del juego, por ejemplo &lt;code&gt;!skin hellsing-gold&lt;/code&gt;. Escribe &lt;code&gt;!skin&lt;/code&gt; para ver la ayuda.</value>
   </data>
   <data name="HowToChooseTitle" xml:space="preserve">
     <value>Elige una skin</value>
