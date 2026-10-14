@@ -13,6 +13,7 @@ public class SkinsController(ISkinService skinService) : ControllerBase
     {
         var models = skinService
             .GetAllSkins()
+            .Where(skin => skin.IsDownloadable)
             .Select(skin => new SkinLevelModel(skin))
             .ToList();
 

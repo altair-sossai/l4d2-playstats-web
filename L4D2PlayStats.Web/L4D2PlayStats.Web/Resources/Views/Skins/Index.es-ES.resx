@@ -131,8 +131,14 @@
   <data name="ChatCommand" xml:space="preserve">
     <value>Comando en el chat</value>
   </data>
+  <data name="ComingSoon" xml:space="preserve">
+    <value>Próximamente</value>
+  </data>
   <data name="Credits" xml:space="preserve">
     <value>Todas las skins fueron creadas por la comunidad en el Steam Workshop. Usa el botón Workshop en cada skin para ver el trabajo original y dar crédito a su creador.</value>
+  </data>
+  <data name="DownloadFrom" xml:space="preserve">
+    <value>Descarga a partir del {0}</value>
   </data>
   <data name="Exclusive" xml:space="preserve">
     <value>Exclusiva</value>
@@ -178,6 +184,15 @@
   </data>
   <data name="Original" xml:space="preserve">
     <value>Original</value>
+  </data>
+  <data name="ReleaseOn" xml:space="preserve">
+    <value>Disponible el {0}</value>
+  </data>
+  <data name="ReleaseSchedule" xml:space="preserve">
+    <value>Se lanzan nuevas skins cada dos semanas. Sus archivos empiezan a descargarse al entrar al servidor una semana antes del lanzamiento, para que estén listos cuando salgan.</value>
+  </data>
+  <data name="RequiredPatent" xml:space="preserve">
+    <value>Patente necesaria</value>
   </data>
   <data name="SkinsCount" xml:space="preserve">
     <value>{0} skins</value>

@@ -59,6 +59,16 @@
                 white-space: nowrap;
                 text-overflow: ellipsis;
             }
+
+            .patent-skin-soon img {
+                filter: grayscale(85%);
+                opacity: .55;
+            }
+
+            .patent-skin .patent-skin-release {
+                color: #5bc0de;
+                font-weight: bold;
+            }
     </style>
 }
 
@@ -120,9 +130,13 @@
                     <div class="patent-skins">
                         @foreach (var skin in skins)
                         {
-                            <a class="patent-skin" href="@Url.Action("Index", "Skins")#level-@patent.Level" title="@skin.Title.Get(CultureInfo.CurrentUICulture)">
+                            <a class="patent-skin @(skin.IsReleased ? "" : "patent-skin-soon")" href="@Url.Action("Index", "Skins")#level-@patent.Level" title="@skin.Title.Get(CultureInfo.CurrentUICulture)">
                                 <img src="@skin.Image" alt="@skin.Title.Get(CultureInfo.CurrentUICulture)" loading="lazy"/>
                                 <span>@skin.Title.Get(CultureInfo.CurrentUICulture)</span>
+                                @if (!skin.IsReleased)
+                                {
+                                    <span class="patent-skin-release">@string.Format(Localizer["ComingSoonOn"].Value, skin.ReleaseDate.ToString("d", CultureInfo.CurrentUICulture))</span>
+                                }
                             </a>
                         }
                     </div>

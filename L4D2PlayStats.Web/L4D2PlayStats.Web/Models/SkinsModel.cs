@@ -14,7 +14,7 @@ public class SkinsModel(IReadOnlyCollection<Patent> patents, IReadOnlyCollection
 
     public bool CanUse(Skin skin)
     {
-        return PlayerPatent != null && skin.Level <= PlayerPatent.Level;
+        return skin.IsReleased && PlayerPatent != null && skin.Level <= PlayerPatent.Level;
     }
 
     public IReadOnlyCollection<Skin> SkinsOf(int level)
