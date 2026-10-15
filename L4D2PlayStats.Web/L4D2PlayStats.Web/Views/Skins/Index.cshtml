@@ -1,4 +1,5 @@
 @using System.Globalization
+@using L4D2PlayStats.Core.Skins
 @using L4D2PlayStats.Web
 @using L4D2PlayStats.Web.Models
 @using L4D2PlayStats.Web.PageMetadata
@@ -14,13 +15,7 @@
     var copyIcon = light ? "copy-light.png" : "copy-dark.png";
     var loggedIn = Model.PlayerPatent != null;
     var culture = CultureInfo.CurrentUICulture;
-    var weaponNames = new Dictionary<string, string>
-    {
-        ["weapon_smg"] = Localizer["WeaponSmg"].Value,
-        ["weapon_smg_silenced"] = Localizer["WeaponSmgSilenced"].Value,
-        ["weapon_pumpshotgun"] = Localizer["WeaponPumpShotgun"].Value,
-        ["weapon_shotgun_chrome"] = Localizer["WeaponShotgunChrome"].Value
-    };
+    var weaponNames = SkinsModel.WeaponResourceKeys.ToDictionary(pair => pair.Key, pair => Localizer[pair.Value].Value);
 }
 
 @section Styles {
@@ -342,8 +337,107 @@
                 margin-right: 4px;
             }
 
-        .sk-card {
+        .sk-card,
+        .sk-tile {
             cursor: pointer;
+        }
+
+        .sk-tabs {
+            margin-bottom: 14px;
+        }
+
+            .sk-tabs > li > a {
+                font-size: 15px;
+                font-weight: bold;
+            }
+
+        .sk-toolbar #sk-weapon-filter {
+            width: auto;
+            min-width: 200px;
+            margin: 0 14px 8px 8px;
+        }
+
+        .sk-toolbar .sk-only-unlocked {
+            margin-bottom: 8px;
+        }
+
+        .sk-lot {
+            margin-bottom: 24px;
+        }
+
+        .sk-lot-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 12px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid rgba(91, 192, 222, .5);
+        }
+
+            .sk-lot-header > .glyphicon {
+                margin-right: 12px;
+                color: #5bc0de;
+                font-size: 28px;
+            }
+
+            .sk-lot-header h3 {
+                margin: 0;
+                font-size: 18px;
+                font-weight: bold;
+            }
+
+            .sk-lot-header p {
+                margin: 2px 0 0;
+                font-size: 12px;
+                opacity: .75;
+            }
+
+        .sk-tile {
+            overflow: hidden;
+            margin-bottom: 14px;
+            border: 1px dashed rgba(128, 128, 128, .4);
+            border-radius: 6px;
+            background: rgba(128, 128, 128, .05);
+            transition: transform .15s ease, box-shadow .15s ease;
+        }
+
+            .sk-tile:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 6px 16px rgba(0, 0, 0, .25);
+            }
+
+            .sk-tile .sk-thumb {
+                height: auto;
+            }
+
+                .sk-tile .sk-thumb img {
+                    height: auto;
+                    min-height: 0;
+                    aspect-ratio: 1 / 1;
+                }
+
+        .sk-tile-body {
+            display: flex;
+            align-items: center;
+            padding: 6px 8px;
+        }
+
+            .sk-tile-body img {
+                width: 24px;
+                margin-right: 6px;
+            }
+
+        .sk-tile-title {
+            overflow: hidden;
+            font-size: 12px;
+            font-weight: bold;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        }
+
+        .sk-empty {
+            padding: 30px 0;
+            text-align: center;
+            opacity: .75;
         }
 
         .sk-modal-image {
@@ -462,186 +556,260 @@
     <p class="sk-credits">@Localizer["Credits"]</p>
 </div>
 
+@{
+    async Task RenderDetails(Skin skin)
+    {
+        var patent = Model.PatentOf(skin);
+        var canUse = Model.CanUse(skin);
+        var title = skin.Title.Get(culture);
+        var description = skin.Description.Get(culture);
+        var original = string.Join(" — ", new[] { skin.OriginalTitle, skin.OriginalDescription }.Where(text => !string.IsNullOrWhiteSpace(text)));
+
+        <div class="sk-details hidden">
+            <div class="row">
+                <div class="col-xs-12 col-sm-5">
+                    <a class="sk-modal-image" href="@skin.Image" data-lity>
+                        <img src="@skin.Image" alt="@title" loading="lazy"/>
+                    </a>
+                </div>
+                <div class="col-xs-12 col-sm-7">
+                    <div class="sk-modal-tags">
+                        <span class="label sk-modal-weapon">@weaponNames[skin.Weapon]</span>
+                        @if (!skin.IsReleased)
+                        {
+                            <span class="label label-info">
+                                <span class="glyphicon glyphicon-time"></span> @Localizer["ComingSoon"]
+                            </span>
+                        }
+                        else if (loggedIn)
+                        {
+                            <span class="label @(canUse ? "label-success" : "label-default")">
+                                <span class="glyphicon @(canUse ? "glyphicon-ok" : "glyphicon-lock")"></span>
+                                @(canUse ? Localizer["Unlocked"].Value : Localizer["Locked"].Value)
+                            </span>
+                        }
+                    </div>
+                    <div class="sk-modal-patent">
+                        <img src="@patent.Image" alt="@patent.FullName"/>
+                        <div>
+                            <div class="sk-command-label">@Localizer["RequiredPatent"]</div>
+                            <strong>@patent.Name</strong> <small>@string.Format(Localizer["LevelNumber"].Value, patent.Level)</small>
+                        </div>
+                    </div>
+                    @if (!skin.IsReleased)
+                    {
+                        <p class="sk-release">
+                            <span class="glyphicon glyphicon-calendar"></span>
+                            @string.Format(Localizer["ReleaseOn"].Value, skin.ReleaseDate.ToString("d", culture))
+                            <br/>
+                            <span class="glyphicon glyphicon-download-alt"></span>
+                            @string.Format(Localizer["DownloadFrom"].Value, skin.DownloadDate.ToString("d", culture))
+                        </p>
+                    }
+                    @if (!string.IsNullOrWhiteSpace(description))
+                    {
+                        <p class="sk-modal-desc">@description</p>
+                    }
+                    @if (!string.IsNullOrWhiteSpace(original))
+                    {
+                        <p class="sk-modal-original">
+                            <b>@Localizer["Original"]:</b> @original
+                        </p>
+                    }
+                    <div class="sk-command-label">@Localizer["ChatCommand"]</div>
+                    <div class="sk-command">
+                        <code>@skin.Command</code>
+                        <img src="~/imgs/icons/@copyIcon" alt="@SharedLocalizer["CopyText"]" class="icon-copy"
+                             data-toggle="popover" data-placement="top" data-content="@SharedLocalizer["TextCopied"]"
+                             onclick="copyTextToClipboard('@skin.Command', this)"/>
+                    </div>
+                    <a class="btn btn-default btn-block sk-workshop" href="@skin.WorkshopUrl" target="_blank" rel="noopener">
+                        <span class="glyphicon glyphicon-new-window"></span> @Localizer["ViewOnWorkshop"]
+                    </a>
+                </div>
+            </div>
+        </div>
+    }
+}
+
+<ul class="nav nav-tabs sk-tabs" role="tablist">
+    <li role="presentation" class="active">
+        <a href="#available" data-target="#sk-available" role="tab" data-toggle="tab">
+            @Localizer["TabAvailable"] <span class="badge">@Model.Released.Count</span>
+        </a>
+    </li>
+    <li role="presentation">
+        <a href="#upcoming" data-target="#sk-upcoming" role="tab" data-toggle="tab">
+            @Localizer["TabUpcoming"] <span class="badge">@Model.UpcomingLots.Sum(lot => lot.Count())</span>
+        </a>
+    </li>
+</ul>
+
 <div class="sk-toolbar">
-    <div class="btn-group" role="group">
-        <button type="button" class="btn btn-default btn-sm active" data-filter="all">@Localizer["AllWeapons"]</button>
-        @foreach (var weapon in SkinsModel.Weapons)
-        {
-            <button type="button" class="btn btn-default btn-sm" data-filter="@weapon">@weaponNames[weapon]</button>
-        }
-    </div>
+    <label for="sk-weapon-filter">@Localizer["WeaponFilter"]</label>
+    <select id="sk-weapon-filter" class="form-control input-sm">
+        <option value="all">@Localizer["AllWeapons"]</option>
+        <optgroup label="@Localizer["GroupFirearms"]">
+            @foreach (var weapon in SkinsModel.Weapons.Where(weapon => !SkinsModel.IsMelee(weapon)))
+            {
+                <option value="@weapon">@weaponNames[weapon]</option>
+            }
+        </optgroup>
+        <optgroup label="@Localizer["GroupMelee"]">
+            @foreach (var weapon in SkinsModel.Weapons.Where(SkinsModel.IsMelee))
+            {
+                <option value="@weapon">@weaponNames[weapon]</option>
+            }
+        </optgroup>
+    </select>
     @if (loggedIn)
     {
-        <label>
+        <label class="sk-only-unlocked">
             <input type="checkbox" id="sk-only-unlocked"/> @Localizer["OnlyUnlocked"]
         </label>
     }
 </div>
 
-@foreach (var patent in Model.Patents)
-{
-    var skins = Model.SkinsOf(patent.Level);
+<div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="sk-available">
+        @foreach (var patent in Model.Patents)
+        {
+            var skins = Model.SkinsOf(patent.Level);
 
-    if (skins.Count == 0)
-    {
-        continue;
-    }
-
-    var exclusive = patent.Level == Model.Patents.Max(p => p.Level);
-
-    <section id="level-@patent.Level" class="sk-level @(exclusive ? "sk-level-exclusive" : "")">
-        <div class="sk-level-header">
-            <img src="@patent.Image" alt="@patent.FullName"/>
-            <div class="sk-level-title">
-                <h3>
-                    @patent.Name
-                    <small>@string.Format(Localizer["LevelNumber"].Value, patent.Level)</small>
-                    @if (exclusive)
-                    {
-                        <span class="label label-warning">@Localizer["Exclusive"]</span>
-                    }
-                </h3>
-                <p>@(exclusive ? Localizer["ExclusiveDescription"].Value : string.Format(Localizer["AvailableFrom"].Value, patent.Name))</p>
-            </div>
-            <span class="sk-level-count">@string.Format(Localizer["SkinsCount"].Value, skins.Count)</span>
-        </div>
-
-        <div class="row sk-grid">
-            @foreach (var skin in skins)
+            if (skins.Count == 0)
             {
-                var canUse = Model.CanUse(skin);
-                var title = skin.Title.Get(culture);
-                var description = skin.Description.Get(culture);
-                var original = string.Join(" — ", new[] { skin.OriginalTitle, skin.OriginalDescription }.Where(text => !string.IsNullOrWhiteSpace(text)));
-                var released = skin.IsReleased;
-                var stateClass = !released ? "sk-locked sk-soon" : loggedIn ? canUse ? "sk-unlocked" : "sk-locked" : string.Empty;
+                continue;
+            }
 
-                <div class="col-xs-12 col-md-6 sk-col">
-                    <div class="sk-card @stateClass" data-weapon="@skin.Weapon" data-unlocked="@(canUse ? 1 : 0)" data-title="@title">
-                        <div class="sk-details hidden">
-                            <div class="row">
-                                <div class="col-xs-12 col-sm-5">
-                                    <a class="sk-modal-image" href="@skin.Image" data-lity>
-                                        <img src="@skin.Image" alt="@title" loading="lazy"/>
-                                    </a>
-                                </div>
-                                <div class="col-xs-12 col-sm-7">
-                                    <div class="sk-modal-tags">
-                                        <span class="label sk-modal-weapon">@weaponNames[skin.Weapon]</span>
-                                        @if (!released)
-                                        {
-                                            <span class="label label-info">
-                                                <span class="glyphicon glyphicon-time"></span> @Localizer["ComingSoon"]
-                                            </span>
-                                        }
-                                        else if (loggedIn)
-                                        {
-                                            <span class="label @(canUse ? "label-success" : "label-default")">
-                                                <span class="glyphicon @(canUse ? "glyphicon-ok" : "glyphicon-lock")"></span>
-                                                @(canUse ? Localizer["Unlocked"].Value : Localizer["Locked"].Value)
-                                            </span>
-                                        }
+            var exclusive = patent.Level == Model.Patents.Max(p => p.Level);
+
+            <section id="level-@patent.Level" class="sk-level sk-section @(exclusive ? "sk-level-exclusive" : "")">
+                <div class="sk-level-header">
+                    <img src="@patent.Image" alt="@patent.FullName"/>
+                    <div class="sk-level-title">
+                        <h3>
+                            @patent.Name
+                            <small>@string.Format(Localizer["LevelNumber"].Value, patent.Level)</small>
+                            @if (exclusive)
+                            {
+                                <span class="label label-warning">@Localizer["Exclusive"]</span>
+                            }
+                        </h3>
+                        <p>@(exclusive ? Localizer["ExclusiveDescription"].Value : string.Format(Localizer["AvailableFrom"].Value, patent.Name))</p>
+                    </div>
+                    <span class="sk-level-count">@string.Format(Localizer["SkinsCount"].Value, skins.Count)</span>
+                </div>
+
+                <div class="row sk-grid">
+                    @foreach (var skin in skins)
+                    {
+                        var canUse = Model.CanUse(skin);
+                        var title = skin.Title.Get(culture);
+                        var description = skin.Description.Get(culture);
+                        var original = string.Join(" — ", new[] { skin.OriginalTitle, skin.OriginalDescription }.Where(text => !string.IsNullOrWhiteSpace(text)));
+                        var stateClass = loggedIn ? canUse ? "sk-unlocked" : "sk-locked" : string.Empty;
+
+                        <div class="col-xs-12 col-md-6 sk-col sk-item" data-weapon="@skin.Weapon" data-unlocked="@(canUse ? 1 : 0)">
+                            <div class="sk-card sk-open @stateClass" data-title="@title">
+                                @{ await RenderDetails(skin); }
+                                <div class="row">
+                                    <div class="col-xs-12 col-sm-5">
+                                        <a class="sk-thumb" href="#">
+                                            <img src="@skin.Image" alt="@title" loading="lazy"/>
+                                            <span class="label sk-weapon">@weaponNames[skin.Weapon]</span>
+                                            @if (loggedIn)
+                                            {
+                                                <span class="label sk-status @(canUse ? "label-success" : "label-default")">
+                                                    <span class="glyphicon @(canUse ? "glyphicon-ok" : "glyphicon-lock")"></span>
+                                                    @(canUse ? Localizer["Unlocked"].Value : Localizer["Locked"].Value)
+                                                </span>
+                                            }
+                                        </a>
                                     </div>
-                                    <div class="sk-modal-patent">
-                                        <img src="@patent.Image" alt="@patent.FullName"/>
-                                        <div>
-                                            <div class="sk-command-label">@Localizer["RequiredPatent"]</div>
-                                            <strong>@patent.Name</strong> <small>@string.Format(Localizer["LevelNumber"].Value, patent.Level)</small>
+                                    <div class="col-xs-12 col-sm-7">
+                                        <div class="sk-body">
+                                            <h4 class="sk-title" title="@title">@title</h4>
+                                            @if (!string.IsNullOrWhiteSpace(description))
+                                            {
+                                                <p class="sk-desc" title="@description">@description</p>
+                                            }
+                                            @if (!string.IsNullOrWhiteSpace(original))
+                                            {
+                                                <small class="sk-original" title="@original">
+                                                    <b>@Localizer["Original"]:</b> @original
+                                                </small>
+                                            }
+                                            <div class="sk-command-label">@Localizer["ChatCommand"]</div>
+                                            <div class="sk-command">
+                                                <code>@skin.Command</code>
+                                                <img src="~/imgs/icons/@copyIcon" alt="@SharedLocalizer["CopyText"]" class="icon-copy"
+                                                     data-toggle="popover" data-placement="top" data-content="@SharedLocalizer["TextCopied"]"
+                                                     onclick="copyTextToClipboard('@skin.Command', this)"/>
+                                            </div>
+                                            <a class="btn btn-default btn-sm btn-block sk-workshop" href="@skin.WorkshopUrl" target="_blank" rel="noopener">
+                                                <span class="glyphicon glyphicon-new-window"></span> @Localizer["ViewOnWorkshop"]
+                                            </a>
                                         </div>
                                     </div>
-                                    @if (!released)
-                                    {
-                                        <p class="sk-release">
-                                            <span class="glyphicon glyphicon-calendar"></span>
-                                            @string.Format(Localizer["ReleaseOn"].Value, skin.ReleaseDate.ToString("d", culture))
-                                            <br/>
-                                            <span class="glyphicon glyphicon-download-alt"></span>
-                                            @string.Format(Localizer["DownloadFrom"].Value, skin.DownloadDate.ToString("d", culture))
-                                        </p>
-                                    }
-                                    @if (!string.IsNullOrWhiteSpace(description))
-                                    {
-                                        <p class="sk-modal-desc">@description</p>
-                                    }
-                                    @if (!string.IsNullOrWhiteSpace(original))
-                                    {
-                                        <p class="sk-modal-original">
-                                            <b>@Localizer["Original"]:</b> @original
-                                        </p>
-                                    }
-                                    <div class="sk-command-label">@Localizer["ChatCommand"]</div>
-                                    <div class="sk-command">
-                                        <code>@skin.Command</code>
-                                        <img src="~/imgs/icons/@copyIcon" alt="@SharedLocalizer["CopyText"]" class="icon-copy"
-                                             data-toggle="popover" data-placement="top" data-content="@SharedLocalizer["TextCopied"]"
-                                             onclick="copyTextToClipboard('@skin.Command', this)"/>
-                                    </div>
-                                    <a class="btn btn-default btn-block sk-workshop" href="@skin.WorkshopUrl" target="_blank" rel="noopener">
-                                        <span class="glyphicon glyphicon-new-window"></span> @Localizer["ViewOnWorkshop"]
-                                    </a>
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-xs-12 col-sm-5">
+                    }
+                </div>
+            </section>
+        }
+        <p class="sk-empty hidden">@Localizer["NoSkinsForFilter"]</p>
+    </div>
+
+    <div role="tabpanel" class="tab-pane" id="sk-upcoming">
+        @{ var lotIndex = 0; }
+        @foreach (var lot in Model.UpcomingLots)
+        {
+            var date = lot.Key;
+            var extra = lotIndex >= 3;
+            lotIndex++;
+
+            <section class="sk-lot sk-section @(extra ? "sk-lot-extra hidden" : "")">
+                <div class="sk-lot-header">
+                    <span class="glyphicon glyphicon-calendar"></span>
+                    <div class="sk-level-title">
+                        <h3>@string.Format(Localizer["ReleaseOn"].Value, date.ToString("d", culture))</h3>
+                        <p>@string.Format(Localizer["DownloadFrom"].Value, date.AddDays(-7).ToString("d", culture))</p>
+                    </div>
+                    <span class="sk-level-count">@string.Format(Localizer["SkinsCount"].Value, lot.Count())</span>
+                </div>
+                <div class="row sk-grid">
+                    @foreach (var skin in lot)
+                    {
+                        var patent = Model.PatentOf(skin);
+                        var title = skin.Title.Get(culture);
+
+                        <div class="col-xs-6 col-sm-4 col-md-3 sk-col sk-item" data-weapon="@skin.Weapon" data-unlocked="0">
+                            <div class="sk-tile sk-open" data-title="@title">
+                                @{ await RenderDetails(skin); }
                                 <a class="sk-thumb" href="#">
                                     <img src="@skin.Image" alt="@title" loading="lazy"/>
                                     <span class="label sk-weapon">@weaponNames[skin.Weapon]</span>
-                                    @if (!released)
-                                    {
-                                        <span class="label sk-status label-info">
-                                            <span class="glyphicon glyphicon-time"></span>
-                                            @Localizer["ComingSoon"]
-                                        </span>
-                                    }
-                                    else if (loggedIn)
-                                    {
-                                        <span class="label sk-status @(canUse ? "label-success" : "label-default")">
-                                            <span class="glyphicon @(canUse ? "glyphicon-ok" : "glyphicon-lock")"></span>
-                                            @(canUse ? Localizer["Unlocked"].Value : Localizer["Locked"].Value)
-                                        </span>
-                                    }
                                 </a>
-                            </div>
-                            <div class="col-xs-12 col-sm-7">
-                                <div class="sk-body">
-                                    <h4 class="sk-title" title="@title">@title</h4>
-                                    @if (!released)
-                                    {
-                                        <p class="sk-release">
-                                            <span class="glyphicon glyphicon-calendar"></span>
-                                            @string.Format(Localizer["ReleaseOn"].Value, skin.ReleaseDate.ToString("d", culture))
-                                        </p>
-                                    }
-                                    @if (!string.IsNullOrWhiteSpace(description))
-                                    {
-                                        <p class="sk-desc" title="@description">@description</p>
-                                    }
-                                    @if (!string.IsNullOrWhiteSpace(original))
-                                    {
-                                        <small class="sk-original" title="@original">
-                                            <b>@Localizer["Original"]:</b> @original
-                                        </small>
-                                    }
-                                    <div class="sk-command-label">@Localizer["ChatCommand"]</div>
-                                    <div class="sk-command">
-                                        <code>@skin.Command</code>
-                                        <img src="~/imgs/icons/@copyIcon" alt="@SharedLocalizer["CopyText"]" class="icon-copy"
-                                             data-toggle="popover" data-placement="top" data-content="@SharedLocalizer["TextCopied"]"
-                                             onclick="copyTextToClipboard('@skin.Command', this)"/>
-                                    </div>
-                                    <a class="btn btn-default btn-sm btn-block sk-workshop" href="@skin.WorkshopUrl" target="_blank" rel="noopener">
-                                        <span class="glyphicon glyphicon-new-window"></span> @Localizer["ViewOnWorkshop"]
-                                    </a>
+                                <div class="sk-tile-body">
+                                    <img src="@patent.Image" alt="@patent.FullName" title="@patent.FullName"/>
+                                    <span class="sk-tile-title" title="@title">@title</span>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    }
                 </div>
-            }
-        </div>
-    </section>
-}
+            </section>
+        }
+        @if (lotIndex > 3)
+        {
+            <button type="button" class="btn btn-default btn-block sk-show-calendar">
+                <span class="glyphicon glyphicon-calendar"></span> @Localizer["ShowFullCalendar"]
+            </button>
+        }
+        <p class="sk-empty hidden">@Localizer["NoSkinsForFilter"]</p>
+    </div>
+</div>
 
 <div id="sk-modal" class="modal fade" tabindex="-1" role="dialog">
     <div class="modal-dialog modal-lg" role="document">
@@ -666,7 +834,7 @@
             var weapon = 'all';
             var onlyUnlocked = false;
 
-            $('.sk-card').on('click', function (e) {
+            $('.sk-open').on('click', function (e) {
                 if ($(e.target).closest('.icon-copy, .sk-workshop').length > 0)
                     return;
 
@@ -681,27 +849,34 @@
             });
 
             function applyFilters() {
-                $('.sk-level').each(function () {
-                    var visible = 0;
+                $('.tab-pane').each(function () {
+                    var $pane = $(this);
+                    var upcoming = $pane.is('#sk-upcoming');
+                    var total = 0;
 
-                    $(this).find('.sk-card').each(function () {
-                        var $card = $(this);
-                        var show = (weapon === 'all' || $card.data('weapon') === weapon) && (!onlyUnlocked || $card.data('unlocked') === 1);
+                    $pane.find('.sk-section').each(function () {
+                        var visible = 0;
 
-                        $card.closest('.sk-col').toggle(show);
+                        $(this).find('.sk-item').each(function () {
+                            var $item = $(this);
+                            var show = (weapon === 'all' || $item.data('weapon') === weapon) && (upcoming || !onlyUnlocked || $item.data('unlocked') === 1);
 
-                        if (show)
-                            visible++;
+                            $item.toggle(show);
+
+                            if (show)
+                                visible++;
+                        });
+
+                        $(this).toggle(visible > 0);
+                        total += visible;
                     });
 
-                    $(this).toggle(visible > 0);
+                    $pane.find('.sk-empty').toggleClass('hidden', total > 0);
                 });
             }
 
-            $('.sk-toolbar [data-filter]').on('click', function () {
-                $('.sk-toolbar [data-filter]').removeClass('active');
-                $(this).addClass('active');
-                weapon = $(this).data('filter');
+            $('#sk-weapon-filter').on('change', function () {
+                weapon = $(this).val();
                 applyFilters();
             });
 
@@ -709,6 +884,18 @@
                 onlyUnlocked = this.checked;
                 applyFilters();
             });
+
+            $('.sk-show-calendar').on('click', function () {
+                $('.sk-lot-extra').removeClass('hidden');
+                $(this).remove();
+            });
+
+            $('.sk-tabs a').on('shown.bs.tab', function () {
+                history.replaceState(null, '', $(this).attr('href'));
+            });
+
+            if (location.hash === '#upcoming')
+                $('.sk-tabs a[href="#upcoming"]').tab('show');
         });
     </script>
 }

@@ -146,6 +146,12 @@
   <data name="ExclusiveDescription" xml:space="preserve">
     <value>Somente jogadores na patente máxima podem usar estas skins.</value>
   </data>
+  <data name="GroupFirearms" xml:space="preserve">
+    <value>Armas de fogo</value>
+  </data>
+  <data name="GroupMelee" xml:space="preserve">
+    <value>Armas brancas</value>
+  </data>
   <data name="HowToChoose" xml:space="preserve">
     <value>Como &lt;b&gt;sobrevivente&lt;/b&gt;, durante o &lt;b&gt;ready-up&lt;/b&gt;, digite o comando da skin no chat do jogo, por exemplo &lt;code&gt;!skin hellsing-gold&lt;/code&gt;. Digite &lt;code&gt;!skin&lt;/code&gt; para ver a ajuda.</value>
   </data>
@@ -153,13 +159,13 @@
     <value>Escolha uma skin</value>
   </data>
   <data name="HowToCycle" xml:space="preserve">
-    <value>Com a arma na mão, use &lt;code&gt;!skin_next&lt;/code&gt; e &lt;code&gt;!skin_prev&lt;/code&gt; para alternar entre as skins que o seu nível libera. Depois da última, volta a skin padrão.</value>
+    <value>Com a arma na mão, use &lt;code&gt;!skin next&lt;/code&gt; e &lt;code&gt;!skin prev&lt;/code&gt; para alternar entre as skins que o seu nível libera. Depois da última, volta a skin padrão.</value>
   </data>
   <data name="HowToCycleTitle" xml:space="preserve">
     <value>Alterne entre suas skins</value>
   </data>
   <data name="HowToDefault" xml:space="preserve">
-    <value>Use &lt;code&gt;!skin_default&lt;/code&gt; com a arma na mão para remover a skin dela. Suas escolhas ficam salvas e são carregadas sempre que você entra no servidor.</value>
+    <value>Use &lt;code&gt;!skin default&lt;/code&gt; com a arma na mão para remover a skin dela. Suas escolhas ficam salvas e são carregadas sempre que você entra no servidor.</value>
   </data>
   <data name="HowToDefaultTitle" xml:space="preserve">
     <value>Voltar ao padrão</value>
@@ -168,7 +174,7 @@
     <value>Skins de armas</value>
   </data>
   <data name="Lead" xml:space="preserve">
-    <value>Personalize sua SMG, MAC-10 e escopetas. Cada nível de patente libera novas skins: quanto maior o seu nível, mais exclusiva a coleção. Uma skin liberada em um nível continua disponível em todos os níveis acima.</value>
+    <value>Personalize suas SMGs, escopetas e armas brancas. Cada nível de patente libera novas skins: quanto maior o seu nível, mais exclusiva a coleção. Uma skin liberada em um nível continua disponível em todos os níveis acima.</value>
   </data>
   <data name="LevelNumber" xml:space="preserve">
     <value>Nível {0}</value>
@@ -178,6 +184,9 @@
   </data>
   <data name="LoginToSee" xml:space="preserve">
     <value>&lt;a href=&quot;{0}&quot;&gt;Entre com a Steam&lt;/a&gt; para ver quais skins a sua patente libera.</value>
+  </data>
+  <data name="NoSkinsForFilter" xml:space="preserve">
+    <value>Nenhuma skin desta arma aqui.</value>
   </data>
   <data name="OnlyUnlocked" xml:space="preserve">
     <value>Só as skins que posso usar</value>
@@ -189,13 +198,22 @@
     <value>Disponível em {0}</value>
   </data>
   <data name="ReleaseSchedule" xml:space="preserve">
-    <value>Novas skins são lançadas a cada duas semanas. Os arquivos começam a ser baixados ao entrar no servidor uma semana antes do lançamento, para já estarem prontos quando forem liberados.</value>
+    <value>Novas skins são lançadas nos dias 1 e 16 de cada mês, e todo reset do ranking (a cada dois meses) abre a temporada com skins novas. Os arquivos começam a ser baixados ao entrar no servidor uma semana antes do lançamento, para já estarem prontos quando forem liberados.</value>
   </data>
   <data name="RequiredPatent" xml:space="preserve">
     <value>Patente necessária</value>
   </data>
+  <data name="ShowFullCalendar" xml:space="preserve">
+    <value>Ver o calendário completo</value>
+  </data>
   <data name="SkinsCount" xml:space="preserve">
     <value>{0} skins</value>
+  </data>
+  <data name="TabAvailable" xml:space="preserve">
+    <value>Disponíveis</value>
+  </data>
+  <data name="TabUpcoming" xml:space="preserve">
+    <value>Próximos lançamentos</value>
   </data>
   <data name="Unlocked" xml:space="preserve">
     <value>Liberada</value>
@@ -206,6 +224,36 @@
   <data name="ViewOnWorkshop" xml:space="preserve">
     <value>Ver no Workshop</value>
   </data>
+  <data name="WeaponBaseballBat" xml:space="preserve">
+    <value>Taco de Beisebol</value>
+  </data>
+  <data name="WeaponCricketBat" xml:space="preserve">
+    <value>Taco de Críquete</value>
+  </data>
+  <data name="WeaponCrowbar" xml:space="preserve">
+    <value>Pé de Cabra</value>
+  </data>
+  <data name="WeaponElectricGuitar" xml:space="preserve">
+    <value>Guitarra</value>
+  </data>
+  <data name="WeaponFilter" xml:space="preserve">
+    <value>Arma</value>
+  </data>
+  <data name="WeaponFireaxe" xml:space="preserve">
+    <value>Machado</value>
+  </data>
+  <data name="WeaponFryingPan" xml:space="preserve">
+    <value>Frigideira</value>
+  </data>
+  <data name="WeaponGolfClub" xml:space="preserve">
+    <value>Taco de Golfe</value>
+  </data>
+  <data name="WeaponKatana" xml:space="preserve">
+    <value>Katana</value>
+  </data>
+  <data name="WeaponMachete" xml:space="preserve">
+    <value>Facão</value>
+  </data>
   <data name="WeaponPumpShotgun" xml:space="preserve">
     <value>Escopeta Pump</value>
   </data>
@@ -214,6 +262,9 @@
   </data>
   <data name="WeaponSmg" xml:space="preserve">
     <value>SMG</value>
+  </data>
+  <data name="WeaponSmgMp5" xml:space="preserve">
+    <value>MP5</value>
   </data>
   <data name="WeaponSmgSilenced" xml:space="preserve">
     <value>MAC-10</value>

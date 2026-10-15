@@ -146,6 +146,12 @@
   <data name="ExclusiveDescription" xml:space="preserve">
     <value>Solo los jugadores en la patente máxima pueden usar estas skins.</value>
   </data>
+  <data name="GroupFirearms" xml:space="preserve">
+    <value>Armas de fuego</value>
+  </data>
+  <data name="GroupMelee" xml:space="preserve">
+    <value>Armas cuerpo a cuerpo</value>
+  </data>
   <data name="HowToChoose" xml:space="preserve">
     <value>Como &lt;b&gt;sobreviviente&lt;/b&gt;, durante el &lt;b&gt;ready-up&lt;/b&gt;, escribe el comando de la skin en el chat del juego, por ejemplo &lt;code&gt;!skin hellsing-gold&lt;/code&gt;. Escribe &lt;code&gt;!skin&lt;/code&gt; para ver la ayuda.</value>
   </data>
@@ -153,13 +159,13 @@
     <value>Elige una skin</value>
   </data>
   <data name="HowToCycle" xml:space="preserve">
-    <value>Con el arma en la mano, usa &lt;code&gt;!skin_next&lt;/code&gt; y &lt;code&gt;!skin_prev&lt;/code&gt; para alternar entre las skins que tu nivel desbloquea. Después de la última, vuelve la skin predeterminada.</value>
+    <value>Con el arma en la mano, usa &lt;code&gt;!skin next&lt;/code&gt; y &lt;code&gt;!skin prev&lt;/code&gt; para alternar entre las skins que tu nivel desbloquea. Después de la última, vuelve la skin predeterminada.</value>
   </data>
   <data name="HowToCycleTitle" xml:space="preserve">
     <value>Alterna entre tus skins</value>
   </data>
   <data name="HowToDefault" xml:space="preserve">
-    <value>Usa &lt;code&gt;!skin_default&lt;/code&gt; con el arma en la mano para quitar su skin. Tus elecciones se guardan y se cargan cada vez que entras al servidor.</value>
+    <value>Usa &lt;code&gt;!skin default&lt;/code&gt; con el arma en la mano para quitar su skin. Tus elecciones se guardan y se cargan cada vez que entras al servidor.</value>
   </data>
   <data name="HowToDefaultTitle" xml:space="preserve">
     <value>Volver a la predeterminada</value>
@@ -168,7 +174,7 @@
     <value>Skins de armas</value>
   </data>
   <data name="Lead" xml:space="preserve">
-    <value>Personaliza tu SMG, MAC-10 y escopetas. Cada nivel de patente desbloquea nuevas skins: cuanto mayor tu nivel, más exclusiva la colección. Una skin desbloqueada en un nivel sigue disponible en todos los niveles superiores.</value>
+    <value>Personaliza tus SMGs, escopetas y armas cuerpo a cuerpo. Cada nivel de patente desbloquea nuevas skins: cuanto mayor tu nivel, más exclusiva la colección. Una skin desbloqueada en un nivel sigue disponible en todos los niveles superiores.</value>
   </data>
   <data name="LevelNumber" xml:space="preserve">
     <value>Nivel {0}</value>
@@ -178,6 +184,9 @@
   </data>
   <data name="LoginToSee" xml:space="preserve">
     <value>&lt;a href=&quot;{0}&quot;&gt;Inicia sesión con Steam&lt;/a&gt; para ver qué skins desbloquea tu patente.</value>
+  </data>
+  <data name="NoSkinsForFilter" xml:space="preserve">
+    <value>No hay skins de esta arma aquí.</value>
   </data>
   <data name="OnlyUnlocked" xml:space="preserve">
     <value>Solo las skins que puedo usar</value>
@@ -189,13 +198,22 @@
     <value>Disponible el {0}</value>
   </data>
   <data name="ReleaseSchedule" xml:space="preserve">
-    <value>Se lanzan nuevas skins cada dos semanas. Sus archivos empiezan a descargarse al entrar al servidor una semana antes del lanzamiento, para que estén listos cuando salgan.</value>
+    <value>Se lanzan nuevas skins los días 1 y 16 de cada mes, y cada reinicio del ranking (cada dos meses) abre la temporada con skins nuevas. Sus archivos empiezan a descargarse al entrar al servidor una semana antes del lanzamiento, para que estén listos cuando salgan.</value>
   </data>
   <data name="RequiredPatent" xml:space="preserve">
     <value>Patente necesaria</value>
   </data>
+  <data name="ShowFullCalendar" xml:space="preserve">
+    <value>Ver el calendario completo</value>
+  </data>
   <data name="SkinsCount" xml:space="preserve">
     <value>{0} skins</value>
+  </data>
+  <data name="TabAvailable" xml:space="preserve">
+    <value>Disponibles</value>
+  </data>
+  <data name="TabUpcoming" xml:space="preserve">
+    <value>Próximos lanzamientos</value>
   </data>
   <data name="Unlocked" xml:space="preserve">
     <value>Desbloqueada</value>
@@ -206,6 +224,36 @@
   <data name="ViewOnWorkshop" xml:space="preserve">
     <value>Ver en el Workshop</value>
   </data>
+  <data name="WeaponBaseballBat" xml:space="preserve">
+    <value>Bate de Béisbol</value>
+  </data>
+  <data name="WeaponCricketBat" xml:space="preserve">
+    <value>Bate de Críquet</value>
+  </data>
+  <data name="WeaponCrowbar" xml:space="preserve">
+    <value>Palanca</value>
+  </data>
+  <data name="WeaponElectricGuitar" xml:space="preserve">
+    <value>Guitarra Eléctrica</value>
+  </data>
+  <data name="WeaponFilter" xml:space="preserve">
+    <value>Arma</value>
+  </data>
+  <data name="WeaponFireaxe" xml:space="preserve">
+    <value>Hacha</value>
+  </data>
+  <data name="WeaponFryingPan" xml:space="preserve">
+    <value>Sartén</value>
+  </data>
+  <data name="WeaponGolfClub" xml:space="preserve">
+    <value>Palo de Golf</value>
+  </data>
+  <data name="WeaponKatana" xml:space="preserve">
+    <value>Katana</value>
+  </data>
+  <data name="WeaponMachete" xml:space="preserve">
+    <value>Machete</value>
+  </data>
   <data name="WeaponPumpShotgun" xml:space="preserve">
     <value>Escopeta Pump</value>
   </data>
@@ -214,6 +262,9 @@
   </data>
   <data name="WeaponSmg" xml:space="preserve">
     <value>SMG</value>
+  </data>
+  <data name="WeaponSmgMp5" xml:space="preserve">
+    <value>MP5</value>
   </data>
   <data name="WeaponSmgSilenced" xml:space="preserve">
     <value>MAC-10</value>

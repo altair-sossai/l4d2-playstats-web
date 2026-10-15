@@ -23,7 +23,7 @@
       "id": "rosmontis",
       "weapon": "weapon_smg",
       "level": 15,
-      "releaseDate": "2027-04-02",
+      "releaseDate": "2027-01-01",
       "workshopId": "2848790132",
       "title": {
         "en": "Arknights Rosmontis Dynamic Skin SMG (UZI) (Glow)",
@@ -42,7 +42,7 @@
       "id": "dark-matter",
       "weapon": "weapon_smg_silenced",
       "level": 15,
-      "releaseDate": "2026-11-13",
+      "releaseDate": "2027-04-16",
       "workshopId": "3377651383",
       "title": {
         "en": "MAC-10 Dark Matter",
@@ -61,7 +61,7 @@
       "id": "disco-tech",
       "weapon": "weapon_smg_silenced",
       "level": 15,
-      "releaseDate": "2026-11-27",
+      "releaseDate": "2027-06-01",
       "workshopId": "2656086089",
       "title": {
         "en": "RGB MAC-10 Disco Tech (Glow)",
@@ -80,7 +80,7 @@
       "id": "surtr",
       "weapon": "weapon_smg_silenced",
       "level": 15,
-      "releaseDate": "2026-12-11",
+      "releaseDate": "2026-11-16",
       "workshopId": "2845730284",
       "title": {
         "en": "Arknights Surtr Silenced SMG Dynamic Skin (Glow)",
@@ -96,10 +96,29 @@
       "originalDescription": "没有什么比一份冰淇淋更能让我从混乱的记忆中冷静下来了，以前在我还是一个人的时候多亏了它们。 替换了消音冲锋枪 Replace Silenced SMG 只替换了材质 Replaced the material 展示视频/Showcase Video A Version:Low resolution, Long animation/B Version: High resolution, short animation B Version 希望你会喜欢，可以的话留下你的赞吧！谢啦!!☆⌒(*＾-＾)v Hope you like it, leave a li…"
     },
     {
+      "id": "damascus-mp5",
+      "weapon": "weapon_smg_mp5",
+      "level": 15,
+      "releaseDate": "2026-11-16",
+      "workshopId": "3123871890",
+      "title": {
+        "en": "MP5 - Damascus (Glow)",
+        "pt": "MP5 - Damascus (Glow)",
+        "es": "MP5 - Damascus (Glow)"
+      },
+      "description": {
+        "en": "Animated Damascus steel camo inspired by Call of Duty, glowing in the dark.",
+        "pt": "Camuflagem animada de aço damasco inspirada em Call of Duty, que brilha no escuro.",
+        "es": "Camuflaje animado de acero damasco inspirado en Call of Duty, que brilla en la oscuridad."
+      },
+      "originalTitle": "MP5仿制大马士革涂装",
+      "originalDescription": "仿制使命召唤里的大马士革涂装带夜光"
+    },
+    {
       "id": "miku-pump",
       "weapon": "weapon_pumpshotgun",
       "level": 15,
-      "releaseDate": "2027-01-08",
+      "releaseDate": "2026-12-01",
       "workshopId": "3028562598",
       "title": {
         "en": "Hatsune Miku 16th Anniversary Default Pumpshotgun Skin (Glow)",
@@ -118,7 +137,7 @@
       "id": "printstream-glow-pump",
       "weapon": "weapon_pumpshotgun",
       "level": 15,
-      "releaseDate": "2027-01-22",
+      "releaseDate": "2026-12-16",
       "workshopId": "3020518865",
       "title": {
         "en": "Pump Shotgun Printstream Theme (Glow)",
@@ -137,7 +156,7 @@
       "id": "miku-corridor",
       "weapon": "weapon_shotgun_chrome",
       "level": 15,
-      "releaseDate": "2027-03-05",
+      "releaseDate": "2027-05-01",
       "workshopId": "3304384199",
       "title": {
         "en": "Default Chrome Shotgun: Corridor of Miku",
@@ -156,7 +175,7 @@
       "id": "printstream-glow-chrome",
       "weapon": "weapon_shotgun_chrome",
       "level": 15,
-      "releaseDate": "2027-03-19",
+      "releaseDate": "2027-06-16",
       "workshopId": "3020518619",
       "title": {
         "en": "Chrome Shotgun Printstream Theme (Glow)",
@@ -172,10 +191,48 @@
       "originalDescription": "Chrome Shotgun Printstream Theme (Glow) The file only contains texture maps, and you can choose your favorite actions to use with sound effects. Description: The following text comes from software translation. If there is any error or unclear expression, please check Chinese. I p…"
     },
     {
+      "id": "nekomiya-axe",
+      "weapon": "weapon_melee_fireaxe",
+      "level": 15,
+      "releaseDate": "2027-05-16",
+      "workshopId": "2969186761",
+      "title": {
+        "en": "Fireaxe - Nekomiya Hinata",
+        "pt": "Fireaxe - Nekomiya Hinata",
+        "es": "Fireaxe - Nekomiya Hinata"
+      },
+      "description": {
+        "en": "Nekomiya Hinata themed fire axe with animated effects.",
+        "pt": "Machado com tema da Nekomiya Hinata e efeitos animados.",
+        "es": "Hacha con temática de Nekomiya Hinata y efectos animados."
+      },
+      "originalTitle": "猫宫日向-消防斧 Nekomiya Hinata Replace Fireaxe",
+      "originalDescription": "久违 少见的传个mod，感谢各位一直的关注 偶尔冒泡 预览图如下： https://steamuserimages-a.akamaihd.net/ugc/2049743797826621978/5C767430EE62B0B0530CC881ECC2DC0892ADB6BF/?imw=5000&imh=5000&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=false 如有喜欢点个赞吧 谢谢~ 关键词：axe、fireaxe、Nekomiya Hinata、猫宫日向、猫老大"
+    },
+    {
+      "id": "holographic-katana",
+      "weapon": "weapon_melee_katana",
+      "level": 15,
+      "releaseDate": "2026-12-01",
+      "workshopId": "2863517099",
+      "title": {
+        "en": "Katana - Holographic Rainbow",
+        "pt": "Katana - Holographic Rainbow",
+        "es": "Katana - Holographic Rainbow"
+      },
+      "description": {
+        "en": "Animated holographic rainbow material on the katana.",
+        "pt": "Material holográfico animado com as cores do arco-íris na katana.",
+        "es": "Material holográfico animado con los colores del arcoíris en la katana."
+      },
+      "originalTitle": "Katana Holographic Rainbow",
+      "originalDescription": "Notice: Only replaces the material of Katana. Can be used with animation mod and sound mod. Original Mods: Dynamic rainbow Pistols Credits: ni shi bu shi xi huan wo , 狐尾草 - Dynamic rainbow material & parameter. Kokkorylien - Application of materials & parameter. Details: Self luminous. Rainbow mate…"
+    },
+    {
       "id": "last-cure",
       "weapon": "weapon_smg_silenced",
       "level": 14,
-      "releaseDate": "2027-04-02",
+      "releaseDate": "2027-01-16",
       "workshopId": "2727965845",
       "title": {
         "en": "The Last Cure MAC-10",
@@ -194,7 +251,7 @@
       "id": "printstream-mac",
       "weapon": "weapon_smg_silenced",
       "level": 14,
-      "releaseDate": "2026-10-30",
+      "releaseDate": "2027-03-01",
       "workshopId": "2926162402",
       "title": {
         "en": "Printstream MAC-10",
@@ -210,10 +267,29 @@
       "originalDescription": "替换官模SMG贴图 拥有一下特点 法线贴图 自发光 印花集独有珠光渐变 印花集皮肤最近很多人做，想尝试做一把印花集皮肤 上面四个杠有点不齐是正常现象，SMG上这四个杠V社UV图真布局乱导致的，真的裂开,十分感谢PioneerZ1Z大佬的UV贴图指导 更新日志 2023年5月1日 翻新部分贴图，加上了印花姬，不算完全重做，直接原地更新，不知道你们满意不满意这次小更新 2023年11月8日 将纯黑色换位浅黑色，浅黑色也显示珠光渐变，其他无变动 关于和其他SMG和里希炎热大佬印花集UZI冲突 主要是VMT文件贴图路径一致了，而导致的冲突，但不影响使用 简介预览…"
     },
     {
+      "id": "force-for-order",
+      "weapon": "weapon_smg_mp5",
+      "level": 14,
+      "releaseDate": "2027-05-16",
+      "workshopId": "2043382451",
+      "title": {
+        "en": "MP5 - A Force for Order",
+        "pt": "MP5 - A Force for Order",
+        "es": "MP5 - A Force for Order"
+      },
+      "description": {
+        "en": "Black MP5 with glowing red neon outlines.",
+        "pt": "MP5 preta com contornos neon vermelhos brilhantes.",
+        "es": "MP5 negra con contornos de neón rojo brillantes."
+      },
+      "originalTitle": "A Force for Order",
+      "originalDescription": "\"When it comes to tackling a terrorist threat, there's nothing better for the task\" -Ahoy"
+    },
+    {
       "id": "koyori",
       "weapon": "weapon_pumpshotgun",
       "level": 14,
-      "releaseDate": "2026-12-11",
+      "releaseDate": "2027-05-16",
       "workshopId": "2832294909",
       "title": {
         "en": "Vtuber Hakui Koyori Pump Shotgun",
@@ -232,7 +308,7 @@
       "id": "sleep-at-night",
       "weapon": "weapon_pumpshotgun",
       "level": 14,
-      "releaseDate": "2026-12-25",
+      "releaseDate": "2026-11-01",
       "workshopId": "3208967272",
       "title": {
         "en": "Pump Shotgun Skin: Sleep at Night",
@@ -251,7 +327,7 @@
       "id": "bianca",
       "weapon": "weapon_shotgun_chrome",
       "level": 14,
-      "releaseDate": "2027-02-05",
+      "releaseDate": "2027-02-01",
       "workshopId": "2765785238",
       "title": {
         "en": "Punishing: Gray Raven Bianca: Veritas Chrome Shotgun",
@@ -270,7 +346,7 @@
       "id": "printstream-chrome",
       "weapon": "weapon_shotgun_chrome",
       "level": 14,
-      "releaseDate": "2027-02-19",
+      "releaseDate": "2027-03-16",
       "workshopId": "2862073814",
       "title": {
         "en": "Chrome Shotgun Printstream Imitation",
@@ -286,10 +362,48 @@
       "originalDescription": "Notice: Only replaces the material of Chrome Shotgun. Can be used with sound mod and animation mod. Default animation: arby26's animation: ο(=•ω＜=)ρ⌒☆"
     },
     {
+      "id": "holographic-bat",
+      "weapon": "weapon_melee_baseball_bat",
+      "level": 14,
+      "releaseDate": "2026-11-16",
+      "workshopId": "2863528972",
+      "title": {
+        "en": "Baseball Bat - Holographic Rainbow",
+        "pt": "Baseball Bat - Holographic Rainbow",
+        "es": "Baseball Bat - Holographic Rainbow"
+      },
+      "description": {
+        "en": "Animated holographic rainbow material on the baseball bat.",
+        "pt": "Material holográfico animado com as cores do arco-íris no taco de beisebol.",
+        "es": "Material holográfico animado con los colores del arcoíris en el bate de béisbol."
+      },
+      "originalTitle": "Baseball Bat Holographic Rainbow",
+      "originalDescription": "Notice: Only replaces the material of Baseball Bat. Can be used with animation mod and sound mod. Original Mods: Dynamic rainbow Pistols Credits: ni shi bu shi xi huan wo , 狐尾草 - Dynamic rainbow material & parameter. Kokkorylien - Application of materials & parameter. Details: Self luminous. Rainbo…"
+    },
+    {
+      "id": "holographic-golf-club",
+      "weapon": "weapon_melee_golfclub",
+      "level": 14,
+      "releaseDate": "2027-05-01",
+      "workshopId": "2863498654",
+      "title": {
+        "en": "Golf Club - Holographic Rainbow",
+        "pt": "Golf Club - Holographic Rainbow",
+        "es": "Golf Club - Holographic Rainbow"
+      },
+      "description": {
+        "en": "Animated holographic rainbow material on the golf club.",
+        "pt": "Material holográfico animado com as cores do arco-íris no taco de golfe.",
+        "es": "Material holográfico animado con los colores del arcoíris en el palo de golf."
+      },
+      "originalTitle": "Golf Club Holographic Rainbow",
+      "originalDescription": "Notice: Only replaces the material of Golf Club. Can be used with animation mod and sound mod. Original Mods: Dynamic rainbow Pistols Credits: ni shi bu shi xi huan wo , 狐尾草 - Dynamic rainbow material & parameter. Kokkorylien - Application of materials & parameter. Details: Self luminous. Rainbow m…"
+    },
+    {
       "id": "printstream-uzi",
       "weapon": "weapon_smg",
       "level": 13,
-      "releaseDate": "2027-03-19",
+      "releaseDate": "2027-06-01",
       "workshopId": "2924725708",
       "title": {
         "en": "UZI Printstream",
@@ -308,7 +422,7 @@
       "id": "izumi-hiyori",
       "weapon": "weapon_smg_silenced",
       "level": 13,
-      "releaseDate": "2027-03-05",
+      "releaseDate": "2027-06-16",
       "workshopId": "3374437391",
       "title": {
         "en": "Izumi Hiyori MAC-10",
@@ -327,7 +441,7 @@
       "id": "miku-mac",
       "weapon": "weapon_smg_silenced",
       "level": 13,
-      "releaseDate": "2027-03-19",
+      "releaseDate": "2026-12-01",
       "workshopId": "3271509074",
       "title": {
         "en": "Default Silenced SMG: Hatsune Miku (Glow)",
@@ -343,10 +457,29 @@
       "originalDescription": "Replace texture only and can be used with the default weapon reanimated mod. Personally recommended reanimated mod: ------------------------------------------------------------------------------------------------------ I don't want to do covers, I'm too lazy, and I have a lot of…"
     },
     {
+      "id": "gold-pearl-mp5",
+      "weapon": "weapon_smg_mp5",
+      "level": 13,
+      "releaseDate": "2027-03-16",
+      "workshopId": "2958413323",
+      "title": {
+        "en": "MP5 - Gold'n'Pearl",
+        "pt": "MP5 - Gold'n'Pearl",
+        "es": "MP5 - Gold'n'Pearl"
+      },
+      "description": {
+        "en": "Gold MP5 with parts made of smooth white pearl.",
+        "pt": "MP5 dourada com partes de pérola branca lisa.",
+        "es": "MP5 dorada con partes de perla blanca lisa."
+      },
+      "originalTitle": "MP5 - Gold'n'Pearl",
+      "originalDescription": "Gold MP5 with some parts being made from Smoth White Pearl"
+    },
+    {
       "id": "mcqueen",
       "weapon": "weapon_pumpshotgun",
       "level": 13,
-      "releaseDate": "2026-10-30",
+      "releaseDate": "2027-01-01",
       "workshopId": "2810642280",
       "title": {
         "en": "Uma Musume Mejiro McQueen Pump Shotgun",
@@ -365,7 +498,7 @@
       "id": "plutia",
       "weapon": "weapon_pumpshotgun",
       "level": 13,
-      "releaseDate": "2026-11-13",
+      "releaseDate": "2027-02-16",
       "workshopId": "2622698544",
       "title": {
         "en": "Hyperdimension Neptunia Plutia Pumpshotgun",
@@ -384,7 +517,7 @@
       "id": "yamada-ryo",
       "weapon": "weapon_pumpshotgun",
       "level": 13,
-      "releaseDate": "2026-11-27",
+      "releaseDate": "2027-04-01",
       "workshopId": "3382999407",
       "title": {
         "en": "Bocchi the Rock! Yamada Ryo Pump Shotgun",
@@ -403,7 +536,7 @@
       "id": "enterprise",
       "weapon": "weapon_shotgun_chrome",
       "level": 13,
-      "releaseDate": "2027-01-08",
+      "releaseDate": "2026-11-01",
       "workshopId": "2621473254",
       "title": {
         "en": "Azur Lane USS Enterprise Chrome",
@@ -422,7 +555,7 @@
       "id": "tokai-teio",
       "weapon": "weapon_shotgun_chrome",
       "level": 13,
-      "releaseDate": "2027-01-22",
+      "releaseDate": "2026-12-16",
       "workshopId": "2805481477",
       "title": {
         "en": "Uma Musume Tokai Teio Chrome Shotgun",
@@ -438,10 +571,67 @@
       "originalDescription": "无败的帝王传说，就从现在开始吧！ 替换铁喷（replace Chrome shotgun ) 全夜光（glow） 相比以前经验跟进一步，枪身虽然有点不对称但也无伤大雅，以后的枪皮质量应该会越来越好的罢（ 当然下次还会做麦昆的木喷（已经做了 传送门 最后记得点赞赞"
     },
     {
+      "id": "tribal-axe",
+      "weapon": "weapon_melee_fireaxe",
+      "level": 13,
+      "releaseDate": "2027-03-01",
+      "workshopId": "3776818868",
+      "title": {
+        "en": "Fireaxe - Tribal (Dying Light)",
+        "pt": "Fireaxe - Tribal (Dying Light)",
+        "es": "Fireaxe - Tribal (Dying Light)"
+      },
+      "description": {
+        "en": "Tribal axe from Dying Light, with cyan details that glow in the dark.",
+        "pt": "Machado tribal de Dying Light, com detalhes ciano que brilham no escuro.",
+        "es": "Hacha tribal de Dying Light, con detalles cian que brillan en la oscuridad."
+      },
+      "originalTitle": "Tribal Axe - Dying Light",
+      "originalDescription": "Reskin for the default L4D2 axe (glowing in the dark) Actually, at first I wanted to port the original Tribal Axe model from Dying Light, but I don't know almost anything about that, so I made a Tribal Machete-style reskin for the default axe. https://c.tenor.com/nIEk7Uxg6JcAAAAd/tenor.gif tags:axe…"
+    },
+    {
+      "id": "clouds-katana",
+      "weapon": "weapon_melee_katana",
+      "level": 13,
+      "releaseDate": "2027-03-16",
+      "workshopId": "2058886315",
+      "title": {
+        "en": "Katana - Clouds (Glow)",
+        "pt": "Katana - Clouds (Glow)",
+        "es": "Katana - Clouds (Glow)"
+      },
+      "description": {
+        "en": "Asian-style katana with cloud patterns that glow in the dark.",
+        "pt": "Katana em estilo oriental com nuvens que brilham no escuro.",
+        "es": "Katana de estilo oriental con nubes que brillan en la oscuridad."
+      },
+      "originalTitle": "Clouds Katana // Katana 雲(Glow)",
+      "originalDescription": "This is the first skin I create. A re-skin of the traditional katana inspired by an Asian style. Some details of the katana glow in the dark. --------------------------------------------------------- Este es el primer skin que creo. Es un re-skin de la Katana tradicional inspirada en un aspecto asi…"
+    },
+    {
+      "id": "pikachu-guitar",
+      "weapon": "weapon_melee_electric_guitar",
+      "level": 13,
+      "releaseDate": "2026-11-16",
+      "workshopId": "2457923173",
+      "title": {
+        "en": "Electric Guitar - Pikachu",
+        "pt": "Electric Guitar - Pikachu",
+        "es": "Electric Guitar - Pikachu"
+      },
+      "description": {
+        "en": "Yellow Pokémon Pikachu themed electric guitar.",
+        "pt": "Guitarra amarela com tema do Pokémon Pikachu.",
+        "es": "Guitarra amarilla con temática del Pokémon Pikachu."
+      },
+      "originalTitle": "Pikachu | ピカチュウ| 皮卡丘（guitar）",
+      "originalDescription": "https://steamuserimages-a.akamaihd.net/ugc/1747940658856274515/34CBC07D7ED73B6282B3F7AF2E3D47BB462BF9B1/ 非常高兴能完成这个作品，希望大家喜欢 I'm very happy to finish this work. I hope you like it 演示视频：https://www.bilibili.com/video/BV16h411U7JA Demo video：https://www.bilibili.com/video/BV16h411U7JA 我将吉他的攻击时的声音替换为皮卡…"
+    },
+    {
       "id": "hiiro-mac",
       "weapon": "weapon_smg_silenced",
       "level": 12,
-      "releaseDate": "2027-02-05",
+      "releaseDate": "2027-03-16",
       "workshopId": "2713502936",
       "title": {
         "en": "Hiiro MAC-10",
@@ -460,7 +650,7 @@
       "id": "nekoha-shizuku",
       "weapon": "weapon_smg_silenced",
       "level": 12,
-      "releaseDate": "2027-02-19",
+      "releaseDate": "2027-05-01",
       "workshopId": "2808871797",
       "title": {
         "en": "Nekoha Shizuku SMG (MAC-10) Remake (Glow)",
@@ -476,10 +666,29 @@
       "originalDescription": "这个订阅比uzi少就很离谱，难道是预览图拍难看了？重拍一下 贴图立绘来自： 立绘1 立绘2 立绘3 预览视频 演示视频里smg持枪动作来自： Silenced SMG - L4D1 SMG Animations 强烈推荐smg动作： mac-10 on arby26 Animations 【动作重置】 渲染图如下： 预览图如下： 如有喜欢别忘点赞——！！感谢 2022/6/21 增加了夜光亮度 关键词：猫羽雫、ねこは しずく、Nekoha Shizuku、甘城なつき"
     },
     {
+      "id": "nareko-mp5",
+      "weapon": "weapon_smg_mp5",
+      "level": 12,
+      "releaseDate": "2027-01-16",
+      "workshopId": "3547369289",
+      "title": {
+        "en": "MP5 - Touhou Michigami Nareko",
+        "pt": "MP5 - Touhou Michigami Nareko",
+        "es": "MP5 - Touhou Michigami Nareko"
+      },
+      "description": {
+        "en": "Touhou Michigami Nareko themed MP5 in gold and blue, with fan art by Touhou doujin artists.",
+        "pt": "MP5 com tema de Michigami Nareko (Touhou), em dourado e azul, com artes de fãs de Touhou.",
+        "es": "MP5 con temática de Michigami Nareko (Touhou), en dorado y azul, con arte de fans de Touhou."
+      },
+      "originalTitle": "Touhou Michigami Nareko MP5",
+      "originalDescription": "I've only changed the textures of the official model and added free materials created by Touhou doujin artists. Use materials: dairi"
+    },
+    {
       "id": "b-sha",
       "weapon": "weapon_pumpshotgun",
       "level": 12,
-      "releaseDate": "2027-03-19",
+      "releaseDate": "2027-06-01",
       "workshopId": "2836847839",
       "title": {
         "en": "B-sha (Megadimension Neptunia VII) - Pump Shotgun",
@@ -498,7 +707,7 @@
       "id": "jean-bart-pump",
       "weapon": "weapon_pumpshotgun",
       "level": 12,
-      "releaseDate": "2027-04-02",
+      "releaseDate": "2026-11-16",
       "workshopId": "3503214599",
       "title": {
         "en": "Azur Lane Jean Bart Pump Shotgun",
@@ -517,7 +726,7 @@
       "id": "aqua-v2",
       "weapon": "weapon_shotgun_chrome",
       "level": 12,
-      "releaseDate": "2026-12-11",
+      "releaseDate": "2027-04-01",
       "workshopId": "2840154085",
       "title": {
         "en": "Minato Aqua Chrome Shotgun II (Glow)",
@@ -536,7 +745,7 @@
       "id": "yarai-miu",
       "weapon": "weapon_shotgun_chrome",
       "level": 12,
-      "releaseDate": "2026-12-25",
+      "releaseDate": "2027-05-16",
       "workshopId": "3539372350",
       "title": {
         "en": "Yuzusoft Yarai Miu Chrome Shotgun",
@@ -552,10 +761,29 @@
       "originalDescription": "矢来美羽（日语：矢来 美羽（やらい みう））是柚子社旗下游戏《DRACU-RIOT!》及其衍生作品的登场角色。 月长学院学生，特区事务管理局（阴阳局）风纪班所属的吸血鬼少女，能力为念力，在负责维护治安的组织里工作。 阅读更多：矢来美羽（ ） 本文引自萌娘百科( )，文字内容默认使用《知识共享 署名-非商业性使用-相同方式共享 3.0 中国大陆》协议。 仅替换原版贴图"
     },
     {
+      "id": "tribal-machete",
+      "weapon": "weapon_melee_machete",
+      "level": 12,
+      "releaseDate": "2027-04-01",
+      "workshopId": "3568360966",
+      "title": {
+        "en": "Machete - Tribal (Dying Light)",
+        "pt": "Machete - Tribal (Dying Light)",
+        "es": "Machete - Tribal (Dying Light)"
+      },
+      "description": {
+        "en": "Cut tribal machete from Dying Light, with cyan details that glow in the dark.",
+        "pt": "Facão tribal cortado de Dying Light, com detalhes ciano que brilham no escuro.",
+        "es": "Machete tribal recortado de Dying Light, con detalles cian que brillan en la oscuridad."
+      },
+      "originalTitle": "Tribal Machete - Dying Light",
+      "originalDescription": "Reskin for the L4D2 machete to the tribal machete from Dying Light. Unlike other skins in DL1, this skin was cut from the final version of the game. But you can still see him in hints when you die or in-game files, or you can bring it back using a mod. https://c.tenor.com/nIEk7Uxg6JcAAAAd/tenor.gif…"
+    },
+    {
       "id": "miku-pearl",
       "weapon": "weapon_smg",
       "level": 11,
-      "releaseDate": "2027-03-05",
+      "releaseDate": "2027-03-01",
       "workshopId": "3299514548",
       "title": {
         "en": "Default SMG: Hatsune Miku (Pearlescent)",
@@ -574,7 +802,7 @@
       "id": "arihara-nanami",
       "weapon": "weapon_smg_silenced",
       "level": 11,
-      "releaseDate": "2027-01-08",
+      "releaseDate": "2026-12-16",
       "workshopId": "3351643762",
       "title": {
         "en": "Yuzusoft Arihara Nanami MAC-10",
@@ -593,7 +821,7 @@
       "id": "find-my-future",
       "weapon": "weapon_smg_silenced",
       "level": 11,
-      "releaseDate": "2027-01-22",
+      "releaseDate": "2027-02-01",
       "workshopId": "3160988312",
       "title": {
         "en": "Find My Future MAC-10",
@@ -612,7 +840,7 @@
       "id": "up-close",
       "weapon": "weapon_pumpshotgun",
       "level": 11,
-      "releaseDate": "2027-02-19",
+      "releaseDate": "2027-03-01",
       "workshopId": "2019982092",
       "title": {
         "en": "Up Close and Personal (Glowing)",
@@ -631,7 +859,7 @@
       "id": "volcanic-pump",
       "weapon": "weapon_pumpshotgun",
       "level": 11,
-      "releaseDate": "2027-03-05",
+      "releaseDate": "2027-04-16",
       "workshopId": "1898445622",
       "title": {
         "en": "Shotguns | Volcanic",
@@ -650,7 +878,7 @@
       "id": "aqua",
       "weapon": "weapon_shotgun_chrome",
       "level": 11,
-      "releaseDate": "2026-11-13",
+      "releaseDate": "2027-01-01",
       "workshopId": "2840087428",
       "title": {
         "en": "Minato Aqua Chrome Shotgun (Glow)",
@@ -669,7 +897,7 @@
       "id": "nekomiya",
       "weapon": "weapon_shotgun_chrome",
       "level": 11,
-      "releaseDate": "2026-11-27",
+      "releaseDate": "2027-02-16",
       "workshopId": "2814124024",
       "title": {
         "en": "Nekomiya Hinata Chrome Shotgun v2.0 (Glow)",
@@ -685,10 +913,48 @@
       "originalDescription": "简单修复了一下乱糟糟的猫宫铁喷，一个比较简洁的条纹版，上手感觉不错 只用小号发一下 高画质下的反光效果还行 猫宫铁喷初版 预览图如下： 如有喜欢点个赞吧 谢谢~"
     },
     {
+      "id": "honey-bee-axe",
+      "weapon": "weapon_melee_fireaxe",
+      "level": 11,
+      "releaseDate": "2026-12-16",
+      "workshopId": "3386688086",
+      "title": {
+        "en": "Fireaxe - Honey B. Lovely",
+        "pt": "Fireaxe - Honey B. Lovely",
+        "es": "Fireaxe - Honey B. Lovely"
+      },
+      "description": {
+        "en": "Final Fantasy XIV Honey B. Lovely themed fire axe, fully glowing, with a normal map.",
+        "pt": "Machado com tema da Honey B. Lovely de Final Fantasy XIV, todo brilhante, com normal map.",
+        "es": "Hacha con temática de Honey B. Lovely de Final Fantasy XIV, totalmente brillante, con normal map."
+      },
+      "originalTitle": "【最终幻想14/Final Fantasy XIV】蜂蜂小甜心 主题 官模消防斧",
+      "originalDescription": "\"蜂蜂小甜心。。。来为你送终！\" 包含：全夜光，法线贴图 替换消防斧，只替换贴图所以可以搭配任意音效和动作mod 去除了高血腥设置下会出现的沾血效果 因为共用贴图的原因，会和单独替换平底锅贴图的mod冲突 你说得对，但是： 🐝❤️🐝❤️🐝❤️🐝❤️🐝❤️🐝❤️🐝❤️🐝❤️ I'll be your Queen Bee Honey B.lovely !!! I'll be your one and only CHAM-BEE-ION !!! I'll be your full time royal worshipee !!! Love me again !!! Until th…"
+    },
+    {
+      "id": "undead-katana",
+      "weapon": "weapon_melee_katana",
+      "level": 11,
+      "releaseDate": "2027-06-16",
+      "workshopId": "2023972353",
+      "title": {
+        "en": "Katana - Sword of the Undead (Glow)",
+        "pt": "Katana - Sword of the Undead (Glow)",
+        "es": "Katana - Sword of the Undead (Glow)"
+      },
+      "description": {
+        "en": "Black and red katana with glowing red details.",
+        "pt": "Katana preta e vermelha com detalhes vermelhos brilhantes.",
+        "es": "Katana negra y roja con detalles rojos brillantes."
+      },
+      "originalTitle": "The Sword of the Undead (Glowing)",
+      "originalDescription": "\"No one need think that the world can be saved without slashing. The undead sword shall and must be red and bloody.\" -SH9"
+    },
+    {
       "id": "mulberry",
       "weapon": "weapon_smg_silenced",
       "level": 10,
-      "releaseDate": "2026-12-11",
+      "releaseDate": "2027-04-16",
       "workshopId": "2610503147",
       "title": {
         "en": "Arknights Mulberry MAC-10",
@@ -707,7 +973,7 @@
       "id": "neon-rider",
       "weapon": "weapon_smg_silenced",
       "level": 10,
-      "releaseDate": "2026-12-25",
+      "releaseDate": "2027-06-16",
       "workshopId": "826430944",
       "title": {
         "en": "MAC-10-S | Neon Rider",
@@ -723,10 +989,29 @@
       "originalDescription": "MAC-10 / Silenced SMG texture from Counter-Strike: Global Offensive. The texture is slightly altered (default silencer added). Enjoy! I still have no idea how the custom skins in CS:GO work for the most part, so I won't make a lot of these. Don't also expect a VTF/VMT editing idi…"
     },
     {
+      "id": "rarity-mp5",
+      "weapon": "weapon_smg_mp5",
+      "level": 10,
+      "releaseDate": "2026-11-16",
+      "workshopId": "3762715599",
+      "title": {
+        "en": "MP5 - Rarity",
+        "pt": "MP5 - Rarity",
+        "es": "MP5 - Rarity"
+      },
+      "description": {
+        "en": "My Little Pony Rarity themed MP5 in white and blue.",
+        "pt": "MP5 com tema da Rarity de My Little Pony, em branco e azul.",
+        "es": "MP5 con temática de Rarity de My Little Pony, en blanco y azul."
+      },
+      "originalTitle": "Rarity MP5 Skin",
+      "originalDescription": "My Little Pony Skin. I am not the original author of this skin; I am just re-uploading it so it doesn't get lost."
+    },
+    {
       "id": "gumi",
       "weapon": "weapon_pumpshotgun",
       "level": 10,
-      "releaseDate": "2027-01-08",
+      "releaseDate": "2027-06-01",
       "workshopId": "1996782682",
       "title": {
         "en": "Pump | Gumi",
@@ -745,7 +1030,7 @@
       "id": "sayori",
       "weapon": "weapon_pumpshotgun",
       "level": 10,
-      "releaseDate": "2027-01-22",
+      "releaseDate": "2026-12-01",
       "workshopId": "3175242980",
       "title": {
         "en": "Doki Doki Literature Club! Sayori",
@@ -764,7 +1049,7 @@
       "id": "victorian",
       "weapon": "weapon_pumpshotgun",
       "level": 10,
-      "releaseDate": "2027-02-05",
+      "releaseDate": "2027-01-16",
       "workshopId": "2013771916",
       "title": {
         "en": "Pump | Victorian",
@@ -802,7 +1087,7 @@
       "id": "sakura",
       "weapon": "weapon_shotgun_chrome",
       "level": 10,
-      "releaseDate": "2026-10-30",
+      "releaseDate": "2026-11-01",
       "workshopId": "2848781046",
       "title": {
         "en": "Cardcaptor Sakura Chrome Shotgun",
@@ -818,10 +1103,67 @@
       "originalDescription": "标签：百变小樱 カードキャプターさくら 预览 演示视频 工坊好像没人做小樱的铁喷涂装，所以自己尝试做了一个，第一次做，可能有点瑕疵 枪管采用了粉白渐变配色，唧筒是库洛牌图形，机匣是小樱和小可特写，推荐开高画质使用 点击跳转到夜光版 推荐搭配食用 Star staff | Guitar 粉色- 星杖 替换 吉他 Star staff | Crowbar 粉色 - 封印之杖 替换 撬棍 原图(original)侵删 如果你喜欢这个mod，请点个赞吧：） 目标：70个赞 My Goal:70 likes 2022/08/16 修复了一些瑕疵，加深了枪管的渐变色…"
     },
     {
+      "id": "iron-maiden-bat",
+      "weapon": "weapon_melee_cricket_bat",
+      "level": 10,
+      "releaseDate": "2027-02-16",
+      "workshopId": "2330191700",
+      "title": {
+        "en": "Cricket Bat - Iron Maiden",
+        "pt": "Cricket Bat - Iron Maiden",
+        "es": "Cricket Bat - Iron Maiden"
+      },
+      "description": {
+        "en": "Iron Maiden themed cricket bat featuring Eddie.",
+        "pt": "Taco de críquete com tema do Iron Maiden e o Eddie.",
+        "es": "Bate de críquet con temática de Iron Maiden y Eddie."
+      },
+      "originalTitle": "Iron Maiden's Cricket Bat",
+      "originalDescription": "Yes. We all want shiny, powerful weapons. Mods that shine even though there is no light and with animations that take our breath away. But when the dead surround you and bullets are scarce, you need a good melee. If you want to Running Free in the L4D's Strange World, if you have Fear Of The Dark a…"
+    },
+    {
+      "id": "dokibird-guitar",
+      "weapon": "weapon_melee_electric_guitar",
+      "level": 10,
+      "releaseDate": "2027-03-01",
+      "workshopId": "3277167545",
+      "title": {
+        "en": "Electric Guitar - Dokibird",
+        "pt": "Electric Guitar - Dokibird",
+        "es": "Electric Guitar - Dokibird"
+      },
+      "description": {
+        "en": "VTuber Dokibird themed electric guitar.",
+        "pt": "Guitarra com tema da VTuber Dokibird.",
+        "es": "Guitarra con temática de la VTuber Dokibird."
+      },
+      "originalTitle": "The Dokibird Guitar!",
+      "originalDescription": "This neck just got a brand new coat of paint. We're so back. **************************************************** You know who's also back? ME. If you're wondering what your unemployed friends are up to at 4:00 AM on a weekday, chances are they're doing something more productive than whipping up a…"
+    },
+    {
+      "id": "momone-pan",
+      "weapon": "weapon_melee_frying_pan",
+      "level": 10,
+      "releaseDate": "2026-10-15",
+      "workshopId": "2630140015",
+      "title": {
+        "en": "Frying Pan - Momo Momone",
+        "pt": "Frying Pan - Momo Momone",
+        "es": "Frying Pan - Momo Momone"
+      },
+      "description": {
+        "en": "Frying pan featuring Momo Momone from UTAU.",
+        "pt": "Frigideira com a Momo Momone, do UTAU.",
+        "es": "Sartén con Momo Momone, de UTAU."
+      },
+      "originalTitle": "Momo momone frying pan",
+      "originalDescription": "Momo momone from utauloid frying pan NOTE: this mod may conflict with other axe or machete reskin mods. so i recomend having whole separate models for those if you dont want the default looks"
+    },
+    {
       "id": "hiiro-uzi",
       "weapon": "weapon_smg",
       "level": 9,
-      "releaseDate": "2027-02-19",
+      "releaseDate": "2026-11-01",
       "workshopId": "2809240839",
       "title": {
         "en": "Hiiro UZI (Glow)",
@@ -840,7 +1182,7 @@
       "id": "ritsu",
       "weapon": "weapon_smg_silenced",
       "level": 9,
-      "releaseDate": "2026-11-13",
+      "releaseDate": "2026-12-16",
       "workshopId": "3769476345",
       "title": {
         "en": "K-ON! Ritsu Tainaka MAC-10",
@@ -859,7 +1201,7 @@
       "id": "volcanic-mac",
       "weapon": "weapon_smg_silenced",
       "level": 9,
-      "releaseDate": "2026-11-27",
+      "releaseDate": "2027-02-16",
       "workshopId": "3381870803",
       "title": {
         "en": "MAC-10 Volcanic Lava Skin",
@@ -875,10 +1217,29 @@
       "originalDescription": "please turn up the light and shadow details to high for the best experience 请把光影细节调成高获得最好的体验"
     },
     {
+      "id": "volcanic-mp5",
+      "weapon": "weapon_smg_mp5",
+      "level": 9,
+      "releaseDate": "2027-05-01",
+      "workshopId": "3381943137",
+      "title": {
+        "en": "MP5 - Volcanic Lava",
+        "pt": "MP5 - Volcanic Lava",
+        "es": "MP5 - Volcanic Lava"
+      },
+      "description": {
+        "en": "Volcanic lava MP5 with glowing cracks. Looks best with high shader detail.",
+        "pt": "MP5 de lava vulcânica com rachaduras brilhantes. Fica melhor com detalhes de shader no alto.",
+        "es": "MP5 de lava volcánica con grietas brillantes. Se ve mejor con el detalle de shaders en alto."
+      },
+      "originalTitle": "MP5 volcanic lava skin",
+      "originalDescription": "please turn up the light and shadow details to high for the best experience 请把光影细节调成高获得最好的体验"
+    },
+    {
       "id": "darkdread",
       "weapon": "weapon_pumpshotgun",
       "level": 9,
-      "releaseDate": "2026-12-11",
+      "releaseDate": "2027-02-01",
       "workshopId": "2988115895",
       "title": {
         "en": "Lord Darkdread Pumpshotgun",
@@ -916,7 +1277,7 @@
       "id": "honey-dragon",
       "weapon": "weapon_pumpshotgun",
       "level": 9,
-      "releaseDate": "2026-12-25",
+      "releaseDate": "2027-04-01",
       "workshopId": "2558200493",
       "title": {
         "en": "Tribal Hunter Honey Dragon Pumpshotgun",
@@ -935,7 +1296,7 @@
       "id": "asiimov-blue",
       "weapon": "weapon_shotgun_chrome",
       "level": 9,
-      "releaseDate": "2027-03-19",
+      "releaseDate": "2027-03-01",
       "workshopId": "2607196353",
       "title": {
         "en": "Chrome Shotgun | Asiimov Light Blue",
@@ -954,7 +1315,7 @@
       "id": "celeuna",
       "weapon": "weapon_shotgun_chrome",
       "level": 9,
-      "releaseDate": "2027-04-02",
+      "releaseDate": "2027-05-01",
       "workshopId": "1896292547",
       "title": {
         "en": "Chrome | Celeuna",
@@ -970,10 +1331,67 @@
       "originalDescription": "yo 0/ hey there people im back again, time has been shorten for me again, but hopefully everything is cool... for now, this time with a bit of testing with the selfinlum command, and with this celeuna skin( celestia + luna), and the darker the ilumination of the game, the more yo…"
     },
     {
+      "id": "ice-axe",
+      "weapon": "weapon_melee_fireaxe",
+      "level": 9,
+      "releaseDate": "2027-06-01",
+      "workshopId": "3465787019",
+      "title": {
+        "en": "Fireaxe - Ice Coaled",
+        "pt": "Fireaxe - Ice Coaled",
+        "es": "Fireaxe - Ice Coaled"
+      },
+      "description": {
+        "en": "Fire axe with an icy blue-green gradient blade.",
+        "pt": "Machado com lâmina em degradê gelado de azul para verde.",
+        "es": "Hacha con hoja en degradado helado de azul a verde."
+      },
+      "originalTitle": "L4D2 Fire Axe Ice coaled 可燃冰官模消防斧",
+      "originalDescription": "求生之路的消防斧武器本身打击感就是数一数二的 该模组是修改了官方模型的材质 无夜光"
+    },
+    {
+      "id": "gura-katana",
+      "weapon": "weapon_melee_katana",
+      "level": 9,
+      "releaseDate": "2026-10-15",
+      "workshopId": "2269950390",
+      "title": {
+        "en": "Katana - Gawr Gura",
+        "pt": "Katana - Gawr Gura",
+        "es": "Katana - Gawr Gura"
+      },
+      "description": {
+        "en": "Katana in Gawr Gura's colors, with Bloop on the handle.",
+        "pt": "Katana com as cores da Gawr Gura e o Bloop no cabo.",
+        "es": "Katana con los colores de Gawr Gura y Bloop en el mango."
+      },
+      "originalTitle": "Gawr Gura Themed Katana",
+      "originalDescription": "\"Somehow Guras spirit got inside this katana...or someone just recolored it\" A simple reskin of the katana using colors that resemble Gawr Gura, also Bloop in the handle. a"
+    },
+    {
+      "id": "my-melody-bat",
+      "weapon": "weapon_melee_baseball_bat",
+      "level": 9,
+      "releaseDate": "2027-02-01",
+      "workshopId": "3357469022",
+      "title": {
+        "en": "Baseball Bat - My Melody",
+        "pt": "Baseball Bat - My Melody",
+        "es": "Baseball Bat - My Melody"
+      },
+      "description": {
+        "en": "Pink Sanrio My Melody themed baseball bat.",
+        "pt": "Taco de beisebol rosa com tema da My Melody, da Sanrio.",
+        "es": "Bate de béisbol rosa con temática de My Melody, de Sanrio."
+      },
+      "originalTitle": "My Melody Bat",
+      "originalDescription": "This changes the textures of the Bat from original to My Melody! This also does not include any custom animations but texture remaking. If you have any questions or anything else, let me know! Credits: - All credits goes to Sanrio with their characters. - Sanrio Website - サンリオ Tags (Ignore): Pink,…"
+    },
+    {
       "id": "printstream-mac-lite",
       "weapon": "weapon_smg_silenced",
       "level": 8,
-      "releaseDate": "2027-04-02",
+      "releaseDate": "2027-04-01",
       "workshopId": "2915661033",
       "title": {
         "en": "Mac10 - PrintStream",
@@ -992,7 +1410,7 @@
       "id": "shadowbolt",
       "weapon": "weapon_smg_silenced",
       "level": 8,
-      "releaseDate": "2026-10-30",
+      "releaseDate": "2027-06-16",
       "workshopId": "1891172953",
       "title": {
         "en": "S.SMG | ShadowBolt",
@@ -1008,10 +1426,29 @@
       "originalDescription": "yo 0/ Requested by : Warpath-the-drone swe tag : mlp my little pony"
     },
     {
+      "id": "flareon-mp5",
+      "weapon": "weapon_smg_mp5",
+      "level": 8,
+      "releaseDate": "2026-10-15",
+      "workshopId": "3440232168",
+      "title": {
+        "en": "MP5 - Flareon",
+        "pt": "MP5 - Flareon",
+        "es": "MP5 - Flareon"
+      },
+      "description": {
+        "en": "Pokémon Flareon themed MP5 in orange and cream.",
+        "pt": "MP5 com tema do Pokémon Flareon, em laranja e creme.",
+        "es": "MP5 con temática del Pokémon Flareon, en naranja y crema."
+      },
+      "originalTitle": "Flareon MP5",
+      "originalDescription": "Flareon MP5 skin It looks a bit different when you pick it up because CSS weapons are done oddly and dumb."
+    },
+    {
       "id": "ghost",
       "weapon": "weapon_pumpshotgun",
       "level": 8,
-      "releaseDate": "2026-11-13",
+      "releaseDate": "2027-06-01",
       "workshopId": "2622374394",
       "title": {
         "en": "Halloween Ghost Pump Shotgun",
@@ -1030,7 +1467,7 @@
       "id": "pumpkin-patch",
       "weapon": "weapon_pumpshotgun",
       "level": 8,
-      "releaseDate": "2026-11-27",
+      "releaseDate": "2026-12-01",
       "workshopId": "2247225793",
       "title": {
         "en": "Pump | Pumpkin Patch",
@@ -1049,7 +1486,7 @@
       "id": "anubis",
       "weapon": "weapon_shotgun_chrome",
       "level": 8,
-      "releaseDate": "2027-02-19",
+      "releaseDate": "2026-11-01",
       "workshopId": "1973325659",
       "title": {
         "en": "Chrome | Anubis",
@@ -1068,7 +1505,7 @@
       "id": "volcanic-chrome",
       "weapon": "weapon_shotgun_chrome",
       "level": 8,
-      "releaseDate": "2027-03-05",
+      "releaseDate": "2027-01-01",
       "workshopId": "1898445622",
       "title": {
         "en": "Shotguns | Volcanic",
@@ -1084,10 +1521,48 @@
       "originalDescription": "yo 0/ suggested by: Dot [?] a volcanic themed pump & chrome shotguns, hope yall enjoy"
     },
     {
+      "id": "nicks-axe",
+      "weapon": "weapon_melee_fireaxe",
+      "level": 8,
+      "releaseDate": "2026-10-15",
+      "workshopId": "2722431635",
+      "title": {
+        "en": "Fireaxe - Nick's Axe",
+        "pt": "Fireaxe - Nick's Axe",
+        "es": "Fireaxe - Nick's Axe"
+      },
+      "description": {
+        "en": "Shark-mouth fire axe made for Nick, in white and blue.",
+        "pt": "Machado com boca de tubarão feito para o Nick, em branco e azul.",
+        "es": "Hacha con boca de tiburón hecha para Nick, en blanco y azul."
+      },
+      "originalTitle": "Nick's Axe",
+      "originalDescription": "\"Brains come out, swamp water doesn't. Don't ask me how I know that.\" - Nick A neat little Fireaxe retexture meant for our favorite ex con man, Nick! May be wondering why specifically, the axe? remember that final shot of the main 4 in the elevator in the intro? yeah that's why. Initially this was…"
+    },
+    {
+      "id": "puro-machete",
+      "weapon": "weapon_melee_machete",
+      "level": 8,
+      "releaseDate": "2026-11-01",
+      "workshopId": "3325822443",
+      "title": {
+        "en": "Machete - Puro and K (Glow)",
+        "pt": "Machete - Puro and K (Glow)",
+        "es": "Machete - Puro and K (Glow)"
+      },
+      "description": {
+        "en": "Changed furry themed machete with 7 random looks and soft glow; the look changes each round.",
+        "pt": "Facão com tema furry de Changed, com 7 visuais aleatórios e brilho suave; o visual muda a cada round.",
+        "es": "Machete con temática furry de Changed, con 7 aspectos aleatorios y brillo suave; el aspecto cambia cada ronda."
+      },
+      "originalTitle": "furry changed随机砍刀Puro and K Random machete (Glow)",
+      "originalDescription": "仅仅更改了砍刀的贴图，模型来自官方，不刺眼夜光，没有音效，可搭配其他mod使用 移除了血液的滞留效果，让毛茸茸们保持干净 有7种随机效果，拿在手上的效果会在当前回合结束后刷新，即每回合一种手持效果，掉落时完全随机 Only changed the texture of the machete, the model is from the official, there is no sound effect, and it can be used with other mods Removed the blood retention effect and kept furries clean…"
+    },
+    {
       "id": "marisa",
       "weapon": "weapon_smg",
       "level": 7,
-      "releaseDate": "2027-02-05",
+      "releaseDate": "2027-02-16",
       "workshopId": "3302648369",
       "title": {
         "en": "Touhou Project Marisa Kirisame UZI",
@@ -1106,7 +1581,7 @@
       "id": "rat-a-tat",
       "weapon": "weapon_smg_silenced",
       "level": 7,
-      "releaseDate": "2027-03-05",
+      "releaseDate": "2026-11-01",
       "workshopId": "2020709816",
       "title": {
         "en": "Rat A Tat Tat (Glowing)",
@@ -1125,7 +1600,7 @@
       "id": "vercetti",
       "weapon": "weapon_smg_silenced",
       "level": 7,
-      "releaseDate": "2027-03-19",
+      "releaseDate": "2027-01-16",
       "workshopId": "3791846410",
       "title": {
         "en": "\"Vercetti Vintage\" MAC-10 Reskin",
@@ -1141,10 +1616,29 @@
       "originalDescription": "Just a quick retexture i made inspired by gta 6 mods used: Animation Nick"
     },
     {
+      "id": "watergun-mp5",
+      "weapon": "weapon_smg_mp5",
+      "level": 7,
+      "releaseDate": "2027-02-16",
+      "workshopId": "3349350731",
+      "title": {
+        "en": "MP5 - Watergun",
+        "pt": "MP5 - Watergun",
+        "es": "MP5 - Watergun"
+      },
+      "description": {
+        "en": "Green and yellow toy water gun look for the MP5.",
+        "pt": "Visual de pistola d'água de brinquedo, verde e amarela, para a MP5.",
+        "es": "Aspecto de pistola de agua de juguete, verde y amarilla, para la MP5."
+      },
+      "originalTitle": "PORT: Watergun MP5",
+      "originalDescription": "Pick up a weel gun... Pick up a WEEL gun! This replaces the default MP5 texture with watergun green-yellow-esque texture by codeman and Xanatos. I know this is not as accurate as in the video but it's better than nothing. Compatible with reanimations and remodels. Credits: codeman & Xanatos (Counte…"
+    },
+    {
       "id": "freddy",
       "weapon": "weapon_pumpshotgun",
       "level": 7,
-      "releaseDate": "2027-04-02",
+      "releaseDate": "2027-01-01",
       "workshopId": "2827288336",
       "title": {
         "en": "Glamrock Freddy Pumpshotgun",
@@ -1163,7 +1657,7 @@
       "id": "pumpkaboo",
       "weapon": "weapon_pumpshotgun",
       "level": 7,
-      "releaseDate": "2026-10-30",
+      "releaseDate": "2027-03-16",
       "workshopId": "2640388420",
       "title": {
         "en": "Shiny Pumpkaboo Pump Shotgun",
@@ -1182,7 +1676,7 @@
       "id": "hot-rod",
       "weapon": "weapon_shotgun_chrome",
       "level": 7,
-      "releaseDate": "2027-01-22",
+      "releaseDate": "2027-02-01",
       "workshopId": "2012965052",
       "title": {
         "en": "Chrome | Hot Rod",
@@ -1201,7 +1695,7 @@
       "id": "segawa-emi",
       "weapon": "weapon_shotgun_chrome",
       "level": 7,
-      "releaseDate": "2027-02-05",
+      "releaseDate": "2027-04-16",
       "workshopId": "3225009583",
       "title": {
         "en": "Segawa Emi Chrome Shotgun",
@@ -1217,10 +1711,48 @@
       "originalDescription": "濑川绘未，颜艺社作品《恋爱，我就借走了》（恋愛、借りちゃいました）女主 替换原版铁喷贴图，有发光效果 枪身立绘表情会定时切换（做这个皮就是因为太喜欢她了而且颜艺太有意思了XD）"
     },
     {
+      "id": "solver-axe",
+      "weapon": "weapon_melee_fireaxe",
+      "level": 7,
+      "releaseDate": "2027-03-16",
+      "workshopId": "3482483091",
+      "title": {
+        "en": "Fireaxe - Murder Drones Solver",
+        "pt": "Fireaxe - Murder Drones Solver",
+        "es": "Fireaxe - Murder Drones Solver"
+      },
+      "description": {
+        "en": "Murder Drones Solver themed fire axe in white, black and yellow.",
+        "pt": "Machado com tema do Solver de Murder Drones, em branco, preto e amarelo.",
+        "es": "Hacha con temática del Solver de Murder Drones, en blanco, negro y amarillo."
+      },
+      "originalTitle": "Murder Drones Axe Solver(skin)",
+      "originalDescription": "Murder Drones solver skin for Axe (This is my first addon for l4d2.)"
+    },
+    {
+      "id": "rainbow-crowbar",
+      "weapon": "weapon_melee_crowbar",
+      "level": 7,
+      "releaseDate": "2027-04-16",
+      "workshopId": "2046555366",
+      "title": {
+        "en": "Crowbar - Rainbow",
+        "pt": "Crowbar - Rainbow",
+        "es": "Crowbar - Rainbow"
+      },
+      "description": {
+        "en": "Rainbow gradient crowbar reskin.",
+        "pt": "Reskin do pé de cabra em degradê de arco-íris.",
+        "es": "Reskin de la palanca en degradado de arcoíris."
+      },
+      "originalTitle": "Rainbow Crowbar",
+      "originalDescription": "Rainbow Crowbar reskin. 😊"
+    },
+    {
       "id": "ethereal",
       "weapon": "weapon_smg_silenced",
       "level": 6,
-      "releaseDate": "2027-02-19",
+      "releaseDate": "2027-04-16",
       "workshopId": "3413132036",
       "title": {
         "en": "Ethereal MAC-10 Skin",
@@ -1255,10 +1787,48 @@
       "originalDescription": "A"
     },
     {
+      "id": "purple-camo-mp5",
+      "weapon": "weapon_smg_mp5",
+      "level": 6,
+      "releaseDate": "2027-05-16",
+      "workshopId": "2878386179",
+      "title": {
+        "en": "MP5 - Purple Camo",
+        "pt": "MP5 - Purple Camo",
+        "es": "MP5 - Purple Camo"
+      },
+      "description": {
+        "en": "Purple camouflage skin for the MP5.",
+        "pt": "Skin de camuflagem roxa para a MP5.",
+        "es": "Skin de camuflaje morado para la MP5."
+      },
+      "originalTitle": "MP5 - Purple Camo",
+      "originalDescription": "Simple Purple Camo skin for MP5! (W_MODEL INCLUDED / Works with Animations!)"
+    },
+    {
+      "id": "silver-mp5",
+      "weapon": "weapon_smg_mp5",
+      "level": 6,
+      "releaseDate": "2026-12-01",
+      "workshopId": "3332413493",
+      "title": {
+        "en": "MP5 - Silver",
+        "pt": "MP5 - Silver",
+        "es": "MP5 - Silver"
+      },
+      "description": {
+        "en": "Clean silver cover for the MP5, ported from GameBanana.",
+        "pt": "Cobertura prateada limpa para a MP5, portada do GameBanana.",
+        "es": "Cubierta plateada limpia para la MP5, portada de GameBanana."
+      },
+      "originalTitle": "PORT: Silver MP5 Reskin",
+      "originalDescription": "Greetings. This is just a simple port from a gamebanana mod done by POTjohn and cinjay3434. Man, I love silver. This replaces the default MP5 texture with a silver cover. This is compatible with different models and different animations (as you can see the L4D:GO MP5 on L4D1 Animations). Credits; P…"
+    },
+    {
       "id": "charizard",
       "weapon": "weapon_pumpshotgun",
       "level": 6,
-      "releaseDate": "2027-03-05",
+      "releaseDate": "2027-04-01",
       "workshopId": "2778467302",
       "title": {
         "en": "Shiny Charizard Pumpshotgun",
@@ -1277,7 +1847,7 @@
       "id": "kao",
       "weapon": "weapon_pumpshotgun",
       "level": 6,
-      "releaseDate": "2027-03-19",
+      "releaseDate": "2027-06-16",
       "workshopId": "2815653917",
       "title": {
         "en": "Kao the Kangaroo Pumpshotgun",
@@ -1296,7 +1866,7 @@
       "id": "black-gold",
       "weapon": "weapon_shotgun_chrome",
       "level": 6,
-      "releaseDate": "2026-12-25",
+      "releaseDate": "2027-05-01",
       "workshopId": "2418491788",
       "title": {
         "en": "Chrome Shotgun Black&Gold Skin",
@@ -1315,7 +1885,7 @@
       "id": "scott-the-woz",
       "weapon": "weapon_shotgun_chrome",
       "level": 6,
-      "releaseDate": "2027-01-08",
+      "releaseDate": "2026-11-16",
       "workshopId": "2789609798",
       "title": {
         "en": "Scott The Woz Chrome Shotgun",
@@ -1331,10 +1901,67 @@
       "originalDescription": "I decided to make this shotgun after a friend in a call was like do this i also spent 40 minutes trying to figure out vmt's i gave up"
     },
     {
+      "id": "nebula-axe",
+      "weapon": "weapon_melee_fireaxe",
+      "level": 6,
+      "releaseDate": "2026-12-16",
+      "workshopId": "2479358362",
+      "title": {
+        "en": "Fireaxe - Nebula",
+        "pt": "Fireaxe - Nebula",
+        "es": "Fireaxe - Nebula"
+      },
+      "description": {
+        "en": "Purple nebula fire axe that glows in the dark.",
+        "pt": "Machado de nebulosa roxa que brilha no escuro.",
+        "es": "Hacha de nebulosa morada que brilla en la oscuridad."
+      },
+      "originalTitle": "Nebula Fireaxe",
+      "originalDescription": "Retexture for the fireaxe. (Im going to start a collection with nebula retextures for weapons) - Glows in dark"
+    },
+    {
+      "id": "luna-katana",
+      "weapon": "weapon_melee_katana",
+      "level": 6,
+      "releaseDate": "2027-01-01",
+      "workshopId": "3344571453",
+      "title": {
+        "en": "Katana - Luna's Guard",
+        "pt": "Katana - Luna's Guard",
+        "es": "Katana - Luna's Guard"
+      },
+      "description": {
+        "en": "Starry blue katana inspired by Princess Luna from My Little Pony.",
+        "pt": "Katana azul estrelada inspirada na Princesa Luna de My Little Pony.",
+        "es": "Katana azul estrellada inspirada en la Princesa Luna de My Little Pony."
+      },
+      "originalTitle": "Royal Equestrian Sword (Luna's Guard)",
+      "originalDescription": "\"Hail the New Lunar Republic\" Gives the Katana a new, selene look, based on \"My Little Pony: Friendship is Magic\" 's own lunar diarch, Princess Luna. join the lunar rebellion"
+    },
+    {
+      "id": "rickenbacker-guitar",
+      "weapon": "weapon_melee_electric_guitar",
+      "level": 6,
+      "releaseDate": "2027-06-01",
+      "workshopId": "2858127316",
+      "title": {
+        "en": "Electric Guitar - Scott's Rickenbacker",
+        "pt": "Electric Guitar - Scott's Rickenbacker",
+        "es": "Electric Guitar - Scott's Rickenbacker"
+      },
+      "description": {
+        "en": "Scott's Rickenbacker from Scott Pilgrim vs. the World, with \"Ramona was here\" etched on it.",
+        "pt": "A Rickenbacker do Scott, de Scott Pilgrim contra o Mundo, com \"Ramona was here\" gravado.",
+        "es": "La Rickenbacker de Scott, de Scott Pilgrim contra el mundo, con \"Ramona was here\" grabado."
+      },
+      "originalTitle": "Scott's Rickenbacker - Reskin for Electric Guitar",
+      "originalDescription": "Scott's Rickenbacker from Scott Pilgrim vs. the World replaces the default skin. Applies to electric guitar only. The words, \"Ramona was here,\" is etched on the bottom of the guitar. Compatibility - Appears in Valve official and community-made campaigns. Excludes a community-made reskin in a campai…"
+    },
+    {
       "id": "volcanic-uzi",
       "weapon": "weapon_smg",
       "level": 5,
-      "releaseDate": "2027-01-22",
+      "releaseDate": "2027-05-16",
       "workshopId": "2037879288",
       "title": {
         "en": "Uzi | Volcanic",
@@ -1353,7 +1980,7 @@
       "id": "riolu",
       "weapon": "weapon_smg_silenced",
       "level": 5,
-      "releaseDate": "2027-01-22",
+      "releaseDate": "2026-11-01",
       "workshopId": "3534662352",
       "title": {
         "en": "Worn MAC-10 - Shiny Riolu",
@@ -1372,7 +1999,7 @@
       "id": "urban",
       "weapon": "weapon_smg_silenced",
       "level": 5,
-      "releaseDate": "2027-02-05",
+      "releaseDate": "2027-02-01",
       "workshopId": "1883809532",
       "title": {
         "en": "Silenced SMG_Urban",
@@ -1388,10 +2015,48 @@
       "originalDescription": "The next release in the Urban series, this time around we have the Silenced SMG. Enjoy!"
     },
     {
+      "id": "black-tactical-mp5",
+      "weapon": "weapon_smg_mp5",
+      "level": 5,
+      "releaseDate": "2026-12-01",
+      "workshopId": "2415413374",
+      "title": {
+        "en": "MP5 - Black Tactical",
+        "pt": "MP5 - Black Tactical",
+        "es": "MP5 - Black Tactical"
+      },
+      "description": {
+        "en": "Darker, all-black tactical reskin of the CSS MP5.",
+        "pt": "Reskin tático todo preto e mais escuro da MP5 do CSS.",
+        "es": "Reskin táctico totalmente negro y más oscuro de la MP5 de CSS."
+      },
+      "originalTitle": "Black Tactical CSS MP5",
+      "originalDescription": "Simple reskin for H&K MP5, that is, CSS MP5. I made this more darker. Compatible with custom animations. I am using these reanimations - link Gloves for all Survivous - link Credits: HitSmoker - reskin Valve - models ShotgunnerFox - reanimation"
+    },
+    {
+      "id": "dirty-silver-mp5",
+      "weapon": "weapon_smg_mp5",
+      "level": 5,
+      "releaseDate": "2027-03-01",
+      "workshopId": "3468733406",
+      "title": {
+        "en": "MP5 - Dirty Silver",
+        "pt": "MP5 - Dirty Silver",
+        "es": "MP5 - Dirty Silver"
+      },
+      "description": {
+        "en": "Worn, dirty silver finish for the MP5.",
+        "pt": "Acabamento prateado sujo e desgastado para a MP5.",
+        "es": "Acabado plateado sucio y desgastado para la MP5."
+      },
+      "originalTitle": "Dirty Silver Mp5",
+      "originalDescription": "ᓚᘏᗢTiina☯ Dirty Silver Mp5, I just separated textures from model. https://steamcommunity.com/sharedfiles/filedetails/?id=3364831535&searchtext=dirty+silver+mp5 - Original"
+    },
+    {
       "id": "clodsire",
       "weapon": "weapon_pumpshotgun",
       "level": 5,
-      "releaseDate": "2027-02-05",
+      "releaseDate": "2027-06-16",
       "workshopId": "2946973675",
       "title": {
         "en": "Clodsire Pumpshotgun",
@@ -1410,7 +2075,7 @@
       "id": "fuecoco",
       "weapon": "weapon_pumpshotgun",
       "level": 5,
-      "releaseDate": "2027-02-19",
+      "releaseDate": "2027-01-16",
       "workshopId": "2893293186",
       "title": {
         "en": "Fuecoco Pumpshotgun",
@@ -1448,7 +2113,7 @@
       "id": "miltank",
       "weapon": "weapon_shotgun_chrome",
       "level": 5,
-      "releaseDate": "2026-12-11",
+      "releaseDate": "2027-02-16",
       "workshopId": "1743997241",
       "title": {
         "en": "Shiny Miltank Chrome Shotgun",
@@ -1464,10 +2129,67 @@
       "originalDescription": "\"Mil Mil\"~ Manchas (My son gave me that name for my miltank oc :) ) Well since my second Pokesona is a shiny fatherly miltank ive decided to replace a powerful shotgun with a strong normal type (Ill always be a fatherly kangaskhan) All credit goes to Nintendo and Pokemon"
     },
     {
+      "id": "acid-blade-axe",
+      "weapon": "weapon_melee_fireaxe",
+      "level": 5,
+      "releaseDate": "2027-05-16",
+      "workshopId": "2379815447",
+      "title": {
+        "en": "Fireaxe - Acid Blade",
+        "pt": "Fireaxe - Acid Blade",
+        "es": "Fireaxe - Acid Blade"
+      },
+      "description": {
+        "en": "Acid green painted blade with a wrapped grip.",
+        "pt": "Lâmina pintada de verde ácido e cabo enrolado.",
+        "es": "Hoja pintada de verde ácido y empuñadura envuelta."
+      },
+      "originalTitle": "Fireaxe | Acid Blade",
+      "originalDescription": "The blade is painted to green acid color and the grip is wrapped. Compatible with custom animations. Hope you will enjoy :)"
+    },
+    {
+      "id": "sweet-dreams-machete",
+      "weapon": "weapon_melee_machete",
+      "level": 5,
+      "releaseDate": "2027-01-16",
+      "workshopId": "2003885703",
+      "title": {
+        "en": "Machete - Sweet Dreams",
+        "pt": "Machete - Sweet Dreams",
+        "es": "Machete - Sweet Dreams"
+      },
+      "description": {
+        "en": "Starry night sky machete.",
+        "pt": "Facão com céu noturno estrelado.",
+        "es": "Machete con cielo nocturno estrellado."
+      },
+      "originalTitle": "Machete | Sweet Dreams",
+      "originalDescription": "yo 0/"
+    },
+    {
+      "id": "lovely-heart-guitar",
+      "weapon": "weapon_melee_electric_guitar",
+      "level": 5,
+      "releaseDate": "2026-12-16",
+      "workshopId": "1993366463",
+      "title": {
+        "en": "Electric Guitar - Lovely Heart",
+        "pt": "Electric Guitar - Lovely Heart",
+        "es": "Electric Guitar - Lovely Heart"
+      },
+      "description": {
+        "en": "Pink electric guitar covered in hearts.",
+        "pt": "Guitarra rosa coberta de corações.",
+        "es": "Guitarra rosa cubierta de corazones."
+      },
+      "originalTitle": "Guitar | Lovely Heart",
+      "originalDescription": "yo 0/ Here it is my first skin for a melee weapon hope yall like it!"
+    },
+    {
       "id": "narumi-toa",
       "weapon": "weapon_smg",
       "level": 4,
-      "releaseDate": "2027-01-08",
+      "releaseDate": "2026-12-01",
       "workshopId": "3335472907",
       "title": {
         "en": "Wagamama High Spec Narumi Toa UZI",
@@ -1486,7 +2208,7 @@
       "id": "case-hardened",
       "weapon": "weapon_smg_silenced",
       "level": 4,
-      "releaseDate": "2026-12-25",
+      "releaseDate": "2027-01-01",
       "workshopId": "3361646012",
       "title": {
         "en": "multoman's RNG Skins Separated: Case Hardened MAC-10",
@@ -1505,7 +2227,7 @@
       "id": "pink-black",
       "weapon": "weapon_smg_silenced",
       "level": 4,
-      "releaseDate": "2027-01-08",
+      "releaseDate": "2027-04-01",
       "workshopId": "3384494412",
       "title": {
         "en": "Solid Pink & Black Silenced SMG",
@@ -1521,10 +2243,48 @@
       "originalDescription": "This completely recolors the Silenced SMG using Pink & Black! The textures do not display fully but only the solid colors, which completely retextures the whole weapon! No animations nor improvements used in any of the screenshots! This is only a retexture! Let me know anything e…"
     },
     {
+      "id": "battle-worn-mp5",
+      "weapon": "weapon_smg_mp5",
+      "level": 4,
+      "releaseDate": "2027-02-01",
+      "workshopId": "3503590830",
+      "title": {
+        "en": "MP5 - Battle Worn",
+        "pt": "MP5 - Battle Worn",
+        "es": "MP5 - Battle Worn"
+      },
+      "description": {
+        "en": "Battle-worn finish for the MP5, from multoman's RNG skin pack.",
+        "pt": "Acabamento desgastado de batalha para a MP5, do pacote RNG do multoman.",
+        "es": "Acabado desgastado por la batalla para la MP5, del pack RNG de multoman."
+      },
+      "originalTitle": "multoman's RNG Skins Seperated: Battle Worn MP5",
+      "originalDescription": "Compatible with reanimations; L4D1 Anims as a example. This replaces the default MP5 skin from multoman's MP5 10 Skin RNG mod: Battle Worn on the default model. CREDITS: multoman's mod: MP5 10 Skin RNG"
+    },
+    {
+      "id": "rusted-mp5",
+      "weapon": "weapon_smg_mp5",
+      "level": 4,
+      "releaseDate": "2027-05-01",
+      "workshopId": "3503595463",
+      "title": {
+        "en": "MP5 - Rusted",
+        "pt": "MP5 - Rusted",
+        "es": "MP5 - Rusted"
+      },
+      "description": {
+        "en": "Rusted finish for the MP5, from multoman's RNG skin pack.",
+        "pt": "Acabamento enferrujado para a MP5, do pacote RNG do multoman.",
+        "es": "Acabado oxidado para la MP5, del pack RNG de multoman."
+      },
+      "originalTitle": "multoman's RNG Skins Seperated: Rusted MP5",
+      "originalDescription": "Compatible with reanimations; L4D1 Anims as a example. This replaces the default MP5 skin from multoman's MP5 10 Skin RNG mod: Rusted on the default model. CREDITS: multoman's mod: MP5 10 Skin RNG"
+    },
+    {
       "id": "big-the-cat",
       "weapon": "weapon_pumpshotgun",
       "level": 4,
-      "releaseDate": "2027-01-22",
+      "releaseDate": "2027-03-16",
       "workshopId": "3703964121",
       "title": {
         "en": "Big the Cat Pumpshotgun",
@@ -1562,7 +2322,7 @@
       "id": "google-chrome",
       "weapon": "weapon_shotgun_chrome",
       "level": 4,
-      "releaseDate": "2026-11-13",
+      "releaseDate": "2027-04-16",
       "workshopId": "3233682675",
       "title": {
         "en": "Google Chrome Shotgun",
@@ -1581,7 +2341,7 @@
       "id": "wildfire",
       "weapon": "weapon_shotgun_chrome",
       "level": 4,
-      "releaseDate": "2026-11-27",
+      "releaseDate": "2026-11-16",
       "workshopId": "2123530345",
       "title": {
         "en": "Chrome Shotgun_Wildfire",
@@ -1597,10 +2357,86 @@
       "originalDescription": "\" Burn them all! \""
     },
     {
+      "id": "blazing-axe",
+      "weapon": "weapon_melee_fireaxe",
+      "level": 4,
+      "releaseDate": "2027-06-16",
+      "workshopId": "3289016100",
+      "title": {
+        "en": "Fireaxe - Blazing",
+        "pt": "Fireaxe - Blazing",
+        "es": "Fireaxe - Blazing"
+      },
+      "description": {
+        "en": "Fire axe with painted flames on the head.",
+        "pt": "Machado com chamas pintadas na lâmina.",
+        "es": "Hacha con llamas pintadas en la hoja."
+      },
+      "originalTitle": "Blazing Axe",
+      "originalDescription": "Because adding flames to anything makes it atleast 10% cooler You are free to use any of my mods in your own things, as long as you give proper credit. You don't have to ask me beforehand. And since I change my display name alot, just put the name nyfft in the credits for consistency."
+    },
+    {
+      "id": "foxy-axe",
+      "weapon": "weapon_melee_fireaxe",
+      "level": 4,
+      "releaseDate": "2027-02-16",
+      "workshopId": "3373769872",
+      "title": {
+        "en": "Fireaxe - Nightmare Foxy",
+        "pt": "Fireaxe - Nightmare Foxy",
+        "es": "Fireaxe - Nightmare Foxy"
+      },
+      "description": {
+        "en": "Five Nights at Freddy's Nightmare Foxy themed fire axe.",
+        "pt": "Machado com tema do Nightmare Foxy de Five Nights at Freddy's.",
+        "es": "Hacha con temática de Nightmare Foxy de Five Nights at Freddy's."
+      },
+      "originalTitle": "nightmare foxy axe reskin",
+      "originalDescription": "just a axe reskin"
+    },
+    {
+      "id": "star-bat",
+      "weapon": "weapon_melee_baseball_bat",
+      "level": 4,
+      "releaseDate": "2027-03-16",
+      "workshopId": "2466904025",
+      "title": {
+        "en": "Baseball Bat - Circles and Stars",
+        "pt": "Baseball Bat - Circles and Stars",
+        "es": "Baseball Bat - Circles and Stars"
+      },
+      "description": {
+        "en": "Baseball bat covered in colorful circles and stars.",
+        "pt": "Taco de beisebol coberto de círculos e estrelas coloridos.",
+        "es": "Bate de béisbol cubierto de círculos y estrellas de colores."
+      },
+      "originalTitle": "Circle and Star Pattern Bat",
+      "originalDescription": "a texture which contains multiple colored circles and stars replaces the bat's default skin"
+    },
+    {
+      "id": "green-cricket-bat",
+      "weapon": "weapon_melee_cricket_bat",
+      "level": 4,
+      "releaseDate": "2027-04-01",
+      "workshopId": "2425282156",
+      "title": {
+        "en": "Cricket Bat - Green and Gold",
+        "pt": "Cricket Bat - Green and Gold",
+        "es": "Cricket Bat - Green and Gold"
+      },
+      "description": {
+        "en": "Cricket bat with green and gold stripes.",
+        "pt": "Taco de críquete com faixas verdes e douradas.",
+        "es": "Bate de críquet con franjas verdes y doradas."
+      },
+      "originalTitle": "Cricket Bat",
+      "originalDescription": "Cricket Bat"
+    },
+    {
       "id": "patriotic",
       "weapon": "weapon_smg_silenced",
       "level": 3,
-      "releaseDate": "2026-11-27",
+      "releaseDate": "2026-12-16",
       "workshopId": "3361636124",
       "title": {
         "en": "multoman's RNG Skins Separated: Patriotic MAC-10",
@@ -1619,7 +2455,7 @@
       "id": "patriotic-tls",
       "weapon": "weapon_smg_silenced",
       "level": 3,
-      "releaseDate": "2026-12-11",
+      "releaseDate": "2027-05-01",
       "workshopId": "3426201673",
       "title": {
         "en": "multoman's RNG Skins Separated: Patriotic MAC-10 (TLS Version)",
@@ -1635,10 +2471,48 @@
       "originalDescription": "This mod except it replaces the TLS skin instead. Requested by A random guy. Compatible with reanimations; L4D1 Anims as a example. Available in the Last Stand campaign Map 2 at the Tower. CREDITS: multoman's mod: MAC 10 Skin RNG"
     },
     {
+      "id": "ral-8000-mp5",
+      "weapon": "weapon_smg_mp5",
+      "level": 3,
+      "releaseDate": "2027-01-16",
+      "workshopId": "3503594155",
+      "title": {
+        "en": "MP5 - RAL 8000",
+        "pt": "MP5 - RAL 8000",
+        "es": "MP5 - RAL 8000"
+      },
+      "description": {
+        "en": "Military brown RAL 8000 finish for the MP5, from multoman's RNG skin pack.",
+        "pt": "Acabamento marrom militar RAL 8000 para a MP5, do pacote RNG do multoman.",
+        "es": "Acabado marrón militar RAL 8000 para la MP5, del pack RNG de multoman."
+      },
+      "originalTitle": "multoman's RNG Skins Seperated: RAL 8000 MP5",
+      "originalDescription": "Compatible with reanimations; L4D1 Anims as a example. This replaces the default MP5 skin from multoman's MP5 10 Skin RNG mod: RAL 8000 on the default model. CREDITS: multoman's mod: MP5 10 Skin RNG"
+    },
+    {
+      "id": "two-tone-mp5",
+      "weapon": "weapon_smg_mp5",
+      "level": 3,
+      "releaseDate": "2027-06-01",
+      "workshopId": "3503595929",
+      "title": {
+        "en": "MP5 - Two Tone",
+        "pt": "MP5 - Two Tone",
+        "es": "MP5 - Two Tone"
+      },
+      "description": {
+        "en": "Two-tone finish for the MP5, from multoman's RNG skin pack.",
+        "pt": "Acabamento em dois tons para a MP5, do pacote RNG do multoman.",
+        "es": "Acabado en dos tonos para la MP5, del pack RNG de multoman."
+      },
+      "originalTitle": "multoman's RNG Skins Seperated: Two Tone MP5",
+      "originalDescription": "Compatible with reanimations; L4D1 Anims as a example. This replaces the default MP5 skin from multoman's MP5 10 Skin RNG mod: Two Tone on the default model. CREDITS: multoman's mod: MP5 10 Skin RNG"
+    },
+    {
       "id": "slowpoke",
       "weapon": "weapon_pumpshotgun",
       "level": 3,
-      "releaseDate": "2026-12-25",
+      "releaseDate": "2027-04-16",
       "workshopId": "2759848284",
       "title": {
         "en": "Slowpoke Pumpshotgun",
@@ -1657,7 +2531,7 @@
       "id": "sprigatito",
       "weapon": "weapon_pumpshotgun",
       "level": 3,
-      "releaseDate": "2027-01-08",
+      "releaseDate": "2026-12-16",
       "workshopId": "3279582587",
       "title": {
         "en": "Sprigatito Wooden Shotgun",
@@ -1676,7 +2550,7 @@
       "id": "caution",
       "weapon": "weapon_shotgun_chrome",
       "level": 3,
-      "releaseDate": "2027-04-02",
+      "releaseDate": "2027-05-16",
       "workshopId": "3353441204",
       "title": {
         "en": "PORT: Caution Chrome Shotgun Skin",
@@ -1695,7 +2569,7 @@
       "id": "cerakote-blue",
       "weapon": "weapon_shotgun_chrome",
       "level": 3,
-      "releaseDate": "2026-10-30",
+      "releaseDate": "2027-01-16",
       "workshopId": "3380608963",
       "title": {
         "en": "multoman's RNG Skins Separated: Cerakote Blue Chrome Shotgun",
@@ -1711,10 +2585,105 @@
       "originalDescription": "Compatible with reanimations; L4D1 Anims as a example. This replaces the default Pumpshotgun skin from multoman's Chromeshotgun 10 Skin RNG mod: Cerakote Blue on the default model. CREDITS: multoman's mod: Chrome Shotgun 10 Skin RNG"
     },
     {
+      "id": "nmrih-axe",
+      "weapon": "weapon_melee_fireaxe",
+      "level": 3,
+      "releaseDate": "2027-02-01",
+      "workshopId": "2628556383",
+      "title": {
+        "en": "Fireaxe - NMRIH",
+        "pt": "Fireaxe - NMRIH",
+        "es": "Fireaxe - NMRIH"
+      },
+      "description": {
+        "en": "Fire axe with the look of No More Room in Hell.",
+        "pt": "Machado com o visual de No More Room in Hell.",
+        "es": "Hacha con el aspecto de No More Room in Hell."
+      },
+      "originalTitle": "Fire Axe NMRIH Aesthetics",
+      "originalDescription": "This mod adds an axe retexture where the axe textures from NMRIH were taken as the basis \"Gratitude\" Thanks for the KICHWA axe base https://steamcommunity.com/sharedfiles/filedetails/?id=121088510 And the developers of the game NMRIH"
+    },
+    {
+      "id": "teal-katana",
+      "weapon": "weapon_melee_katana",
+      "level": 3,
+      "releaseDate": "2027-02-16",
+      "workshopId": "2903220314",
+      "title": {
+        "en": "Katana - Teal and Black",
+        "pt": "Katana - Teal and Black",
+        "es": "Katana - Teal and Black"
+      },
+      "description": {
+        "en": "Black katana with a teal edge.",
+        "pt": "Katana preta com fio verde-azulado.",
+        "es": "Katana negra con filo verde azulado."
+      },
+      "originalTitle": "Teal & black katana",
+      "originalDescription": ""
+    },
+    {
+      "id": "thorax-machete",
+      "weapon": "weapon_melee_machete",
+      "level": 3,
+      "releaseDate": "2027-03-01",
+      "workshopId": "2302484331",
+      "title": {
+        "en": "Machete - Thorax",
+        "pt": "Machete - Thorax",
+        "es": "Machete - Thorax"
+      },
+      "description": {
+        "en": "Thorax from My Little Pony themed machete, in green and yellow.",
+        "pt": "Facão com tema do Thorax de My Little Pony, em verde e amarelo.",
+        "es": "Machete con temática de Thorax de My Little Pony, en verde y amarillo."
+      },
+      "originalTitle": "My Little Pony Thorax Machete Skin",
+      "originalDescription": "Reskin melee weapon machete for Thorax from My Little Pony: Friendship is Magic."
+    },
+    {
+      "id": "billie-guitar",
+      "weapon": "weapon_melee_electric_guitar",
+      "level": 3,
+      "releaseDate": "2027-02-01",
+      "workshopId": "3330591105",
+      "title": {
+        "en": "Electric Guitar - Billie's Blue",
+        "pt": "Electric Guitar - Billie's Blue",
+        "es": "Electric Guitar - Billie's Blue"
+      },
+      "description": {
+        "en": "Billie Joe's blue guitar from Green Day.",
+        "pt": "A guitarra azul do Billie Joe, do Green Day.",
+        "es": "La guitarra azul de Billie Joe, de Green Day."
+      },
+      "originalTitle": "billie's blue guitar Green day",
+      "originalDescription": "Guitar mod from: https://steamcommunity.com/sharedfiles/filedetails/?id=135065424 Credits to : Cybergypsy Compatible with Reanimations."
+    },
+    {
+      "id": "pink-crowbar",
+      "weapon": "weapon_melee_crowbar",
+      "level": 3,
+      "releaseDate": "2026-10-15",
+      "workshopId": "2047772946",
+      "title": {
+        "en": "Crowbar - Pink",
+        "pt": "Crowbar - Pink",
+        "es": "Crowbar - Pink"
+      },
+      "description": {
+        "en": "Pink crowbar reskin.",
+        "pt": "Reskin rosa do pé de cabra.",
+        "es": "Reskin rosa de la palanca."
+      },
+      "originalTitle": "Pink Crowbar",
+      "originalDescription": "Pink Crowbar reskin. 😃"
+    },
+    {
       "id": "jean-bart-uzi",
       "weapon": "weapon_smg",
       "level": 2,
-      "releaseDate": "2026-12-25",
+      "releaseDate": "2027-01-16",
       "workshopId": "3510709531",
       "title": {
         "en": "Azur Lane Jean Bart (Première Neige) UZI",
@@ -1733,7 +2702,7 @@
       "id": "desert-camo",
       "weapon": "weapon_smg_silenced",
       "level": 2,
-      "releaseDate": "2026-10-30",
+      "releaseDate": "2027-06-01",
       "workshopId": "3361641020",
       "title": {
         "en": "multoman's RNG Skins Separated: DDPAT Desert MAC-10",
@@ -1752,7 +2721,7 @@
       "id": "two-tone",
       "weapon": "weapon_smg_silenced",
       "level": 2,
-      "releaseDate": "2026-11-13",
+      "releaseDate": "2027-03-16",
       "workshopId": "3361643179",
       "title": {
         "en": "multoman's RNG Skins Separated: Two Tone DBDU MAC-10",
@@ -1768,10 +2737,48 @@
       "originalDescription": "Compatible with reanimations; L4D1 Anims as a example. This replaces the default Mac-10 skin from multoman's RNG Mac-10 Skins mod: Two Tone DBDU on the default model CREDITS: multoman's mod: MAC 10 Skin RNG"
     },
     {
+      "id": "desert-sand-mp5",
+      "weapon": "weapon_smg_mp5",
+      "level": 2,
+      "releaseDate": "2026-11-01",
+      "workshopId": "3503591460",
+      "title": {
+        "en": "MP5 - Desert Sand",
+        "pt": "MP5 - Desert Sand",
+        "es": "MP5 - Desert Sand"
+      },
+      "description": {
+        "en": "Desert sand finish for the MP5, from multoman's RNG skin pack.",
+        "pt": "Acabamento cor de areia do deserto para a MP5, do pacote RNG do multoman.",
+        "es": "Acabado arena del desierto para la MP5, del pack RNG de multoman."
+      },
+      "originalTitle": "multoman's RNG Skins Seperated: Desert Sand MP5",
+      "originalDescription": "Compatible with reanimations; L4D1 Anims as a example. This replaces the default MP5 skin from multoman's MP5 10 Skin RNG mod: Desert Sand on the default model. CREDITS: multoman's mod: MP5 10 Skin RNG"
+    },
+    {
+      "id": "fde-tactical-mp5",
+      "weapon": "weapon_smg_mp5",
+      "level": 2,
+      "releaseDate": "2027-04-16",
+      "workshopId": "3503592122",
+      "title": {
+        "en": "MP5 - FDE Tactical",
+        "pt": "MP5 - FDE Tactical",
+        "es": "MP5 - FDE Tactical"
+      },
+      "description": {
+        "en": "Flat dark earth tactical finish for the MP5, from multoman's RNG skin pack.",
+        "pt": "Acabamento tático flat dark earth para a MP5, do pacote RNG do multoman.",
+        "es": "Acabado táctico flat dark earth para la MP5, del pack RNG de multoman."
+      },
+      "originalTitle": "multoman's RNG Skins Seperated: FDE Tactical MP5",
+      "originalDescription": "Compatible with reanimations; L4D1 Anims as a example. This replaces the default MP5 skin from multoman's MP5 10 Skin RNG mod: FDE Tactical on the default model. CREDITS: multoman's mod: MP5 10 Skin RNG"
+    },
+    {
       "id": "tiger",
       "weapon": "weapon_pumpshotgun",
       "level": 2,
-      "releaseDate": "2026-11-27",
+      "releaseDate": "2027-03-01",
       "workshopId": "3353440278",
       "title": {
         "en": "PORT: Tiger Striped Pump Shotgun Skin",
@@ -1790,7 +2797,7 @@
       "id": "toxic",
       "weapon": "weapon_pumpshotgun",
       "level": 2,
-      "releaseDate": "2026-12-11",
+      "releaseDate": "2026-12-01",
       "workshopId": "3232260090",
       "title": {
         "en": "Toxic Hazard Pump Shotgun",
@@ -1809,7 +2816,7 @@
       "id": "kunzite-chrome",
       "weapon": "weapon_shotgun_chrome",
       "level": 2,
-      "releaseDate": "2027-03-05",
+      "releaseDate": "2027-04-01",
       "workshopId": "2979010150",
       "title": {
         "en": "Chrome Shotgun: Kunzite",
@@ -1828,7 +2835,7 @@
       "id": "plastic-orange",
       "weapon": "weapon_shotgun_chrome",
       "level": 2,
-      "releaseDate": "2027-03-19",
+      "releaseDate": "2027-01-01",
       "workshopId": "3380605774",
       "title": {
         "en": "multoman's RNG Skins Separated: Plastic Orange Chrome Shotgun",
@@ -1842,6 +2849,63 @@
       },
       "originalTitle": "multoman's RNG Skins Seperated: Plastic Orange Chrome Shotgun",
       "originalDescription": "Compatible with reanimations; L4D1 Anims as a example. This replaces the default Pumpshotgun skin from multoman's Chromeshotgun 10 Skin RNG mod: Plastic Orange on the default model. CREDITS: multoman's mod: Chrome Shotgun 10 Skin RNG"
+    },
+    {
+      "id": "dark-dirty-axe",
+      "weapon": "weapon_melee_fireaxe",
+      "level": 2,
+      "releaseDate": "2026-11-16",
+      "workshopId": "3601126478",
+      "title": {
+        "en": "Fireaxe - Dark and Dirty",
+        "pt": "Fireaxe - Dark and Dirty",
+        "es": "Fireaxe - Dark and Dirty"
+      },
+      "description": {
+        "en": "Dark, dirty fire axe mixed from two community axe textures.",
+        "pt": "Machado escuro e sujo, mistura de duas texturas de machado da comunidade.",
+        "es": "Hacha oscura y sucia, mezcla de dos texturas de hacha de la comunidad."
+      },
+      "originalTitle": "Fire Axe - Dark and Dirty",
+      "originalDescription": "my head hurys so much small mash up of two axe textures by devious critter and handsome dan. Credits: Devious Critter: https://steamcommunity.com/sharedfiles/filedetails/?id=3504118475&searchtext=axe Somnus: https://steamcommunity.com/sharedfiles/filedetails/?id=2310989936&searchtext=axe"
+    },
+    {
+      "id": "whitetail-axe",
+      "weapon": "weapon_melee_fireaxe",
+      "level": 2,
+      "releaseDate": "2027-05-01",
+      "workshopId": "3305977656",
+      "title": {
+        "en": "Fireaxe - Whitetail",
+        "pt": "Fireaxe - Whitetail",
+        "es": "Fireaxe - Whitetail"
+      },
+      "description": {
+        "en": "The Whitetail skin from Extended Melees on the default fire axe.",
+        "pt": "A skin Whitetail do Extended Melees no machado padrão.",
+        "es": "La skin Whitetail de Extended Melees en el hacha estándar."
+      },
+      "originalTitle": "Extended Melee Skins Separated: \"Whitetail\" Fireaxe",
+      "originalDescription": "DISCLAIMER: Due to the nature of both the Frying Pan & Fireaxe being compiled in the same texture, this reskin is incompatible with Frying Pan reskins, or any edits to the 4melee_weapons texture files. I explained the purpose of these skins in the first addon within the collection, so you know the…"
+    },
+    {
+      "id": "floral-guitar",
+      "weapon": "weapon_melee_electric_guitar",
+      "level": 2,
+      "releaseDate": "2026-10-15",
+      "workshopId": "2926720532",
+      "title": {
+        "en": "Electric Guitar - Floral Pattern",
+        "pt": "Electric Guitar - Floral Pattern",
+        "es": "Electric Guitar - Floral Pattern"
+      },
+      "description": {
+        "en": "Floral pattern on the electric guitar body.",
+        "pt": "Estampa floral no corpo da guitarra.",
+        "es": "Estampado floral en el cuerpo de la guitarra."
+      },
+      "originalTitle": "Floral Pattern Guitar Skin",
+      "originalDescription": "floral pattern replaces the texture of the Guitar's body"
     },
     {
       "id": "miku-uzi",
@@ -1885,7 +2949,7 @@
       "id": "red-finish",
       "weapon": "weapon_smg_silenced",
       "level": 1,
-      "releaseDate": "2027-04-02",
+      "releaseDate": "2026-11-16",
       "workshopId": "3361634998",
       "title": {
         "en": "multoman's RNG Skins Separated: Red Finish MAC-10",
@@ -1901,10 +2965,48 @@
       "originalDescription": "Compatible with reanimations; L4D1 Anims as a example. This replaces the default Mac-10 skin from multoman's RNG Mac-10 Skins mod: Red Finish on the default model CREDITS: multoman's mod: MAC 10 Skin RNG"
     },
     {
+      "id": "navy-blue-mp5",
+      "weapon": "weapon_smg_mp5",
+      "level": 1,
+      "releaseDate": "2026-12-16",
+      "workshopId": "3503592659",
+      "title": {
+        "en": "MP5 - Navy Blue",
+        "pt": "MP5 - Navy Blue",
+        "es": "MP5 - Navy Blue"
+      },
+      "description": {
+        "en": "Navy blue finish for the MP5, from multoman's RNG skin pack.",
+        "pt": "Acabamento azul-marinho para a MP5, do pacote RNG do multoman.",
+        "es": "Acabado azul marino para la MP5, del pack RNG de multoman."
+      },
+      "originalTitle": "multoman's RNG Skins Seperated: Navy Blue MP5",
+      "originalDescription": "Compatible with reanimations; L4D1 Anims as a example. This replaces the default MP5 skin from multoman's MP5 10 Skin RNG mod: Navy Blue on the default model. CREDITS: multoman's mod: MP5 10 Skin RNG"
+    },
+    {
+      "id": "olive-drab-mp5",
+      "weapon": "weapon_smg_mp5",
+      "level": 1,
+      "releaseDate": "2026-10-15",
+      "workshopId": "3503593705",
+      "title": {
+        "en": "MP5 - Olive Drab",
+        "pt": "MP5 - Olive Drab",
+        "es": "MP5 - Olive Drab"
+      },
+      "description": {
+        "en": "Olive drab finish for the MP5, from multoman's RNG skin pack.",
+        "pt": "Acabamento verde-oliva para a MP5, do pacote RNG do multoman.",
+        "es": "Acabado verde oliva para la MP5, del pack RNG de multoman."
+      },
+      "originalTitle": "multoman's RNG Skins Seperated: Olive Drab MP5",
+      "originalDescription": "Compatible with reanimations; L4D1 Anims as a example. This replaces the default MP5 skin from multoman's MP5 10 Skin RNG mod: Olive Drab on the default model. CREDITS: multoman's mod: MP5 10 Skin RNG"
+    },
+    {
       "id": "boykisser",
       "weapon": "weapon_pumpshotgun",
       "level": 1,
-      "releaseDate": "2026-10-30",
+      "releaseDate": "2026-11-01",
       "workshopId": "3567209245",
       "title": {
         "en": "Boykisser Pump Shotgun",
@@ -1923,7 +3025,7 @@
       "id": "kunzite-pump",
       "weapon": "weapon_pumpshotgun",
       "level": 1,
-      "releaseDate": "2026-11-13",
+      "releaseDate": "2027-05-16",
       "workshopId": "2979000170",
       "title": {
         "en": "Pump Shotgun: Kunzite",
@@ -1980,7 +3082,7 @@
       "id": "sapphire",
       "weapon": "weapon_shotgun_chrome",
       "level": 1,
-      "releaseDate": "2027-02-05",
+      "releaseDate": "2026-12-01",
       "workshopId": "3020820801",
       "title": {
         "en": "Chrome Shotgun: Sapphire",
@@ -1999,7 +3101,7 @@
       "id": "star-ruby",
       "weapon": "weapon_shotgun_chrome",
       "level": 1,
-      "releaseDate": "2027-02-19",
+      "releaseDate": "2027-06-16",
       "workshopId": "3031900671",
       "title": {
         "en": "Chrome Shotgun: Star Ruby",
@@ -2013,6 +3115,139 @@
       },
       "originalTitle": "Chrome Shotgun: Star Ruby",
       "originalDescription": "Maroon texture for Chrome Shotgun. Compatible with re-animations! Enjoy!"
+    },
+    {
+      "id": "red-black-axe",
+      "weapon": "weapon_melee_fireaxe",
+      "level": 1,
+      "releaseDate": "2026-10-15",
+      "workshopId": "524085897",
+      "title": {
+        "en": "Fireaxe - Red and Black",
+        "pt": "Fireaxe - Red and Black",
+        "es": "Fireaxe - Red and Black"
+      },
+      "description": {
+        "en": "Simple red and black fire axe, like the ones on fire-fighting stands.",
+        "pt": "Machado simples vermelho e preto, como os dos quadros de combate a incêndio.",
+        "es": "Hacha simple roja y negra, como las de los paneles contra incendios."
+      },
+      "originalTitle": "Red and black Fire Axe",
+      "originalDescription": "A simple retexture for a fire axe. Axes like these (usually smaller ones) were hanging on \"fire-fighting equipment stands\" (that's the best translation I could get - it literally says \"fire shield\") in the combat vehicle park I spent most of the time with a shovel or a broom when I weren't doing pa…"
+    },
+    {
+      "id": "rgb-axe",
+      "weapon": "weapon_melee_fireaxe",
+      "level": 1,
+      "releaseDate": "2027-01-01",
+      "workshopId": "2969724713",
+      "title": {
+        "en": "Fireaxe - RGB Blotches",
+        "pt": "Fireaxe - RGB Blotches",
+        "es": "Fireaxe - RGB Blotches"
+      },
+      "description": {
+        "en": "Red, green, blue and black blotch pattern on the fire axe.",
+        "pt": "Padrão de manchas vermelhas, verdes, azuis e pretas no machado.",
+        "es": "Patrón de manchas rojas, verdes, azules y negras en el hacha."
+      },
+      "originalTitle": "RGB (Red, Green, Blue) + Black Color Blotches Fireaxe",
+      "originalDescription": "a pattern of red, green, blue, and black colored blotches replaces the default Fireaxe skin"
+    },
+    {
+      "id": "old-katana",
+      "weapon": "weapon_melee_katana",
+      "level": 1,
+      "releaseDate": "2026-10-15",
+      "workshopId": "3304391063",
+      "title": {
+        "en": "Katana - Old",
+        "pt": "Katana - Old",
+        "es": "Katana - Old"
+      },
+      "description": {
+        "en": "The Old skin from Extended Melees on the default katana.",
+        "pt": "A skin Old do Extended Melees na katana padrão.",
+        "es": "La skin Old de Extended Melees en la katana estándar."
+      },
+      "originalTitle": "Extended Melee Skins Separated: \"Old\" Katana",
+      "originalDescription": "I explained the purpose of these skins in the first addon within the collection, so you know the deal. This addon reskins the Katana to use the \"Old\" skin found within Extended Melees on the default model. I also added in a custom normal map and edited some .vmt parameters to dull down the reflecti…"
+    },
+    {
+      "id": "synthetic-machete",
+      "weapon": "weapon_melee_machete",
+      "level": 1,
+      "releaseDate": "2026-10-15",
+      "workshopId": "3006540554",
+      "title": {
+        "en": "Machete - Synthetic Grip",
+        "pt": "Machete - Synthetic Grip",
+        "es": "Machete - Synthetic Grip"
+      },
+      "description": {
+        "en": "Default machete with a simple synthetic grip.",
+        "pt": "Facão padrão com um cabo sintético simples.",
+        "es": "Machete estándar con una empuñadura sintética simple."
+      },
+      "originalTitle": "Alternative Machete",
+      "originalDescription": "This add-on gives your default machete a simple synthetic grip. It's only a re-texture, so custom animations and sounds are compatible."
+    },
+    {
+      "id": "vintage-bat",
+      "weapon": "weapon_melee_baseball_bat",
+      "level": 1,
+      "releaseDate": "2026-10-15",
+      "workshopId": "3302344749",
+      "title": {
+        "en": "Baseball Bat - Vintage",
+        "pt": "Baseball Bat - Vintage",
+        "es": "Baseball Bat - Vintage"
+      },
+      "description": {
+        "en": "The Vintage skin from Extended Melees on the default baseball bat.",
+        "pt": "A skin Vintage do Extended Melees no taco de beisebol padrão.",
+        "es": "La skin Vintage de Extended Melees en el bate de béisbol estándar."
+      },
+      "originalTitle": "Extended Melee Skins Separated: \"Vintage\" Bat",
+      "originalDescription": "I explained the purpose of these skins in the first addon within the collection, so you know the deal. This addon reskins the Baseball Bat to use the \"Vintage\" skin found within Extended Melees on the default model. I have also added a quick normal map & slightly edited some of the .vmt parameters,…"
+    },
+    {
+      "id": "team-cricket-bat",
+      "weapon": "weapon_melee_cricket_bat",
+      "level": 1,
+      "releaseDate": "2026-10-15",
+      "workshopId": "3303218686",
+      "title": {
+        "en": "Cricket Bat - Team",
+        "pt": "Cricket Bat - Team",
+        "es": "Cricket Bat - Team"
+      },
+      "description": {
+        "en": "The Team skin from Extended Melees on the default cricket bat.",
+        "pt": "A skin Team do Extended Melees no taco de críquete padrão.",
+        "es": "La skin Team de Extended Melees en el bate de críquet estándar."
+      },
+      "originalTitle": "Extended Melee Skins Separated: \"Team\" Cricket Bat",
+      "originalDescription": "I explained the purpose of these skins in the first addon within the collection, so you know the deal. This addon reskins the Cricket Bat to use the \"Team\" skin found within Extended Melees on the default model. In addition, I added a custom normal map and edited some .vmt parameters to make the sk…"
+    },
+    {
+      "id": "pro-golf-club",
+      "weapon": "weapon_melee_golfclub",
+      "level": 1,
+      "releaseDate": "2026-10-15",
+      "workshopId": "3303726756",
+      "title": {
+        "en": "Golf Club - Pro",
+        "pt": "Golf Club - Pro",
+        "es": "Golf Club - Pro"
+      },
+      "description": {
+        "en": "The Pro skin from Extended Melees on the default golf club.",
+        "pt": "A skin Pro do Extended Melees no taco de golfe padrão.",
+        "es": "La skin Pro de Extended Melees en el palo de golf estándar."
+      },
+      "originalTitle": "Extended Melee Skins Separated: \"Pro\" Golf Club",
+      "originalDescription": "I explained the purpose of these skins in the first addon within the collection, so you know the deal. This addon reskins the Golf Club to use the \"Pro\" skin found within Extended Melees on the default model. Credits Sirwololo - Creating the original \"Pro\" Golf Club Reskin & it's respective normals…"
     }
   ]
 }
