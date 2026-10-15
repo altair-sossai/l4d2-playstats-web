@@ -310,13 +310,23 @@
                     </a>
                     <ul class="dropdown-menu">
                         <li class="@ViewBag.Players">
-                            @Html.ActionLink(SharedLocalizer["Players"].Value, "Index", "Players")
-                        </li>
-                        <li class="@ViewBag.History">
-                            @Html.ActionLink(SharedLocalizer["History"].Value, "Index", "History")
+                            <a href="@Url.Action("Index", "Players")">
+                                <img src="~/imgs/menu/players.svg" alt="" class="img-responsive img-header-icon">
+                                @SharedLocalizer["Players"]
+                            </a>
                         </li>
                         <li class="@ViewBag.Patent">
-                            @Html.ActionLink(SharedLocalizer["Patents"].Value, "Index", "Patents")
+                            <a href="@Url.Action("Index", "Patents")">
+                                <img src="~/imgs/menu/patents.svg" alt="" class="img-responsive img-header-icon">
+                                @SharedLocalizer["Patents"]
+                            </a>
+                        </li>
+                        <li role="separator" class="divider"></li>
+                        <li class="@ViewBag.History">
+                            <a href="@Url.Action("Index", "History")">
+                                <img src="~/imgs/menu/history.svg" alt="" class="img-responsive img-header-icon">
+                                @SharedLocalizer["History"]
+                            </a>
                         </li>
                     </ul>
                 </li>
@@ -328,13 +338,23 @@
                         </a>
                         <ul class="dropdown-menu">
                             <li class="@ViewBag.ChatBans">
-                                @Html.ActionLink(SharedLocalizer["ChatBans"].Value, "Index", "ChatBans")
+                                <a href="@Url.Action("Index", "ChatBans")">
+                                    <img src="~/imgs/menu/chat-bans.svg" alt="" class="img-responsive img-header-icon">
+                                    @SharedLocalizer["ChatBans"]
+                                </a>
                             </li>
+                            <li role="separator" class="divider"></li>
                             <li class="@ViewBag.SkinPurchases">
-                                @Html.ActionLink(SharedLocalizer["SkinPurchases"].Value, "Purchases", "SkinsAdmin")
+                                <a href="@Url.Action("Purchases", "SkinsAdmin")">
+                                    <img src="~/imgs/menu/skin-purchases.svg" alt="" class="img-responsive img-header-icon">
+                                    @SharedLocalizer["SkinPurchases"]
+                                </a>
                             </li>
                             <li class="@ViewBag.SkinPrices">
-                                @Html.ActionLink(SharedLocalizer["SkinPrices"].Value, "Prices", "SkinsAdmin")
+                                <a href="@Url.Action("Prices", "SkinsAdmin")">
+                                    <img src="~/imgs/menu/skin-prices.svg" alt="" class="img-responsive img-header-icon">
+                                    @SharedLocalizer["SkinPrices"]
+                                </a>
                             </li>
                         </ul>
                     </li>
