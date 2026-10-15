@@ -70,6 +70,55 @@
             </div>
         </div>
     }
+
+    void RenderWallet(PlayerSkinsModel? playerSkins)
+    {
+        var wallet = playerSkins?.Wallet;
+
+        if (wallet == null)
+        {
+            @Html.Raw("&mdash;")
+            return;
+        }
+
+        <strong>@wallet.Balance.ToString("N0") ⭐</strong>
+        <small>@string.Format(SharedLocalizer["StarsSummary"].Value, wallet.Stars.ToString("N0"), wallet.Spent.ToString("N0"))</small>
+    }
+
+    void RenderPlayerSkins(PlayerSkinsModel? playerSkins, PlayerResult player, bool second, bool showName)
+    {
+        var ownedSkins = playerSkins?.OwnedSkins ?? [];
+
+        <div class="player-skins-row">
+            @if (showName)
+            {
+                <div class="streak-name @(second ? "second" : "text-muted")">@player.Name <small>(@ownedSkins.Count.ToString("N0"))</small></div>
+            }
+            @if (ownedSkins.Count == 0)
+            {
+                <p class="text-muted" style="margin: 0">@SharedLocalizer["NoSkinsYet"]</p>
+            }
+            else
+            {
+                <div class="player-skins">
+                    @foreach (var skin in ownedSkins)
+                    {
+                        var title = skin.Title.Get(CultureInfo.CurrentUICulture);
+                        var equipped = playerSkins!.IsEquipped(skin);
+
+                        <a class="player-skin @(equipped ? "player-skin-equipped" : "")" href="@Url.Action("Index", "Skins")#skin-@skin.Id" title="@title">
+                            <img src="@skin.Image" alt="@title" loading="lazy"/>
+                            <span class="@(second ? "second" : "")">@title</span>
+                            @if (equipped)
+                            {
+                                <span class="label label-success">@SharedLocalizer["SkinEquipped"]</span>
+                            }
+                        </a>
+                    }
+                </div>
+            }
+        </div>
+    }
 }
 
 @section Styles {
@@ -116,6 +165,17 @@
 
         .player-skin-equipped img {
             border-color: rgba(98, 196, 98, .8);
+        }
+
+        .player-skins-row + .player-skins-row {
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px solid rgba(128, 128, 128, .3);
+        }
+
+        .panel-heading .badge.badge-second {
+            background-color: #FFBC00;
+            color: #222;
         }
 
         th {
@@ -396,6 +456,19 @@
                 }
             </td>
         </tr>
+        <tr>
+            <th>@SharedLocalizer["Stars"]:</th>
+            <td data-label="@SharedLocalizer["Stars"]:" colspan="5">
+                @{ RenderWallet(Model.FirstPlayerSkins); }
+                @if (secondPlayer != null)
+                {
+                    <span class="separator"> | </span>
+                    <span class="second">
+                        @{ RenderWallet(Model.SecondPlayerSkins); }
+                    </span>
+                }
+            </td>
+        </tr>
         @if (firstPlayer.PreviousNames != null && firstPlayer.PreviousNames.Any())
         {
             <tr class="previous-names">
@@ -606,32 +679,22 @@
 
 <div class="panel panel-default">
     <div class="panel-heading">
-        @SharedLocalizer["Skins"] <span class="badge">@Model.OwnedSkins.Count</span>
+        @SharedLocalizer["Skins"] <span class="badge">@((Model.FirstPlayerSkins?.OwnedSkins.Count ?? 0).ToString("N0"))</span>
+        @if (secondPlayer != null)
+        {
+            <span class="separator"> | </span>
+            <span class="badge badge-second">@((Model.SecondPlayerSkins?.OwnedSkins.Count ?? 0).ToString("N0"))</span>
+        }
         <a class="pull-right" href="@Url.Action("Index", "Skins")">@SharedLocalizer["SeeSkinShop"]</a>
     </div>
     <div class="panel-body">
-        @if (Model.OwnedSkins.Count == 0)
-        {
-            <p class="text-muted" style="margin: 0">@SharedLocalizer["NoSkinsYet"]</p>
-        }
-        else
-        {
-            <div class="player-skins">
-                @foreach (var skin in Model.OwnedSkins)
-                {
-                    var title = skin.Title.Get(CultureInfo.CurrentUICulture);
-                    var equipped = Model.PlayerSkins.IsEquipped(skin);
+        @{
+            RenderPlayerSkins(Model.FirstPlayerSkins, firstPlayer, false, secondPlayer != null);
 
-                    <a class="player-skin @(equipped ? "player-skin-equipped" : "")" href="@Url.Action("Index", "Skins")#skin-@skin.Id" title="@title">
-                        <img src="@skin.Image" alt="@title" loading="lazy"/>
-                        <span>@title</span>
-                        @if (equipped)
-                        {
-                            <span class="label label-success">@SharedLocalizer["SkinEquipped"]</span>
-                        }
-                    </a>
-                }
-            </div>
+            if (secondPlayer != null)
+            {
+                RenderPlayerSkins(Model.SecondPlayerSkins, secondPlayer, true, true);
+            }
         }
     </div>
 </div>

@@ -23,6 +23,12 @@
 
 <div class="admin-header">
     <h3>@SharedLocalizer["SkinPurchases"]</h3>
+    @if (Model.TotalPurchases + Model.TotalGifts > 0)
+    {
+        <button type="button" class="btn btn-danger ska-refund-all-open">
+            <span class="glyphicon glyphicon-repeat"></span> @Localizer["RefundAllButton"]
+        </button>
+    }
     <button type="button" class="btn btn-success" onclick="GiftModal.open()">
         <span class="glyphicon glyphicon-gift"></span> @Localizer["GiftButton"]
     </button>
@@ -147,6 +153,33 @@
     </div>
 </div>
 
+<div id="ska-refund-all-modal" class="modal fade" tabindex="-1" role="dialog" data-backdrop="static">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close ska-refund-all-close" data-dismiss="modal" aria-label="@SharedLocalizer["Close"]"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">@Localizer["RefundAllTitle"]</h4>
+            </div>
+            <div class="modal-body">
+                <p>@string.Format(Localizer["RefundAllIntro"].Value, Model.TotalPurchases.ToString("N0", culture), Model.TotalGifts.ToString("N0", culture), Model.TotalStars.ToString("N0", culture))</p>
+                <div class="alert alert-warning">@Localizer["RefundAllWarning"]</div>
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" class="ska-refund-all-check"/> @Localizer["RefundAllCheck"]
+                    </label>
+                </div>
+                <div class="ska-refund-all-message"></div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default ska-refund-all-close" data-dismiss="modal">@SharedLocalizer["Close"]</button>
+                <button type="button" class="btn btn-danger ska-refund-all-yes" disabled>
+                    <span class="glyphicon glyphicon-repeat"></span> <span class="ska-refund-all-label">@Localizer["ConfirmRefundAllButton"]</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
 @await Html.PartialAsync("_GiftModal", Model.Skins)
 
 @section Scripts {
@@ -155,6 +188,10 @@
             var texts = {
                 confirmRefund: @Json.Serialize(Localizer["ConfirmRefund"].Value),
                 refundDone: @Json.Serialize(Localizer["RefundDone"].Value),
+                refundAllDone: @Json.Serialize(Localizer["RefundAllDone"].Value),
+                refundAllFailed: @Json.Serialize(Localizer["RefundAllFailed"].Value),
+                refundAllRunning: @Json.Serialize(Localizer["RefundAllRunning"].Value),
+                confirmRefundAll: @Json.Serialize(Localizer["ConfirmRefundAllButton"].Value),
                 errors: {
                     NotOwned: @Json.Serialize(Localizer["ErrorNotOwned"].Value),
                     Busy: @Json.Serialize(Localizer["ErrorBusy"].Value),
@@ -247,6 +284,55 @@
                 }).fail(function (xhr) {
                     message($message, false, errorText(xhr));
                     $button.prop('disabled', false);
+                });
+            });
+
+            function number(value) {
+                return value.toLocaleString(document.documentElement.lang || undefined);
+            }
+
+            function resetRefundAll($modal) {
+                $modal.find('.ska-refund-all-check, .ska-refund-all-close').prop('disabled', false);
+                $modal.find('.ska-refund-all-label').text(texts.confirmRefundAll);
+                $modal.find('.ska-refund-all-yes').prop('disabled', !$modal.find('.ska-refund-all-check').prop('checked'));
+            }
+
+            $('.ska-refund-all-open').on('click', function () {
+                var $modal = $('#ska-refund-all-modal');
+
+                $modal.find('.ska-refund-all-check').prop('checked', false);
+                $modal.find('.ska-refund-all-message').empty();
+                resetRefundAll($modal);
+                $modal.modal('show');
+            });
+
+            $('.ska-refund-all-check').on('change', function () {
+                $('#ska-refund-all-modal .ska-refund-all-yes').prop('disabled', !this.checked);
+            });
+
+            $('.ska-refund-all-yes').on('click', function () {
+                var $modal = $('#ska-refund-all-modal');
+                var $message = $modal.find('.ska-refund-all-message');
+
+                $modal.find('.ska-refund-all-yes, .ska-refund-all-check, .ska-refund-all-close').prop('disabled', true);
+                $modal.find('.ska-refund-all-label').text(texts.refundAllRunning);
+                $message.empty();
+
+                post('/api/shop/refund-all', {}).done(function (response) {
+                    var summary = format(texts.refundAllDone, number(response.purchases), number(response.gifts), number(response.stars), number(response.players));
+
+                    if (response.failed > 0) {
+                        message($message, false, summary + ' ' + format(texts.refundAllFailed, number(response.failed)));
+                        resetRefundAll($modal);
+                        $modal.one('hidden.bs.modal', function () { location.reload(); });
+                        return;
+                    }
+
+                    message($message, true, summary);
+                    setTimeout(function () { location.reload(); }, 2500);
+                }).fail(function (xhr) {
+                    message($message, false, errorText(xhr));
+                    resetRefundAll($modal);
                 });
             });
         });

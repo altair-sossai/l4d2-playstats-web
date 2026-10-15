@@ -128,6 +128,9 @@
   <data name="ConfirmRefund" xml:space="preserve">
     <value>Refund {0} from {1}? The stars paid go back to the player, the skin is removed from their account and, if it was equipped, the weapon goes back to the default skin.</value>
   </data>
+  <data name="ConfirmRefundAllButton" xml:space="preserve">
+    <value>Refund everything</value>
+  </data>
   <data name="ConfirmRefundButton" xml:space="preserve">
     <value>Confirm refund</value>
   </data>
@@ -163,6 +166,30 @@
   </data>
   <data name="PurchaseDetails" xml:space="preserve">
     <value>Purchase details</value>
+  </data>
+  <data name="RefundAllButton" xml:space="preserve">
+    <value>Refund everything</value>
+  </data>
+  <data name="RefundAllCheck" xml:space="preserve">
+    <value>I understand that every purchase and every gift of every player will be refunded.</value>
+  </data>
+  <data name="RefundAllDone" xml:space="preserve">
+    <value>{0} purchases and {1} gifts refunded. {2} stars returned to {3} players.</value>
+  </data>
+  <data name="RefundAllFailed" xml:space="preserve">
+    <value>{0} items could not be refunded; try again to refund what is left.</value>
+  </data>
+  <data name="RefundAllIntro" xml:space="preserve">
+    <value>This refunds, one by one, the {0} purchases and {1} gifts of every player. The {2} stars spent go back to the players, every skin leaves their accounts and weapons go back to the default skin.</value>
+  </data>
+  <data name="RefundAllRunning" xml:space="preserve">
+    <value>Refunding...</value>
+  </data>
+  <data name="RefundAllTitle" xml:space="preserve">
+    <value>Refund all purchases</value>
+  </data>
+  <data name="RefundAllWarning" xml:space="preserve">
+    <value>This cannot be undone. Only use it during the test phase, for example before recalculating prices. Players&apos; stars do not change: only what was spent is returned.</value>
   </data>
   <data name="RefundButton" xml:space="preserve">
     <value>Refund purchase</value>

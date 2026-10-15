@@ -14,4 +14,5 @@ public interface ISkinShopService
     Task<SkinShopResult> UnequipAsync(string communityId, string weapon, string source, CancellationToken cancellationToken = default);
     Task<SkinShopResult> GiftAsync(string communityId, string skinId, string adminCommunityId, string? adminName, CancellationToken cancellationToken = default);
     Task<SkinShopResult> RefundAsync(string communityId, string skinId, string adminCommunityId, CancellationToken cancellationToken = default);
+    Task<RefundAllResult> RefundAllAsync(string adminCommunityId, CancellationToken cancellationToken = default);
 }

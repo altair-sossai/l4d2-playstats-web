@@ -1287,6 +1287,12 @@
     <data name="Star" xml:space="preserve">
     <value>Estrela</value>
   </data>
+  <data name="Stars" xml:space="preserve">
+    <value>Estrelas</value>
+  </data>
+  <data name="StarsSummary" xml:space="preserve">
+    <value>para gastar ({0} ganhas, {1} gastas)</value>
+  </data>
     <data name="Start" xml:space="preserve">
     <value>Início</value>
   </data>

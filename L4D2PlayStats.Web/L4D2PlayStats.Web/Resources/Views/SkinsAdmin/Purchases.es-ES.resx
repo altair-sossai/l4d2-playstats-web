@@ -128,6 +128,9 @@
   <data name="ConfirmRefund" xml:space="preserve">
     <value>¿Reembolsar {0} de {1}? Las estrellas pagadas vuelven al jugador, la skin sale de su cuenta y, si estaba equipada, el arma vuelve a la skin predeterminada.</value>
   </data>
+  <data name="ConfirmRefundAllButton" xml:space="preserve">
+    <value>Reembolsar todo</value>
+  </data>
   <data name="ConfirmRefundButton" xml:space="preserve">
     <value>Confirmar reembolso</value>
   </data>
@@ -163,6 +166,30 @@
   </data>
   <data name="PurchaseDetails" xml:space="preserve">
     <value>Detalles de la compra</value>
+  </data>
+  <data name="RefundAllButton" xml:space="preserve">
+    <value>Reembolsar todo</value>
+  </data>
+  <data name="RefundAllCheck" xml:space="preserve">
+    <value>Entiendo que se reembolsarán todas las compras y todos los regalos de todos los jugadores.</value>
+  </data>
+  <data name="RefundAllDone" xml:space="preserve">
+    <value>{0} compras y {1} regalos reembolsados. {2} estrellas devueltas a {3} jugadores.</value>
+  </data>
+  <data name="RefundAllFailed" xml:space="preserve">
+    <value>{0} elementos no se pudieron reembolsar; inténtalo de nuevo para reembolsar lo que queda.</value>
+  </data>
+  <data name="RefundAllIntro" xml:space="preserve">
+    <value>Esto reembolsa, uno por uno, las {0} compras y los {1} regalos de todos los jugadores. Las {2} estrellas gastadas vuelven a los jugadores, todas las skins salen de sus cuentas y las armas vuelven a la skin predeterminada.</value>
+  </data>
+  <data name="RefundAllRunning" xml:space="preserve">
+    <value>Reembolsando...</value>
+  </data>
+  <data name="RefundAllTitle" xml:space="preserve">
+    <value>Reembolsar todas las compras</value>
+  </data>
+  <data name="RefundAllWarning" xml:space="preserve">
+    <value>No se puede deshacer. Úsalo solo en la fase de pruebas, por ejemplo antes de recalcular los precios. Las estrellas de los jugadores no cambian: solo se devuelve lo gastado.</value>
   </data>
   <data name="RefundButton" xml:space="preserve">
     <value>Reembolsar compra</value>

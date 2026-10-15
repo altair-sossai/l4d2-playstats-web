@@ -1,3 +1,4 @@
+using System.Collections.Concurrent;
 using Azure;
 using Azure.Data.Tables;
 using L4D2PlayStats.Core.Infrastructure.Options;
@@ -21,6 +22,7 @@ public class SkinShopService(
     private const int MaxAttempts = 3;
     private const int ConflictStatus = 409;
     private const int PreconditionFailedStatus = 412;
+    private const int RefundAllParallelism = 8;
 
     public async Task<WalletResult?> GetWalletAsync(string communityId, CancellationToken cancellationToken = default)
     {
@@ -272,6 +274,50 @@ public class SkinShopService(
         }
 
         return SkinShopResult.Of(SkinShopStatus.Busy, skin);
+    }
+
+    public async Task<RefundAllResult> RefundAllAsync(string adminCommunityId, CancellationToken cancellationToken = default)
+    {
+        var purchases = await repository.GetAllPurchasesAsync(cancellationToken);
+        var refunded = new ConcurrentBag<SkinPurchaseEntity>();
+        var failed = 0;
+
+        var options = new ParallelOptions
+        {
+            MaxDegreeOfParallelism = RefundAllParallelism,
+            CancellationToken = cancellationToken
+        };
+
+        await Parallel.ForEachAsync(purchases.GroupBy(purchase => purchase.PartitionKey), options, async (player, token) =>
+        {
+            foreach (var purchase in player)
+            {
+                var result = await RefundAsync(purchase.PartitionKey, purchase.SkinId, adminCommunityId, token);
+
+                if (result.Succeeded)
+                {
+                    refunded.Add(purchase);
+                    continue;
+                }
+
+                if (result.Status != SkinShopStatus.NotOwned)
+                    Interlocked.Increment(ref failed);
+            }
+        });
+
+        var summary = new RefundAllResult
+        {
+            Purchases = refunded.Count(purchase => !purchase.Gift),
+            Gifts = refunded.Count(purchase => purchase.Gift),
+            Stars = refunded.Sum(purchase => purchase.Price),
+            Players = refunded.Select(purchase => purchase.PartitionKey).Distinct().Count(),
+            Failed = failed
+        };
+
+        logger.LogWarning("All skin purchases refunded by {AdminCommunityId}: {Purchases} purchases, {Gifts} gifts, {Stars} stars, {Players} players, {Failed} failed",
+            adminCommunityId, summary.Purchases, summary.Gifts, summary.Stars, summary.Players, summary.Failed);
+
+        return summary;
     }
 
     private async Task<PlayerStarsResult?> GetStarsAsync(string communityId, CancellationToken cancellationToken)

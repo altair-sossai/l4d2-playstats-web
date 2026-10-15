@@ -128,6 +128,9 @@
   <data name="ConfirmRefund" xml:space="preserve">
     <value>Estornar {0} de {1}? As estrelas pagas voltam para o jogador, a skin sai da conta dele e, se estava equipada, a arma volta para a skin padrão.</value>
   </data>
+  <data name="ConfirmRefundAllButton" xml:space="preserve">
+    <value>Estornar tudo</value>
+  </data>
   <data name="ConfirmRefundButton" xml:space="preserve">
     <value>Confirmar estorno</value>
   </data>
@@ -163,6 +166,30 @@
   </data>
   <data name="PurchaseDetails" xml:space="preserve">
     <value>Detalhes da compra</value>
+  </data>
+  <data name="RefundAllButton" xml:space="preserve">
+    <value>Estornar tudo</value>
+  </data>
+  <data name="RefundAllCheck" xml:space="preserve">
+    <value>Entendo que todas as compras e todos os presentes de todos os jogadores serão estornados.</value>
+  </data>
+  <data name="RefundAllDone" xml:space="preserve">
+    <value>{0} compras e {1} presentes estornados. {2} estrelas devolvidas para {3} jogadores.</value>
+  </data>
+  <data name="RefundAllFailed" xml:space="preserve">
+    <value>{0} itens não puderam ser estornados; tente de novo para estornar o que sobrou.</value>
+  </data>
+  <data name="RefundAllIntro" xml:space="preserve">
+    <value>Isso estorna, um por um, as {0} compras e os {1} presentes de todos os jogadores. As {2} estrelas gastas voltam para os jogadores, todas as skins saem das contas e as armas voltam para a skin padrão.</value>
+  </data>
+  <data name="RefundAllRunning" xml:space="preserve">
+    <value>Estornando...</value>
+  </data>
+  <data name="RefundAllTitle" xml:space="preserve">
+    <value>Estornar todas as compras</value>
+  </data>
+  <data name="RefundAllWarning" xml:space="preserve">
+    <value>Não dá para desfazer. Use só na fase de testes, por exemplo antes de recalcular os preços. As estrelas dos jogadores não mudam: só o que foi gasto é devolvido.</value>
   </data>
   <data name="RefundButton" xml:space="preserve">
     <value>Estornar compra</value>

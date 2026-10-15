@@ -1,9 +1,11 @@
+using System.Globalization;
 using L4D2PlayStats.Core.GameInfo.Services;
 using L4D2PlayStats.Core.Matches;
 using L4D2PlayStats.Core.Patents.Services;
 using L4D2PlayStats.Core.Players.Enums;
 using L4D2PlayStats.Core.Players.Extensions;
 using L4D2PlayStats.Core.Ranking.Services;
+using L4D2PlayStats.Core.Skins;
 using L4D2PlayStats.Core.Skins.Services;
 using L4D2PlayStats.Core.UserAvatar;
 using L4D2PlayStats.Web.Models;
@@ -85,14 +87,22 @@ public class PlayersController(
         await userAvatar.LoadAsync(communityIds, cancellationToken: cancellationToken);
 
         var skins = await skinService.GetAllSkinsAsync(cancellationToken);
-        var playerSkins = await skinShopService.GetPlayerSkinsAsync(firstPlayer.CommunityId.ToString(), cancellationToken);
 
         var model = new PlayerDetailsModel(firstPlayerRanking, secondPlayerRanking, players, matches, relatedPlayers)
         {
-            OwnedSkins = [.. skins.Where(skin => playerSkins.Owns(skin.Id)).OrderByDescending(skin => skin.Rarity).ThenByDescending(skin => skin.Price)],
-            PlayerSkins = playerSkins
+            FirstPlayerSkins = await PlayerSkinsAsync(skins, firstPlayer.CommunityId, cancellationToken),
+            SecondPlayerSkins = secondPlayer == null ? null : await PlayerSkinsAsync(skins, secondPlayer.CommunityId, cancellationToken)
         };
 
         return View(model);
+    }
+
+    private async Task<PlayerSkinsModel> PlayerSkinsAsync(IReadOnlyCollection<Skin> skins, long communityId, CancellationToken cancellationToken)
+    {
+        var id = communityId.ToString(CultureInfo.InvariantCulture);
+        var playerSkins = await skinShopService.GetPlayerSkinsAsync(id, cancellationToken);
+        var wallet = await skinShopService.GetWalletAsync(id, cancellationToken);
+
+        return new PlayerSkinsModel(skins, playerSkins, wallet);
     }
 }

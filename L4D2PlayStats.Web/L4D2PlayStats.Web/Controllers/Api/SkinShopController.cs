@@ -95,6 +95,16 @@ public class SkinShopController(ISkinShopService skinShopService, ISkinService s
         return Ok(ToResponse(result));
     }
 
+    [HttpPost("refund-all")]
+    [AdminAuthorize]
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> RefundAllAsync()
+    {
+        var result = await skinShopService.RefundAllAsync(currentUser.CommunityId!);
+
+        return Ok(result);
+    }
+
     private static object ToResponse(SkinShopResult result)
     {
         return new
