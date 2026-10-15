@@ -1,0 +1,261 @@
+@using System.Globalization
+@using L4D2PlayStats.Core.Skins
+@using L4D2PlayStats.Web
+@using L4D2PlayStats.Web.Models
+@using Microsoft.AspNetCore.Mvc.Localization
+@using Microsoft.Extensions.Localization
+@model IReadOnlyCollection<Skin>
+@inject IViewLocalizer Localizer
+@inject IStringLocalizer<SharedResource> SharedLocalizer
+
+@{
+    var culture = CultureInfo.CurrentUICulture;
+    var skins = Model
+        .OrderByDescending(skin => skin.Rarity)
+        .ThenByDescending(skin => skin.Price)
+        .ThenBy(skin => Array.IndexOf(SkinsModel.Weapons, skin.Weapon))
+        .ToList();
+}
+
+<style>
+    .sp-filters {
+        display: flex;
+        flex-wrap: wrap;
+        margin: 0 -4px 8px;
+    }
+
+        .sp-filters > * {
+            margin: 0 4px 8px;
+        }
+
+        .sp-filters .sp-search {
+            flex: 1 1 200px;
+        }
+
+        .sp-filters select {
+            width: auto;
+            min-width: 150px;
+        }
+
+    .sp-grid {
+        display: flex;
+        flex-wrap: wrap;
+        max-height: 460px;
+        margin: 0 -5px;
+        overflow-y: auto;
+    }
+
+    .sp-tile {
+        width: calc(25% - 10px);
+        margin: 0 5px 10px;
+        overflow: hidden;
+        border: 1px solid rgba(128, 128, 128, .3);
+        border-top: 3px solid var(--sp-color);
+        border-radius: 6px;
+        background: rgba(128, 128, 128, .05);
+        cursor: pointer;
+        transition: transform .1s ease;
+    }
+
+        .sp-tile:hover {
+            transform: translateY(-2px);
+        }
+
+        .sp-tile img {
+            display: block;
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            object-fit: cover;
+            background: #111;
+        }
+
+    .sp-tile-body {
+        padding: 6px 8px;
+        font-size: 12px;
+    }
+
+        .sp-tile-body strong,
+        .sp-tile-body small {
+            display: block;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        }
+
+        .sp-tile-body small {
+            opacity: .75;
+        }
+
+    .sp-rarity {
+        color: var(--sp-color);
+        font-weight: bold;
+    }
+
+    .sp-legendary {
+        --sp-color: #f0ad4e;
+    }
+
+    .sp-epic {
+        --sp-color: #b06ae0;
+    }
+
+    .sp-rare {
+        --sp-color: #4d9de0;
+    }
+
+    .sp-uncommon {
+        --sp-color: #5cb85c;
+    }
+
+    .sp-common {
+        --sp-color: #9e9e9e;
+    }
+
+    @@media screen and (max-width: 700px) {
+        .sp-tile {
+            width: calc(50% - 10px);
+        }
+    }
+</style>
+
+<div id="sp-modal" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="@SharedLocalizer["Close"]"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">@Localizer["Title"]</h4>
+            </div>
+            <div class="modal-body">
+                <div class="sp-filters">
+                    <input type="text" class="form-control sp-search" placeholder="@Localizer["SearchPlaceholder"]"/>
+                    <select class="form-control sp-weapon">
+                        <option value="">@Localizer["AllWeapons"]</option>
+                        @foreach (var weapon in SkinsModel.Weapons)
+                        {
+                            <option value="@weapon">@Localizer[SkinsModel.WeaponResourceKeys[weapon]]</option>
+                        }
+                    </select>
+                    <select class="form-control sp-rarity-filter">
+                        <option value="">@Localizer["AllRarities"]</option>
+                        @foreach (var rarity in SkinsModel.Rarities)
+                        {
+                            <option value="@rarity">@Localizer[SkinsModel.RarityKey(rarity)]</option>
+                        }
+                    </select>
+                </div>
+                <div class="sp-grid">
+                    @foreach (var skin in skins)
+                    {
+                        var title = skin.Title.Get(culture);
+                        var weapon = Localizer[SkinsModel.WeaponResourceKeys[skin.Weapon]].Value;
+                        var rarity = Localizer[SkinsModel.RarityKey(skin.Rarity)].Value;
+
+                        <div class="sp-tile sp-@skin.Rarity.ToString().ToLowerInvariant()"
+                             data-id="@skin.Id" data-title="@title" data-image="@skin.Image" data-weapon="@skin.Weapon" data-weapon-name="@weapon"
+                             data-rarity="@skin.Rarity" data-rarity-name="@rarity" data-price="@skin.Price"
+                             data-search="@($"{title} {skin.Id} {weapon}".ToLowerInvariant())">
+                            <img src="@skin.Image" alt="@title" loading="lazy"/>
+                            <div class="sp-tile-body">
+                                <strong title="@title">@title</strong>
+                                <small>@weapon</small>
+                                <small><span class="sp-rarity">@rarity</span> · @skin.Price.ToString("N0", culture) ⭐</small>
+                            </div>
+                        </div>
+                    }
+                </div>
+                <p class="text-muted text-center sp-empty" style="display: none">@Localizer["NoSkins"]</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">@SharedLocalizer["Cancel"]</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var $modal = $('#sp-modal');
+        var callback = null;
+        var chosen = null;
+
+        function filter() {
+            var term = $.trim($modal.find('.sp-search').val()).toLowerCase();
+            var weapon = $modal.find('.sp-weapon').val();
+            var rarity = $modal.find('.sp-rarity-filter').val();
+            var visible = 0;
+
+            $modal.find('.sp-tile').each(function () {
+                var $tile = $(this);
+                var show = (term === '' || $tile.data('search').indexOf(term) >= 0)
+                    && (weapon === '' || $tile.data('weapon') === weapon)
+                    && (rarity === '' || $tile.data('rarity') === rarity);
+
+                $tile.toggle(show);
+
+                if (show)
+                    visible++;
+            });
+
+            $modal.find('.sp-empty').toggle(visible === 0);
+        }
+
+        $modal.find('.sp-search').on('input', filter);
+        $modal.find('.sp-weapon, .sp-rarity-filter').on('change', filter);
+
+        $modal.find('.sp-tile').on('click', function () {
+            var $tile = $(this);
+
+            chosen = {
+                id: $tile.data('id'),
+                title: $tile.data('title'),
+                image: $tile.data('image'),
+                weaponName: $tile.data('weapon-name'),
+                rarityName: $tile.data('rarity-name'),
+                price: $tile.data('price')
+            };
+
+            $modal.modal('hide');
+        });
+
+        $modal.on('shown.bs.modal', function () {
+            $modal.find('.sp-search').focus();
+        });
+
+        $modal.on('hidden.bs.modal', function () {
+            var done = callback;
+            var skin = chosen;
+
+            callback = null;
+            chosen = null;
+
+            if (done)
+                done(skin);
+        });
+
+        window.SkinPicker = {
+            find: function (id) {
+                var $tile = $modal.find('.sp-tile[data-id="' + id + '"]');
+
+                if ($tile.length === 0)
+                    return null;
+
+                return {
+                    id: $tile.data('id'),
+                    title: $tile.data('title'),
+                    image: $tile.data('image'),
+                    weaponName: $tile.data('weapon-name'),
+                    rarityName: $tile.data('rarity-name'),
+                    price: $tile.data('price')
+                };
+            },
+            open: function (onClose) {
+                callback = onClose;
+                chosen = null;
+                $modal.find('.sp-search').val('');
+                $modal.find('.sp-weapon, .sp-rarity-filter').val('');
+                filter();
+                $modal.modal('show');
+            }
+        };
+    });
+</script>

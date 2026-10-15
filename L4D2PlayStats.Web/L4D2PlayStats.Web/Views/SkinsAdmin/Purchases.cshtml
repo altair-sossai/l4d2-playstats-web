@@ -23,7 +23,7 @@
 
 <div class="admin-header">
     <h3>@SharedLocalizer["SkinPurchases"]</h3>
-    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#ska-gift-modal">
+    <button type="button" class="btn btn-success" onclick="GiftModal.open()">
         <span class="glyphicon glyphicon-gift"></span> @Localizer["GiftButton"]
     </button>
 </div>
@@ -87,6 +87,10 @@
                 @if (purchase.Gift)
                 {
                     <span class="label label-success">@Localizer["Gift"]</span>
+                    @if (!string.IsNullOrEmpty(row.GiftedByName))
+                    {
+                        <small>@string.Format(Localizer["GiftedByValue"].Value, row.GiftedByName)</small>
+                    }
                 }
                 else
                 {
@@ -143,59 +147,17 @@
     </div>
 </div>
 
-<div id="ska-gift-modal" class="modal fade" tabindex="-1" role="dialog">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="@SharedLocalizer["Close"]"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">@Localizer["GiftTitle"]</h4>
-            </div>
-            <div class="modal-body">
-                <p class="text-muted">@Localizer["GiftLead"]</p>
-                <div class="form-group">
-                    <label for="ska-gift-player">@Localizer["PlayerSteamId"]</label>
-                    <input type="text" id="ska-gift-player" class="form-control" placeholder="76561198000000000"/>
-                </div>
-                <div class="form-group">
-                    <label for="ska-gift-skin">@Localizer["Skin"]</label>
-                    <select id="ska-gift-skin" class="form-control">
-                        @foreach (var rarity in SkinsModel.Rarities)
-                        {
-                            <optgroup label="@Localizer[SkinsModel.RarityKey(rarity)]">
-                                @foreach (var skin in Model.Skins.Where(skin => skin.Rarity == rarity).OrderBy(skin => Array.IndexOf(SkinsModel.Weapons, skin.Weapon)).ThenBy(skin => skin.Title.Get(culture)))
-                                {
-                                    <option value="@skin.Id">@skin.Title.Get(culture) (@Localizer[SkinsModel.WeaponResourceKeys[skin.Weapon]])</option>
-                                }
-                            </optgroup>
-                        }
-                    </select>
-                </div>
-                <div class="ska-gift-message"></div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">@SharedLocalizer["Cancel"]</button>
-                <button type="button" class="btn btn-success ska-gift">
-                    <span class="glyphicon glyphicon-gift"></span> @Localizer["GiftButton"]
-                </button>
-            </div>
-        </div>
-    </div>
-</div>
+@await Html.PartialAsync("_GiftModal", Model.Skins)
 
 @section Scripts {
     <script>
         $(function () {
             var texts = {
                 confirmRefund: @Json.Serialize(Localizer["ConfirmRefund"].Value),
-                giftDone: @Json.Serialize(Localizer["GiftDone"].Value),
                 refundDone: @Json.Serialize(Localizer["RefundDone"].Value),
-                required: @Json.Serialize(Localizer["GiftRequired"].Value),
                 errors: {
-                    AlreadyOwned: @Json.Serialize(Localizer["ErrorAlreadyOwned"].Value),
                     NotOwned: @Json.Serialize(Localizer["ErrorNotOwned"].Value),
-                    SkinNotFound: @Json.Serialize(Localizer["ErrorSkinNotFound"].Value),
                     Busy: @Json.Serialize(Localizer["ErrorBusy"].Value),
-                    BadRequest: @Json.Serialize(Localizer["ErrorInvalidPlayer"].Value),
                     Generic: @Json.Serialize(Localizer["ErrorGeneric"].Value)
                 }
             };
@@ -230,9 +192,6 @@
             }
 
             function errorText(xhr, response) {
-                if (xhr && xhr.status === 400)
-                    return texts.errors.BadRequest;
-
                 return texts.errors[response && response.status] || texts.errors.Generic;
             }
 
@@ -289,40 +248,6 @@
                     message($message, false, errorText(xhr));
                     $button.prop('disabled', false);
                 });
-            });
-
-            $('.ska-gift').on('click', function () {
-                var $button = $(this);
-                var $message = $('.ska-gift-message');
-                var player = $.trim($('#ska-gift-player').val());
-                var $option = $('#ska-gift-skin option:selected');
-
-                if (player === '') {
-                    message($message, false, texts.required);
-                    return;
-                }
-
-                $button.prop('disabled', true);
-
-                post('/api/shop/gift', { communityId: player, skinId: $option.val() }).done(function (response) {
-                    if (!response.succeeded) {
-                        message($message, false, errorText(null, response));
-                        $button.prop('disabled', false);
-                        return;
-                    }
-
-                    message($message, true, format(texts.giftDone, $option.text(), player));
-                    setTimeout(function () { location.reload(); }, 1200);
-                }).fail(function (xhr) {
-                    message($message, false, errorText(xhr));
-                    $button.prop('disabled', false);
-                });
-            });
-
-            $('#ska-gift-modal').on('shown.bs.modal', function () {
-                $('.ska-gift-message').empty();
-                $('.ska-gift').prop('disabled', false);
-                $('#ska-gift-player').focus();
             });
         });
     </script>

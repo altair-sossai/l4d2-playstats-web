@@ -44,7 +44,7 @@ public class SkinsAdminController(
                 purchase,
                 skinsById.GetValueOrDefault(purchase.SkinId),
                 purchase.PlayerName ?? names.GetValueOrDefault(purchase.PartitionKey) ?? purchase.PartitionKey,
-                purchase.GiftedByCommunityId == null ? null : names.GetValueOrDefault(purchase.GiftedByCommunityId) ?? purchase.GiftedByCommunityId))
+                purchase.GiftedByCommunityId == null ? null : purchase.GiftedByName ?? names.GetValueOrDefault(purchase.GiftedByCommunityId) ?? purchase.GiftedByCommunityId))
             .Where(row => row.Matches(q, culture))
             .ToList();
 
@@ -79,7 +79,7 @@ public class SkinsAdminController(
             .ToList();
 
         var list = new PagedListModel<Skin>(filtered, page, PageSize);
-        var model = new SkinPricesAdminModel(list, q, rarity, weapon, skins.Count(skin => skin.CustomPrice != null));
+        var model = new SkinPricesAdminModel(list, skins, q, rarity, weapon, skins.Count(skin => skin.CustomPrice != null));
 
         return View(model);
     }

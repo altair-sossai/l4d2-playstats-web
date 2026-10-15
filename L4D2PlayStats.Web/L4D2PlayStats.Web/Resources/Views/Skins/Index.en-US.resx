@@ -122,6 +122,9 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0,
       Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AdminGift" xml:space="preserve">
+    <value>Give as a gift (admin)</value>
+  </data>
   <data name="AllRarities" xml:space="preserve">
     <value>All rarities</value>
   </data>
@@ -301,6 +304,60 @@
   </data>
   <data name="UnequipSuccessTitle" xml:space="preserve">
     <value>Default skin is back</value>
+  </data>
+  <data name="UseActionHeader" xml:space="preserve">
+    <value>What it does</value>
+  </data>
+  <data name="UseButton" xml:space="preserve">
+    <value>How do I use my skins in game?</value>
+  </data>
+  <data name="UseCmdCycle" xml:space="preserve">
+    <value>Switches between the skins you bought for the weapon in your hand. After the last one, it goes back to the default skin.</value>
+  </data>
+  <data name="UseCmdDefault" xml:space="preserve">
+    <value>Puts the weapon in your hand back on the default skin.</value>
+  </data>
+  <data name="UseCmdHelp" xml:space="preserve">
+    <value>Shows the skins help in the chat.</value>
+  </data>
+  <data name="UseCmdId" xml:space="preserve">
+    <value>Uses one of your skins by its id. The id is shown in the details of each skin (e.g. surtr).</value>
+  </data>
+  <data name="UseCmdStatus" xml:space="preserve">
+    <value>Shows how many stars and skins you have.</value>
+  </data>
+  <data name="UseCmdWeapon" xml:space="preserve">
+    <value>Picks the weapon by name, without holding it.</value>
+  </data>
+  <data name="UseCommandHeader" xml:space="preserve">
+    <value>Command</value>
+  </data>
+  <data name="UseIntro" xml:space="preserve">
+    <value>Type the commands in the &lt;b&gt;game chat&lt;/b&gt;. If you use &lt;code&gt;/&lt;/code&gt; instead of &lt;code&gt;!&lt;/code&gt; (e.g. &lt;code&gt;/skin next&lt;/code&gt;), only you see the message.</value>
+  </data>
+  <data name="UseRuleDownloads" xml:space="preserve">
+    <value>Downloads must be on: &lt;b&gt;Options &gt; Multiplayer &gt; Custom Server Content &gt; Allow All&lt;/b&gt;.</value>
+  </data>
+  <data name="UseRuleDrop" xml:space="preserve">
+    <value>The skin stays with the weapon: if you drop it, whoever picks it up uses it with your skin.</value>
+  </data>
+  <data name="UseRuleNextMap" xml:space="preserve">
+    <value>A skin bought or equipped on the site shows up from the &lt;b&gt;next map change&lt;/b&gt;.</value>
+  </data>
+  <data name="UseRuleReady" xml:space="preserve">
+    <value>In game, skins can only be changed as a &lt;b&gt;survivor&lt;/b&gt; and during the &lt;b&gt;ready-up&lt;/b&gt;.</value>
+  </data>
+  <data name="UseRuleSaved" xml:space="preserve">
+    <value>Your choice is saved: what you equip in game shows up on the site, and the other way around.</value>
+  </data>
+  <data name="UseRulesTitle" xml:space="preserve">
+    <value>Good to know</value>
+  </data>
+  <data name="UseTitle" xml:space="preserve">
+    <value>How to use your skins in game</value>
+  </data>
+  <data name="UseWeapons" xml:space="preserve">
+    <value>Weapon names: &lt;code&gt;smg&lt;/code&gt;, &lt;code&gt;mac&lt;/code&gt;, &lt;code&gt;mp5&lt;/code&gt;, &lt;code&gt;pump&lt;/code&gt;, &lt;code&gt;chrome&lt;/code&gt;, &lt;code&gt;axe&lt;/code&gt;, &lt;code&gt;katana&lt;/code&gt;, &lt;code&gt;machete&lt;/code&gt;, &lt;code&gt;bat&lt;/code&gt;, &lt;code&gt;cricket&lt;/code&gt;, &lt;code&gt;guitar&lt;/code&gt;, &lt;code&gt;crowbar&lt;/code&gt;, &lt;code&gt;golf&lt;/code&gt;, &lt;code&gt;pan&lt;/code&gt;.</value>
   </data>
   <data name="ViewOnWorkshop" xml:space="preserve">
     <value>View on Workshop</value>

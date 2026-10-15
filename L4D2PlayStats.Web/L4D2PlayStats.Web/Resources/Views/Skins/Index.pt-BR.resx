@@ -122,6 +122,9 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0,
       Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AdminGift" xml:space="preserve">
+    <value>Dar de presente (admin)</value>
+  </data>
   <data name="AllRarities" xml:space="preserve">
     <value>Todas as raridades</value>
   </data>
@@ -301,6 +304,60 @@
   </data>
   <data name="UnequipSuccessTitle" xml:space="preserve">
     <value>Skin padrão de volta</value>
+  </data>
+  <data name="UseActionHeader" xml:space="preserve">
+    <value>O que faz</value>
+  </data>
+  <data name="UseButton" xml:space="preserve">
+    <value>Como uso minhas skins no jogo?</value>
+  </data>
+  <data name="UseCmdCycle" xml:space="preserve">
+    <value>Passa pelas skins que você comprou para a arma na sua mão. Depois da última, volta para a skin padrão.</value>
+  </data>
+  <data name="UseCmdDefault" xml:space="preserve">
+    <value>Volta a arma na sua mão para a skin padrão.</value>
+  </data>
+  <data name="UseCmdHelp" xml:space="preserve">
+    <value>Mostra a ajuda das skins no chat.</value>
+  </data>
+  <data name="UseCmdId" xml:space="preserve">
+    <value>Usa uma skin sua pelo id. O id aparece no detalhe de cada skin (ex.: surtr).</value>
+  </data>
+  <data name="UseCmdStatus" xml:space="preserve">
+    <value>Mostra quantas estrelas e quantas skins você tem.</value>
+  </data>
+  <data name="UseCmdWeapon" xml:space="preserve">
+    <value>Escolhe a arma pelo nome, sem precisar segurar.</value>
+  </data>
+  <data name="UseCommandHeader" xml:space="preserve">
+    <value>Comando</value>
+  </data>
+  <data name="UseIntro" xml:space="preserve">
+    <value>Digite os comandos no &lt;b&gt;chat do jogo&lt;/b&gt;. Se usar &lt;code&gt;/&lt;/code&gt; no lugar do &lt;code&gt;!&lt;/code&gt; (ex.: &lt;code&gt;/skin next&lt;/code&gt;), só você vê a mensagem.</value>
+  </data>
+  <data name="UseRuleDownloads" xml:space="preserve">
+    <value>Os downloads precisam estar ligados: &lt;b&gt;Opções &gt; Multijogador &gt; Conteúdo personalizado do servidor &gt; Permitir tudo&lt;/b&gt;.</value>
+  </data>
+  <data name="UseRuleDrop" xml:space="preserve">
+    <value>A skin acompanha a arma: se você largar a arma, quem pegar usa com a sua skin.</value>
+  </data>
+  <data name="UseRuleNextMap" xml:space="preserve">
+    <value>Skin comprada ou equipada pelo site aparece a partir da &lt;b&gt;próxima troca de mapa&lt;/b&gt;.</value>
+  </data>
+  <data name="UseRuleReady" xml:space="preserve">
+    <value>No jogo, só dá para trocar de skin como &lt;b&gt;sobrevivente&lt;/b&gt; e durante o &lt;b&gt;ready-up&lt;/b&gt;.</value>
+  </data>
+  <data name="UseRuleSaved" xml:space="preserve">
+    <value>Sua escolha fica salva: o que você equipa no jogo aparece no site, e vice-versa.</value>
+  </data>
+  <data name="UseRulesTitle" xml:space="preserve">
+    <value>Bom saber</value>
+  </data>
+  <data name="UseTitle" xml:space="preserve">
+    <value>Como usar suas skins no jogo</value>
+  </data>
+  <data name="UseWeapons" xml:space="preserve">
+    <value>Nomes de arma: &lt;code&gt;smg&lt;/code&gt;, &lt;code&gt;mac&lt;/code&gt;, &lt;code&gt;mp5&lt;/code&gt;, &lt;code&gt;pump&lt;/code&gt;, &lt;code&gt;chrome&lt;/code&gt;, &lt;code&gt;axe&lt;/code&gt;, &lt;code&gt;katana&lt;/code&gt;, &lt;code&gt;machete&lt;/code&gt;, &lt;code&gt;bat&lt;/code&gt;, &lt;code&gt;cricket&lt;/code&gt;, &lt;code&gt;guitar&lt;/code&gt;, &lt;code&gt;crowbar&lt;/code&gt;, &lt;code&gt;golf&lt;/code&gt;, &lt;code&gt;pan&lt;/code&gt;.</value>
   </data>
   <data name="ViewOnWorkshop" xml:space="preserve">
     <value>Ver no Workshop</value>

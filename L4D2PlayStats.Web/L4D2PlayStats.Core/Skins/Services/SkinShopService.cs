@@ -179,7 +179,7 @@ public class SkinShopService(
         return SkinShopResult.Of(SkinShopStatus.Success);
     }
 
-    public async Task<SkinShopResult> GiftAsync(string communityId, string skinId, string adminCommunityId, CancellationToken cancellationToken = default)
+    public async Task<SkinShopResult> GiftAsync(string communityId, string skinId, string adminCommunityId, string? adminName, CancellationToken cancellationToken = default)
     {
         var skin = await skinService.FindAsync(skinId, cancellationToken);
         if (skin == null)
@@ -199,6 +199,7 @@ public class SkinShopService(
             Price = 0,
             Gift = true,
             GiftedByCommunityId = adminCommunityId,
+            GiftedByName = adminName,
             PurchasedAtUtc = now
         };
 

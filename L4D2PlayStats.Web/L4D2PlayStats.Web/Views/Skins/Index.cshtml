@@ -1,4 +1,5 @@
 @using System.Globalization
+@using L4D2PlayStats.Core.Auth
 @using L4D2PlayStats.Core.Skins
 @using L4D2PlayStats.Core.Skins.Enums
 @using L4D2PlayStats.Web
@@ -9,6 +10,7 @@
 @model L4D2PlayStats.Web.Models.SkinsModel
 @inject IViewLocalizer Localizer
 @inject IStringLocalizer<SharedResource> SharedLocalizer
+@inject ICurrentUser CurrentUser
 
 @{
     ViewData["PageMetadata"] = new SkinsPageMetadata(Model, SharedLocalizer);
@@ -414,6 +416,10 @@
             background: rgba(91, 192, 222, .1);
         }
 
+        .sk-use-table td:first-child {
+            white-space: nowrap;
+        }
+
         @@media screen and (max-width: 700px) {
             .sk-hero {
                 padding: 20px 16px;
@@ -451,6 +457,12 @@
             @Html.Raw(Localizer["HowToSwitch"].Value)
         </div>
     </div>
+
+    <p>
+        <button type="button" class="btn btn-info sk-use-open">
+            <span class="glyphicon glyphicon-question-sign"></span> @Localizer["UseButton"]
+        </button>
+    </p>
 
     @if (!Model.LoggedIn)
     {
@@ -579,6 +591,12 @@
                     <a class="btn btn-default btn-sm btn-block sk-workshop" href="@skin.WorkshopUrl" target="_blank" rel="noopener">
                         <span class="glyphicon glyphicon-new-window"></span> @Localizer["ViewOnWorkshop"]
                     </a>
+                    @if (CurrentUser.IsAdmin)
+                    {
+                        <button type="button" class="btn btn-success btn-sm btn-block sk-admin-gift" data-skin="@skin.Id">
+                            <span class="glyphicon glyphicon-gift"></span> @Localizer["AdminGift"]
+                        </button>
+                    }
                 </div>
             </div>
         </div>
@@ -698,6 +716,11 @@
     @if (Model.LoggedIn)
     {
         <div role="tabpanel" class="tab-pane" id="sk-mine">
+            <p>
+                <button type="button" class="btn btn-info btn-sm sk-use-open">
+                    <span class="glyphicon glyphicon-question-sign"></span> @Localizer["UseButton"]
+                </button>
+            </p>
             @if (Model.OwnedSkins.Count == 0)
             {
                 <p class="sk-empty">@Localizer["NoOwnedSkins"]</p>
@@ -766,8 +789,74 @@
     </div>
 </div>
 
-@section Scripts {
-    <script>
+<div id="sk-use-modal" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="@SharedLocalizer["Close"]">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title">@Localizer["UseTitle"]</h4>
+            </div>
+            <div class="modal-body sk-message">
+                <p>@Html.Raw(Localizer["UseIntro"].Value)</p>
+                <table class="table table-condensed table-striped sk-use-table">
+                    <thead>
+                    <tr>
+                        <th>@Localizer["UseCommandHeader"]</th>
+                        <th>@Localizer["UseActionHeader"]</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td><code>!skin next</code><br/><code>!skin prev</code></td>
+                        <td>@Localizer["UseCmdCycle"]</td>
+                    </tr>
+                    <tr>
+                        <td><code>!skin surtr</code></td>
+                        <td>@Localizer["UseCmdId"]</td>
+                    </tr>
+                    <tr>
+                        <td><code>!skin default</code></td>
+                        <td>@Localizer["UseCmdDefault"]</td>
+                    </tr>
+                    <tr>
+                        <td><code>!skin next pump</code></td>
+                        <td>@Localizer["UseCmdWeapon"]</td>
+                    </tr>
+                    <tr>
+                        <td><code>!skin status</code></td>
+                        <td>@Localizer["UseCmdStatus"]</td>
+                    </tr>
+                    <tr>
+                        <td><code>!skin</code></td>
+                        <td>@Localizer["UseCmdHelp"]</td>
+                    </tr>
+                    </tbody>
+                </table>
+                <p><small>@Html.Raw(Localizer["UseWeapons"].Value)</small></p>
+                <p><strong>@Localizer["UseRulesTitle"]</strong></p>
+                <ul>
+                    <li>@Html.Raw(Localizer["UseRuleReady"].Value)</li>
+                    <li>@Html.Raw(Localizer["UseRuleNextMap"].Value)</li>
+                    <li>@Localizer["UseRuleSaved"]</li>
+                    <li>@Localizer["UseRuleDrop"]</li>
+                    <li>@Html.Raw(Localizer["UseRuleDownloads"].Value)</li>
+                </ul>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">@Localizer["Ok"]</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@if (CurrentUser.IsAdmin)
+{
+    @await Html.PartialAsync("_GiftModal", Model.Skins)
+}
+
+@section Scripts {    <script>
         $(function () {
             var texts = {
                 balance: @Json.Serialize(wallet?.Balance ?? 0),
@@ -927,6 +1016,22 @@
 
                     showResult(texts.equipSuccessTitle, html, true);
                 });
+            });
+
+            $(document).on('click', '.sk-use-open', function (e) {
+                e.preventDefault();
+                $('.modal.in').modal('hide');
+                $('#sk-use-modal').modal('show');
+            });
+
+            $(document).on('click', '.sk-admin-gift', function (e) {
+                e.preventDefault();
+
+                var skin = $(this).data('skin');
+
+                $('#sk-modal').one('hidden.bs.modal', function () {
+                    GiftModal.open({ skin: skin });
+                }).modal('hide');
             });
 
             $(document).on('click', '.sk-unequip', function (e) {

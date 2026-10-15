@@ -134,23 +134,14 @@
   <data name="Date" xml:space="preserve">
     <value>Date</value>
   </data>
-  <data name="ErrorAlreadyOwned" xml:space="preserve">
-    <value>The player already owns this skin.</value>
-  </data>
   <data name="ErrorBusy" xml:space="preserve">
     <value>Too many operations at the same time. Try again.</value>
   </data>
   <data name="ErrorGeneric" xml:space="preserve">
     <value>Something went wrong. Reload the page and check before trying again.</value>
   </data>
-  <data name="ErrorInvalidPlayer" xml:space="preserve">
-    <value>Invalid Steam ID. Use STEAM_0:1:123, [U:1:123], 7656119... or the profile link.</value>
-  </data>
   <data name="ErrorNotOwned" xml:space="preserve">
     <value>The player no longer owns this skin.</value>
-  </data>
-  <data name="ErrorSkinNotFound" xml:space="preserve">
-    <value>Skin not found.</value>
   </data>
   <data name="Gift" xml:space="preserve">
     <value>Gift</value>
@@ -158,47 +149,20 @@
   <data name="GiftButton" xml:space="preserve">
     <value>Give a skin</value>
   </data>
-  <data name="GiftDone" xml:space="preserve">
-    <value>{0} was given to {1}.</value>
-  </data>
-  <data name="GiftLead" xml:space="preserve">
-    <value>The skin is equipped for the player and no stars are charged. It shows up on the server from the next map change.</value>
-  </data>
-  <data name="GiftRequired" xml:space="preserve">
-    <value>Enter the player's Steam ID.</value>
-  </data>
-  <data name="GiftTitle" xml:space="preserve">
-    <value>Give a skin as a gift</value>
-  </data>
   <data name="GiftedBy" xml:space="preserve">
     <value>Gift given by</value>
   </data>
+  <data name="GiftedByValue" xml:space="preserve">
+    <value>by {0}</value>
+  </data>
   <data name="NoPurchases" xml:space="preserve">
     <value>No purchases found.</value>
-  </data>
-  <data name="PlayerSteamId" xml:space="preserve">
-    <value>Player Steam ID (any format or the profile link)</value>
   </data>
   <data name="Price" xml:space="preserve">
     <value>Price</value>
   </data>
   <data name="PurchaseDetails" xml:space="preserve">
     <value>Purchase details</value>
-  </data>
-  <data name="RarityCommon" xml:space="preserve">
-    <value>Common</value>
-  </data>
-  <data name="RarityEpic" xml:space="preserve">
-    <value>Epic</value>
-  </data>
-  <data name="RarityLegendary" xml:space="preserve">
-    <value>Legendary</value>
-  </data>
-  <data name="RarityRare" xml:space="preserve">
-    <value>Rare</value>
-  </data>
-  <data name="RarityUncommon" xml:space="preserve">
-    <value>Uncommon</value>
   </data>
   <data name="RefundButton" xml:space="preserve">
     <value>Refund purchase</value>

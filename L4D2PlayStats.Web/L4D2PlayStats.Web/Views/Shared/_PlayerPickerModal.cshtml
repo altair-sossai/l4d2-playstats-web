@@ -1,0 +1,172 @@
+@using L4D2PlayStats.Web
+@using Microsoft.AspNetCore.Mvc.Localization
+@using Microsoft.Extensions.Localization
+@inject IViewLocalizer Localizer
+@inject IStringLocalizer<SharedResource> SharedLocalizer
+
+<style>
+    .pp-list {
+        max-height: 420px;
+        margin: 10px 0 0;
+        overflow-y: auto;
+    }
+
+        .pp-list .list-group-item {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .pp-list img {
+            width: 36px;
+            height: 36px;
+            margin-right: 10px;
+            border-radius: 50%;
+            flex: 0 0 auto;
+        }
+
+    .pp-info {
+        flex: 1;
+        min-width: 0;
+    }
+
+        .pp-info strong,
+        .pp-info small {
+            display: block;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        }
+
+        .pp-info small {
+            opacity: .7;
+        }
+</style>
+
+<div id="pp-modal" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="@SharedLocalizer["Close"]"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">@Localizer["Title"]</h4>
+            </div>
+            <div class="modal-body">
+                <input type="text" class="form-control pp-search" placeholder="@Localizer["SearchPlaceholder"]"/>
+                <div class="list-group pp-list"></div>
+                <small class="text-muted">@Localizer["Hint"]</small>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">@SharedLocalizer["Cancel"]</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var texts = {
+            loading: @Json.Serialize(Localizer["Loading"].Value),
+            empty: @Json.Serialize(Localizer["NoPlayers"].Value),
+            error: @Json.Serialize(Localizer["LoadError"].Value),
+            history: @Json.Serialize(Localizer["FromHistory"].Value),
+            refine: @Json.Serialize(Localizer["RefineSearch"].Value),
+            alsoKnownAs: @Json.Serialize(Localizer["AlsoKnownAs"].Value)
+        };
+
+        var $modal = $('#pp-modal');
+        var $search = $modal.find('.pp-search');
+        var $list = $modal.find('.pp-list');
+        var players = null;
+        var callback = null;
+        var chosen = null;
+        var maxItems = 60;
+
+        function escapeHtml(text) {
+            return $('<div/>').text(text == null ? '' : text).html();
+        }
+
+        function note(text) {
+            $list.html('<div class="list-group-item text-muted">' + escapeHtml(text) + '</div>');
+        }
+
+        function render() {
+            if (players == null)
+                return;
+
+            var term = $.trim($search.val()).toLowerCase();
+            var matches = players.filter(function (player) {
+                var names = [player.name || ''].concat(player.previousNames || []).join(' ').toLowerCase();
+
+                return term === '' || names.indexOf(term) >= 0 || player.communityId.indexOf(term) >= 0 || (player.steamId || '').toLowerCase().indexOf(term) >= 0;
+            });
+
+            $list.empty();
+
+            if (matches.length === 0) {
+                note(texts.empty);
+                return;
+            }
+
+            $.each(matches.slice(0, maxItems), function (index, player) {
+                var badge = player.position ? '#' + player.position : texts.history;
+                var $item = $('<a href="#" class="list-group-item"></a>');
+
+                $item.append('<img src="' + escapeHtml(player.avatarUrl) + '" alt="" onerror="imgOnError(this)"/>');
+                var aliases = (player.previousNames || []).length > 0 ? '<small>' + escapeHtml(texts.alsoKnownAs + ' ' + player.previousNames.join(', ')) + '</small>' : '';
+
+                $item.append('<div class="pp-info"><strong>' + escapeHtml(player.name) + '</strong><small>' + escapeHtml(player.steamId || '') + ' · ' + escapeHtml(player.communityId) + '</small>' + aliases + '</div>');
+                $item.append('<span class="label label-default">' + escapeHtml(badge) + '</span>');
+                $item.on('click', function (event) {
+                    event.preventDefault();
+                    chosen = player;
+                    $modal.modal('hide');
+                });
+
+                $list.append($item);
+            });
+
+            if (matches.length > maxItems)
+                $list.append('<div class="list-group-item text-muted">' + escapeHtml(texts.refine) + '</div>');
+        }
+
+        $search.on('input', render);
+
+        $modal.on('shown.bs.modal', function () {
+            $search.focus();
+        });
+
+        $modal.on('hidden.bs.modal', function () {
+            var done = callback;
+            var player = chosen;
+
+            callback = null;
+            chosen = null;
+
+            if (done)
+                done(player);
+        });
+
+        window.PlayerPicker = {
+            open: function (onClose) {
+                callback = onClose;
+                chosen = null;
+                $search.val('');
+                $modal.modal('show');
+
+                if (players != null) {
+                    render();
+                    return;
+                }
+
+                note(texts.loading);
+
+                $.getJSON('/api/admin/players').done(function (result) {
+                    players = result || [];
+                    render();
+                }).fail(function () {
+                    note(texts.error);
+                });
+            }
+        };
+    });
+</script>

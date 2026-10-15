@@ -14,6 +14,7 @@ public class SkinPurchaseEntity : ITableEntity
     public bool Gift { get; set; }
     public string? PlayerName { get; set; }
     public string? GiftedByCommunityId { get; set; }
+    public string? GiftedByName { get; set; }
     public DateTimeOffset PurchasedAtUtc { get; set; }
     public string PartitionKey { get; set; } = string.Empty;
     public string RowKey { get; set; } = string.Empty;

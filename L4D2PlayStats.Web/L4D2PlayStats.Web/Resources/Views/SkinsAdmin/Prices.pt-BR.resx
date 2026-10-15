@@ -146,6 +146,9 @@
   <data name="ErrorGeneric" xml:space="preserve">
     <value>Não foi possível salvar. Atualize a página e tente de novo.</value>
   </data>
+  <data name="GiftButton" xml:space="preserve">
+    <value>Dar de presente</value>
+  </data>
   <data name="InvalidPrice" xml:space="preserve">
     <value>Informe um preço entre 1 e 100.000.</value>
   </data>

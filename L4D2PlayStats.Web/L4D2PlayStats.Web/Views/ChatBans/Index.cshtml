@@ -144,7 +144,13 @@
                 <input type="hidden" id="cb-add-name"/>
                 <div class="form-group">
                     <label for="cb-add-player">@SharedLocalizer["SteamIdOrProfileUrl"]</label>
-                    <input type="text" id="cb-add-player" class="form-control" placeholder="76561198000000000"/>
+                    <div class="input-group">
+                        <input type="text" id="cb-add-player" class="form-control" placeholder="76561198000000000"/>
+                        <span class="input-group-btn">
+                            <button type="button" class="btn btn-default cb-pick-player"><span class="glyphicon glyphicon-user"></span> @Localizer["PickPlayer"]</button>
+                        </span>
+                    </div>
+                    <div class="cb-picked text-muted" style="margin-top: 6px"></div>
                 </div>
                 <div class="form-group">
                     <label for="cb-add-reason">@SharedLocalizer["Reason"]</label>
@@ -161,6 +167,8 @@
         </div>
     </div>
 </div>
+
+@await Html.PartialAsync("_PlayerPickerModal")
 
 @section Scripts {
     <script>
@@ -293,6 +301,7 @@
 
                             $('#cb-add-player').val(sender.communityId);
                             $('#cb-add-name').val(sender.name || '');
+                            $('#cb-add-modal .cb-picked').text(sender.name || sender.communityId);
                             $('#cb-add-reason').focus();
                         });
 
@@ -305,10 +314,30 @@
                 $('#cb-add-player').val('');
                 $('#cb-add-name').val('');
                 $('#cb-add-reason').val('');
+                $('#cb-add-modal .cb-picked').empty();
                 $('#cb-add-modal .cb-add-message').empty();
                 $('#cb-add-modal .cb-add-save').prop('disabled', false);
                 loadRecentSenders();
                 $('#cb-add-modal').modal('show');
+            });
+
+            $('.cb-pick-player').on('click', function () {
+                $('#cb-add-modal').one('hidden.bs.modal', function () {
+                    PlayerPicker.open(function (player) {
+                        if (player) {
+                            $('#cb-add-player').val(player.communityId);
+                            $('#cb-add-name').val(player.name || '');
+                            $('#cb-add-modal .cb-picked').html('<img src="' + escapeHtml(player.avatarUrl) + '" alt="" style="width: 24px; border-radius: 50%; margin-right: 6px" onerror="imgOnError(this)"/>' + escapeHtml(player.name));
+                        }
+
+                        $('#cb-add-modal').modal('show');
+                    });
+                }).modal('hide');
+            });
+
+            $('#cb-add-player').on('input', function () {
+                $('#cb-add-name').val('');
+                $('#cb-add-modal .cb-picked').empty();
             });
 
             $('.cb-add-save').on('click', function () {

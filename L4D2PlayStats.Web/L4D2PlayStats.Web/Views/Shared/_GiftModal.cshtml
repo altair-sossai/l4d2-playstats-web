@@ -1,0 +1,238 @@
+@using L4D2PlayStats.Core.Skins
+@using L4D2PlayStats.Web
+@using Microsoft.AspNetCore.Mvc.Localization
+@using Microsoft.Extensions.Localization
+@model IReadOnlyCollection<Skin>
+@inject IViewLocalizer Localizer
+@inject IStringLocalizer<SharedResource> SharedLocalizer
+
+@await Html.PartialAsync("_PlayerPickerModal")
+@await Html.PartialAsync("_SkinPickerModal", Model)
+
+<style>
+    .gm-choice {
+        display: flex;
+        align-items: center;
+        min-height: 64px;
+        margin-bottom: 6px;
+        padding: 8px 10px;
+        border: 1px dashed rgba(128, 128, 128, .45);
+        border-radius: 6px;
+    }
+
+        .gm-choice img {
+            width: 48px;
+            height: 48px;
+            margin-right: 10px;
+            object-fit: cover;
+            background: #111;
+            flex: 0 0 auto;
+        }
+
+        .gm-choice .gm-avatar {
+            border-radius: 50%;
+        }
+
+        .gm-choice .gm-thumb {
+            border-radius: 4px;
+        }
+
+        .gm-choice div {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .gm-choice strong,
+        .gm-choice small {
+            display: block;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        }
+
+        .gm-choice small {
+            opacity: .75;
+        }
+
+    .gm-empty {
+        opacity: .7;
+    }
+</style>
+
+<div id="gm-modal" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="@SharedLocalizer["Close"]"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">@Localizer["Title"]</h4>
+            </div>
+            <div class="modal-body">
+                <p class="text-muted">@Localizer["Lead"]</p>
+
+                <label>@Localizer["Player"]</label>
+                <div class="gm-choice gm-player">
+                    <span class="gm-empty">@Localizer["NoPlayer"]</span>
+                </div>
+                <div class="input-group" style="margin-bottom: 14px">
+                    <input type="text" class="form-control gm-player-id" placeholder="@Localizer["PlayerPlaceholder"]"/>
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default gm-pick-player"><span class="glyphicon glyphicon-user"></span> @Localizer["PickPlayer"]</button>
+                    </span>
+                </div>
+
+                <label>@Localizer["Skin"]</label>
+                <div class="gm-choice gm-skin">
+                    <span class="gm-empty">@Localizer["NoSkin"]</span>
+                </div>
+                <button type="button" class="btn btn-default btn-block gm-pick-skin"><span class="glyphicon glyphicon-th"></span> @Localizer["PickSkin"]</button>
+
+                <div class="gm-message" style="margin-top: 12px"></div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">@SharedLocalizer["Cancel"]</button>
+                <button type="button" class="btn btn-success gm-confirm"><span class="glyphicon glyphicon-gift"></span> @Localizer["Confirm"]</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var texts = {
+            noPlayer: @Json.Serialize(Localizer["NoPlayer"].Value),
+            noSkin: @Json.Serialize(Localizer["NoSkin"].Value),
+            requiredPlayer: @Json.Serialize(Localizer["RequiredPlayer"].Value),
+            requiredSkin: @Json.Serialize(Localizer["RequiredSkin"].Value),
+            done: @Json.Serialize(Localizer["Done"].Value),
+            typed: @Json.Serialize(Localizer["TypedPlayer"].Value),
+            errors: {
+                AlreadyOwned: @Json.Serialize(Localizer["ErrorAlreadyOwned"].Value),
+                SkinNotFound: @Json.Serialize(Localizer["ErrorSkinNotFound"].Value),
+                Busy: @Json.Serialize(Localizer["ErrorBusy"].Value),
+                BadRequest: @Json.Serialize(Localizer["ErrorInvalidPlayer"].Value),
+                Generic: @Json.Serialize(Localizer["ErrorGeneric"].Value)
+            }
+        };
+
+        var $modal = $('#gm-modal');
+        var skin = null;
+
+        function escapeHtml(text) {
+            return $('<div/>').text(text == null ? '' : text).html();
+        }
+
+        function message(success, text) {
+            $modal.find('.gm-message').html('<div class="alert ' + (success ? 'alert-success' : 'alert-danger') + '">' + escapeHtml(text) + '</div>');
+        }
+
+        function showPlayer(player) {
+            var $choice = $modal.find('.gm-player');
+
+            if (!player) {
+                $choice.html('<span class="gm-empty">' + escapeHtml(texts.noPlayer) + '</span>');
+                return;
+            }
+
+            $choice.html('<img class="gm-avatar" src="' + escapeHtml(player.avatarUrl) + '" alt="" onerror="imgOnError(this)"/>'
+                + '<div><strong>' + escapeHtml(player.name) + '</strong><small>' + escapeHtml(player.steamId || '') + ' · ' + escapeHtml(player.communityId) + '</small></div>');
+        }
+
+        function showSkin(selected) {
+            skin = selected;
+
+            var $choice = $modal.find('.gm-skin');
+
+            if (!skin) {
+                $choice.html('<span class="gm-empty">' + escapeHtml(texts.noSkin) + '</span>');
+                return;
+            }
+
+            $choice.html('<img class="gm-thumb" src="' + escapeHtml(skin.image) + '" alt=""/>'
+                + '<div><strong>' + escapeHtml(skin.title) + '</strong><small>' + escapeHtml(skin.weaponName) + ' · ' + escapeHtml(skin.rarityName) + ' · ' + Number(skin.price).toLocaleString() + ' ⭐</small></div>');
+        }
+
+        function swap(openPicker) {
+            $modal.one('hidden.bs.modal', openPicker).modal('hide');
+        }
+
+        $modal.find('.gm-pick-player').on('click', function () {
+            swap(function () {
+                window.PlayerPicker.open(function (player) {
+                    if (player) {
+                        $modal.find('.gm-player-id').val(player.communityId);
+                        showPlayer(player);
+                    }
+
+                    $modal.modal('show');
+                });
+            });
+        });
+
+        $modal.find('.gm-player-id').on('input', function () {
+            var value = $.trim($(this).val());
+
+            $modal.find('.gm-player').html('<span class="gm-empty">' + escapeHtml(value === '' ? texts.noPlayer : texts.typed) + '</span>');
+        });
+
+        $modal.find('.gm-pick-skin').on('click', function () {
+            swap(function () {
+                window.SkinPicker.open(function (selected) {
+                    if (selected)
+                        showSkin(selected);
+
+                    $modal.modal('show');
+                });
+            });
+        });
+
+        $modal.find('.gm-confirm').on('click', function () {
+            var $button = $(this);
+            var player = $.trim($modal.find('.gm-player-id').val());
+
+            if (player === '') {
+                message(false, texts.requiredPlayer);
+                return;
+            }
+
+            if (!skin) {
+                message(false, texts.requiredSkin);
+                return;
+            }
+
+            $button.prop('disabled', true);
+
+            $.ajax({
+                url: '/api/shop/gift',
+                type: 'POST',
+                contentType: 'application/json',
+                headers: { 'RequestVerificationToken': $('input[name="__RequestVerificationToken"]').val() },
+                data: JSON.stringify({ communityId: player, skinId: skin.id })
+            }).done(function (response) {
+                if (!response.succeeded) {
+                    message(false, texts.errors[response.status] || texts.errors.Generic);
+                    $button.prop('disabled', false);
+                    return;
+                }
+
+                message(true, texts.done);
+                setTimeout(function () { location.reload(); }, 1500);
+            }).fail(function (xhr) {
+                message(false, xhr.status === 400 ? texts.errors.BadRequest : texts.errors.Generic);
+                $button.prop('disabled', false);
+            });
+        });
+
+        window.GiftModal = {
+            open: function (options) {
+                var settings = options || {};
+
+                $modal.find('.gm-player-id').val('');
+                $modal.find('.gm-message').empty();
+                $modal.find('.gm-confirm').prop('disabled', false);
+                showPlayer(null);
+                showSkin(settings.skin ? window.SkinPicker.find(settings.skin) : null);
+                $modal.modal('show');
+            }
+        };
+    });
+</script>

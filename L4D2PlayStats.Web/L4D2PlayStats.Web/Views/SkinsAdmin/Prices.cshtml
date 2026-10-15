@@ -119,12 +119,15 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">@SharedLocalizer["Cancel"]</button>
+                <button type="button" class="btn btn-success ska-gift"><span class="glyphicon glyphicon-gift"></span> @Localizer["GiftButton"]</button>
                 <button type="button" class="btn btn-warning ska-reset">@Localizer["Reset"]</button>
                 <button type="button" class="btn btn-primary ska-save">@Localizer["Save"]</button>
             </div>
         </div>
     </div>
 </div>
+
+@await Html.PartialAsync("_GiftModal", Model.AllSkins)
 
 @section Scripts {
     <script>
@@ -189,6 +192,14 @@
                 }
 
                 save(price);
+            });
+
+            $('.ska-gift').on('click', function () {
+                var skin = selected;
+
+                $('#ska-price-modal').one('hidden.bs.modal', function () {
+                    GiftModal.open({ skin: skin });
+                }).modal('hide');
             });
 
             $('.ska-reset').on('click', function () {

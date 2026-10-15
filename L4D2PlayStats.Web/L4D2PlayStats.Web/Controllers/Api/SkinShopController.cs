@@ -77,7 +77,7 @@ public class SkinShopController(ISkinShopService skinShopService, ISkinService s
         if (!TryParseCommunityId(command.CommunityId, out var communityId) || string.IsNullOrEmpty(command.SkinId))
             return BadRequest();
 
-        var result = await skinShopService.GiftAsync(communityId, command.SkinId, currentUser.CommunityId!, cancellationToken);
+        var result = await skinShopService.GiftAsync(communityId, command.SkinId, currentUser.CommunityId!, currentUser.Name, cancellationToken);
 
         return Ok(ToResponse(result));
     }

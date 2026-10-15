@@ -152,6 +152,9 @@
   <data name="NoRecentSenders" xml:space="preserve">
     <value>Nadie envió mensajes recientemente.</value>
   </data>
+  <data name="PickPlayer" xml:space="preserve">
+    <value>Elegir de la lista</value>
+  </data>
   <data name="RemoveBan" xml:space="preserve">
     <value>Eliminar ban</value>
   </data>
