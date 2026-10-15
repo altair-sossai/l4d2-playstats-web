@@ -158,6 +158,9 @@
   <data name="ConfirmBuyFinal" xml:space="preserve">
     <value>Purchases cannot be undone.</value>
   </data>
+  <data name="ConfirmBuyTestPhase" xml:space="preserve">
+    <value>During the test phase, you can ask an admin to refund this skin at any time.</value>
+  </data>
   <data name="ConfirmBuyText" xml:space="preserve">
     <value>Buy &lt;b&gt;{0}&lt;/b&gt; for &lt;b&gt;{1} ⭐&lt;/b&gt;?</value>
   </data>
@@ -295,6 +298,12 @@
   </data>
   <data name="TabShop" xml:space="preserve">
     <value>Shop</value>
+  </data>
+  <data name="TestPhaseText" xml:space="preserve">
+    <value>While the shop is in its test phase, you can ask an admin to refund any skin at any time, and the stars come back to you. When the shop is officially released, this notice will be removed and purchases will no longer be refundable.</value>
+  </data>
+  <data name="TestPhaseTitle" xml:space="preserve">
+    <value>Test phase: buy without worry</value>
   </data>
   <data name="Unequip" xml:space="preserve">
     <value>Back to default</value>

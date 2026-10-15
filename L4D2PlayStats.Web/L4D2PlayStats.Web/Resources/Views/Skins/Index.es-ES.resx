@@ -158,6 +158,9 @@
   <data name="ConfirmBuyFinal" xml:space="preserve">
     <value>La compra no se puede deshacer.</value>
   </data>
+  <data name="ConfirmBuyTestPhase" xml:space="preserve">
+    <value>Durante la fase de pruebas, puedes pedirle a un administrador el reembolso de esta skin en cualquier momento.</value>
+  </data>
   <data name="ConfirmBuyText" xml:space="preserve">
     <value>¿Comprar &lt;b&gt;{0}&lt;/b&gt; por &lt;b&gt;{1} ⭐&lt;/b&gt;?</value>
   </data>
@@ -295,6 +298,12 @@
   </data>
   <data name="TabShop" xml:space="preserve">
     <value>Tienda</value>
+  </data>
+  <data name="TestPhaseText" xml:space="preserve">
+    <value>Mientras la tienda esté en fase de pruebas, puedes pedirle a un administrador el reembolso de cualquier skin en cualquier momento, y las estrellas vuelven a ti. Cuando la tienda se lance oficialmente, este aviso se quitará y las compras ya no tendrán reembolso.</value>
+  </data>
+  <data name="TestPhaseTitle" xml:space="preserve">
+    <value>Fase de pruebas: compra sin miedo</value>
   </data>
   <data name="Unequip" xml:space="preserve">
     <value>Volver a la predeterminada</value>
