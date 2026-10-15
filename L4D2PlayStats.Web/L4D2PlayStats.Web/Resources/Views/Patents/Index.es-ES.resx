@@ -122,9 +122,6 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0,
       Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="ComingSoonOn" xml:space="preserve">
-    <value>Disponible el {0}</value>
-  </data>
   <data name="DefeatXPPoints" xml:space="preserve">
     <value>Derrota: {0:N0} puntos de XP</value>
   </data>
@@ -151,18 +148,6 @@
   </data>
   <data name="RageQuitXPPoints" xml:space="preserve">
     <value>Rage quit: {0:N0} puntos de XP</value>
-  </data>
-  <data name="SeeAllSkins" xml:space="preserve">
-    <value>Ver todas las skins</value>
-  </data>
-  <data name="ShowSkins" xml:space="preserve">
-    <value>Ver skins ({0})</value>
-  </data>
-  <data name="Skins" xml:space="preserve">
-    <value>Skins</value>
-  </data>
-  <data name="SkinsUnlockedAtLevel" xml:space="preserve">
-    <value>Skins desbloqueadas en la patente {0}</value>
   </data>
   <data name="UnderstandingPatentSystem" xml:space="preserve">
     <value>Entendiendo el sistema de patentes</value>

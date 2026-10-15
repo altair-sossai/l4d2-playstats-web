@@ -122,29 +122,83 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0,
       Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AllRarities" xml:space="preserve">
+    <value>All rarities</value>
+  </data>
   <data name="AllWeapons" xml:space="preserve">
     <value>All weapons</value>
   </data>
-  <data name="AvailableFrom" xml:space="preserve">
-    <value>Available from {0} and above.</value>
+  <data name="BuyFor" xml:space="preserve">
+    <value>Buy for {0} ⭐</value>
+  </data>
+  <data name="BuySuccessText" xml:space="preserve">
+    <value>&lt;b&gt;{0}&lt;/b&gt; is now equipped on your weapon ({1}).</value>
+  </data>
+  <data name="BuySuccessTitle" xml:space="preserve">
+    <value>Purchase complete!</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Cancel</value>
   </data>
   <data name="ChatCommand" xml:space="preserve">
     <value>Chat command</value>
   </data>
-  <data name="ComingSoon" xml:space="preserve">
-    <value>Coming soon</value>
+  <data name="ConfirmBuyBalance" xml:space="preserve">
+    <value>Your balance goes from {0} ⭐ to {1} ⭐.</value>
+  </data>
+  <data name="ConfirmBuyButton" xml:space="preserve">
+    <value>Confirm purchase</value>
+  </data>
+  <data name="ConfirmBuyEquip" xml:space="preserve">
+    <value>Once done, it is equipped on your weapon ({0}) right away and shows up on the server from the next map change.</value>
+  </data>
+  <data name="ConfirmBuyFinal" xml:space="preserve">
+    <value>Purchases cannot be undone.</value>
+  </data>
+  <data name="ConfirmBuyText" xml:space="preserve">
+    <value>Buy &lt;b&gt;{0}&lt;/b&gt; for &lt;b&gt;{1} ⭐&lt;/b&gt;?</value>
+  </data>
+  <data name="ConfirmBuyTitle" xml:space="preserve">
+    <value>Confirm purchase</value>
   </data>
   <data name="Credits" xml:space="preserve">
     <value>All skins were made by the community on the Steam Workshop. Use the Workshop button on each skin to see the original work and give credit to its creator.</value>
   </data>
-  <data name="DownloadFrom" xml:space="preserve">
-    <value>Download starts on {0}</value>
+  <data name="Equip" xml:space="preserve">
+    <value>Equip</value>
   </data>
-  <data name="Exclusive" xml:space="preserve">
-    <value>Exclusive</value>
+  <data name="EquipSuccessText" xml:space="preserve">
+    <value>&lt;b&gt;{0}&lt;/b&gt; is now equipped on your weapon ({1}).</value>
   </data>
-  <data name="ExclusiveDescription" xml:space="preserve">
-    <value>Only players at the top patent can use these skins.</value>
+  <data name="EquipSuccessTitle" xml:space="preserve">
+    <value>Skin equipped!</value>
+  </data>
+  <data name="Equipped" xml:space="preserve">
+    <value>Equipped</value>
+  </data>
+  <data name="ErrorAlreadyOwned" xml:space="preserve">
+    <value>You already own this skin. No stars were spent.</value>
+  </data>
+  <data name="ErrorBusy" xml:space="preserve">
+    <value>Too many operations at the same time. Try again. No stars were spent.</value>
+  </data>
+  <data name="ErrorGeneric" xml:space="preserve">
+    <value>Something went wrong. Reload the page to check whether the operation went through before trying again.</value>
+  </data>
+  <data name="ErrorInsufficientStars" xml:space="preserve">
+    <value>You do not have enough stars for this skin. No stars were spent.</value>
+  </data>
+  <data name="ErrorNotOwned" xml:space="preserve">
+    <value>You do not own this skin yet.</value>
+  </data>
+  <data name="ErrorSkinNotFound" xml:space="preserve">
+    <value>This skin is no longer available.</value>
+  </data>
+  <data name="ErrorStarsUnavailable" xml:space="preserve">
+    <value>We could not check your stars right now. Try again in a moment. No stars were spent.</value>
+  </data>
+  <data name="ErrorTitle" xml:space="preserve">
+    <value>It did not work</value>
   </data>
   <data name="GroupFirearms" xml:space="preserve">
     <value>Firearms</value>
@@ -152,77 +206,113 @@
   <data name="GroupMelee" xml:space="preserve">
     <value>Melee weapons</value>
   </data>
-  <data name="HowToChoose" xml:space="preserve">
-    <value>As a &lt;b&gt;survivor&lt;/b&gt;, during the &lt;b&gt;ready-up&lt;/b&gt;, type the skin command in the game chat, e.g. &lt;code&gt;!skin hellsing-gold&lt;/code&gt;. Type &lt;code&gt;!skin&lt;/code&gt; to see the help.</value>
+  <data name="HowToBuy" xml:space="preserve">
+    <value>Buy a skin with your stars. It is &lt;b&gt;equipped&lt;/b&gt; right away and shows up on the server &lt;b&gt;from the next map change&lt;/b&gt;. Each skin is bought only once and is yours forever.</value>
   </data>
-  <data name="HowToChooseTitle" xml:space="preserve">
-    <value>Choose a skin</value>
+  <data name="HowToBuyTitle" xml:space="preserve">
+    <value>2. Buy and equip</value>
   </data>
-  <data name="HowToCycle" xml:space="preserve">
-    <value>With the weapon in hand, use &lt;code&gt;!skin next&lt;/code&gt; and &lt;code&gt;!skin prev&lt;/code&gt; to cycle through the skins your level unlocks. After the last one, the default skin comes back.</value>
+  <data name="HowToEarn" xml:space="preserve">
+    <value>Every SI damage MVP and every common infected MVP in competitive matches is worth &lt;b&gt;1 ⭐&lt;/b&gt;. Your whole history counts, since the ranking began, and stars never expire.</value>
   </data>
-  <data name="HowToCycleTitle" xml:space="preserve">
-    <value>Browse your skins</value>
+  <data name="HowToEarnTitle" xml:space="preserve">
+    <value>1. Earn stars</value>
   </data>
-  <data name="HowToDefault" xml:space="preserve">
-    <value>Use &lt;code&gt;!skin default&lt;/code&gt; with the weapon in hand to remove its skin. Your choices are saved and loaded again whenever you join the server.</value>
+  <data name="HowToSwitch" xml:space="preserve">
+    <value>During ready-up, use &lt;code&gt;!skin next&lt;/code&gt; and &lt;code&gt;!skin prev&lt;/code&gt; to switch between your skins, or &lt;code&gt;!skin default&lt;/code&gt; to go back to the default one. You can also equip them here.</value>
   </data>
-  <data name="HowToDefaultTitle" xml:space="preserve">
-    <value>Back to default</value>
+  <data name="HowToSwitchTitle" xml:space="preserve">
+    <value>3. Switch in game</value>
   </data>
   <data name="Kicker" xml:space="preserve">
-    <value>Weapon skins</value>
+    <value>Skin shop</value>
   </data>
   <data name="Lead" xml:space="preserve">
-    <value>Customize your SMGs, shotguns and melee weapons. Every patent level unlocks new skins: the higher your level, the more exclusive the collection. A skin unlocked at a level stays available for every level above it.</value>
+    <value>Trade the stars you earned as MVP for skins for your weapons.</value>
   </data>
-  <data name="LevelNumber" xml:space="preserve">
-    <value>Level {0}</value>
+  <data name="LoginButton" xml:space="preserve">
+    <value>Sign in with Steam</value>
   </data>
-  <data name="Locked" xml:space="preserve">
-    <value>Locked</value>
+  <data name="LoginToBuy" xml:space="preserve">
+    <value>Sign in with Steam to see how many stars you have and buy skins.</value>
   </data>
-  <data name="LoginToSee" xml:space="preserve">
-    <value>&lt;a href=&quot;{0}&quot;&gt;Sign in with Steam&lt;/a&gt; to see which skins your patent unlocks.</value>
+  <data name="MissingStars" xml:space="preserve">
+    <value>{0} ⭐ to go</value>
+  </data>
+  <data name="NextMapNotice" xml:space="preserve">
+    <value>The change shows up on the server &lt;b&gt;from the next map change&lt;/b&gt;. If you are playing right now, it kicks in when the map changes.</value>
+  </data>
+  <data name="NoOwnedSkins" xml:space="preserve">
+    <value>You do not own any skins yet. Pick one in the Shop tab!</value>
   </data>
   <data name="NoSkinsForFilter" xml:space="preserve">
-    <value>No skins for this weapon here.</value>
+    <value>No skins match these filters.</value>
   </data>
-  <data name="OnlyUnlocked" xml:space="preserve">
-    <value>Only skins I can use</value>
+  <data name="Ok" xml:space="preserve">
+    <value>Got it</value>
+  </data>
+  <data name="OnlyAffordable" xml:space="preserve">
+    <value>Only the ones I can buy</value>
   </data>
   <data name="Original" xml:space="preserve">
     <value>Original</value>
   </data>
-  <data name="ReleaseOn" xml:space="preserve">
-    <value>Available on {0}</value>
+  <data name="Owned" xml:space="preserve">
+    <value>Owned</value>
   </data>
-  <data name="ReleaseSchedule" xml:space="preserve">
-    <value>New skins are released on the 1st and 16th of every month, and every ranking reset (every two months) opens the season with new skins. Their files start downloading when you join the server one week before the release, so they are ready when they come out.</value>
+  <data name="PriceRange" xml:space="preserve">
+    <value>{0} to {1} ⭐</value>
   </data>
-  <data name="RequiredPatent" xml:space="preserve">
-    <value>Required patent</value>
+  <data name="RarityCommon" xml:space="preserve">
+    <value>Common</value>
   </data>
-  <data name="ShowFullCalendar" xml:space="preserve">
-    <value>Show the full calendar</value>
+  <data name="RarityEpic" xml:space="preserve">
+    <value>Epic</value>
+  </data>
+  <data name="RarityFilter" xml:space="preserve">
+    <value>Rarity</value>
+  </data>
+  <data name="RarityLegendary" xml:space="preserve">
+    <value>Legendary</value>
+  </data>
+  <data name="RarityRare" xml:space="preserve">
+    <value>Rare</value>
+  </data>
+  <data name="RarityUncommon" xml:space="preserve">
+    <value>Uncommon</value>
   </data>
   <data name="SkinsCount" xml:space="preserve">
     <value>{0} skins</value>
   </data>
-  <data name="TabAvailable" xml:space="preserve">
-    <value>Available</value>
+  <data name="SwitchNotice" xml:space="preserve">
+    <value>In game, during ready-up, use &lt;code&gt;!skin next&lt;/code&gt; and &lt;code&gt;!skin prev&lt;/code&gt; to switch between your skins, or &lt;code&gt;!skin default&lt;/code&gt; to go back to the default one.</value>
   </data>
-  <data name="TabUpcoming" xml:space="preserve">
-    <value>Upcoming releases</value>
+  <data name="TabMine" xml:space="preserve">
+    <value>My skins</value>
   </data>
-  <data name="Unlocked" xml:space="preserve">
-    <value>Unlocked</value>
+  <data name="TabShop" xml:space="preserve">
+    <value>Shop</value>
   </data>
-  <data name="UnlockedCount" xml:space="preserve">
-    <value>You can use &lt;b&gt;{0}&lt;/b&gt; of the {1} skins.</value>
+  <data name="Unequip" xml:space="preserve">
+    <value>Back to default</value>
+  </data>
+  <data name="UnequipSuccessText" xml:space="preserve">
+    <value>Your weapon ({0}) is back to the default skin.</value>
+  </data>
+  <data name="UnequipSuccessTitle" xml:space="preserve">
+    <value>Default skin is back</value>
   </data>
   <data name="ViewOnWorkshop" xml:space="preserve">
     <value>View on Workshop</value>
+  </data>
+  <data name="WalletBalance" xml:space="preserve">
+    <value>You have &lt;b&gt;{0} ⭐&lt;/b&gt; to spend</value>
+  </data>
+  <data name="WalletDetails" xml:space="preserve">
+    <value>{0} SI damage MVPs + {1} common MVPs = {2} ⭐ earned · {3} ⭐ spent</value>
+  </data>
+  <data name="WalletUnavailable" xml:space="preserve">
+    <value>We could not load your stars right now. Reload the page in a moment.</value>
   </data>
   <data name="WeaponBaseballBat" xml:space="preserve">
     <value>Baseball Bat</value>
@@ -268,8 +358,5 @@
   </data>
   <data name="WeaponSmgSilenced" xml:space="preserve">
     <value>MAC-10</value>
-  </data>
-  <data name="YourPatent" xml:space="preserve">
-    <value>Your patent: &lt;b&gt;{0}&lt;/b&gt; (level {1}).</value>
   </data>
 </root>

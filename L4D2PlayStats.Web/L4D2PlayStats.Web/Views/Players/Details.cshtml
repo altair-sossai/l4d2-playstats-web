@@ -1,4 +1,5 @@
-﻿@using L4D2PlayStats.Core.Auth
+﻿@using System.Globalization
+@using L4D2PlayStats.Core.Auth
 @using L4D2PlayStats.Core.Infrastructure.Extensions
 @using L4D2PlayStats.Core.UserAvatar
 @using L4D2PlayStats.Sdk.Ranking.Enums
@@ -73,6 +74,50 @@
 
 @section Styles {
     <style>
+        .player-skins {
+            display: flex;
+            flex-wrap: wrap;
+            margin: 0 -5px;
+        }
+
+        .player-skin {
+            position: relative;
+            display: block;
+            width: 110px;
+            margin: 0 5px 10px;
+            text-align: center;
+            text-decoration: none !important;
+        }
+
+            .player-skin img {
+                display: block;
+                width: 110px;
+                height: 110px;
+                margin-bottom: 4px;
+                border: 1px solid rgba(128, 128, 128, .3);
+                border-radius: 4px;
+                object-fit: cover;
+            }
+
+            .player-skin span {
+                display: block;
+                overflow: hidden;
+                font-size: 11px;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+            }
+
+            .player-skin .label {
+                position: absolute;
+                top: 4px;
+                right: 4px;
+                font-size: 10px;
+            }
+
+        .player-skin-equipped img {
+            border-color: rgba(98, 196, 98, .8);
+        }
+
         th {
             width: 1%;
             white-space: nowrap;
@@ -557,6 +602,38 @@
         }
         </tbody>
     </table>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        @SharedLocalizer["Skins"] <span class="badge">@Model.OwnedSkins.Count</span>
+        <a class="pull-right" href="@Url.Action("Index", "Skins")">@SharedLocalizer["SeeSkinShop"]</a>
+    </div>
+    <div class="panel-body">
+        @if (Model.OwnedSkins.Count == 0)
+        {
+            <p class="text-muted" style="margin: 0">@SharedLocalizer["NoSkinsYet"]</p>
+        }
+        else
+        {
+            <div class="player-skins">
+                @foreach (var skin in Model.OwnedSkins)
+                {
+                    var title = skin.Title.Get(CultureInfo.CurrentUICulture);
+                    var equipped = Model.PlayerSkins.IsEquipped(skin);
+
+                    <a class="player-skin @(equipped ? "player-skin-equipped" : "")" href="@Url.Action("Index", "Skins")#skin-@skin.Id" title="@title">
+                        <img src="@skin.Image" alt="@title" loading="lazy"/>
+                        <span>@title</span>
+                        @if (equipped)
+                        {
+                            <span class="label label-success">@SharedLocalizer["SkinEquipped"]</span>
+                        }
+                    </a>
+                }
+            </div>
+        }
+    </div>
 </div>
 
 @if (Model.RelatedPlayers.Any())

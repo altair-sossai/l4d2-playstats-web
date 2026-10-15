@@ -1,0 +1,36 @@
+@using L4D2PlayStats.Web
+@using Microsoft.Extensions.Localization
+@model L4D2PlayStats.Web.Models.PaginationModel
+@inject IStringLocalizer<SharedResource> SharedLocalizer
+
+@if (Model.TotalItems > 0)
+{
+    <div class="admin-pagination">
+        <small class="text-muted">@string.Format(SharedLocalizer["ShowingItems"].Value, Model.FirstItem, Model.LastItem, Model.TotalItems)</small>
+        @if (Model.TotalPages > 1)
+        {
+            <ul class="pagination pagination-sm">
+                <li class="@(Model.HasPrevious ? "" : "disabled")">
+                    <a href="@(Model.HasPrevious ? Model.UrlFor(Model.Page - 1) : "#")" aria-label="@SharedLocalizer["PreviousPage"]">&laquo;</a>
+                </li>
+                @{ var previous = 0; }
+                @foreach (var number in Model.Pages)
+                {
+                    if (previous != 0 && number - previous > 1)
+                    {
+                        <li class="disabled"><span>&hellip;</span></li>
+                    }
+
+                    <li class="@(number == Model.Page ? "active" : "")">
+                        <a href="@Model.UrlFor(number)">@number</a>
+                    </li>
+
+                    previous = number;
+                }
+                <li class="@(Model.HasNext ? "" : "disabled")">
+                    <a href="@(Model.HasNext ? Model.UrlFor(Model.Page + 1) : "#")" aria-label="@SharedLocalizer["NextPage"]">&raquo;</a>
+                </li>
+            </ul>
+        }
+    </div>
+}

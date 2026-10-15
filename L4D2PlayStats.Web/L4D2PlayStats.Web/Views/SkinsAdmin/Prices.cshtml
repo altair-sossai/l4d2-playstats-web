@@ -1,0 +1,203 @@
+@using System.Globalization
+@using L4D2PlayStats.Web
+@using L4D2PlayStats.Web.Models
+@using Microsoft.AspNetCore.Mvc.Localization
+@using Microsoft.Extensions.Localization
+@model L4D2PlayStats.Web.Models.SkinPricesAdminModel
+@inject IViewLocalizer Localizer
+@inject IStringLocalizer<SharedResource> SharedLocalizer
+
+@{
+    ViewData["Title"] = SharedLocalizer["SkinPrices"].Value;
+    var culture = CultureInfo.CurrentUICulture;
+    var pagination = PaginationModel.Of(Model.Skins, number => Url.Action("Prices", "SkinsAdmin", new { q = Model.Query, rarity = Model.Rarity, weapon = Model.Weapon, page = number })!);
+    var filtered = !string.IsNullOrEmpty(Model.Query) || Model.Rarity != null || !string.IsNullOrEmpty(Model.Weapon);
+}
+
+@section Styles {
+    @await Html.PartialAsync("_AdminStyles")
+}
+
+@Html.AntiForgeryToken()
+
+<div class="admin-header">
+    <h3>@SharedLocalizer["SkinPrices"]</h3>
+</div>
+
+<p class="text-muted">@Localizer["Lead"]</p>
+
+<div class="admin-stats">
+    <div>
+        <strong>@Model.CustomPrices.ToString("N0", culture)</strong>
+        <small>@Localizer["StatCustomPrices"]</small>
+    </div>
+</div>
+
+<form method="get" class="admin-filters">
+    <input type="text" name="q" value="@Model.Query" class="form-control admin-search" placeholder="@Localizer["SearchPlaceholder"]"/>
+    <select name="rarity" class="form-control" onchange="this.form.submit()">
+        <option value="">@Localizer["AllRarities"]</option>
+        @foreach (var rarity in SkinsModel.Rarities)
+        {
+            <option value="@rarity" selected="@(Model.Rarity == rarity)">@Localizer[SkinsModel.RarityKey(rarity)]</option>
+        }
+    </select>
+    <select name="weapon" class="form-control" onchange="this.form.submit()">
+        <option value="">@Localizer["AllWeapons"]</option>
+        @foreach (var weapon in SkinsModel.Weapons)
+        {
+            <option value="@weapon" selected="@(Model.Weapon == weapon)">@Localizer[SkinsModel.WeaponResourceKeys[weapon]]</option>
+        }
+    </select>
+    <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span> @SharedLocalizer["Search"]</button>
+    @if (filtered)
+    {
+        <a class="btn btn-link" href="@Url.Action("Prices", "SkinsAdmin")">@Localizer["ClearFilters"]</a>
+    }
+</form>
+
+<div class="admin-list">
+    @if (Model.Skins.Items.Count == 0)
+    {
+        <div class="admin-empty">@Localizer["NoSkins"]</div>
+    }
+    @foreach (var skin in Model.Skins.Items)
+    {
+        var title = skin.Title.Get(culture);
+        var weapon = Localizer[SkinsModel.WeaponResourceKeys[skin.Weapon]].Value;
+        var rarity = Localizer[SkinsModel.RarityKey(skin.Rarity)].Value;
+
+        <div class="admin-item ska-skin"
+             data-skin="@skin.Id" data-title="@title" data-image="@skin.Image" data-weapon="@weapon" data-rarity="@rarity"
+             data-price="@skin.Price" data-default-price="@skin.DefaultPrice" data-custom="@(skin.CustomPrice != null ? 1 : 0)">
+            <img class="admin-thumb" src="@skin.Image" alt="@title" loading="lazy"/>
+            <div class="admin-main">
+                <div class="admin-title">@title</div>
+                <small>@weapon · @rarity · @skin.Id</small>
+            </div>
+            <div class="admin-side">
+                <strong>@skin.Price.ToString("N0", culture) ⭐</strong>
+                @if (skin.CustomPrice != null)
+                {
+                    <small><span class="label label-warning">@Localizer["Changed"]</span> @string.Format(Localizer["DefaultPriceValue"].Value, skin.DefaultPrice.ToString("N0", culture))</small>
+                }
+            </div>
+        </div>
+    }
+</div>
+
+@await Html.PartialAsync("_Pagination", pagination)
+
+<div id="ska-price-modal" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="@SharedLocalizer["Close"]"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title ska-title"></h4>
+            </div>
+            <div class="modal-body">
+                <div class="admin-details">
+                    <img class="ska-image" src="" alt=""/>
+                    <dl>
+                        <dt>@Localizer["Weapon"]</dt>
+                        <dd class="ska-weapon"></dd>
+                        <dt>@Localizer["Rarity"]</dt>
+                        <dd class="ska-rarity"></dd>
+                        <dt>@Localizer["DefaultPrice"]</dt>
+                        <dd class="ska-default-price"></dd>
+                        <dt>@Localizer["CurrentPrice"]</dt>
+                        <dd>
+                            <div class="input-group" style="max-width: 200px">
+                                <input type="number" min="1" max="100000" class="form-control ska-price"/>
+                                <span class="input-group-addon">⭐</span>
+                            </div>
+                        </dd>
+                    </dl>
+                </div>
+                <p class="text-muted"><small>@Localizer["PriceHint"]</small></p>
+                <div class="ska-message"></div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">@SharedLocalizer["Cancel"]</button>
+                <button type="button" class="btn btn-warning ska-reset">@Localizer["Reset"]</button>
+                <button type="button" class="btn btn-primary ska-save">@Localizer["Save"]</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        $(function () {
+            var texts = {
+                saved: @Json.Serialize(Localizer["Saved"].Value),
+                invalid: @Json.Serialize(Localizer["InvalidPrice"].Value),
+                error: @Json.Serialize(Localizer["ErrorGeneric"].Value)
+            };
+
+            var token = $('input[name="__RequestVerificationToken"]').val();
+            var selected = null;
+
+            function message(success, text) {
+                $('#ska-price-modal .ska-message').html('<div class="alert ' + (success ? 'alert-success' : 'alert-danger') + '">' + $('<div/>').text(text).html() + '</div>');
+            }
+
+            function save(price) {
+                var $buttons = $('#ska-price-modal .ska-save, #ska-price-modal .ska-reset');
+
+                $buttons.prop('disabled', true);
+
+                $.ajax({
+                    url: '/api/shop/skins/' + encodeURIComponent(selected) + '/price',
+                    type: 'POST',
+                    contentType: 'application/json',
+                    headers: { 'RequestVerificationToken': token },
+                    data: JSON.stringify({ price: price })
+                }).done(function () {
+                    message(true, texts.saved);
+                    setTimeout(function () { location.reload(); }, 900);
+                }).fail(function () {
+                    message(false, texts.error);
+                    $buttons.prop('disabled', false);
+                });
+            }
+
+            $('.ska-skin').on('click', function () {
+                var $item = $(this);
+                var $modal = $('#ska-price-modal');
+
+                selected = $item.data('skin');
+
+                $modal.find('.ska-title').text($item.data('title'));
+                $modal.find('.ska-image').attr({ src: $item.data('image'), alt: $item.data('title') });
+                $modal.find('.ska-weapon').text($item.data('weapon'));
+                $modal.find('.ska-rarity').text($item.data('rarity'));
+                $modal.find('.ska-default-price').text(Number($item.data('default-price')).toLocaleString() + ' ⭐');
+                $modal.find('.ska-price').val($item.data('price'));
+                $modal.find('.ska-reset').toggle($item.data('custom') === 1);
+                $modal.find('.ska-message').empty();
+                $modal.find('.ska-save, .ska-reset').prop('disabled', false);
+                $modal.modal('show');
+            });
+
+            $('.ska-save').on('click', function () {
+                var price = parseInt($('#ska-price-modal .ska-price').val(), 10);
+
+                if (isNaN(price) || price < 1 || price > 100000) {
+                    message(false, texts.invalid);
+                    return;
+                }
+
+                save(price);
+            });
+
+            $('.ska-reset').on('click', function () {
+                save(null);
+            });
+
+            $('#ska-price-modal').on('shown.bs.modal', function () {
+                $(this).find('.ska-price').focus().select();
+            });
+        });
+    </script>
+}

@@ -1,0 +1,269 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing"
+  mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework
+  object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0,
+      Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0,
+      Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ClearFilters" xml:space="preserve">
+    <value>Clear filters</value>
+  </data>
+  <data name="ConfirmRefund" xml:space="preserve">
+    <value>Refund {0} from {1}? The stars paid go back to the player, the skin is removed from their account and, if it was equipped, the weapon goes back to the default skin.</value>
+  </data>
+  <data name="ConfirmRefundButton" xml:space="preserve">
+    <value>Confirm refund</value>
+  </data>
+  <data name="Date" xml:space="preserve">
+    <value>Date</value>
+  </data>
+  <data name="ErrorAlreadyOwned" xml:space="preserve">
+    <value>The player already owns this skin.</value>
+  </data>
+  <data name="ErrorBusy" xml:space="preserve">
+    <value>Too many operations at the same time. Try again.</value>
+  </data>
+  <data name="ErrorGeneric" xml:space="preserve">
+    <value>Something went wrong. Reload the page and check before trying again.</value>
+  </data>
+  <data name="ErrorInvalidPlayer" xml:space="preserve">
+    <value>Invalid Steam ID. Use STEAM_0:1:123, [U:1:123], 7656119... or the profile link.</value>
+  </data>
+  <data name="ErrorNotOwned" xml:space="preserve">
+    <value>The player no longer owns this skin.</value>
+  </data>
+  <data name="ErrorSkinNotFound" xml:space="preserve">
+    <value>Skin not found.</value>
+  </data>
+  <data name="Gift" xml:space="preserve">
+    <value>Gift</value>
+  </data>
+  <data name="GiftButton" xml:space="preserve">
+    <value>Give a skin</value>
+  </data>
+  <data name="GiftDone" xml:space="preserve">
+    <value>{0} was given to {1}.</value>
+  </data>
+  <data name="GiftLead" xml:space="preserve">
+    <value>The skin is equipped for the player and no stars are charged. It shows up on the server from the next map change.</value>
+  </data>
+  <data name="GiftRequired" xml:space="preserve">
+    <value>Enter the player's Steam ID.</value>
+  </data>
+  <data name="GiftTitle" xml:space="preserve">
+    <value>Give a skin as a gift</value>
+  </data>
+  <data name="GiftedBy" xml:space="preserve">
+    <value>Gift given by</value>
+  </data>
+  <data name="NoPurchases" xml:space="preserve">
+    <value>No purchases found.</value>
+  </data>
+  <data name="PlayerSteamId" xml:space="preserve">
+    <value>Player Steam ID (any format or the profile link)</value>
+  </data>
+  <data name="Price" xml:space="preserve">
+    <value>Price</value>
+  </data>
+  <data name="PurchaseDetails" xml:space="preserve">
+    <value>Purchase details</value>
+  </data>
+  <data name="RarityCommon" xml:space="preserve">
+    <value>Common</value>
+  </data>
+  <data name="RarityEpic" xml:space="preserve">
+    <value>Epic</value>
+  </data>
+  <data name="RarityLegendary" xml:space="preserve">
+    <value>Legendary</value>
+  </data>
+  <data name="RarityRare" xml:space="preserve">
+    <value>Rare</value>
+  </data>
+  <data name="RarityUncommon" xml:space="preserve">
+    <value>Uncommon</value>
+  </data>
+  <data name="RefundButton" xml:space="preserve">
+    <value>Refund purchase</value>
+  </data>
+  <data name="RefundDone" xml:space="preserve">
+    <value>Purchase refunded. Reloading...</value>
+  </data>
+  <data name="SearchPlaceholder" xml:space="preserve">
+    <value>Search by player, Steam ID or skin...</value>
+  </data>
+  <data name="Skin" xml:space="preserve">
+    <value>Skin</value>
+  </data>
+  <data name="StarsBefore" xml:space="preserve">
+    <value>Balance before the purchase</value>
+  </data>
+  <data name="StatGifts" xml:space="preserve">
+    <value>gifts given</value>
+  </data>
+  <data name="StatPurchases" xml:space="preserve">
+    <value>purchases</value>
+  </data>
+  <data name="StatStars" xml:space="preserve">
+    <value>stars spent</value>
+  </data>
+  <data name="WeaponBaseballBat" xml:space="preserve">
+    <value>Baseball Bat</value>
+  </data>
+  <data name="WeaponCricketBat" xml:space="preserve">
+    <value>Cricket Bat</value>
+  </data>
+  <data name="WeaponCrowbar" xml:space="preserve">
+    <value>Crowbar</value>
+  </data>
+  <data name="WeaponElectricGuitar" xml:space="preserve">
+    <value>Electric Guitar</value>
+  </data>
+  <data name="WeaponFireaxe" xml:space="preserve">
+    <value>Fireaxe</value>
+  </data>
+  <data name="WeaponFryingPan" xml:space="preserve">
+    <value>Frying Pan</value>
+  </data>
+  <data name="WeaponGolfClub" xml:space="preserve">
+    <value>Golf Club</value>
+  </data>
+  <data name="WeaponKatana" xml:space="preserve">
+    <value>Katana</value>
+  </data>
+  <data name="WeaponMachete" xml:space="preserve">
+    <value>Machete</value>
+  </data>
+  <data name="WeaponPumpShotgun" xml:space="preserve">
+    <value>Pump Shotgun</value>
+  </data>
+  <data name="WeaponShotgunChrome" xml:space="preserve">
+    <value>Chrome Shotgun</value>
+  </data>
+  <data name="WeaponSmg" xml:space="preserve">
+    <value>SMG</value>
+  </data>
+  <data name="WeaponSmgMp5" xml:space="preserve">
+    <value>MP5</value>
+  </data>
+  <data name="WeaponSmgSilenced" xml:space="preserve">
+    <value>MAC-10</value>
+  </data>
+</root>

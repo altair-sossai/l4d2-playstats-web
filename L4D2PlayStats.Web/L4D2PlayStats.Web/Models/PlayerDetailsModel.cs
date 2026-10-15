@@ -1,4 +1,6 @@
 ﻿using L4D2PlayStats.Core.GameInfo.Results;
+using L4D2PlayStats.Core.Skins;
+using L4D2PlayStats.Core.Skins.Results;
 using L4D2PlayStats.Sdk.Matches.Results;
 using L4D2PlayStats.Sdk.Ranking.Results;
 
@@ -16,6 +18,8 @@ public class PlayerDetailsModel(
     public RankingModel? SecondPlayerRanking { get; } = secondPlayerRanking;
     public List<PlayerResult> Players { get; } = players;
     public List<PlayerConnectionInfoResult> RelatedPlayers { get; } = relatedPlayers;
+    public IReadOnlyCollection<Skin> OwnedSkins { get; init; } = [];
+    public PlayerSkinsResult PlayerSkins { get; init; } = new();
 
     public List<MatchResult> LastMatches { get; } =
     [

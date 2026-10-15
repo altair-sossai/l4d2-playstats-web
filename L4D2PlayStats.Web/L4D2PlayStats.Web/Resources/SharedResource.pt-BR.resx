@@ -426,6 +426,24 @@
     <data name="ForcesMatch" xml:space="preserve">
     <value>Força a seleção de um modo de partida</value>
   </data>
+    <data name="More" xml:space="preserve">
+    <value>Mais</value>
+  </data>
+    <data name="NextPage" xml:space="preserve">
+    <value>Próxima página</value>
+  </data>
+    <data name="PreviousPage" xml:space="preserve">
+    <value>Página anterior</value>
+  </data>
+    <data name="ShowingItems" xml:space="preserve">
+    <value>Mostrando {0}–{1} de {2}</value>
+  </data>
+    <data name="SkinPrices" xml:space="preserve">
+    <value>Preços das skins</value>
+  </data>
+    <data name="SkinPurchases" xml:space="preserve">
+    <value>Compras de skins</value>
+  </data>
     <data name="TogglesAntiCheat" xml:space="preserve">
     <value>Liga ou desliga o anti-cheat</value>
   </data>
@@ -942,6 +960,9 @@
     <data name="None" xml:space="preserve">
     <value>Nenhum</value>
   </data>
+    <data name="NoSkinsYet" xml:space="preserve">
+    <value>Este jogador ainda não tem skins.</value>
+  </data>
     <data name="OneDay" xml:space="preserve">
     <value>1 dia</value>
   </data>
@@ -1107,6 +1128,9 @@
     <data name="SecondRound" xml:space="preserve">
     <value>2º round</value>
   </data>
+    <data name="SeeSkinShop" xml:space="preserve">
+    <value>Ver loja de skins</value>
+  </data>
     <data name="SelectCampaign" xml:space="preserve">
     <value>Selecione uma campanha</value>
   </data>
@@ -1223,6 +1247,9 @@
   </data>
     <data name="SkeetsTotal" xml:space="preserve">
     <value>Skeets totais</value>
+  </data>
+    <data name="SkinEquipped" xml:space="preserve">
+    <value>Equipada</value>
   </data>
     <data name="SlaysPlayer" xml:space="preserve">
     <value>Mata um jogador</value>
@@ -1442,6 +1469,9 @@
   </data>
     <data name="AddBan" xml:space="preserve">
     <value>Adicionar ban</value>
+  </data>
+    <data name="Admin" xml:space="preserve">
+    <value>Admin</value>
   </data>
     <data name="BanDate" xml:space="preserve">
     <value>Data do ban</value>

@@ -8,7 +8,7 @@ public sealed class SkinsPageMetadata : Infrastructure.PageMetadata
 {
     public SkinsPageMetadata(SkinsModel model, IStringLocalizer<SharedResource> localizer)
     {
-        var highlight = model.Skins.MaxBy(skin => skin.Level);
+        var highlight = model.Skins.MaxBy(skin => skin.Price);
 
         Initialize(
             localizer["Skins"].Value,

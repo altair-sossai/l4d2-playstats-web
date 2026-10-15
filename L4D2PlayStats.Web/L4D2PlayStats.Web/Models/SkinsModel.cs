@@ -1,9 +1,10 @@
-using L4D2PlayStats.Core.Patents;
 using L4D2PlayStats.Core.Skins;
+using L4D2PlayStats.Core.Skins.Enums;
+using L4D2PlayStats.Core.Skins.Results;
 
 namespace L4D2PlayStats.Web.Models;
 
-public class SkinsModel(IReadOnlyCollection<Patent> patents, IReadOnlyCollection<Skin> skins, Patent? playerPatent)
+public class SkinsModel(IReadOnlyCollection<Skin> skins, bool loggedIn, WalletResult? wallet, PlayerSkinsResult? playerSkins)
 {
     private const string MeleePrefix = "weapon_melee_";
 
@@ -32,20 +33,21 @@ public class SkinsModel(IReadOnlyCollection<Patent> patents, IReadOnlyCollection
         ["weapon_melee_frying_pan"] = "WeaponFryingPan"
     };
 
-    public IReadOnlyCollection<Patent> Patents { get; } = [.. patents.OrderByDescending(patent => patent.Level)];
-    public IReadOnlyCollection<Skin> Skins { get; } = skins;
-    public Patent? PlayerPatent { get; } = playerPatent;
-    public IReadOnlyCollection<Skin> Released { get; } = [.. skins.Where(skin => skin.IsReleased)];
-    public int UnlockedCount => PlayerPatent == null ? 0 : Released.Count(CanUse);
+    public static readonly SkinRarity[] Rarities = [SkinRarity.Legendary, SkinRarity.Epic, SkinRarity.Rare, SkinRarity.Uncommon, SkinRarity.Common];
 
-    public IReadOnlyCollection<IGrouping<DateOnly, Skin>> UpcomingLots { get; } =
+    public IReadOnlyCollection<Skin> Skins { get; } = skins;
+    public bool LoggedIn { get; } = loggedIn;
+    public WalletResult? Wallet { get; } = wallet;
+    public bool WalletUnavailable => LoggedIn && Wallet == null;
+    public PlayerSkinsResult PlayerSkins { get; } = playerSkins ?? new PlayerSkinsResult();
+
+    public IReadOnlyCollection<Skin> OwnedSkins =>
     [
-        .. skins
-            .Where(skin => !skin.IsReleased)
-            .OrderBy(skin => skin.ReleaseDate)
-            .ThenByDescending(skin => skin.Level)
-            .ThenBy(skin => Array.IndexOf(Weapons, skin.Weapon))
-            .GroupBy(skin => skin.ReleaseDate)
+        .. Skins
+            .Where(Owns)
+            .OrderBy(skin => Array.IndexOf(Weapons, skin.Weapon))
+            .ThenByDescending(skin => skin.Rarity)
+            .ThenByDescending(skin => skin.Price)
     ];
 
     public static bool IsMelee(string weapon)
@@ -53,22 +55,45 @@ public class SkinsModel(IReadOnlyCollection<Patent> patents, IReadOnlyCollection
         return weapon.StartsWith(MeleePrefix, StringComparison.Ordinal);
     }
 
-    public bool CanUse(Skin skin)
+    public static string RarityKey(SkinRarity rarity)
     {
-        return skin.IsReleased && PlayerPatent != null && skin.Level <= PlayerPatent.Level;
+        return $"Rarity{rarity}";
     }
 
-    public Patent PatentOf(Skin skin)
+    public static string RarityCss(SkinRarity rarity)
     {
-        return Patents.First(patent => patent.Level == skin.Level);
+        return $"sk-rarity-{rarity.ToString().ToLowerInvariant()}";
     }
 
-    public IReadOnlyCollection<Skin> SkinsOf(int level)
+    public IReadOnlyCollection<Skin> SkinsOf(SkinRarity rarity)
     {
-        return Released
-            .Where(skin => skin.Level == level)
-            .OrderBy(skin => Array.IndexOf(Weapons, skin.Weapon))
-            .ThenBy(skin => skin.Title.En)
-            .ToList();
+        return
+        [
+            .. Skins
+                .Where(skin => skin.Rarity == rarity)
+                .OrderByDescending(skin => skin.Price)
+                .ThenBy(skin => Array.IndexOf(Weapons, skin.Weapon))
+                .ThenBy(skin => skin.Title.En)
+        ];
+    }
+
+    public bool Owns(Skin skin)
+    {
+        return PlayerSkins.Owns(skin.Id);
+    }
+
+    public bool IsEquipped(Skin skin)
+    {
+        return PlayerSkins.IsEquipped(skin);
+    }
+
+    public bool CanAfford(Skin skin)
+    {
+        return Wallet != null && Wallet.Balance >= skin.Price;
+    }
+
+    public int Missing(Skin skin)
+    {
+        return Math.Max(0, skin.Price - (Wallet?.Balance ?? 0));
     }
 }

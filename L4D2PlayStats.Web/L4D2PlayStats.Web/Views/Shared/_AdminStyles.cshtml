@@ -1,0 +1,209 @@
+<style>
+    .admin-header {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        margin: 10px 0 16px;
+    }
+
+        .admin-header h3 {
+            flex: 1;
+            margin: 0 0 8px;
+            font-weight: bold;
+        }
+
+        .admin-header .btn {
+            margin-bottom: 8px;
+        }
+
+    .admin-stats {
+        display: flex;
+        flex-wrap: wrap;
+        margin: 0 -6px 12px;
+    }
+
+        .admin-stats > div {
+            flex: 1 1 160px;
+            margin: 0 6px 8px;
+            padding: 10px 14px;
+            border: 1px solid rgba(128, 128, 128, .3);
+            border-radius: 4px;
+            background: rgba(128, 128, 128, .06);
+        }
+
+        .admin-stats strong {
+            display: block;
+            font-size: 20px;
+        }
+
+        .admin-stats small {
+            opacity: .75;
+        }
+
+    .admin-filters {
+        display: flex;
+        flex-wrap: wrap;
+        margin: 0 -4px 12px;
+    }
+
+        .admin-filters > * {
+            margin: 0 4px 8px;
+        }
+
+        .admin-filters .admin-search {
+            flex: 1 1 240px;
+        }
+
+        .admin-filters select {
+            width: auto;
+            min-width: 160px;
+        }
+
+    .admin-list {
+        border: 1px solid rgba(128, 128, 128, .3);
+        border-radius: 6px;
+        overflow: hidden;
+    }
+
+    .admin-item {
+        display: flex;
+        align-items: center;
+        padding: 10px 12px;
+        border-bottom: 1px solid rgba(128, 128, 128, .2);
+        cursor: pointer;
+        transition: background .1s ease;
+    }
+
+        .admin-item:last-child {
+            border-bottom: 0;
+        }
+
+        .admin-item:hover {
+            background: rgba(128, 128, 128, .1);
+        }
+
+    .admin-thumb {
+        width: 56px;
+        height: 56px;
+        margin-right: 12px;
+        border-radius: 4px;
+        object-fit: cover;
+        background: #111;
+        flex: 0 0 auto;
+    }
+
+    .admin-avatar {
+        width: 40px;
+        height: 40px;
+        margin-right: 10px;
+        border-radius: 50%;
+        flex: 0 0 auto;
+    }
+
+    .admin-main {
+        flex: 1;
+        min-width: 0;
+    }
+
+        .admin-main .admin-title {
+            overflow: hidden;
+            font-weight: bold;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        }
+
+        .admin-main small {
+            display: block;
+            overflow: hidden;
+            opacity: .75;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        }
+
+    .admin-player {
+        display: flex;
+        align-items: center;
+        flex: 0 0 240px;
+        min-width: 0;
+        margin-right: 12px;
+    }
+
+    .admin-side {
+        flex: 0 0 150px;
+        margin-left: 12px;
+        text-align: right;
+    }
+
+        .admin-side strong {
+            display: block;
+        }
+
+        .admin-side small {
+            display: block;
+            opacity: .75;
+        }
+
+    .admin-empty {
+        padding: 30px;
+        text-align: center;
+        opacity: .75;
+    }
+
+    .admin-pagination {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        margin: 12px 0;
+    }
+
+        .admin-pagination .pagination {
+            margin: 0;
+        }
+
+    .admin-details {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+        .admin-details > img {
+            width: 160px;
+            height: 160px;
+            margin: 0 16px 12px 0;
+            border-radius: 6px;
+            object-fit: cover;
+            background: #111;
+        }
+
+        .admin-details dl {
+            flex: 1 1 240px;
+            margin: 0;
+        }
+
+        .admin-details dt {
+            font-size: 11px;
+            text-transform: uppercase;
+            opacity: .65;
+        }
+
+        .admin-details dd {
+            margin-bottom: 8px;
+        }
+
+    .admin-confirm {
+        display: none;
+        margin-top: 12px;
+    }
+
+    @@media screen and (max-width: 700px) {
+        .admin-item {
+            flex-wrap: wrap;
+        }
+
+        .admin-player {
+            flex: 1 1 100%;
+            margin: 8px 0 0;
+            order: 3;
+        }
+    }
+</style>

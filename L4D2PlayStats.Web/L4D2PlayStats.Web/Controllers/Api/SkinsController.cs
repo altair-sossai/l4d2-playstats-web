@@ -1,22 +1,24 @@
 using L4D2PlayStats.Core.Skins.Services;
-using L4D2PlayStats.Web.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace L4D2PlayStats.Web.Controllers.Api;
 
 [Route("api/skins")]
 [ApiController]
-public class SkinsController(ISkinService skinService) : ControllerBase
+public class SkinsController(ISkinService skinService, ISkinShopService skinShopService) : ControllerBase
 {
     [HttpGet]
-    public IActionResult Get()
+    public async Task<IActionResult> GetAsync(CancellationToken cancellationToken)
     {
-        var models = skinService
-            .GetAllSkins()
-            .Where(skin => skin.IsDownloadable)
-            .Select(skin => new SkinLevelModel(skin))
+        var skins = await skinService.GetAllSkinsAsync(cancellationToken);
+        var purchases = await skinShopService.GetAllPurchasesAsync(cancellationToken);
+        var purchased = purchases.Select(purchase => purchase.SkinId).ToHashSet();
+
+        var result = skins
+            .Where(skin => purchased.Contains(skin.Id))
+            .Select(skin => new { skin.Id, skin.Weapon })
             .ToList();
 
-        return Ok(models);
+        return Ok(result);
     }
 }

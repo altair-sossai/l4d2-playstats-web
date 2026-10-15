@@ -1,5 +1,4 @@
-﻿@using System.Globalization
-@using L4D2PlayStats.Web
+﻿@using L4D2PlayStats.Web
 @using L4D2PlayStats.Web.PageMetadata
 @using Microsoft.AspNetCore.Mvc.Localization
 @using Microsoft.Extensions.Localization
@@ -9,67 +8,6 @@
 
 @{
     ViewData["PageMetadata"] = new PatentsPageMetadata(Model, SharedLocalizer);
-}
-
-@section Styles {
-    <style>
-        .patent-skins-button {
-            padding: 6px 14px;
-            font-weight: bold;
-            white-space: nowrap;
-        }
-
-            .patent-skins-button .glyphicon {
-                margin-right: 4px;
-            }
-
-        .patent-skins-title {
-            margin: 4px 0 10px;
-            font-weight: bold;
-        }
-
-        .patent-skins {
-            display: flex;
-            flex-wrap: wrap;
-            margin: 0 -5px 8px;
-        }
-
-        .patent-skin {
-            display: block;
-            width: 120px;
-            margin: 0 5px 10px;
-            text-align: center;
-            text-decoration: none !important;
-        }
-
-            .patent-skin img {
-                display: block;
-                width: 120px;
-                height: 120px;
-                margin-bottom: 4px;
-                border: 1px solid rgba(128, 128, 128, .3);
-                border-radius: 4px;
-                object-fit: cover;
-            }
-
-            .patent-skin span {
-                display: block;
-                overflow: hidden;
-                font-size: 11px;
-                white-space: nowrap;
-                text-overflow: ellipsis;
-            }
-
-            .patent-skin-soon img {
-                filter: grayscale(85%);
-                opacity: .55;
-            }
-
-            .patent-skin .patent-skin-release {
-                color: #5bc0de;
-                font-weight: bold;
-            }
-    </style>
 }
 
 <h4 class="text-center">@SharedLocalizer["Patents"]</h4>
@@ -94,14 +32,11 @@
         <th class="text-center">@Localizer["Level"]</th>
         <th colspan="2">@Localizer["Description"]</th>
         <th class="text-center">@Localizer["ExperienceRequired"]</th>
-        <th class="text-center">@Localizer["Skins"]</th>
     </tr>
     </thead>
     <tbody>
     @foreach (var patent in Model.Patents.OrderByDescending(p => p.Level))
     {
-        var skins = Model.SkinsOf(patent.Level);
-
         <tr>
             <td class="text-center vertical-align-middle">#@patent.Level</td>
             <td class="vertical-align-middle slim">
@@ -113,37 +48,7 @@
             <td class="text-center vertical-align-middle">
                 @($"{patent.Experience:N0}")
             </td>
-            <td class="text-center vertical-align-middle slim">
-                @if (skins.Count > 0)
-                {
-                    <button type="button" class="btn btn-default btn-sm patent-skins-button" onclick="$('#patent-skins-@patent.Level').toggle()">
-                        <span class="glyphicon glyphicon-th"></span> @string.Format(Localizer["ShowSkins"].Value, skins.Count)
-                    </button>
-                }
-            </td>
         </tr>
-        @if (skins.Count > 0)
-        {
-            <tr id="patent-skins-@patent.Level" style="display: none">
-                <td colspan="5">
-                    <p class="patent-skins-title">@string.Format(Localizer["SkinsUnlockedAtLevel"].Value, patent.Name)</p>
-                    <div class="patent-skins">
-                        @foreach (var skin in skins)
-                        {
-                            <a class="patent-skin @(skin.IsReleased ? "" : "patent-skin-soon")" href="@Url.Action("Index", "Skins")#level-@patent.Level" title="@skin.Title.Get(CultureInfo.CurrentUICulture)">
-                                <img src="@skin.Image" alt="@skin.Title.Get(CultureInfo.CurrentUICulture)" loading="lazy"/>
-                                <span>@skin.Title.Get(CultureInfo.CurrentUICulture)</span>
-                                @if (!skin.IsReleased)
-                                {
-                                    <span class="patent-skin-release">@string.Format(Localizer["ComingSoonOn"].Value, skin.ReleaseDate.ToString("d", CultureInfo.CurrentUICulture))</span>
-                                }
-                            </a>
-                        }
-                    </div>
-                    <a class="btn btn-default btn-sm patent-skins-button" href="@Url.Action("Index", "Skins")#level-@patent.Level">@Localizer["SeeAllSkins"]</a>
-                </td>
-            </tr>
-        }
     }
     </tbody>
 </table>

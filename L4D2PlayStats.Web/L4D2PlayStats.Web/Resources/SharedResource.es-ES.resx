@@ -426,6 +426,24 @@
     <data name="ForcesMatch" xml:space="preserve">
     <value>Fuerza la selección de un modo de partida</value>
   </data>
+    <data name="More" xml:space="preserve">
+    <value>Más</value>
+  </data>
+    <data name="NextPage" xml:space="preserve">
+    <value>Página siguiente</value>
+  </data>
+    <data name="PreviousPage" xml:space="preserve">
+    <value>Página anterior</value>
+  </data>
+    <data name="ShowingItems" xml:space="preserve">
+    <value>Mostrando {0}–{1} de {2}</value>
+  </data>
+    <data name="SkinPrices" xml:space="preserve">
+    <value>Precios de skins</value>
+  </data>
+    <data name="SkinPurchases" xml:space="preserve">
+    <value>Compras de skins</value>
+  </data>
     <data name="TogglesAntiCheat" xml:space="preserve">
     <value>Activa o desactiva el anti-cheat</value>
   </data>
@@ -942,6 +960,9 @@
     <data name="None" xml:space="preserve">
     <value>Ninguno</value>
   </data>
+    <data name="NoSkinsYet" xml:space="preserve">
+    <value>Este jugador todavía no tiene skins.</value>
+  </data>
     <data name="OneDay" xml:space="preserve">
     <value>1 día</value>
   </data>
@@ -1107,6 +1128,9 @@
     <data name="SecondRound" xml:space="preserve">
     <value>2º ronda</value>
   </data>
+    <data name="SeeSkinShop" xml:space="preserve">
+    <value>Ver la tienda de skins</value>
+  </data>
     <data name="SelectCampaign" xml:space="preserve">
     <value>Seleccione una campaña</value>
   </data>
@@ -1223,6 +1247,9 @@
   </data>
     <data name="SkeetsTotal" xml:space="preserve">
     <value>Skeets totales</value>
+  </data>
+    <data name="SkinEquipped" xml:space="preserve">
+    <value>Equipada</value>
   </data>
     <data name="SlaysPlayer" xml:space="preserve">
     <value>Mata a un jugador</value>
@@ -1442,6 +1469,9 @@
   </data>
     <data name="AddBan" xml:space="preserve">
     <value>Agregar baneo</value>
+  </data>
+    <data name="Admin" xml:space="preserve">
+    <value>Admin</value>
   </data>
     <data name="BanDate" xml:space="preserve">
     <value>Fecha del baneo</value>

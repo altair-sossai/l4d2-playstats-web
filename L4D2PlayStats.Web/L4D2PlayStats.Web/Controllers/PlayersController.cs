@@ -4,6 +4,7 @@ using L4D2PlayStats.Core.Patents.Services;
 using L4D2PlayStats.Core.Players.Enums;
 using L4D2PlayStats.Core.Players.Extensions;
 using L4D2PlayStats.Core.Ranking.Services;
+using L4D2PlayStats.Core.Skins.Services;
 using L4D2PlayStats.Core.UserAvatar;
 using L4D2PlayStats.Web.Models;
 using Microsoft.AspNetCore.Mvc;
@@ -16,7 +17,9 @@ public class PlayersController(
     IRankingServiceCached rankingService,
     IMatchesServiceCached matchesServiceCached,
     IUserAvatar userAvatar,
-    IPatentService patentService) : Controller
+    IPatentService patentService,
+    ISkinService skinService,
+    ISkinShopService skinShopService) : Controller
 {
     [Route("players")]
     public async Task<IActionResult> Index(PlayerResultProperty orderBy = PlayerResultProperty.Experience, bool asc = false, CancellationToken cancellationToken = default)
@@ -81,7 +84,14 @@ public class PlayersController(
 
         await userAvatar.LoadAsync(communityIds, cancellationToken: cancellationToken);
 
-        var model = new PlayerDetailsModel(firstPlayerRanking, secondPlayerRanking, players, matches, relatedPlayers);
+        var skins = await skinService.GetAllSkinsAsync(cancellationToken);
+        var playerSkins = await skinShopService.GetPlayerSkinsAsync(firstPlayer.CommunityId.ToString(), cancellationToken);
+
+        var model = new PlayerDetailsModel(firstPlayerRanking, secondPlayerRanking, players, matches, relatedPlayers)
+        {
+            OwnedSkins = [.. skins.Where(skin => playerSkins.Owns(skin.Id)).OrderByDescending(skin => skin.Rarity).ThenByDescending(skin => skin.Price)],
+            PlayerSkins = playerSkins
+        };
 
         return View(model);
     }

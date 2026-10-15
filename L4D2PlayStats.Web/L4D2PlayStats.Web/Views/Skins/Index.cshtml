@@ -1,5 +1,6 @@
 @using System.Globalization
 @using L4D2PlayStats.Core.Skins
+@using L4D2PlayStats.Core.Skins.Enums
 @using L4D2PlayStats.Web
 @using L4D2PlayStats.Web.Models
 @using L4D2PlayStats.Web.PageMetadata
@@ -13,24 +14,25 @@
     ViewData["PageMetadata"] = new SkinsPageMetadata(Model, SharedLocalizer);
     var light = Context.Request.Cookies["theme"] == "light";
     var copyIcon = light ? "copy-light.png" : "copy-dark.png";
-    var loggedIn = Model.PlayerPatent != null;
     var culture = CultureInfo.CurrentUICulture;
     var weaponNames = SkinsModel.WeaponResourceKeys.ToDictionary(pair => pair.Key, pair => Localizer[pair.Value].Value);
+    var wallet = Model.Wallet;
+    var loginUrl = Url.Action("Login", "Account", new { returnUrl = Url.Action("Index", "Skins") });
 }
 
 @section Styles {
     <style>
         .sk-hero {
-            margin: 10px 0 24px;
-            padding: 28px 30px 24px;
+            margin: 10px 0 20px;
+            padding: 26px 30px 22px;
             border: 1px solid rgba(128, 128, 128, .25);
             border-radius: 6px;
-            background: linear-gradient(135deg, rgba(240, 173, 78, .12), rgba(91, 192, 222, .06) 55%, rgba(128, 128, 128, .03));
+            background: linear-gradient(135deg, rgba(240, 173, 78, .14), rgba(176, 106, 224, .07) 55%, rgba(128, 128, 128, .03));
         }
 
         .sk-kicker {
             display: inline-block;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
             font-size: 12px;
             font-weight: bold;
             letter-spacing: .08em;
@@ -39,20 +41,20 @@
         }
 
         .sk-hero h1 {
-            margin: 0 0 10px;
-            font-size: 38px;
+            margin: 0 0 8px;
+            font-size: 36px;
             font-weight: bold;
         }
 
         .sk-hero .lead {
-            max-width: 760px;
-            margin-bottom: 18px;
+            max-width: 780px;
+            margin-bottom: 16px;
         }
 
         .sk-howto {
             display: flex;
             flex-wrap: wrap;
-            margin: 0 -6px 14px;
+            margin: 0 -6px 12px;
         }
 
             .sk-howto > div {
@@ -71,99 +73,123 @@
             }
 
             .sk-howto code,
-            .sk-command code {
+            .sk-command code,
+            .sk-message code {
                 border: 1px solid rgba(128, 128, 128, .3);
                 background: rgba(128, 128, 128, .12);
                 color: inherit;
             }
 
-        .sk-player {
+        .sk-wallet {
             display: flex;
+            flex-wrap: wrap;
             align-items: center;
-            padding: 10px 14px;
-            border: 1px solid rgba(98, 196, 98, .45);
+            padding: 12px 16px;
+            border: 1px solid rgba(240, 173, 78, .55);
             border-radius: 4px;
-            background: rgba(98, 196, 98, .08);
+            background: rgba(240, 173, 78, .08);
         }
 
-            .sk-player img {
-                width: 40px;
-                margin-right: 12px;
-            }
+        .sk-wallet-main {
+            flex: 1 1 260px;
+        }
 
-            .sk-player a {
-                text-decoration: underline;
-            }
+        .sk-wallet-balance {
+            font-size: 22px;
+        }
+
+        .sk-wallet-details {
+            font-size: 12px;
+            opacity: .8;
+        }
+
+        .sk-wallet .btn {
+            margin: 6px 0 6px 12px;
+        }
+
+        .sk-wallet-warning {
+            border-color: rgba(217, 83, 79, .55);
+            background: rgba(217, 83, 79, .08);
+        }
 
         .sk-credits {
-            margin: 14px 0 0;
+            margin: 12px 0 0;
             font-size: 12px;
             opacity: .75;
         }
+
+        .sk-tabs {
+            margin-bottom: 14px;
+        }
+
+            .sk-tabs > li > a {
+                font-size: 15px;
+                font-weight: bold;
+            }
 
         .sk-toolbar {
             display: flex;
             flex-wrap: wrap;
             align-items: center;
-            margin-bottom: 18px;
+            margin-bottom: 16px;
         }
 
-            .sk-toolbar .btn-group {
-                margin: 0 14px 8px 0;
-            }
-
             .sk-toolbar label {
-                margin: 0 0 8px;
+                margin: 0 8px 8px 0;
                 font-weight: normal;
                 cursor: pointer;
             }
 
-        .sk-level {
-            margin-bottom: 28px;
+            .sk-toolbar select {
+                width: auto;
+                min-width: 180px;
+                margin: 0 16px 8px 0;
+            }
+
+        .sk-rarity {
+            margin-bottom: 26px;
         }
 
-        .sk-level-header {
+        .sk-rarity-header {
             display: flex;
             align-items: center;
             margin-bottom: 12px;
             padding-bottom: 8px;
-            border-bottom: 1px solid rgba(128, 128, 128, .3);
+            border-bottom: 2px solid var(--sk-rarity-color);
         }
 
-            .sk-level-header img {
-                width: 46px;
-                margin-right: 12px;
-            }
-
-            .sk-level-header h3 {
+            .sk-rarity-header h3 {
+                flex: 1;
                 margin: 0;
+                color: var(--sk-rarity-color);
                 font-size: 20px;
                 font-weight: bold;
             }
 
-            .sk-level-header p {
-                margin: 2px 0 0;
-                font-size: 12px;
-                opacity: .75;
-            }
-
-        .sk-level-title {
-            flex: 1;
-        }
-
-        .sk-level-count {
+        .sk-count {
             font-size: 12px;
             opacity: .75;
             white-space: nowrap;
         }
 
-        .sk-level-exclusive .sk-level-header {
-            border-bottom-color: rgba(240, 173, 78, .7);
+        .sk-rarity-legendary {
+            --sk-rarity-color: #f0ad4e;
         }
 
-        .sk-level-exclusive .sk-card {
-            border-color: rgba(240, 173, 78, .55);
-            box-shadow: 0 0 12px rgba(240, 173, 78, .18);
+        .sk-rarity-epic {
+            --sk-rarity-color: #b06ae0;
+        }
+
+        .sk-rarity-rare {
+            --sk-rarity-color: #4d9de0;
+        }
+
+        .sk-rarity-uncommon {
+            --sk-rarity-color: #5cb85c;
+        }
+
+        .sk-rarity-common {
+            --sk-rarity-color: #9e9e9e;
         }
 
         .sk-grid {
@@ -182,11 +208,15 @@
         }
 
         .sk-card {
+            display: flex;
+            flex-direction: column;
             width: 100%;
-            border: 1px solid rgba(128, 128, 128, .3);
-            border-radius: 6px;
             overflow: hidden;
+            border: 1px solid rgba(128, 128, 128, .3);
+            border-top: 3px solid var(--sk-rarity-color);
+            border-radius: 6px;
             background: rgba(128, 128, 128, .05);
+            cursor: pointer;
             transition: transform .15s ease, box-shadow .15s ease;
         }
 
@@ -195,82 +225,67 @@
                 box-shadow: 0 6px 16px rgba(0, 0, 0, .25);
             }
 
+        .sk-legendary-card {
+            box-shadow: 0 0 12px rgba(240, 173, 78, .25);
+        }
+
+        .sk-owned {
+            border-color: rgba(98, 196, 98, .6);
+            border-top-color: var(--sk-rarity-color);
+        }
+
         .sk-thumb {
             position: relative;
             display: block;
             background: #111;
         }
 
-        .sk-card > .row {
-            display: flex;
-            flex-wrap: wrap;
-            height: 100%;
-            margin: 0;
-        }
-
-            .sk-card > .row > div {
-                padding: 0;
-            }
-
-        .sk-thumb {
-            height: 100%;
-        }
-
             .sk-thumb img {
                 display: block;
                 width: 100%;
-                height: 100%;
-                min-height: 220px;
+                aspect-ratio: 1 / 1;
                 object-fit: cover;
             }
 
-        .sk-weapon {
+        .sk-weapon,
+        .sk-status,
+        .sk-price-tag {
             position: absolute;
+            font-size: 11px;
+        }
+
+        .sk-weapon {
             top: 8px;
             left: 8px;
-            background: rgba(0, 0, 0, .7);
+            background: rgba(0, 0, 0, .75);
             color: #fff;
         }
 
         .sk-status {
-            position: absolute;
             top: 8px;
             right: 8px;
         }
 
-        .sk-locked .sk-thumb img {
-            filter: grayscale(85%);
-            opacity: .55;
-        }
-
-        .sk-unlocked {
-            border-color: rgba(98, 196, 98, .55);
-        }
-
-        .sk-soon {
-            border-style: dashed;
-        }
-
-        .sk-release {
-            margin: 0 0 8px;
-            color: #5bc0de;
-            font-size: 12px;
+        .sk-price-tag {
+            right: 8px;
+            bottom: 8px;
+            padding: 4px 8px;
+            border-radius: 12px;
+            background: rgba(0, 0, 0, .8);
+            color: #fff;
+            font-size: 13px;
             font-weight: bold;
         }
 
-            .sk-release .glyphicon {
-                margin-right: 4px;
-            }
-
         .sk-body {
             display: flex;
+            flex: 1;
             flex-direction: column;
-            height: 100%;
-            padding: 12px 14px;
+            padding: 10px 12px 12px;
         }
 
         .sk-title {
-            margin: 0 0 6px;
+            margin: 0 0 2px;
             overflow: hidden;
             font-size: 14px;
             font-weight: bold;
@@ -279,159 +294,27 @@
             text-overflow: ellipsis;
         }
 
-        .sk-desc {
-            display: -webkit-box;
-            flex: 1;
-            margin: 0 0 10px;
-            overflow: hidden;
+        .sk-rarity-name {
+            margin-bottom: 10px;
+            color: var(--sk-rarity-color);
             font-size: 12px;
-            line-height: 1.45;
-            opacity: .8;
-            -webkit-line-clamp: 3;
-            -webkit-box-orient: vertical;
-        }
-
-        .sk-original {
-            display: -webkit-box;
-            margin: -4px 0 10px;
-            overflow: hidden;
-            font-size: 10px;
-            line-height: 1.4;
-            opacity: .55;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-        }
-
-        .sk-command {
-            display: flex;
-            align-items: center;
-            margin-bottom: 8px;
-        }
-
-            .sk-command code {
-                flex: 1;
-                overflow: hidden;
-                font-size: 11px;
-                white-space: nowrap;
-                text-overflow: ellipsis;
-            }
-
-            .sk-command code {
-                padding: 5px 7px;
-                font-size: 12px;
-            }
-
-            .sk-command .icon-copy {
-                width: 18px;
-                height: 18px;
-                margin: 0 0 0 8px;
-            }
-
-        .sk-workshop {
-            padding: 8px 10px;
-            font-size: 13px;
             font-weight: bold;
         }
 
-            .sk-workshop .glyphicon {
-                margin-right: 4px;
-            }
-
-        .sk-card,
-        .sk-tile {
-            cursor: pointer;
+        .sk-actions {
+            margin-top: auto;
         }
 
-        .sk-tabs {
-            margin-bottom: 14px;
-        }
-
-            .sk-tabs > li > a {
-                font-size: 15px;
+            .sk-actions .btn {
                 font-weight: bold;
             }
 
-        .sk-toolbar #sk-weapon-filter {
-            width: auto;
-            min-width: 200px;
-            margin: 0 14px 8px 8px;
-        }
-
-        .sk-toolbar .sk-only-unlocked {
-            margin-bottom: 8px;
-        }
-
-        .sk-lot {
-            margin-bottom: 24px;
-        }
-
-        .sk-lot-header {
-            display: flex;
-            align-items: center;
-            margin-bottom: 12px;
-            padding-bottom: 8px;
-            border-bottom: 1px solid rgba(91, 192, 222, .5);
-        }
-
-            .sk-lot-header > .glyphicon {
-                margin-right: 12px;
-                color: #5bc0de;
-                font-size: 28px;
-            }
-
-            .sk-lot-header h3 {
-                margin: 0;
-                font-size: 18px;
-                font-weight: bold;
-            }
-
-            .sk-lot-header p {
-                margin: 2px 0 0;
-                font-size: 12px;
-                opacity: .75;
-            }
-
-        .sk-tile {
-            overflow: hidden;
-            margin-bottom: 14px;
-            border: 1px dashed rgba(128, 128, 128, .4);
-            border-radius: 6px;
-            background: rgba(128, 128, 128, .05);
-            transition: transform .15s ease, box-shadow .15s ease;
-        }
-
-            .sk-tile:hover {
-                transform: translateY(-2px);
-                box-shadow: 0 6px 16px rgba(0, 0, 0, .25);
-            }
-
-            .sk-tile .sk-thumb {
-                height: auto;
-            }
-
-                .sk-tile .sk-thumb img {
-                    height: auto;
-                    min-height: 0;
-                    aspect-ratio: 1 / 1;
-                }
-
-        .sk-tile-body {
-            display: flex;
-            align-items: center;
-            padding: 6px 8px;
-        }
-
-            .sk-tile-body img {
-                width: 24px;
-                margin-right: 6px;
-            }
-
-        .sk-tile-title {
-            overflow: hidden;
-            font-size: 12px;
-            font-weight: bold;
-            white-space: nowrap;
-            text-overflow: ellipsis;
+        .sk-missing {
+            display: block;
+            margin-top: 4px;
+            font-size: 11px;
+            text-align: center;
+            opacity: .75;
         }
 
         .sk-empty {
@@ -446,38 +329,33 @@
         }
 
             .sk-modal-image img {
-            display: block;
-            width: 100%;
-            max-height: 420px;
-            border-radius: 4px;
-            background: #111;
-            object-fit: contain;
-        }
+                display: block;
+                width: 100%;
+                max-height: 420px;
+                border-radius: 4px;
+                background: #111;
+                object-fit: contain;
+            }
 
         .sk-modal-tags {
             margin: 0 0 10px;
         }
 
             .sk-modal-tags .label {
-                margin-right: 6px;
+                display: inline-block;
+                margin: 0 6px 4px 0;
                 font-size: 12px;
             }
 
-        .sk-modal-weapon {
-            background: rgba(0, 0, 0, .7);
-            color: #fff;
+        .sk-modal-rarity {
+            background: var(--sk-rarity-color);
         }
 
-        .sk-modal-patent {
-            display: flex;
-            align-items: center;
+        .sk-modal-price {
             margin-bottom: 12px;
+            font-size: 22px;
+            font-weight: bold;
         }
-
-            .sk-modal-patent img {
-                width: 40px;
-                margin-right: 10px;
-            }
 
         .sk-modal-desc {
             font-size: 14px;
@@ -489,12 +367,51 @@
             opacity: .65;
         }
 
+        .sk-modal-actions {
+            margin: 14px 0;
+        }
+
         .sk-command-label {
             margin-bottom: 3px;
             font-size: 11px;
             font-weight: bold;
             text-transform: uppercase;
             opacity: .65;
+        }
+
+        .sk-command {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+            .sk-command code {
+                flex: 1;
+                padding: 5px 7px;
+                overflow: hidden;
+                font-size: 12px;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+            }
+
+            .sk-command .icon-copy {
+                width: 18px;
+                height: 18px;
+                margin: 0 0 0 8px;
+            }
+
+        .sk-workshop .glyphicon {
+            margin-right: 4px;
+        }
+
+        .sk-message p:last-child {
+            margin-bottom: 0;
+        }
+
+        .sk-message .sk-notice {
+            padding: 10px 12px;
+            border-left: 3px solid #5bc0de;
+            background: rgba(91, 192, 222, .1);
         }
 
         @@media screen and (max-width: 700px) {
@@ -506,13 +423,14 @@
                     font-size: 28px;
                 }
 
-            .sk-thumb img {
-                height: auto;
-                min-height: 0;
+            .sk-wallet .btn {
+                margin-left: 0;
             }
         }
     </style>
 }
+
+@Html.AntiForgeryToken()
 
 <div class="sk-hero">
     <span class="sk-kicker">@Localizer["Kicker"]</span>
@@ -521,52 +439,99 @@
 
     <div class="sk-howto">
         <div>
-            <strong>@Localizer["HowToChooseTitle"]</strong>
-            @Html.Raw(Localizer["HowToChoose"].Value)
+            <strong>@Localizer["HowToEarnTitle"]</strong>
+            @Html.Raw(Localizer["HowToEarn"].Value)
         </div>
         <div>
-            <strong>@Localizer["HowToCycleTitle"]</strong>
-            @Html.Raw(Localizer["HowToCycle"].Value)
+            <strong>@Localizer["HowToBuyTitle"]</strong>
+            @Html.Raw(Localizer["HowToBuy"].Value)
         </div>
         <div>
-            <strong>@Localizer["HowToDefaultTitle"]</strong>
-            @Html.Raw(Localizer["HowToDefault"].Value)
+            <strong>@Localizer["HowToSwitchTitle"]</strong>
+            @Html.Raw(Localizer["HowToSwitch"].Value)
         </div>
     </div>
 
-    @if (loggedIn)
+    @if (!Model.LoggedIn)
     {
-        <div class="sk-player">
-            <img src="@Model.PlayerPatent!.Image" alt="@Model.PlayerPatent.FullName"/>
-            <div>
-                @Html.Raw(string.Format(Localizer["YourPatent"].Value, Model.PlayerPatent.Name, Model.PlayerPatent.Level))
-                <br/>
-                @Html.Raw(string.Format(Localizer["UnlockedCount"].Value, Model.UnlockedCount, Model.Skins.Count))
-            </div>
+        <div class="sk-wallet">
+            <div class="sk-wallet-main">@Localizer["LoginToBuy"]</div>
+            <a class="btn btn-warning" href="@loginUrl">@Localizer["LoginButton"]</a>
+        </div>
+    }
+    else if (wallet == null)
+    {
+        <div class="sk-wallet sk-wallet-warning">
+            <div class="sk-wallet-main">@Localizer["WalletUnavailable"]</div>
         </div>
     }
     else
     {
-        <div class="sk-player">
-            <div>@Html.Raw(string.Format(Localizer["LoginToSee"].Value, Url.Action("Login", "Account")))</div>
+        <div class="sk-wallet">
+            <div class="sk-wallet-main">
+                <div class="sk-wallet-balance">@Html.Raw(string.Format(Localizer["WalletBalance"].Value, wallet.Balance.ToString("N0", culture)))</div>
+                <div class="sk-wallet-details">@string.Format(Localizer["WalletDetails"].Value, wallet.MvpSiDamage.ToString("N0", culture), wallet.MvpCommon.ToString("N0", culture), wallet.Stars.ToString("N0", culture), wallet.Spent.ToString("N0", culture))</div>
+            </div>
         </div>
     }
 
-    <p class="sk-credits">@Localizer["ReleaseSchedule"]</p>
     <p class="sk-credits">@Localizer["Credits"]</p>
 </div>
 
 @{
+    async Task RenderActions(Skin skin, bool block)
+    {
+        var title = skin.Title.Get(culture);
+        var blockClass = block ? "btn-block" : string.Empty;
+
+        if (!Model.LoggedIn)
+        {
+            <a class="btn btn-default btn-sm @blockClass sk-action" href="@loginUrl">@Localizer["LoginButton"]</a>
+            return;
+        }
+
+        if (Model.IsEquipped(skin))
+        {
+            <button type="button" class="btn btn-default btn-sm @blockClass sk-action sk-unequip" data-weapon="@skin.Weapon" data-weapon-name="@weaponNames[skin.Weapon]">
+                <span class="glyphicon glyphicon-repeat"></span> @Localizer["Unequip"]
+            </button>
+            return;
+        }
+
+        if (Model.Owns(skin))
+        {
+            <button type="button" class="btn btn-success btn-sm @blockClass sk-action sk-equip" data-skin="@skin.Id" data-title="@title" data-weapon-name="@weaponNames[skin.Weapon]">
+                <span class="glyphicon glyphicon-ok"></span> @Localizer["Equip"]
+            </button>
+            return;
+        }
+
+        if (Model.Wallet == null)
+        {
+            <button type="button" class="btn btn-default btn-sm @blockClass sk-action" disabled>@string.Format(Localizer["BuyFor"].Value, skin.Price.ToString("N0", culture))</button>
+            return;
+        }
+
+        if (!Model.CanAfford(skin))
+        {
+            <button type="button" class="btn btn-default btn-sm @blockClass sk-action" disabled>@string.Format(Localizer["BuyFor"].Value, skin.Price.ToString("N0", culture))</button>
+            <small class="sk-missing">@string.Format(Localizer["MissingStars"].Value, Model.Missing(skin).ToString("N0", culture))</small>
+            return;
+        }
+
+        <button type="button" class="btn btn-warning btn-sm @blockClass sk-action sk-buy" data-skin="@skin.Id" data-title="@title" data-price="@skin.Price" data-weapon-name="@weaponNames[skin.Weapon]">
+            <span class="glyphicon glyphicon-shopping-cart"></span> @string.Format(Localizer["BuyFor"].Value, skin.Price.ToString("N0", culture))
+        </button>
+    }
+
     async Task RenderDetails(Skin skin)
     {
-        var patent = Model.PatentOf(skin);
-        var canUse = Model.CanUse(skin);
         var title = skin.Title.Get(culture);
         var description = skin.Description.Get(culture);
         var original = string.Join(" — ", new[] { skin.OriginalTitle, skin.OriginalDescription }.Where(text => !string.IsNullOrWhiteSpace(text)));
 
         <div class="sk-details hidden">
-            <div class="row">
+            <div class="row @SkinsModel.RarityCss(skin.Rarity)">
                 <div class="col-xs-12 col-sm-5">
                     <a class="sk-modal-image" href="@skin.Image" data-lity>
                         <img src="@skin.Image" alt="@title" loading="lazy"/>
@@ -574,38 +539,20 @@
                 </div>
                 <div class="col-xs-12 col-sm-7">
                     <div class="sk-modal-tags">
-                        <span class="label sk-modal-weapon">@weaponNames[skin.Weapon]</span>
-                        @if (!skin.IsReleased)
+                        <span class="label sk-modal-rarity">@Localizer[SkinsModel.RarityKey(skin.Rarity)]</span>
+                        <span class="label label-default">@weaponNames[skin.Weapon]</span>
+                        @if (Model.IsEquipped(skin))
                         {
-                            <span class="label label-info">
-                                <span class="glyphicon glyphicon-time"></span> @Localizer["ComingSoon"]
+                            <span class="label label-success">
+                                <span class="glyphicon glyphicon-ok"></span> @Localizer["Equipped"]
                             </span>
                         }
-                        else if (loggedIn)
+                        else if (Model.Owns(skin))
                         {
-                            <span class="label @(canUse ? "label-success" : "label-default")">
-                                <span class="glyphicon @(canUse ? "glyphicon-ok" : "glyphicon-lock")"></span>
-                                @(canUse ? Localizer["Unlocked"].Value : Localizer["Locked"].Value)
-                            </span>
+                            <span class="label label-info">@Localizer["Owned"]</span>
                         }
                     </div>
-                    <div class="sk-modal-patent">
-                        <img src="@patent.Image" alt="@patent.FullName"/>
-                        <div>
-                            <div class="sk-command-label">@Localizer["RequiredPatent"]</div>
-                            <strong>@patent.Name</strong> <small>@string.Format(Localizer["LevelNumber"].Value, patent.Level)</small>
-                        </div>
-                    </div>
-                    @if (!skin.IsReleased)
-                    {
-                        <p class="sk-release">
-                            <span class="glyphicon glyphicon-calendar"></span>
-                            @string.Format(Localizer["ReleaseOn"].Value, skin.ReleaseDate.ToString("d", culture))
-                            <br/>
-                            <span class="glyphicon glyphicon-download-alt"></span>
-                            @string.Format(Localizer["DownloadFrom"].Value, skin.DownloadDate.ToString("d", culture))
-                        </p>
-                    }
+                    <div class="sk-modal-price">@skin.Price.ToString("N0", culture) ⭐</div>
                     @if (!string.IsNullOrWhiteSpace(description))
                     {
                         <p class="sk-modal-desc">@description</p>
@@ -616,16 +563,58 @@
                             <b>@Localizer["Original"]:</b> @original
                         </p>
                     }
-                    <div class="sk-command-label">@Localizer["ChatCommand"]</div>
-                    <div class="sk-command">
-                        <code>@skin.Command</code>
-                        <img src="~/imgs/icons/@copyIcon" alt="@SharedLocalizer["CopyText"]" class="icon-copy"
-                             data-toggle="popover" data-placement="top" data-content="@SharedLocalizer["TextCopied"]"
-                             onclick="copyTextToClipboard('@skin.Command', this)"/>
+                    <div class="sk-modal-actions">
+                        @{ await RenderActions(skin, true); }
                     </div>
-                    <a class="btn btn-default btn-block sk-workshop" href="@skin.WorkshopUrl" target="_blank" rel="noopener">
+                    @if (Model.Owns(skin))
+                    {
+                        <div class="sk-command-label">@Localizer["ChatCommand"]</div>
+                        <div class="sk-command">
+                            <code>@skin.Command</code>
+                            <img src="~/imgs/icons/@copyIcon" alt="@SharedLocalizer["CopyText"]" class="icon-copy"
+                                 data-toggle="popover" data-placement="top" data-content="@SharedLocalizer["TextCopied"]"
+                                 onclick="copyTextToClipboard('@skin.Command', this)"/>
+                        </div>
+                    }
+                    <a class="btn btn-default btn-sm btn-block sk-workshop" href="@skin.WorkshopUrl" target="_blank" rel="noopener">
                         <span class="glyphicon glyphicon-new-window"></span> @Localizer["ViewOnWorkshop"]
                     </a>
+                </div>
+            </div>
+        </div>
+    }
+
+    async Task RenderCard(Skin skin, bool anchor)
+    {
+        var title = skin.Title.Get(culture);
+        var owned = Model.Owns(skin);
+        var equipped = Model.IsEquipped(skin);
+
+        <div class="col-xs-6 col-sm-4 col-md-3 sk-col sk-item @SkinsModel.RarityCss(skin.Rarity)"
+             data-weapon="@skin.Weapon" data-rarity="@skin.Rarity" data-affordable="@(owned || Model.CanAfford(skin) ? 1 : 0)">
+            <div class="sk-card sk-open @(owned ? "sk-owned" : "") @(skin.Rarity == SkinRarity.Legendary ? "sk-legendary-card" : "")" id="@(anchor ? $"skin-{skin.Id}" : null)" data-title="@title">
+                @{ await RenderDetails(skin); }
+                <a class="sk-thumb" href="#skin-@skin.Id">
+                    <img src="@skin.Image" alt="@title" loading="lazy"/>
+                    <span class="label sk-weapon">@weaponNames[skin.Weapon]</span>
+                    @if (equipped)
+                    {
+                        <span class="label label-success sk-status">
+                            <span class="glyphicon glyphicon-ok"></span> @Localizer["Equipped"]
+                        </span>
+                    }
+                    else if (owned)
+                    {
+                        <span class="label label-info sk-status">@Localizer["Owned"]</span>
+                    }
+                    <span class="sk-price-tag">@skin.Price.ToString("N0", culture) ⭐</span>
+                </a>
+                <div class="sk-body">
+                    <h4 class="sk-title" title="@title">@title</h4>
+                    <div class="sk-rarity-name">@Localizer[SkinsModel.RarityKey(skin.Rarity)]</div>
+                    <div class="sk-actions">
+                        @{ await RenderActions(skin, true); }
+                    </div>
                 </div>
             </div>
         </div>
@@ -634,15 +623,18 @@
 
 <ul class="nav nav-tabs sk-tabs" role="tablist">
     <li role="presentation" class="active">
-        <a href="#available" data-target="#sk-available" role="tab" data-toggle="tab">
-            @Localizer["TabAvailable"] <span class="badge">@Model.Released.Count</span>
+        <a href="#shop" data-target="#sk-shop" role="tab" data-toggle="tab">
+            @Localizer["TabShop"] <span class="badge">@Model.Skins.Count</span>
         </a>
     </li>
-    <li role="presentation">
-        <a href="#upcoming" data-target="#sk-upcoming" role="tab" data-toggle="tab">
-            @Localizer["TabUpcoming"] <span class="badge">@Model.UpcomingLots.Sum(lot => lot.Count())</span>
-        </a>
-    </li>
+    @if (Model.LoggedIn)
+    {
+        <li role="presentation">
+            <a href="#mine" data-target="#sk-mine" role="tab" data-toggle="tab">
+                @Localizer["TabMine"] <span class="badge">@Model.OwnedSkins.Count</span>
+            </a>
+        </li>
+    }
 </ul>
 
 <div class="sk-toolbar">
@@ -662,98 +654,40 @@
             }
         </optgroup>
     </select>
-    @if (loggedIn)
+    <label for="sk-rarity-filter">@Localizer["RarityFilter"]</label>
+    <select id="sk-rarity-filter" class="form-control input-sm">
+        <option value="all">@Localizer["AllRarities"]</option>
+        @foreach (var rarity in SkinsModel.Rarities)
+        {
+            <option value="@rarity">@Localizer[SkinsModel.RarityKey(rarity)]</option>
+        }
+    </select>
+    @if (Model.Wallet != null)
     {
-        <label class="sk-only-unlocked">
-            <input type="checkbox" id="sk-only-unlocked"/> @Localizer["OnlyUnlocked"]
+        <label>
+            <input type="checkbox" id="sk-only-affordable"/> @Localizer["OnlyAffordable"]
         </label>
     }
 </div>
 
 <div class="tab-content">
-    <div role="tabpanel" class="tab-pane active" id="sk-available">
-        @foreach (var patent in Model.Patents)
+    <div role="tabpanel" class="tab-pane active" id="sk-shop">
+        @foreach (var rarity in SkinsModel.Rarities)
         {
-            var skins = Model.SkinsOf(patent.Level);
+            var skins = Model.SkinsOf(rarity);
 
             if (skins.Count == 0)
-            {
                 continue;
-            }
 
-            var exclusive = patent.Level == Model.Patents.Max(p => p.Level);
-
-            <section id="level-@patent.Level" class="sk-level sk-section @(exclusive ? "sk-level-exclusive" : "")">
-                <div class="sk-level-header">
-                    <img src="@patent.Image" alt="@patent.FullName"/>
-                    <div class="sk-level-title">
-                        <h3>
-                            @patent.Name
-                            <small>@string.Format(Localizer["LevelNumber"].Value, patent.Level)</small>
-                            @if (exclusive)
-                            {
-                                <span class="label label-warning">@Localizer["Exclusive"]</span>
-                            }
-                        </h3>
-                        <p>@(exclusive ? Localizer["ExclusiveDescription"].Value : string.Format(Localizer["AvailableFrom"].Value, patent.Name))</p>
-                    </div>
-                    <span class="sk-level-count">@string.Format(Localizer["SkinsCount"].Value, skins.Count)</span>
+            <section class="sk-rarity sk-section @SkinsModel.RarityCss(rarity)">
+                <div class="sk-rarity-header">
+                    <h3>@Localizer[SkinsModel.RarityKey(rarity)]</h3>
+                    <span class="sk-count">@string.Format(Localizer["SkinsCount"].Value, skins.Count) · @string.Format(Localizer["PriceRange"].Value, skins.Min(skin => skin.Price).ToString("N0", culture), skins.Max(skin => skin.Price).ToString("N0", culture))</span>
                 </div>
-
                 <div class="row sk-grid">
                     @foreach (var skin in skins)
                     {
-                        var canUse = Model.CanUse(skin);
-                        var title = skin.Title.Get(culture);
-                        var description = skin.Description.Get(culture);
-                        var original = string.Join(" — ", new[] { skin.OriginalTitle, skin.OriginalDescription }.Where(text => !string.IsNullOrWhiteSpace(text)));
-                        var stateClass = loggedIn ? canUse ? "sk-unlocked" : "sk-locked" : string.Empty;
-
-                        <div class="col-xs-12 col-md-6 sk-col sk-item" data-weapon="@skin.Weapon" data-unlocked="@(canUse ? 1 : 0)">
-                            <div class="sk-card sk-open @stateClass" data-title="@title">
-                                @{ await RenderDetails(skin); }
-                                <div class="row">
-                                    <div class="col-xs-12 col-sm-5">
-                                        <a class="sk-thumb" href="#">
-                                            <img src="@skin.Image" alt="@title" loading="lazy"/>
-                                            <span class="label sk-weapon">@weaponNames[skin.Weapon]</span>
-                                            @if (loggedIn)
-                                            {
-                                                <span class="label sk-status @(canUse ? "label-success" : "label-default")">
-                                                    <span class="glyphicon @(canUse ? "glyphicon-ok" : "glyphicon-lock")"></span>
-                                                    @(canUse ? Localizer["Unlocked"].Value : Localizer["Locked"].Value)
-                                                </span>
-                                            }
-                                        </a>
-                                    </div>
-                                    <div class="col-xs-12 col-sm-7">
-                                        <div class="sk-body">
-                                            <h4 class="sk-title" title="@title">@title</h4>
-                                            @if (!string.IsNullOrWhiteSpace(description))
-                                            {
-                                                <p class="sk-desc" title="@description">@description</p>
-                                            }
-                                            @if (!string.IsNullOrWhiteSpace(original))
-                                            {
-                                                <small class="sk-original" title="@original">
-                                                    <b>@Localizer["Original"]:</b> @original
-                                                </small>
-                                            }
-                                            <div class="sk-command-label">@Localizer["ChatCommand"]</div>
-                                            <div class="sk-command">
-                                                <code>@skin.Command</code>
-                                                <img src="~/imgs/icons/@copyIcon" alt="@SharedLocalizer["CopyText"]" class="icon-copy"
-                                                     data-toggle="popover" data-placement="top" data-content="@SharedLocalizer["TextCopied"]"
-                                                     onclick="copyTextToClipboard('@skin.Command', this)"/>
-                                            </div>
-                                            <a class="btn btn-default btn-sm btn-block sk-workshop" href="@skin.WorkshopUrl" target="_blank" rel="noopener">
-                                                <span class="glyphicon glyphicon-new-window"></span> @Localizer["ViewOnWorkshop"]
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        await RenderCard(skin, true);
                     }
                 </div>
             </section>
@@ -761,54 +695,27 @@
         <p class="sk-empty hidden">@Localizer["NoSkinsForFilter"]</p>
     </div>
 
-    <div role="tabpanel" class="tab-pane" id="sk-upcoming">
-        @{ var lotIndex = 0; }
-        @foreach (var lot in Model.UpcomingLots)
-        {
-            var date = lot.Key;
-            var extra = lotIndex >= 3;
-            lotIndex++;
-
-            <section class="sk-lot sk-section @(extra ? "sk-lot-extra hidden" : "")">
-                <div class="sk-lot-header">
-                    <span class="glyphicon glyphicon-calendar"></span>
-                    <div class="sk-level-title">
-                        <h3>@string.Format(Localizer["ReleaseOn"].Value, date.ToString("d", culture))</h3>
-                        <p>@string.Format(Localizer["DownloadFrom"].Value, date.AddDays(-7).ToString("d", culture))</p>
+    @if (Model.LoggedIn)
+    {
+        <div role="tabpanel" class="tab-pane" id="sk-mine">
+            @if (Model.OwnedSkins.Count == 0)
+            {
+                <p class="sk-empty">@Localizer["NoOwnedSkins"]</p>
+            }
+            else
+            {
+                <section class="sk-section">
+                    <div class="row sk-grid">
+                        @foreach (var skin in Model.OwnedSkins)
+                        {
+                            await RenderCard(skin, false);
+                        }
                     </div>
-                    <span class="sk-level-count">@string.Format(Localizer["SkinsCount"].Value, lot.Count())</span>
-                </div>
-                <div class="row sk-grid">
-                    @foreach (var skin in lot)
-                    {
-                        var patent = Model.PatentOf(skin);
-                        var title = skin.Title.Get(culture);
-
-                        <div class="col-xs-6 col-sm-4 col-md-3 sk-col sk-item" data-weapon="@skin.Weapon" data-unlocked="0">
-                            <div class="sk-tile sk-open" data-title="@title">
-                                @{ await RenderDetails(skin); }
-                                <a class="sk-thumb" href="#">
-                                    <img src="@skin.Image" alt="@title" loading="lazy"/>
-                                    <span class="label sk-weapon">@weaponNames[skin.Weapon]</span>
-                                </a>
-                                <div class="sk-tile-body">
-                                    <img src="@patent.Image" alt="@patent.FullName" title="@patent.FullName"/>
-                                    <span class="sk-tile-title" title="@title">@title</span>
-                                </div>
-                            </div>
-                        </div>
-                    }
-                </div>
-            </section>
-        }
-        @if (lotIndex > 3)
-        {
-            <button type="button" class="btn btn-default btn-block sk-show-calendar">
-                <span class="glyphicon glyphicon-calendar"></span> @Localizer["ShowFullCalendar"]
-            </button>
-        }
-        <p class="sk-empty hidden">@Localizer["NoSkinsForFilter"]</p>
-    </div>
+                </section>
+                <p class="sk-empty hidden">@Localizer["NoSkinsForFilter"]</p>
+            }
+        </div>
+    }
 </div>
 
 <div id="sk-modal" class="modal fade" tabindex="-1" role="dialog">
@@ -828,30 +735,223 @@
     </div>
 </div>
 
+<div id="sk-confirm" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">@Localizer["ConfirmBuyTitle"]</h4>
+            </div>
+            <div class="modal-body sk-message"></div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">@Localizer["Cancel"]</button>
+                <button type="button" class="btn btn-warning sk-confirm-buy">
+                    <span class="glyphicon glyphicon-shopping-cart"></span> @Localizer["ConfirmBuyButton"]
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="sk-result" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title"></h4>
+            </div>
+            <div class="modal-body sk-message"></div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">@Localizer["Ok"]</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 @section Scripts {
     <script>
         $(function () {
+            var texts = {
+                balance: @Json.Serialize(wallet?.Balance ?? 0),
+                confirmBuy: @Json.Serialize(Localizer["ConfirmBuyText"].Value),
+                confirmBalance: @Json.Serialize(Localizer["ConfirmBuyBalance"].Value),
+                confirmEquip: @Json.Serialize(Localizer["ConfirmBuyEquip"].Value),
+                confirmFinal: @Json.Serialize(Localizer["ConfirmBuyFinal"].Value),
+                buySuccessTitle: @Json.Serialize(Localizer["BuySuccessTitle"].Value),
+                buySuccess: @Json.Serialize(Localizer["BuySuccessText"].Value),
+                equipSuccessTitle: @Json.Serialize(Localizer["EquipSuccessTitle"].Value),
+                equipSuccess: @Json.Serialize(Localizer["EquipSuccessText"].Value),
+                unequipSuccessTitle: @Json.Serialize(Localizer["UnequipSuccessTitle"].Value),
+                unequipSuccess: @Json.Serialize(Localizer["UnequipSuccessText"].Value),
+                nextMap: @Json.Serialize(Localizer["NextMapNotice"].Value),
+                switchHint: @Json.Serialize(Localizer["SwitchNotice"].Value),
+                errorTitle: @Json.Serialize(Localizer["ErrorTitle"].Value),
+                errors: {
+                    InsufficientStars: @Json.Serialize(Localizer["ErrorInsufficientStars"].Value),
+                    AlreadyOwned: @Json.Serialize(Localizer["ErrorAlreadyOwned"].Value),
+                    StarsUnavailable: @Json.Serialize(Localizer["ErrorStarsUnavailable"].Value),
+                    Busy: @Json.Serialize(Localizer["ErrorBusy"].Value),
+                    NotOwned: @Json.Serialize(Localizer["ErrorNotOwned"].Value),
+                    SkinNotFound: @Json.Serialize(Localizer["ErrorSkinNotFound"].Value),
+                    Generic: @Json.Serialize(Localizer["ErrorGeneric"].Value)
+                }
+            };
+
+            var token = $('input[name="__RequestVerificationToken"]').val();
             var weapon = 'all';
-            var onlyUnlocked = false;
+            var rarity = 'all';
+            var onlyAffordable = false;
+            var pendingBuy = null;
+            var reloadOnClose = false;
 
-            $('.sk-open').on('click', function (e) {
-                if ($(e.target).closest('.icon-copy, .sk-workshop').length > 0)
-                    return;
+            function escapeHtml(text) {
+                return $('<div/>').text(text).html();
+            }
 
-                e.preventDefault();
+            function format(template) {
+                var args = Array.prototype.slice.call(arguments, 1);
 
-                var $card = $(this);
+                return template.replace(/\{(\d+)\}/g, function (match, index) {
+                    return args[index];
+                });
+            }
+
+            function number(value) {
+                return Number(value).toLocaleString(document.documentElement.lang || undefined);
+            }
+
+            function showResult(title, html, reload) {
+                var $result = $('#sk-result');
+
+                reloadOnClose = reload;
+
+                $result.find('.modal-title').text(title);
+                $result.find('.modal-body').html(html);
+                $('.modal.in').not($result).modal('hide');
+                $result.modal('show');
+            }
+
+            function showError(status) {
+                var message = texts.errors[status] || texts.errors.Generic;
+                var reload = status === 'AlreadyOwned';
+
+                showResult(texts.errorTitle, '<p>' + message + '</p>', reload);
+            }
+
+            function post(url, data, $button, onSuccess) {
+                $button.prop('disabled', true);
+
+                $.ajax({
+                    url: url,
+                    type: 'POST',
+                    contentType: 'application/json',
+                    headers: { 'RequestVerificationToken': token },
+                    data: JSON.stringify(data || {})
+                }).done(function (response) {
+                    if (response.succeeded) {
+                        onSuccess(response);
+                        return;
+                    }
+
+                    showError(response.status);
+                }).fail(function () {
+                    showError('Generic');
+                }).always(function () {
+                    $button.prop('disabled', false);
+                });
+            }
+
+            function openDetails($card) {
                 var $modal = $('#sk-modal');
 
                 $modal.find('.modal-title').text($card.data('title'));
                 $modal.find('.modal-body').html($card.find('.sk-details').html());
                 $modal.modal('show');
+            }
+
+            $(document).on('click', '.sk-open', function (e) {
+                if ($(e.target).closest('.sk-action, .sk-missing').length > 0)
+                    return;
+
+                e.preventDefault();
+                openDetails($(this));
+            });
+
+            $(document).on('click', '.sk-buy', function (e) {
+                e.preventDefault();
+                e.stopPropagation();
+
+                var $button = $(this);
+                var price = Number($button.data('price'));
+                var title = escapeHtml($button.data('title'));
+                var weaponName = escapeHtml($button.data('weapon-name'));
+
+                pendingBuy = { skin: $button.data('skin'), price: price, title: title, weaponName: weaponName };
+
+                var html = '<p>' + format(texts.confirmBuy, title, number(price)) + '</p>'
+                    + '<p>' + format(texts.confirmBalance, number(texts.balance), number(texts.balance - price)) + '</p>'
+                    + '<p class="sk-notice">' + format(texts.confirmEquip, weaponName) + '</p>'
+                    + '<p><small>' + texts.confirmFinal + '</small></p>';
+
+                $('.modal.in').modal('hide');
+                $('#sk-confirm .modal-body').html(html);
+                $('#sk-confirm').modal('show');
+            });
+
+            $('.sk-confirm-buy').on('click', function () {
+                if (pendingBuy == null)
+                    return;
+
+                var buy = pendingBuy;
+
+                post('/api/shop/skins/' + encodeURIComponent(buy.skin) + '/buy', null, $(this), function () {
+                    pendingBuy = null;
+
+                    var html = '<p>' + format(texts.buySuccess, buy.title, buy.weaponName) + '</p>'
+                        + '<p class="sk-notice">' + texts.nextMap + '</p>'
+                        + '<p>' + texts.switchHint + '</p>';
+
+                    showResult(texts.buySuccessTitle, html, true);
+                });
+            });
+
+            $(document).on('click', '.sk-equip', function (e) {
+                e.preventDefault();
+                e.stopPropagation();
+
+                var $button = $(this);
+                var title = escapeHtml($button.data('title'));
+                var weaponName = escapeHtml($button.data('weapon-name'));
+
+                post('/api/shop/skins/' + encodeURIComponent($button.data('skin')) + '/equip', null, $button, function () {
+                    var html = '<p>' + format(texts.equipSuccess, title, weaponName) + '</p>'
+                        + '<p class="sk-notice">' + texts.nextMap + '</p>';
+
+                    showResult(texts.equipSuccessTitle, html, true);
+                });
+            });
+
+            $(document).on('click', '.sk-unequip', function (e) {
+                e.preventDefault();
+                e.stopPropagation();
+
+                var $button = $(this);
+                var weaponName = escapeHtml($button.data('weapon-name'));
+
+                post('/api/shop/weapons/' + encodeURIComponent($button.data('weapon')) + '/unequip', null, $button, function () {
+                    var html = '<p>' + format(texts.unequipSuccess, weaponName) + '</p>'
+                        + '<p class="sk-notice">' + texts.nextMap + '</p>';
+
+                    showResult(texts.unequipSuccessTitle, html, true);
+                });
+            });
+
+            $('#sk-result').on('hidden.bs.modal', function () {
+                if (reloadOnClose)
+                    location.reload();
             });
 
             function applyFilters() {
                 $('.tab-pane').each(function () {
                     var $pane = $(this);
-                    var upcoming = $pane.is('#sk-upcoming');
                     var total = 0;
 
                     $pane.find('.sk-section').each(function () {
@@ -859,7 +959,9 @@
 
                         $(this).find('.sk-item').each(function () {
                             var $item = $(this);
-                            var show = (weapon === 'all' || $item.data('weapon') === weapon) && (upcoming || !onlyUnlocked || $item.data('unlocked') === 1);
+                            var show = (weapon === 'all' || $item.data('weapon') === weapon)
+                                && (rarity === 'all' || $item.data('rarity') === rarity)
+                                && (!onlyAffordable || $item.data('affordable') === 1);
 
                             $item.toggle(show);
 
@@ -871,7 +973,8 @@
                         total += visible;
                     });
 
-                    $pane.find('.sk-empty').toggleClass('hidden', total > 0);
+                    if ($pane.find('.sk-item').length > 0)
+                        $pane.find('.sk-empty').toggleClass('hidden', total > 0);
                 });
             }
 
@@ -880,22 +983,29 @@
                 applyFilters();
             });
 
-            $('#sk-only-unlocked').on('change', function () {
-                onlyUnlocked = this.checked;
+            $('#sk-rarity-filter').on('change', function () {
+                rarity = $(this).val();
                 applyFilters();
             });
 
-            $('.sk-show-calendar').on('click', function () {
-                $('.sk-lot-extra').removeClass('hidden');
-                $(this).remove();
+            $('#sk-only-affordable').on('change', function () {
+                onlyAffordable = this.checked;
+                applyFilters();
             });
 
             $('.sk-tabs a').on('shown.bs.tab', function () {
                 history.replaceState(null, '', $(this).attr('href'));
             });
 
-            if (location.hash === '#upcoming')
-                $('.sk-tabs a[href="#upcoming"]').tab('show');
+            if (location.hash === '#mine')
+                $('.sk-tabs a[href="#mine"]').tab('show');
+
+            if (location.hash.indexOf('#skin-') === 0) {
+                var $card = $('#sk-shop').find('[id="' + location.hash.substring(1) + '"]');
+
+                if ($card.length > 0)
+                    openDetails($card);
+            }
         });
     </script>
 }

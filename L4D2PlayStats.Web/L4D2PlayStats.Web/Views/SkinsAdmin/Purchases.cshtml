@@ -1,0 +1,329 @@
+@using System.Globalization
+@using L4D2PlayStats.Core.UserAvatar
+@using L4D2PlayStats.Web
+@using L4D2PlayStats.Web.Models
+@using Microsoft.AspNetCore.Mvc.Localization
+@using Microsoft.Extensions.Localization
+@model L4D2PlayStats.Web.Models.SkinPurchasesAdminModel
+@inject IViewLocalizer Localizer
+@inject IStringLocalizer<SharedResource> SharedLocalizer
+@inject IUserAvatar UserAvatar
+
+@{
+    ViewData["Title"] = SharedLocalizer["SkinPurchases"].Value;
+    var culture = CultureInfo.CurrentUICulture;
+    var pagination = PaginationModel.Of(Model.Purchases, number => Url.Action("Purchases", "SkinsAdmin", new { q = Model.Query, page = number })!);
+}
+
+@section Styles {
+    @await Html.PartialAsync("_AdminStyles")
+}
+
+@Html.AntiForgeryToken()
+
+<div class="admin-header">
+    <h3>@SharedLocalizer["SkinPurchases"]</h3>
+    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#ska-gift-modal">
+        <span class="glyphicon glyphicon-gift"></span> @Localizer["GiftButton"]
+    </button>
+</div>
+
+<div class="admin-stats">
+    <div>
+        <strong>@Model.TotalPurchases.ToString("N0", culture)</strong>
+        <small>@Localizer["StatPurchases"]</small>
+    </div>
+    <div>
+        <strong>@Model.TotalStars.ToString("N0", culture) ⭐</strong>
+        <small>@Localizer["StatStars"]</small>
+    </div>
+    <div>
+        <strong>@Model.TotalGifts.ToString("N0", culture)</strong>
+        <small>@Localizer["StatGifts"]</small>
+    </div>
+</div>
+
+<form method="get" class="admin-filters">
+    <input type="text" name="q" value="@Model.Query" class="form-control admin-search" placeholder="@Localizer["SearchPlaceholder"]"/>
+    <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span> @SharedLocalizer["Search"]</button>
+    @if (!string.IsNullOrEmpty(Model.Query))
+    {
+        <a class="btn btn-link" href="@Url.Action("Purchases", "SkinsAdmin")">@Localizer["ClearFilters"]</a>
+    }
+</form>
+
+<div class="admin-list">
+    @if (Model.Purchases.Items.Count == 0)
+    {
+        <div class="admin-empty">@Localizer["NoPurchases"]</div>
+    }
+    @foreach (var row in Model.Purchases.Items)
+    {
+        var purchase = row.Purchase;
+        var title = row.SkinTitle(culture);
+        var image = row.Skin?.Image ?? string.Empty;
+        var weapon = row.Skin == null ? string.Empty : Localizer[SkinsModel.WeaponResourceKeys[row.Skin.Weapon]].Value;
+        var date = purchase.PurchasedAtUtc.ToLocalTime().ToString("g", culture);
+        var price = purchase.Gift ? Localizer["Gift"].Value : $"{purchase.Price.ToString("N0", culture)} ⭐";
+
+        <div class="admin-item ska-purchase"
+             data-player="@row.CommunityId" data-player-name="@row.PlayerName" data-avatar="@UserAvatar[row.CommunityId]"
+             data-skin="@purchase.SkinId" data-title="@title" data-image="@image" data-weapon="@weapon"
+             data-price="@price" data-date="@date" data-gift="@(purchase.Gift ? 1 : 0)" data-gifted-by="@row.GiftedByName"
+             data-stars-before="@(purchase.Gift ? "" : purchase.StarsBefore.ToString("N0", culture))">
+            <img class="admin-thumb" src="@image" alt="@title" loading="lazy"/>
+            <div class="admin-main">
+                <div class="admin-title">@title</div>
+                <small>@weapon · @purchase.SkinId</small>
+            </div>
+            <div class="admin-player">
+                <img class="admin-avatar" src="@UserAvatar[row.CommunityId]" alt="@row.PlayerName" onerror="imgOnError(this)"/>
+                <div class="admin-main">
+                    <div class="admin-title">@row.PlayerName</div>
+                    <small>@row.CommunityId</small>
+                </div>
+            </div>
+            <div class="admin-side">
+                @if (purchase.Gift)
+                {
+                    <span class="label label-success">@Localizer["Gift"]</span>
+                }
+                else
+                {
+                    <strong>@price</strong>
+                }
+                <small>@date</small>
+            </div>
+        </div>
+    }
+</div>
+
+@await Html.PartialAsync("_Pagination", pagination)
+
+<div id="ska-purchase-modal" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="@SharedLocalizer["Close"]"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">@Localizer["PurchaseDetails"]</h4>
+            </div>
+            <div class="modal-body">
+                <div class="admin-details">
+                    <img class="ska-image" src="" alt=""/>
+                    <dl>
+                        <dt>@Localizer["Skin"]</dt>
+                        <dd><b class="ska-title"></b><br/><small class="ska-weapon text-muted"></small></dd>
+                        <dt>@SharedLocalizer["Player"]</dt>
+                        <dd>
+                            <img class="admin-avatar ska-avatar" src="" alt="" onerror="imgOnError(this)"/>
+                            <a class="ska-player-link" href="#"></a>
+                            <br/><small class="ska-player-id text-muted"></small>
+                        </dd>
+                        <dt>@Localizer["Price"]</dt>
+                        <dd class="ska-price"></dd>
+                        <dt class="ska-stars-before-label">@Localizer["StarsBefore"]</dt>
+                        <dd class="ska-stars-before"></dd>
+                        <dt class="ska-gifted-by-label">@Localizer["GiftedBy"]</dt>
+                        <dd class="ska-gifted-by"></dd>
+                        <dt>@Localizer["Date"]</dt>
+                        <dd class="ska-date"></dd>
+                    </dl>
+                </div>
+                <div class="alert alert-warning admin-confirm ska-refund-confirm"></div>
+                <div class="ska-message"></div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">@SharedLocalizer["Close"]</button>
+                <button type="button" class="btn btn-danger ska-refund">
+                    <span class="glyphicon glyphicon-repeat"></span> @Localizer["RefundButton"]
+                </button>
+                <button type="button" class="btn btn-danger ska-refund-yes" style="display: none">@Localizer["ConfirmRefundButton"]</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="ska-gift-modal" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="@SharedLocalizer["Close"]"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">@Localizer["GiftTitle"]</h4>
+            </div>
+            <div class="modal-body">
+                <p class="text-muted">@Localizer["GiftLead"]</p>
+                <div class="form-group">
+                    <label for="ska-gift-player">@Localizer["PlayerSteamId"]</label>
+                    <input type="text" id="ska-gift-player" class="form-control" placeholder="76561198000000000"/>
+                </div>
+                <div class="form-group">
+                    <label for="ska-gift-skin">@Localizer["Skin"]</label>
+                    <select id="ska-gift-skin" class="form-control">
+                        @foreach (var rarity in SkinsModel.Rarities)
+                        {
+                            <optgroup label="@Localizer[SkinsModel.RarityKey(rarity)]">
+                                @foreach (var skin in Model.Skins.Where(skin => skin.Rarity == rarity).OrderBy(skin => Array.IndexOf(SkinsModel.Weapons, skin.Weapon)).ThenBy(skin => skin.Title.Get(culture)))
+                                {
+                                    <option value="@skin.Id">@skin.Title.Get(culture) (@Localizer[SkinsModel.WeaponResourceKeys[skin.Weapon]])</option>
+                                }
+                            </optgroup>
+                        }
+                    </select>
+                </div>
+                <div class="ska-gift-message"></div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">@SharedLocalizer["Cancel"]</button>
+                <button type="button" class="btn btn-success ska-gift">
+                    <span class="glyphicon glyphicon-gift"></span> @Localizer["GiftButton"]
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        $(function () {
+            var texts = {
+                confirmRefund: @Json.Serialize(Localizer["ConfirmRefund"].Value),
+                giftDone: @Json.Serialize(Localizer["GiftDone"].Value),
+                refundDone: @Json.Serialize(Localizer["RefundDone"].Value),
+                required: @Json.Serialize(Localizer["GiftRequired"].Value),
+                errors: {
+                    AlreadyOwned: @Json.Serialize(Localizer["ErrorAlreadyOwned"].Value),
+                    NotOwned: @Json.Serialize(Localizer["ErrorNotOwned"].Value),
+                    SkinNotFound: @Json.Serialize(Localizer["ErrorSkinNotFound"].Value),
+                    Busy: @Json.Serialize(Localizer["ErrorBusy"].Value),
+                    BadRequest: @Json.Serialize(Localizer["ErrorInvalidPlayer"].Value),
+                    Generic: @Json.Serialize(Localizer["ErrorGeneric"].Value)
+                }
+            };
+
+            var token = $('input[name="__RequestVerificationToken"]').val();
+            var selected = null;
+
+            function format(template) {
+                var args = Array.prototype.slice.call(arguments, 1);
+
+                return template.replace(/\{(\d+)\}/g, function (match, index) {
+                    return args[index];
+                });
+            }
+
+            function escapeHtml(text) {
+                return $('<div/>').text(text == null ? '' : text).html();
+            }
+
+            function message($target, success, text) {
+                $target.html('<div class="alert ' + (success ? 'alert-success' : 'alert-danger') + '">' + escapeHtml(text) + '</div>');
+            }
+
+            function post(url, data) {
+                return $.ajax({
+                    url: url,
+                    type: 'POST',
+                    contentType: 'application/json',
+                    headers: { 'RequestVerificationToken': token },
+                    data: JSON.stringify(data)
+                });
+            }
+
+            function errorText(xhr, response) {
+                if (xhr && xhr.status === 400)
+                    return texts.errors.BadRequest;
+
+                return texts.errors[response && response.status] || texts.errors.Generic;
+            }
+
+            $('.ska-purchase').on('click', function () {
+                var $item = $(this);
+                var $modal = $('#ska-purchase-modal');
+                var gift = $item.data('gift') === 1;
+
+                selected = { player: $item.data('player').toString(), name: $item.data('player-name'), skin: $item.data('skin'), title: $item.data('title') };
+
+                $modal.find('.ska-image').attr({ src: $item.data('image'), alt: $item.data('title') });
+                $modal.find('.ska-title').text($item.data('title'));
+                $modal.find('.ska-weapon').text($item.data('weapon') + ' · ' + $item.data('skin'));
+                $modal.find('.ska-avatar').attr({ src: $item.data('avatar'), alt: $item.data('player-name') });
+                $modal.find('.ska-player-link').text($item.data('player-name')).attr('href', '/player/' + encodeURIComponent(selected.player));
+                $modal.find('.ska-player-id').text(selected.player);
+                $modal.find('.ska-price').text($item.data('price'));
+                $modal.find('.ska-stars-before').text($item.data('stars-before') + ' ⭐');
+                $modal.find('.ska-stars-before, .ska-stars-before-label').toggle(!gift);
+                $modal.find('.ska-gifted-by').text($item.data('gifted-by'));
+                $modal.find('.ska-gifted-by, .ska-gifted-by-label').toggle(gift);
+                $modal.find('.ska-date').text($item.data('date'));
+                $modal.find('.ska-refund-confirm').hide().text('');
+                $modal.find('.ska-message').empty();
+                $modal.find('.ska-refund').show().prop('disabled', false);
+                $modal.find('.ska-refund-yes').hide().prop('disabled', false);
+                $modal.modal('show');
+            });
+
+            $('.ska-refund').on('click', function () {
+                var $modal = $('#ska-purchase-modal');
+
+                $modal.find('.ska-refund-confirm').text(format(texts.confirmRefund, selected.title, selected.name)).show();
+                $(this).hide();
+                $modal.find('.ska-refund-yes').show();
+            });
+
+            $('.ska-refund-yes').on('click', function () {
+                var $button = $(this);
+                var $message = $('#ska-purchase-modal .ska-message');
+
+                $button.prop('disabled', true);
+
+                post('/api/shop/refund', { communityId: selected.player, skinId: selected.skin }).done(function (response) {
+                    if (!response.succeeded) {
+                        message($message, false, errorText(null, response));
+                        $button.prop('disabled', false);
+                        return;
+                    }
+
+                    message($message, true, texts.refundDone);
+                    setTimeout(function () { location.reload(); }, 1200);
+                }).fail(function (xhr) {
+                    message($message, false, errorText(xhr));
+                    $button.prop('disabled', false);
+                });
+            });
+
+            $('.ska-gift').on('click', function () {
+                var $button = $(this);
+                var $message = $('.ska-gift-message');
+                var player = $.trim($('#ska-gift-player').val());
+                var $option = $('#ska-gift-skin option:selected');
+
+                if (player === '') {
+                    message($message, false, texts.required);
+                    return;
+                }
+
+                $button.prop('disabled', true);
+
+                post('/api/shop/gift', { communityId: player, skinId: $option.val() }).done(function (response) {
+                    if (!response.succeeded) {
+                        message($message, false, errorText(null, response));
+                        $button.prop('disabled', false);
+                        return;
+                    }
+
+                    message($message, true, format(texts.giftDone, $option.text(), player));
+                    setTimeout(function () { location.reload(); }, 1200);
+                }).fail(function (xhr) {
+                    message($message, false, errorText(xhr));
+                    $button.prop('disabled', false);
+                });
+            });
+
+            $('#ska-gift-modal').on('shown.bs.modal', function () {
+                $('.ska-gift-message').empty();
+                $('.ska-gift').prop('disabled', false);
+                $('#ska-gift-player').focus();
+            });
+        });
+    </script>
+}

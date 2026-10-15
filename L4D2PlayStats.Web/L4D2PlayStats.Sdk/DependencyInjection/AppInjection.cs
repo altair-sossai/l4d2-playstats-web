@@ -4,6 +4,7 @@ using L4D2PlayStats.Sdk.Handlers;
 using L4D2PlayStats.Sdk.Matches;
 using L4D2PlayStats.Sdk.Punishments;
 using L4D2PlayStats.Sdk.Ranking;
+using L4D2PlayStats.Sdk.Stars;
 using L4D2PlayStats.Sdk.Statistics;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -45,7 +46,8 @@ public static class AppInjection
                 .AddApi<IRankingService>(apiUri)
                 .AddApi<IMatchesService>(apiUri)
                 .AddApi<IStatisticsService>(apiUri)
-                .AddApi<IPunishmentsService>(apiUri);
+                .AddApi<IPunishmentsService>(apiUri)
+                .AddApi<IStarsService>(apiUri);
         }
 
         private IServiceCollection AddApi<T>(Uri baseAddress)

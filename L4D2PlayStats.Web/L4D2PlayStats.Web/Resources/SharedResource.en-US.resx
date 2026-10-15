@@ -426,6 +426,24 @@
     <data name="ForcesMatch" xml:space="preserve">
     <value>Forces the selection of a match mode</value>
   </data>
+    <data name="More" xml:space="preserve">
+    <value>More</value>
+  </data>
+    <data name="NextPage" xml:space="preserve">
+    <value>Next page</value>
+  </data>
+    <data name="PreviousPage" xml:space="preserve">
+    <value>Previous page</value>
+  </data>
+    <data name="ShowingItems" xml:space="preserve">
+    <value>Showing {0}–{1} of {2}</value>
+  </data>
+    <data name="SkinPrices" xml:space="preserve">
+    <value>Skin prices</value>
+  </data>
+    <data name="SkinPurchases" xml:space="preserve">
+    <value>Skin purchases</value>
+  </data>
     <data name="TogglesAntiCheat" xml:space="preserve">
     <value>Turns anti-cheat on or off</value>
   </data>
@@ -942,6 +960,9 @@
     <data name="None" xml:space="preserve">
     <value>None</value>
   </data>
+    <data name="NoSkinsYet" xml:space="preserve">
+    <value>This player does not own any skins yet.</value>
+  </data>
     <data name="OneDay" xml:space="preserve">
     <value>1 day</value>
   </data>
@@ -1107,6 +1128,9 @@
     <data name="SecondRound" xml:space="preserve">
     <value>2nd round</value>
   </data>
+    <data name="SeeSkinShop" xml:space="preserve">
+    <value>See the skin shop</value>
+  </data>
     <data name="SelectCampaign" xml:space="preserve">
     <value>Select a campaign</value>
   </data>
@@ -1223,6 +1247,9 @@
   </data>
     <data name="SkeetsTotal" xml:space="preserve">
     <value>Total skeets</value>
+  </data>
+    <data name="SkinEquipped" xml:space="preserve">
+    <value>Equipped</value>
   </data>
     <data name="SlaysPlayer" xml:space="preserve">
     <value>Slays a player</value>
@@ -1442,6 +1469,9 @@
   </data>
     <data name="AddBan" xml:space="preserve">
     <value>Add ban</value>
+  </data>
+    <data name="Admin" xml:space="preserve">
+    <value>Admin</value>
   </data>
     <data name="BanDate" xml:space="preserve">
     <value>Ban date</value>
