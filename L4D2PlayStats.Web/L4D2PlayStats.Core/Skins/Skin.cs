@@ -25,6 +25,11 @@ public record Skin
     public LocalizedText Description { get; init; } = new();
     public string OriginalTitle { get; init; } = string.Empty;
     public string OriginalDescription { get; init; } = string.Empty;
+    public int Shots { get; init; }
+
+    [JsonIgnore]
+    public bool HasShots => Shots > 0;
+
     public string Image => $"/imgs/skins/{Id}.jpg";
     public string WorkshopUrl => $"https://steamcommunity.com/sharedfiles/filedetails/?id={WorkshopId}";
     public string Command => $"!skin {Id}";

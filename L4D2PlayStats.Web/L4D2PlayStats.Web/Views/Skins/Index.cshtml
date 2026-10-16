@@ -1,5 +1,6 @@
 @using System.Globalization
 @using L4D2PlayStats.Core.Auth
+@using L4D2PlayStats.Core.Infrastructure.Options
 @using L4D2PlayStats.Core.Skins
 @using L4D2PlayStats.Core.Skins.Enums
 @using L4D2PlayStats.Web
@@ -11,6 +12,7 @@
 @inject IViewLocalizer Localizer
 @inject IStringLocalizer<SharedResource> SharedLocalizer
 @inject ICurrentUser CurrentUser
+@inject IAppOptionsWraper AppOptions
 
 @{
     ViewData["PageMetadata"] = new SkinsPageMetadata(Model, SharedLocalizer);
@@ -287,10 +289,24 @@
                 object-fit: cover;
             }
 
+            .sk-thumb .sk-shot {
+                position: absolute;
+                top: 0;
+                left: 0;
+                opacity: 0;
+                transition: opacity .5s ease;
+                pointer-events: none;
+            }
+
+                .sk-thumb .sk-shot.active {
+                    opacity: 1;
+                }
+
         .sk-weapon,
         .sk-status,
         .sk-price-tag {
             position: absolute;
+            z-index: 2;
             font-size: 11px;
         }
 
@@ -417,6 +433,84 @@
                 background: #111;
                 object-fit: contain;
             }
+
+        .sk-gallery {
+            margin-bottom: 15px;
+        }
+
+        .sk-author-notice-open {
+            padding-left: 0;
+            opacity: .7;
+        }
+
+            .sk-author-notice-open:hover,
+            .sk-author-notice-open:focus {
+                opacity: 1;
+            }
+
+        .sk-author-notice .lead {
+            font-size: 16px;
+        }
+
+        .sk-author-notice-actions .btn {
+            margin: 4px 6px 4px 0;
+        }
+
+            .sk-gallery .sk-gallery-main {
+                margin-bottom: 8px;
+                cursor: zoom-in;
+            }
+
+                .sk-gallery .sk-gallery-main img {
+                    max-height: none;
+                    aspect-ratio: 16 / 9;
+                    object-fit: cover;
+                    transition: opacity .25s ease;
+                }
+
+                    .sk-gallery .sk-gallery-main img.loading {
+                        opacity: .35;
+                    }
+
+        .sk-gallery-thumbs {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 6px;
+        }
+
+        .sk-gallery-thumb {
+            padding: 0;
+            border: 2px solid transparent;
+            border-radius: 4px;
+            background: #111;
+            opacity: .65;
+            overflow: hidden;
+            transition: opacity .2s ease, border-color .2s ease;
+        }
+
+            .sk-gallery-thumb:hover,
+            .sk-gallery-thumb:focus {
+                opacity: 1;
+                outline: none;
+            }
+
+            .sk-gallery-thumb.active {
+                border-color: var(--sk-rarity-color, #f0ad4e);
+                opacity: 1;
+            }
+
+            .sk-gallery-thumb img {
+                display: block;
+                width: 100%;
+                aspect-ratio: 16 / 9;
+                object-fit: cover;
+            }
+
+        @@media (max-width: 480px) {
+            .sk-gallery-thumbs {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
 
         .sk-modal-tags {
             margin: 0 0 10px;
@@ -623,6 +717,13 @@
         </button>
     }
 
+    const int ShotCount = 6;
+
+    string ShotsUrl(Skin skin)
+    {
+        return $"{AppOptions.SkinShotsUrl}/{skin.Id}/";
+    }
+
     async Task RenderDetails(Skin skin)
     {
         var title = skin.Title.Get(culture);
@@ -631,12 +732,35 @@
 
         <div class="sk-details hidden">
             <div class="row @SkinsModel.RarityCss(skin.Rarity)">
-                <div class="col-xs-12 col-sm-5">
-                    <a class="sk-modal-image" href="@skin.Image" data-lity>
-                        <img src="@skin.Image" alt="@title" loading="lazy"/>
-                    </a>
-                </div>
-                <div class="col-xs-12 col-sm-7">
+                @if (skin.HasShots)
+                {
+                    var shots = ShotsUrl(skin);
+
+                    <div class="col-xs-12">
+                        <div class="sk-gallery" data-shots="@shots" data-version="@skin.Shots">
+                            <a class="sk-modal-image sk-gallery-main" href="@($"{shots}1.webp?v={skin.Shots}")" data-lity>
+                                <img data-shot="1" data-size="" alt="@title"/>
+                            </a>
+                            <div class="sk-gallery-thumbs">
+                                @for (var shot = 1; shot <= ShotCount; shot++)
+                                {
+                                    <button type="button" class="sk-gallery-thumb @(shot == 1 ? "active" : "")" data-shot="@shot" title="@title (@shot/@ShotCount)">
+                                        <img data-shot="@shot" data-size="-thumb" alt="@title (@shot/@ShotCount)"/>
+                                    </button>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                }
+                else
+                {
+                    <div class="col-xs-12 col-sm-5">
+                        <a class="sk-modal-image" href="@skin.Image" data-lity>
+                            <img src="@skin.Image" alt="@title" loading="lazy"/>
+                        </a>
+                    </div>
+                }
+                <div class="col-xs-12 @(skin.HasShots ? "" : "col-sm-7")">
                     <div class="sk-modal-tags">
                         <span class="label sk-modal-rarity">@Localizer[SkinsModel.RarityKey(skin.Rarity)]</span>
                         <span class="label label-default">@weaponNames[skin.Weapon]</span>
@@ -706,9 +830,9 @@
 
         <div class="col-xs-6 col-sm-4 col-md-3 sk-col sk-item @SkinsModel.RarityCss(skin.Rarity)"
              data-weapon="@skin.Weapon" data-rarity="@skin.Rarity" data-affordable="@(owned || Model.CanAfford(skin) ? 1 : 0)">
-            <div class="sk-card sk-open @(owned ? "sk-owned" : "") @(skin.Rarity == SkinRarity.Legendary ? "sk-legendary-card" : "")" id="@(anchor ? $"skin-{skin.Id}" : null)" data-title="@title">
+            <div class="sk-card sk-open @(owned ? "sk-owned" : "") @(skin.Rarity == SkinRarity.Legendary ? "sk-legendary-card" : "")" id="@(anchor ? $"skin-{skin.Id}" : null)" data-title="@title" data-skin="@skin.Id" data-workshop="@skin.WorkshopUrl">
                 @{ await RenderDetails(skin); }
-                <a class="sk-thumb" href="#skin-@skin.Id">
+                <a class="sk-thumb" href="#skin-@skin.Id" data-shots="@(skin.HasShots ? ShotsUrl(skin) : null)" data-version="@(skin.HasShots ? skin.Shots : null)">
                     <img src="@skin.Image" alt="@title" loading="lazy"/>
                     <span class="label sk-weapon">@weaponNames[skin.Weapon]</span>
                     @if (equipped)
@@ -877,6 +1001,41 @@
                 <h4 class="modal-title"></h4>
             </div>
             <div class="modal-body"></div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-link btn-sm pull-left sk-author-notice-open" title="@Localizer["AuthorNotice"]">
+                    <span class="glyphicon glyphicon-copyright-mark"></span> @Localizer["AuthorNoticeButton"]
+                </button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">@SharedLocalizer["Close"]</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="sk-author-notice" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="@SharedLocalizer["Close"]">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title">
+                    <span class="glyphicon glyphicon-copyright-mark"></span> @Localizer["AuthorNotice"]
+                </h4>
+            </div>
+            <div class="modal-body sk-author-notice">
+                <p class="lead">@Localizer["AuthorNoticeIntro"]</p>
+                <p>@Localizer["AuthorNoticeRespect"]</p>
+                <p>@Localizer["AuthorNoticeNonProfit"]</p>
+                <p><b>@Localizer["AuthorNoticeRight"]</b></p>
+                <div class="sk-author-notice-actions">
+                    <a class="btn btn-primary" href="https://steamcommunity.com/id/altairsossai" target="_blank" rel="noopener">
+                        <span class="glyphicon glyphicon-user"></span> @Localizer["AuthorNoticeSteam"]
+                    </a>
+                    <a class="btn btn-default sk-author-notice-github" href="https://github.com/altair-sossai/l4d2-zone-server-assets/issues/new" target="_blank" rel="noopener">
+                        <span class="glyphicon glyphicon-envelope"></span> @Localizer["AuthorNoticeGitHub"]
+                    </a>
+                </div>
+            </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">@SharedLocalizer["Close"]</button>
             </div>
@@ -1075,13 +1234,139 @@
                 });
             }
 
+            var shotExtension = 'webp';
+            var cardShots = [1, 5, 6];
+            var cardShotDelay = 1600;
+            var avifProbe = new Image();
+
+            avifProbe.onload = function () {
+                if (avifProbe.width > 0)
+                    shotExtension = 'avif';
+            };
+            avifProbe.src = 'data:image/avif;base64,AAAAIGZ0eXBhdmlmAAAAAGF2aWZtaWYxbWlhZk1BMUIAAAD5bWV0YQAAAAAAAAAvaGRscgAAAAAAAAAAcGljdAAAAAAAAAAAAAAAAFBpY3R1cmVIYW5kbGVyAAAAAA5waXRtAAAAAAABAAAAHmlsb2MAAAAARAAAAQABAAAAAQAAASEAAAAWAAAAKGlpbmYAAAAAAAEAAAAaaW5mZQIAAAAAAQAAYXYwMUNvbG9yAAAAAGppcHJwAAAAS2lwY28AAAAUaXNwZQAAAAAAAAACAAAAAgAAABBwaXhpAAAAAAMICAgAAAAMYXYxQ4EADAAAAAATY29scm5jbHgAAgACAAIAAAAAF2lwbWEAAAAAAAAAAQABBAECgwQAAAAebWRhdAoFGAA2wCAyDRgAAABQAAAAALATSyg=';
+
+            function shotUrl(base, version, shot, size, extension) {
+                return base + shot + size + '.' + (extension || shotExtension) + '?v=' + version;
+            }
+
+            function startCardShots($thumb) {
+                var $shots = $thumb.children('.sk-shot');
+                var index = 0;
+
+                if ($shots.length === 0) {
+                    $shots = $($.map(cardShots, function (shot) {
+                        return $('<img class="sk-shot" alt=""/>').attr('src', shotUrl($thumb.data('shots'), $thumb.data('version'), shot, '-card'))[0];
+                    }));
+                    $thumb.children('img').first().after($shots);
+                }
+
+                function show() {
+                    var $next = $shots.eq(index % $shots.length);
+
+                    function reveal() {
+                        if (!$thumb.data('hovering'))
+                            return;
+
+                        $shots.css('z-index', 0);
+                        $next.css('z-index', 1).addClass('active');
+                        setTimeout(function () {
+                            if ($next.css('z-index') === '1')
+                                $shots.not($next).removeClass('active');
+                        }, 500);
+                    }
+
+                    index++;
+
+                    if ($next[0].complete && $next[0].naturalWidth > 0)
+                        reveal();
+                    else
+                        $next.one('load', reveal);
+                }
+
+                $thumb.data('hovering', true);
+                show();
+                $thumb.data('timer', setInterval(show, cardShotDelay));
+            }
+
+            function stopCardShots($thumb) {
+                clearInterval($thumb.data('timer'));
+                $thumb.data('hovering', false);
+                $thumb.children('.sk-shot').removeClass('active');
+            }
+
+            $(document).on('mouseenter', '.sk-thumb[data-shots]', function () {
+                startCardShots($(this));
+            });
+
+            $(document).on('mouseleave', '.sk-thumb[data-shots]', function () {
+                stopCardShots($(this));
+            });
+
+            function loadGallery($container) {
+                $container.find('.sk-gallery').each(function () {
+                    var $gallery = $(this);
+
+                    $gallery.find('img[data-shot]').each(function () {
+                        var $image = $(this);
+
+                        $image.attr('src', shotUrl($gallery.data('shots'), $gallery.data('version'), $image.data('shot'), $image.attr('data-size')));
+                    });
+                });
+            }
+
+            $(document).on('click', '.sk-gallery-thumb', function () {
+                var $thumb = $(this);
+                var $gallery = $thumb.closest('.sk-gallery');
+                var $main = $gallery.find('.sk-gallery-main');
+                var $image = $main.find('img');
+                var shot = $thumb.data('shot');
+                var base = $gallery.data('shots');
+                var version = $gallery.data('version');
+
+                if ($thumb.hasClass('active'))
+                    return;
+
+                $gallery.find('.sk-gallery-thumb').removeClass('active');
+                $thumb.addClass('active');
+                $main.attr('href', shotUrl(base, version, shot, '', 'webp'));
+                $image.addClass('loading').one('load error', function () {
+                    $image.removeClass('loading');
+                }).attr('src', shotUrl(base, version, shot, ''));
+            });
+
             function openDetails($card) {
                 var $modal = $('#sk-modal');
 
                 $modal.find('.modal-title').text($card.data('title'));
                 $modal.find('.modal-body').html($card.find('.sk-details').html());
+                loadGallery($modal);
+                $modal.data('skin', $card.data('skin'));
+                $modal.data('title', $card.data('title'));
+                $modal.data('workshop', $card.data('workshop'));
                 $modal.modal('show');
             }
+
+            $(document).on('click', '.sk-author-notice-open', function () {
+                var $modal = $('#sk-modal');
+                var title = 'Remove skin: ' + $modal.data('title') + ' (' + $modal.data('skin') + ')';
+                var body = 'Skin: ' + $modal.data('title') + '\nWorkshop: ' + $modal.data('workshop');
+
+                $('#sk-author-notice .sk-author-notice-github').attr('href',
+                    'https://github.com/altair-sossai/l4d2-zone-server-assets/issues/new?title=' + encodeURIComponent(title) + '&body=' + encodeURIComponent(body));
+                $('#sk-author-notice').modal('show');
+            });
+
+            $('#sk-author-notice').on('show.bs.modal', function () {
+                var zIndex = 1050 + 10 * $('.modal.in').length;
+
+                $(this).css('z-index', zIndex);
+                setTimeout(function () {
+                    $('.modal-backdrop').not('.sk-stacked').last().css('z-index', zIndex - 1).addClass('sk-stacked');
+                }, 0);
+            }).on('hidden.bs.modal', function () {
+                if ($('.modal.in').length > 0)
+                    $('body').addClass('modal-open');
+            });
 
             $(document).on('click', '.sk-open', function (e) {
                 if ($(e.target).closest('.sk-action, .sk-missing, .sk-author').length > 0)

@@ -35,6 +35,7 @@ It runs the Brazilian community site **[l4d2.com.br](https://l4d2.com.br/)**.
 - Players earn **1 star per MVP** (special infected damage or common infected) in competitive matches, counted over their whole history.
 - Stars buy skins for 15 weapons: the SMG, MAC-10, MP5, pump shotgun, chrome shotgun, Magnum and 9 melee weapons.
 - There are 196 community-made skins in five rarities. The catalog, prices and credits come from the Steam Workshop.
+- Every skin has six in-game photos, taken with [l4d2-screenshot-studio](https://github.com/altair-sossai/l4d2-screenshot-studio): first person, three on the ground and two in third person. Hovering a card cycles through the first-person and third-person photos, and the details window shows all six with thumbnails and zoom. The photos are AVIF (WebP for older browsers), served from Azure Blob Storage and only downloaded when a player hovers a card or opens a skin. `shots` in `skins.json` is the photo version: raise it when a skin's photos are redone, so browsers fetch the new files.
 - Bought skins last one ranking season. At every ranking reset, purchases are refunded automatically and the stars come back. Gifts are kept forever.
 - Players equip skins on the site or in game with `!skin`. The game server downloads only the skins that someone bought.
 
@@ -153,6 +154,7 @@ Two players side by side: ranking, stars, statistics, match history and skins. T
 | `ServerAdmins` | SteamID64s of the site admins, separated by `;` |
 | `SecretKey` | Shared secret that the game server sends in the `Authorization` header. It must match the plugins' `l4d2_web_secret` |
 | `AzureWebJobsStorage` | Azure Storage connection string. Use `UseDevelopmentStorage=true` for Azurite |
+| `SkinShotsUrl` | Optional. Base URL of the in-game skin photos. Defaults to `https://l4d2playstats.blob.core.windows.net/assets/skin-shots` |
 
 ## Game server plugins
 

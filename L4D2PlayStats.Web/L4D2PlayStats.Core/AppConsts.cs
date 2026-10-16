@@ -8,6 +8,7 @@ public static class AppConsts
     public const string SiteUrl = "https://l4d2.com.br";
     public const string DefaultImageUrl = "https://l4d2playstats.blob.core.windows.net/assets/motd.jpeg";
     public const string EmptyAvatarPath = "/imgs/avatar-empty.png";
+    public const string SkinShotsUrl = "https://l4d2playstats.blob.core.windows.net/assets/skin-shots";
 
     public const string SteamApiBaseUrl = "https://api.steampowered.com";
 

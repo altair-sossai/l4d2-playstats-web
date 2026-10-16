@@ -7,4 +7,5 @@ public interface IAppOptionsWraper
     string ServerDns { get; }
     string ServerIp { get; }
     string[] ServerAdmins { get; }
+    string SkinShotsUrl { get; }
 }

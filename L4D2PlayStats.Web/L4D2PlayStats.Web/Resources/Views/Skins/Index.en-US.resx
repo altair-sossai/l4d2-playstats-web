@@ -134,6 +134,30 @@
   <data name="Author" xml:space="preserve">
     <value>Author</value>
   </data>
+  <data name="AuthorNotice" xml:space="preserve">
+    <value>Are you the author of this skin?</value>
+  </data>
+  <data name="AuthorNoticeButton" xml:space="preserve">
+    <value>Are you the author?</value>
+  </data>
+  <data name="AuthorNoticeGitHub" xml:space="preserve">
+    <value>Open a request on GitHub</value>
+  </data>
+  <data name="AuthorNoticeIntro" xml:space="preserve">
+    <value>If you made this skin and do not want it on this site, just let me know. I will gladly remove it as soon as possible, no questions asked.</value>
+  </data>
+  <data name="AuthorNoticeNonProfit" xml:space="preserve">
+    <value>This is a non-profit project. The server gives me no financial return, the skins are not sold and there is no money involved and no transaction of any kind. The shop stars are earned by playing and cannot be bought with money: the skins are only a cosmetic item for the players.</value>
+  </data>
+  <data name="AuthorNoticeRespect" xml:space="preserve">
+    <value>I deeply respect the work of every author. Every skin shows who made it, with a link to the author's Steam profile and to the original Workshop page.</value>
+  </data>
+  <data name="AuthorNoticeRight" xml:space="preserve">
+    <value>If you are the author and do not want your skin here, you have every right. Contact me through one of the channels below and I will remove it as soon as possible.</value>
+  </data>
+  <data name="AuthorNoticeSteam" xml:space="preserve">
+    <value>Message me on Steam</value>
+  </data>
   <data name="AuthorSkinOne" xml:space="preserve">
     <value>{0} skin</value>
   </data>

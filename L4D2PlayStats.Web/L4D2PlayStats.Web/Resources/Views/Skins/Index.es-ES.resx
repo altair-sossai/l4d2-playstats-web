@@ -134,6 +134,30 @@
   <data name="Author" xml:space="preserve">
     <value>Autor</value>
   </data>
+  <data name="AuthorNotice" xml:space="preserve">
+    <value>¿Eres el autor de esta skin?</value>
+  </data>
+  <data name="AuthorNoticeButton" xml:space="preserve">
+    <value>¿Eres el autor?</value>
+  </data>
+  <data name="AuthorNoticeGitHub" xml:space="preserve">
+    <value>Abrir una solicitud en GitHub</value>
+  </data>
+  <data name="AuthorNoticeIntro" xml:space="preserve">
+    <value>Si creaste esta skin y no quieres que aparezca en este sitio, solo avísame. Con gusto la quitaré lo antes posible, sin preguntas.</value>
+  </data>
+  <data name="AuthorNoticeNonProfit" xml:space="preserve">
+    <value>Este es un proyecto sin fines de lucro. El servidor no me da ningún beneficio económico, las skins no se venden y no hay dinero involucrado ni transacciones de ningún tipo. Las estrellas de la tienda se ganan jugando y no se pueden comprar con dinero: las skins son solo un elemento cosmético para los jugadores.</value>
+  </data>
+  <data name="AuthorNoticeRespect" xml:space="preserve">
+    <value>Respeto mucho el trabajo de cada autor. Cada skin muestra quién la creó, con un enlace a su perfil de Steam y a la página original en la Workshop.</value>
+  </data>
+  <data name="AuthorNoticeRight" xml:space="preserve">
+    <value>Si eres el autor y no quieres tu skin aquí, tienes todo el derecho. Escríbeme por uno de los canales de abajo y la quitaré lo antes posible.</value>
+  </data>
+  <data name="AuthorNoticeSteam" xml:space="preserve">
+    <value>Escríbeme en Steam</value>
+  </data>
   <data name="AuthorSkinOne" xml:space="preserve">
     <value>{0} skin</value>
   </data>

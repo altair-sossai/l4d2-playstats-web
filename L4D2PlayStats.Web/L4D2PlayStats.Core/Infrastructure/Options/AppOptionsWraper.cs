@@ -59,6 +59,10 @@ public class AppOptionsWraper(IOptions<AppOptions> config, IDnsResolver dnsResol
         }
     }
 
+    public string SkinShotsUrl => string.IsNullOrWhiteSpace(config.Value.SkinShotsUrl)
+        ? AppConsts.SkinShotsUrl
+        : config.Value.SkinShotsUrl.Trim().TrimEnd('/');
+
     private static string[] Split(string value)
     {
         if (string.IsNullOrEmpty(value))

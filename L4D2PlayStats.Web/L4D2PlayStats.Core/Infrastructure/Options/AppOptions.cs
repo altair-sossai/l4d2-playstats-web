@@ -6,4 +6,5 @@ public class AppOptions
     public string? SteamApiKey { get; set; }
     public string? ServerDns { get; set; }
     public string? ServerAdmins { get; set; }
+    public string? SkinShotsUrl { get; set; }
 }
