@@ -1,144 +1,205 @@
-# Left 4 Dead 2 Match Stats and Ranking Site
+# L4D2 PlayStats Web
 
-This ASP.NET MVC application (net10.0) serves as a ranking and statistics site for Left 4 Dead 2 matches.
+Ranking, statistics and weapon skin shop for a competitive Left 4 Dead 2 server. Built with ASP.NET Core MVC (.NET 10).
 
-For an example of this site in action, visit the Brazilian community site at [https://l4d2.com.br/](https://l4d2.com.br/).
+It runs the Brazilian community site **[l4d2.com.br](https://l4d2.com.br/)**.
+
+<p align="center">
+  <img src="screenshot/screenshot_01.jpg" alt="Ranking (dark theme)" width="900">
+</p>
+
+## Contents
+
+- [Features](#features)
+- [How it fits together](#how-it-fits-together)
+- [Screenshots](#screenshots)
+- [Requirements](#requirements)
+- [Configuration](#configuration)
+- [Game server plugins](#game-server-plugins)
+- [Running locally](#running-locally)
+- [Deployment](#deployment)
+- [API used by the game server](#api-used-by-the-game-server)
+- [Further documentation](#further-documentation)
 
 ## Features
 
-- **Ranking System:** Utilizes data provided by the "Left 4 Dead 2 Match Data API" to create a comprehensive ranking system. [API Repository](https://github.com/altair-sossai/l4d2-playstats-api)
-  - The ranking system is reset every two months by default, though this can be configured as needed.
-  - Previous rankings can be consulted.
-- **User-Friendly Interface:** Displays rankings, latest matches, player rankings, and player comparisons in an intuitive and accessible format.
-- **Brazilian Community:** Previously available to the Brazilian community at [https://l4d2.com.br/](https://l4d2.com.br/), which has since been deactivated. The project files remain fully functional for self-hosted deployments.
-- **Steam API Integration:** Requires a Steam developer key (SteamApiKey) to fetch player information. Instructions for creating a Steam API key are provided below.
-- **Data Dependency:** Directly relies on the "Left 4 Dead 2 Match Data API" to retrieve and display player data.
-- **In-Game Integration:** Can be opened directly within the game when used in conjunction with the [l4d2_playstats_sync](https://github.com/altair-sossai/l4d2-zone-server/blob/master/addons/sourcemod/plugins/optional/l4d2_playstats_sync.smx) plugin. Configuration details for the plugin are provided below.
-- **Connected Players Indicator:** A flag in the site header shows how many players are currently connected to the server.
-- **Language Support:** The site currently supports English, Portuguese (Brazil), and Spanish.
-- **Theme Support:** The site offers both light and dark themes, providing users with the option to choose their preferred mode.
-- **Technology Stack:** Built using Bootstrap v3.4.1 and jQuery v1.12.4 to ensure compatibility with the in-game browser.
-- **Responsive Design:** The site is fully responsive and adapts to both desktop and mobile devices.
+**Ranking and statistics**
+
+- Ranking built from the match statistics stored by the [PlayStats API](https://github.com/altair-sossai/l4d2-playstats-api). The ranking resets every two months, and previous rankings stay available on the history page.
+- Patents (levels), each player's details page, and side-by-side comparison of two players, including their stars and skins.
+- Latest matches with scores, per-map points, charts and match details.
+- Server page with the live round: scoreboard, players and chat, sent by the game server in real time.
+
+**Weapon skin shop**
+
+- Players earn **1 star per MVP** (special infected damage or common infected) in competitive matches, counted over their whole history.
+- Stars buy skins for 15 weapons: the SMG, MAC-10, MP5, pump shotgun, chrome shotgun, Magnum and 9 melee weapons.
+- There are 196 community-made skins in five rarities. The catalog, prices and credits come from the Steam Workshop.
+- Bought skins last one ranking season. At every ranking reset, purchases are refunded automatically and the stars come back. Gifts are kept forever.
+- Players equip skins on the site or in game with `!skin`. The game server downloads only the skins that someone bought.
+
+**Administration** (only for the SteamIDs in `ServerAdmins`)
+
+- Skin purchases: totals, search, refunds (one purchase or everything) and gifts.
+- Skin prices: change a price without a deploy.
+- Chat bans for the site chat.
+
+**General**
+
+- English, Portuguese (Brazil) and Spanish, with dark and light themes.
+- Responsive layout. It also works in the game's built-in browser, which is why it uses Bootstrap 3.4.1 and jQuery 1.12.4.
+- Steam sign-in (OpenID), and player names and avatars from the Steam Web API.
+- An anti-cheat page for players.
+
+## How it fits together
+
+```mermaid
+flowchart LR
+    GS["Game server<br/>(SourceMod plugins)"] -- "match statistics" --> API["PlayStats API<br/>(Azure Functions)"]
+    API -- "ranking, matches, stars" --> WEB["PlayStats Web<br/>(this repository)"]
+    GS -- "live round, chat, equipped skins" --> WEB
+    WEB -- "purchased skins, equipped skins" --> GS
+    WEB -- "shop data" --> TS[("Azure Table Storage")]
+    Players(("Players")) --> WEB
+```
+
+| Repository | Role |
+|---|---|
+| [l4d2-playstats-api](https://github.com/altair-sossai/l4d2-playstats-api) | Stores the statistics, builds matches and the ranking, and calculates the stars |
+| [l4d2-zone-server](https://github.com/altair-sossai/l4d2-zone-server) | Game server configs and SourceMod plugins, including the full [weapon skins wiki](https://github.com/altair-sossai/l4d2-zone-server/tree/master/docs/weapon-skins) |
+| [l4d2-zone-server-assets](https://github.com/altair-sossai/l4d2-zone-server-assets) | Skin models and materials (FastDL), with the [credits to every skin author](https://github.com/altair-sossai/l4d2-zone-server-assets#weapon-skin-credits) |
+
+## Screenshots
+
+### Ranking
+
+Dark and light themes.
+
+<p align="center">
+  <img src="screenshot/screenshot_01.jpg" alt="Ranking (dark theme)" width="900">
+</p>
+
+<p align="center">
+  <img src="screenshot/screenshot_02.jpg" alt="Ranking (light theme)" width="900">
+</p>
+
+### Weapon skin shop
+
+The season rule, how to earn and use stars, and the player's balance.
+
+<p align="center">
+  <img src="screenshot/screenshot_06.jpg" alt="Skin shop" width="900">
+</p>
+
+The catalog, grouped by rarity, with filters by weapon and rarity.
+
+<p align="center">
+  <img src="screenshot/screenshot_07.jpg" alt="Skin shop catalog" width="900">
+</p>
+
+### Player comparison
+
+Two players side by side: ranking, stars, statistics, match history and skins. The first player is shown in white and the second in yellow.
+
+<p align="center">
+  <img src="screenshot/screenshot_04.jpg" alt="Player comparison" width="900">
+</p>
+
+### Last matches
+
+<p align="center">
+  <img src="screenshot/screenshot_03.jpg" alt="Last matches" width="900">
+</p>
+
+### Patent shown in game
+
+<p align="center">
+  <img src="screenshot/screenshot_05.jpg" alt="Patent shown in game" width="900">
+</p>
+
+> Player avatars are blurred in these screenshots.
 
 ## Requirements
 
-### 1. Left 4 Dead 2 Match Data API
-This API is responsible for receiving data generated by the `l4d2_playstats` plugin ([GitHub Link](https://github.com/SirPlease/L4D2-Competitive-Rework/blob/master/addons/sourcemod/plugins/optional/l4d2_playstats.smx)), storing it in an Azure Storage Account table, and exposing the data through a REST API. You can find detailed setup instructions for this API at the following link: [L4D2 PlayStats API Setup](https://github.com/altair-sossai/l4d2-playstats-api).
+- **.NET 10 SDK** to build and run.
+- **[PlayStats API](https://github.com/altair-sossai/l4d2-playstats-api)**: the site reads the ranking, matches and stars from it.
+- **Azure Storage account** (or [Azurite](https://learn.microsoft.com/azure/storage/common/storage-use-azurite) locally). It holds the shop tables (`SkinShop`, `SkinPrices`), the chat bans and the live game info.
+- **Steam Web API key**, created at [steamcommunity.com/dev/apikey](https://steamcommunity.com/dev/apikey). It is used for player names, avatars and the server details.
 
-### 2. Valid Steam API Key
-At times, the application needs to access player data such as profile pictures, names, profile URLs, and server details. A Steam API Key is required for integration with Steam. You can create your key through the following link: [Steam API Key](https://steamcommunity.com/dev/apikey).
+## Configuration
 
-1. Visit the [Steam API key registration page](https://steamcommunity.com/dev/apikey).
-2. Log in with your Steam account.
-3. Register a new API key by providing a domain name.
-4. Copy the generated API key and set it in your project's configuration as `SteamApiKey`.
-
-### 3. Hosting Environment
-This application needs to be hosted on a Linux or Windows machine, or in a cloud environment capable of hosting .NET 10 applications. The publishing process depends on the chosen hosting environment, but generally, you will need to generate the binary for the project:
-
-```bash
-dotnet publish L4D2PlayStats.Web/L4D2PlayStats.Web/L4D2PlayStats.Web.csproj -c Release -o /path/to/output
-```
-
-### 4. Configuration
-The application requires a configuration file named `appsettings.json` with the following structure:
+`L4D2PlayStats.Web/L4D2PlayStats.Web/appsettings.json` is ignored by git. Create it on the host with these keys. The values below are placeholders; never commit real values.
 
 ```json
 {
   "ServerId": "",
   "PlayStatsApiUrl": "",
+  "PlayStatsSecret": "",
   "SteamApiKey": "",
-  "ServerDns": ""
+  "ServerDns": "",
+  "ServerAdmins": "",
+  "SecretKey": "",
+  "AzureWebJobsStorage": ""
 }
 ```
 
-- **ServerId**: The server ID generated by the "Left 4 Dead 2 Match Data API."
-- **PlayStatsApiUrl**: The endpoint of the "Left 4 Dead 2 Match Data API."
-- **SteamApiKey**: Your Steam API Key.
-- **ServerDns**: DNS hostname players use to connect (e.g. `server.l4d2.com.br`, optionally `host:port`). It's shown/copied as the `connect` command, and resolved to the server IP via a one-time DNS lookup (cached for the lifetime of the process, defaulting to port 27015) — so you don't need to hardcode the IP.
+| Key | What it is |
+|---|---|
+| `ServerId` | The server id registered in the PlayStats API |
+| `PlayStatsApiUrl` | Base URL of the PlayStats API |
+| `PlayStatsSecret` | Secret used by the site's calls to the PlayStats API |
+| `SteamApiKey` | Steam Web API key |
+| `ServerDns` | Hostname players use to connect, e.g. `server.example.com` or `host:port`. It is shown as the `connect` command and resolved to the server address once per process (port 27015 by default) |
+| `ServerAdmins` | SteamID64s of the site admins, separated by `;` |
+| `SecretKey` | Shared secret that the game server sends in the `Authorization` header. It must match the plugins' `l4d2_web_secret` |
+| `AzureWebJobsStorage` | Azure Storage connection string. Use `UseDevelopmentStorage=true` for Azurite |
 
-## Required Plugins
+## Game server plugins
 
-To ensure the ranking system works properly, the following plugins must be installed on your server:
+All plugins live in [l4d2-zone-server](https://github.com/altair-sossai/l4d2-zone-server), where [docs/plugins](https://github.com/altair-sossai/l4d2-zone-server/blob/master/docs/plugins/README.md) documents each one.
 
-### 1. l4d2_playstats_sync.smx
-This plugin sends data generated by `l4d2_playstats` to the "Left 4 Dead 2 Match Data API." You need to configure the following CVARs:
+| Plugin | What it does | Main settings |
+|---|---|---|
+| `l4d2_playstats` | Writes the statistics of each map | — |
+| [`l4d2_playstats_sync`](https://github.com/altair-sossai/l4d2-zone-server/blob/master/addons/sourcemod/scripting/l4d2_playstats_sync.sp) | Uploads the statistics to the PlayStats API | `playstats_url`, `playstats_access_token` |
+| [`l4d2_ranking`](https://github.com/altair-sossai/l4d2-zone-server/blob/master/addons/sourcemod/scripting/l4d2_ranking.sp) | `!ranking` and the ranking panel at the start of a game | `ranking_url` |
+| [`l4d2_show_patent_icon`](https://github.com/altair-sossai/l4d2-zone-server/blob/master/addons/sourcemod/scripting/l4d2_show_patent_icon.sp) (optional) | Shows each player's patent above their head during ready-up | `patent_icon_api_url`, `patent_icon_version`, `patent_icon_max_level`, plus `sv_downloadurl` (FastDL) |
+| [`l4d2_gameinfo_sync`](https://github.com/altair-sossai/l4d2-zone-server/blob/master/addons/sourcemod/scripting/l4d2_gameinfo_sync.sp) | Sends the live round, scoreboard and chat to the site | `l4d2_web_url`, `l4d2_web_secret` |
+| [`l4d2_weapon_skins`](https://github.com/altair-sossai/l4d2-zone-server/blob/master/addons/sourcemod/scripting/l4d2_weapon_skins.sp) | Downloads the purchased skins, applies them and syncs the equipped skins | `l4d2_web_url`, `l4d2_web_secret` |
 
-```bash
-confogl_addcvar sm_stats_writestats 1
-confogl_addcvar playstats_url "URL_MATCH_DATA_API"
-confogl_addcvar playstats_access_token "SERVER_ID:SECRET"
-```
+`l4d2_web_url` is the site URL, set in `server.cfg`. `l4d2_web_secret` is the same value as the site's `SecretKey`; keep it in a git-ignored config on the game server.
 
-- **Binary**: [Download Link](https://github.com/altair-sossai/l4d2-zone-server/blob/master/addons/sourcemod/plugins/optional/l4d2_playstats_sync.smx)
-- **Source Code**: [GitHub Link](https://github.com/altair-sossai/l4d2-zone-server/blob/master/addons/sourcemod/scripting/l4d2_playstats_sync.sp)
+## Running locally
 
-### 2. l4d2_ranking.smx
-This plugin displays the ranking to players when they type `!ranking` in the chat. It also shows the ranking at the start of a new game. Configure the following CVAR:
-
-```bash
-confogl_addcvar ranking_url "URL_SITE_RANKING"
-```
-
-- **Binary**: [Download Link](https://github.com/altair-sossai/l4d2-zone-server/blob/master/addons/sourcemod/plugins/optional/l4d2_ranking.smx)
-- **Source Code**: [GitHub Link](https://github.com/altair-sossai/l4d2-zone-server/blob/master/addons/sourcemod/scripting/l4d2_ranking.sp)
-
-### 3. l4d2_show_patent_icon.smx (Optional)
-This plugin displays the player's rank above their head at the start of a new game. Configure the following CVARs:
+1. Start Azurite (`npm install -g azurite`, then `azurite`).
+2. Create `appsettings.json` with `"AzureWebJobsStorage": "UseDevelopmentStorage=true"` and point `PlayStatsApiUrl` to a PlayStats API. Read-only use of a production API is fine; the shop data stays in Azurite.
+3. Run the site:
 
 ```bash
-sm_cvar sv_downloadurl ""
-sm_cvar sv_allowdownload 1
-confogl_addcvar patent_icon_api_url ""
-confogl_addcvar patent_icon_version 2
-confogl_addcvar patent_icon_max_level 15
+dotnet run --project L4D2PlayStats.Web/L4D2PlayStats.Web
 ```
 
-The `sv_downloadurl` should point to a FastDL URL. FastDL is essentially a public location where the Left 4 Dead 2 client can download necessary files, such as the rank icons in this case. Currently, I use a public container within an Azure Storage Account for this purpose, but you can configure it however you prefer. The rank icon files can be found here: [Patents Assets](https://github.com/altair-sossai/l4d2-zone-server/tree/master/assets/sprites).
+Sign in with Steam. Add your SteamID64 to `ServerAdmins` to see the Admin menu.
 
-- **Binary**: [Download Link](https://github.com/altair-sossai/l4d2-zone-server/blob/master/addons/sourcemod/plugins/optional/l4d2_show_patent_icon.smx)
-- **Source Code**: [GitHub Link](https://github.com/altair-sossai/l4d2-zone-server/blob/master/addons/sourcemod/scripting/l4d2_show_patent_icon.sp)
+## Deployment
 
-## Example Screenshots
+`azure-pipelines.yml` publishes a self-contained build on every push to `main`. It copies the build to the web host and restarts the site there. To publish by hand:
 
-Below are some example screenshots showcasing the features of the site that was previously hosted at [https://l4d2.com.br/](https://l4d2.com.br/), now deactivated. The visuals remain accurate for self-hosted instances.
+```bash
+dotnet publish L4D2PlayStats.Web/L4D2PlayStats.Web/L4D2PlayStats.Web.csproj -c Release -o /path/to/output
+```
 
-### Ranking Interface (Dark Mode)
+## API used by the game server
 
-The dark mode theme provides a visually appealing interface, reducing eye strain during night-time use.
+| Method | Route | Used by |
+|---|---|---|
+| GET | `/api/skins` | `l4d2_weapon_skins`: skins bought by at least one player, which decides what gets downloaded |
+| GET | `/api/players/skins` | `l4d2_weapon_skins`: owned and equipped skins of every player |
+| GET | `/api/players/{communityId}/wallet` | `l4d2_weapon_skins` (`!skin status`): stars, spent and balance |
+| POST | `/api/players/{communityId}/skins/equip` | `l4d2_weapon_skins`: saves a skin equipped in game (requires `Authorization: <SecretKey>`) |
+| PUT/POST | `/api/game-info/*` | `l4d2_gameinfo_sync`: live round, scoreboard, players, chat and events (requires `Authorization: <SecretKey>`) |
 
-<p align="center">
-  <img src="https://github.com/altair-sossai/l4d2-playstats-web/blob/main/screenshot/screenshot_01.jpg" alt="Ranking Interface (dark mode)">
-</p>
+## Further documentation
 
-### Ranking Interface (Light Mode)
-
-For users who prefer a brighter interface, the light mode offers a clean and modern design for viewing rankings and stats.
-
-<p align="center">
-  <img src="https://github.com/altair-sossai/l4d2-playstats-web/blob/main/screenshot/screenshot_02.jpg" alt="Ranking Interface (light mode)">
-</p>
-
-### Last Matches
-
-Quickly view recent match results, including player performance and match statistics in an organized format.
-
-<p align="center">
-  <img src="https://github.com/altair-sossai/l4d2-playstats-web/blob/main/screenshot/screenshot_03.jpg" alt="Last Matches">
-</p>
-
-### Player Comparison
-
-Compare the performance of different players, analyzing key stats side by side to see who performed better.
-
-<p align="center">
-  <img src="https://github.com/altair-sossai/l4d2-playstats-web/blob/main/screenshot/screenshot_04.jpg" alt="Player Comparison">
-</p>
-
-### Player Rank Displayed In-Game
-
-View a player’s ranking directly in-game, providing seamless integration between the website and gameplay.
-
-<p align="center">
-  <img src="https://github.com/altair-sossai/l4d2-playstats-web/blob/main/screenshot/screenshot_05.jpg" alt="Player Rank Displayed In-Game">
-</p>
+- [Weapon skins & skin shop wiki](https://github.com/altair-sossai/l4d2-zone-server/tree/master/docs/weapon-skins) covers how the skins are built, the plugin, the stars, the shop and operations, in English, Portuguese and Spanish.
+- [Server documentation index](https://github.com/altair-sossai/l4d2-zone-server/blob/master/docs/README.md) has the player and admin guides, the plugins reference and tutorials.
