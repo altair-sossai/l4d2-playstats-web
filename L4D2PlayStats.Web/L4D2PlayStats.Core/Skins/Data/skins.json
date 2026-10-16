@@ -6,6 +6,10 @@
       "rarity": "legendary",
       "price": 700,
       "workshopId": "3377651383",
+      "author": {
+        "name": "BATTLE NO.1",
+        "communityId": "76561199147992281"
+      },
       "title": {
         "en": "MAC-10 Dark Matter",
         "pt": "MAC-10 Dark Matter",
@@ -25,6 +29,10 @@
       "rarity": "legendary",
       "price": 650,
       "workshopId": "3757405260",
+      "author": {
+        "name": "SSSoyorin",
+        "communityId": "76561198068179093"
+      },
       "title": {
         "en": "Magnum Denia (Wuthering Waves)",
         "pt": "Magnum Denia (Wuthering Waves)",
@@ -44,6 +52,10 @@
       "rarity": "legendary",
       "price": 600,
       "workshopId": "3123871890",
+      "author": {
+        "name": "BATTLE NO.1",
+        "communityId": "76561199147992281"
+      },
       "title": {
         "en": "MP5 - Damascus (Glow)",
         "pt": "MP5 - Damascus (Glow)",
@@ -63,6 +75,10 @@
       "rarity": "legendary",
       "price": 600,
       "workshopId": "3020518865",
+      "author": {
+        "name": "十年公交男",
+        "communityId": "76561198848049874"
+      },
       "title": {
         "en": "Pump Shotgun Printstream Theme (Glow)",
         "pt": "Pump Shotgun Printstream Theme (Glow)",
@@ -82,6 +98,10 @@
       "rarity": "legendary",
       "price": 600,
       "workshopId": "3020518619",
+      "author": {
+        "name": "十年公交男",
+        "communityId": "76561198848049874"
+      },
       "title": {
         "en": "Chrome Shotgun Printstream Theme (Glow)",
         "pt": "Chrome Shotgun Printstream Theme (Glow)",
@@ -101,6 +121,10 @@
       "rarity": "legendary",
       "price": 600,
       "workshopId": "3288053100",
+      "author": {
+        "name": "鹿目徳門+",
+        "communityId": "76561199446396908"
+      },
       "title": {
         "en": "Magnum Snow Miku (Dynamic/Glow)",
         "pt": "Magnum Snow Miku (Dynamic/Glow)",
@@ -120,6 +144,10 @@
       "rarity": "legendary",
       "price": 600,
       "workshopId": "2863517099",
+      "author": {
+        "name": "Kokkorylien",
+        "communityId": "76561198212071259"
+      },
       "title": {
         "en": "Katana - Holographic Rainbow",
         "pt": "Katana - Holographic Rainbow",
@@ -139,6 +167,10 @@
       "rarity": "legendary",
       "price": 550,
       "workshopId": "2656086089",
+      "author": {
+        "name": "十年公交男",
+        "communityId": "76561198848049874"
+      },
       "title": {
         "en": "RGB MAC-10 Disco Tech (Glow)",
         "pt": "RGB MAC-10 Disco Tech (Glow)",
@@ -158,6 +190,10 @@
       "rarity": "legendary",
       "price": 520,
       "workshopId": "2863528972",
+      "author": {
+        "name": "Kokkorylien",
+        "communityId": "76561198212071259"
+      },
       "title": {
         "en": "Baseball Bat - Holographic Rainbow",
         "pt": "Baseball Bat - Holographic Rainbow",
@@ -177,6 +213,10 @@
       "rarity": "epic",
       "price": 450,
       "workshopId": "2958413323",
+      "author": {
+        "name": "《Happi Doggo》",
+        "communityId": "76561198804859540"
+      },
       "title": {
         "en": "MP5 - Gold'n'Pearl",
         "pt": "MP5 - Gold'n'Pearl",
@@ -196,6 +236,10 @@
       "rarity": "epic",
       "price": 420,
       "workshopId": "2924725708",
+      "author": {
+        "name": "Nagasaki Soyo",
+        "communityId": "76561198979336170"
+      },
       "title": {
         "en": "UZI Printstream",
         "pt": "UZI Printstream",
@@ -215,6 +259,10 @@
       "rarity": "epic",
       "price": 420,
       "workshopId": "2926162402",
+      "author": {
+        "name": "星跃迁",
+        "communityId": "76561198450183507"
+      },
       "title": {
         "en": "Printstream MAC-10",
         "pt": "Printstream MAC-10",
@@ -234,6 +282,10 @@
       "rarity": "epic",
       "price": 420,
       "workshopId": "3028559765",
+      "author": {
+        "name": "鹿目徳門+",
+        "communityId": "76561199446396908"
+      },
       "title": {
         "en": "Magnum Hatsune Miku 16th Anniversary (Glow)",
         "pt": "Magnum Hatsune Miku 16th Anniversary (Glow)",
@@ -253,6 +305,10 @@
       "rarity": "epic",
       "price": 420,
       "workshopId": "2863498654",
+      "author": {
+        "name": "Kokkorylien",
+        "communityId": "76561198212071259"
+      },
       "title": {
         "en": "Golf Club - Holographic Rainbow",
         "pt": "Golf Club - Holographic Rainbow",
@@ -272,6 +328,10 @@
       "rarity": "epic",
       "price": 400,
       "workshopId": "2845730284",
+      "author": {
+        "name": "如群星般Blossom_AID",
+        "communityId": "76561198118821360"
+      },
       "title": {
         "en": "Arknights Surtr Silenced SMG Dynamic Skin (Glow)",
         "pt": "Arknights Surtr Silenced SMG Dynamic Skin (Glow)",
@@ -291,6 +351,10 @@
       "rarity": "epic",
       "price": 400,
       "workshopId": "3028562598",
+      "author": {
+        "name": "鹿目徳門+",
+        "communityId": "76561199446396908"
+      },
       "title": {
         "en": "Hatsune Miku 16th Anniversary Default Pumpshotgun Skin (Glow)",
         "pt": "Hatsune Miku 16th Anniversary Default Pumpshotgun Skin (Glow)",
@@ -310,6 +374,10 @@
       "rarity": "epic",
       "price": 400,
       "workshopId": "3304384199",
+      "author": {
+        "name": "鹿目徳門+",
+        "communityId": "76561199446396908"
+      },
       "title": {
         "en": "Default Chrome Shotgun: Corridor of Miku",
         "pt": "Default Chrome Shotgun: Corridor of Miku",
@@ -329,6 +397,10 @@
       "rarity": "epic",
       "price": 400,
       "workshopId": "3027541381",
+      "author": {
+        "name": "我觉得我会玩狙",
+        "communityId": "76561198859746113"
+      },
       "title": {
         "en": "Neon Magnum (Glow)",
         "pt": "Neon Magnum (Glow)",
@@ -348,6 +420,10 @@
       "rarity": "epic",
       "price": 380,
       "workshopId": "2848790132",
+      "author": {
+        "name": "如群星般Blossom_AID",
+        "communityId": "76561198118821360"
+      },
       "title": {
         "en": "Arknights Rosmontis Dynamic Skin SMG (UZI) (Glow)",
         "pt": "Arknights Rosmontis Dynamic Skin SMG (UZI) (Glow)",
@@ -367,6 +443,10 @@
       "rarity": "epic",
       "price": 380,
       "workshopId": "3208967272",
+      "author": {
+        "name": "kklkl",
+        "communityId": "76561199496633553"
+      },
       "title": {
         "en": "Pump Shotgun Skin: Sleep at Night",
         "pt": "Pump Shotgun Skin: Sleep at Night",
@@ -386,6 +466,10 @@
       "rarity": "epic",
       "price": 380,
       "workshopId": "504708297",
+      "author": {
+        "name": "Amel",
+        "communityId": "76561198065445389"
+      },
       "title": {
         "en": "Asiimov Chrome Shotgun",
         "pt": "Asiimov Chrome Shotgun",
@@ -405,6 +489,10 @@
       "rarity": "epic",
       "price": 380,
       "workshopId": "2862073814",
+      "author": {
+        "name": "Kokkorylien",
+        "communityId": "76561198212071259"
+      },
       "title": {
         "en": "Chrome Shotgun Printstream Imitation",
         "pt": "Chrome Shotgun Printstream Imitation",
@@ -424,6 +512,10 @@
       "rarity": "epic",
       "price": 380,
       "workshopId": "2705308152",
+      "author": {
+        "name": "ZaihnY",
+        "communityId": "76561198292912187"
+      },
       "title": {
         "en": "Desert Eagle | Printstream",
         "pt": "Desert Eagle | Printstream",
@@ -443,6 +535,10 @@
       "rarity": "epic",
       "price": 380,
       "workshopId": "3776818868",
+      "author": {
+        "name": "JC Vlad",
+        "communityId": "76561199013613152"
+      },
       "title": {
         "en": "Fireaxe - Tribal (Dying Light)",
         "pt": "Fireaxe - Tribal (Dying Light)",
@@ -462,6 +558,10 @@
       "rarity": "epic",
       "price": 380,
       "workshopId": "3568360966",
+      "author": {
+        "name": "JC Vlad",
+        "communityId": "76561199013613152"
+      },
       "title": {
         "en": "Machete - Tribal (Dying Light)",
         "pt": "Machete - Tribal (Dying Light)",
@@ -481,6 +581,10 @@
       "rarity": "epic",
       "price": 350,
       "workshopId": "2043382451",
+      "author": {
+        "name": "SherlockHolmes9™",
+        "communityId": "76561198144229031"
+      },
       "title": {
         "en": "MP5 - A Force for Order",
         "pt": "MP5 - A Force for Order",
@@ -500,6 +604,10 @@
       "rarity": "epic",
       "price": 350,
       "workshopId": "2607196353",
+      "author": {
+        "name": "kΛmesan",
+        "communityId": "76561198271003114"
+      },
       "title": {
         "en": "Chrome Shotgun | Asiimov Light Blue",
         "pt": "Chrome Shotgun | Asiimov Light Blue",
@@ -519,6 +627,10 @@
       "rarity": "epic",
       "price": 350,
       "workshopId": "2814111195",
+      "author": {
+        "name": "薄雪中意晚莲",
+        "communityId": "76561198868564103"
+      },
       "title": {
         "en": "Magnum Senko-san (Glow)",
         "pt": "Magnum Senko-san (Glow)",
@@ -538,6 +650,10 @@
       "rarity": "epic",
       "price": 350,
       "workshopId": "2058886315",
+      "author": {
+        "name": "Laith",
+        "communityId": "76561198143530292"
+      },
       "title": {
         "en": "Katana - Clouds (Glow)",
         "pt": "Katana - Clouds (Glow)",
@@ -557,6 +673,10 @@
       "rarity": "epic",
       "price": 350,
       "workshopId": "2457923173",
+      "author": {
+        "name": "Azhe",
+        "communityId": "76561198980027610"
+      },
       "title": {
         "en": "Electric Guitar - Pikachu",
         "pt": "Electric Guitar - Pikachu",
@@ -576,6 +696,10 @@
       "rarity": "epic",
       "price": 320,
       "workshopId": "3374437391",
+      "author": {
+        "name": "bliss",
+        "communityId": "76561198862737859"
+      },
       "title": {
         "en": "Izumi Hiyori MAC-10",
         "pt": "Izumi Hiyori MAC-10",
@@ -595,6 +719,10 @@
       "rarity": "epic",
       "price": 320,
       "workshopId": "2988115895",
+      "author": {
+        "name": "Bonnie",
+        "communityId": "76561198073812490"
+      },
       "title": {
         "en": "Lord Darkdread Pumpshotgun",
         "pt": "Lord Darkdread Pumpshotgun",
@@ -614,6 +742,10 @@
       "rarity": "epic",
       "price": 320,
       "workshopId": "2621473254",
+      "author": {
+        "name": "Sa-Daniels",
+        "communityId": "76561198043631800"
+      },
       "title": {
         "en": "Azur Lane USS Enterprise Chrome",
         "pt": "Azur Lane USS Enterprise Chrome",
@@ -633,6 +765,10 @@
       "rarity": "epic",
       "price": 320,
       "workshopId": "2825654306",
+      "author": {
+        "name": "薄雪中意晚莲",
+        "communityId": "76561198868564103"
+      },
       "title": {
         "en": "Magnum Summer (Glow)",
         "pt": "Magnum Summer (Glow)",
@@ -652,6 +788,10 @@
       "rarity": "epic",
       "price": 320,
       "workshopId": "2969186761",
+      "author": {
+        "name": "有鹿来",
+        "communityId": "76561198824737114"
+      },
       "title": {
         "en": "Fireaxe - Nekomiya Hinata",
         "pt": "Fireaxe - Nekomiya Hinata",
@@ -671,6 +811,10 @@
       "rarity": "epic",
       "price": 300,
       "workshopId": "826430944",
+      "author": {
+        "name": "Alex_D #NoWar",
+        "communityId": "76561198012689307"
+      },
       "title": {
         "en": "MAC-10-S | Neon Rider",
         "pt": "MAC-10-S | Neon Rider",
@@ -690,6 +834,10 @@
       "rarity": "epic",
       "price": 300,
       "workshopId": "3547369289",
+      "author": {
+        "name": "蕾米莉亞親衛隊",
+        "communityId": "76561198302632895"
+      },
       "title": {
         "en": "MP5 - Touhou Michigami Nareko",
         "pt": "MP5 - Touhou Michigami Nareko",
@@ -709,6 +857,10 @@
       "rarity": "epic",
       "price": 300,
       "workshopId": "2013771916",
+      "author": {
+        "name": "Never",
+        "communityId": "76561198226608960"
+      },
       "title": {
         "en": "Pump | Victorian",
         "pt": "Pump | Victorian",
@@ -728,6 +880,10 @@
       "rarity": "epic",
       "price": 300,
       "workshopId": "2330191700",
+      "author": {
+        "name": "Vilinsecto",
+        "communityId": "76561197971037155"
+      },
       "title": {
         "en": "Cricket Bat - Iron Maiden",
         "pt": "Cricket Bat - Iron Maiden",
@@ -747,6 +903,10 @@
       "rarity": "rare",
       "price": 240,
       "workshopId": "2037879288",
+      "author": {
+        "name": "Never",
+        "communityId": "76561198226608960"
+      },
       "title": {
         "en": "Uzi | Volcanic",
         "pt": "Uzi | Volcanic",
@@ -766,6 +926,10 @@
       "rarity": "rare",
       "price": 240,
       "workshopId": "3271509074",
+      "author": {
+        "name": "鹿目徳門+",
+        "communityId": "76561199446396908"
+      },
       "title": {
         "en": "Default Silenced SMG: Hatsune Miku (Glow)",
         "pt": "Default Silenced SMG: Hatsune Miku (Glow)",
@@ -785,6 +949,10 @@
       "rarity": "rare",
       "price": 240,
       "workshopId": "2805481477",
+      "author": {
+        "name": "Nagasaki Soyo",
+        "communityId": "76561198979336170"
+      },
       "title": {
         "en": "Uma Musume Tokai Teio Chrome Shotgun",
         "pt": "Uma Musume Tokai Teio Chrome Shotgun",
@@ -804,6 +972,10 @@
       "rarity": "rare",
       "price": 240,
       "workshopId": "2705340335",
+      "author": {
+        "name": "ZaihnY",
+        "communityId": "76561198292912187"
+      },
       "title": {
         "en": "Desert Eagle | Code Red",
         "pt": "Desert Eagle | Code Red",
@@ -823,6 +995,10 @@
       "rarity": "rare",
       "price": 230,
       "workshopId": "2705155283",
+      "author": {
+        "name": "ZaihnY",
+        "communityId": "76561198292912187"
+      },
       "title": {
         "en": "Desert Eagle | Fennec Fox",
         "pt": "Desert Eagle | Fennec Fox",
@@ -842,6 +1018,10 @@
       "rarity": "rare",
       "price": 220,
       "workshopId": "3299514548",
+      "author": {
+        "name": "鹿目徳門+",
+        "communityId": "76561199446396908"
+      },
       "title": {
         "en": "Default SMG: Hatsune Miku (Pearlescent)",
         "pt": "Default SMG: Hatsune Miku (Pearlescent)",
@@ -861,6 +1041,10 @@
       "rarity": "rare",
       "price": 220,
       "workshopId": "3381943137",
+      "author": {
+        "name": "BATTLE NO.1",
+        "communityId": "76561199147992281"
+      },
       "title": {
         "en": "MP5 - Volcanic Lava",
         "pt": "MP5 - Volcanic Lava",
@@ -880,6 +1064,10 @@
       "rarity": "rare",
       "price": 220,
       "workshopId": "2810642280",
+      "author": {
+        "name": "Nagasaki Soyo",
+        "communityId": "76561198979336170"
+      },
       "title": {
         "en": "Uma Musume Mejiro McQueen Pump Shotgun",
         "pt": "Uma Musume Mejiro McQueen Pump Shotgun",
@@ -899,6 +1087,10 @@
       "rarity": "rare",
       "price": 220,
       "workshopId": "2840154085",
+      "author": {
+        "name": "薄雪中意晚莲",
+        "communityId": "76561198868564103"
+      },
       "title": {
         "en": "Minato Aqua Chrome Shotgun II (Glow)",
         "pt": "Minato Aqua Chrome Shotgun II (Glow)",
@@ -918,6 +1110,10 @@
       "rarity": "rare",
       "price": 220,
       "workshopId": "2607590291",
+      "author": {
+        "name": "十年公交男",
+        "communityId": "76561198848049874"
+      },
       "title": {
         "en": "Desert Eagle - Black Ice",
         "pt": "Desert Eagle - Black Ice",
@@ -937,6 +1133,10 @@
       "rarity": "rare",
       "price": 220,
       "workshopId": "3386688086",
+      "author": {
+        "name": "野生带鱼",
+        "communityId": "76561198114035292"
+      },
       "title": {
         "en": "Fireaxe - Honey B. Lovely",
         "pt": "Fireaxe - Honey B. Lovely",
@@ -956,6 +1156,10 @@
       "rarity": "rare",
       "price": 200,
       "workshopId": "3160988312",
+      "author": {
+        "name": "Nuj02",
+        "communityId": "76561199229538843"
+      },
       "title": {
         "en": "Find My Future MAC-10",
         "pt": "Find My Future MAC-10",
@@ -975,6 +1179,10 @@
       "rarity": "rare",
       "price": 200,
       "workshopId": "2713502936",
+      "author": {
+        "name": "比宇宙更远的地方",
+        "communityId": "76561198973812143"
+      },
       "title": {
         "en": "Hiiro MAC-10",
         "pt": "Hiiro MAC-10",
@@ -994,6 +1202,10 @@
       "rarity": "rare",
       "price": 200,
       "workshopId": "3762715599",
+      "author": {
+        "name": "Vampiturra (⌐■_■)",
+        "communityId": "76561199222348819"
+      },
       "title": {
         "en": "MP5 - Rarity",
         "pt": "MP5 - Rarity",
@@ -1013,6 +1225,10 @@
       "rarity": "rare",
       "price": 200,
       "workshopId": "2622698544",
+      "author": {
+        "name": "Sa-Daniels",
+        "communityId": "76561198043631800"
+      },
       "title": {
         "en": "Hyperdimension Neptunia Plutia Pumpshotgun",
         "pt": "Hyperdimension Neptunia Plutia Pumpshotgun",
@@ -1032,6 +1248,10 @@
       "rarity": "rare",
       "price": 200,
       "workshopId": "1898445622",
+      "author": {
+        "name": "Never",
+        "communityId": "76561198226608960"
+      },
       "title": {
         "en": "Shotguns | Volcanic",
         "pt": "Shotguns | Volcanic",
@@ -1051,6 +1271,10 @@
       "rarity": "rare",
       "price": 200,
       "workshopId": "2418491788",
+      "author": {
+        "name": "卡卡™",
+        "communityId": "76561198979410407"
+      },
       "title": {
         "en": "Chrome Shotgun Black&Gold Skin",
         "pt": "Chrome Shotgun Black&Gold Skin",
@@ -1070,6 +1294,10 @@
       "rarity": "rare",
       "price": 200,
       "workshopId": "1538174590",
+      "author": {
+        "name": "Drunken Irishman",
+        "communityId": "76561198067821017"
+      },
       "title": {
         "en": "Chrome Shotgun Inferno",
         "pt": "Chrome Shotgun Inferno",
@@ -1089,6 +1317,10 @@
       "rarity": "rare",
       "price": 200,
       "workshopId": "1898445622",
+      "author": {
+        "name": "Never",
+        "communityId": "76561198226608960"
+      },
       "title": {
         "en": "Shotguns | Volcanic",
         "pt": "Shotguns | Volcanic",
@@ -1108,6 +1340,10 @@
       "rarity": "rare",
       "price": 200,
       "workshopId": "3565185211",
+      "author": {
+        "name": "multo",
+        "communityId": "76561199001846248"
+      },
       "title": {
         "en": "Desert Eagle - Dragon Glass",
         "pt": "Desert Eagle - Dragon Glass",
@@ -1127,6 +1363,10 @@
       "rarity": "rare",
       "price": 200,
       "workshopId": "2095594132",
+      "author": {
+        "name": "Laith",
+        "communityId": "76561198143530292"
+      },
       "title": {
         "en": "Desert Eagle Retrowave / Synthwave",
         "pt": "Desert Eagle Retrowave / Synthwave",
@@ -1146,6 +1386,10 @@
       "rarity": "rare",
       "price": 200,
       "workshopId": "3465787019",
+      "author": {
+        "name": "宫永野乃花",
+        "communityId": "76561199762218644"
+      },
       "title": {
         "en": "Fireaxe - Ice Coaled",
         "pt": "Fireaxe - Ice Coaled",
@@ -1165,6 +1409,10 @@
       "rarity": "rare",
       "price": 200,
       "workshopId": "2023972353",
+      "author": {
+        "name": "SherlockHolmes9™",
+        "communityId": "76561198144229031"
+      },
       "title": {
         "en": "Katana - Sword of the Undead (Glow)",
         "pt": "Katana - Sword of the Undead (Glow)",
@@ -1184,6 +1432,10 @@
       "rarity": "rare",
       "price": 200,
       "workshopId": "3277167545",
+      "author": {
+        "name": "PAGEANT",
+        "communityId": "76561198060504044"
+      },
       "title": {
         "en": "Electric Guitar - Dokibird",
         "pt": "Electric Guitar - Dokibird",
@@ -1203,6 +1455,10 @@
       "rarity": "rare",
       "price": 200,
       "workshopId": "2630140015",
+      "author": {
+        "name": "Mayday_우타네",
+        "communityId": "76561198156304560"
+      },
       "title": {
         "en": "Frying Pan - Momo Momone",
         "pt": "Frying Pan - Momo Momone",
@@ -1222,6 +1478,10 @@
       "rarity": "rare",
       "price": 180,
       "workshopId": "2809240839",
+      "author": {
+        "name": "有鹿来",
+        "communityId": "76561198824737114"
+      },
       "title": {
         "en": "Hiiro UZI (Glow)",
         "pt": "Hiiro UZI (Glow)",
@@ -1241,6 +1501,10 @@
       "rarity": "rare",
       "price": 180,
       "workshopId": "2808871797",
+      "author": {
+        "name": "有鹿来",
+        "communityId": "76561198824737114"
+      },
       "title": {
         "en": "Nekoha Shizuku SMG (MAC-10) Remake (Glow)",
         "pt": "Nekoha Shizuku SMG (MAC-10) Remake (Glow)",
@@ -1260,6 +1524,10 @@
       "rarity": "rare",
       "price": 180,
       "workshopId": "3440232168",
+      "author": {
+        "name": "Ga(z)imon",
+        "communityId": "76561198088730923"
+      },
       "title": {
         "en": "MP5 - Flareon",
         "pt": "MP5 - Flareon",
@@ -1279,6 +1547,10 @@
       "rarity": "rare",
       "price": 180,
       "workshopId": "3353717701",
+      "author": {
+        "name": "Bonnie",
+        "communityId": "76561198073812490"
+      },
       "title": {
         "en": "Dragonite Pumpshotgun v2",
         "pt": "Dragonite Pumpshotgun v2",
@@ -1298,6 +1570,10 @@
       "rarity": "rare",
       "price": 180,
       "workshopId": "3382999407",
+      "author": {
+        "name": "这并不好笑",
+        "communityId": "76561198370506425"
+      },
       "title": {
         "en": "Bocchi the Rock! Yamada Ryo Pump Shotgun",
         "pt": "Bocchi the Rock! Yamada Ryo Pump Shotgun",
@@ -1317,6 +1593,10 @@
       "rarity": "rare",
       "price": 180,
       "workshopId": "1973325659",
+      "author": {
+        "name": "Never",
+        "communityId": "76561198226608960"
+      },
       "title": {
         "en": "Chrome | Anubis",
         "pt": "Chrome | Anubis",
@@ -1336,6 +1616,10 @@
       "rarity": "rare",
       "price": 180,
       "workshopId": "2840087428",
+      "author": {
+        "name": "薄雪中意晚莲",
+        "communityId": "76561198868564103"
+      },
       "title": {
         "en": "Minato Aqua Chrome Shotgun (Glow)",
         "pt": "Minato Aqua Chrome Shotgun (Glow)",
@@ -1355,6 +1639,10 @@
       "rarity": "rare",
       "price": 180,
       "workshopId": "2829210399",
+      "author": {
+        "name": "ジャレッド",
+        "communityId": "76561198287332761"
+      },
       "title": {
         "en": "Nepgear Desert Eagle (Hyperdimension Neptunia)",
         "pt": "Nepgear Desert Eagle (Hyperdimension Neptunia)",
@@ -1374,6 +1662,10 @@
       "rarity": "rare",
       "price": 180,
       "workshopId": "2479358362",
+      "author": {
+        "name": "Declan",
+        "communityId": "76561198072955615"
+      },
       "title": {
         "en": "Fireaxe - Nebula",
         "pt": "Fireaxe - Nebula",
@@ -1393,6 +1685,10 @@
       "rarity": "rare",
       "price": 180,
       "workshopId": "2722431635",
+      "author": {
+        "name": "Cruzmaker",
+        "communityId": "76561198192442390"
+      },
       "title": {
         "en": "Fireaxe - Nick's Axe",
         "pt": "Fireaxe - Nick's Axe",
@@ -1412,6 +1708,10 @@
       "rarity": "rare",
       "price": 180,
       "workshopId": "2269950390",
+      "author": {
+        "name": "ZeroRofl",
+        "communityId": "76561198036947328"
+      },
       "title": {
         "en": "Katana - Gawr Gura",
         "pt": "Katana - Gawr Gura",
@@ -1431,6 +1731,10 @@
       "rarity": "rare",
       "price": 170,
       "workshopId": "2610503147",
+      "author": {
+        "name": "卤香牛肉面",
+        "communityId": "76561198327025816"
+      },
       "title": {
         "en": "Arknights Mulberry MAC-10",
         "pt": "Arknights Mulberry MAC-10",
@@ -1450,6 +1754,10 @@
       "rarity": "rare",
       "price": 170,
       "workshopId": "2814124024",
+      "author": {
+        "name": "薄雪中意晚莲",
+        "communityId": "76561198868564103"
+      },
       "title": {
         "en": "Nekomiya Hinata Chrome Shotgun v2.0 (Glow)",
         "pt": "Nekomiya Hinata Chrome Shotgun v2.0 (Glow)",
@@ -1469,6 +1777,10 @@
       "rarity": "rare",
       "price": 170,
       "workshopId": "2142826115",
+      "author": {
+        "name": "Xavier",
+        "communityId": "76561198185766111"
+      },
       "title": {
         "en": "Chrome Shotgun Umbreon Camo",
         "pt": "Chrome Shotgun Umbreon Camo",
@@ -1488,6 +1800,10 @@
       "rarity": "rare",
       "price": 170,
       "workshopId": "3473632993",
+      "author": {
+        "name": "猫宫又奈",
+        "communityId": "76561198317270181"
+      },
       "title": {
         "en": "Desert Eagle - DemonAXiaojie Theme",
         "pt": "Desert Eagle - DemonAXiaojie Theme",
@@ -1507,6 +1823,10 @@
       "rarity": "rare",
       "price": 160,
       "workshopId": "3351643762",
+      "author": {
+        "name": "bliss",
+        "communityId": "76561198862737859"
+      },
       "title": {
         "en": "Yuzusoft Arihara Nanami MAC-10",
         "pt": "Yuzusoft Arihara Nanami MAC-10",
@@ -1526,6 +1846,10 @@
       "rarity": "rare",
       "price": 160,
       "workshopId": "1891172953",
+      "author": {
+        "name": "Never",
+        "communityId": "76561198226608960"
+      },
       "title": {
         "en": "S.SMG | ShadowBolt",
         "pt": "S.SMG | ShadowBolt",
@@ -1545,6 +1869,10 @@
       "rarity": "rare",
       "price": 160,
       "workshopId": "2836847839",
+      "author": {
+        "name": "ジャレッド",
+        "communityId": "76561198287332761"
+      },
       "title": {
         "en": "B-sha (Megadimension Neptunia VII) - Pump Shotgun",
         "pt": "B-sha (Megadimension Neptunia VII) - Pump Shotgun",
@@ -1564,6 +1892,10 @@
       "rarity": "rare",
       "price": 160,
       "workshopId": "1996782682",
+      "author": {
+        "name": "Never",
+        "communityId": "76561198226608960"
+      },
       "title": {
         "en": "Pump | Gumi",
         "pt": "Pump | Gumi",
@@ -1583,6 +1915,10 @@
       "rarity": "rare",
       "price": 160,
       "workshopId": "2019982092",
+      "author": {
+        "name": "SherlockHolmes9™",
+        "communityId": "76561198144229031"
+      },
       "title": {
         "en": "Up Close and Personal (Glowing)",
         "pt": "Up Close and Personal (Glowing)",
@@ -1602,6 +1938,10 @@
       "rarity": "rare",
       "price": 160,
       "workshopId": "2012965052",
+      "author": {
+        "name": "Never",
+        "communityId": "76561198226608960"
+      },
       "title": {
         "en": "Chrome | Hot Rod",
         "pt": "Chrome | Hot Rod",
@@ -1621,6 +1961,10 @@
       "rarity": "rare",
       "price": 160,
       "workshopId": "2848781046",
+      "author": {
+        "name": "叫声爸爸救你",
+        "communityId": "76561198842020028"
+      },
       "title": {
         "en": "Cardcaptor Sakura Chrome Shotgun",
         "pt": "Cardcaptor Sakura Chrome Shotgun",
@@ -1640,6 +1984,10 @@
       "rarity": "rare",
       "price": 160,
       "workshopId": "2123530345",
+      "author": {
+        "name": "Drunken Irishman",
+        "communityId": "76561198067821017"
+      },
       "title": {
         "en": "Chrome Shotgun_Wildfire",
         "pt": "Chrome Shotgun_Wildfire",
@@ -1659,6 +2007,10 @@
       "rarity": "rare",
       "price": 160,
       "workshopId": "3539372350",
+      "author": {
+        "name": "bliss",
+        "communityId": "76561198862737859"
+      },
       "title": {
         "en": "Yuzusoft Yarai Miu Chrome Shotgun",
         "pt": "Yuzusoft Yarai Miu Chrome Shotgun",
@@ -1678,6 +2030,10 @@
       "rarity": "rare",
       "price": 160,
       "workshopId": "3482483091",
+      "author": {
+        "name": "Maniek King",
+        "communityId": "76561198192216225"
+      },
       "title": {
         "en": "Fireaxe - Murder Drones Solver",
         "pt": "Fireaxe - Murder Drones Solver",
@@ -1697,6 +2053,10 @@
       "rarity": "rare",
       "price": 160,
       "workshopId": "3344571453",
+      "author": {
+        "name": "groX",
+        "communityId": "76561198252399074"
+      },
       "title": {
         "en": "Katana - Luna's Guard",
         "pt": "Katana - Luna's Guard",
@@ -1716,6 +2076,10 @@
       "rarity": "rare",
       "price": 160,
       "workshopId": "3357469022",
+      "author": {
+        "name": "death. by dolls ꔫ",
+        "communityId": "76561199063522016"
+      },
       "title": {
         "en": "Baseball Bat - My Melody",
         "pt": "Baseball Bat - My Melody",
@@ -1735,6 +2099,10 @@
       "rarity": "rare",
       "price": 160,
       "workshopId": "2046555366",
+      "author": {
+        "name": "Athena ˚*.",
+        "communityId": "76561198031922253"
+      },
       "title": {
         "en": "Crowbar - Rainbow",
         "pt": "Crowbar - Rainbow",
@@ -1754,6 +2122,10 @@
       "rarity": "rare",
       "price": 150,
       "workshopId": "3413132036",
+      "author": {
+        "name": "igames",
+        "communityId": "76561198407554343"
+      },
       "title": {
         "en": "Ethereal MAC-10 Skin",
         "pt": "Ethereal MAC-10 Skin",
@@ -1773,6 +2145,10 @@
       "rarity": "rare",
       "price": 150,
       "workshopId": "3769476345",
+      "author": {
+        "name": "ABLACK-A.S",
+        "communityId": "76561199201139601"
+      },
       "title": {
         "en": "K-ON! Ritsu Tainaka MAC-10",
         "pt": "K-ON! Ritsu Tainaka MAC-10",
@@ -1792,6 +2168,10 @@
       "rarity": "rare",
       "price": 150,
       "workshopId": "3589156415",
+      "author": {
+        "name": "一只柒",
+        "communityId": "76561199523448244"
+      },
       "title": {
         "en": "K-ON! Mio Akiyama Chrome Shotgun",
         "pt": "K-ON! Mio Akiyama Chrome Shotgun",
@@ -1811,6 +2191,10 @@
       "rarity": "rare",
       "price": 150,
       "workshopId": "3325822443",
+      "author": {
+        "name": "LinjieSAMA",
+        "communityId": "76561199213719086"
+      },
       "title": {
         "en": "Machete - Puro and K (Glow)",
         "pt": "Machete - Puro and K (Glow)",
@@ -1830,6 +2214,10 @@
       "rarity": "rare",
       "price": 150,
       "workshopId": "2858127316",
+      "author": {
+        "name": "Nicky Grimes",
+        "communityId": "76561198377797621"
+      },
       "title": {
         "en": "Electric Guitar - Scott's Rickenbacker",
         "pt": "Electric Guitar - Scott's Rickenbacker",
@@ -1849,6 +2237,10 @@
       "rarity": "uncommon",
       "price": 130,
       "workshopId": "2558200493",
+      "author": {
+        "name": "Bonnie",
+        "communityId": "76561198073812490"
+      },
       "title": {
         "en": "Tribal Hunter Honey Dragon Pumpshotgun",
         "pt": "Tribal Hunter Honey Dragon Pumpshotgun",
@@ -1868,6 +2260,10 @@
       "rarity": "uncommon",
       "price": 130,
       "workshopId": "3503214599",
+      "author": {
+        "name": "Rumia",
+        "communityId": "76561199069540290"
+      },
       "title": {
         "en": "Azur Lane Jean Bart Pump Shotgun",
         "pt": "Azur Lane Jean Bart Pump Shotgun",
@@ -1887,6 +2283,10 @@
       "rarity": "uncommon",
       "price": 130,
       "workshopId": "3380373401",
+      "author": {
+        "name": "A Simple Pear",
+        "communityId": "76561199023503088"
+      },
       "title": {
         "en": "Golden Desert Eagle",
         "pt": "Golden Desert Eagle",
@@ -1906,6 +2306,10 @@
       "rarity": "uncommon",
       "price": 120,
       "workshopId": "3506807539",
+      "author": {
+        "name": "reprol",
+        "communityId": "76561199195148539"
+      },
       "title": {
         "en": "SMG",
         "pt": "SMG",
@@ -1925,6 +2329,10 @@
       "rarity": "uncommon",
       "price": 120,
       "workshopId": "3381870803",
+      "author": {
+        "name": "BATTLE NO.1",
+        "communityId": "76561199147992281"
+      },
       "title": {
         "en": "MAC-10 Volcanic Lava Skin",
         "pt": "MAC-10 Volcanic Lava Skin",
@@ -1944,6 +2352,10 @@
       "rarity": "uncommon",
       "price": 120,
       "workshopId": "3349350731",
+      "author": {
+        "name": "igames",
+        "communityId": "76561198407554343"
+      },
       "title": {
         "en": "MP5 - Watergun",
         "pt": "MP5 - Watergun",
@@ -1963,6 +2375,10 @@
       "rarity": "uncommon",
       "price": 120,
       "workshopId": "2778467302",
+      "author": {
+        "name": "Bonnie",
+        "communityId": "76561198073812490"
+      },
       "title": {
         "en": "Shiny Charizard Pumpshotgun",
         "pt": "Shiny Charizard Pumpshotgun",
@@ -1982,6 +2398,10 @@
       "rarity": "uncommon",
       "price": 120,
       "workshopId": "3175242980",
+      "author": {
+        "name": "西南老表",
+        "communityId": "76561199433838559"
+      },
       "title": {
         "en": "Doki Doki Literature Club! Sayori",
         "pt": "Doki Doki Literature Club! Sayori",
@@ -2001,6 +2421,10 @@
       "rarity": "uncommon",
       "price": 120,
       "workshopId": "1896292547",
+      "author": {
+        "name": "Never",
+        "communityId": "76561198226608960"
+      },
       "title": {
         "en": "Chrome | Celeuna",
         "pt": "Chrome | Celeuna",
@@ -2020,6 +2444,10 @@
       "rarity": "uncommon",
       "price": 120,
       "workshopId": "2858361310",
+      "author": {
+        "name": "pert",
+        "communityId": "76561198828533745"
+      },
       "title": {
         "en": "Fade Magnum",
         "pt": "Fade Magnum",
@@ -2039,6 +2467,10 @@
       "rarity": "uncommon",
       "price": 120,
       "workshopId": "2379815447",
+      "author": {
+        "name": "HitSmoker",
+        "communityId": "76561198096066478"
+      },
       "title": {
         "en": "Fireaxe - Acid Blade",
         "pt": "Fireaxe - Acid Blade",
@@ -2058,6 +2490,10 @@
       "rarity": "uncommon",
       "price": 120,
       "workshopId": "3289016100",
+      "author": {
+        "name": "Adrenochrome Enjoyer",
+        "communityId": "76561198157133316"
+      },
       "title": {
         "en": "Fireaxe - Blazing",
         "pt": "Fireaxe - Blazing",
@@ -2077,6 +2513,10 @@
       "rarity": "uncommon",
       "price": 120,
       "workshopId": "2003885703",
+      "author": {
+        "name": "Never",
+        "communityId": "76561198226608960"
+      },
       "title": {
         "en": "Machete - Sweet Dreams",
         "pt": "Machete - Sweet Dreams",
@@ -2096,6 +2536,10 @@
       "rarity": "uncommon",
       "price": 110,
       "workshopId": "3335472907",
+      "author": {
+        "name": "bliss",
+        "communityId": "76561198862737859"
+      },
       "title": {
         "en": "Wagamama High Spec Narumi Toa UZI",
         "pt": "Wagamama High Spec Narumi Toa UZI",
@@ -2115,6 +2559,10 @@
       "rarity": "uncommon",
       "price": 110,
       "workshopId": "2915661033",
+      "author": {
+        "name": "《Happi Doggo》",
+        "communityId": "76561198804859540"
+      },
       "title": {
         "en": "Mac10 - PrintStream",
         "pt": "Mac10 - PrintStream",
@@ -2134,6 +2582,10 @@
       "rarity": "uncommon",
       "price": 110,
       "workshopId": "2827288336",
+      "author": {
+        "name": "Bonnie",
+        "communityId": "76561198073812490"
+      },
       "title": {
         "en": "Glamrock Freddy Pumpshotgun",
         "pt": "Glamrock Freddy Pumpshotgun",
@@ -2153,6 +2605,10 @@
       "rarity": "uncommon",
       "price": 110,
       "workshopId": "2622374394",
+      "author": {
+        "name": "Bonnie",
+        "communityId": "76561198073812490"
+      },
       "title": {
         "en": "Halloween Ghost Pump Shotgun",
         "pt": "Halloween Ghost Pump Shotgun",
@@ -2172,6 +2628,10 @@
       "rarity": "uncommon",
       "price": 110,
       "workshopId": "3225009583",
+      "author": {
+        "name": "bliss",
+        "communityId": "76561198862737859"
+      },
       "title": {
         "en": "Segawa Emi Chrome Shotgun",
         "pt": "Segawa Emi Chrome Shotgun",
@@ -2191,6 +2651,10 @@
       "rarity": "uncommon",
       "price": 110,
       "workshopId": "2013774218",
+      "author": {
+        "name": "Never",
+        "communityId": "76561198226608960"
+      },
       "title": {
         "en": "Deagle | Royal",
         "pt": "Deagle | Royal",
@@ -2210,6 +2674,10 @@
       "rarity": "uncommon",
       "price": 110,
       "workshopId": "1987862845",
+      "author": {
+        "name": "Never",
+        "communityId": "76561198226608960"
+      },
       "title": {
         "en": "Deagle | Volcanic",
         "pt": "Deagle | Volcanic",
@@ -2229,6 +2697,10 @@
       "rarity": "uncommon",
       "price": 110,
       "workshopId": "2969724713",
+      "author": {
+        "name": "noahthenova",
+        "communityId": "76561198141428657"
+      },
       "title": {
         "en": "Fireaxe - RGB Blotches",
         "pt": "Fireaxe - RGB Blotches",
@@ -2248,6 +2720,10 @@
       "rarity": "uncommon",
       "price": 110,
       "workshopId": "1993366463",
+      "author": {
+        "name": "Never",
+        "communityId": "76561198226608960"
+      },
       "title": {
         "en": "Electric Guitar - Lovely Heart",
         "pt": "Electric Guitar - Lovely Heart",
@@ -2267,6 +2743,10 @@
       "rarity": "uncommon",
       "price": 100,
       "workshopId": "2020709816",
+      "author": {
+        "name": "SherlockHolmes9™",
+        "communityId": "76561198144229031"
+      },
       "title": {
         "en": "Rat A Tat Tat (Glowing)",
         "pt": "Rat A Tat Tat (Glowing)",
@@ -2286,6 +2766,10 @@
       "rarity": "uncommon",
       "price": 100,
       "workshopId": "2878386179",
+      "author": {
+        "name": "《Happi Doggo》",
+        "communityId": "76561198804859540"
+      },
       "title": {
         "en": "MP5 - Purple Camo",
         "pt": "MP5 - Purple Camo",
@@ -2305,6 +2789,10 @@
       "rarity": "uncommon",
       "price": 100,
       "workshopId": "2640388420",
+      "author": {
+        "name": "Bonnie",
+        "communityId": "76561198073812490"
+      },
       "title": {
         "en": "Shiny Pumpkaboo Pump Shotgun",
         "pt": "Shiny Pumpkaboo Pump Shotgun",
@@ -2324,6 +2812,10 @@
       "rarity": "uncommon",
       "price": 100,
       "workshopId": "2247225793",
+      "author": {
+        "name": "Never",
+        "communityId": "76561198226608960"
+      },
       "title": {
         "en": "Pump | Pumpkin Patch",
         "pt": "Pump | Pumpkin Patch",
@@ -2343,6 +2835,10 @@
       "rarity": "uncommon",
       "price": 100,
       "workshopId": "3430694346",
+      "author": {
+        "name": "Bonnie",
+        "communityId": "76561198073812490"
+      },
       "title": {
         "en": "King Dedede Chrome Shotgun",
         "pt": "King Dedede Chrome Shotgun",
@@ -2362,6 +2858,10 @@
       "rarity": "uncommon",
       "price": 100,
       "workshopId": "1973329455",
+      "author": {
+        "name": "Never",
+        "communityId": "76561198226608960"
+      },
       "title": {
         "en": "Deagle | Anubis",
         "pt": "Deagle | Anubis",
@@ -2381,6 +2881,10 @@
       "rarity": "uncommon",
       "price": 100,
       "workshopId": "3618145490",
+      "author": {
+        "name": "Fang Yuan",
+        "communityId": "76561198886766787"
+      },
       "title": {
         "en": "Magnum: Not Toy",
         "pt": "Magnum: Not Toy",
@@ -2400,6 +2904,10 @@
       "rarity": "uncommon",
       "price": 100,
       "workshopId": "2903220314",
+      "author": {
+        "name": "Táiga Rivers",
+        "communityId": "76561198199902353"
+      },
       "title": {
         "en": "Katana - Teal and Black",
         "pt": "Katana - Teal and Black",
@@ -2419,6 +2927,10 @@
       "rarity": "uncommon",
       "price": 90,
       "workshopId": "3510709531",
+      "author": {
+        "name": "Rumia",
+        "communityId": "76561199069540290"
+      },
       "title": {
         "en": "Azur Lane Jean Bart (Première Neige) UZI",
         "pt": "Azur Lane Jean Bart (Première Neige) UZI",
@@ -2438,6 +2950,10 @@
       "rarity": "uncommon",
       "price": 90,
       "workshopId": "3361646012",
+      "author": {
+        "name": "igames",
+        "communityId": "76561198407554343"
+      },
       "title": {
         "en": "multoman's RNG Skins Separated: Case Hardened MAC-10",
         "pt": "multoman's RNG Skins Separated: Case Hardened MAC-10",
@@ -2457,6 +2973,10 @@
       "rarity": "uncommon",
       "price": 90,
       "workshopId": "3791846410",
+      "author": {
+        "name": "konkeso",
+        "communityId": "76561198970880706"
+      },
       "title": {
         "en": "\"Vercetti Vintage\" MAC-10 Reskin",
         "pt": "\"Vercetti Vintage\" MAC-10 Reskin",
@@ -2476,6 +2996,10 @@
       "rarity": "uncommon",
       "price": 90,
       "workshopId": "2893293186",
+      "author": {
+        "name": "Bonnie",
+        "communityId": "76561198073812490"
+      },
       "title": {
         "en": "Fuecoco Pumpshotgun",
         "pt": "Fuecoco Pumpshotgun",
@@ -2495,6 +3019,10 @@
       "rarity": "uncommon",
       "price": 90,
       "workshopId": "2815653917",
+      "author": {
+        "name": "Bonnie",
+        "communityId": "76561198073812490"
+      },
       "title": {
         "en": "Kao the Kangaroo Pumpshotgun",
         "pt": "Kao the Kangaroo Pumpshotgun",
@@ -2514,6 +3042,10 @@
       "rarity": "uncommon",
       "price": 90,
       "workshopId": "2453777915",
+      "author": {
+        "name": "HitSmoker",
+        "communityId": "76561198096066478"
+      },
       "title": {
         "en": "Black Tactical Chrome Shotgun",
         "pt": "Black Tactical Chrome Shotgun",
@@ -2533,6 +3065,10 @@
       "rarity": "uncommon",
       "price": 90,
       "workshopId": "3233682675",
+      "author": {
+        "name": "Starlight",
+        "communityId": "76561198812747106"
+      },
       "title": {
         "en": "Google Chrome Shotgun",
         "pt": "Google Chrome Shotgun",
@@ -2552,6 +3088,10 @@
       "rarity": "uncommon",
       "price": 90,
       "workshopId": "2009408794",
+      "author": {
+        "name": "Never",
+        "communityId": "76561198226608960"
+      },
       "title": {
         "en": "Deagle | Exodus",
         "pt": "Deagle | Exodus",
@@ -2571,6 +3111,10 @@
       "rarity": "uncommon",
       "price": 90,
       "workshopId": "2021402413",
+      "author": {
+        "name": "Never",
+        "communityId": "76561198226608960"
+      },
       "title": {
         "en": "Deagle | Mar13",
         "pt": "Deagle | Mar13",
@@ -2590,6 +3134,10 @@
       "rarity": "uncommon",
       "price": 90,
       "workshopId": "3373769872",
+      "author": {
+        "name": "Markovnick",
+        "communityId": "76561199572801140"
+      },
       "title": {
         "en": "Fireaxe - Nightmare Foxy",
         "pt": "Fireaxe - Nightmare Foxy",
@@ -2609,6 +3157,10 @@
       "rarity": "uncommon",
       "price": 90,
       "workshopId": "2466904025",
+      "author": {
+        "name": "noahthenova",
+        "communityId": "76561198141428657"
+      },
       "title": {
         "en": "Baseball Bat - Circles and Stars",
         "pt": "Baseball Bat - Circles and Stars",
@@ -2628,6 +3180,10 @@
       "rarity": "uncommon",
       "price": 80,
       "workshopId": "772143939",
+      "author": {
+        "name": "KoyomiLi",
+        "communityId": "76561198200063591"
+      },
       "title": {
         "en": "Miku UZI",
         "pt": "Miku UZI",
@@ -2647,6 +3203,10 @@
       "rarity": "uncommon",
       "price": 80,
       "workshopId": "3534662352",
+      "author": {
+        "name": "TheOneChicken",
+        "communityId": "76561198126786969"
+      },
       "title": {
         "en": "Worn MAC-10 - Shiny Riolu",
         "pt": "Worn MAC-10 - Shiny Riolu",
@@ -2666,6 +3226,10 @@
       "rarity": "uncommon",
       "price": 80,
       "workshopId": "3332413493",
+      "author": {
+        "name": "igames",
+        "communityId": "76561198407554343"
+      },
       "title": {
         "en": "MP5 - Silver",
         "pt": "MP5 - Silver",
@@ -2685,6 +3249,10 @@
       "rarity": "uncommon",
       "price": 80,
       "workshopId": "3232260090",
+      "author": {
+        "name": "Starlight",
+        "communityId": "76561198812747106"
+      },
       "title": {
         "en": "Toxic Hazard Pump Shotgun",
         "pt": "Toxic Hazard Pump Shotgun",
@@ -2704,6 +3272,10 @@
       "rarity": "uncommon",
       "price": 80,
       "workshopId": "3730362238",
+      "author": {
+        "name": "Bonnie",
+        "communityId": "76561198073812490"
+      },
       "title": {
         "en": "Yoshi Pumpshotgun",
         "pt": "Yoshi Pumpshotgun",
@@ -2723,6 +3295,10 @@
       "rarity": "uncommon",
       "price": 80,
       "workshopId": "1743997241",
+      "author": {
+        "name": "Bonnie",
+        "communityId": "76561198073812490"
+      },
       "title": {
         "en": "Shiny Miltank Chrome Shotgun",
         "pt": "Shiny Miltank Chrome Shotgun",
@@ -2742,6 +3318,10 @@
       "rarity": "uncommon",
       "price": 80,
       "workshopId": "2789609798",
+      "author": {
+        "name": "Spiralt",
+        "communityId": "76561198125045326"
+      },
       "title": {
         "en": "Scott The Woz Chrome Shotgun",
         "pt": "Scott The Woz Chrome Shotgun",
@@ -2761,6 +3341,10 @@
       "rarity": "uncommon",
       "price": 80,
       "workshopId": "1827941867",
+      "author": {
+        "name": "Never",
+        "communityId": "76561198226608960"
+      },
       "title": {
         "en": "Deagle | Rarity",
         "pt": "Deagle | Rarity",
@@ -2780,6 +3364,10 @@
       "rarity": "uncommon",
       "price": 80,
       "workshopId": "2302484331",
+      "author": {
+        "name": "ChrYS41i5",
+        "communityId": "76561199075328526"
+      },
       "title": {
         "en": "Machete - Thorax",
         "pt": "Machete - Thorax",
@@ -2799,6 +3387,10 @@
       "rarity": "uncommon",
       "price": 80,
       "workshopId": "2425282156",
+      "author": {
+        "name": "Reyes",
+        "communityId": "76561199070651187"
+      },
       "title": {
         "en": "Cricket Bat - Green and Gold",
         "pt": "Cricket Bat - Green and Gold",
@@ -2818,6 +3410,10 @@
       "rarity": "uncommon",
       "price": 80,
       "workshopId": "3330591105",
+      "author": {
+        "name": "#็",
+        "communityId": "76561198804941539"
+      },
       "title": {
         "en": "Electric Guitar - Billie's Blue",
         "pt": "Electric Guitar - Billie's Blue",
@@ -2837,6 +3433,10 @@
       "rarity": "uncommon",
       "price": 70,
       "workshopId": "1883809532",
+      "author": {
+        "name": "Drunken Irishman",
+        "communityId": "76561198067821017"
+      },
       "title": {
         "en": "Silenced SMG_Urban",
         "pt": "Silenced SMG_Urban",
@@ -2856,6 +3456,10 @@
       "rarity": "uncommon",
       "price": 70,
       "workshopId": "2047772946",
+      "author": {
+        "name": "Athena ˚*.",
+        "communityId": "76561198031922253"
+      },
       "title": {
         "en": "Crowbar - Pink",
         "pt": "Crowbar - Pink",
@@ -2875,6 +3479,10 @@
       "rarity": "common",
       "price": 60,
       "workshopId": "3384494412",
+      "author": {
+        "name": "death. by dolls ꔫ",
+        "communityId": "76561199063522016"
+      },
       "title": {
         "en": "Solid Pink & Black Silenced SMG",
         "pt": "Solid Pink & Black Silenced SMG",
@@ -2894,6 +3502,10 @@
       "rarity": "common",
       "price": 60,
       "workshopId": "2415413374",
+      "author": {
+        "name": "HitSmoker",
+        "communityId": "76561198096066478"
+      },
       "title": {
         "en": "MP5 - Black Tactical",
         "pt": "MP5 - Black Tactical",
@@ -2913,6 +3525,10 @@
       "rarity": "common",
       "price": 60,
       "workshopId": "3703964121",
+      "author": {
+        "name": "Bonnie",
+        "communityId": "76561198073812490"
+      },
       "title": {
         "en": "Big the Cat Pumpshotgun",
         "pt": "Big the Cat Pumpshotgun",
@@ -2932,6 +3548,10 @@
       "rarity": "common",
       "price": 60,
       "workshopId": "2946973675",
+      "author": {
+        "name": "Bonnie",
+        "communityId": "76561198073812490"
+      },
       "title": {
         "en": "Clodsire Pumpshotgun",
         "pt": "Clodsire Pumpshotgun",
@@ -2951,6 +3571,10 @@
       "rarity": "common",
       "price": 60,
       "workshopId": "3365446394",
+      "author": {
+        "name": "multo",
+        "communityId": "76561199001846248"
+      },
       "title": {
         "en": "Dead Trigger 2 Desert Eagle",
         "pt": "Dead Trigger 2 Desert Eagle",
@@ -2970,6 +3594,10 @@
       "rarity": "common",
       "price": 60,
       "workshopId": "2628556383",
+      "author": {
+        "name": "LeHaVo | Lifelover",
+        "communityId": "76561199015610616"
+      },
       "title": {
         "en": "Fireaxe - NMRIH",
         "pt": "Fireaxe - NMRIH",
@@ -2989,6 +3617,10 @@
       "rarity": "common",
       "price": 55,
       "workshopId": "3468733406",
+      "author": {
+        "name": "izida1005",
+        "communityId": "76561199608610386"
+      },
       "title": {
         "en": "MP5 - Dirty Silver",
         "pt": "MP5 - Dirty Silver",
@@ -3008,6 +3640,10 @@
       "rarity": "common",
       "price": 55,
       "workshopId": "2759848284",
+      "author": {
+        "name": "Bonnie",
+        "communityId": "76561198073812490"
+      },
       "title": {
         "en": "Slowpoke Pumpshotgun",
         "pt": "Slowpoke Pumpshotgun",
@@ -3027,6 +3663,10 @@
       "rarity": "common",
       "price": 50,
       "workshopId": "3279582587",
+      "author": {
+        "name": "Jamar2211",
+        "communityId": "76561198886170298"
+      },
       "title": {
         "en": "Sprigatito Wooden Shotgun",
         "pt": "Sprigatito Wooden Shotgun",
@@ -3046,6 +3686,10 @@
       "rarity": "common",
       "price": 50,
       "workshopId": "3353440278",
+      "author": {
+        "name": "igames",
+        "communityId": "76561198407554343"
+      },
       "title": {
         "en": "PORT: Tiger Striped Pump Shotgun Skin",
         "pt": "PORT: Tiger Striped Pump Shotgun Skin",
@@ -3065,6 +3709,10 @@
       "rarity": "common",
       "price": 50,
       "workshopId": "3353441204",
+      "author": {
+        "name": "igames",
+        "communityId": "76561198407554343"
+      },
       "title": {
         "en": "PORT: Caution Chrome Shotgun Skin",
         "pt": "PORT: Caution Chrome Shotgun Skin",
@@ -3084,6 +3732,10 @@
       "rarity": "common",
       "price": 50,
       "workshopId": "2727986985",
+      "author": {
+        "name": "red apple",
+        "communityId": "76561198373741233"
+      },
       "title": {
         "en": "Bombastic Magnum",
         "pt": "Bombastic Magnum",
@@ -3103,6 +3755,10 @@
       "rarity": "common",
       "price": 50,
       "workshopId": "524085897",
+      "author": {
+        "name": "Alex_D #NoWar",
+        "communityId": "76561198012689307"
+      },
       "title": {
         "en": "Fireaxe - Red and Black",
         "pt": "Fireaxe - Red and Black",
@@ -3122,6 +3778,10 @@
       "rarity": "common",
       "price": 50,
       "workshopId": "2926720532",
+      "author": {
+        "name": "noahthenova",
+        "communityId": "76561198141428657"
+      },
       "title": {
         "en": "Electric Guitar - Floral Pattern",
         "pt": "Electric Guitar - Floral Pattern",
@@ -3141,6 +3801,10 @@
       "rarity": "common",
       "price": 45,
       "workshopId": "3361636124",
+      "author": {
+        "name": "igames",
+        "communityId": "76561198407554343"
+      },
       "title": {
         "en": "multoman's RNG Skins Separated: Patriotic MAC-10",
         "pt": "multoman's RNG Skins Separated: Patriotic MAC-10",
@@ -3160,6 +3824,10 @@
       "rarity": "common",
       "price": 45,
       "workshopId": "3426201673",
+      "author": {
+        "name": "igames",
+        "communityId": "76561198407554343"
+      },
       "title": {
         "en": "multoman's RNG Skins Separated: Patriotic MAC-10 (TLS Version)",
         "pt": "multoman's RNG Skins Separated: Patriotic MAC-10 (TLS Version)",
@@ -3179,6 +3847,10 @@
       "rarity": "common",
       "price": 45,
       "workshopId": "3503590830",
+      "author": {
+        "name": "igames",
+        "communityId": "76561198407554343"
+      },
       "title": {
         "en": "MP5 - Battle Worn",
         "pt": "MP5 - Battle Worn",
@@ -3198,6 +3870,10 @@
       "rarity": "common",
       "price": 45,
       "workshopId": "3503595463",
+      "author": {
+        "name": "igames",
+        "communityId": "76561198407554343"
+      },
       "title": {
         "en": "MP5 - Rusted",
         "pt": "MP5 - Rusted",
@@ -3217,6 +3893,10 @@
       "rarity": "common",
       "price": 45,
       "workshopId": "3567209245",
+      "author": {
+        "name": "PurpleLichious",
+        "communityId": "76561198992841006"
+      },
       "title": {
         "en": "Boykisser Pump Shotgun",
         "pt": "Boykisser Pump Shotgun",
@@ -3236,6 +3916,10 @@
       "rarity": "common",
       "price": 45,
       "workshopId": "2818007735",
+      "author": {
+        "name": "Lyreck",
+        "communityId": "76561198161511517"
+      },
       "title": {
         "en": "Alternative Desert Eagle",
         "pt": "Alternative Desert Eagle",
@@ -3255,6 +3939,10 @@
       "rarity": "common",
       "price": 45,
       "workshopId": "3305977656",
+      "author": {
+        "name": "A Simple Pear",
+        "communityId": "76561199023503088"
+      },
       "title": {
         "en": "Fireaxe - Whitetail",
         "pt": "Fireaxe - Whitetail",
@@ -3274,6 +3962,10 @@
       "rarity": "common",
       "price": 40,
       "workshopId": "3503594155",
+      "author": {
+        "name": "igames",
+        "communityId": "76561198407554343"
+      },
       "title": {
         "en": "MP5 - RAL 8000",
         "pt": "MP5 - RAL 8000",
@@ -3293,6 +3985,10 @@
       "rarity": "common",
       "price": 40,
       "workshopId": "3503595929",
+      "author": {
+        "name": "igames",
+        "communityId": "76561198407554343"
+      },
       "title": {
         "en": "MP5 - Two Tone",
         "pt": "MP5 - Two Tone",
@@ -3312,6 +4008,10 @@
       "rarity": "common",
       "price": 40,
       "workshopId": "2979000170",
+      "author": {
+        "name": "HardToImaginePrideEverChanging",
+        "communityId": "76561198449238509"
+      },
       "title": {
         "en": "Pump Shotgun: Kunzite",
         "pt": "Pump Shotgun: Kunzite",
@@ -3331,6 +4031,10 @@
       "rarity": "common",
       "price": 40,
       "workshopId": "3235542431",
+      "author": {
+        "name": "Starlight",
+        "communityId": "76561198812747106"
+      },
       "title": {
         "en": "Soviet Pump Shotgun",
         "pt": "Soviet Pump Shotgun",
@@ -3350,6 +4054,10 @@
       "rarity": "common",
       "price": 40,
       "workshopId": "3380608963",
+      "author": {
+        "name": "igames",
+        "communityId": "76561198407554343"
+      },
       "title": {
         "en": "multoman's RNG Skins Separated: Cerakote Blue Chrome Shotgun",
         "pt": "multoman's RNG Skins Separated: Cerakote Blue Chrome Shotgun",
@@ -3369,6 +4077,10 @@
       "rarity": "common",
       "price": 40,
       "workshopId": "2979010150",
+      "author": {
+        "name": "HardToImaginePrideEverChanging",
+        "communityId": "76561198449238509"
+      },
       "title": {
         "en": "Chrome Shotgun: Kunzite",
         "pt": "Chrome Shotgun: Kunzite",
@@ -3388,6 +4100,10 @@
       "rarity": "common",
       "price": 40,
       "workshopId": "3601126478",
+      "author": {
+        "name": "User_man52",
+        "communityId": "76561199454412221"
+      },
       "title": {
         "en": "Fireaxe - Dark and Dirty",
         "pt": "Fireaxe - Dark and Dirty",
@@ -3407,6 +4123,10 @@
       "rarity": "common",
       "price": 40,
       "workshopId": "3304391063",
+      "author": {
+        "name": "A Simple Pear",
+        "communityId": "76561199023503088"
+      },
       "title": {
         "en": "Katana - Old",
         "pt": "Katana - Old",
@@ -3426,6 +4146,10 @@
       "rarity": "common",
       "price": 40,
       "workshopId": "3006540554",
+      "author": {
+        "name": "Lyreck",
+        "communityId": "76561198161511517"
+      },
       "title": {
         "en": "Machete - Synthetic Grip",
         "pt": "Machete - Synthetic Grip",
@@ -3445,6 +4169,10 @@
       "rarity": "common",
       "price": 35,
       "workshopId": "3361641020",
+      "author": {
+        "name": "igames",
+        "communityId": "76561198407554343"
+      },
       "title": {
         "en": "multoman's RNG Skins Separated: DDPAT Desert MAC-10",
         "pt": "multoman's RNG Skins Separated: DDPAT Desert MAC-10",
@@ -3464,6 +4192,10 @@
       "rarity": "common",
       "price": 35,
       "workshopId": "3361643179",
+      "author": {
+        "name": "igames",
+        "communityId": "76561198407554343"
+      },
       "title": {
         "en": "multoman's RNG Skins Separated: Two Tone DBDU MAC-10",
         "pt": "multoman's RNG Skins Separated: Two Tone DBDU MAC-10",
@@ -3483,6 +4215,10 @@
       "rarity": "common",
       "price": 35,
       "workshopId": "3503591460",
+      "author": {
+        "name": "igames",
+        "communityId": "76561198407554343"
+      },
       "title": {
         "en": "MP5 - Desert Sand",
         "pt": "MP5 - Desert Sand",
@@ -3502,6 +4238,10 @@
       "rarity": "common",
       "price": 35,
       "workshopId": "3503592122",
+      "author": {
+        "name": "igames",
+        "communityId": "76561198407554343"
+      },
       "title": {
         "en": "MP5 - FDE Tactical",
         "pt": "MP5 - FDE Tactical",
@@ -3521,6 +4261,10 @@
       "rarity": "common",
       "price": 35,
       "workshopId": "3380605774",
+      "author": {
+        "name": "igames",
+        "communityId": "76561198407554343"
+      },
       "title": {
         "en": "multoman's RNG Skins Separated: Plastic Orange Chrome Shotgun",
         "pt": "multoman's RNG Skins Separated: Plastic Orange Chrome Shotgun",
@@ -3540,6 +4284,10 @@
       "rarity": "common",
       "price": 35,
       "workshopId": "3023845538",
+      "author": {
+        "name": "HardToImaginePrideEverChanging",
+        "communityId": "76561198449238509"
+      },
       "title": {
         "en": "Chrome Shotgun: Ruby",
         "pt": "Chrome Shotgun: Ruby",
@@ -3559,6 +4307,10 @@
       "rarity": "common",
       "price": 35,
       "workshopId": "3020820801",
+      "author": {
+        "name": "HardToImaginePrideEverChanging",
+        "communityId": "76561198449238509"
+      },
       "title": {
         "en": "Chrome Shotgun: Sapphire",
         "pt": "Chrome Shotgun: Sapphire",
@@ -3578,6 +4330,10 @@
       "rarity": "common",
       "price": 35,
       "workshopId": "3031900671",
+      "author": {
+        "name": "HardToImaginePrideEverChanging",
+        "communityId": "76561198449238509"
+      },
       "title": {
         "en": "Chrome Shotgun: Star Ruby",
         "pt": "Chrome Shotgun: Star Ruby",
@@ -3597,6 +4353,10 @@
       "rarity": "common",
       "price": 35,
       "workshopId": "3302344749",
+      "author": {
+        "name": "A Simple Pear",
+        "communityId": "76561199023503088"
+      },
       "title": {
         "en": "Baseball Bat - Vintage",
         "pt": "Baseball Bat - Vintage",
@@ -3616,6 +4376,10 @@
       "rarity": "common",
       "price": 35,
       "workshopId": "3303218686",
+      "author": {
+        "name": "A Simple Pear",
+        "communityId": "76561199023503088"
+      },
       "title": {
         "en": "Cricket Bat - Team",
         "pt": "Cricket Bat - Team",
@@ -3635,6 +4399,10 @@
       "rarity": "common",
       "price": 35,
       "workshopId": "3303726756",
+      "author": {
+        "name": "A Simple Pear",
+        "communityId": "76561199023503088"
+      },
       "title": {
         "en": "Golf Club - Pro",
         "pt": "Golf Club - Pro",
@@ -3654,6 +4422,10 @@
       "rarity": "common",
       "price": 30,
       "workshopId": "3361637405",
+      "author": {
+        "name": "igames",
+        "communityId": "76561198407554343"
+      },
       "title": {
         "en": "multoman's RNG Skins Separated: Olive Finish MAC-10",
         "pt": "multoman's RNG Skins Separated: Olive Finish MAC-10",
@@ -3673,6 +4445,10 @@
       "rarity": "common",
       "price": 30,
       "workshopId": "3361634998",
+      "author": {
+        "name": "igames",
+        "communityId": "76561198407554343"
+      },
       "title": {
         "en": "multoman's RNG Skins Separated: Red Finish MAC-10",
         "pt": "multoman's RNG Skins Separated: Red Finish MAC-10",
@@ -3692,6 +4468,10 @@
       "rarity": "common",
       "price": 30,
       "workshopId": "3503592659",
+      "author": {
+        "name": "igames",
+        "communityId": "76561198407554343"
+      },
       "title": {
         "en": "MP5 - Navy Blue",
         "pt": "MP5 - Navy Blue",
@@ -3711,6 +4491,10 @@
       "rarity": "common",
       "price": 30,
       "workshopId": "3503593705",
+      "author": {
+        "name": "igames",
+        "communityId": "76561198407554343"
+      },
       "title": {
         "en": "MP5 - Olive Drab",
         "pt": "MP5 - Olive Drab",

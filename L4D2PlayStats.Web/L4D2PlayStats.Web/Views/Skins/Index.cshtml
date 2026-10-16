@@ -20,6 +20,12 @@
     var weaponNames = SkinsModel.WeaponResourceKeys.ToDictionary(pair => pair.Key, pair => Localizer[pair.Value].Value);
     var wallet = Model.Wallet;
     var season = SkinSeason.Current;
+    var authors = Model.Skins
+        .Where(skin => !string.IsNullOrEmpty(skin.Author.Name))
+        .GroupBy(skin => skin.Author.CommunityId)
+        .Select(group => (Author: group.First().Author, Skins: group.OrderBy(skin => skin.Title.Get(culture), StringComparer.CurrentCultureIgnoreCase).ToList()))
+        .OrderBy(entry => entry.Author.Name, StringComparer.CurrentCultureIgnoreCase)
+        .ToList();
     var loginUrl = Url.Action("Login", "Account", new { returnUrl = Url.Action("Index", "Skins") });
 }
 
@@ -328,6 +334,47 @@
             text-overflow: ellipsis;
         }
 
+        .sk-author {
+            margin-bottom: 2px;
+            overflow: hidden;
+            font-size: 12px;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            opacity: .85;
+        }
+
+        .sk-modal-author {
+            margin-bottom: 10px;
+        }
+
+        .sk-authors {
+            display: flex;
+            flex-wrap: wrap;
+            margin: 0 -6px;
+        }
+
+            .sk-authors > div {
+                flex: 1 1 260px;
+                margin: 6px;
+                padding: 10px 14px;
+                border: 1px solid rgba(128, 128, 128, .3);
+                border-radius: 4px;
+                background: rgba(128, 128, 128, .05);
+            }
+
+            .sk-authors strong {
+                display: block;
+                overflow: hidden;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+            }
+
+            .sk-authors small {
+                display: block;
+                margin-top: 4px;
+                opacity: .8;
+            }
+
         .sk-rarity-name {
             margin-bottom: 10px;
             color: var(--sk-rarity-color);
@@ -605,6 +652,15 @@
                         }
                     </div>
                     <div class="sk-modal-price">@skin.Price.ToString("N0", culture) ⭐</div>
+                    @if (!string.IsNullOrEmpty(skin.Author.Name))
+                    {
+                        <p class="sk-modal-author">
+                            <b>@Localizer["Author"]:</b>
+                            <a href="@skin.Author.ProfileUrl" target="_blank" rel="noopener">
+                                <span class="glyphicon glyphicon-user"></span> @skin.Author.Name
+                            </a>
+                        </p>
+                    }
                     @if (!string.IsNullOrWhiteSpace(description))
                     {
                         <p class="sk-modal-desc">@description</p>
@@ -669,6 +725,12 @@
                 </a>
                 <div class="sk-body">
                     <h4 class="sk-title" title="@title">@title</h4>
+                    @if (!string.IsNullOrEmpty(skin.Author.Name))
+                    {
+                        <div class="sk-author" title="@skin.Author.Name">
+                            @Localizer["By"] <a href="@skin.Author.ProfileUrl" target="_blank" rel="noopener">@skin.Author.Name</a>
+                        </div>
+                    }
                     <div class="sk-rarity-name">@Localizer[SkinsModel.RarityKey(skin.Rarity)]</div>
                     <div class="sk-actions">
                         @{ await RenderActions(skin, true); }
@@ -693,6 +755,11 @@
             </a>
         </li>
     }
+    <li role="presentation">
+        <a href="#authors" data-target="#sk-authors" role="tab" data-toggle="tab">
+            @Localizer["TabAuthors"] <span class="badge">@authors.Count</span>
+        </a>
+    </li>
 </ul>
 
 <div class="sk-toolbar">
@@ -779,6 +846,25 @@
             }
         </div>
     }
+    <div role="tabpanel" class="tab-pane" id="sk-authors">
+        <p>@Localizer["AuthorsIntro"]</p>
+        <div class="sk-authors">
+            @foreach (var author in authors)
+            {
+                <div>
+                    <strong>
+                        <a href="@author.Author.ProfileUrl" target="_blank" rel="noopener" title="@author.Author.Name">
+                            <span class="glyphicon glyphicon-user"></span> @author.Author.Name
+                        </a>
+                    </strong>
+                    <small>
+                        @string.Format(Localizer[author.Skins.Count == 1 ? "AuthorSkinOne" : "AuthorSkinsMany"].Value, author.Skins.Count.ToString("N0", culture)):
+                        @string.Join(", ", author.Skins.Select(skin => skin.Title.Get(culture)))
+                    </small>
+                </div>
+            }
+        </div>
+    </div>
 </div>
 
 <div id="sk-modal" class="modal fade" tabindex="-1" role="dialog">
@@ -998,7 +1084,7 @@
             }
 
             $(document).on('click', '.sk-open', function (e) {
-                if ($(e.target).closest('.sk-action, .sk-missing').length > 0)
+                if ($(e.target).closest('.sk-action, .sk-missing, .sk-author').length > 0)
                     return;
 
                 e.preventDefault();

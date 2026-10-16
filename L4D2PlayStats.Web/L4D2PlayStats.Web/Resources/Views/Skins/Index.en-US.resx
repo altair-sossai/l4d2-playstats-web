@@ -131,6 +131,18 @@
   <data name="AllWeapons" xml:space="preserve">
     <value>All weapons</value>
   </data>
+  <data name="Author" xml:space="preserve">
+    <value>Author</value>
+  </data>
+  <data name="AuthorSkinOne" xml:space="preserve">
+    <value>{0} skin</value>
+  </data>
+  <data name="AuthorSkinsMany" xml:space="preserve">
+    <value>{0} skins</value>
+  </data>
+  <data name="AuthorsIntro" xml:space="preserve">
+    <value>Every skin in this shop was made by these Steam Workshop authors. Thank you! Click a name to open their Steam profile and see more of their work.</value>
+  </data>
   <data name="BuyFor" xml:space="preserve">
     <value>Buy for {0} ⭐</value>
   </data>
@@ -139,6 +151,9 @@
   </data>
   <data name="BuySuccessTitle" xml:space="preserve">
     <value>Purchase complete!</value>
+  </data>
+  <data name="By" xml:space="preserve">
+    <value>by</value>
   </data>
   <data name="Cancel" xml:space="preserve">
     <value>Cancel</value>
@@ -168,7 +183,7 @@
     <value>Confirm purchase</value>
   </data>
   <data name="Credits" xml:space="preserve">
-    <value>All skins were made by the community on the Steam Workshop. Use the Workshop button on each skin to see the original work and give credit to its creator.</value>
+    <value>All skins were made by the community on the Steam Workshop. Each skin shows its author with a link to their Steam profile, and the Authors tab credits all of them.</value>
   </data>
   <data name="Equip" xml:space="preserve">
     <value>Equip</value>
@@ -298,6 +313,9 @@
   </data>
   <data name="SwitchNotice" xml:space="preserve">
     <value>In game, during ready-up, use &lt;code&gt;!skin next&lt;/code&gt; and &lt;code&gt;!skin prev&lt;/code&gt; to switch between your skins, or &lt;code&gt;!skin default&lt;/code&gt; to go back to the default one.</value>
+  </data>
+  <data name="TabAuthors" xml:space="preserve">
+    <value>Authors</value>
   </data>
   <data name="TabMine" xml:space="preserve">
     <value>My skins</value>

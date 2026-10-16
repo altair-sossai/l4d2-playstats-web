@@ -131,6 +131,18 @@
   <data name="AllWeapons" xml:space="preserve">
     <value>Todas las armas</value>
   </data>
+  <data name="Author" xml:space="preserve">
+    <value>Autor</value>
+  </data>
+  <data name="AuthorSkinOne" xml:space="preserve">
+    <value>{0} skin</value>
+  </data>
+  <data name="AuthorSkinsMany" xml:space="preserve">
+    <value>{0} skins</value>
+  </data>
+  <data name="AuthorsIntro" xml:space="preserve">
+    <value>Todas las skins de esta tienda fueron hechas por estos autores del Steam Workshop. ¡Gracias! Haz clic en un nombre para abrir su perfil de Steam y ver más de su trabajo.</value>
+  </data>
   <data name="BuyFor" xml:space="preserve">
     <value>Comprar por {0} ⭐</value>
   </data>
@@ -139,6 +151,9 @@
   </data>
   <data name="BuySuccessTitle" xml:space="preserve">
     <value>¡Compra completada!</value>
+  </data>
+  <data name="By" xml:space="preserve">
+    <value>por</value>
   </data>
   <data name="Cancel" xml:space="preserve">
     <value>Cancelar</value>
@@ -168,7 +183,7 @@
     <value>Confirmar compra</value>
   </data>
   <data name="Credits" xml:space="preserve">
-    <value>Todas las skins fueron creadas por la comunidad en el Steam Workshop. Usa el botón Workshop en cada skin para ver el trabajo original y dar crédito a su creador.</value>
+    <value>Todas las skins fueron creadas por la comunidad en el Steam Workshop. Cada skin muestra a su autor con un enlace a su perfil de Steam, y la pestaña Autores les da crédito a todos.</value>
   </data>
   <data name="Equip" xml:space="preserve">
     <value>Equipar</value>
@@ -298,6 +313,9 @@
   </data>
   <data name="SwitchNotice" xml:space="preserve">
     <value>En el juego, durante el ready-up, usa &lt;code&gt;!skin next&lt;/code&gt; y &lt;code&gt;!skin prev&lt;/code&gt; para alternar entre tus skins, o &lt;code&gt;!skin default&lt;/code&gt; para volver a la predeterminada.</value>
+  </data>
+  <data name="TabAuthors" xml:space="preserve">
+    <value>Autores</value>
   </data>
   <data name="TabMine" xml:space="preserve">
     <value>Mis skins</value>

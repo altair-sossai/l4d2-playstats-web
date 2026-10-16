@@ -20,6 +20,7 @@ public record Skin
     public int Price => CustomPrice ?? DefaultPrice;
 
     public string WorkshopId { get; init; } = string.Empty;
+    public SkinAuthor Author { get; init; } = new();
     public LocalizedText Title { get; init; } = new();
     public LocalizedText Description { get; init; } = new();
     public string OriginalTitle { get; init; } = string.Empty;
