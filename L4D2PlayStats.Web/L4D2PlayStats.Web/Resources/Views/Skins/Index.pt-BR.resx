@@ -161,9 +161,6 @@
   <data name="ConfirmBuySeason" xml:space="preserve">
     <value>Ela vale até o fim da temporada do ranking, em {0}; depois disso é estornada automaticamente e as estrelas voltam para você.</value>
   </data>
-  <data name="ConfirmBuyTestPhase" xml:space="preserve">
-    <value>Durante a fase de testes, você pode pedir o reembolso desta skin a um administrador a qualquer momento.</value>
-  </data>
   <data name="ConfirmBuyText" xml:space="preserve">
     <value>Comprar &lt;b&gt;{0}&lt;/b&gt; por &lt;b&gt;{1} ⭐&lt;/b&gt;?</value>
   </data>
@@ -307,9 +304,6 @@
   </data>
   <data name="TabShop" xml:space="preserve">
     <value>Loja</value>
-  </data>
-  <data name="TestPhaseText" xml:space="preserve">
-    <value>Enquanto a loja estiver em fase de testes, você pode pedir a um administrador o reembolso de qualquer skin, a qualquer momento, e as estrelas voltam para você. Quando a loja for oficialmente liberada, este aviso será removido e não haverá mais reembolso a pedido.</value>
   </data>
   <data name="Unequip" xml:space="preserve">
     <value>Voltar para a padrão</value>

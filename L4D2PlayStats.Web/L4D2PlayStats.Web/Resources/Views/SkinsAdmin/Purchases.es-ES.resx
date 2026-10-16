@@ -189,7 +189,7 @@
     <value>Reembolsar todas las compras</value>
   </data>
   <data name="RefundAllWarning" xml:space="preserve">
-    <value>No se puede deshacer. Úsalo solo en la fase de pruebas, por ejemplo antes de recalcular los precios. Las estrellas de los jugadores no cambian: solo se devuelve lo gastado.</value>
+    <value>No se puede deshacer. Úsalo, por ejemplo, después de recalcular los precios. Las estrellas de los jugadores no cambian: solo se devuelve lo gastado.</value>
   </data>
   <data name="RefundButton" xml:space="preserve">
     <value>Reembolsar compra</value>

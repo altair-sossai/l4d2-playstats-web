@@ -189,7 +189,7 @@
     <value>Estornar todas as compras</value>
   </data>
   <data name="RefundAllWarning" xml:space="preserve">
-    <value>Não dá para desfazer. Use só na fase de testes, por exemplo antes de recalcular os preços. As estrelas dos jogadores não mudam: só o que foi gasto é devolvido.</value>
+    <value>Não dá para desfazer. Use, por exemplo, depois de recalcular os preços. As estrelas dos jogadores não mudam: só o que foi gasto é devolvido.</value>
   </data>
   <data name="RefundButton" xml:space="preserve">
     <value>Estornar compra</value>

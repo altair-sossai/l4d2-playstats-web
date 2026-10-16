@@ -35,8 +35,6 @@ public class SkinsModel(IReadOnlyCollection<Skin> skins, bool loggedIn, WalletRe
 
     public static readonly SkinRarity[] Rarities = [SkinRarity.Legendary, SkinRarity.Epic, SkinRarity.Rare, SkinRarity.Uncommon, SkinRarity.Common];
 
-    public static bool TestPhase => true;
-
     public IReadOnlyCollection<Skin> Skins { get; } = skins;
     public bool LoggedIn { get; } = loggedIn;
     public WalletResult? Wallet { get; } = wallet;

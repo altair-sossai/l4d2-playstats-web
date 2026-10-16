@@ -189,7 +189,7 @@
     <value>Refund all purchases</value>
   </data>
   <data name="RefundAllWarning" xml:space="preserve">
-    <value>This cannot be undone. Only use it during the test phase, for example before recalculating prices. Players&apos; stars do not change: only what was spent is returned.</value>
+    <value>This cannot be undone. Use it, for example, after recalculating prices. Players&apos; stars do not change: only what was spent is returned.</value>
   </data>
   <data name="RefundButton" xml:space="preserve">
     <value>Refund purchase</value>

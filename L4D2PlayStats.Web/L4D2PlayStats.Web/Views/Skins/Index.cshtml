@@ -475,14 +475,6 @@
     <h1>@SharedLocalizer["Skins"]</h1>
     <p class="lead">@Localizer["Lead"]</p>
 
-    @if (SkinsModel.TestPhase)
-    {
-        <div class="sk-banner">
-            <span class="glyphicon glyphicon-refresh"></span>
-            <p>@Localizer["TestPhaseText"]</p>
-        </div>
-    }
-
     <div class="sk-banner sk-banner-info">
         <span class="glyphicon glyphicon-calendar"></span>
         <div>
@@ -912,7 +904,7 @@
                 confirmBalance: @Json.Serialize(Localizer["ConfirmBuyBalance"].Value),
                 confirmEquip: @Json.Serialize(Localizer["ConfirmBuyEquip"].Value),
                 confirmSeason: @Json.Serialize(string.Format(Localizer["ConfirmBuySeason"].Value, season.LastDay.ToString("d", culture))),
-                confirmFinal: @Json.Serialize(Localizer[SkinsModel.TestPhase ? "ConfirmBuyTestPhase" : "ConfirmBuyFinal"].Value),
+                confirmFinal: @Json.Serialize(Localizer["ConfirmBuyFinal"].Value),
                 buySuccessTitle: @Json.Serialize(Localizer["BuySuccessTitle"].Value),
                 buySuccess: @Json.Serialize(Localizer["BuySuccessText"].Value),
                 equipSuccessTitle: @Json.Serialize(Localizer["EquipSuccessTitle"].Value),
