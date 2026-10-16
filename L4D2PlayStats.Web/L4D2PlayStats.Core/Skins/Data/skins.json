@@ -20,25 +20,6 @@
       "originalDescription": "请把光影细节调成高获得最好的体验 Please set the light and shadow details to high for the best experience"
     },
     {
-      "id": "hellsing-gold",
-      "weapon": "weapon_smg",
-      "rarity": "legendary",
-      "price": 650,
-      "workshopId": "132036649",
-      "title": {
-        "en": "SMG - Hellsing Gold",
-        "pt": "SMG - Hellsing Gold",
-        "es": "SMG - Hellsing Gold"
-      },
-      "description": {
-        "en": "Gold SMG with custom normal and exponent maps. Looks best on very high shader settings; the gold/gloss effect does not work on low-end PCs.",
-        "pt": "SMG dourada com normal map e exponent map próprios. Fica melhor com shaders no máximo; o efeito dourado/brilho não funciona em PCs mais fracos.",
-        "es": "SMG dorada con normal map y exponent map propios. Se ve mejor con los shaders al máximo; el efecto dorado/brillo no funciona en PCs de gama baja."
-      },
-      "originalTitle": "SMG - hellsing gold",
-      "originalDescription": "a gold smg custom normal map custom exponent map mod works best on very high shader settings (gold/gloss fx does not work on lower end pc) please dont redistribute my custom textures/normals....be original and make something on your own. SKIN MODS GOLD MODS CHROME MODS ANIMATED G…"
-    },
-    {
       "id": "damascus-mp5",
       "weapon": "weapon_smg_mp5",
       "rarity": "legendary",
@@ -552,25 +533,6 @@
       "originalDescription": "久违 少见的传个mod，感谢各位一直的关注 偶尔冒泡 预览图如下： https://steamuserimages-a.akamaihd.net/ugc/2049743797826621978/5C767430EE62B0B0530CC881ECC2DC0892ADB6BF/?imw=5000&imh=5000&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=false 如有喜欢点个赞吧 谢谢~ 关键词：axe、fireaxe、Nekomiya Hinata、猫宫日向、猫老大"
     },
     {
-      "id": "last-cure",
-      "weapon": "weapon_smg_silenced",
-      "rarity": "epic",
-      "price": 300,
-      "workshopId": "2727965845",
-      "title": {
-        "en": "The Last Cure MAC-10",
-        "pt": "The Last Cure MAC-10",
-        "es": "The Last Cure MAC-10"
-      },
-      "description": {
-        "en": "MAC-10 skin with added glow textures. Skin art by Yunhe (Undefined).",
-        "pt": "Skin de MAC-10 com texturas de brilho. Arte da skin por Yunhe (Undefined).",
-        "es": "Skin de MAC-10 con texturas de brillo. Arte de la skin por Yunhe (Undefined)."
-      },
-      "originalTitle": "【最后治疗】MAC-10",
-      "originalDescription": "说明 ·【最后治疗】MAC-10 · 添加了夜光贴图 (Added night light pictures) · 欢迎反馈 (Feedback is welcome) · 祝使用愉快~ (Have fun~) 借物表 · Models:Valve · New skin：【绀海】云鹤.Undefined 截图 其他 · 喜欢/(不喜欢) 就请 点个赞/(给个反馈) 吧，谢谢大家了 禁止任何未经允许的转载"
-    },
-    {
       "id": "neon-rider",
       "weapon": "weapon_smg_silenced",
       "rarity": "epic",
@@ -628,25 +590,6 @@
       "originalDescription": "kf2 skin thingy"
     },
     {
-      "id": "bianca",
-      "weapon": "weapon_shotgun_chrome",
-      "rarity": "epic",
-      "price": 300,
-      "workshopId": "2765785238",
-      "title": {
-        "en": "Punishing: Gray Raven Bianca: Veritas Chrome Shotgun",
-        "pt": "Punishing: Gray Raven Bianca: Veritas Chrome Shotgun",
-        "es": "Punishing: Gray Raven Bianca: Veritas Chrome Shotgun"
-      },
-      "description": {
-        "en": "Bianca: Veritas from Punishing: Gray Raven on the Chrome Shotgun, with glow. Skin art by Yunhe (Undefined).",
-        "pt": "Bianca: Veritas de Punishing: Gray Raven na Chrome Shotgun, com brilho. Arte da skin por Yunhe (Undefined).",
-        "es": "Bianca: Veritas de Punishing: Gray Raven en la Chrome Shotgun, con brillo. Arte de la skin por Yunhe (Undefined)."
-      },
-      "originalTitle": "【战双帕弥什】比安卡·真理 Chrome Shotgun",
-      "originalDescription": "说明 · 【战双帕弥什】比安卡·真理 Chrome Shotgun · 包含夜光 · 欢迎反馈,祝使用愉快~ 借物表 · New skin：【绀海】云鹤.Undefined 截图 其他 · 喜欢/(不喜欢) 就请 点个赞/(给个反馈) 吧，谢谢大家了 此MOD为定制物品，禁止任何未经允许的转载"
-    },
-    {
       "id": "iron-maiden-bat",
       "weapon": "weapon_melee_cricket_bat",
       "rarity": "epic",
@@ -702,25 +645,6 @@
       },
       "originalTitle": "[SKIN] Default Silenced Smg: Hatsune Miku(Glow)",
       "originalDescription": "Replace texture only and can be used with the default weapon reanimated mod. Personally recommended reanimated mod: ------------------------------------------------------------------------------------------------------ I don't want to do covers, I'm too lazy, and I have a lot of…"
-    },
-    {
-      "id": "koyori",
-      "weapon": "weapon_pumpshotgun",
-      "rarity": "rare",
-      "price": 240,
-      "workshopId": "2832294909",
-      "title": {
-        "en": "Vtuber Hakui Koyori Pump Shotgun",
-        "pt": "Vtuber Hakui Koyori Pump Shotgun",
-        "es": "Vtuber Hakui Koyori Pump Shotgun"
-      },
-      "description": {
-        "en": "Hakui Koyori, hololive's holoX researcher, on the Pump Shotgun. A beginner's mod.",
-        "pt": "Hakui Koyori, a pesquisadora da holoX da hololive, na Pump Shotgun. Mod de iniciante.",
-        "es": "Hakui Koyori, la investigadora de holoX de hololive, en la Pump Shotgun. Mod de principiante."
-      },
-      "originalTitle": "Vtuber♪  博衣こより--木喷/Hakui Koyori--pump shotgun",
-      "originalDescription": "替换木喷贴图 ，replace pump 新手做的MOD。有什么做的不好的请见谅 喜欢的话可以去看看隔壁大佬做的人物MOD哦 虽然是新人作品，但转载之前要说一声哦（也没人会转你吧） 未经允许不可转载到其他地方 贴图指导菜花植物园，不好看去找他（心虚） 《秘密结社holoX》的研究家。一面照顾著结社成员、一面进行人类观察。热心研究、好奇心旺盛，有时会为了观察他人反应而恶作剧。自称是「holoX的大脑」，但实际上她的知识是有所偏差的。 视频演示：还没做，鸽了，回头再说 喜欢就点个赞吧"
     },
     {
       "id": "tokai-teio",
@@ -1310,25 +1234,6 @@
       },
       "originalTitle": "Pokemon - Chrome Shotgun Umbreon Camo *Finished*",
       "originalDescription": "The Glow in the Dark-Veon ====================================== ... https://puu.sh/vtQpy/e3da4fcf8d.png Picture of the gun. -Not bothering to do the rest of the description- Nor the rest of the gun. Requester: Umbre http://steamcommunity.com/id/Normalumbreon Thank you for your request. ===========…"
-    },
-    {
-      "id": "marisa",
-      "weapon": "weapon_smg",
-      "rarity": "rare",
-      "price": 160,
-      "workshopId": "3302648369",
-      "title": {
-        "en": "Touhou Project Marisa Kirisame UZI",
-        "pt": "Touhou Project Marisa Kirisame UZI",
-        "es": "Touhou Project Marisa Kirisame UZI"
-      },
-      "description": {
-        "en": "Marisa Kirisame from Touhou Project on the official Uzi, fully glowing with normal maps.",
-        "pt": "Marisa Kirisame de Touhou Project na Uzi oficial, com brilho total e normal map.",
-        "es": "Marisa Kirisame de Touhou Project en la Uzi oficial, con brillo total y normal map."
-      },
-      "originalTitle": "【东方Project】雾雨魔理沙 官模UZI",
-      "originalDescription": "只是在我死之前\"借\"一下而已啦 这位更是主角， 真男主 小偷 虽然看起来吊儿郎当的，但实际上是非常努力的人DA⭐ZE 我记得没错的话工坊里还有一款灵梦的MAC，可以在一起用组成主角cp（ 包含：全夜光，法线贴图 因为只对官模uzi的贴图进行了更改，所以可以搭配任意音效mod和动作mod食用 借物 本mod使用的主要贴图素材来自 ，作品编号为：119196833，120051720，32704959，108217855 Credits Valve - model，sounds，animations 野生带鱼 - texture 未经许可，禁止进行修改、压缩…"
     },
     {
       "id": "arihara-nanami",
