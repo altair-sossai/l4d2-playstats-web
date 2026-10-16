@@ -224,6 +224,9 @@
   <data name="WeaponMachete" xml:space="preserve">
     <value>Facão</value>
   </data>
+  <data name="WeaponPistolMagnum" xml:space="preserve">
+    <value>Magnum</value>
+  </data>
   <data name="WeaponPumpShotgun" xml:space="preserve">
     <value>Escopeta Pump</value>
   </data>

@@ -20,6 +20,25 @@
       "originalDescription": "请把光影细节调成高获得最好的体验 Please set the light and shadow details to high for the best experience"
     },
     {
+      "id": "denia-magnum",
+      "weapon": "weapon_pistol_magnum",
+      "rarity": "legendary",
+      "price": 650,
+      "workshopId": "3757405260",
+      "title": {
+        "en": "Magnum Denia (Wuthering Waves)",
+        "pt": "Magnum Denia (Wuthering Waves)",
+        "es": "Magnum Denia (Wuthering Waves)"
+      },
+      "description": {
+        "en": "Animated Magnum themed on Denia from Wuthering Waves, with flowing pastel and violet art.",
+        "pt": "Magnum animada com o tema da Denia de Wuthering Waves, com arte em tons pastel e violeta em movimento.",
+        "es": "Magnum animada con el tema de Denia de Wuthering Waves, con arte en tonos pastel y violeta en movimiento."
+      },
+      "originalTitle": "【Wuthering Waves】Defaul Magnum —DENIA",
+      "originalDescription": "Just replaced the texture of the Default Magnum It can be used in conjunction with gun sounds and animation mods"
+    },
+    {
       "id": "damascus-mp5",
       "weapon": "weapon_smg_mp5",
       "rarity": "legendary",
@@ -75,6 +94,25 @@
       },
       "originalTitle": "Chrome Shotgun Printstream Theme (Glow)",
       "originalDescription": "Chrome Shotgun Printstream Theme (Glow) The file only contains texture maps, and you can choose your favorite actions to use with sound effects. Description: The following text comes from software translation. If there is any error or unclear expression, please check Chinese. I p…"
+    },
+    {
+      "id": "snow-miku-magnum",
+      "weapon": "weapon_pistol_magnum",
+      "rarity": "legendary",
+      "price": 600,
+      "workshopId": "3288053100",
+      "title": {
+        "en": "Magnum Snow Miku (Dynamic/Glow)",
+        "pt": "Magnum Snow Miku (Dynamic/Glow)",
+        "es": "Magnum Snow Miku (Dynamic/Glow)"
+      },
+      "description": {
+        "en": "Animated Snow Miku Magnum in white and lilac, with glowing details.",
+        "pt": "Magnum animada da Snow Miku em branco e lilás, com detalhes que brilham.",
+        "es": "Magnum animada de Snow Miku en blanco y lila, con detalles que brillan."
+      },
+      "originalTitle": "Default Magnum: SNOW MIKU (Dynamic/Glow)",
+      "originalDescription": "Replace texture only and can be used with the default weapon reanimated mod. Personally recommended reanimated mod: https://steamcommunity.com/sharedfiles/filedetails/?id=2954778916 https://steamcommunity.com/sharedfiles/filedetails/?id=1844071959 https://steamcommunity.com/sharedfiles/filedetails/…"
     },
     {
       "id": "holographic-katana",
@@ -191,6 +229,25 @@
       "originalDescription": "替换官模SMG贴图 拥有一下特点 法线贴图 自发光 印花集独有珠光渐变 印花集皮肤最近很多人做，想尝试做一把印花集皮肤 上面四个杠有点不齐是正常现象，SMG上这四个杠V社UV图真布局乱导致的，真的裂开,十分感谢PioneerZ1Z大佬的UV贴图指导 更新日志 2023年5月1日 翻新部分贴图，加上了印花姬，不算完全重做，直接原地更新，不知道你们满意不满意这次小更新 2023年11月8日 将纯黑色换位浅黑色，浅黑色也显示珠光渐变，其他无变动 关于和其他SMG和里希炎热大佬印花集UZI冲突 主要是VMT文件贴图路径一致了，而导致的冲突，但不影响使用 简介预览…"
     },
     {
+      "id": "miku-magnum",
+      "weapon": "weapon_pistol_magnum",
+      "rarity": "epic",
+      "price": 420,
+      "workshopId": "3028559765",
+      "title": {
+        "en": "Magnum Hatsune Miku 16th Anniversary (Glow)",
+        "pt": "Magnum Hatsune Miku 16th Anniversary (Glow)",
+        "es": "Magnum Hatsune Miku 16th Anniversary (Glow)"
+      },
+      "description": {
+        "en": "Hatsune Miku 16th anniversary Magnum, in teal and black with glowing details.",
+        "pt": "Magnum do aniversário de 16 anos da Hatsune Miku, em verde-água e preto com detalhes que brilham.",
+        "es": "Magnum del 16.º aniversario de Hatsune Miku, en verde agua y negro con detalles que brillan."
+      },
+      "originalTitle": "[初音ミク16周年]Hatsune Miku Default Magnum Skin(Glow) 初音未来默认马格南皮肤(夜光)",
+      "originalDescription": "初音ミク Happy 16th Birthday!!! I have prepared four birthday presents. This is the third one. I hope Miku and you will like it 公主殿下16周年生日快乐o(*￣▽￣*)o!!! 准备了四个生日礼物,这个是第三个,希望公主和你们会喜欢 ------------------------------------------------------------------ Only made texture replacement, can be used with the def…"
+    },
+    {
       "id": "holographic-golf-club",
       "weapon": "weapon_melee_golfclub",
       "rarity": "epic",
@@ -265,6 +322,25 @@
       },
       "originalTitle": "[SKIN] Default Chrome Shotgun: Corridor of Miku",
       "originalDescription": "Replace texture only and can be used with the default weapon reanimated mod. Personally recommended reanimated mod: ------------------------------------------------------------------------------------------------------ The final work in the Hatsune Miku, after which I will work o…"
+    },
+    {
+      "id": "neon-magnum",
+      "weapon": "weapon_pistol_magnum",
+      "rarity": "epic",
+      "price": 400,
+      "workshopId": "3027541381",
+      "title": {
+        "en": "Neon Magnum (Glow)",
+        "pt": "Neon Magnum (Glow)",
+        "es": "Neon Magnum (Glow)"
+      },
+      "description": {
+        "en": "Black Magnum covered in pink and cyan neon lines that glow, with a Left 4 Dead 2 sign.",
+        "pt": "Magnum preta coberta de linhas neon rosa e ciano que brilham, com um letreiro de Left 4 Dead 2.",
+        "es": "Magnum negra cubierta de líneas neón rosa y cian que brillan, con un letrero de Left 4 Dead 2."
+      },
+      "originalTitle": "霓虹马格南（沙鹰）/neon-deagle",
+      "originalDescription": "霓虹马格南（沙鹰�?neon-deagle"
     },
     {
       "id": "rosmontis",
@@ -343,6 +419,25 @@
       "originalDescription": "Notice: Only replaces the material of Chrome Shotgun. Can be used with sound mod and animation mod. Default animation: arby26's animation: ο(=•ω＜=)ρ⌒☆"
     },
     {
+      "id": "printstream-magnum",
+      "weapon": "weapon_pistol_magnum",
+      "rarity": "epic",
+      "price": 380,
+      "workshopId": "2705308152",
+      "title": {
+        "en": "Desert Eagle | Printstream",
+        "pt": "Desert Eagle | Printstream",
+        "es": "Desert Eagle | Printstream"
+      },
+      "description": {
+        "en": "The CS:GO Printstream design on the Magnum: pearl white with black print-style details.",
+        "pt": "O design Printstream do CS:GO na Magnum: branco perolado com detalhes pretos de estampa.",
+        "es": "El diseño Printstream de CS:GO en la Magnum: blanco perlado con detalles negros de estampado."
+      },
+      "originalTitle": "Desert Eagle | Printstream (Default Retexture)",
+      "originalDescription": "Default Desert Eagle Reskin. Compailible with model changers."
+    },
+    {
       "id": "tribal-axe",
       "weapon": "weapon_melee_fireaxe",
       "rarity": "epic",
@@ -417,6 +512,25 @@
       },
       "originalTitle": "Chrome Shotgun | Asiimov Light Blue",
       "originalDescription": "Light blue asiimov skin for chrome shotgun. The design is based on this addon by Amel."
+    },
+    {
+      "id": "senko-magnum",
+      "weapon": "weapon_pistol_magnum",
+      "rarity": "epic",
+      "price": 350,
+      "workshopId": "2814111195",
+      "title": {
+        "en": "Magnum Senko-san (Glow)",
+        "pt": "Magnum Senko-san (Glow)",
+        "es": "Magnum Senko-san (Glow)"
+      },
+      "description": {
+        "en": "Magnum themed on Senko-san, the helpful fox girl, with warm colors and glowing details.",
+        "pt": "Magnum com o tema da Senko-san, a garota-raposa prestativa, com cores quentes e detalhes que brilham.",
+        "es": "Magnum con el tema de Senko-san, la servicial chica zorro, con colores cálidos y detalles que brillan."
+      },
+      "originalTitle": "Magnum 马格南 仙狐小姐（发光）replace desert eagle (glow)",
+      "originalDescription": "早期的作品，只是简单的原版马格南贴图替换 细节没有之前的smg和uzi好，但我懒得修了 预览图如下： https://steamuserimages-a.akamaihd.net/ugc/1825659545175208596/82C200C6CD8A106CD9011CA1F3AED7BA3B86DB6F/?imw=5000&imh=5000&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=false https://steamuserimages-a.akamaihd.net/ugc/1825659545175208486/7…"
     },
     {
       "id": "clouds-katana",
@@ -512,6 +626,25 @@
       },
       "originalTitle": "【Azur Lane】USS Enterprise Chrome",
       "originalDescription": "From Azur Lane Replace materials only"
+    },
+    {
+      "id": "summer-magnum",
+      "weapon": "weapon_pistol_magnum",
+      "rarity": "epic",
+      "price": 320,
+      "workshopId": "2825654306",
+      "title": {
+        "en": "Magnum Summer (Glow)",
+        "pt": "Magnum Summer (Glow)",
+        "es": "Magnum Summer (Glow)"
+      },
+      "description": {
+        "en": "Summer-themed Magnum in teal and black, with glowing details.",
+        "pt": "Magnum com tema de verão em verde-água e preto, com detalhes que brilham.",
+        "es": "Magnum con tema de verano en verde agua y negro, con detalles que brillan."
+      },
+      "originalTitle": "Magnum Summer 夏日清凉 发光 replace desert eagle (glow)",
+      "originalDescription": "无二次元立绘，简单的蓝绿色涂装，喜欢请别忘记点赞 这个马格南看起来还行，我尽力了-—— 建议订阅 替换官方模型的动作 推荐持枪视角1： 【动作】无火光动作合集animation 这个mod包含了大部分官摸的武器持枪视角基于arby动作的修改，并移除了开枪火光和手电闪烁，换弹不影响手电筒位置，非常的好用。只需单个的自行拆包（教程网上一堆自己找）。感谢Beau大佬的修改和分享~ 或者 Magnum Reanimated 2 with TLS Skin Support 预览视频 渲染图如下： https://steamuserimages-a.akamaihd.net/ugc/1844802113…"
     },
     {
       "id": "nekomiya-axe",
@@ -666,6 +799,44 @@
       "originalDescription": "无败的帝王传说，就从现在开始吧！ 替换铁喷（replace Chrome shotgun ) 全夜光（glow） 相比以前经验跟进一步，枪身虽然有点不对称但也无伤大雅，以后的枪皮质量应该会越来越好的罢（ 当然下次还会做麦昆的木喷（已经做了 传送门 最后记得点赞赞"
     },
     {
+      "id": "code-red-magnum",
+      "weapon": "weapon_pistol_magnum",
+      "rarity": "rare",
+      "price": 240,
+      "workshopId": "2705340335",
+      "title": {
+        "en": "Desert Eagle | Code Red",
+        "pt": "Desert Eagle | Code Red",
+        "es": "Desert Eagle | Code Red"
+      },
+      "description": {
+        "en": "The CS:GO Code Red design on the Magnum: red and white with black details.",
+        "pt": "O design Code Red do CS:GO na Magnum: vermelho e branco com detalhes pretos.",
+        "es": "El diseño Code Red de CS:GO en la Magnum: rojo y blanco con detalles negros."
+      },
+      "originalTitle": "Desert Eagle | Code Red (Default Retexture)",
+      "originalDescription": "Default Desert Eagle Reskin. Compailible with model changers"
+    },
+    {
+      "id": "fennec-fox-magnum",
+      "weapon": "weapon_pistol_magnum",
+      "rarity": "rare",
+      "price": 230,
+      "workshopId": "2705155283",
+      "title": {
+        "en": "Desert Eagle | Fennec Fox",
+        "pt": "Desert Eagle | Fennec Fox",
+        "es": "Desert Eagle | Fennec Fox"
+      },
+      "description": {
+        "en": "The CS:GO Fennec Fox design on the Magnum, with colorful hand-drawn patterns.",
+        "pt": "O design Fennec Fox do CS:GO na Magnum, com estampas coloridas desenhadas à mão.",
+        "es": "El diseño Fennec Fox de CS:GO en la Magnum, con estampados coloridos dibujados a mano."
+      },
+      "originalTitle": "Desert Eagle | Fennec Fox (Default Retexture)",
+      "originalDescription": "Default Desert Eagle Reskin. Compailible with model changers."
+    },
+    {
       "id": "miku-pearl",
       "weapon": "weapon_smg",
       "rarity": "rare",
@@ -740,6 +911,25 @@
       },
       "originalTitle": "Chrome shotgun 凑阿库娅铁喷 Ⅱ版 发光 Replace Chrome Shotgun (glow)",
       "originalDescription": "立绘重贴了一下……上午发的就几百订阅了，就不替换了 另发在这吧 包含材质贴图、法图法线 预览视频 渲染图如下： 如有喜欢别忘点赞~ 谢谢~ 关键词：凑阿库娅、凑あくあ，Minato Aqua阿夸、铁喷"
+    },
+    {
+      "id": "black-ice-magnum",
+      "weapon": "weapon_pistol_magnum",
+      "rarity": "rare",
+      "price": 220,
+      "workshopId": "2607590291",
+      "title": {
+        "en": "Desert Eagle - Black Ice",
+        "pt": "Desert Eagle - Black Ice",
+        "es": "Desert Eagle - Black Ice"
+      },
+      "description": {
+        "en": "Magnum in icy white and black, with glowing details.",
+        "pt": "Magnum em branco gelo e preto, com detalhes que brilham.",
+        "es": "Magnum en blanco hielo y negro, con detalles que brillan."
+      },
+      "originalTitle": "Desert Eagle - Black Ice",
+      "originalDescription": "Desert Eagle - Black Ice https://steamuserimages-a.akamaihd.net/ugc/1615093693438117585/BDEDD8D30FC587E48A5C4E6BC271AFB1719FE67A/?imw=5000&imh=5000&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=false Included: Only maps. Description: Thanks to the material made by 克里罗斯魅子 , I tried it after…"
     },
     {
       "id": "honey-bee-axe",
@@ -911,6 +1101,44 @@
       },
       "originalTitle": "Shotguns | Volcanic",
       "originalDescription": "yo 0/ suggested by: Dot [?] a volcanic themed pump & chrome shotguns, hope yall enjoy"
+    },
+    {
+      "id": "dragon-glass-magnum",
+      "weapon": "weapon_pistol_magnum",
+      "rarity": "rare",
+      "price": 200,
+      "workshopId": "3565185211",
+      "title": {
+        "en": "Desert Eagle - Dragon Glass",
+        "pt": "Desert Eagle - Dragon Glass",
+        "es": "Desert Eagle - Dragon Glass"
+      },
+      "description": {
+        "en": "Dark Magnum with a translucent dragon glass finish on the slide.",
+        "pt": "Magnum escura com acabamento de vidro de dragão translúcido no ferrolho.",
+        "es": "Magnum oscura con acabado de vidrio de dragón translúcido en la corredera."
+      },
+      "originalTitle": "Desert Eagle - Dragon Glass",
+      "originalDescription": "Pretty cool skin from Standoff 2 So decided to remake it as a Reskin for the L4D2 Magnum Pistol Skin based on \"Dark Steel\" from Deagle 15 Skin RNG Includes- Bumpmapping Phong Warp Glowing Sights Shiny and Rad Blue crystal design Well optimized content, Only 2 MB Compatible with Reanimations"
+    },
+    {
+      "id": "retrowave-magnum",
+      "weapon": "weapon_pistol_magnum",
+      "rarity": "rare",
+      "price": 200,
+      "workshopId": "2095594132",
+      "title": {
+        "en": "Desert Eagle Retrowave / Synthwave",
+        "pt": "Desert Eagle Retrowave / Synthwave",
+        "es": "Desert Eagle Retrowave / Synthwave"
+      },
+      "description": {
+        "en": "Retrowave Magnum with a pink and purple sunset over a neon grid. Licensed under CC BY-NC 3.0.",
+        "pt": "Magnum retrowave com um pôr do sol rosa e roxo sobre uma grade neon. Licença CC BY-NC 3.0.",
+        "es": "Magnum retrowave con un atardecer rosa y morado sobre una cuadrícula neón. Licencia CC BY-NC 3.0."
+      },
+      "originalTitle": "Desert Eagle Retrowave / Synthwave",
+      "originalDescription": "Hi! This skin is designed in a Retrowave/Synthwave style. I hope you like it and enjoy playing with it, I clarify that I am not a professional, I am just an enthusiast. Some details of the weapon glow in the dark. Note : If you have a lot of mods in your game, some bugs will probably appear, but no…"
     },
     {
       "id": "ice-axe",
@@ -1122,6 +1350,25 @@
       "originalDescription": "咕咕咕 一份阿夸的铁喷，希望喜欢（不想做浅色的，整体用了蓝黑色的底） 包含材质贴图、法线贴图 还有点瑕疵 等有灵感后修复更新_(:з」∠)_ 中段立绘部分已重置，另行发布在此 Chrome shotgun 凑阿库娅铁喷 Ⅱ版 渲染图如下： 预览图如下： 如有喜欢点个赞吧 谢谢~"
     },
     {
+      "id": "nepgear-magnum",
+      "weapon": "weapon_pistol_magnum",
+      "rarity": "rare",
+      "price": 180,
+      "workshopId": "2829210399",
+      "title": {
+        "en": "Nepgear Desert Eagle (Hyperdimension Neptunia)",
+        "pt": "Nepgear Desert Eagle (Hyperdimension Neptunia)",
+        "es": "Nepgear Desert Eagle (Hyperdimension Neptunia)"
+      },
+      "description": {
+        "en": "Magnum themed on Nepgear from Hyperdimension Neptunia, in purple and white.",
+        "pt": "Magnum com o tema da Nepgear de Hyperdimension Neptunia, em roxo e branco.",
+        "es": "Magnum con el tema de Nepgear de Hyperdimension Neptunia, en morado y blanco."
+      },
+      "originalTitle": "Nepgear (Hyperdimension Neptunia) - Desert-Eagle Magnum",
+      "originalDescription": "Nepgear (my second favorite) as my favorite secondary :D Character: Nepgear Game from: Hyperdimension Neptunia Weapon textured on: Deserteagle / Magnum Gun shot sound effect from: Devil May Cry 5 (CAPCOM)"
+    },
+    {
       "id": "nebula-axe",
       "weapon": "weapon_melee_fireaxe",
       "rarity": "rare",
@@ -1234,6 +1481,25 @@
       },
       "originalTitle": "Pokemon - Chrome Shotgun Umbreon Camo *Finished*",
       "originalDescription": "The Glow in the Dark-Veon ====================================== ... https://puu.sh/vtQpy/e3da4fcf8d.png Picture of the gun. -Not bothering to do the rest of the description- Nor the rest of the gun. Requester: Umbre http://steamcommunity.com/id/Normalumbreon Thank you for your request. ===========…"
+    },
+    {
+      "id": "demon-theme-magnum",
+      "weapon": "weapon_pistol_magnum",
+      "rarity": "rare",
+      "price": 170,
+      "workshopId": "3473632993",
+      "title": {
+        "en": "Desert Eagle - DemonAXiaojie Theme",
+        "pt": "Desert Eagle - DemonAXiaojie Theme",
+        "es": "Desert Eagle - DemonAXiaojie Theme"
+      },
+      "description": {
+        "en": "Magnum with the DemonAXiaojie theme, in light blue with illustrated details.",
+        "pt": "Magnum com o tema DemonAXiaojie, em azul-claro com detalhes ilustrados.",
+        "es": "Magnum con el tema DemonAXiaojie, en azul claro con detalles ilustrados."
+      },
+      "originalTitle": "desert deagle-DemonAXiaojie theme",
+      "originalDescription": "glow in the dark request by 恶魔A小杰"
     },
     {
       "id": "arihara-nanami",
@@ -1616,6 +1882,25 @@
       "originalDescription": "图片素材均来源于网络，如有侵权请联系我进行mod修改/删除 PS：在网上根本找不到多少让巴尔的图，感觉我都要燃尽了 本来这个皮肤应该有花嫁图的，但是我笨比做的时候忘记加了 这个木喷是真的难做，做这一把我已经绞尽脑汁了 我还有一个通体红色的废稿，因为在那个草稿里我把模型弄错了，我试试能不能完成它 我在做的时候vtf名字没取对，然后去找了别人的换皮看看，我上手一体验发现比我做的好多了！ 不得不承认这个做的没有想象中的那么好 就这样 ----------------------------------------------------------------…"
     },
     {
+      "id": "golden-magnum",
+      "weapon": "weapon_pistol_magnum",
+      "rarity": "uncommon",
+      "price": 130,
+      "workshopId": "3380373401",
+      "title": {
+        "en": "Golden Desert Eagle",
+        "pt": "Golden Desert Eagle",
+        "es": "Golden Desert Eagle"
+      },
+      "description": {
+        "en": "Gold-plated Magnum with a black grip.",
+        "pt": "Magnum banhada a ouro com empunhadura preta.",
+        "es": "Magnum bañada en oro con empuñadura negra."
+      },
+      "originalTitle": "Extended Firearm Skins Separated: \"Golden' Desert Eagle",
+      "originalDescription": "Read the first addon in the collection, you know the drill. This addon reskins the Desert Eagle to use the rare \"Golden\" skin featured in Extended Firearms on the default model. In addition to this, I created custom normals, added glow sights, & edited the .vmts so that the phong is a tiny bit less…"
+    },
+    {
       "id": "purple-marble",
       "weapon": "weapon_smg_silenced",
       "rarity": "uncommon",
@@ -1728,6 +2013,25 @@
       },
       "originalTitle": "Chrome | Celeuna",
       "originalDescription": "yo 0/ hey there people im back again, time has been shorten for me again, but hopefully everything is cool... for now, this time with a bit of testing with the selfinlum command, and with this celeuna skin( celestia + luna), and the darker the ilumination of the game, the more yo…"
+    },
+    {
+      "id": "fade-magnum",
+      "weapon": "weapon_pistol_magnum",
+      "rarity": "uncommon",
+      "price": 120,
+      "workshopId": "2858361310",
+      "title": {
+        "en": "Fade Magnum",
+        "pt": "Fade Magnum",
+        "es": "Fade Magnum"
+      },
+      "description": {
+        "en": "Magnum with a fade finish from pink to blue.",
+        "pt": "Magnum com acabamento fade do rosa ao azul.",
+        "es": "Magnum con acabado fade del rosa al azul."
+      },
+      "originalTitle": "Fade Magnum/Deagle",
+      "originalDescription": "Makes the Deagle Red and Blue"
     },
     {
       "id": "acid-blade-axe",
@@ -1882,6 +2186,44 @@
       "originalDescription": "濑川绘未，颜艺社作品《恋爱，我就借走了》（恋愛、借りちゃいました）女主 替换原版铁喷贴图，有发光效果 枪身立绘表情会定时切换（做这个皮就是因为太喜欢她了而且颜艺太有意思了XD）"
     },
     {
+      "id": "royal-magnum",
+      "weapon": "weapon_pistol_magnum",
+      "rarity": "uncommon",
+      "price": 110,
+      "workshopId": "2013774218",
+      "title": {
+        "en": "Deagle | Royal",
+        "pt": "Deagle | Royal",
+        "es": "Deagle | Royal"
+      },
+      "description": {
+        "en": "Royal gold Magnum with ornate details on a dark grip.",
+        "pt": "Magnum dourada real com detalhes ornamentados na empunhadura escura.",
+        "es": "Magnum dorada real con detalles ornamentados en la empuñadura oscura."
+      },
+      "originalTitle": "Deagle | Royal",
+      "originalDescription": "https://hks-the-skin-guy.itch.io/the-cult-rpg"
+    },
+    {
+      "id": "volcanic-magnum",
+      "weapon": "weapon_pistol_magnum",
+      "rarity": "uncommon",
+      "price": 110,
+      "workshopId": "1987862845",
+      "title": {
+        "en": "Deagle | Volcanic",
+        "pt": "Deagle | Volcanic",
+        "es": "Deagle | Volcanic"
+      },
+      "description": {
+        "en": "Magnum covered in red and yellow lava.",
+        "pt": "Magnum coberta de lava vermelha e amarela.",
+        "es": "Magnum cubierta de lava roja y amarilla."
+      },
+      "originalTitle": "Deagle | Volcanic",
+      "originalDescription": "yo 0/ Benn a while since i uploaded something for this collection of skins, hope yall enjoy! wanna support me? then check out my game : https://gamejolt.com/games/thecult/452567 cheers!"
+    },
+    {
       "id": "rgb-axe",
       "weapon": "weapon_melee_fireaxe",
       "rarity": "uncommon",
@@ -2013,6 +2355,44 @@
       },
       "originalTitle": "King Dedede chromeshotgun",
       "originalDescription": "\"Welcome\"~Rawr ============= I was just doodling while listening to some kirby osts, and forgo dedede's theme came up and since dedede himself is my favorite character why not replace the chromes boring design with this handsome devil =============== All credit goes to their resp…"
+    },
+    {
+      "id": "anubis-magnum",
+      "weapon": "weapon_pistol_magnum",
+      "rarity": "uncommon",
+      "price": 100,
+      "workshopId": "1973329455",
+      "title": {
+        "en": "Deagle | Anubis",
+        "pt": "Deagle | Anubis",
+        "es": "Deagle | Anubis"
+      },
+      "description": {
+        "en": "Egyptian-themed Magnum in black, red and gold.",
+        "pt": "Magnum com tema egípcio em preto, vermelho e dourado.",
+        "es": "Magnum con tema egipcio en negro, rojo y dorado."
+      },
+      "originalTitle": "Deagle | Anubis",
+      "originalDescription": "yo 0/ Updates for today 2/3"
+    },
+    {
+      "id": "not-toy-magnum",
+      "weapon": "weapon_pistol_magnum",
+      "rarity": "uncommon",
+      "price": 100,
+      "workshopId": "3618145490",
+      "title": {
+        "en": "Magnum: Not Toy",
+        "pt": "Magnum: Not Toy",
+        "es": "Magnum: Not Toy"
+      },
+      "description": {
+        "en": "Magnum painted like a bright orange toy gun.",
+        "pt": "Magnum pintada como uma arma de brinquedo laranja.",
+        "es": "Magnum pintada como una pistola de juguete naranja."
+      },
+      "originalTitle": "Magnum: Not Toy",
+      "originalDescription": "This Magnum toy-themed skin transforms the powerful revolver into a bold Nerf-style blaster bursting with playful charm. Its chunky frame is wrapped in bright plastic panels of blue orange and yellow with exaggerated ridges and glossy toy-like details that make it feel straight out of a fun, oversi…"
     },
     {
       "id": "teal-katana",
@@ -2165,6 +2545,44 @@
       },
       "originalTitle": "Google Chrome Shotgun (No Sound)",
       "originalDescription": "This mod replaces Chrome's Shotgun default texture. It does not include custom sounds. Feel free to use your favourite sounds. No Steam users:"
+    },
+    {
+      "id": "exodus-magnum",
+      "weapon": "weapon_pistol_magnum",
+      "rarity": "uncommon",
+      "price": 90,
+      "workshopId": "2009408794",
+      "title": {
+        "en": "Deagle | Exodus",
+        "pt": "Deagle | Exodus",
+        "es": "Deagle | Exodus"
+      },
+      "description": {
+        "en": "Magnum in black with mint green and pink details.",
+        "pt": "Magnum preta com detalhes verde-menta e rosa.",
+        "es": "Magnum negra con detalles verde menta y rosa."
+      },
+      "originalTitle": "Deagle | Exodus",
+      "originalDescription": "yo 0/ I made this skin a WHILE back, im talking last year type of back, yet never posted, it just kinda stayed lying there on my ready to post skins folder, who knows i might post the rest of those skins someday"
+    },
+    {
+      "id": "mar13-magnum",
+      "weapon": "weapon_pistol_magnum",
+      "rarity": "uncommon",
+      "price": 90,
+      "workshopId": "2021402413",
+      "title": {
+        "en": "Deagle | Mar13",
+        "pt": "Deagle | Mar13",
+        "es": "Deagle | Mar13"
+      },
+      "description": {
+        "en": "Black Magnum with bright green splashes.",
+        "pt": "Magnum preta com manchas verde-limão.",
+        "es": "Magnum negra con manchas verde lima."
+      },
+      "originalTitle": "Deagle | Mar13",
+      "originalDescription": "its finally mar13 aka marie apreciantion day! and here its my contribution to it! (or friday 13th for yall muricans) tags: deagle, desert eagle, skin, re skin, splatoon"
     },
     {
       "id": "foxy-axe",
@@ -2338,6 +2756,25 @@
       "originalDescription": "I decided to make this shotgun after a friend in a call was like do this i also spent 40 minutes trying to figure out vmt's i gave up"
     },
     {
+      "id": "rarity-magnum",
+      "weapon": "weapon_pistol_magnum",
+      "rarity": "uncommon",
+      "price": 80,
+      "workshopId": "1827941867",
+      "title": {
+        "en": "Deagle | Rarity",
+        "pt": "Deagle | Rarity",
+        "es": "Deagle | Rarity"
+      },
+      "description": {
+        "en": "White Magnum themed on Rarity from My Little Pony, with purple details.",
+        "pt": "Magnum branca com o tema da Rarity de My Little Pony, com detalhes roxos.",
+        "es": "Magnum blanca con el tema de Rarity de My Little Pony, con detalles morados."
+      },
+      "originalTitle": "Deagle | Rarity",
+      "originalDescription": "yo 0/ yeah yeah a mlp skin, im a brony so what?"
+    },
+    {
       "id": "thorax-machete",
       "weapon": "weapon_melee_machete",
       "rarity": "uncommon",
@@ -2509,6 +2946,25 @@
       "originalDescription": "\"Welcome\"~Rawr ============== After catching a shiny paldian wooper and evolving it to a clodsire an idea has struck and long story short this shotgun was born ============== All credit goes to there respective owners"
     },
     {
+      "id": "dead-trigger-magnum",
+      "weapon": "weapon_pistol_magnum",
+      "rarity": "common",
+      "price": 60,
+      "workshopId": "3365446394",
+      "title": {
+        "en": "Dead Trigger 2 Desert Eagle",
+        "pt": "Dead Trigger 2 Desert Eagle",
+        "es": "Dead Trigger 2 Desert Eagle"
+      },
+      "description": {
+        "en": "Magnum from Dead Trigger 2, in dark metal with an American flag on the grip.",
+        "pt": "Magnum do Dead Trigger 2, em metal escuro com a bandeira americana na empunhadura.",
+        "es": "Magnum de Dead Trigger 2, en metal oscuro con la bandera estadounidense en la empuñadura."
+      },
+      "originalTitle": "Dead Trigger 2 Desert Eagle",
+      "originalDescription": "Also known as the WOLF LADY This is the 3rd dead trigger 2 reskin series Single reskin for Desert eagle or Magnum pistol whatever you call it comes with new custom phong texture for extra details and optimized as much as possible Works with any reanimations! GLOWSIGHT VERSION HERE https://steamcomm…"
+    },
+    {
       "id": "nmrih-axe",
       "weapon": "weapon_melee_fireaxe",
       "rarity": "common",
@@ -2621,6 +3077,25 @@
       },
       "originalTitle": "PORT: Caution Chrome Shotgun Skin",
       "originalDescription": "WARNING! Usage of this weapon is deadly! This replaces the default Chrome Shotgun with caution tape cover by Rev_deaddiet. Compatible with reanimations and remodels. Credits: Rev_deaddiet (Caution weapon camo pack)"
+    },
+    {
+      "id": "bombastic-magnum",
+      "weapon": "weapon_pistol_magnum",
+      "rarity": "common",
+      "price": 50,
+      "workshopId": "2727986985",
+      "title": {
+        "en": "Bombastic Magnum",
+        "pt": "Bombastic Magnum",
+        "es": "Bombastic Magnum"
+      },
+      "description": {
+        "en": "Magnum with a bold orange and red flame pattern.",
+        "pt": "Magnum com uma estampa de chamas laranja e vermelha.",
+        "es": "Magnum con un estampado de llamas naranja y rojo."
+      },
+      "originalTitle": "Bombastic Magnum/Deagle",
+      "originalDescription": "Grilled Cheese Gun This is my first time reskinning a Left 4 Dead weapon, sorry if it looks like garbage Credits For ROBLOX 'Bombastic' Texture Valve Base textures"
     },
     {
       "id": "red-black-axe",
@@ -2754,6 +3229,25 @@
       },
       "originalTitle": "Boykisser Pump Shotgun",
       "originalDescription": "Just a bunch of images of boykisser on the pump shotgun. ___________________________________________________ I DO NOT OWN ANY OF THE IMAGES USED IN THIS TEXTURE. ___________________________________________________ Tags pump shotgun, boykisser"
+    },
+    {
+      "id": "alternative-magnum",
+      "weapon": "weapon_pistol_magnum",
+      "rarity": "common",
+      "price": 45,
+      "workshopId": "2818007735",
+      "title": {
+        "en": "Alternative Desert Eagle",
+        "pt": "Alternative Desert Eagle",
+        "es": "Alternative Desert Eagle"
+      },
+      "description": {
+        "en": "Worn silver Magnum with a wooden grip.",
+        "pt": "Magnum prateada desgastada com empunhadura de madeira.",
+        "es": "Magnum plateada desgastada con empuñadura de madera."
+      },
+      "originalTitle": "Alternative Desert Eagle",
+      "originalDescription": "This add-on gives your default magnum a wooden grip with a worn look. Since this is only a re-texture, its compatible with re-animations."
     },
     {
       "id": "whitetail-axe",

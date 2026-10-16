@@ -10,7 +10,7 @@ public class SkinsModel(IReadOnlyCollection<Skin> skins, bool loggedIn, WalletRe
 
     public static readonly string[] Weapons =
     [
-        "weapon_smg", "weapon_smg_silenced", "weapon_smg_mp5", "weapon_pumpshotgun", "weapon_shotgun_chrome",
+        "weapon_smg", "weapon_smg_silenced", "weapon_smg_mp5", "weapon_pumpshotgun", "weapon_shotgun_chrome", "weapon_pistol_magnum",
         "weapon_melee_fireaxe", "weapon_melee_katana", "weapon_melee_machete", "weapon_melee_baseball_bat", "weapon_melee_cricket_bat",
         "weapon_melee_electric_guitar", "weapon_melee_crowbar", "weapon_melee_golfclub", "weapon_melee_frying_pan"
     ];
@@ -22,6 +22,7 @@ public class SkinsModel(IReadOnlyCollection<Skin> skins, bool loggedIn, WalletRe
         ["weapon_smg_mp5"] = "WeaponSmgMp5",
         ["weapon_pumpshotgun"] = "WeaponPumpShotgun",
         ["weapon_shotgun_chrome"] = "WeaponShotgunChrome",
+        ["weapon_pistol_magnum"] = "WeaponPistolMagnum",
         ["weapon_melee_fireaxe"] = "WeaponFireaxe",
         ["weapon_melee_katana"] = "WeaponKatana",
         ["weapon_melee_machete"] = "WeaponMachete",

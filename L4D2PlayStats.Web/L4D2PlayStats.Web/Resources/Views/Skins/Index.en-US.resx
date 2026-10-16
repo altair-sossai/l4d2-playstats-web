@@ -366,7 +366,7 @@
     <value>How to use your skins in game</value>
   </data>
   <data name="UseWeapons" xml:space="preserve">
-    <value>Weapon names: &lt;code&gt;smg&lt;/code&gt;, &lt;code&gt;mac&lt;/code&gt;, &lt;code&gt;mp5&lt;/code&gt;, &lt;code&gt;pump&lt;/code&gt;, &lt;code&gt;chrome&lt;/code&gt;, &lt;code&gt;axe&lt;/code&gt;, &lt;code&gt;katana&lt;/code&gt;, &lt;code&gt;machete&lt;/code&gt;, &lt;code&gt;bat&lt;/code&gt;, &lt;code&gt;cricket&lt;/code&gt;, &lt;code&gt;guitar&lt;/code&gt;, &lt;code&gt;crowbar&lt;/code&gt;, &lt;code&gt;golf&lt;/code&gt;, &lt;code&gt;pan&lt;/code&gt;.</value>
+    <value>Weapon names: &lt;code&gt;smg&lt;/code&gt;, &lt;code&gt;mac&lt;/code&gt;, &lt;code&gt;mp5&lt;/code&gt;, &lt;code&gt;pump&lt;/code&gt;, &lt;code&gt;chrome&lt;/code&gt;, &lt;code&gt;magnum&lt;/code&gt;, &lt;code&gt;axe&lt;/code&gt;, &lt;code&gt;katana&lt;/code&gt;, &lt;code&gt;machete&lt;/code&gt;, &lt;code&gt;bat&lt;/code&gt;, &lt;code&gt;cricket&lt;/code&gt;, &lt;code&gt;guitar&lt;/code&gt;, &lt;code&gt;crowbar&lt;/code&gt;, &lt;code&gt;golf&lt;/code&gt;, &lt;code&gt;pan&lt;/code&gt;.</value>
   </data>
   <data name="ViewOnWorkshop" xml:space="preserve">
     <value>View on Workshop</value>
@@ -409,6 +409,9 @@
   </data>
   <data name="WeaponMachete" xml:space="preserve">
     <value>Machete</value>
+  </data>
+  <data name="WeaponPistolMagnum" xml:space="preserve">
+    <value>Magnum</value>
   </data>
   <data name="WeaponPumpShotgun" xml:space="preserve">
     <value>Pump Shotgun</value>
