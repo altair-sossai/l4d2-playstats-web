@@ -58,6 +58,7 @@ builder.Services.AddAuthentication(options =>
 builder.Services.AddApp(builder.Configuration);
 builder.Services.AddPlayStatsSdk(builder.Configuration);
 builder.Services.AddHostedService<PlayerConnectionInfoBackgroundService>();
+builder.Services.AddHostedService<SkinSeasonRefundBackgroundService>();
 
 builder.Services.AddScoped<ICurrentUser, CurrentUser>();
 

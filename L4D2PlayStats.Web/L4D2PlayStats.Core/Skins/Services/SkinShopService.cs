@@ -23,6 +23,7 @@ public class SkinShopService(
     private const int ConflictStatus = 409;
     private const int PreconditionFailedStatus = 412;
     private const int RefundAllParallelism = 8;
+    private const string SeasonRefundSource = "season";
 
     public async Task<WalletResult?> GetWalletAsync(string communityId, CancellationToken cancellationToken = default)
     {
@@ -225,14 +226,19 @@ public class SkinShopService(
         return SkinShopResult.Of(SkinShopStatus.Success, skin);
     }
 
-    public async Task<SkinShopResult> RefundAsync(string communityId, string skinId, string adminCommunityId, CancellationToken cancellationToken = default)
+    public Task<SkinShopResult> RefundAsync(string communityId, string skinId, string adminCommunityId, CancellationToken cancellationToken = default)
+    {
+        return RefundAsync(communityId, skinId, adminCommunityId, _ => true, cancellationToken);
+    }
+
+    private async Task<SkinShopResult> RefundAsync(string communityId, string skinId, string adminCommunityId, Func<SkinPurchaseEntity, bool> canRefund, CancellationToken cancellationToken)
     {
         var skin = await skinService.FindAsync(skinId, cancellationToken);
 
         for (var attempt = 1; attempt <= MaxAttempts; attempt++)
         {
             var purchase = await repository.FindPurchaseAsync(communityId, skinId, cancellationToken);
-            if (purchase == null)
+            if (purchase == null || !canRefund(purchase))
                 return SkinShopResult.Of(SkinShopStatus.NotOwned, skin);
 
             var actions = new List<TableTransactionAction>
@@ -279,6 +285,37 @@ public class SkinShopService(
     public async Task<RefundAllResult> RefundAllAsync(string adminCommunityId, CancellationToken cancellationToken = default)
     {
         var purchases = await repository.GetAllPurchasesAsync(cancellationToken);
+        var summary = await RefundPurchasesAsync(purchases, adminCommunityId, _ => true, cancellationToken);
+
+        logger.LogWarning("All skin purchases refunded by {AdminCommunityId}: {Purchases} purchases, {Gifts} gifts, {Stars} stars, {Players} players, {Failed} failed",
+            adminCommunityId, summary.Purchases, summary.Gifts, summary.Stars, summary.Players, summary.Failed);
+
+        return summary;
+    }
+
+    public async Task<RefundAllResult> RefundSeasonAsync(DateTimeOffset seasonStart, CancellationToken cancellationToken = default)
+    {
+        var purchases = await repository.GetAllPurchasesAsync(cancellationToken);
+        var expired = purchases.Where(purchase => IsExpired(purchase, seasonStart)).ToList();
+
+        if (expired.Count == 0)
+            return new RefundAllResult();
+
+        var summary = await RefundPurchasesAsync(expired, SeasonRefundSource, purchase => IsExpired(purchase, seasonStart), cancellationToken);
+
+        logger.LogWarning("Skin purchases made before the season of {SeasonStart} refunded: {Purchases} purchases, {Stars} stars, {Players} players, {Failed} failed",
+            seasonStart, summary.Purchases, summary.Stars, summary.Players, summary.Failed);
+
+        return summary;
+    }
+
+    private static bool IsExpired(SkinPurchaseEntity purchase, DateTimeOffset seasonStart)
+    {
+        return !purchase.Gift && purchase.PurchasedAtUtc < seasonStart;
+    }
+
+    private async Task<RefundAllResult> RefundPurchasesAsync(IEnumerable<SkinPurchaseEntity> purchases, string adminCommunityId, Func<SkinPurchaseEntity, bool> canRefund, CancellationToken cancellationToken)
+    {
         var refunded = new ConcurrentBag<SkinPurchaseEntity>();
         var failed = 0;
 
@@ -292,7 +329,7 @@ public class SkinShopService(
         {
             foreach (var purchase in player)
             {
-                var result = await RefundAsync(purchase.PartitionKey, purchase.SkinId, adminCommunityId, token);
+                var result = await RefundAsync(purchase.PartitionKey, purchase.SkinId, adminCommunityId, canRefund, token);
 
                 if (result.Succeeded)
                 {
@@ -305,7 +342,7 @@ public class SkinShopService(
             }
         });
 
-        var summary = new RefundAllResult
+        return new RefundAllResult
         {
             Purchases = refunded.Count(purchase => !purchase.Gift),
             Gifts = refunded.Count(purchase => purchase.Gift),
@@ -313,11 +350,6 @@ public class SkinShopService(
             Players = refunded.Select(purchase => purchase.PartitionKey).Distinct().Count(),
             Failed = failed
         };
-
-        logger.LogWarning("All skin purchases refunded by {AdminCommunityId}: {Purchases} purchases, {Gifts} gifts, {Stars} stars, {Players} players, {Failed} failed",
-            adminCommunityId, summary.Purchases, summary.Gifts, summary.Stars, summary.Players, summary.Failed);
-
-        return summary;
     }
 
     private async Task<PlayerStarsResult?> GetStarsAsync(string communityId, CancellationToken cancellationToken)

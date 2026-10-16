@@ -15,4 +15,5 @@ public interface ISkinShopService
     Task<SkinShopResult> GiftAsync(string communityId, string skinId, string adminCommunityId, string? adminName, CancellationToken cancellationToken = default);
     Task<SkinShopResult> RefundAsync(string communityId, string skinId, string adminCommunityId, CancellationToken cancellationToken = default);
     Task<RefundAllResult> RefundAllAsync(string adminCommunityId, CancellationToken cancellationToken = default);
+    Task<RefundAllResult> RefundSeasonAsync(DateTimeOffset seasonStart, CancellationToken cancellationToken = default);
 }

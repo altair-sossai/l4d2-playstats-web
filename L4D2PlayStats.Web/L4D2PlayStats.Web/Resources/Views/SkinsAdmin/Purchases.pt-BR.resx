@@ -200,6 +200,9 @@
   <data name="SearchPlaceholder" xml:space="preserve">
     <value>Buscar por jogador, Steam ID ou skin...</value>
   </data>
+  <data name="SeasonRefundNotice" xml:space="preserve">
+    <value>Ao fim da temporada do ranking ({0}), as compras são estornadas automaticamente e as estrelas voltam para os jogadores; os presentes ficam com eles para sempre.</value>
+  </data>
   <data name="Skin" xml:space="preserve">
     <value>Skin</value>
   </data>

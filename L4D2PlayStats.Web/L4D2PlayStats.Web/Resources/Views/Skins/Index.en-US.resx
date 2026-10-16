@@ -156,7 +156,10 @@
     <value>Once done, it is equipped on your weapon ({0}) right away and shows up on the server from the next map change.</value>
   </data>
   <data name="ConfirmBuyFinal" xml:space="preserve">
-    <value>Purchases cannot be undone.</value>
+    <value>Purchases cannot be undone before the ranking reset.</value>
+  </data>
+  <data name="ConfirmBuySeason" xml:space="preserve">
+    <value>It lasts until the end of the ranking season, on {0}; then it is refunded automatically and the stars come back to you.</value>
   </data>
   <data name="ConfirmBuyTestPhase" xml:space="preserve">
     <value>During the test phase, you can ask an admin to refund this skin at any time.</value>
@@ -213,7 +216,7 @@
     <value>Melee weapons</value>
   </data>
   <data name="HowToBuy" xml:space="preserve">
-    <value>Buy a skin with your stars. It is &lt;b&gt;equipped&lt;/b&gt; right away and shows up on the server &lt;b&gt;from the next map change&lt;/b&gt;. Each skin is bought only once and is yours forever.</value>
+    <value>Buy a skin with your stars. It is &lt;b&gt;equipped&lt;/b&gt; right away and shows up on the server &lt;b&gt;from the next map change&lt;/b&gt;. Each skin is bought only once and is yours until the end of the ranking season.</value>
   </data>
   <data name="HowToBuyTitle" xml:space="preserve">
     <value>2. Buy and equip</value>
@@ -287,6 +290,12 @@
   <data name="RarityUncommon" xml:space="preserve">
     <value>Uncommon</value>
   </data>
+  <data name="SeasonText" xml:space="preserve">
+    <value>Bought skins last until the ranking reset, which happens every 2 months. The current season ends on {0} ({1} days left): at that moment every purchase is refunded automatically and the stars come back so you can buy again. Skins received as gifts are yours forever.</value>
+  </data>
+  <data name="SeasonTitle" xml:space="preserve">
+    <value>Skins per season</value>
+  </data>
   <data name="SkinsCount" xml:space="preserve">
     <value>{0} skins</value>
   </data>
@@ -300,7 +309,7 @@
     <value>Shop</value>
   </data>
   <data name="TestPhaseText" xml:space="preserve">
-    <value>While the shop is in its test phase, you can ask an admin to refund any skin at any time, and the stars come back to you. When the shop is officially released, this notice will be removed and purchases will no longer be refundable.</value>
+    <value>While the shop is in its test phase, you can ask an admin to refund any skin at any time, and the stars come back to you. When the shop is officially released, this notice will be removed and refunds on request will end.</value>
   </data>
   <data name="TestPhaseTitle" xml:space="preserve">
     <value>Test phase: buy without worry</value>

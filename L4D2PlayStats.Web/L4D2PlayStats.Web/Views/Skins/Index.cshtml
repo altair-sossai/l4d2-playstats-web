@@ -19,6 +19,7 @@
     var culture = CultureInfo.CurrentUICulture;
     var weaponNames = SkinsModel.WeaponResourceKeys.ToDictionary(pair => pair.Key, pair => Localizer[pair.Value].Value);
     var wallet = Model.Wallet;
+    var season = SkinSeason.Current;
     var loginUrl = Url.Action("Login", "Account", new { returnUrl = Url.Action("Index", "Skins") });
 }
 
@@ -114,10 +115,10 @@
             background: rgba(217, 83, 79, .08);
         }
 
-        .sk-test-phase {
+        .sk-banner {
             display: flex;
             max-width: 780px;
-            margin-bottom: 16px;
+            margin-bottom: 12px;
             padding: 12px 16px;
             border: 1px solid rgba(92, 184, 92, .55);
             border-left: 4px solid #5cb85c;
@@ -125,14 +126,24 @@
             background: rgba(92, 184, 92, .1);
         }
 
-            .sk-test-phase .glyphicon {
+            .sk-banner .glyphicon {
                 margin: 3px 12px 0 0;
                 font-size: 18px;
                 color: #5cb85c;
             }
 
-            .sk-test-phase p {
+            .sk-banner p {
                 margin: 4px 0 0;
+            }
+
+        .sk-banner-info {
+            border-color: rgba(91, 192, 222, .55);
+            border-left-color: #5bc0de;
+            background: rgba(91, 192, 222, .1);
+        }
+
+            .sk-banner-info .glyphicon {
+                color: #5bc0de;
             }
 
         .sk-credits {
@@ -466,7 +477,7 @@
 
     @if (SkinsModel.TestPhase)
     {
-        <div class="sk-test-phase">
+        <div class="sk-banner">
             <span class="glyphicon glyphicon-refresh"></span>
             <div>
                 <strong>@Localizer["TestPhaseTitle"]</strong>
@@ -474,6 +485,14 @@
             </div>
         </div>
     }
+
+    <div class="sk-banner sk-banner-info">
+        <span class="glyphicon glyphicon-calendar"></span>
+        <div>
+            <strong>@Localizer["SeasonTitle"]</strong>
+            <p>@string.Format(Localizer["SeasonText"].Value, season.LastDay.ToString("d", culture), season.DaysLeft.ToString("N0", culture))</p>
+        </div>
+    </div>
 
     <div class="sk-howto">
         <div>
@@ -895,6 +914,7 @@
                 confirmBuy: @Json.Serialize(Localizer["ConfirmBuyText"].Value),
                 confirmBalance: @Json.Serialize(Localizer["ConfirmBuyBalance"].Value),
                 confirmEquip: @Json.Serialize(Localizer["ConfirmBuyEquip"].Value),
+                confirmSeason: @Json.Serialize(string.Format(Localizer["ConfirmBuySeason"].Value, season.LastDay.ToString("d", culture))),
                 confirmFinal: @Json.Serialize(Localizer[SkinsModel.TestPhase ? "ConfirmBuyTestPhase" : "ConfirmBuyFinal"].Value),
                 buySuccessTitle: @Json.Serialize(Localizer["BuySuccessTitle"].Value),
                 buySuccess: @Json.Serialize(Localizer["BuySuccessText"].Value),
@@ -1010,6 +1030,7 @@
                 var html = '<p>' + format(texts.confirmBuy, title, number(price)) + '</p>'
                     + '<p>' + format(texts.confirmBalance, number(texts.balance), number(texts.balance - price)) + '</p>'
                     + '<p class="sk-notice">' + format(texts.confirmEquip, weaponName) + '</p>'
+                    + '<p>' + escapeHtml(texts.confirmSeason) + '</p>'
                     + '<p><small>' + texts.confirmFinal + '</small></p>';
 
                 $('.modal.in').modal('hide');

@@ -156,7 +156,10 @@
     <value>Al terminar, queda equipada en tu arma ({0}) y aparece en el servidor a partir del próximo cambio de mapa.</value>
   </data>
   <data name="ConfirmBuyFinal" xml:space="preserve">
-    <value>La compra no se puede deshacer.</value>
+    <value>La compra no se puede deshacer antes del reinicio del ranking.</value>
+  </data>
+  <data name="ConfirmBuySeason" xml:space="preserve">
+    <value>Dura hasta el final de la temporada del ranking, el {0}; después se reembolsa automáticamente y las estrellas vuelven a ti.</value>
   </data>
   <data name="ConfirmBuyTestPhase" xml:space="preserve">
     <value>Durante la fase de pruebas, puedes pedirle a un administrador el reembolso de esta skin en cualquier momento.</value>
@@ -213,7 +216,7 @@
     <value>Armas cuerpo a cuerpo</value>
   </data>
   <data name="HowToBuy" xml:space="preserve">
-    <value>Compra una skin con tus estrellas. Queda &lt;b&gt;equipada&lt;/b&gt; al instante y aparece en el servidor &lt;b&gt;a partir del próximo cambio de mapa&lt;/b&gt;. Cada skin se compra una sola vez y es tuya para siempre.</value>
+    <value>Compra una skin con tus estrellas. Queda &lt;b&gt;equipada&lt;/b&gt; al instante y aparece en el servidor &lt;b&gt;a partir del próximo cambio de mapa&lt;/b&gt;. Cada skin se compra una sola vez y es tuya hasta el final de la temporada del ranking.</value>
   </data>
   <data name="HowToBuyTitle" xml:space="preserve">
     <value>2. Compra y equipa</value>
@@ -287,6 +290,12 @@
   <data name="RarityUncommon" xml:space="preserve">
     <value>Poco común</value>
   </data>
+  <data name="SeasonText" xml:space="preserve">
+    <value>Las skins compradas duran hasta el reinicio del ranking, que ocurre cada 2 meses. La temporada actual termina el {0} (faltan {1} días): en ese momento todas las compras se reembolsan automáticamente y las estrellas vuelven para que compres de nuevo. Las skins recibidas como regalo son tuyas para siempre.</value>
+  </data>
+  <data name="SeasonTitle" xml:space="preserve">
+    <value>Skins por temporada</value>
+  </data>
   <data name="SkinsCount" xml:space="preserve">
     <value>{0} skins</value>
   </data>
@@ -300,7 +309,7 @@
     <value>Tienda</value>
   </data>
   <data name="TestPhaseText" xml:space="preserve">
-    <value>Mientras la tienda esté en fase de pruebas, puedes pedirle a un administrador el reembolso de cualquier skin en cualquier momento, y las estrellas vuelven a ti. Cuando la tienda se lance oficialmente, este aviso se quitará y las compras ya no tendrán reembolso.</value>
+    <value>Mientras la tienda esté en fase de pruebas, puedes pedirle a un administrador el reembolso de cualquier skin en cualquier momento, y las estrellas vuelven a ti. Cuando la tienda se lance oficialmente, este aviso se quitará y ya no habrá reembolsos a pedido.</value>
   </data>
   <data name="TestPhaseTitle" xml:space="preserve">
     <value>Fase de pruebas: compra sin miedo</value>

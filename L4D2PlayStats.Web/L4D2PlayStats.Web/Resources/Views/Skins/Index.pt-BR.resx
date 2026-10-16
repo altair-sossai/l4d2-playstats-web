@@ -156,7 +156,10 @@
     <value>Ao concluir, ela já fica equipada na sua arma ({0}) e aparece no servidor a partir da próxima troca de mapa.</value>
   </data>
   <data name="ConfirmBuyFinal" xml:space="preserve">
-    <value>A compra não pode ser desfeita.</value>
+    <value>A compra não pode ser desfeita antes do reset do ranking.</value>
+  </data>
+  <data name="ConfirmBuySeason" xml:space="preserve">
+    <value>Ela vale até o fim da temporada do ranking, em {0}; depois disso é estornada automaticamente e as estrelas voltam para você.</value>
   </data>
   <data name="ConfirmBuyTestPhase" xml:space="preserve">
     <value>Durante a fase de testes, você pode pedir o reembolso desta skin a um administrador a qualquer momento.</value>
@@ -213,7 +216,7 @@
     <value>Armas brancas</value>
   </data>
   <data name="HowToBuy" xml:space="preserve">
-    <value>Compre uma skin com suas estrelas. Ela já fica &lt;b&gt;equipada&lt;/b&gt; e aparece no servidor &lt;b&gt;a partir da próxima troca de mapa&lt;/b&gt;. Cada skin é comprada uma vez só e fica sua para sempre.</value>
+    <value>Compre uma skin com suas estrelas. Ela já fica &lt;b&gt;equipada&lt;/b&gt; e aparece no servidor &lt;b&gt;a partir da próxima troca de mapa&lt;/b&gt;. Cada skin é comprada uma vez só e fica sua até o fim da temporada do ranking.</value>
   </data>
   <data name="HowToBuyTitle" xml:space="preserve">
     <value>2. Compre e equipe</value>
@@ -287,6 +290,12 @@
   <data name="RarityUncommon" xml:space="preserve">
     <value>Incomum</value>
   </data>
+  <data name="SeasonText" xml:space="preserve">
+    <value>As skins compradas valem até o reset do ranking, que acontece a cada 2 meses. A temporada atual termina em {0} (faltam {1} dias): nesse momento, todas as compras são estornadas automaticamente e as estrelas voltam para você comprar de novo. Skins recebidas de presente ficam com você para sempre.</value>
+  </data>
+  <data name="SeasonTitle" xml:space="preserve">
+    <value>Skins por temporada</value>
+  </data>
   <data name="SkinsCount" xml:space="preserve">
     <value>{0} skins</value>
   </data>
@@ -300,7 +309,7 @@
     <value>Loja</value>
   </data>
   <data name="TestPhaseText" xml:space="preserve">
-    <value>Enquanto a loja estiver em fase de testes, você pode pedir a um administrador o reembolso de qualquer skin, a qualquer momento, e as estrelas voltam para você. Quando a loja for oficialmente liberada, este aviso será removido e as compras deixarão de ter reembolso.</value>
+    <value>Enquanto a loja estiver em fase de testes, você pode pedir a um administrador o reembolso de qualquer skin, a qualquer momento, e as estrelas voltam para você. Quando a loja for oficialmente liberada, este aviso será removido e não haverá mais reembolso a pedido.</value>
   </data>
   <data name="TestPhaseTitle" xml:space="preserve">
     <value>Fase de testes: compre sem medo</value>

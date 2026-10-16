@@ -200,6 +200,9 @@
   <data name="SearchPlaceholder" xml:space="preserve">
     <value>Search by player, Steam ID or skin...</value>
   </data>
+  <data name="SeasonRefundNotice" xml:space="preserve">
+    <value>At the end of the ranking season ({0}), purchases are refunded automatically and the stars go back to the players; gifts stay with them forever.</value>
+  </data>
   <data name="Skin" xml:space="preserve">
     <value>Skin</value>
   </data>
