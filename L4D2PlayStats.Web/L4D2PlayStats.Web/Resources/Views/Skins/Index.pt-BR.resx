@@ -311,9 +311,6 @@
   <data name="TestPhaseText" xml:space="preserve">
     <value>Enquanto a loja estiver em fase de testes, você pode pedir a um administrador o reembolso de qualquer skin, a qualquer momento, e as estrelas voltam para você. Quando a loja for oficialmente liberada, este aviso será removido e não haverá mais reembolso a pedido.</value>
   </data>
-  <data name="TestPhaseTitle" xml:space="preserve">
-    <value>Fase de testes: compre sem medo</value>
-  </data>
   <data name="Unequip" xml:space="preserve">
     <value>Voltar para a padrão</value>
   </data>

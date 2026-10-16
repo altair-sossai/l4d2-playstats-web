@@ -324,6 +324,25 @@
       "originalDescription": "Replace wood spray skin The technology is not skilled, may not do very well ~"
     },
     {
+      "id": "asiimov-chrome",
+      "weapon": "weapon_shotgun_chrome",
+      "rarity": "epic",
+      "price": 380,
+      "workshopId": "504708297",
+      "title": {
+        "en": "Asiimov Chrome Shotgun",
+        "pt": "Asiimov Chrome Shotgun",
+        "es": "Asiimov Chrome Shotgun"
+      },
+      "description": {
+        "en": "High-quality Asiimov redesign for the Chrome Shotgun, in white, black and orange.",
+        "pt": "Redesign Asiimov de alta qualidade para a Chrome Shotgun, em branco, preto e laranja.",
+        "es": "Rediseño Asiimov de alta calidad para la Chrome Shotgun, en blanco, negro y naranja."
+      },
+      "originalTitle": "Asiimov Chrome Shotgun",
+      "originalDescription": "Asiimov Chrome Shotgun redesign for chrome shotgun high quality Asiimov Hunting Rifle Asiimov Pump Shotgun"
+    },
+    {
       "id": "printstream-chrome",
       "weapon": "weapon_shotgun_chrome",
       "rarity": "epic",
@@ -932,6 +951,25 @@
       "originalDescription": "This is my first time to make a skin mod It has fluorescent effect and some flaws Hope you guys enjoy it！ I will go ahead and do it. 这是我第一次做的皮肤类MOD 具有夜光效果也颇有瑕疵 希望你们喜欢！ 我会继续坚持下去的"
     },
     {
+      "id": "inferno-chrome",
+      "weapon": "weapon_shotgun_chrome",
+      "rarity": "rare",
+      "price": 200,
+      "workshopId": "1538174590",
+      "title": {
+        "en": "Chrome Shotgun Inferno",
+        "pt": "Chrome Shotgun Inferno",
+        "es": "Chrome Shotgun Inferno"
+      },
+      "description": {
+        "en": "The room sweeper from hell: a black Chrome Shotgun covered in red flames.",
+        "pt": "A varredora de salas do inferno: uma Chrome Shotgun preta coberta de chamas vermelhas.",
+        "es": "La barredora de salas del infierno: una Chrome Shotgun negra cubierta de llamas rojas."
+      },
+      "originalTitle": "Chrome Shotgun_Inferno",
+      "originalDescription": "The room sweeper from hell. Pick up this weapon and leave your opponents, burning with anger."
+    },
+    {
       "id": "volcanic-chrome",
       "weapon": "weapon_shotgun_chrome",
       "rarity": "rare",
@@ -1253,6 +1291,25 @@
       },
       "originalTitle": "Chrome Shotgun 猫宫日向 香草v2.0（发光）replace chrome shotgun (glow)",
       "originalDescription": "简单修复了一下乱糟糟的猫宫铁喷，一个比较简洁的条纹版，上手感觉不错 只用小号发一下 高画质下的反光效果还行 猫宫铁喷初版 预览图如下： 如有喜欢点个赞吧 谢谢~"
+    },
+    {
+      "id": "umbreon-chrome",
+      "weapon": "weapon_shotgun_chrome",
+      "rarity": "rare",
+      "price": 170,
+      "workshopId": "2142826115",
+      "title": {
+        "en": "Chrome Shotgun Umbreon Camo",
+        "pt": "Chrome Shotgun Umbreon Camo",
+        "es": "Chrome Shotgun Umbreon Camo"
+      },
+      "description": {
+        "en": "Umbreon camo for the Chrome Shotgun, with the yellow rings of the Pokémon on a dark finish.",
+        "pt": "Camuflagem do Umbreon para a Chrome Shotgun, com os anéis amarelos do Pokémon sobre um acabamento escuro.",
+        "es": "Camuflaje de Umbreon para la Chrome Shotgun, con los anillos amarillos del Pokémon sobre un acabado oscuro."
+      },
+      "originalTitle": "Pokemon - Chrome Shotgun Umbreon Camo *Finished*",
+      "originalDescription": "The Glow in the Dark-Veon ====================================== ... https://puu.sh/vtQpy/e3da4fcf8d.png Picture of the gun. -Not bothering to do the rest of the description- Nor the rest of the gun. Requester: Umbre http://steamcommunity.com/id/Normalumbreon Thank you for your request. ===========…"
     },
     {
       "id": "marisa",
@@ -2165,6 +2222,25 @@
       },
       "originalTitle": "Kao the kangaroo pumpshotgun",
       "originalDescription": "\"Wouldn't want that on rootube\"~Kao --------------------------------------------- \"Welcome\"~Rawr =============== Well since a remaster of everyone's favorite roo has come upon us a couple of days ago I decided to retexture my favorite shotgun with everyone's favorite boxing roo (…"
+    },
+    {
+      "id": "black-tactical-chrome",
+      "weapon": "weapon_shotgun_chrome",
+      "rarity": "uncommon",
+      "price": 90,
+      "workshopId": "2453777915",
+      "title": {
+        "en": "Black Tactical Chrome Shotgun",
+        "pt": "Black Tactical Chrome Shotgun",
+        "es": "Black Tactical Chrome Shotgun"
+      },
+      "description": {
+        "en": "All-black tactical reskin for the Chrome Shotgun, with the Police Tactical 12 marking.",
+        "pt": "Reskin tático todo preto para a Chrome Shotgun, com a marcação Police Tactical 12.",
+        "es": "Reskin táctico todo negro para la Chrome Shotgun, con la marca Police Tactical 12."
+      },
+      "originalTitle": "Black Tactical Chrome Shotgun",
+      "originalDescription": "Reskin for Chrome Shotgun. Compatible with custom animations. Animations on screenshots - link IF ADDON DOESN'T WORK TRY THIS METHOD: 1. Open L4D2 game and then subscribe to this addon, wait till it downloaded, then close the game. 2. Open your game folder \" ...Steam\\steamapps\\common\\Left 4 Dead 2\"…"
     },
     {
       "id": "google-chrome",

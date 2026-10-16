@@ -311,9 +311,6 @@
   <data name="TestPhaseText" xml:space="preserve">
     <value>While the shop is in its test phase, you can ask an admin to refund any skin at any time, and the stars come back to you. When the shop is officially released, this notice will be removed and refunds on request will end.</value>
   </data>
-  <data name="TestPhaseTitle" xml:space="preserve">
-    <value>Test phase: buy without worry</value>
-  </data>
   <data name="Unequip" xml:space="preserve">
     <value>Back to default</value>
   </data>
