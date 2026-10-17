@@ -1,10 +1,9 @@
 @using System.Globalization
-@using L4D2PlayStats.Core.Skins
 @using L4D2PlayStats.Web
 @using L4D2PlayStats.Web.Models
 @using Microsoft.AspNetCore.Mvc.Localization
 @using Microsoft.Extensions.Localization
-@model IReadOnlyCollection<Skin>
+@model IReadOnlyCollection<L4D2PlayStats.Core.Skins.Skin>
 @inject IViewLocalizer Localizer
 @inject IStringLocalizer<SharedResource> SharedLocalizer
 
@@ -122,7 +121,9 @@
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="@SharedLocalizer["Close"]"><span aria-hidden="true">&times;</span></button>
+                <button type="button" class="close" data-dismiss="modal" aria-label="@SharedLocalizer["Close"]">
+                    <span aria-hidden="true">&times;</span>
+                </button>
                 <h4 class="modal-title">@Localizer["Title"]</h4>
             </div>
             <div class="modal-body">

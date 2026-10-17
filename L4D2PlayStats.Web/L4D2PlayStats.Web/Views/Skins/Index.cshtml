@@ -25,7 +25,7 @@
     var authors = Model.Skins
         .Where(skin => !string.IsNullOrEmpty(skin.Author.Name))
         .GroupBy(skin => skin.Author.CommunityId)
-        .Select(group => (Author: group.First().Author, Skins: group.OrderBy(skin => skin.Title.Get(culture), StringComparer.CurrentCultureIgnoreCase).ToList()))
+        .Select(group => (group.First().Author, Skins: group.OrderBy(skin => skin.Title.Get(culture), StringComparer.CurrentCultureIgnoreCase).ToList()))
         .OrderBy(entry => entry.Author.Name, StringComparer.CurrentCultureIgnoreCase)
         .ToList();
     var loginUrl = Url.Action("Login", "Account", new { returnUrl = Url.Action("Index", "Skins") });
@@ -717,7 +717,7 @@
         </button>
     }
 
-    const int ShotCount = 6;
+    const int shotCount = 6;
 
     string ShotsUrl(Skin skin)
     {
@@ -742,10 +742,10 @@
                                 <img data-shot="1" data-size="" alt="@title"/>
                             </a>
                             <div class="sk-gallery-thumbs">
-                                @for (var shot = 1; shot <= ShotCount; shot++)
+                                @for (var shot = 1; shot <= shotCount; shot++)
                                 {
-                                    <button type="button" class="sk-gallery-thumb @(shot == 1 ? "active" : "")" data-shot="@shot" title="@title (@shot/@ShotCount)">
-                                        <img data-shot="@shot" data-size="-thumb" alt="@title (@shot/@ShotCount)"/>
+                                    <button type="button" class="sk-gallery-thumb @(shot == 1 ? "active" : "")" data-shot="@shot" title="@title (@shot/@shotCount)">
+                                        <img data-shot="@shot" data-size="-thumb" alt="@title (@shot/@shotCount)"/>
                                     </button>
                                 }
                             </div>
@@ -1026,7 +1026,9 @@
                 <p class="lead">@Localizer["AuthorNoticeIntro"]</p>
                 <p>@Localizer["AuthorNoticeRespect"]</p>
                 <p>@Localizer["AuthorNoticeNonProfit"]</p>
-                <p><b>@Localizer["AuthorNoticeRight"]</b></p>
+                <p>
+                    <b>@Localizer["AuthorNoticeRight"]</b>
+                </p>
                 <div class="sk-author-notice-actions">
                     <a class="btn btn-primary" href="https://steamcommunity.com/id/altairsossai" target="_blank" rel="noopener">
                         <span class="glyphicon glyphicon-user"></span> @Localizer["AuthorNoticeSteam"]
@@ -1094,33 +1096,49 @@
                     </thead>
                     <tbody>
                     <tr>
-                        <td><code>!skin next</code><br/><code>!skin prev</code></td>
+                        <td>
+                            <code>!skin next</code><br/><code>!skin prev</code>
+                        </td>
                         <td>@Localizer["UseCmdCycle"]</td>
                     </tr>
                     <tr>
-                        <td><code>!skin surtr</code></td>
+                        <td>
+                            <code>!skin surtr</code>
+                        </td>
                         <td>@Localizer["UseCmdId"]</td>
                     </tr>
                     <tr>
-                        <td><code>!skin default</code></td>
+                        <td>
+                            <code>!skin default</code>
+                        </td>
                         <td>@Localizer["UseCmdDefault"]</td>
                     </tr>
                     <tr>
-                        <td><code>!skin next pump</code></td>
+                        <td>
+                            <code>!skin next pump</code>
+                        </td>
                         <td>@Localizer["UseCmdWeapon"]</td>
                     </tr>
                     <tr>
-                        <td><code>!skin status</code></td>
+                        <td>
+                            <code>!skin status</code>
+                        </td>
                         <td>@Localizer["UseCmdStatus"]</td>
                     </tr>
                     <tr>
-                        <td><code>!skin</code></td>
+                        <td>
+                            <code>!skin</code>
+                        </td>
                         <td>@Localizer["UseCmdHelp"]</td>
                     </tr>
                     </tbody>
                 </table>
-                <p><small>@Html.Raw(Localizer["UseWeapons"].Value)</small></p>
-                <p><strong>@Localizer["UseRulesTitle"]</strong></p>
+                <p>
+                    <small>@Html.Raw(Localizer["UseWeapons"].Value)</small>
+                </p>
+                <p>
+                    <strong>@Localizer["UseRulesTitle"]</strong>
+                </p>
                 <ul>
                     <li>@Html.Raw(Localizer["UseRuleReady"].Value)</li>
                     <li>@Html.Raw(Localizer["UseRuleNextMap"].Value)</li>
@@ -1141,7 +1159,7 @@
     @await Html.PartialAsync("_GiftModal", Model.Skins)
 }
 
-@section Scripts {    <script>
+@section Scripts { <script>
         $(function () {
             var texts = {
                 balance: @Json.Serialize(wallet?.Balance ?? 0),

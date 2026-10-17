@@ -92,7 +92,9 @@
         <div class="player-skins-row">
             @if (showName)
             {
-                <div class="streak-name @(second ? "second" : "text-muted")">@player.Name <small>(@ownedSkins.Count.ToString("N0"))</small></div>
+                <div class="streak-name @(second ? "second" : "text-muted")">
+                    @player.Name <small>(@ownedSkins.Count.ToString("N0"))</small>
+                </div>
             }
             @if (ownedSkins.Count == 0)
             {
