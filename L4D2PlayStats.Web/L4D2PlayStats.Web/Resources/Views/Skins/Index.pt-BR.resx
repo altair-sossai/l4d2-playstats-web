@@ -470,4 +470,10 @@
   <data name="WeaponSmgSilenced" xml:space="preserve">
     <value>MAC-10</value>
   </data>
+  <data name="PreviousPhoto" xml:space="preserve">
+    <value>Foto anterior</value>
+  </data>
+  <data name="NextPhoto" xml:space="preserve">
+    <value>Próxima foto</value>
+  </data>
 </root>

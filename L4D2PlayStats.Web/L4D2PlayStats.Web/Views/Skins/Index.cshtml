@@ -512,6 +512,38 @@
             }
         }
 
+        .sk-lity-nav {
+            position: fixed;
+            top: 50%;
+            z-index: 9994;
+            width: 48px;
+            height: 64px;
+            margin-top: -32px;
+            padding: 0;
+            border: 0;
+            border-radius: 4px;
+            background: rgba(0, 0, 0, .45);
+            color: #fff;
+            font-size: 24px;
+            opacity: .75;
+            transition: opacity .2s ease, background-color .2s ease;
+        }
+
+            .sk-lity-nav:hover,
+            .sk-lity-nav:focus {
+                background: rgba(0, 0, 0, .7);
+                opacity: 1;
+                outline: none;
+            }
+
+        .sk-lity-prev {
+            left: 12px;
+        }
+
+        .sk-lity-next {
+            right: 12px;
+        }
+
         .sk-modal-tags {
             margin: 0 0 10px;
         }
@@ -1179,6 +1211,8 @@
                 nextMap: @Json.Serialize(Localizer["NextMapNotice"].Value),
                 switchHint: @Json.Serialize(Localizer["SwitchNotice"].Value),
                 errorTitle: @Json.Serialize(Localizer["ErrorTitle"].Value),
+                previousPhoto: @Json.Serialize(Localizer["PreviousPhoto"].Value),
+                nextPhoto: @Json.Serialize(Localizer["NextPhoto"].Value),
                 errors: {
                     InsufficientStars: @Json.Serialize(Localizer["ErrorInsufficientStars"].Value),
                     AlreadyOwned: @Json.Serialize(Localizer["ErrorAlreadyOwned"].Value),
@@ -1388,6 +1422,49 @@
                         panzoom.reset();
                     else
                         panzoom.zoomToPoint(zoomClickScale, e);
+                });
+
+                var $thumbs = $opener.closest('.sk-gallery').find('.sk-gallery-thumb');
+
+                if ($thumbs.length < 2)
+                    return;
+
+                function showShot(offset) {
+                    var index = ($thumbs.index($thumbs.filter('.active')) + offset + $thumbs.length) % $thumbs.length;
+
+                    $thumbs.eq(index).trigger('click');
+                    panzoom.reset({ animate: false });
+                    image.src = $opener.attr('href');
+                }
+
+                function onKeyDown(e) {
+                    if (e.key === 'ArrowLeft')
+                        showShot(-1);
+                    else if (e.key === 'ArrowRight')
+                        showShot(1);
+                    else
+                        return;
+
+                    e.preventDefault();
+                }
+
+                $('<button type="button" class="sk-lity-nav sk-lity-prev"><span class="glyphicon glyphicon-chevron-left"></span></button>')
+                    .attr('aria-label', texts.previousPhoto)
+                    .on('click', function () {
+                        showShot(-1);
+                    })
+                    .appendTo(lity);
+
+                $('<button type="button" class="sk-lity-nav sk-lity-next"><span class="glyphicon glyphicon-chevron-right"></span></button>')
+                    .attr('aria-label', texts.nextPhoto)
+                    .on('click', function () {
+                        showShot(1);
+                    })
+                    .appendTo(lity);
+
+                document.addEventListener('keydown', onKeyDown);
+                instance.element().on('lity:close', function () {
+                    document.removeEventListener('keydown', onKeyDown);
                 });
             });
 
