@@ -1159,7 +1159,9 @@
     @await Html.PartialAsync("_GiftModal", Model.Skins)
 }
 
-@section Scripts { <script>
+@section Scripts {
+    <script src="~/js/panzoom.min.js"></script>
+    <script>
         $(function () {
             var texts = {
                 balance: @Json.Serialize(wallet?.Balance ?? 0),
@@ -1350,6 +1352,43 @@
                 $image.addClass('loading').one('load error', function () {
                     $image.removeClass('loading');
                 }).attr('src', shotUrl(base, version, shot, ''));
+            });
+
+            var zoomMaxScale = 4;
+            var zoomStep = 0.7;
+            var zoomClickScale = 2;
+
+            $(document).on('lity:ready', function (event, instance) {
+                var $opener = instance.opener();
+                var lity = instance.element()[0];
+                var image = instance.element().find('.lity-content img')[0];
+                var panned = false;
+
+                if (!image || !$opener || !$opener.is('.sk-modal-image'))
+                    return;
+
+                var panzoom = Panzoom(image, { maxScale: zoomMaxScale, step: zoomStep, contain: 'outside', cursor: 'zoom-in' });
+
+                image.parentElement.addEventListener('wheel', panzoom.zoomWithWheel);
+                lity.addEventListener('pointerdown', function () {
+                    panned = false;
+                }, true);
+                lity.addEventListener('click', function (e) {
+                    if (panned)
+                        e.stopPropagation();
+                }, true);
+                image.addEventListener('panzoompan', function () {
+                    panned = true;
+                });
+                image.addEventListener('panzoomchange', function (e) {
+                    image.style.cursor = e.detail.scale > 1 ? 'grab' : 'zoom-in';
+                });
+                image.addEventListener('click', function (e) {
+                    if (panzoom.getScale() > 1)
+                        panzoom.reset();
+                    else
+                        panzoom.zoomToPoint(zoomClickScale, e);
+                });
             });
 
             function openDetails($card) {
