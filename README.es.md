@@ -204,7 +204,7 @@ Todos los plugins están en [l4d2-zone-server](https://github.com/altair-sossai/
 | `l4d2_playstats` | Escribe las estadísticas de cada mapa | — |
 | [`l4d2_playstats_sync`](https://github.com/altair-sossai/l4d2-zone-server/blob/master/addons/sourcemod/scripting/l4d2_playstats_sync.sp) | Sube las estadísticas a la PlayStats API y luego limpia la caché del ranking del sitio en `<l4d2_web_url>/api/cache/clear` | `playstats_url`, `playstats_access_token`, `l4d2_web_url`, `l4d2_web_secret` |
 | [`l4d2_ranking`](https://github.com/altair-sossai/l4d2-zone-server/blob/master/addons/sourcemod/scripting/l4d2_ranking.sp) | `!ranking` y el panel del ranking al inicio de una partida | `ranking_url`, `ranking_show_motd_panel` |
-| [`l4d2_show_patent_icon`](https://github.com/altair-sossai/l4d2-zone-server/blob/master/addons/sourcemod/scripting/l4d2_show_patent_icon.sp) (opcional) | Muestra la patente de cada jugador sobre su cabeza durante el ready-up | `patent_icon_api_url`, `patent_icon_version`, `patent_icon_max_level`, además de `sv_downloadurl` (FastDL) |
+| [`l4d2_show_patent_icon`](https://github.com/altair-sossai/l4d2-zone-server/blob/master/addons/sourcemod/scripting/l4d2_show_patent_icon.sp) (opcional) | Muestra la patente de cada jugador sobre su cabeza durante el ready-up | `l4d2_web_url`, `patent_icon_version`, `patent_icon_max_level`, además de `sv_downloadurl` (FastDL) |
 | [`l4d2_gameinfo_sync`](https://github.com/altair-sossai/l4d2-zone-server/blob/master/addons/sourcemod/scripting/l4d2_gameinfo_sync.sp) | Envía la ronda en vivo, el marcador y el chat al sitio, y muestra el chat del sitio en el juego | `l4d2_web_url`, `l4d2_web_secret` |
 | [`l4d2_weapon_skins`](https://github.com/altair-sossai/l4d2-zone-server/blob/master/addons/sourcemod/scripting/l4d2_weapon_skins.sp) | Descarga las skins compradas, las aplica y sincroniza las skins equipadas | `weapon_skins_enabled`, `l4d2_web_url`, `l4d2_web_secret`, además de `sv_downloadurl` (FastDL) |
 
@@ -218,7 +218,6 @@ Dónde va cada ajuste en l4d2-zone-server:
 | `sv_downloadurl` | `cfg/server.cfg` | URL del FastDL que sirve [l4d2-zone-server-assets](https://github.com/altair-sossai/l4d2-zone-server-assets) |
 | `playstats_url` | `cfg/cfgogl/<config>/shared_cvars.cfg` | URL base de la PlayStats API |
 | `ranking_url` | `cfg/cfgogl/<config>/shared_cvars.cfg` | URL del sitio que se muestra en el panel del ranking |
-| `patent_icon_api_url` | `cfg/cfgogl/<config>/shared_cvars.cfg` | URL del sitio |
 | `weapon_skins_enabled` | `cfg/cfgogl/<config>/shared_cvars.cfg` | `1`. El plugin viene desactivado por defecto |
 
 Cada config de `cfg/cfgogl/` (por ejemplo `zonemod`, `neomod`) tiene su propio `shared_cvars.cfg`, así que define los valores en cada una que uses.
