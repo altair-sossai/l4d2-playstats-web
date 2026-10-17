@@ -202,7 +202,7 @@ Todos los plugins están en [l4d2-zone-server](https://github.com/altair-sossai/
 | Plugin | Qué hace | Ajustes principales |
 |---|---|---|
 | `l4d2_playstats` | Escribe las estadísticas de cada mapa | — |
-| [`l4d2_playstats_sync`](https://github.com/altair-sossai/l4d2-zone-server/blob/master/addons/sourcemod/scripting/l4d2_playstats_sync.sp) | Sube las estadísticas a la PlayStats API y luego limpia la caché del ranking del sitio en `<ranking_url>/api/cache/clear` | `playstats_url`, `playstats_access_token`, `ranking_url` |
+| [`l4d2_playstats_sync`](https://github.com/altair-sossai/l4d2-zone-server/blob/master/addons/sourcemod/scripting/l4d2_playstats_sync.sp) | Sube las estadísticas a la PlayStats API y luego limpia la caché del ranking del sitio en `<l4d2_web_url>/api/cache/clear` | `playstats_url`, `playstats_access_token`, `l4d2_web_url`, `l4d2_web_secret` |
 | [`l4d2_ranking`](https://github.com/altair-sossai/l4d2-zone-server/blob/master/addons/sourcemod/scripting/l4d2_ranking.sp) | `!ranking` y el panel del ranking al inicio de una partida | `ranking_url`, `ranking_show_motd_panel` |
 | [`l4d2_show_patent_icon`](https://github.com/altair-sossai/l4d2-zone-server/blob/master/addons/sourcemod/scripting/l4d2_show_patent_icon.sp) (opcional) | Muestra la patente de cada jugador sobre su cabeza durante el ready-up | `patent_icon_api_url`, `patent_icon_version`, `patent_icon_max_level`, además de `sv_downloadurl` (FastDL) |
 | [`l4d2_gameinfo_sync`](https://github.com/altair-sossai/l4d2-zone-server/blob/master/addons/sourcemod/scripting/l4d2_gameinfo_sync.sp) | Envía la ronda en vivo, el marcador y el chat al sitio, y muestra el chat del sitio en el juego | `l4d2_web_url`, `l4d2_web_secret` |
@@ -217,7 +217,7 @@ Dónde va cada ajuste en l4d2-zone-server:
 | `playstats_access_token` | `cfg/server_secrets.cfg` | `<ServerId>:<PlayStatsSecret>`, el mismo servidor que en los ajustes del sitio |
 | `sv_downloadurl` | `cfg/server.cfg` | URL del FastDL que sirve [l4d2-zone-server-assets](https://github.com/altair-sossai/l4d2-zone-server-assets) |
 | `playstats_url` | `cfg/cfgogl/<config>/shared_cvars.cfg` | URL base de la PlayStats API |
-| `ranking_url` | `cfg/cfgogl/<config>/shared_cvars.cfg` | URL del sitio. Se muestra en el panel del ranking y se usa para limpiar la caché del sitio |
+| `ranking_url` | `cfg/cfgogl/<config>/shared_cvars.cfg` | URL del sitio que se muestra en el panel del ranking |
 | `patent_icon_api_url` | `cfg/cfgogl/<config>/shared_cvars.cfg` | URL del sitio |
 | `weapon_skins_enabled` | `cfg/cfgogl/<config>/shared_cvars.cfg` | `1`. El plugin viene desactivado por defecto |
 
@@ -333,7 +333,7 @@ El repositorio no tiene configuración de proxy inverso ni de TLS; Kestrel sirve
 | POST | `/api/game-info/player-connection-info` | Secret | `l4d2_gameinfo_sync`: conexiones de los jugadores, guardadas en `PlayerConnectionInfo` durante tres meses |
 | GET | `/api/game-info/server-command/dequeue` | Secret | `l4d2_gameinfo_sync`: siguiente comando enviado por un admin desde el chat del sitio (`204` cuando no hay ninguno) |
 | GET | `/api/external-chat` | — | `l4d2_gameinfo_sync`: mensajes del chat del sitio mostrados en el juego |
-| POST | `/api/cache/clear` | — | `l4d2_playstats_sync`: limpia la caché del ranking y de las partidas después de una subida (si no, se actualizan en una hora como máximo) |
+| POST | `/api/cache/clear` | Secret | `l4d2_playstats_sync`: limpia la caché del ranking y de las partidas después de una subida (si no, se actualizan en una hora como máximo) |
 
 ## Comprobar que funciona
 
@@ -359,7 +359,7 @@ El repositorio no tiene configuración de proxy inverso ni de TLS; Kestrel sirve
 | No aparece el menú Admin | Tu SteamID64 no está en `ServerAdmins`, o el sitio no se reinició después del cambio |
 | Los avatares no se muestran | `SteamApiKey` no válida, o el usuario del sitio no puede escribir en `wwwroot/imgs/players` |
 | La página del servidor no muestra los detalles del servidor | `ServerDns` es incorrecto o el servidor no está en la lista de servidores de Steam. La dirección se resuelve una vez por proceso; reinicia cuando cambie la IP del servidor |
-| El ranking tarda hasta una hora en actualizarse tras una partida | `ranking_url` no llega al sitio, así que no se llama a `/api/cache/clear` |
+| El ranking tarda hasta una hora en actualizarse tras una partida | `l4d2_web_url` o `l4d2_web_secret` está vacío o es incorrecto, así que no se llama a `/api/cache/clear` o devuelve `401` |
 | Los castigos o la actualización del marcador de una partida fallan | `PlayStatsSecret` no coincide con el secret del servidor en la PlayStats API |
 | `!skin status` dice que la cartera no está disponible | El sitio no pudo leer las estrellas de la PlayStats API (`503`) |
 

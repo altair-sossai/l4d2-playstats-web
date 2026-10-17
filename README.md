@@ -202,7 +202,7 @@ All plugins live in [l4d2-zone-server](https://github.com/altair-sossai/l4d2-zon
 | Plugin | What it does | Main settings |
 |---|---|---|
 | `l4d2_playstats` | Writes the statistics of each map | — |
-| [`l4d2_playstats_sync`](https://github.com/altair-sossai/l4d2-zone-server/blob/master/addons/sourcemod/scripting/l4d2_playstats_sync.sp) | Uploads the statistics to the PlayStats API, then clears the site's ranking cache at `<ranking_url>/api/cache/clear` | `playstats_url`, `playstats_access_token`, `ranking_url` |
+| [`l4d2_playstats_sync`](https://github.com/altair-sossai/l4d2-zone-server/blob/master/addons/sourcemod/scripting/l4d2_playstats_sync.sp) | Uploads the statistics to the PlayStats API, then clears the site's ranking cache at `<l4d2_web_url>/api/cache/clear` | `playstats_url`, `playstats_access_token`, `l4d2_web_url`, `l4d2_web_secret` |
 | [`l4d2_ranking`](https://github.com/altair-sossai/l4d2-zone-server/blob/master/addons/sourcemod/scripting/l4d2_ranking.sp) | `!ranking` and the ranking panel at the start of a game | `ranking_url`, `ranking_show_motd_panel` |
 | [`l4d2_show_patent_icon`](https://github.com/altair-sossai/l4d2-zone-server/blob/master/addons/sourcemod/scripting/l4d2_show_patent_icon.sp) (optional) | Shows each player's patent above their head during ready-up | `patent_icon_api_url`, `patent_icon_version`, `patent_icon_max_level`, plus `sv_downloadurl` (FastDL) |
 | [`l4d2_gameinfo_sync`](https://github.com/altair-sossai/l4d2-zone-server/blob/master/addons/sourcemod/scripting/l4d2_gameinfo_sync.sp) | Sends the live round, scoreboard and chat to the site, and shows the site chat in game | `l4d2_web_url`, `l4d2_web_secret` |
@@ -217,7 +217,7 @@ Where each setting goes in l4d2-zone-server:
 | `playstats_access_token` | `cfg/server_secrets.cfg` | `<ServerId>:<PlayStatsSecret>`, the same server as the site's settings |
 | `sv_downloadurl` | `cfg/server.cfg` | FastDL URL serving [l4d2-zone-server-assets](https://github.com/altair-sossai/l4d2-zone-server-assets) |
 | `playstats_url` | `cfg/cfgogl/<config>/shared_cvars.cfg` | PlayStats API base URL |
-| `ranking_url` | `cfg/cfgogl/<config>/shared_cvars.cfg` | Site URL. It is shown in the ranking panel and used to clear the site cache |
+| `ranking_url` | `cfg/cfgogl/<config>/shared_cvars.cfg` | Site URL shown in the ranking panel |
 | `patent_icon_api_url` | `cfg/cfgogl/<config>/shared_cvars.cfg` | Site URL |
 | `weapon_skins_enabled` | `cfg/cfgogl/<config>/shared_cvars.cfg` | `1`. The plugin is off by default |
 
@@ -333,7 +333,7 @@ The repository has no reverse proxy or TLS configuration; Kestrel serves HTTP on
 | POST | `/api/game-info/player-connection-info` | Secret | `l4d2_gameinfo_sync`: player connections, kept in `PlayerConnectionInfo` for three months |
 | GET | `/api/game-info/server-command/dequeue` | Secret | `l4d2_gameinfo_sync`: next command sent by an admin from the site chat (`204` when there is none) |
 | GET | `/api/external-chat` | — | `l4d2_gameinfo_sync`: site chat messages shown in game |
-| POST | `/api/cache/clear` | — | `l4d2_playstats_sync`: clears the cached ranking and matches after an upload (otherwise they refresh within an hour) |
+| POST | `/api/cache/clear` | Secret | `l4d2_playstats_sync`: clears the cached ranking and matches after an upload (otherwise they refresh within an hour) |
 
 ## Checking that it works
 
@@ -359,7 +359,7 @@ The repository has no reverse proxy or TLS configuration; Kestrel serves HTTP on
 | No Admin menu | Your SteamID64 is not in `ServerAdmins`, or the site was not restarted after the change |
 | Avatars do not show | Invalid `SteamApiKey`, or the site user cannot write to `wwwroot/imgs/players` |
 | The server page has no server details | `ServerDns` is wrong or the server is not on the Steam server list. The address is resolved once per process; restart after the server's IP changes |
-| The ranking takes up to an hour to update after a match | `ranking_url` does not reach the site, so `/api/cache/clear` is not called |
+| The ranking takes up to an hour to update after a match | `l4d2_web_url` or `l4d2_web_secret` is empty or wrong, so `/api/cache/clear` is not called or returns `401` |
 | Punishments or the match score update fail | `PlayStatsSecret` does not match the server's secret in the PlayStats API |
 | `!skin status` reports the wallet as unavailable | The site could not read the stars from the PlayStats API (`503`) |
 
