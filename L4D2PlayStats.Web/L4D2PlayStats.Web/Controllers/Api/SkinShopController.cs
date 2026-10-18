@@ -15,6 +15,19 @@ namespace L4D2PlayStats.Web.Controllers.Api;
 [ApiController]
 public class SkinShopController(ISkinShopService skinShopService, ISkinService skinService, ICurrentUser currentUser) : ControllerBase
 {
+    [HttpGet("wallet")]
+    public async Task<IActionResult> WalletAsync(CancellationToken cancellationToken)
+    {
+        if (string.IsNullOrEmpty(currentUser.CommunityId))
+            return Unauthorized();
+
+        var wallet = await skinShopService.GetWalletAsync(currentUser.CommunityId, cancellationToken);
+        if (wallet == null)
+            return StatusCode(StatusCodes.Status503ServiceUnavailable);
+
+        return Ok(new { wallet.Balance, wallet.Stars, wallet.Spent });
+    }
+
     [HttpPost("skins/{skinId}/buy")]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> BuyAsync(string skinId, CancellationToken cancellationToken)

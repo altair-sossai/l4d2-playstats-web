@@ -239,6 +239,43 @@
                 padding-right: 10px;
             }
         }
+
+        .nav-stars-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            margin: -4px 0;
+            padding: 3px 10px 3px 7px;
+            border: 1px solid rgba(240, 173, 78, .6);
+            border-radius: 14px;
+            background: linear-gradient(135deg, rgba(240, 173, 78, .28), rgba(240, 173, 78, .08));
+            line-height: 20px;
+            white-space: nowrap;
+            transition: background-color .2s, border-color .2s;
+        }
+
+        .nav-stars a:hover .nav-stars-pill,
+        .nav-stars a:focus .nav-stars-pill {
+            border-color: #f0ad4e;
+            background-color: rgba(240, 173, 78, .18);
+        }
+
+        .nav-stars-icon {
+            color: #f0ad4e;
+            font-size: 16px;
+            text-shadow: 0 0 6px rgba(240, 173, 78, .7);
+        }
+
+        .nav-stars-label {
+            font-size: 12px;
+            opacity: .85;
+        }
+
+        @@media (min-width: 768px) and (max-width: 1199px) {
+            .nav-stars-label {
+                display: none;
+            }
+        }
     </style>
 
     @await RenderSectionAsync("Styles", false)
@@ -363,6 +400,15 @@
             <ul class="nav navbar-nav navbar-right">
                 @if (CurrentUser.IsAuthenticated)
                 {
+                    <li class="nav-stars" style="display: none">
+                        <a href="@Url.Action("Index", "Skins")" title="@SharedLocalizer["StarsTooltip"]" data-toggle="tooltip" data-placement="bottom">
+                            <span class="nav-stars-pill">
+                                <span class="nav-stars-icon">★</span>
+                                <b class="nav-stars-value"></b>
+                                <span class="nav-stars-label"></span>
+                            </span>
+                        </a>
+                    </li>
                     <li>
                         <a href="@Url.Action("Details", "Players", new { communityId = CurrentUser.CommunityId })">
                             <img src="@UserAvatar[CurrentUser.CommunityId]" alt="@CurrentUser.Name" title="@CurrentUser.Name" class="img-responsive img-header-icon" data-toggle="tooltip" data-placement="bottom">
@@ -598,6 +644,42 @@
             return value !== null && typeof value === 'object' && !Array.isArray(value);
         }
 
+        var navStarsKey = 'nav-stars-@CurrentUser.CommunityId';
+
+        function setNavStars(balance) {
+            var $stars = $('.nav-stars');
+
+            $stars.find('.nav-stars-value').text(balance.toLocaleString(document.documentElement.lang || undefined));
+            $stars.find('.nav-stars-label').text(balance === 1 ? @Json.Serialize(SharedLocalizer["StarAvailable"].Value) : @Json.Serialize(SharedLocalizer["StarsAvailable"].Value));
+            $stars.show();
+
+            try {
+                sessionStorage.setItem(navStarsKey, balance);
+            } catch (e) {
+            }
+        }
+
+        function loadNavStars() {
+            if ($('.nav-stars').length === 0)
+                return;
+
+            try {
+                var cached = sessionStorage.getItem(navStarsKey);
+
+                if (cached !== null)
+                    setNavStars(parseInt(cached, 10));
+            } catch (e) {
+            }
+
+            $.ajax({
+                url: '/api/shop/wallet',
+                method: 'GET',
+                success: function (wallet) {
+                    setNavStars(wallet.balance);
+                }
+            });
+        }
+
         $(window).on('scroll resize', function () {
             lazyLoadCharts();
         });
@@ -625,6 +707,8 @@
             });
 
             updateServerInfo();
+
+            loadNavStars();
 
             lazyLoadCharts();
         });

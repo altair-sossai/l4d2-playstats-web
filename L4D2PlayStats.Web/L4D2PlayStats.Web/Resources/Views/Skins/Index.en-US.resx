@@ -251,6 +251,9 @@
   <data name="GroupMelee" xml:space="preserve">
     <value>Melee weapons</value>
   </data>
+  <data name="HowItWorksButton" xml:space="preserve">
+    <value>How it works</value>
+  </data>
   <data name="HowToBuy" xml:space="preserve">
     <value>Buy a skin with your stars. It is &lt;b&gt;equipped&lt;/b&gt; right away and shows up on the server &lt;b&gt;from the next map change&lt;/b&gt;. Each skin is bought only once and is yours until the end of the ranking season.</value>
   </data>
@@ -325,6 +328,9 @@
   </data>
   <data name="RarityUncommon" xml:space="preserve">
     <value>Uncommon</value>
+  </data>
+  <data name="SeasonPill" xml:space="preserve">
+    <value>Season ends on &lt;b&gt;{0}&lt;/b&gt; · {1} days left</value>
   </data>
   <data name="SeasonText" xml:space="preserve">
     <value>Bought skins last until the ranking reset, which happens every 2 months. The current season ends on {0} ({1} days left): at that moment every purchase is refunded automatically and the stars come back so you can buy again. Skins received as gifts are yours forever.</value>
@@ -413,11 +419,17 @@
   <data name="ViewOnWorkshop" xml:space="preserve">
     <value>View on Workshop</value>
   </data>
-  <data name="WalletBalance" xml:space="preserve">
-    <value>You have &lt;b&gt;{0} ⭐&lt;/b&gt; to spend</value>
+  <data name="WalletAvailable" xml:space="preserve">
+    <value>stars available</value>
   </data>
-  <data name="WalletDetails" xml:space="preserve">
-    <value>{0} SI damage MVPs + {1} common MVPs = {2} ⭐ earned · {3} ⭐ spent</value>
+  <data name="WalletAvailableOne" xml:space="preserve">
+    <value>star available</value>
+  </data>
+  <data name="WalletMvps" xml:space="preserve">
+    <value>{0} SI damage MVPs + {1} common MVPs</value>
+  </data>
+  <data name="WalletSummary" xml:space="preserve">
+    <value>You earned &lt;b&gt;{0} ⭐&lt;/b&gt; as MVP and have spent &lt;b&gt;{1} ⭐&lt;/b&gt; on skins.</value>
   </data>
   <data name="WalletUnavailable" xml:space="preserve">
     <value>We could not load your stars right now. Reload the page in a moment.</value>

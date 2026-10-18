@@ -444,6 +444,15 @@
     <data name="SkinPurchases" xml:space="preserve">
     <value>Skin purchases</value>
   </data>
+  <data name="StarAvailable" xml:space="preserve">
+    <value>star available</value>
+  </data>
+  <data name="StarsAvailable" xml:space="preserve">
+    <value>stars available</value>
+  </data>
+  <data name="StarsTooltip" xml:space="preserve">
+    <value>Your stars to buy skins</value>
+  </data>
     <data name="TogglesAntiCheat" xml:space="preserve">
     <value>Turns anti-cheat on or off</value>
   </data>
@@ -1291,7 +1300,7 @@
     <value>Stars</value>
   </data>
   <data name="StarsSummary" xml:space="preserve">
-    <value>to spend ({0} earned, {1} spent)</value>
+    <value>{0} earned, {1} spent</value>
   </data>
     <data name="Start" xml:space="preserve">
     <value>Start</value>
