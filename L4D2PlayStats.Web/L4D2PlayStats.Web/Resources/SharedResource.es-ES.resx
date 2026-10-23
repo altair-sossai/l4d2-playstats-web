@@ -1512,4 +1512,25 @@
   <data name="SkinsMetaDescription" xml:space="preserve">
     <value>Skins de armas desbloqueadas por nivel de patente en el servidor L4D2 Competitive, con créditos a los creadores del Steam Workshop.</value>
   </data>
+  <data name="General" xml:space="preserve">
+    <value>General</value>
+  </data>
+  <data name="Relations" xml:space="preserve">
+    <value>Relaciones</value>
+  </data>
+  <data name="Campaigns" xml:space="preserve">
+    <value>Campañas</value>
+  </data>
+  <data name="Draws" xml:space="preserve">
+    <value>Empates</value>
+  </data>
+  <data name="NotPlayed" xml:space="preserve">
+    <value>Aún no la jugó</value>
+  </data>
+  <data name="NoCampaignStats" xml:space="preserve">
+    <value>Todavía no hay estadísticas de campañas para este jugador.</value>
+  </data>
+  <data name="CampaignStatsHelp" xml:space="preserve">
+    <value>Partidas en cada campaña esta temporada, de la más jugada a la menos jugada. Los empates cuentan como partida y un rage quit cuenta como derrota.</value>
+  </data>
 </root>

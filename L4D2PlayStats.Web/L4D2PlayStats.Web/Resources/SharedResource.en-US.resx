@@ -1512,4 +1512,25 @@
   <data name="SkinsMetaDescription" xml:space="preserve">
     <value>Weapon skins unlocked by patent level on the L4D2 Competitive server, with credits to the Steam Workshop creators.</value>
   </data>
+  <data name="General" xml:space="preserve">
+    <value>General</value>
+  </data>
+  <data name="Relations" xml:space="preserve">
+    <value>Relations</value>
+  </data>
+  <data name="Campaigns" xml:space="preserve">
+    <value>Campaigns</value>
+  </data>
+  <data name="Draws" xml:space="preserve">
+    <value>Draws</value>
+  </data>
+  <data name="NotPlayed" xml:space="preserve">
+    <value>Has not played it yet</value>
+  </data>
+  <data name="NoCampaignStats" xml:space="preserve">
+    <value>No campaign statistics for this player yet.</value>
+  </data>
+  <data name="CampaignStatsHelp" xml:space="preserve">
+    <value>Games played in each campaign this season, from the most played. Draws count as games, and a rage quit counts as a loss.</value>
+  </data>
 </root>

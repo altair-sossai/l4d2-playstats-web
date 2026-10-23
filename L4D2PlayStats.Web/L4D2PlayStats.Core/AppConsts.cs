@@ -4,6 +4,7 @@ public static class AppConsts
 {
     public const int Left4Dead2AppId = 550;
     public const int DefaultServerPort = 27015;
+    public const int PlayerRelationsVisible = 12;
 
     public const string SiteUrl = "https://l4d2.com.br";
     public const string DefaultImageUrl = "https://l4d2playstats.blob.core.windows.net/assets/motd.jpeg";

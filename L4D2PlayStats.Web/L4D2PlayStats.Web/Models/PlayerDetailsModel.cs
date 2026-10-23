@@ -36,6 +36,8 @@ public class PlayerDetailsModel(
 
     private List<PlayerRelationRowModel> RelationRows => field ??= BuildRelationRows();
 
+    public List<PlayerCampaignRowModel> Campaigns => field ??= BuildCampaignRows();
+
     public PlayerRelationModel? HeadToHead
     {
         get
@@ -91,5 +93,23 @@ public class PlayerDetailsModel(
         }
 
         return rows;
+    }
+
+    private List<PlayerCampaignRowModel> BuildCampaignRows()
+    {
+        var first = FirstPlayerRanking.Player.Campaigns ?? [];
+        var second = SecondPlayerRanking?.Player.Campaigns ?? [];
+
+        return
+        [
+            .. first.Keys
+                .Union(second.Keys)
+                .Where(name => !string.IsNullOrEmpty(name))
+                .Select(name => new PlayerCampaignRowModel(name, first.GetValueOrDefault(name), second.GetValueOrDefault(name)))
+                .Where(row => row.Games > 0)
+                .OrderByDescending(row => row.Games)
+                .ThenByDescending(row => row.First?.Games ?? 0)
+                .ThenBy(row => row.Name)
+        ];
     }
 }

@@ -1,5 +1,7 @@
 ﻿@using System.Globalization
+@using L4D2PlayStats.Core
 @using L4D2PlayStats.Core.Auth
+@using L4D2PlayStats.Core.Campaign.Contracts
 @using L4D2PlayStats.Core.Infrastructure.Extensions
 @using L4D2PlayStats.Core.UserAvatar
 @using L4D2PlayStats.Sdk.Ranking.Enums
@@ -11,6 +13,7 @@
 @model L4D2PlayStats.Web.Models.PlayerDetailsModel
 @inject IUserAvatar UserAvatar
 @inject ICurrentUser CurrentUser
+@inject ICampaignThumb CampaignThumb
 @inject IStringLocalizer<SharedResource> SharedLocalizer
 
 @{
@@ -68,6 +71,57 @@
                     }
                 }
             </div>
+        </div>
+    }
+
+    string Width(decimal rate)
+    {
+        return (rate * 100).ToString("0.##", CultureInfo.InvariantCulture) + "%";
+    }
+
+    void RenderCampaign(PlayerCampaignResult? campaign, PlayerResult player, bool second, bool showName)
+    {
+        <div class="campaign-line">
+            @if (showName)
+            {
+                <div class="campaign-player @(second ? "second" : "text-muted")">
+                    @player.Name
+                    @if (campaign is { Games: > 0 })
+                    {
+                        <small>· @campaign.Games.ToString("N0") @SharedLocalizer["Games"]</small>
+                    }
+                </div>
+            }
+            @if (campaign is not { Games: > 0 })
+            {
+                <small class="text-muted">@SharedLocalizer["NotPlayed"]</small>
+            }
+            else
+            {
+                <div class="campaign-bar">
+                    <span class="streak-win" style="width: @Width(campaign.WinRate)" data-toggle="tooltip" data-container="body" title="@SharedLocalizer["Wins"]: @campaign.WinRate.ToString("P0")"></span>
+                    <span class="streak-draw" style="width: @Width(campaign.DrawRate)" data-toggle="tooltip" data-container="body" title="@SharedLocalizer["Draws"]: @campaign.DrawRate.ToString("P0")"></span>
+                    <span class="streak-loss" style="width: @Width(campaign.LossRate)" data-toggle="tooltip" data-container="body" title="@SharedLocalizer["Loss"]: @campaign.LossRate.ToString("P0")"></span>
+                </div>
+                <div class="campaign-numbers">
+                    <div>
+                        <strong class="campaign-win">@campaign.Wins.ToString("N0")</strong>
+                        <small>@SharedLocalizer["Wins"] · @campaign.WinRate.ToString("P0")</small>
+                    </div>
+                    <div>
+                        <strong>@campaign.Draws.ToString("N0")</strong>
+                        <small>@SharedLocalizer["Draws"] · @campaign.DrawRate.ToString("P0")</small>
+                    </div>
+                    <div>
+                        <strong class="campaign-loss">@campaign.Loss.ToString("N0")</strong>
+                        <small>@SharedLocalizer["Loss"] · @campaign.LossRate.ToString("P0")</small>
+                    </div>
+                </div>
+                @if (campaign.RageQuit > 0)
+                {
+                    <small class="text-muted">@SharedLocalizer["RageQuit"]: @campaign.RageQuit.ToString("N0")</small>
+                }
+            }
         </div>
     }
 
@@ -284,7 +338,147 @@
             background-color: #c6cbd1;
         }
 
+        .player-tabs {
+            margin-bottom: 15px;
+        }
+
+            .player-tabs > li > a {
+                padding: 8px 12px;
+            }
+
+            .player-tabs .badge {
+                margin-left: 3px;
+                font-size: 11px;
+            }
+
+        .campaign-help {
+            font-size: 12px;
+        }
+
+        .campaign-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(min(340px, 100%), 1fr));
+            gap: 12px;
+            margin-bottom: 15px;
+        }
+
+        .campaign-card {
+            display: flex;
+            align-items: flex-start;
+            padding: 10px;
+            border: 1px solid rgba(128, 128, 128, .3);
+            border-radius: 8px;
+            background: rgba(128, 128, 128, .05);
+        }
+
+        .campaign-cover {
+            flex: 0 0 96px;
+            width: 96px;
+            height: auto;
+            margin-right: 12px;
+            border-radius: 4px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, .35);
+        }
+
+        .campaign-body {
+            flex: 1;
+            align-self: center;
+            min-width: 0;
+        }
+
+        .campaign-title {
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+            gap: 8px;
+            margin-bottom: 8px;
+        }
+
+            .campaign-title strong {
+                overflow: hidden;
+                font-size: 15px;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+            }
+
+            .campaign-title span {
+                flex: 0 0 auto;
+                font-size: 12px;
+                opacity: .7;
+            }
+
+        .campaign-line + .campaign-line {
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px solid rgba(128, 128, 128, .25);
+        }
+
+        .campaign-player {
+            margin-bottom: 4px;
+            font-weight: bold;
+        }
+
+            .campaign-player small {
+                font-weight: normal;
+            }
+
+        .campaign-bar {
+            display: flex;
+            height: 10px;
+            margin-bottom: 6px;
+            border-radius: 5px;
+            overflow: hidden;
+            background: rgba(128, 128, 128, .2);
+        }
+
+            .campaign-bar span {
+                display: block;
+                height: 100%;
+            }
+
+        .campaign-numbers {
+            display: flex;
+            gap: 6px;
+        }
+
+            .campaign-numbers > div {
+                flex: 1;
+                min-width: 0;
+                padding: 4px 6px;
+                border-radius: 4px;
+                text-align: center;
+                background: rgba(128, 128, 128, .08);
+            }
+
+            .campaign-numbers strong {
+                display: block;
+                font-size: 18px;
+                line-height: 1.2;
+            }
+
+            .campaign-numbers small {
+                display: block;
+                overflow: hidden;
+                font-size: 11px;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+                opacity: .7;
+            }
+
+        .campaign-win {
+            color: #2ea44f;
+        }
+
+        .campaign-loss {
+            color: #d73a49;
+        }
+
         @@media screen and (max-width: 700px) {
+            .player-tabs > li > a {
+                padding: 6px 8px;
+                font-size: 12px;
+            }
+
             .left-side {
                 width: 100% !important;
                 margin-bottom: 10px;
@@ -352,6 +546,21 @@
         }
 
         $(function () {
+            var $tabs = $('#player-tabs a[data-toggle="tab"]');
+
+            $tabs.on('shown.bs.tab', function () {
+                history.replaceState(null, '', $(this).attr('href'));
+                $(window).trigger('resize');
+            });
+
+            if (location.hash)
+                $tabs.filter('[href="' + location.hash + '"]').tab('show');
+
+            $('.players-dropdown-menu a, .relation-card-item .panel-heading a').on('click', function () {
+                if (location.hash)
+                    this.href = this.href.split('#')[0] + location.hash;
+            });
+
             $('#btn-show-more-relations').click(function () {
                 var $button = $(this);
                 var $cards = $('.relation-card-item');
@@ -361,7 +570,7 @@
                     $button.text($button.data('less'));
                 } else {
                     $cards.each(function (index) {
-                        if (index >= 4) {
+                        if (index >= $button.data('visible')) {
                             $(this).addClass('hidden');
                         }
                     });
@@ -426,6 +635,27 @@
     }
 </div>
 <div class="col-xs-10 right-side">
+
+<ul class="nav nav-tabs player-tabs" id="player-tabs" role="tablist">
+    <li role="presentation" class="active">
+        <a href="#general" role="tab" data-toggle="tab">@SharedLocalizer["General"]</a>
+    </li>
+    <li role="presentation">
+        <a href="#campaigns" role="tab" data-toggle="tab">@SharedLocalizer["Campaigns"] <span class="badge">@Model.Campaigns.Count.ToString("N0")</span></a>
+    </li>
+    <li role="presentation">
+        <a href="#skins" role="tab" data-toggle="tab">@SharedLocalizer["Skins"] <span class="badge">@(((Model.FirstPlayerSkins?.OwnedSkins.Count ?? 0) + (Model.SecondPlayerSkins?.OwnedSkins.Count ?? 0)).ToString("N0"))</span></a>
+    </li>
+    @if (Model.Relations.Any())
+    {
+        <li role="presentation">
+            <a href="#relations" role="tab" data-toggle="tab">@SharedLocalizer["Relations"] <span class="badge">@Model.Relations.Count.ToString("N0")</span></a>
+        </li>
+    }
+</ul>
+
+<div class="tab-content player-tab-content">
+<div role="tabpanel" class="tab-pane active" id="general">
 
 <div class="panel panel-default">
     <div class="panel-heading">
@@ -754,8 +984,6 @@
     </div>
 }
 
-<hr/>
-
 <div class="panel panel-default">
     <div class="panel-heading">
         @SharedLocalizer["StatisticsAsSurvivor"]
@@ -999,6 +1227,58 @@
     </table>
 </div>
 
+@if (Model.LastMatches.Any())
+{
+    <h4 class="text-center">@SharedLocalizer["LastMatches"]</h4>
+
+    <div class="match">
+        @foreach (var match in Model.LastMatches)
+        {
+            @await Html.PartialAsync("../LastMatches/_Match", match)
+        }
+    </div>
+}
+
+</div>
+<div role="tabpanel" class="tab-pane" id="campaigns">
+    @if (Model.Campaigns.Count == 0)
+    {
+        <div class="alert alert-info">@SharedLocalizer["NoCampaignStats"]</div>
+    }
+    else
+    {
+        <p class="text-muted campaign-help">
+            <span class="glyphicon glyphicon-info-sign"></span> @SharedLocalizer["CampaignStatsHelp"]
+        </p>
+        <div class="campaign-grid">
+            @foreach (var campaign in Model.Campaigns)
+            {
+                <div class="campaign-card">
+                    <img class="campaign-cover" src="@CampaignThumb[campaign.Name]" alt="@campaign.Name" loading="lazy"/>
+                    <div class="campaign-body">
+                        <div class="campaign-title">
+                            <strong>@campaign.Name</strong>
+                            @if (secondPlayer == null)
+                            {
+                                <span>@campaign.Games.ToString("N0") @SharedLocalizer["Games"]</span>
+                            }
+                        </div>
+                        @{
+                            RenderCampaign(campaign.First, firstPlayer, false, secondPlayer != null);
+
+                            if (secondPlayer != null)
+                            {
+                                RenderCampaign(campaign.Second, secondPlayer, true, true);
+                            }
+                        }
+                    </div>
+                </div>
+            }
+        </div>
+    }
+</div>
+<div role="tabpanel" class="tab-pane" id="skins">
+
 <div class="panel panel-default">
     <div class="panel-heading">
         @SharedLocalizer["Skins"] <span class="badge">@((Model.FirstPlayerSkins?.OwnedSkins.Count ?? 0).ToString("N0"))</span>
@@ -1021,7 +1301,6 @@
     </div>
 </div>
 
-</div>
 </div>
 
 @{
@@ -1092,6 +1371,7 @@
     var relations = Model.Relations;
 }
 
+<div role="tabpanel" class="tab-pane" id="relations">
 @if (relations.Any())
 {
     <h4 class="text-center">
@@ -1113,7 +1393,7 @@
     <div class="row">
         @foreach (var row in relations)
         {
-            <div class="col-md-6 col-xs-12 relation-card-item @(++relationCount > 4 ? "hidden" : null)">
+            <div class="col-md-6 col-xs-12 relation-card-item @(++relationCount > AppConsts.PlayerRelationsVisible ? "hidden" : null)">
                 <div class="panel @(secondPlayer != null && row.CommunityId == secondPlayer.CommunityId ? "panel-warning" : "panel-default")">
                     <div class="panel-heading">
                         <button type="button" class="btn btn-link btn-xs pull-right" style="padding: 0" data-toggle="tooltip" data-placement="left" title="@SharedLocalizer["ExplainBetter"]" onclick="$('#relation-help-@row.CommunityId').modal('show')">
@@ -1209,27 +1489,19 @@
         }
     </div>
 
-    @if (relations.Count > 4)
+    @if (relations.Count > AppConsts.PlayerRelationsVisible)
     {
         <div class="row text-center" style="margin: 10px; margin-bottom: 25px">
             <div class="col-md-12">
-                <button class="btn btn-sm btn-primary" id="btn-show-more-relations" data-more="@SharedLocalizer["ShowMorePlayers"]" data-less="@SharedLocalizer["Hide"]">
+                <button class="btn btn-sm btn-primary" id="btn-show-more-relations" data-visible="@AppConsts.PlayerRelationsVisible" data-more="@SharedLocalizer["ShowMorePlayers"]" data-less="@SharedLocalizer["Hide"]">
                     @SharedLocalizer["ShowMorePlayers"]
                 </button>
             </div>
         </div>
-        <hr/>
     }
 }
+</div>
 
-@if (Model.LastMatches.Any())
-{
-    <h4 class="text-center">@SharedLocalizer["LastMatches"]</h4>
-
-    <div class="match">
-        @foreach (var match in Model.LastMatches)
-        {
-            @await Html.PartialAsync("../LastMatches/_Match", match)
-        }
-    </div>
-}
+</div>
+</div>
+</div>
