@@ -13,11 +13,255 @@
 @{
     ViewData["Title"] = SharedLocalizer["SkinPurchases"].Value;
     var culture = CultureInfo.CurrentUICulture;
-    var pagination = PaginationModel.Of(Model.Purchases, number => Url.Action("Purchases", "SkinsAdmin", new { q = Model.Query, page = number })!);
+    var pagination = PaginationModel.Of(Model.Purchases, number => Url.Action("Purchases", "SkinsAdmin", new { q = Model.Query, player = Model.Player, page = number })!);
 }
 
 @section Styles {
     @await Html.PartialAsync("_AdminStyles")
+    <style>
+        .ska-filter-player {
+            display: inline-flex;
+            align-items: center;
+            max-width: 100%;
+            padding: 4px 6px 4px 4px;
+            border: 1px solid rgba(128, 128, 128, .35);
+            border-radius: 20px;
+            background: rgba(128, 128, 128, .08);
+        }
+
+            .ska-filter-player img {
+                width: 26px;
+                height: 26px;
+                margin-right: 8px;
+                border-radius: 50%;
+            }
+
+            .ska-filter-player span {
+                overflow: hidden;
+                margin-right: 6px;
+                font-weight: bold;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+            }
+
+            .ska-filter-player a {
+                padding: 0 6px;
+                color: inherit;
+                opacity: .6;
+            }
+
+                .ska-filter-player a:hover {
+                    text-decoration: none;
+                    opacity: 1;
+                }
+
+        #ska-purchase-modal .modal-body {
+            padding: 0;
+        }
+
+        .ska-hero {
+            display: flex;
+            align-items: center;
+            padding: 18px;
+            background: linear-gradient(135deg, rgba(var(--ska-rarity-rgb, 128, 128, 128), .22), rgba(var(--ska-rarity-rgb, 128, 128, 128), .04) 70%);
+            border-bottom: 1px solid rgba(128, 128, 128, .2);
+        }
+
+        .ska-cover {
+            position: relative;
+            display: block;
+            width: 132px;
+            height: 132px;
+            margin-right: 18px;
+            border: 2px solid rgb(var(--ska-rarity-rgb, 128, 128, 128));
+            border-radius: 8px;
+            overflow: hidden;
+            background: #111;
+            flex: 0 0 auto;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, .35);
+        }
+
+            .ska-cover img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                transition: transform .2s ease;
+            }
+
+            .ska-cover .ska-cover-hint {
+                position: absolute;
+                right: 0;
+                bottom: 0;
+                left: 0;
+                padding: 6px;
+                color: #fff;
+                font-size: 12px;
+                text-align: center;
+                background: rgba(0, 0, 0, .7);
+                opacity: 0;
+                transition: opacity .2s ease;
+            }
+
+            .ska-cover:hover img {
+                transform: scale(1.06);
+            }
+
+            .ska-cover:hover .ska-cover-hint {
+                opacity: 1;
+            }
+
+        .ska-hero-info {
+            flex: 1;
+            min-width: 0;
+        }
+
+            .ska-hero-info h4 {
+                margin: 6px 0 4px;
+                font-size: 19px;
+                font-weight: bold;
+                line-height: 1.25;
+            }
+
+                .ska-hero-info h4 a {
+                    color: inherit;
+                }
+
+            .ska-hero-info .ska-weapon {
+                margin-bottom: 10px;
+                opacity: .7;
+            }
+
+        .ska-rarity {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 10px;
+            color: #fff;
+            font-size: 11px;
+            font-weight: bold;
+            text-transform: uppercase;
+            background: rgb(var(--ska-rarity-rgb, 128, 128, 128));
+        }
+
+        .ska-section {
+            padding: 16px 18px 0;
+        }
+
+        .ska-player {
+            display: flex;
+            align-items: center;
+            padding: 10px 12px;
+            border: 1px solid rgba(128, 128, 128, .3);
+            border-radius: 8px;
+            background: rgba(128, 128, 128, .06);
+        }
+
+            .ska-player img {
+                width: 44px;
+                height: 44px;
+                margin-right: 12px;
+                border-radius: 50%;
+                flex: 0 0 auto;
+            }
+
+            .ska-player .ska-player-info {
+                flex: 1;
+                min-width: 0;
+            }
+
+            .ska-player strong,
+            .ska-player small {
+                display: block;
+                overflow: hidden;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+            }
+
+            .ska-player small {
+                opacity: .7;
+            }
+
+            .ska-player .btn {
+                margin-left: 6px;
+                flex: 0 0 auto;
+            }
+
+        .ska-facts {
+            display: flex;
+            flex-wrap: wrap;
+            margin: 12px -5px 0;
+        }
+
+            .ska-facts > div {
+                flex: 1 1 140px;
+                margin: 0 5px 10px;
+                padding: 10px 12px;
+                border: 1px solid rgba(128, 128, 128, .3);
+                border-radius: 8px;
+            }
+
+            .ska-facts small {
+                display: block;
+                margin-bottom: 2px;
+                font-size: 11px;
+                text-transform: uppercase;
+                opacity: .65;
+            }
+
+            .ska-facts strong {
+                font-size: 16px;
+                white-space: nowrap;
+            }
+
+            .ska-facts .ska-balance-after {
+                font-weight: normal;
+                opacity: .65;
+            }
+
+        @@media screen and (min-width: 768px) {
+            #ska-purchase-modal .modal-dialog {
+                width: 660px;
+            }
+        }
+
+        .ska-feedback {
+            padding: 0 18px 2px;
+        }
+
+            .ska-feedback .alert {
+                margin: 6px 0 12px;
+            }
+
+        .ska-rarity-legendary {
+            --ska-rarity-rgb: 240, 173, 78;
+        }
+
+        .ska-rarity-epic {
+            --ska-rarity-rgb: 176, 106, 224;
+        }
+
+        .ska-rarity-rare {
+            --ska-rarity-rgb: 77, 157, 224;
+        }
+
+        .ska-rarity-uncommon {
+            --ska-rarity-rgb: 92, 184, 92;
+        }
+
+        .ska-rarity-common {
+            --ska-rarity-rgb: 158, 158, 158;
+        }
+
+        @@media screen and (max-width: 480px) {
+            .ska-hero {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .ska-cover {
+                margin: 0 0 12px;
+            }
+        }
+    </style>
 }
 
 @Html.AntiForgeryToken()
@@ -56,11 +300,27 @@
 </div>
 
 <form method="get" class="admin-filters">
+    <input type="hidden" name="player" value="@Model.Player"/>
     <input type="text" name="q" value="@Model.Query" class="form-control admin-search" placeholder="@Localizer["SearchPlaceholder"]"/>
     <button type="submit" class="btn btn-default">
         <span class="glyphicon glyphicon-search"></span> @SharedLocalizer["Search"]
     </button>
-    @if (!string.IsNullOrEmpty(Model.Query))
+    @if (Model.Player == null)
+    {
+        <button type="button" class="btn btn-default ska-pick-player">
+            <span class="glyphicon glyphicon-user"></span> @Localizer["FilterByPlayer"]
+        </button>
+    }
+    else
+    {
+        <div class="ska-filter-player" title="@Model.Player">
+            <img src="@UserAvatar[Model.Player]" alt="@Model.PlayerName" onerror="imgOnError(this)"/>
+            <span>@Model.PlayerName</span>
+            <a href="#" class="ska-pick-player" title="@Localizer["ChangePlayer"]"><span class="glyphicon glyphicon-pencil"></span></a>
+            <a href="@Url.Action("Purchases", "SkinsAdmin", new { q = Model.Query })" title="@Localizer["RemovePlayerFilter"]"><span class="glyphicon glyphicon-remove"></span></a>
+        </div>
+    }
+    @if (!string.IsNullOrEmpty(Model.Query) || Model.Player != null)
     {
         <a class="btn btn-link" href="@Url.Action("Purchases", "SkinsAdmin")">@Localizer["ClearFilters"]</a>
     }
@@ -79,12 +339,16 @@
         var weapon = row.Skin == null ? string.Empty : Localizer[SkinsModel.WeaponResourceKeys[row.Skin.Weapon]].Value;
         var date = purchase.PurchasedAtUtc.ToLocalTime().ToString("g", culture);
         var price = purchase.Gift ? Localizer["Gift"].Value : $"{purchase.Price.ToString("N0", culture)} ⭐";
+        var rarity = row.Skin == null ? null : SkinsModel.RarityKey(row.Skin.Rarity);
 
         <div class="admin-item ska-purchase"
              data-player="@row.CommunityId" data-player-name="@row.PlayerName" data-avatar="@UserAvatar[row.CommunityId]"
              data-skin="@purchase.SkinId" data-title="@title" data-image="@image" data-weapon="@weapon"
+             data-shop-url="@(row.Skin == null ? "" : $"{Url.Action("Index", "Skins")}#skin-{purchase.SkinId}")"
+             data-rarity="@(rarity == null ? "" : Localizer[rarity].Value)" data-rarity-css="@(row.Skin == null ? "" : $"ska-rarity-{row.Skin.Rarity.ToString().ToLowerInvariant()}")"
              data-price="@price" data-date="@date" data-gift="@(purchase.Gift ? 1 : 0)" data-gifted-by="@row.GiftedByName"
-             data-stars-before="@(purchase.Gift ? "" : purchase.StarsBefore.ToString("N0", culture))">
+             data-stars-before="@(purchase.Gift ? "" : purchase.StarsBefore.ToString("N0", culture))"
+             data-stars-after="@(purchase.Gift ? "" : (purchase.StarsBefore - purchase.Price).ToString("N0", culture))">
             <img class="admin-thumb" src="@image" alt="@title" loading="lazy"/>
             <div class="admin-main">
                 <div class="admin-title">@title</div>
@@ -128,31 +392,58 @@
                 <h4 class="modal-title">@Localizer["PurchaseDetails"]</h4>
             </div>
             <div class="modal-body">
-                <div class="admin-details">
-                    <img class="ska-image" src="" alt=""/>
-                    <dl>
-                        <dt>@Localizer["Skin"]</dt>
-                        <dd>
-                            <b class="ska-title"></b><br/><small class="ska-weapon text-muted"></small>
-                        </dd>
-                        <dt>@SharedLocalizer["Player"]</dt>
-                        <dd>
-                            <img class="admin-avatar ska-avatar" src="" alt="" onerror="imgOnError(this)"/>
-                            <a class="ska-player-link" href="#"></a>
-                            <br/><small class="ska-player-id text-muted"></small>
-                        </dd>
-                        <dt>@Localizer["Price"]</dt>
-                        <dd class="ska-price"></dd>
-                        <dt class="ska-stars-before-label">@Localizer["StarsBefore"]</dt>
-                        <dd class="ska-stars-before"></dd>
-                        <dt class="ska-gifted-by-label">@Localizer["GiftedBy"]</dt>
-                        <dd class="ska-gifted-by"></dd>
-                        <dt>@Localizer["Date"]</dt>
-                        <dd class="ska-date"></dd>
-                    </dl>
+                <div class="ska-hero">
+                    <a class="ska-cover ska-shop-link" href="#" target="_blank" rel="noopener">
+                        <img class="ska-image" src="" alt=""/>
+                        <span class="ska-cover-hint"><span class="glyphicon glyphicon-new-window"></span> @Localizer["ViewInShop"]</span>
+                    </a>
+                    <div class="ska-hero-info">
+                        <span class="ska-rarity"></span>
+                        <span class="label label-success ska-gift-badge"><span class="glyphicon glyphicon-gift"></span> @Localizer["Gift"]</span>
+                        <h4><a class="ska-title ska-shop-link" href="#" target="_blank" rel="noopener"></a></h4>
+                        <div class="ska-weapon"></div>
+                        <a class="btn btn-default btn-sm ska-shop-link" href="#" target="_blank" rel="noopener">
+                            <span class="glyphicon glyphicon-new-window"></span> @Localizer["ViewInShop"]
+                        </a>
+                    </div>
                 </div>
-                <div class="alert alert-warning admin-confirm ska-refund-confirm"></div>
-                <div class="ska-message"></div>
+                <div class="ska-section">
+                    <div class="ska-player">
+                        <img class="ska-avatar" src="" alt="" onerror="imgOnError(this)"/>
+                        <div class="ska-player-info">
+                            <strong class="ska-player-name"></strong>
+                            <small class="ska-player-id"></small>
+                        </div>
+                        <a class="btn btn-default btn-sm ska-player-filter" href="#" title="@Localizer["PlayerPurchases"]">
+                            <span class="glyphicon glyphicon-filter"></span>
+                        </a>
+                        <a class="btn btn-default btn-sm ska-player-link" href="#" target="_blank" rel="noopener" title="@Localizer["PlayerProfile"]">
+                            <span class="glyphicon glyphicon-user"></span>
+                        </a>
+                    </div>
+                    <div class="ska-facts">
+                        <div>
+                            <small>@Localizer["Price"]</small>
+                            <strong class="ska-price"></strong>
+                        </div>
+                        <div class="ska-stars-before-box">
+                            <small title="@Localizer["BalanceHint"]">@Localizer["Balance"]</small>
+                            <strong><span class="ska-stars-before"></span> <span class="ska-balance-after"></span></strong>
+                        </div>
+                        <div class="ska-gifted-by-box">
+                            <small>@Localizer["GiftedBy"]</small>
+                            <strong class="ska-gifted-by"></strong>
+                        </div>
+                        <div>
+                            <small>@Localizer["Date"]</small>
+                            <strong class="ska-date"></strong>
+                        </div>
+                    </div>
+                </div>
+                <div class="ska-feedback">
+                    <div class="alert alert-warning admin-confirm ska-refund-confirm"></div>
+                    <div class="ska-message"></div>
+                </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">@SharedLocalizer["Close"]</button>
@@ -205,8 +496,7 @@
                 refundAllDone: @Json.Serialize(Localizer["RefundAllDone"].Value),
                 refundAllFailed: @Json.Serialize(Localizer["RefundAllFailed"].Value),
                 refundAllRunning: @Json.Serialize(Localizer["RefundAllRunning"].Value),
-                confirmRefundAll: @Json.Serialize(Localizer["ConfirmRefundAllButton"].Value),
-                errors: {
+                confirmRefundAll: @Json.Serialize(Localizer["ConfirmRefundAllButton"].Value),                errors: {
                     NotOwned: @Json.Serialize(Localizer["ErrorNotOwned"].Value),
                     Busy: @Json.Serialize(Localizer["ErrorBusy"].Value),
                     Generic: @Json.Serialize(Localizer["ErrorGeneric"].Value)
@@ -214,7 +504,14 @@
             };
 
             var token = $('input[name="__RequestVerificationToken"]').val();
+            var purchasesUrl = @Json.Serialize(Url.Action("Purchases", "SkinsAdmin"));
+            var query = @Json.Serialize(Model.Query ?? string.Empty);
+            var rarityClasses = 'ska-rarity-legendary ska-rarity-epic ska-rarity-rare ska-rarity-uncommon ska-rarity-common';
             var selected = null;
+
+            function playerUrl(communityId) {
+                return purchasesUrl + '?' + $.param(query === '' ? { player: communityId } : { player: communityId, q: query });
+            }
 
             function format(template) {
                 var args = Array.prototype.slice.call(arguments, 1);
@@ -253,23 +550,49 @@
 
                 selected = { player: $item.data('player').toString(), name: $item.data('player-name'), skin: $item.data('skin'), title: $item.data('title') };
 
+                var shopUrl = $item.data('shop-url');
+                var rarity = $item.data('rarity');
+
+                $modal.find('.modal-content').removeClass(rarityClasses).addClass($item.data('rarity-css'));
                 $modal.find('.ska-image').attr({ src: $item.data('image'), alt: $item.data('title') });
                 $modal.find('.ska-title').text($item.data('title'));
-                $modal.find('.ska-weapon').text($item.data('weapon') + ' · ' + $item.data('skin'));
+                $modal.find('.ska-shop-link').attr('href', shopUrl || '#').toggleClass('disabled', !shopUrl);
+                $modal.find('.btn.ska-shop-link').toggle(!!shopUrl);
+                $modal.find('.ska-cover-hint').toggle(!!shopUrl);
+                $modal.find('.ska-rarity').text(rarity).toggle(!!rarity);
+                $modal.find('.ska-gift-badge').toggle(gift);
+                $modal.find('.ska-weapon').text([$item.data('weapon'), $item.data('skin')].filter(Boolean).join(' · '));
                 $modal.find('.ska-avatar').attr({ src: $item.data('avatar'), alt: $item.data('player-name') });
-                $modal.find('.ska-player-link').text($item.data('player-name')).attr('href', '/player/' + encodeURIComponent(selected.player));
+                $modal.find('.ska-player-name').text($item.data('player-name'));
+                $modal.find('.ska-player-link').attr('href', '/player/' + encodeURIComponent(selected.player));
+                $modal.find('.ska-player-filter').attr('href', playerUrl(selected.player));
                 $modal.find('.ska-player-id').text(selected.player);
                 $modal.find('.ska-price').text($item.data('price'));
                 $modal.find('.ska-stars-before').text($item.data('stars-before') + ' ⭐');
-                $modal.find('.ska-stars-before, .ska-stars-before-label').toggle(!gift);
+                $modal.find('.ska-balance-after').text('→ ' + $item.data('stars-after') + ' ⭐');
+                $modal.find('.ska-stars-before-box').toggle(!gift);
                 $modal.find('.ska-gifted-by').text($item.data('gifted-by'));
-                $modal.find('.ska-gifted-by, .ska-gifted-by-label').toggle(gift);
+                $modal.find('.ska-gifted-by-box').toggle(gift && !!$item.data('gifted-by'));
                 $modal.find('.ska-date').text($item.data('date'));
                 $modal.find('.ska-refund-confirm').hide().text('');
                 $modal.find('.ska-message').empty();
                 $modal.find('.ska-refund').show().prop('disabled', false);
                 $modal.find('.ska-refund-yes').hide().prop('disabled', false);
                 $modal.modal('show');
+            });
+
+            $('.ska-shop-link').on('click', function (event) {
+                if ($(this).hasClass('disabled'))
+                    event.preventDefault();
+            });
+
+            $('.ska-pick-player').on('click', function (event) {
+                event.preventDefault();
+
+                PlayerPicker.open(function (player) {
+                    if (player)
+                        location.href = playerUrl(player.communityId);
+                });
             });
 
             $('.ska-refund').on('click', function () {

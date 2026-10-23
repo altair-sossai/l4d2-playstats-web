@@ -22,7 +22,7 @@ public class SkinsAdminController(
     private const int PageSize = 20;
 
     [Route("admin/skins/purchases")]
-    public async Task<IActionResult> Purchases(string? q, int page = 1, CancellationToken cancellationToken = default)
+    public async Task<IActionResult> Purchases(string? q, string? player, int page = 1, CancellationToken cancellationToken = default)
     {
         ViewBag.Admin = "active";
         ViewBag.SkinPurchases = "active";
@@ -32,13 +32,15 @@ public class SkinsAdminController(
         var skinsById = skins.ToDictionary(skin => skin.Id);
         var purchases = await skinShopService.GetAllPurchasesAsync(cancellationToken);
         var players = await rankingService.GetAsync(cancellationToken);
+        var playerId = string.IsNullOrWhiteSpace(player) ? null : player.Trim();
 
         var names = players
-            .Where(player => !string.IsNullOrEmpty(player.Name))
-            .GroupBy(player => player.CommunityId.ToString(CultureInfo.InvariantCulture))
+            .Where(ranked => !string.IsNullOrEmpty(ranked.Name))
+            .GroupBy(ranked => ranked.CommunityId.ToString(CultureInfo.InvariantCulture))
             .ToDictionary(group => group.Key, group => group.First().Name!);
 
         var rows = purchases
+            .Where(purchase => playerId == null || purchase.PartitionKey == playerId)
             .OrderByDescending(purchase => purchase.PurchasedAtUtc)
             .Select(purchase => new SkinPurchaseRowModel(
                 purchase,
@@ -50,9 +52,17 @@ public class SkinsAdminController(
 
         var list = new PagedListModel<SkinPurchaseRowModel>(rows, page, PageSize);
 
-        await userAvatar.LoadAsync(list.Items.Select(row => row.CommunityId), false, cancellationToken);
+        var playerName = playerId == null
+            ? null
+            : purchases.FirstOrDefault(purchase => purchase.PartitionKey == playerId && purchase.PlayerName != null)?.PlayerName
+              ?? names.GetValueOrDefault(playerId)
+              ?? playerId;
 
-        var model = new SkinPurchasesAdminModel(list, q, skins, purchases.Count(purchase => !purchase.Gift), purchases.Sum(purchase => purchase.Price), purchases.Count(purchase => purchase.Gift));
+        var avatars = list.Items.Select(row => row.CommunityId);
+
+        await userAvatar.LoadAsync(playerId == null ? avatars : avatars.Append(playerId), false, cancellationToken);
+
+        var model = new SkinPurchasesAdminModel(list, q, playerId, playerName, skins, purchases.Count(purchase => !purchase.Gift), purchases.Sum(purchase => purchase.Price), purchases.Count(purchase => purchase.Gift));
 
         return View(model);
     }

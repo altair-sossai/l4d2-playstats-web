@@ -206,8 +206,8 @@
   <data name="Skin" xml:space="preserve">
     <value>Skin</value>
   </data>
-  <data name="StarsBefore" xml:space="preserve">
-    <value>Saldo antes da compra</value>
+  <data name="Balance" xml:space="preserve">
+    <value>Saldo</value>
   </data>
   <data name="StatGifts" xml:space="preserve">
     <value>presentes dados</value>
@@ -262,5 +262,41 @@
   </data>
   <data name="WeaponSmgSilenced" xml:space="preserve">
     <value>MAC-10</value>
+  </data>
+  <data name="FilterByPlayer" xml:space="preserve">
+    <value>Filtrar por jogador</value>
+  </data>
+  <data name="ChangePlayer" xml:space="preserve">
+    <value>Trocar jogador</value>
+  </data>
+  <data name="RemovePlayerFilter" xml:space="preserve">
+    <value>Mostrar todos os jogadores</value>
+  </data>
+  <data name="ViewInShop" xml:space="preserve">
+    <value>Ver na loja</value>
+  </data>
+  <data name="PlayerPurchases" xml:space="preserve">
+    <value>Mostrar só as compras deste jogador</value>
+  </data>
+  <data name="PlayerProfile" xml:space="preserve">
+    <value>Abrir o perfil do jogador</value>
+  </data>
+  <data name="BalanceHint" xml:space="preserve">
+    <value>Saldo antes → depois da compra</value>
+  </data>
+  <data name="RarityCommon" xml:space="preserve">
+    <value>Comum</value>
+  </data>
+  <data name="RarityUncommon" xml:space="preserve">
+    <value>Incomum</value>
+  </data>
+  <data name="RarityRare" xml:space="preserve">
+    <value>Rara</value>
+  </data>
+  <data name="RarityEpic" xml:space="preserve">
+    <value>Épica</value>
+  </data>
+  <data name="RarityLegendary" xml:space="preserve">
+    <value>Lendária</value>
   </data>
 </root>
