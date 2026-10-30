@@ -316,8 +316,12 @@
         <div class="ska-filter-player" title="@Model.Player">
             <img src="@UserAvatar[Model.Player]" alt="@Model.PlayerName" onerror="imgOnError(this)"/>
             <span>@Model.PlayerName</span>
-            <a href="#" class="ska-pick-player" title="@Localizer["ChangePlayer"]"><span class="glyphicon glyphicon-pencil"></span></a>
-            <a href="@Url.Action("Purchases", "SkinsAdmin", new { q = Model.Query })" title="@Localizer["RemovePlayerFilter"]"><span class="glyphicon glyphicon-remove"></span></a>
+            <a href="#" class="ska-pick-player" title="@Localizer["ChangePlayer"]">
+                <span class="glyphicon glyphicon-pencil"></span>
+            </a>
+            <a href="@Url.Action("Purchases", "SkinsAdmin", new { q = Model.Query })" title="@Localizer["RemovePlayerFilter"]">
+                <span class="glyphicon glyphicon-remove"></span>
+            </a>
         </div>
     }
     @if (!string.IsNullOrEmpty(Model.Query) || Model.Player != null)
@@ -395,12 +399,18 @@
                 <div class="ska-hero">
                     <a class="ska-cover ska-shop-link" href="#" target="_blank" rel="noopener">
                         <img class="ska-image" src="" alt=""/>
-                        <span class="ska-cover-hint"><span class="glyphicon glyphicon-new-window"></span> @Localizer["ViewInShop"]</span>
+                        <span class="ska-cover-hint">
+                            <span class="glyphicon glyphicon-new-window"></span> @Localizer["ViewInShop"]
+                        </span>
                     </a>
                     <div class="ska-hero-info">
                         <span class="ska-rarity"></span>
-                        <span class="label label-success ska-gift-badge"><span class="glyphicon glyphicon-gift"></span> @Localizer["Gift"]</span>
-                        <h4><a class="ska-title ska-shop-link" href="#" target="_blank" rel="noopener"></a></h4>
+                        <span class="label label-success ska-gift-badge">
+                            <span class="glyphicon glyphicon-gift"></span> @Localizer["Gift"]
+                        </span>
+                        <h4>
+                            <a class="ska-title ska-shop-link" href="#" target="_blank" rel="noopener"></a>
+                        </h4>
                         <div class="ska-weapon"></div>
                         <a class="btn btn-default btn-sm ska-shop-link" href="#" target="_blank" rel="noopener">
                             <span class="glyphicon glyphicon-new-window"></span> @Localizer["ViewInShop"]
@@ -428,7 +438,9 @@
                         </div>
                         <div class="ska-stars-before-box">
                             <small title="@Localizer["BalanceHint"]">@Localizer["Balance"]</small>
-                            <strong><span class="ska-stars-before"></span> <span class="ska-balance-after"></span></strong>
+                            <strong>
+                                <span class="ska-stars-before"></span> <span class="ska-balance-after"></span>
+                            </strong>
                         </div>
                         <div class="ska-gifted-by-box">
                             <small>@Localizer["GiftedBy"]</small>

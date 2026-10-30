@@ -1766,8 +1766,9 @@
                 history.replaceState(null, '', $(this).attr('href'));
             });
 
-            if (location.hash === '#mine')
-                $('.sk-tabs a[href="#mine"]').tab('show');
+            $('.sk-tabs a').filter(function () {
+                return $(this).attr('href') === location.hash;
+            }).tab('show');
 
             if (location.hash.indexOf('#skin-') === 0) {
                 var $card = $('#sk-shop').find('[id="' + location.hash.substring(1) + '"]');
