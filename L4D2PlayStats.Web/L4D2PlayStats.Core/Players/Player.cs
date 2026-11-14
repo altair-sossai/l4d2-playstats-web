@@ -21,4 +21,6 @@ public class Player(PlayerResult playerResult, PlayerResultProperty property)
     public long CommunityId => playerResult.CommunityId;
     public string? Name => playerResult.Name;
     public decimal Value { get; } = Convert.ToDecimal(PropertiesInfo[property.ToString()].GetValue(playerResult) ?? 0);
+    public int Games => playerResult.Games;
+    public decimal? PerGame => Games > 0 ? Value / Games : null;
 }

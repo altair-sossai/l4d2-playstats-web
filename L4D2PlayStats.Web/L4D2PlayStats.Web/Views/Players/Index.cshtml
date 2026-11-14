@@ -41,6 +41,7 @@
 
 @{
     ViewData["PageMetadata"] = new PlayersPageMetadata(Model, SharedLocalizer, UserAvatar);
+    var showPerGame = Model.OrderBy != PlayerResultProperty.Games;
 }
 
 @section Styles {
@@ -94,6 +95,11 @@
                 @(Model.Asc ? "\u2191" : "\u2193")
             </a>
         </th>
+        @if (showPerGame)
+        {
+            <th class="text-center">@SharedLocalizer["Games"]</th>
+            <th class="text-center">@SharedLocalizer["PerGame"]</th>
+        }
     </tr>
     </thead>
     <tbody>
@@ -123,6 +129,15 @@
                     }
                 </p>
             </td>
+            @if (showPerGame)
+            {
+                <td class="text-center vertical-align-middle">
+                    <p>@player.Games.ToString("N0")</p>
+                </td>
+                <td class="text-center vertical-align-middle">
+                    <p>@(player.PerGame?.ToString("N2") ?? "-")</p>
+                </td>
+            }
         </tr>
 
         position += Model.Asc ? -1 : 1;

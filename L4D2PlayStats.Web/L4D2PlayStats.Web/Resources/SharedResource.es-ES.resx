@@ -1008,6 +1008,9 @@
     <data name="PillsUsed" xml:space="preserve">
     <value>Píldoras/adrenalinas usadas</value>
   </data>
+    <data name="PerGame" xml:space="preserve">
+    <value>Por juego</value>
+  </data>
     <data name="Player" xml:space="preserve">
     <value>Jugador</value>
   </data>
