@@ -97,7 +97,6 @@
         </th>
         @if (showPerGame)
         {
-            <th class="text-center">@SharedLocalizer["Games"]</th>
             <th class="text-center">@SharedLocalizer["PerGame"]</th>
         }
     </tr>
@@ -132,10 +131,10 @@
             @if (showPerGame)
             {
                 <td class="text-center vertical-align-middle">
-                    <p>@player.Games.ToString("N0")</p>
-                </td>
-                <td class="text-center vertical-align-middle">
-                    <p>@(player.PerGame?.ToString("N2") ?? "-")</p>
+                    <p>
+                        @(player.PerGame?.ToString("N2") ?? "-")
+                        <span class="glyphicon glyphicon-info-sign text-muted" tabindex="0" role="button" data-toggle="tooltip" data-trigger="hover focus" data-placement="top" title="@SharedLocalizer["Games"]: @player.Games.ToString("N0")" aria-label="@SharedLocalizer["Games"]: @player.Games.ToString("N0")"></span>
+                    </p>
                 </td>
             }
         </tr>
