@@ -2,7 +2,7 @@
 
 🌐 [English](README.md) | **Português** | [Español](README.es.md)
 
-Ranking, estatísticas e loja de skins de armas para um servidor competitivo de Left 4 Dead 2. Feito com ASP.NET Core MVC (.NET 10).
+Ranking, estatísticas e loja de skins de armas para um servidor competitivo de Left 4 Dead 2. Feito com ASP.NET Core MVC (.NET 11).
 
 É o site da comunidade brasileira **[l4d2.com.br](https://l4d2.com.br/)**.
 
@@ -130,7 +130,7 @@ Dois jogadores lado a lado: ranking, estrelas, estatísticas, histórico de part
 
 | O quê | Para quê |
 |---|---|
-| **.NET 10 SDK** | Compilar e executar. O build de produção é self-contained, então o host não precisa do .NET |
+| **.NET 11 SDK** | Compilar e executar. O build de produção é self-contained, então o host não precisa do .NET |
 | **[PlayStats API](https://github.com/altair-sossai/l4d2-playstats-api)** | O site lê dela o ranking, as partidas e as estrelas. Use uma implantação existente ou hospede a sua. O site precisa de um servidor cadastrado lá: `ServerId` é a row key de uma linha da tabela `Servers` da API, e `PlayStatsSecret` é o `Secret` dessa linha |
 | **Conta do Azure Storage** (ou [Azurite](https://learn.microsoft.com/azure/storage/common/storage-use-azurite) localmente) | Só Table Storage: `SkinShop` (compras, carteiras, skins equipadas), `SkinPrices` (preços alterados), `ChatBans` e `PlayerConnectionInfo`. As tabelas são criadas no primeiro uso |
 | **Chave da Steam Web API** | Nomes e avatares dos jogadores e os detalhes do servidor pela lista de servidores da Steam |
@@ -274,7 +274,7 @@ O `azure-pipelines.yml` roda a cada push na `main`:
 
 | Stage | Passos |
 |---|---|
-| `BuildAndTest` | Instala o .NET 10 SDK, faz restore e build em Release |
+| `BuildAndTest` | Instala o .NET 11 SDK, faz restore e build em Release |
 | `PublishAndDeploy` | Publica um build self-contained em um agente Ubuntu, empacota-o junto com `bash/` em `publish.tar.gz` e `bash.tar.gz`, copia-os para `/home/devops` por SSH e executa `scripts/deploy.sh` no host |
 
 Ele precisa de uma service connection SSH chamada `L4D2 - Resources` (host, usuário de deploy e chave privada) no projeto do Azure DevOps. Não há variáveis nem secrets no pipeline.

@@ -2,7 +2,7 @@
 
 🌐 **English** | [Português](README.pt.md) | [Español](README.es.md)
 
-Ranking, statistics and weapon skin shop for a competitive Left 4 Dead 2 server. Built with ASP.NET Core MVC (.NET 10).
+Ranking, statistics and weapon skin shop for a competitive Left 4 Dead 2 server. Built with ASP.NET Core MVC (.NET 11).
 
 It runs the Brazilian community site **[l4d2.com.br](https://l4d2.com.br/)**.
 
@@ -130,7 +130,7 @@ Two players side by side: ranking, stars, statistics, match history and skins. T
 
 | What | Why |
 |---|---|
-| **.NET 10 SDK** | Build and run. The production build is self-contained, so the host itself does not need .NET |
+| **.NET 11 SDK** | Build and run. The production build is self-contained, so the host itself does not need .NET |
 | **[PlayStats API](https://github.com/altair-sossai/l4d2-playstats-api)** | The site reads the ranking, matches and stars from it. Use an existing deployment or host your own. The site needs a server registered there: `ServerId` is the row key of a row in the API's `Servers` table, and `PlayStatsSecret` is that row's `Secret` |
 | **Azure Storage account** (or [Azurite](https://learn.microsoft.com/azure/storage/common/storage-use-azurite) locally) | Table storage only: `SkinShop` (purchases, wallets, equipped skins), `SkinPrices` (price overrides), `ChatBans` and `PlayerConnectionInfo`. The tables are created on first use |
 | **Steam Web API key** | Player names, avatars and the server details from the Steam server list |
@@ -274,7 +274,7 @@ These are the steps the repository's scripts expect, on Debian or Ubuntu. The [A
 
 | Stage | Steps |
 |---|---|
-| `BuildAndTest` | Installs the .NET 10 SDK, restores and builds in Release |
+| `BuildAndTest` | Installs the .NET 11 SDK, restores and builds in Release |
 | `PublishAndDeploy` | Publishes a self-contained build on an Ubuntu agent, packs it and `bash/` into `publish.tar.gz` and `bash.tar.gz`, copies them to `/home/devops` over SSH and runs `scripts/deploy.sh` on the host |
 
 It needs one SSH service connection named `L4D2 - Resources` (host, deploy user and private key) in the Azure DevOps project. There are no pipeline variables or secrets.

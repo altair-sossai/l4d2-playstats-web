@@ -31,7 +31,6 @@ builder.Services
 builder.Services.AddLocalization(options => options.ResourcesPath = "Resources");
 
 builder.Services.AddControllersWithViews()
-    .AddRazorRuntimeCompilation()
     .AddViewLocalization()
     .AddDataAnnotationsLocalization()
     .AddJsonOptions(options =>

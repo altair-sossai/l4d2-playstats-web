@@ -2,7 +2,7 @@
 
 🌐 [English](README.md) | [Português](README.pt.md) | **Español**
 
-Ranking, estadísticas y tienda de skins de armas para un servidor competitivo de Left 4 Dead 2. Hecho con ASP.NET Core MVC (.NET 10).
+Ranking, estadísticas y tienda de skins de armas para un servidor competitivo de Left 4 Dead 2. Hecho con ASP.NET Core MVC (.NET 11).
 
 Es el sitio de la comunidad brasileña **[l4d2.com.br](https://l4d2.com.br/)**.
 
@@ -130,7 +130,7 @@ Dos jugadores lado a lado: ranking, estrellas, estadísticas, historial de parti
 
 | Qué | Para qué |
 |---|---|
-| **.NET 10 SDK** | Compilar y ejecutar. El build de producción es self-contained, así que el host no necesita .NET |
+| **.NET 11 SDK** | Compilar y ejecutar. El build de producción es self-contained, así que el host no necesita .NET |
 | **[PlayStats API](https://github.com/altair-sossai/l4d2-playstats-api)** | El sitio lee de ella el ranking, las partidas y las estrellas. Usa un despliegue existente o aloja el tuyo. El sitio necesita un servidor registrado allí: `ServerId` es la row key de una fila de la tabla `Servers` de la API, y `PlayStatsSecret` es el `Secret` de esa fila |
 | **Cuenta de Azure Storage** (o [Azurite](https://learn.microsoft.com/azure/storage/common/storage-use-azurite) en local) | Solo Table Storage: `SkinShop` (compras, carteras, skins equipadas), `SkinPrices` (precios modificados), `ChatBans` y `PlayerConnectionInfo`. Las tablas se crean en el primer uso |
 | **Clave de la Steam Web API** | Nombres y avatares de los jugadores y los detalles del servidor desde la lista de servidores de Steam |
@@ -274,7 +274,7 @@ Estos son los pasos que esperan los scripts del repositorio, en Debian o Ubuntu.
 
 | Stage | Pasos |
 |---|---|
-| `BuildAndTest` | Instala el .NET 10 SDK, hace restore y build en Release |
+| `BuildAndTest` | Instala el .NET 11 SDK, hace restore y build en Release |
 | `PublishAndDeploy` | Publica un build self-contained en un agente Ubuntu, lo empaqueta junto con `bash/` en `publish.tar.gz` y `bash.tar.gz`, los copia a `/home/devops` por SSH y ejecuta `scripts/deploy.sh` en el host |
 
 Necesita una service connection SSH llamada `L4D2 - Resources` (host, usuario de despliegue y clave privada) en el proyecto de Azure DevOps. No hay variables ni secrets en el pipeline.
