@@ -10,6 +10,7 @@ public class AntiCheatModel(ClientVersionResponse? latest, string fallbackDownlo
     public string? Sha256 { get; init; } = latest?.Sha256;
     public long? SizeBytes { get; init; } = latest?.SizeBytes;
     public DateTimeOffset? PublishedAt { get; init; } = latest?.PublishedAt;
+    public bool? CurrentUserRequired { get; init; }
 
     public string? SizeText => SizeBytes is > 0 ? (SizeBytes.Value / 1024d / 1024d).ToString("0.0", CultureInfo.CurrentCulture) + " MB" : null;
 

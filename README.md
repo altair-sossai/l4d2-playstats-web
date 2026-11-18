@@ -48,13 +48,14 @@ It runs the Brazilian community site **[l4d2.com.br](https://l4d2.com.br/)**.
 - Skin purchases: totals, search, refunds (one purchase or everything) and gifts.
 - Skin prices: change a price without a deploy.
 - Chat bans for the site chat.
+- Anti-Cheat settings: who must run the anti-cheat client on the game server (everyone except a whitelist, or no one except a required list) and the players on each list, picked from the site players or by Steam ID, with name and photo. The game server picks up each change within seconds.
 
 **General**
 
 - English, Portuguese (Brazil) and Spanish, with dark and light themes.
 - Responsive layout. It also works in the game's built-in browser, which is why it uses Bootstrap 3.4.1 and jQuery 1.12.4.
 - Steam sign-in (OpenID), and player names and avatars from the Steam Web API.
-- An anti-cheat page for players.
+- An anti-cheat page for players. A signed-in player also sees whether their account must use it.
 
 ## How it fits together
 
@@ -64,6 +65,7 @@ flowchart LR
     API -- "ranking, matches, stars" --> WEB["PlayStats Web<br/>(this repository)"]
     GS -- "live round, chat, equipped skins" --> WEB
     WEB -- "purchased skins, equipped skins" --> GS
+    WEB -- "anti-cheat mode and lists" --> GS
     WEB -- "shop data" --> TS[("Azure Table Storage")]
     Players(("Players")) --> WEB
 ```
@@ -132,7 +134,7 @@ Two players side by side: ranking, stars, statistics, match history and skins. T
 |---|---|
 | **.NET 11 SDK** | Build and run. The production build is self-contained, so the host itself does not need .NET |
 | **[PlayStats API](https://github.com/altair-sossai/l4d2-playstats-api)** | The site reads the ranking, matches and stars from it. Use an existing deployment or host your own. The site needs a server registered there: `ServerId` is the row key of a row in the API's `Servers` table, and `PlayStatsSecret` is that row's `Secret` |
-| **Azure Storage account** (or [Azurite](https://learn.microsoft.com/azure/storage/common/storage-use-azurite) locally) | Table storage only: `SkinShop` (purchases, wallets, equipped skins), `SkinPrices` (price overrides), `ChatBans` and `PlayerConnectionInfo`. The tables are created on first use |
+| **Azure Storage account** (or [Azurite](https://learn.microsoft.com/azure/storage/common/storage-use-azurite) locally) | Table storage only: `SkinShop` (purchases, wallets, equipped skins), `SkinPrices` (price overrides), `ChatBans`, `AntiCheatSettings` (anti-cheat mode), `AntiCheatWhitelist`, `AntiCheatRequired` and `PlayerConnectionInfo`. The tables are created on first use |
 | **Steam Web API key** | Player names, avatars and the server details from the Steam server list |
 | **Node.js** (local only) | To install Azurite with npm |
 
@@ -330,7 +332,10 @@ The repository has no reverse proxy or TLS configuration; Kestrel serves HTTP on
 | PUT | `/api/game-info/configuration`, `round`, `scoreboard`, `players`, `messages` | Secret | `l4d2_gameinfo_sync`: live round, scoreboard, players and chat |
 | POST | `/api/game-info/events` | Secret | `l4d2_gameinfo_sync`: round events for the server page feed |
 | POST | `/api/game-info/player-connection-info` | Secret | `l4d2_gameinfo_sync`: player connections, kept in `PlayerConnectionInfo` for three months |
-| GET | `/api/game-info/server-command/dequeue` | Secret | `l4d2_gameinfo_sync`: next command sent by an admin from the site chat (`204` when there is none) |
+| GET | `/api/game-info/server-command/dequeue` | Secret | `l4d2_gameinfo_sync`: next command sent by an admin from the site chat, or the `sm_aac sync` queued after an anti-cheat change (`204` when there is none) |
+| GET | `/api/anti-cheat-access/server` | Secret | `l4d2-anti-cheat`: anti-cheat mode (`everyone` or `listed`, missing until saved on the site), whitelist and required list |
+| PUT | `/api/anti-cheat-access/server/mode` | Secret | `l4d2-anti-cheat`: mode changed in game with `!aac config` or `!aac mode` |
+| POST / DELETE | `/api/anti-cheat-access/server/{whitelist\|required}` (`DELETE` with `?player=<steamid>`) | Secret | `l4d2-anti-cheat`: player added or removed in game with `!aac config`, `!aac add` or `!aac remove` |
 | GET | `/api/external-chat` | — | `l4d2_gameinfo_sync`: site chat messages shown in game |
 | POST | `/api/cache/clear` | Secret | `l4d2_playstats_sync`: clears the cached ranking and matches after an upload (otherwise they refresh within an hour) |
 
@@ -342,6 +347,8 @@ The repository has no reverse proxy or TLS configuration; Kestrel serves HTTP on
 | Open `/login` | Steam sign-in, then back to the site signed in. Admins see the Admin menu |
 | Open `/skins` | The catalog; after signing in, the star balance. It needs the storage and the API |
 | `curl -i -H "Authorization: <SecretKey>" http://<host>:5000/api/game-info/server-command/dequeue` | `204` with the right secret, `401` with a wrong one. If an admin command is pending, this takes it from the queue |
+| `curl -i -H "Authorization: <SecretKey>" http://<host>:5000/api/anti-cheat-access/server` | `200` with the anti-cheat mode and lists, `401` with a wrong secret |
+| Open `/anti-cheat-admin` as an admin | The anti-cheat mode and the list of the current mode |
 | Open `/server` while the game server is running | The live round, players and chat |
 | In game, `!ranking` and `!skin` | The ranking panel and the skin menu |
 | `logs/app<yyyyMMdd>.log` in the working directory | No errors at startup. One file per day, the last 5 kept |

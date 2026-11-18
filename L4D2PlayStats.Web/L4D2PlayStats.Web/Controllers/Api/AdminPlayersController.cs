@@ -1,4 +1,5 @@
 using System.Globalization;
+using L4D2PlayStats.Core.Players.Services;
 using L4D2PlayStats.Core.Ranking.Services;
 using L4D2PlayStats.Core.UserAvatar;
 using L4D2PlayStats.Sdk.Ranking.Results;
@@ -12,7 +13,7 @@ namespace L4D2PlayStats.Web.Controllers.Api;
 [Authorize]
 [AdminAuthorize]
 [ApiController]
-public class AdminPlayersController(IRankingServiceCached rankingService, IUserAvatar userAvatar) : ControllerBase
+public class AdminPlayersController(IRankingServiceCached rankingService, IUserAvatar userAvatar, IPlayerLookupService playerLookupService) : ControllerBase
 {
     private const string AllTimeHistoryId = "all_time";
 
@@ -42,6 +43,14 @@ public class AdminPlayersController(IRankingServiceCached rankingService, IUserA
         });
 
         return Ok(result);
+    }
+
+    [HttpGet("lookup")]
+    public async Task<IActionResult> LookupAsync([FromQuery] string? id, CancellationToken cancellationToken)
+    {
+        var player = await playerLookupService.LookupAsync(id, cancellationToken);
+
+        return player == null ? NotFound() : Ok(player);
     }
 
     private static List<string> PreviousNames(PlayerResult player, PlayerResult? allTimePlayer)

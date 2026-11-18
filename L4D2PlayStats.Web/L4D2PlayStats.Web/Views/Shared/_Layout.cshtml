@@ -380,6 +380,12 @@
                                     @SharedLocalizer["ChatBans"]
                                 </a>
                             </li>
+                            <li class="@ViewBag.AntiCheatAdmin">
+                                <a href="@Url.Action("Index", "AntiCheatAdmin")">
+                                    <img src="~/imgs/menu/anti-cheat-admin.svg" alt="" class="img-responsive img-header-icon">
+                                    @SharedLocalizer["AntiCheatAdmin"]
+                                </a>
+                            </li>
                             <li role="separator" class="divider"></li>
                             <li class="@ViewBag.SkinPurchases">
                                 <a href="@Url.Action("Purchases", "SkinsAdmin")">

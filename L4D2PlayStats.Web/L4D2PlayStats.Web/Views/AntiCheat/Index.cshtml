@@ -316,6 +316,13 @@
             <span class="aac-kicker">@Localizer["Kicker"]</span>
             <h1>@SharedLocalizer["AntiCheat"]</h1>
             <p class="lead">@Localizer["Subtitle"]</p>
+            @if (Model.CurrentUserRequired is not null)
+            {
+                <div class="alert alert-info aac-access">
+                    <span class="glyphicon glyphicon-user"></span>
+                    @(Model.CurrentUserRequired.Value ? Localizer["AccessYouRequired"] : Localizer["AccessYouNotRequired"])
+                </div>
+            }
 
             <div class="aac-download">
                 <a class="btn btn-success btn-lg" href="@Model.DownloadUrl">

@@ -1536,4 +1536,7 @@
   <data name="CampaignStatsHelp" xml:space="preserve">
     <value>Partidas en cada campaña esta temporada, de la más jugada a la menos jugada. Los empates cuentan como partida y un rage quit cuenta como derrota.</value>
   </data>
+  <data name="AntiCheatAdmin" xml:space="preserve">
+    <value>Ajustes del Anti-Cheat</value>
+  </data>
 </root>

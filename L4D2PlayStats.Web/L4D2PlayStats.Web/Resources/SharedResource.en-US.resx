@@ -1536,4 +1536,7 @@
   <data name="CampaignStatsHelp" xml:space="preserve">
     <value>Games played in each campaign this season, from the most played. Draws count as games, and a rage quit counts as a loss.</value>
   </data>
+  <data name="AntiCheatAdmin" xml:space="preserve">
+    <value>Anti-Cheat settings</value>
+  </data>
 </root>

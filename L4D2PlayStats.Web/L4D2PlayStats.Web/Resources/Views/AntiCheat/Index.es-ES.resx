@@ -284,4 +284,10 @@
   <data name="StatusUpdatingText" xml:space="preserve">
     <value>Descargando e instalando la versión nueva. Se reinicia solo enseguida. No la cierres.</value>
   </data>
+  <data name="AccessYouRequired" xml:space="preserve">
+    <value>Tu cuenta de Steam necesita tener el Anti-Cheat abierto para jugar en nuestros servidores. Ábrelo antes de entrar.</value>
+  </data>
+  <data name="AccessYouNotRequired" xml:space="preserve">
+    <value>Tu cuenta de Steam puede jugar en nuestros servidores sin el Anti-Cheat.</value>
+  </data>
 </root>

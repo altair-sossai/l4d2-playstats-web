@@ -284,4 +284,10 @@
   <data name="StatusUpdatingText" xml:space="preserve">
     <value>Downloading and installing the new version. It restarts by itself right after. Do not close it.</value>
   </data>
+  <data name="AccessYouRequired" xml:space="preserve">
+    <value>Your Steam account must have the Anti-Cheat running to play on our servers. Open it before you join.</value>
+  </data>
+  <data name="AccessYouNotRequired" xml:space="preserve">
+    <value>Your Steam account can play on our servers without the Anti-Cheat.</value>
+  </data>
 </root>

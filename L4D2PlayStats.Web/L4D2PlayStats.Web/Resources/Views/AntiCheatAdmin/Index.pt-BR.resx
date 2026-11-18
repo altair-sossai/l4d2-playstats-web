@@ -1,0 +1,257 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing"
+  mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework
+  object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0,
+      Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0,
+      Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Lead" xml:space="preserve">
+    <value>Escolha quem precisa usar o Anti-Cheat no servidor e mantenha uma lista de jogadores para cada modo. O servidor recebe cada alteração em até um minuto.</value>
+  </data>
+  <data name="ModeTitle" xml:space="preserve">
+    <value>Modo de uso</value>
+  </data>
+  <data name="ModeEveryone" xml:space="preserve">
+    <value>Todos devem usar</value>
+  </data>
+  <data name="ModeEveryoneHelp" xml:space="preserve">
+    <value>Todo jogador precisa estar com o Anti-Cheat aberto para jogar. Os jogadores da lista abaixo ficam liberados.</value>
+  </data>
+  <data name="ModeListed" xml:space="preserve">
+    <value>Ninguém, exceto estes jogadores</value>
+  </data>
+  <data name="ModeListedHelp" xml:space="preserve">
+    <value>Só os jogadores da lista abaixo precisam estar com o Anti-Cheat aberto para jogar.</value>
+  </data>
+  <data name="ModeNotSaved" xml:space="preserve">
+    <value>Ainda não salvo no site: o servidor está usando o valor de anti_cheat_mode do arquivo de configuração.</value>
+  </data>
+  <data name="ModeUpdated" xml:space="preserve">
+    <value>Alterado por {0} {1} em {2}.</value>
+  </data>
+  <data name="FromSite" xml:space="preserve">
+    <value>no site</value>
+  </data>
+  <data name="FromGame" xml:space="preserve">
+    <value>no jogo</value>
+  </data>
+  <data name="SaveMode" xml:space="preserve">
+    <value>Salvar modo</value>
+  </data>
+  <data name="ModeSaved" xml:space="preserve">
+    <value>Modo salvo.</value>
+  </data>
+  <data name="ListWhitelistTitle" xml:space="preserve">
+    <value>Exceto estes jogadores</value>
+  </data>
+  <data name="ListWhitelistHelp" xml:space="preserve">
+    <value>Whitelist: estes jogadores podem jogar sem o Anti-Cheat enquanto todos devem usar.</value>
+  </data>
+  <data name="ListRequiredTitle" xml:space="preserve">
+    <value>Apenas estes jogadores</value>
+  </data>
+  <data name="ListRequiredHelp" xml:space="preserve">
+    <value>Lista obrigatória: estes jogadores precisam usar o Anti-Cheat enquanto os demais não precisam.</value>
+  </data>
+  <data name="ListWhitelistName" xml:space="preserve">
+    <value>whitelist</value>
+  </data>
+  <data name="ListRequiredName" xml:space="preserve">
+    <value>lista obrigatória</value>
+  </data>
+  <data name="ShowOtherList" xml:space="preserve">
+    <value>Ver a {0} ({1})</value>
+  </data>
+  <data name="InactiveList" xml:space="preserve">
+    <value>Esta lista não é usada no modo atual. Ela fica guardada para quando o modo mudar.</value>
+  </data>
+  <data name="BackToActive" xml:space="preserve">
+    <value>Ver a lista em uso</value>
+  </data>
+  <data name="StatPlayers" xml:space="preserve">
+    <value>jogadores nesta lista</value>
+  </data>
+  <data name="SearchPlaceholder" xml:space="preserve">
+    <value>Buscar por nome ou Steam ID</value>
+  </data>
+  <data name="ClearFilters" xml:space="preserve">
+    <value>Limpar filtros</value>
+  </data>
+  <data name="NoPlayers" xml:space="preserve">
+    <value>Nenhum jogador nesta lista.</value>
+  </data>
+  <data name="AddPlayer" xml:space="preserve">
+    <value>Adicionar jogador</value>
+  </data>
+  <data name="AddTo" xml:space="preserve">
+    <value>Adicionar em: {0}</value>
+  </data>
+  <data name="AddedByValue" xml:space="preserve">
+    <value>por {0} {1}</value>
+  </data>
+  <data name="AddedAt" xml:space="preserve">
+    <value>Adicionado em</value>
+  </data>
+  <data name="AddedBy" xml:space="preserve">
+    <value>Adicionado por</value>
+  </data>
+  <data name="SteamProfile" xml:space="preserve">
+    <value>Perfil Steam</value>
+  </data>
+  <data name="RemovePlayer" xml:space="preserve">
+    <value>Remover da lista</value>
+  </data>
+  <data name="ConfirmRemove" xml:space="preserve">
+    <value>Remover este jogador da lista? O servidor aplica em até um minuto.</value>
+  </data>
+  <data name="ConfirmRemoveButton" xml:space="preserve">
+    <value>Sim, remover</value>
+  </data>
+  <data name="Removed" xml:space="preserve">
+    <value>Jogador removido.</value>
+  </data>
+  <data name="Saved" xml:space="preserve">
+    <value>Jogador adicionado.</value>
+  </data>
+  <data name="PickPlayer" xml:space="preserve">
+    <value>Escolher jogador</value>
+  </data>
+  <data name="LookupSearching" xml:space="preserve">
+    <value>Procurando...</value>
+  </data>
+  <data name="LookupNotFound" xml:space="preserve">
+    <value>Isto não é um Steam ID ou URL de perfil válido.</value>
+  </data>
+  <data name="LookupKnown" xml:space="preserve">
+    <value>Jogador do site</value>
+  </data>
+  <data name="LookupSteam" xml:space="preserve">
+    <value>Perfil Steam (nunca jogou aqui)</value>
+  </data>
+  <data name="LookupNoName" xml:space="preserve">
+    <value>Nome não encontrado</value>
+  </data>
+  <data name="AlreadyListed" xml:space="preserve">
+    <value>Este jogador já está nesta lista.</value>
+  </data>
+  <data name="ErrorGeneric" xml:space="preserve">
+    <value>Algo deu errado. Tente novamente.</value>
+  </data>
+</root>
