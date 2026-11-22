@@ -2,6 +2,13 @@
 
 🌐 [English](README.md) | [Português](README.pt.md) | **Español**
 
+> [!WARNING]
+> **Este repositorio está archivado y no recibirá más actualizaciones.**
+>
+> Este sitio web fue reemplazado por **[L4D2 PlayStats Hub](https://github.com/altair-sossai/l4d2-playstats-hub)**, una sola aplicación autoalojada que reúne el sitio web, la API y los plugins del servidor de juego. [l4d2.com.br](https://l4d2.com.br/) funciona con ella desde el 19 de noviembre de 2026.
+>
+> Si mantienes una copia de este proyecto, migra al nuevo repositorio. La guía [Cambiar desde el sitio antiguo](https://github.com/altair-sossai/l4d2-playstats-hub/blob/main/docs/switch-from-old-site.es.md) muestra cómo reemplazar el sitio y la API antiguos en la misma máquina, conservando los datos y las direcciones que ya usan los jugadores. Los issues y las contribuciones van a [l4d2-playstats-hub](https://github.com/altair-sossai/l4d2-playstats-hub).
+
 Ranking, estadísticas y tienda de skins de armas para un servidor competitivo de Left 4 Dead 2. Hecho con ASP.NET Core MVC (.NET 11).
 
 Es el sitio de la comunidad brasileña **[l4d2.com.br](https://l4d2.com.br/)**.
